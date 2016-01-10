@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <style>
         body{
             background:#000;
-            background:url("<?=base_url("js/Regementets_Kalk.jpg")?>") #333 no-repeat;
+            background:url("<?=url("js/Regementets_Kalk.jpg")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 
@@ -85,9 +85,9 @@ You should have received a copy of the GNU General Public License
 </div>
 <div style="clear:both"></div>
 <fieldset ><Legend>Play As </Legend>
-    <a  class="link" href="<?=site_url("wargame/enterHotseat");?>/<?=$wargame?>/">Play Hotseat</a><br>
-    <a  class="link" href="<?=site_url("wargame/enterMulti");?>/<?=$wargame?>/">Play Multi</a><br>
-    <a class="link" href="<?=site_url("wargame/leaveGame");?>">Go to Lobby</a><br>
+    <a  class="link" href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>/">Play Hotseat</a><br>
+    <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
+    <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
         Gustaf Cederström [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3ARegementets_Kalk.jpg">via Wikimedia Commons</a>
     </div>

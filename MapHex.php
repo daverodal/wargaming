@@ -86,7 +86,7 @@ class MapHex
     public function setUnit($forceId, $unit)
     {
         $id = $unit->id;
-        $battle = Battle::getBattle();
+        $battle = \Wargame\Battle::getBattle();
         if (!$this->forces) {
             $this->forces = array(new stdClass(), new stdClass(), new stdClass(), new stdClass(), new stdClass());
         }
@@ -103,7 +103,7 @@ class MapHex
             foreach ($neighbors as $neighbor) {
                 $hex = $mapData->getHex($neighbor);
 
-                if ($blocksZoc->blocked && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocked")) {
+                if (!empty($blocksZoc->blocked) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocked")) {
                     continue;
                 }
 
@@ -117,7 +117,7 @@ class MapHex
                     }
                     $hex->adjacent[$forceId]->$id = $id;
                 }
-                if ($blocksZoc->blocksnonroad && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocksnonroad")) {
+                if (!empty($blocksZoc->blocksnonroad) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocksnonroad")) {
                     continue;
                 }
                 if ($hex) {

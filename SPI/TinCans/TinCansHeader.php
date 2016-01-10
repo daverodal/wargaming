@@ -172,7 +172,7 @@
             $("#" + unit.id + " .top-numbers .spotted").removeClass('fa-bullseye');
         }
         $("#" + unit.id + " .heading").css({opacity: "1.0"});
-        $("#" + unit.id + " .heading").attr("src", "<?php echo base_url(); ?>js/blackArrow"+speed+".svg");
+        $("#" + unit.id + " .heading").attr("src", "<?php echo url(); ?>js/blackArrow"+speed+".svg");
         $("#" + unit.id + " .heading").css({webkitTransform: ' scale(.55,.55) rotate(' + theta + "deg) translateY(-45px)"});
 
         $("#" + unit.id + " .gunnery").html(unit.strength).addClass(damage);

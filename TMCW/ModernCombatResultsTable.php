@@ -100,36 +100,36 @@ class ModernCombatResultsTable
         for ($combatIndex = 0; $combatIndex < $this->combatIndexCount; $combatIndex++)
         {
 
-            $odds[0] = 0;
-            $odds[1] = 0;
-            $odds[2] = 0;
-            $odds[3] = 0;
-            $odds[4] = 0;
-            $odds[5] = 0;
+//            $odds[0] = 0;
+//            $odds[1] = 0;
+//            $odds[2] = 0;
+//            $odds[3] = 0;
+//            $odds[4] = 0;
+//            $odds[5] = 0;
 
 
-            for( $Die = 0; $Die < $this->dieSideCount; $Die++ )
-            {
-                $combatResultIndex = $this->crts->normal[$Die][$combatIndex];
-                $odds[$combatResultIndex] = $odds[$combatResultIndex] + 1;
-            }
+//            for( $Die = 0; $Die < $this->dieSideCount; $Die++ )
+//            {
+//                $combatResultIndex = $this->crts->normal[$Die][$combatIndex];
+////                $odds[$combatResultIndex] = $odds[$combatResultIndex] + 1;
+//            }
 
-            $list = "";
-
-            $list += $odds[0] + ", ";
-            $list += $odds[1] + ", ";
-            $list += $odds[2] + ", ";
-            $list += $odds[3] + ", ";
-            $list += $odds[4];
-
-            for( $combatResultIndex = 0; $combatResultIndex < $this->combatResultCount; $combatResultIndex++ )
-            {
-                $numerator = $odds[$combatResultIndex];
-                $denominator = $this->dieSideCount;
-                $percent = 100 * ($numerator/$denominator);
-                $intPercent = (int)floor($percent);
-                $this->combatOddsTable[$combatResultIndex][$combatIndex] = $intPercent;
-            }
+//            $list = "";
+//
+//            $list += $odds[0] + ", ";
+//            $list += $odds[1] + ", ";
+//            $list += $odds[2] + ", ";
+//            $list += $odds[3] + ", ";
+//            $list += $odds[4];
+//
+//            for( $combatResultIndex = 0; $combatResultIndex < $this->combatResultCount; $combatResultIndex++ )
+//            {
+//                $numerator = $odds[$combatResultIndex];
+//                $denominator = $this->dieSideCount;
+//                $percent = 100 * ($numerator/$denominator);
+//                $intPercent = (int)floor($percent);
+//                $this->combatOddsTable[$combatResultIndex][$combatIndex] = $intPercent;
+//            }
         }
     }
 

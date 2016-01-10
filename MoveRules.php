@@ -19,6 +19,7 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
+use \Wargame\Battle;
 $numWalks = 0;
 class MoveRules
 {
@@ -878,7 +879,7 @@ class MoveRules
             if (!$hexNum) {
                 continue;
             }
-            if ($goalArray[$hexNum]) {
+            if (!empty($goalArray[$hexNum])) {
                 return true;
             }
             if (!isset($this->moves->$hexNum)) {
@@ -948,7 +949,7 @@ class MoveRules
                     continue;
                 }
                 $head = false;
-                if ($bias[$i]) {
+                if (!empty($bias[$i])) {
                     $head = true;
                 }
                 if (isset($this->moves->$newHexNum)) {

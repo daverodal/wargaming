@@ -25,7 +25,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/British_Indian_Empire_1909_Imperial_Gazetteer_of_India.png")?>") #333 no-repeat;
+            background: url("<?=url("js/British_Indian_Empire_1909_Imperial_Gazetteer_of_India.png")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

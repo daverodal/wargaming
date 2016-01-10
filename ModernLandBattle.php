@@ -42,11 +42,12 @@ class ModernLandBattle extends LandBattle
 
     function __construct($data = null, $arg = false, $scenario = false, $game = false){
         $this->mapData = MapData::getInstance();
+
         if ($data) {
             $this->arg = $data->arg;
             $this->scenario = $data->scenario;
             $this->terrainName = $data->terrainName;
-            $this->game = $data->game;
+//            $this->game = $data->game;
             $this->mapData->init($data->mapData);
             $this->mapViewer = array(new MapViewer($data->mapViewer[0]), new MapViewer($data->mapViewer[1]), new MapViewer($data->mapViewer[2]));
             $units = $data->force->units;
@@ -65,7 +66,7 @@ class ModernLandBattle extends LandBattle
         } else {
             $this->arg = $arg;
             $this->scenario = $scenario;
-            $this->game = $game;
+//            $this->game = $game;
 
             $this->mapViewer = array(new MapViewer(), new MapViewer(), new MapViewer());
             $this->force = new Force();

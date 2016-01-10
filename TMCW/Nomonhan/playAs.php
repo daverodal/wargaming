@@ -26,7 +26,7 @@
 <style>
     <?php include "playAs.css";?>
     body{
-        background:url("<?=base_url("js/KhalkhinGolTank.jpg")?>") #333 no-repeat;
+        background:url("<?=url("js/KhalkhinGolTank.jpg")?>") #333 no-repeat;
         background-size:100%;
     }
     h1{
@@ -78,7 +78,7 @@
     }
     @font-face{
         font-family: Zenzai;
-        src: url('<?=base_url("js/CHOWFUN.ttf");?>');
+        src: url('<?=url("js/CHOWFUN.ttf");?>');
     }
     .zenFont{
         font-family:Zenzai;

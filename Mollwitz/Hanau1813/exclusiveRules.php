@@ -57,10 +57,10 @@ You should have received a copy of the GNU General Public License
                         <li >Depending upon the scenario, on turn two
                         the <?= $playerTwo?> may not move any units south of the River Kinzig.
                         </li>
-                        <li><img src="<?=base_url("js/orchard.png")?>">Orchard Parkland:
+                        <li><img src="<?=url("js/orchard.png")?>">Orchard Parkland:
                             Orchard Parkland hexes do not effect movement and are treated as clear for purposes of movement.
                         </li>
-                        <li><img src="<?=base_url("js/PermFort.png")?>">Permanent Fortifications:
+                        <li><img src="<?=url("js/PermFort.png")?>">Permanent Fortifications:
                             The fortifications of Hanau may not be moved over except at roads.
                         </li>
                     </ol>

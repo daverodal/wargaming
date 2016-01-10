@@ -251,7 +251,7 @@
                             </defs>
                         </svg>
                     </div>
-                    <img id="map" alt="map" src="<?php preg_match("/http/", $mapUrl) ? $pre = '' : $pre = base_url();
+                    <img id="map" alt="map" src="<?php preg_match("/http/", $mapUrl) ? $pre = '' : $pre = url();
                     echo "$pre$mapUrl"; ?>"
                          style="position: relative;visibility: visible;z-index: 0;">
                     <?php $id = 0; ?>
@@ -264,7 +264,7 @@
                         <p class="range">{range}</p>
 
                         <p class="forceMarch">M</p>
-                        <img class="arrow" src="<?php echo base_url(); ?>js/short-red-arrow-md.png" class="counter">
+                        <img class="arrow" src="<?php echo url(); ?>js/short-red-arrow-md.png" class="counter">
 
                         <div class="unit-numbers">5 - 4</div>
 
@@ -278,9 +278,9 @@
             </div>
         </div>
 
-        <audio class="pop" src="<?= base_url() . 'js/pop.m4a' ?>"></audio>
-        <audio class="poop" src="<?= base_url() . 'js/lowpop.m4a' ?>"></audio>
-        <audio class="buzz" src="<?= base_url() . 'js/buzz.m4a' ?>"></audio>
+        <audio class="pop" src="<?= url() . 'js/pop.m4a' ?>"></audio>
+        <audio class="poop" src="<?= url() . 'js/lowpop.m4a' ?>"></audio>
+        <audio class="buzz" src="<?= url() . 'js/buzz.m4a' ?>"></audio>
 
         <div style="clear:both;height:20px;"></div>
     </div>

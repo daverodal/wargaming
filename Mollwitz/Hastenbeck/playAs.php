@@ -26,7 +26,7 @@ You should have received a copy of the GNU General Public License
         <?php include "playAs.css";?>
         body{
             background:#000;
-            background:url("<?=base_url("js/Hastenbeck-Rioult.jpg")?>") #333 no-repeat;
+            background:url("<?=url("js/Hastenbeck-Rioult.jpg")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 

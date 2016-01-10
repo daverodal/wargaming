@@ -62,7 +62,7 @@ You should have received a copy of the GNU General Public License
                 </li>
                 <li><span class="lessBig">Pontoons</span>
                     <p class="indent">
-                        <img id="pontoon-image" src="<?=base_url("js/AngloPontoon.png")?>">
+                        <img id="pontoon-image" src="<?=url("js/AngloPontoon.png")?>">
                         Each side during their deployment may place one Pontoon marker on any swamp hex within 3 hexes of a friendly deploy hex.
                         This changes the hex to clear terrain for the remainder of the game. Pontoons may be used by either side. And may not be destroyed.
                     </p>

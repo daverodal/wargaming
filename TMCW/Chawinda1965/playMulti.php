@@ -25,7 +25,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/1280px-1965_Indo-Pak_War_DestroyedShermanTank.jpg")?>") #333 no-repeat;
+            background: url("<?=url("js/1280px-1965_Indo-Pak_War_DestroyedShermanTank.jpg")?>") #333 no-repeat;
             background-position: 10% 0;
             background-size:100%;
         }

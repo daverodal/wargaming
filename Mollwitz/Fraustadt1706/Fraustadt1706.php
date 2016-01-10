@@ -28,6 +28,7 @@ class Fraustadt1706 extends \Mollwitz\JagCore
 {
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
+    public $roadHex;
     public
     static function getHeader($name, $playerData, $arg = false)
     {
@@ -50,7 +51,7 @@ class Fraustadt1706 extends \Mollwitz\JagCore
         @include_once "playMulti.php";
     }
 
-    static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false, $game = false)
+    static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false, $game = false, $units = [])
     {
         global $force_name;
         $youAre = $force_name[$player];
@@ -99,7 +100,7 @@ class Fraustadt1706 extends \Mollwitz\JagCore
 
         foreach($unitSets as $unitSet) {
             for ($i = 0; $i < $unitSet->num; $i++) {
-                if($scenario->stepReduction && isset($unitSet->reduced)){
+                if(isset($scenario->stepReduction) && isset($unitSet->reduced)){
                     UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->reduced, $unitSet->movement, false, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
                 }else{
                     UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);

@@ -27,7 +27,7 @@
     DR.playerFour = "<?=$playerFour?>";
     DR.players = ["observer", "<?=$playerOne?>","<?=$playerTwo?>","<?=$playerThree?>","<?=$playerFour?>"];
 </script>
-<link rel="stylesheet" href="<?= base_url("js/font-awesome-4.2.0/css/font-awesome.min.css"); ?>">
+<link rel="stylesheet" href="<?= url("js/font-awesome-4.2.0/css/font-awesome.min.css"); ?>">
 <body xmlns="http://www.w3.org/1999/html">
 <div id="theDiv">
     <header id="header">
@@ -41,8 +41,8 @@
                     <div class="close">X</div>
                     <ul>
                         <li><a id="muteButton">mute</a></li>
-                        <li><a href="<?= site_url("wargame/leaveGame"); ?>">Go To Lobby</a></li>
-                        <li><a href="<?= site_url("users/logout"); ?>">logout</a></li>
+                        <li><a href="<?= url("wargame/leaveGame"); ?>">Go To Lobby</a></li>
+                        <li><a href="<?= url("users/logout"); ?>">logout</a></li>
                         <li><a id="arrowButton">show arrows</a></li>
                         <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
                         <li><a href="#" onclick="seeBoth();return false;">See Both</a></li>
@@ -226,19 +226,19 @@
                                 </defs>
                             </svg>
                         </div>
-                        <img id="map" alt="map" src="<?php preg_match("/http/",$mapUrl) ?   $pre = '': $pre = base_url();echo "$pre$mapUrl";?>">
+                        <img id="map" alt="map" src="<?php preg_match("/http/",$mapUrl) ?   $pre = '': $pre = url();echo "$pre$mapUrl";?>">
                         <?php $id = 0; ?>
-                        {units}
-                        <div class="unit {nationality}" id="{id}" alt="0">
+                        <?php foreach($units as $unit){?>
+                        <div class="unit <?=$unit['nationality']?>" id="<?=$unit['id']?>" alt="0">
                             <div class="shadow-mask"></div>
-                            <div class="unitSize">{unitSize}</div>
-                            <img class="arrow" src="<?php echo base_url(); ?>js/short-red-arrow-md.png" class="counter">
+                            <div class="unitSize"><?=$unit['unitSize']?></div>
+                            <img class="arrow" src="<?php echo url(); ?>js/short-red-arrow-md.png" class="counter">
                             <div class="counterWrapper">
-                                <img src="<?php echo base_url(); ?>js/{image}" class="counter"><span class="unit-desig">{unitDesig}</span>
+                                <img src="<?=asset("js/".$unit['image'])?>" class="counter"><span class="unit-desig"><?=$unit['unitDesig']?></span>
                             </div>
                             <div class="unit-numbers">5 - 4</div>
                         </div>
-                        {/units}
+                        <?php }?>
                         <div id="floatMessage">
                             <header></header>
                             <p></p>
@@ -247,9 +247,9 @@
                 </div>
             </div>
 
-            <audio class="pop" src="<?= base_url() . 'js/pop.m4a' ?>"></audio>
-            <audio class="poop" src="<?= base_url() . 'js/lowpop.m4a' ?>"></audio>
-            <audio class="buzz" src="<?= base_url() . 'js/buzz.m4a' ?>"></audio>
+            <audio class="pop" src="<?= url() . 'js/pop.m4a' ?>"></audio>
+            <audio class="poop" src="<?= url() . 'js/lowpop.m4a' ?>"></audio>
+            <audio class="buzz" src="<?= url() . 'js/buzz.m4a' ?>"></audio>
 
         </div>
     </div>

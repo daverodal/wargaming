@@ -30,6 +30,9 @@ class Brandywine1777 extends \Mollwitz\JagCore
 {
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
+    public $roadHex;
+
+
     public
     static function getHeader($name, $playerData, $arg = false)
     {
@@ -54,8 +57,9 @@ class Brandywine1777 extends \Mollwitz\JagCore
         @include_once "playMulti.php";
     }
 
-    static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false, $game = false)
+    static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false, $game = false, $units =[])
     {
+
         global $force_name;
         $youAre = $force_name[$player];
         $deployTwo = $playerOne = $force_name[LOYALIST_FORCE];

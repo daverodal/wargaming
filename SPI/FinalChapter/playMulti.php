@@ -24,7 +24,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/947px-United_States_bombing_raid_over_a_German_city_-_NARA_-_197269.jpg")?>") #333 no-repeat;
+            background: url("<?=url("js/947px-United_States_bombing_raid_over_a_German_city_-_NARA_-_197269.jpg")?>") #333 no-repeat;
             background-position: center center;
             background-size:100%;
         }

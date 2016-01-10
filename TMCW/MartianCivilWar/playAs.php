@@ -22,7 +22,7 @@
 ?><body>
 <style>
     body{
-        background:url("<?=base_url("js/Mars.jpg")?>") #333 no-repeat;
+        background:url("<?=url("js/Mars.jpg")?>") #333 no-repeat;
         background-position:center;
         background-size:100%;
     }

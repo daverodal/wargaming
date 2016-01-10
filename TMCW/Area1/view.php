@@ -27,7 +27,7 @@
     DR.playerFour = "<?=$playerFour?>";
     DR.players = ["observer", "<?=$playerOne?>","<?=$playerTwo?>","<?=$playerThree?>","<?=$playerFour?>"];
 </script>
-<link rel="stylesheet" href="<?= base_url("js/font-awesome-4.2.0/css/font-awesome.min.css"); ?>">
+<link rel="stylesheet" href="<?= url("js/font-awesome-4.2.0/css/font-awesome.min.css"); ?>">
 <body xmlns="http://www.w3.org/1999/html">
 <div id="theDiv">
     <header id="header">
@@ -246,9 +246,9 @@
                         <div class="unit {nationality}" id="{id}" alt="0">
                             <div class="shadow-mask"></div>
                             <div class="unitSize">{unitSize}</div>
-                            <img class="arrow" src="<?php echo base_url(); ?>js/short-red-arrow-md.png" class="counter">
+                            <img class="arrow" src="<?php echo url(); ?>js/short-red-arrow-md.png" class="counter">
                             <div class="counterWrapper">
-                                <img src="<?php echo base_url(); ?>js/{image}" class="counter"><span class="unit-desig">{unitDesig}</span>
+                                <img src="<?php echo url(); ?>js/{image}" class="counter"><span class="unit-desig">{unitDesig}</span>
                             </div>
                             <div class="unit-numbers">5 - 4</div>
                         </div>
@@ -261,9 +261,9 @@
                 </div>
             </div>
 
-            <audio class="pop" src="<?= base_url() . 'js/pop.m4a' ?>"></audio>
-            <audio class="poop" src="<?= base_url() . 'js/lowpop.m4a' ?>"></audio>
-            <audio class="buzz" src="<?= base_url() . 'js/buzz.m4a' ?>"></audio>
+            <audio class="pop" src="<?= url() . 'js/pop.m4a' ?>"></audio>
+            <audio class="poop" src="<?= url() . 'js/lowpop.m4a' ?>"></audio>
+            <audio class="buzz" src="<?= url() . 'js/buzz.m4a' ?>"></audio>
 
         </div>
     </div>

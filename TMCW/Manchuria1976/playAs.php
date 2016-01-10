@@ -23,7 +23,7 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=base_url("js/ChineseType59Small.png")?>") #333 no-repeat;
+        background:url("<?=url("js/ChineseType59Small.png")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }

@@ -24,7 +24,7 @@ You should have received a copy of the GNU General Public License
 <style>
     <?php include "playAs.css";?>
     body{
-        background:url("<?=base_url("js/GrossJaegersdorf.jpg")?>") #333 no-repeat;
+        background:url("<?=url("js/GrossJaegersdorf.jpg")?>") #333 no-repeat;
         background-position:center 10%;
         background-size:100%;
 

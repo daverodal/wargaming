@@ -19,6 +19,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+use \Wargame\Battle;
 abstract class SimpleForce{
     public $units;
     public $reinforceTurns;
@@ -62,8 +63,14 @@ abstract class SimpleForce{
         $unitReinforceTurn = $unit->reinforceTurn;
         $unitForceId = $unit->forceId;
         if ($unitStatus == STATUS_CAN_REINFORCE) {
-            if (!$this->reinforceTurns->$unitReinforceTurn) {
+            if(empty($this->reinforceTurns)){
+                $this->reinforceTurns = new \stdClass();
+            }
+            if (empty($this->reinforceTurns->$unitReinforceTurn)) {
                 $this->reinforceTurns->$unitReinforceTurn = new stdClass();
+            }
+            if(empty($this->reinforceTurns->$unitReinforceTurn->$unitForceId)){
+                $this->reinforceTurns->$unitReinforceTurn->$unitForceId = 0;
             }
             $this->reinforceTurns->$unitReinforceTurn->$unitForceId++;
         }

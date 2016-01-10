@@ -24,7 +24,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/Prussian_Army_during_battle_of_Mollwitz_1741.jpg")?>") #333 no-repeat;
+            background: url("<?=url("js/Prussian_Army_during_battle_of_Mollwitz_1741.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

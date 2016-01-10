@@ -26,7 +26,7 @@ You should have received a copy of the GNU General Public License
 <style type="text/css">
     <?php include "playAs.css";?>
     body{
-        background-image:url("<?=base_url("js/Hohenfriedeberg.Attack.of.Prussian.Infantry.1745.jpg")?>") ;
+        background-image:url("<?=url("js/Hohenfriedeberg.Attack.of.Prussian.Infantry.1745.jpg")?>") ;
 
     }
 </style>

@@ -17,7 +17,7 @@
 //You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
+use \Wargame\Battle;
 
 class CombatRules
 {
@@ -144,6 +144,9 @@ class CombatRules
 //            if(isset($this->defenders->$id)){
 //                $id = $this->defenders->$id;
 //            }
+            if(empty($this->combats->$id)){
+                $this->combats->$id = new \stdClass();
+            }
             $combats = $this->combats->$id;
             $combatId = $id;
             if (isset($this->defenders->$id)) {

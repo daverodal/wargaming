@@ -49,11 +49,11 @@ class Amph extends \ModernLandBattle
         return UnitFactory::build($data);
     }
 
-    static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false)
+    static function getView($name, $mapUrl, $playerNum = 0, $arg = false, $scenario = false, $game = false, $units = [])
     {
         global $force_name;
-        $player = $force_name[$player];
-        $youAre = $force_name[$player];
+        $player = $force_name[$playerNum];
+        $youAre = $force_name[$playerNum];
         $deployTwo = $playerOne = $force_name[1];
         $deployOne = $playerTwo = $force_name[2];
         @include_once "view.php";
@@ -79,11 +79,11 @@ class Amph extends \ModernLandBattle
         $scenario = $this->scenario;
         $baseValue = 6;
         $reducedBaseValue = 3;
-        if($scenario->weakerLoyalist){
+        if(!empty($scenario->weakerLoyalist)){
             $baseValue = 5;
             $reducedBaseValue = 2;
         }
-        if($scenario->strongerLoyalist){
+        if(!empty($scenario->strongerLoyalist)){
             $baseValue = 7;
         }
         /* Loyalists units */
@@ -117,7 +117,7 @@ class Amph extends \ModernLandBattle
         UnitFactory::create("x", LOYALIST_FORCE, "gameTurn5", "multiMech.png", 12, 6, 8, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'mech');
         UnitFactory::create("x", LOYALIST_FORCE, "gameTurn5", "multiHeavy.png", 10, 5, 5, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'heavy');
 
-        if(!$scenario->weakerLoyalist) {
+        if(empty($scenario->weakerLoyalist)) {
             UnitFactory::create("x", LOYALIST_FORCE, "gameTurn6", "multiArmor.png", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');
             UnitFactory::create("x", LOYALIST_FORCE, "gameTurn6", "multiArmor.png", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');
             UnitFactory::create("x", LOYALIST_FORCE, "gameTurn6", "multiMech.png", 12, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');

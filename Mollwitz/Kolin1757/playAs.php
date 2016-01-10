@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <style>
         body{
             background:#000;
-            background:url("<?=base_url("js/Schlacht_von_Kolin_17_7_1737_Gemalde_Karl_Rochling.jpg")?>") #333 no-repeat;
+            background:url("<?=url("js/Schlacht_von_Kolin_17_7_1737_Gemalde_Karl_Rochling.jpg")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 

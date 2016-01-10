@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/Regementets_Kalk.jpg")?>") #333 no-repeat;
+            background: url("<?=url("js/Regementets_Kalk.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

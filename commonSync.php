@@ -15,7 +15,7 @@
      You should have received a copy of the GNU General Public License
      along with this program.  If not, see <http://www.gnu.org/licenses/>.
      */
-    x = new Sync("<?=site_url("wargame/fetch/");?>");
+    x = new Sync("<?=url("wargame/fetch/");?>");
 x.register("sentBreadcrumbs", function(breadcrumbs,data) {
 //    return;
 
@@ -134,10 +134,12 @@ x.register("mapUnits", function(mapUnits, data) {
         }
         var img = $("#"+i+" img").attr("src");
 
-        if(mapUnits[i].isReduced){
-            img = img.replace(/(.*[0-9])(\.png)/,"$1reduced.png");
-        }else{
-            img = img.replace(/([0-9])reduced\.png/,"$1.png");
+        if(img) {
+            if (mapUnits[i].isReduced) {
+                img = img.replace(/(.*[0-9])(\.png)/, "$1reduced.png");
+            } else {
+                img = img.replace(/([0-9])reduced\.png/, "$1.png");
+            }
         }
         var  move = mapUnits[i].maxMove - mapUnits[i].moveAmountUsed;
         move = move.toFixed(2);
@@ -682,7 +684,7 @@ function flashMessage(playerStatus){
                 var y = hexPos.match(/y(\d*)\D*/)[1] - 0;
 
                 var newHtml;
-                newHtml = '<img src="<?php echo base_url(); ?>js/rowHex.svg" class="row-hex">';
+                newHtml = '<img src="<?php echo url(); ?>js/rowHex.svg" class="row-hex">';
                 $("#gameImages").append('<div id="FlashMessage" class="mapFlashSymbols">' + newHtml + '</div>');
                 $("#FlashMessage").css({top: y + "px", left: x + "px"});
                 $("#FlashMessage img").animate({opacity:0.2,width:190,marginLeft: (190 - 71)/-2 + "px", marginTop:(190 - 71)/-2 + "px"},fadeOut)
@@ -728,7 +730,7 @@ function flashMessage(playerStatus){
 
                 var c = mapSymbols[i][symbolName].class
                 $("#mapSymbol" + hexPos + " "+ c).remove();
-                newHtml = '<img src="<?php echo base_url(); ?>js/'+mapSymbols[i][symbolName].image+'" class="'+c+'">';
+                newHtml = '<img src="<?php echo url(); ?>js/'+mapSymbols[i][symbolName].image+'" class="'+c+'">';
                 $("#gameImages").append('<div id="mapSymbol' + i + '" class="mapSymbols">' + newHtml + '</div>');
                 $("#mapSymbol" + i).css({top: y + "px", left: x + "px"});
 

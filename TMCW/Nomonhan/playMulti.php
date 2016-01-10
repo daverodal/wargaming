@@ -24,7 +24,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/KhalkhinGolSoldiers.jpg")?>") #333 no-repeat;
+            background: url("<?=url("js/KhalkhinGolSoldiers.jpg")?>") #333 no-repeat;
             background-position: 0 0;
             background-size:100%;
         }

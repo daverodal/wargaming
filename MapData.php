@@ -188,7 +188,7 @@ class MapData implements JsonSerializable
         if (!$this->mapSymbols) {
             return false;
         }
-        if (!$this->mapSymbols->$name) {
+        if (empty($this->mapSymbols->$name)) {
             return false;
         }
         return $this->mapSymbols->$name;

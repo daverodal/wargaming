@@ -351,8 +351,8 @@ function seeBoth() {
 function doit() {
     var mychat = $("#mychat").attr("value");
     $.ajax({
-        url: "<?=site_url("wargame/add/");?>",
-        type: "POST",
+        url: "<?=url("wargame/add/");?>",
+        type: "GET",
         data: {chat: mychat},
         success: function (data, textstatus) {
             alert(data);
@@ -368,11 +368,13 @@ function doitKeypress(key) {
 //    $("#"+id+"").addClass("pushed");
 
     $("#comlink").html('Waiting');
+    debugger;
     $.ajax({
-        url: "<?=site_url("wargame/poke");?>/",
+        url: "<?=url("wargame/poke");?>",
         type: "POST",
         data: {id: key, event: <?=KEYPRESS_EVENT?>},
         error: function (data, text, third) {
+            debugger;
             try {
                 obj = jQuery.parseJSON(data.responseText);
             } catch (e) {
@@ -388,6 +390,7 @@ function doitKeypress(key) {
             $("#comlink").html('Working');
         },
         success: function (data, textstatus) {
+            debugger;
             try {
                 var success = +$.parseJSON(data).success;
             } catch (e) {
@@ -416,7 +419,7 @@ function doitCRT(id, event) {
 
     $("#comlink").html('waiting');
     $.ajax({
-        url: "<?=site_url("wargame/poke");?>/",
+        url: "<?=url("wargame/poke");?>",
         type: "POST",
         data: {id: id, event: (event.shiftKey || DR.shiftKey) ? <?=COMBAT_PIN_EVENT;?> : <?=COMBAT_PIN_EVENT?>},
         error: function (data, text, third) {
@@ -463,8 +466,9 @@ function doitUnit(id, event) {
         event.shiftKey = true;
         $("#shiftKey").click();
     }
+    debugger;
     $.ajax({
-        url: "<?=site_url("wargame/poke");?>/",
+        url: "<?=url("wargame/poke");?>",
         type: "POST",
         data: {id: id, event: (event.metaKey || event.ctrlKey) ? <?=SELECT_ALT_COUNTER_EVENT;?> : (event.shiftKey || DR.shiftKey) ? <?=SELECT_SHIFT_COUNTER_EVENT;?> : <?=SELECT_COUNTER_EVENT?>},
         error: function (data, text, third) {
@@ -507,7 +511,7 @@ function doitMap(x, y) {
     playAudio();
 
     $.ajax({
-        url: "<?=site_url("wargame/poke/");?>/",
+        url: "<?=url("wargame/poke");?>",
         type: "POST",
         data: {
             x: x,
@@ -546,7 +550,7 @@ function doitNext() {
     playAudio();
 
     $.ajax({
-        url: "<?=site_url("wargame/poke/");?>/",
+        url: "<?=url("wargame/poke");?>",
         type: "POST",
         data: {event: <?=SELECT_BUTTON_EVENT?>},
         success: function (data, textstatus) {

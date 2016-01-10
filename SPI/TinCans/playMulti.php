@@ -24,7 +24,7 @@
     body {
         background: #ccc;
         color: #333;
-        background: url("<?=base_url("js/USS_Evans_(DD-552)_in_the_Gulf_of_Mexico_1943.jpg")?>") #333 no-repeat;
+        background: url("<?=url("js/USS_Evans_(DD-552)_in_the_Gulf_of_Mexico_1943.jpg")?>") #333 no-repeat;
         background-position: 10% 0;
         background-size: 100%;
     }

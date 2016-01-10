@@ -14,7 +14,7 @@
 //You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-class LandBattle extends Battle{
+class LandBattle extends \Wargame\Battle{
 
     static function playAs($name, $wargame, $arg = false)
     {
@@ -40,11 +40,11 @@ class LandBattle extends Battle{
         $matches = array();
         preg_match("/^([0-9]+)-/", $click, $matches);
         $click = $matches[1];
-        $games = $doc->games;
+//        $games = $doc->games;
         $chats = array_slice($doc->chats, $chatsIndex);
         $chatsIndex = count($doc->chats);
-        $users = $doc->users;
-        $clock = $doc->clock;
+//        $users = $doc->users;
+//        $clock = $doc->clock;
         $players = $doc->wargame->players;
         $player = array_search($user, $players);
         if ($player === false) {
@@ -55,12 +55,12 @@ class LandBattle extends Battle{
         $gameName = $doc->gameName;
         $gameRules = $wargame->gameRules;
         $fogDeploy = false;
-        if($wargame->scenario->fogDeploy && $doc->playerStatus == "multi"){
+        if(!empty($wargame->scenario->fogDeploy) && $doc->playerStatus == "multi"){
             $fogDeploy = true;
         }
 
 //        $revs = $doc->_revs_info;
-        Battle::loadGame($gameName, $doc->wargame->arg);
+        \Wargame\Battle::loadGame($gameName, $doc->wargame->arg);
 //Battle::getHeader();
         if (isset($doc->wargame->mapViewer)) {
             $playerData = $doc->wargame->mapViewer[$player];
@@ -254,7 +254,7 @@ class LandBattle extends Battle{
         }
         $specialHexes = $newSpecialHexes;
         $newSpecialHexesChanges = new stdClass();
-        if ($doc->wargame->mapData->specialHexesChanges) {
+        if (!empty($doc->wargame->mapData->specialHexesChanges)) {
             $specialHexesChanges = $doc->wargame->mapData->specialHexesChanges;
             foreach ($specialHexesChanges as $k => $v) {
                 $hex = new Hexagon($k);
@@ -266,7 +266,7 @@ class LandBattle extends Battle{
         }
         $newSpecialHexesVictory = new stdClass();
 
-        if ($doc->wargame->mapData->specialHexesVictory) {
+        if (!empty($doc->wargame->mapData->specialHexesVictory)) {
             $specialHexesVictory = $doc->wargame->mapData->specialHexesVictory;
             foreach ($specialHexesVictory as $k => $v) {
                 $hex = new Hexagon($k);

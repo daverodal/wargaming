@@ -23,7 +23,7 @@
 <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'><style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=base_url("js/German_Fletcher_class_destroyers_in_1960.JPG")?>") #333 no-repeat;
+        background:url("<?=url("js/German_Fletcher_class_destroyers_in_1960.JPG")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }

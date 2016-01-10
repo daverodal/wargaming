@@ -24,7 +24,7 @@
     body {
         background: #ccc;
         color: #333;
-        background: url("<?=base_url("js/1280px-Amphibious_Assault_Vehicle_(AAV).jpg")?>") #333 no-repeat;
+        background: url("<?=url("js/1280px-Amphibious_Assault_Vehicle_(AAV).jpg")?>") #333 no-repeat;
         background-position: 10% 0;
         background-size: 100%;
     }

@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/MANTE(1800)_p4.206_BATTLE_OF_OUDENARDE_-_1708.jpg")?>") #333 no-repeat;
+            background: url("<?=url("js/MANTE(1800)_p4.206_BATTLE_OF_OUDENARDE_-_1708.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

@@ -24,7 +24,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/Battle_of_Minden_1759.jpeg")?>") #333 no-repeat;
+            background: url("<?=url("js/Battle_of_Minden_1759.jpeg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

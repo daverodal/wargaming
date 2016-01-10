@@ -22,7 +22,7 @@
     DR.playerTwo = "<?=$playerTwo?>";
     DR.players = ["observer", "<?=$playerOne?>","<?=$playerTwo?>"];
 </script>
-<link rel="stylesheet" href="<?= base_url("js/font-awesome-4.2.0/css/font-awesome.min.css"); ?>">
+<link rel="stylesheet" href="<?= url("js/font-awesome-4.2.0/css/font-awesome.min.css"); ?>">
 <style type="text/css">
 
 </style>
@@ -220,14 +220,14 @@
                             </defs>
 </svg>
                     </div>
-                    <img id="map" alt="map" src="<?php preg_match("/http/", $mapUrl) ? $pre = '' : $pre = base_url();
+                    <img id="map" alt="map" src="<?php preg_match("/http/", $mapUrl) ? $pre = '' : $pre = url();
                     echo "$pre$mapUrl"; ?>"
                          style="position: relative;visibility: visible;z-index: 0;">
                     <?php $id = 0;?>
                     {units}
                     <div class="unit {class} {type} topDiv smallUnit" id="{id}">
                         <div class="shadow-mask"></div>
-                        <img class="arrow" src="<?php echo base_url(); ?>js/short-red-arrow-md.png" class="counter">
+                        <img class="arrow" src="<?php echo url(); ?>js/short-red-arrow-md.png" class="counter">
 
 
                         <div class="counterWrapper">
@@ -255,7 +255,7 @@
                                 </svg>
                             </div>
                             <div class="type-wrapper armor-svg">
-                                <!-- <img src="<?php //echo base_url(); ?>js/A7vu_tank.svg" class="armor"> -->
+                                <!-- <img src="<?php //echo url(); ?>js/A7vu_tank.svg" class="armor"> -->
                             </div>
                             <div class="type-wrapper aarmor-svg">
                                 <!-- By Marseille77 (the-blueprints.com) [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3APanzer_IV_G.svg">via Wikimedia Commons</a> -->
@@ -265,7 +265,7 @@
 
                             </div>
 <!--                            <div class="type-wrapper mg-svg">-->
-<!--                                <img src="--><?php //echo base_url(); ?><!--js/mg.svg" class="col-hex">-->
+<!--                                <img src="--><?php //echo url(); ?><!--js/mg.svg" class="col-hex">-->
 <!--                            </div>-->
                             <div class="type-wrapper mg-svg">
                                 <svg width="10" height="20" viewBox="0 0 10 20">
@@ -310,9 +310,9 @@
             </div>
         </div>
 
-        <audio class="pop" src="<?= base_url() . 'js/pop.m4a' ?>"></audio>
-        <audio class="poop" src="<?= base_url() . 'js/lowpop.m4a' ?>"></audio>
-        <audio class="buzz" src="<?= base_url() . 'js/buzz.m4a' ?>"></audio>
+        <audio class="pop" src="<?= url() . 'js/pop.m4a' ?>"></audio>
+        <audio class="poop" src="<?= url() . 'js/lowpop.m4a' ?>"></audio>
+        <audio class="buzz" src="<?= url() . 'js/buzz.m4a' ?>"></audio>
 
         <div style="clear:both;height:20px;"></div>
     </div>

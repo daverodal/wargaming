@@ -28,21 +28,21 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=base_url("js/Destroyed_Patton_Tank_(1965_Indo-Pak_War).jpg")?>") #333 no-repeat;
+        background:url("<?=url("js/Destroyed_Patton_Tank_(1965_Indo-Pak_War).jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
     @font-face{
         font-family: OctoberGuard;
-        src: url('<?=base_url("js/octoberguard.ttf");?>');
+        src: url('<?=url("js/octoberguard.ttf");?>');
     }
     @font-face{
         font-family: Ussr;
-        src: url('<?=base_url("js/Back_In_the_USSR_DL_k.ttf");?>');
+        src: url('<?=url("js/Back_In_the_USSR_DL_k.ttf");?>');
     }
     @font-face{
         font-family: Kremlin;
-        src: url('<?=base_url("js/kremlin.ttf");?>');
+        src: url('<?=url("js/kremlin.ttf");?>');
     }
     .guard{
         font-family:"Open Sans";

@@ -118,7 +118,7 @@ class Unit extends \BaseUnit implements \JsonSerializable
         $this->combatOdds = "";
         $this->moveCount = 0;
         $this->retreatCountRequired = 0;
-        $this->combatResults = NR;
+        $this->combatResults = NE;
         $this->range = $range;
         $this->nationality = $nationality;
         $this->forceMarch = $forceMarch;

@@ -1,6 +1,6 @@
 <?php
 namespace TMCW\Amph;
-use \Battle;
+use \Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -74,6 +74,7 @@ class amphVictoryCore extends \TMCW\victoryCore
         $ret->landingZones = $this->landingZones;
         $ret->airdropZones = $this->airdropZones;
         $ret->gameOver = $this->gameOver;
+        $ret->scienceCenterDestroyed = $this->scienceCenterDestroyed;
         return $ret;
     }
 
@@ -225,7 +226,7 @@ class amphVictoryCore extends \TMCW\victoryCore
             $battle->terrain->reinforceZones = [];
             $units = $force->units;
             $num = count($units);
-            for ($i = 0; $i <= $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $unit = $units[$i];
                 if ($unit->forceId == BLUE_FORCE && $unit->hexagon->parent === "gameImages") {
                     $supply[$unit->hexagon->name] = BLUE_FORCE;
@@ -253,7 +254,7 @@ class amphVictoryCore extends \TMCW\victoryCore
         }
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
             $gameRules->flashMessages[] = "@hide deadpile";
-            if ($battle->force->reinforceTurns->$turn->$forceId) {
+            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
@@ -263,7 +264,7 @@ class amphVictoryCore extends \TMCW\victoryCore
     public function preRecoverUnits($args)
     {
         /* @var unit $unit */
-        $unit = $args[0];
+//        $unit = $args[0];
 
         $b = Battle::getBattle();
 

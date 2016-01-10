@@ -22,6 +22,6 @@
 ?><div class="dropDown"  id="TECWrapper">
     <h4 class="WrapperLabel" title='Terrain Effects Chart'>TEC</h4>
     <DIV id="TEC" style="display:none;"><div class="close">X</div>
-        <img id="tecImage" src="<?=base_url()?>js/ScimatarsTec1.png">
+        <img id="tecImage" src="<?=url()?>js/ScimatarsTec1.png">
     </div>
 </div>

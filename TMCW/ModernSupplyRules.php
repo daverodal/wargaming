@@ -1,6 +1,6 @@
 <?php
 namespace TMCW;
-use \Battle;
+use \Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -63,7 +63,7 @@ trait ModernSupplyRules
         } else {
             return;
         }
-        if (($this->unsuppliedDefenderHalved || $unit->forceId == $b->gameRules->attackingForceId) && !$unit->supplied) {
+        if ((!empty($this->unsuppliedDefenderHalved) || $unit->forceId == $b->gameRules->attackingForceId) && !$unit->supplied) {
             $unit->addAdjustment('supply','half');
         }else{
             $unit->removeAdjustment('supply');

@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=base_url("js/The_Battle_of_Fontenoy,_11th_May_1745.png")?>") #333 no-repeat;
+            background: url("<?=url("js/The_Battle_of_Fontenoy,_11th_May_1745.png")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

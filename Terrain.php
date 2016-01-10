@@ -327,7 +327,7 @@ class Terrain
     {
         $terrainCode = $this->getTerrainCode($hexpart);
         $found = false;
-        if ($terrainCode->$terrainName) {
+        if (!empty($terrainCode->$terrainName)) {
             return true;
         }
         return false;
@@ -345,11 +345,11 @@ class Terrain
         $hexsideY = ($startY + $endY) / 2;
 
         $terrainCode = $this->getTerrainCodeXY($hexsideX,$hexsideY);
-        if ($terrainCode->$terrainName) {
+        if (isset($terrainCode->$terrainName)) {
             return true;
         }
         $terrainCode = $this->getTerrainCodeXY($endX, $endY);
-        if($terrainCode->$terrainName){
+        if(isset($terrainCode->$terrainName)){
             return true;
         }
         return false;
@@ -375,7 +375,7 @@ class Terrain
     function terrainIsXY($x,$y, $terrainName)
     {
         $terrainCode = $this->getTerrainCodeXY($x,$y);
-        if ($terrainCode->$terrainName) {
+        if (!empty($terrainCode->$terrainName)) {
             return true;
         }
         return false;
@@ -472,12 +472,12 @@ class Terrain
             }
 
             $feature = $this->terrainFeatures->$terrainFeature;
-            if ($unit->nationality && $unit->class && $feature->altEntranceCost->{$unit->nationality}->{$unit->class}) {
+            if (!empty($unit->nationality) && $unit->class && !empty($feature->altEntranceCost->{$unit->nationality}->{$unit->class})) {
                 $cost = $feature->altEntranceCost->{$unit->nationality}->{$unit->class};
                 if ($cost === "blocked") {
                     return "blocked";
                 }
-            } else if ($unit->class && $feature->altEntranceCost->{$unit->class}) {
+            } else if ($unit->class && !empty($feature->altEntranceCost->{$unit->class})) {
                 $cost = $feature->altEntranceCost->{$unit->class};
                 if ($cost === "blocked") {
                     return "blocked";
@@ -518,12 +518,12 @@ class Terrain
         $traverseCost = 0;
         foreach ($terrainCode as $code) {
                 $feature = $this->terrainFeatures->$code;
-            if($unit->nationality && $unit->class && $feature->altTraverseCost->{$unit->nationality}->{$unit->class}){
+            if(!empty($unit->nationality) && $unit->class && !empty($feature->altTraverseCost->{$unit->nationality}->{$unit->class})){
                 $cost = $feature->altTraverseCost->{$unit->nationality}->{$unit->class};
                 if($cost === "blocked"){
                     return "blocked";
                 }
-            }else if($unit->class && $feature->altTraverseCost->{$unit->class}){
+            }else if($unit->class && !empty($feature->altTraverseCost->{$unit->class})){
                 $cost = $feature->altTraverseCost->{$unit->class};
                 if($cost === "blocked"){
                     return "blocked";
@@ -541,10 +541,13 @@ class Terrain
     }
 
     private function getTerrainCodeUnitCost($terrainCode, $unit){
+        if(empty($this->terrainFeatures->$terrainCode)){
+            return 0;
+        }
         $feature = $this->terrainFeatures->$terrainCode;
-        if($unit->nationality && $unit->class && $feature->altEntranceCost->{$unit->nationality}->{$unit->class}){
+        if(!empty($unit->nationality) && $unit->class && !empty($feature->altEntranceCost->{$unit->nationality}->{$unit->class})){
             $moveCost = $feature->altEntranceCost->{$unit->nationality}->{$unit->class};
-        }else if($unit->class && $feature->altEntranceCost->{$unit->class}){
+        }else if($unit->class && !empty($feature->altEntranceCost->{$unit->class})){
             $moveCost = $feature->altEntranceCost->{$unit->class};
         }else{
             $moveCost = $feature->entranceCost;
@@ -561,7 +564,7 @@ class Terrain
         $rules = $this->additionalRules;
 
         foreach($rules as $rule){
-            if($startTerrainCode->{$rule->startHex} && $endTerrainCode->{$rule->endHex}){
+            if(!empty($startTerrainCode->{$rule->startHex}) && !empty($endTerrainCode->{$rule->endHex})){
                 $moveCost += $rule->cost;
             }
         }
@@ -599,20 +602,20 @@ class Terrain
 
         // if road, or trail,override terrain,  add fordCost where needed
         $terrainCode = $this->getTerrainCodeXY($hexsideX,$hexsideY);
-        if($railMove && ($terrainCode->road || $terrainCode->trail || $terrainCode->ford || $terrainCode->secondaryroad)){
+        if($railMove && (!empty($terrainCode->road) || !empty($terrainCode->trail) || !empty($terrainCode->ford) || !empty($terrainCode->secondaryroad))){
             $roadCost = $this->getTerrainCodeUnitCost('road',$unit);
             $trailCost = $this->getTerrainCodeUnitCost('trail',$unit);
             $fordCost = $this->getTerrainCodeUnitCost('ford',$unit);
             $secondaryroad = $this->getTerrainCodeUnitCost('secondaryroad',$unit);
 
             $moveCost = $roadCost;
-            if($terrainCode->trail){
+            if(!empty($terrainCode->trail)){
                 $moveCost = $trailCost;
             }
-            if($terrainCode->secondaryroad){
+            if(!empty($terrainCode->secondaryroad)){
                 $moveCost = $secondaryroad;
             }
-            if($terrainCode->ford){
+            if(!empty($terrainCode->ford)){
                 $moveCost = $fordCost;
             }
         }

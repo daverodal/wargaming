@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <?php include "playAs.css";?>
     body{
         background:#000;
-        background:url("<?=base_url("js/Antoine_Pesne_-_Frederick_the_Great_as_Crown_Prince_-_WGA17377.jpg")?>") #333 no-repeat;
+        background:url("<?=url("js/Antoine_Pesne_-_Frederick_the_Great_as_Crown_Prince_-_WGA17377.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:50%;
 

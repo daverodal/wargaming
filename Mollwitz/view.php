@@ -25,7 +25,7 @@
     DR.playerTwo = "<?=$playerTwo?>";
     DR.players = ["observer", "<?=$playerOne?>","<?=$playerTwo?>"];
 </script>
-<link rel="stylesheet" href="<?= base_url("js/font-awesome-4.2.0/css/font-awesome.min.css"); ?>">
+<link rel="stylesheet" href="<?= asset("css/app.css"); ?>">
 
 <body xmlns="http://www.w3.org/1999/html">
 <div id="theDiv">
@@ -40,7 +40,7 @@
                         <div class="close">X</div>
                         <ul>
                             <li><a id="muteButton">mute</a></li>
-                            <li><a href="<?= site_url("wargame/leaveGame"); ?>">Go To Lobby</a></li>
+                            <li><a href="<?= url("wargame/leaveGame"); ?>">Go To Lobby</a></li>
                             <li><a id="vintageButton">vintage</a></li>
                             <li><a id="arrowButton">show arrows</a></li>
                             <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
@@ -240,26 +240,26 @@
                             </defs>
                         </svg>
                     </div>
-                    <img id="map" alt="map" src="<?php preg_match("/http/", $mapUrl) ? $pre = '' : $pre = base_url();
+                    <img id="map" alt="map" src="<?php preg_match("/http/", $mapUrl) ? $pre = '' : $pre = url();
                     echo "$pre$mapUrl"; ?>"
                          style="position: relative;visibility: visible;z-index: 0;">
-                    <?php $id = 0; ?>
-                    {units}
-                    <div class="unit {class} {type}" id="{id}" alt="0">
+                    <?php $id = 0;?>
+                    <?php foreach($units as $unit){?>
+                    <div class="unit <?=$unit['class']?> <?=$unit['type']?>" id="<?=$unit['id']?>" alt="0">
                         <div class="shadow-mask"></div>
                         <div class="counterWrapper">
                             <div class="guard-unit">GD</div>
                             <div class="counter"></div>
                         </div>
-                        <p class="range">{range}</p>
+                        <p class="range"><?=$unit['range']?></p>
 
                         <p class="forceMarch">M</p>
-                        <img class="arrow" src="<?php echo base_url(); ?>js/short-red-arrow-md.png" class="counter">
+                        <img class="arrow" src="<?php echo url(); ?>js/short-red-arrow-md.png" class="counter">
 
                         <div class="unit-numbers">5 - 4</div>
 
                     </div>
-                    {/units}
+                    <?php } ?>
                     <div id="floatMessage">
                         <header></header>
                         <p></p>
@@ -268,9 +268,9 @@
             </div>
         </div>
 
-        <audio class="pop" src="<?= base_url() . 'js/pop.m4a' ?>"></audio>
-        <audio class="poop" src="<?= base_url() . 'js/lowpop.m4a' ?>"></audio>
-        <audio class="buzz" src="<?= base_url() . 'js/buzz.m4a' ?>"></audio>
+        <audio class="pop" src="<?= url() . 'js/pop.m4a' ?>"></audio>
+        <audio class="poop" src="<?= url() . 'js/lowpop.m4a' ?>"></audio>
+        <audio class="buzz" src="<?= url() . 'js/buzz.m4a' ?>"></audio>
 
         <div style="clear:both;height:20px;"></div>
     </div>

@@ -24,7 +24,7 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=base_url("js/1024px-Operation_Desert_Storm_22.jpg")?>") #333 no-repeat;
+        background:url("<?=url("js/1024px-Operation_Desert_Storm_22.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
