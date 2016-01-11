@@ -684,7 +684,7 @@ function flashMessage(playerStatus){
                 var y = hexPos.match(/y(\d*)\D*/)[1] - 0;
 
                 var newHtml;
-                newHtml = '<img src="<?php echo url(); ?>js/rowHex.svg" class="row-hex">';
+                newHtml = '<img src="<?php echo asset('js/rowHex.svg'); ?>" class="row-hex">';
                 $("#gameImages").append('<div id="FlashMessage" class="mapFlashSymbols">' + newHtml + '</div>');
                 $("#FlashMessage").css({top: y + "px", left: x + "px"});
                 $("#FlashMessage img").animate({opacity:0.2,width:190,marginLeft: (190 - 71)/-2 + "px", marginTop:(190 - 71)/-2 + "px"},fadeOut)
@@ -730,7 +730,7 @@ function flashMessage(playerStatus){
 
                 var c = mapSymbols[i][symbolName].class
                 $("#mapSymbol" + hexPos + " "+ c).remove();
-                newHtml = '<img src="<?php echo url(); ?>js/'+mapSymbols[i][symbolName].image+'" class="'+c+'">';
+                newHtml = '<img src="<?php echo asset('js'); ?>/'+mapSymbols[i][symbolName].image+'" class="'+c+'">';
                 $("#gameImages").append('<div id="mapSymbol' + i + '" class="mapSymbols">' + newHtml + '</div>');
                 $("#mapSymbol" + i).css({top: y + "px", left: x + "px"});
 
@@ -740,7 +740,7 @@ function flashMessage(playerStatus){
     });
 
 x.register("specialHexes", function(specialHexes, data) {
-    var lab = ['unowned','<?=strtolower($force_name[1])?>','<?=strtolower($force_name[2])?>','<?=strtolower($force_name[3])?>','<?=strtolower($force_name[4])?>'];
+    var lab = ['unowned','<?=strtolower($force_name[1])?>','<?=strtolower($force_name[2])?>'];
     for(var i in specialHexes){
         var newHtml = lab[specialHexes[i]];
         var curHtml = $("#special"+i).html();

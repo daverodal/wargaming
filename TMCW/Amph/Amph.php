@@ -56,6 +56,7 @@ class Amph extends \ModernLandBattle
         $youAre = $force_name[$playerNum];
         $deployTwo = $playerOne = $force_name[1];
         $deployOne = $playerTwo = $force_name[2];
+        $playerThree = $playerFour = '';
         @include_once "view.php";
     }
 
