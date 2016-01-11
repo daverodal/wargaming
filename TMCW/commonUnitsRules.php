@@ -16,10 +16,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><span class="big">UNITS</span>
-
-<p>The units are in two colors.</p>
-<ol>
+?>
     <li>
         <?= $playerOne ?> units are this color.
         <div class="unit <?= strtolower($playerOne) ?>" alt="0"
@@ -129,4 +126,3 @@
 
         <div class="clear">&nbsp;</div>
     </li>
-</ol>

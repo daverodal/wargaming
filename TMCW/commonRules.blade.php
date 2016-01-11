@@ -62,10 +62,18 @@
             <ol class="topNumbers">
                 <li id="contentsRules">
                     @include('wargame::TMCW.commonContents')
-                    <?php //include "commonContents.php";?>
                 </li>
                 <li id="unitsRules">
-                    @include('wargame::TMCW.commonUnitsRules')
+                    <span class="big">UNITS</span>
+
+                    <p>The units are in two colors.</p>
+                    <ol>
+                        @section('unitRules')
+
+                            <li>Brore</li>
+                            @include('wargame::TMCW.commonUnitsRules')
+                    @show
+                    </ol>
 
                 <?php //include "commonUnitsRules.php" ?>
                 </li>

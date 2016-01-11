@@ -16,6 +16,11 @@ $deployTwo = $playerOne = $force_name[1];
 $deployOne = $playerTwo = $force_name[2];
     //@include_once "view.php";
         ?>
+@section('unitRules')
+    @parent
+    <li class="exclusive">No units may be receive replacements in this game.
+    </li>
+@endsection
 @section('victoryConditions')
     @include('wargame::TMCW.Amph.victoryConditions')
 @endsection
