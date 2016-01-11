@@ -16,13 +16,17 @@ $deployTwo = $playerOne = $force_name[1];
 $deployOne = $playerTwo = $force_name[2];
     //@include_once "view.php";
         ?>
-@section('commonRules')
-    @include('wargame::TMCW.commonRules')
-@endsection
 @section('victoryConditions')
     @include('wargame::TMCW.Amph.victoryConditions')
 @endsection
+@section('commonRules')
+    @include('wargame::TMCW.commonRules')
+@endsection
+
 @section('exclusiveRules')
     @include('wargame::TMCW.exclusiveRules')
 @endsection
-@include('wargame::stdIncludes.view')
+@section('obc')
+    @include('wargame::TMCW.obc')
+@endsection
+@include('wargame::stdIncludes.view' )

@@ -61,11 +61,11 @@
 
             <ol class="topNumbers">
                 <li id="contentsRules">
-                    @include('wargame::TMCW.commonContents');
+                    @include('wargame::TMCW.commonContents')
                     <?php //include "commonContents.php";?>
                 </li>
                 <li id="unitsRules">
-                    {{--@include('wargame::TMCW.commonUnitsRules');--}}
+                    @include('wargame::TMCW.commonUnitsRules')
 
                 <?php //include "commonUnitsRules.php" ?>
                 </li>
@@ -96,7 +96,9 @@
                 </li>
 
                 <li class="exclusive" id="victoryConditions">
-                    @include('wargame::TMCW.victoryConditions')
+                    @section('victoryConditions')
+                        @include('wargame::TMCW.victoryConditions')
+                    @show
 
                 <?php //include "victoryConditions.php"; ?>
                 </li>

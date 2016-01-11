@@ -148,14 +148,16 @@
             <div class="dropDown">
                 <h4 class="WrapperLabel"><span class="tablet">?</span><span class="desktop">Rules</span></h4>
                 <div class="subMenu">
-                    @section('commonRules')
-                    @show
 
-                    @section('exclusiveRules')
-                    @show
+                @section('commonRules')
+                @show
+                @section('exclusiveRules')
+                @show
+                @section('obc')
+                @show
                     <?php //include_once "commonRules.php"; ?>
                     <?php //include_once "exclusiveRules.php"; ?>
-                    <?php include_once "obc.php"; ?>
+                    <?php //include_once "obc.php"; ?>
                 </div>
             </div>
             <?php include_once "tec.php"; ?>
