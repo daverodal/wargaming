@@ -49,16 +49,16 @@ class Amph extends \ModernLandBattle
         return UnitFactory::build($data);
     }
 
-    static function getView($name, $mapUrl, $playerNum = 0, $arg = false, $scenario = false, $game = false, $units = [])
-    {
-        global $force_name;
-        $player = $force_name[$playerNum];
-        $youAre = $force_name[$playerNum];
-        $deployTwo = $playerOne = $force_name[1];
-        $deployOne = $playerTwo = $force_name[2];
-        $playerThree = $playerFour = '';
-        @include_once "view.php";
-    }
+//    static function getView($name, $mapUrl, $playerNum = 0, $arg = false, $scenario = false, $game = false, $units = [])
+//    {
+//        global $force_name;
+//        $player = $force_name[$playerNum];
+//        $youAre = $force_name[$playerNum];
+//        $deployTwo = $playerOne = $force_name[1];
+//        $deployOne = $playerTwo = $force_name[2];
+//        $playerThree = $playerFour = '';
+//        @include_once "view.php";
+//    }
 
     function terrainGen($mapDoc, $terrainDoc)
     {

@@ -43,7 +43,7 @@
                     <div class="close">X</div>
                     <ul>
                         <li><a id="muteButton">mute</a></li>
-                        <li><a href="<?= url("wargame/leaveGame"); ?>">Go To Lobby</a></li>
+                        <li><a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a></li>
                         <li><a href="<?= url("users/logout"); ?>">logout</a></li>
                         <li><a id="arrowButton">show arrows</a></li>
                         <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
