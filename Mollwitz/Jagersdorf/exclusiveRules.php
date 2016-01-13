@@ -72,10 +72,10 @@ You should have received a copy of the GNU General Public License
             </h2>
             <ul>
                 <li>
-                    <h4><?= $playerTwo ?> Movement Phase </h4>
+                    <h4><?= $player[2] ?> Movement Phase </h4>
                     <ul>
                         <li>
-                            No <?= $playerTwo ?> unit may expend more than 2 MP on turn 1 only
+                            No <?= $player[2] ?> unit may expend more than 2 MP on turn 1 only
                         </li>
                     </ul>
                 </li>

@@ -22,9 +22,9 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
+namespace Mollwitz\Fraustadt1706;
 
-class fraustadt1706VictoryCore extends victoryCore
+class fraustadt1706VictoryCore extends \Mollwitz\victoryCore
 {
 
     function __construct($data)
@@ -35,7 +35,7 @@ class fraustadt1706VictoryCore extends victoryCore
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
         }
     }

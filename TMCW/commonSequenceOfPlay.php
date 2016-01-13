@@ -23,14 +23,14 @@
     several phases. These are described below in the sequence of play.</p>
 <ol>
     <li>
-        <?= $playerOne ?> Player Turn
+        <?= $forceName[1] ?> Player Turn
         <ol>
             <li>
                 Replacement Phase
                 <p>The phasing player may allocate as many replacements as they
-                received. <?= $playerOne ?>
+                received. <?= $forceName[1] ?>
                 forces receive <span class="player-one-replacements"></span> replacement per turn. (There is no replacement phase
-                for the <?= $playerOne ?> player on turn one).</p>
+                for the <?= $forceName[1] ?> player on turn one).</p>
             </li>
             <li>
                 Movement Phase
@@ -52,12 +52,12 @@
         </ol>
     </li>
     <li>
-        <?= $playerTwo ?> Player Turn
+        <?= $forceName[2] ?> Player Turn
         <ol>
             <li>
                 Replacement Phase
                 The phasing player may receive as many replacements as they are
-                allocated. <?= $playerTwo ?>
+                allocated. <?= $forceName[2] ?>
                 s receive <span class="player-two-replacements"></span> replacements per turn.
             </li>
             <li>

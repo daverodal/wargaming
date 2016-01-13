@@ -21,10 +21,10 @@ You should have received a copy of the GNU General Public License
         <li>
         Each side is awarded one victory point for each hostile combat factor destroyed. Swedish Wagons are worth 3 Victory point if destoryed.
             </li>
-        <li>Victory points are also awarded for locations occupied (for the <?= $playerOne?> player).
+        <li>Victory points are also awarded for locations occupied (for the <?= $player[1]?> player).
             These locations are marked with numbers in red. Two locations worth 5 and 15 points are in the City of Lesnaya.
-            If the <?= $playerOne?> player enters either of those location they will be awarded victory points. If the <?= $playerTwo?> player retakes the
-            location the <?= $playerOne?> will lose those victory points.
+            If the <?= $player[1]?> player enters either of those location they will be awarded victory points. If the <?= $player[2]?> player retakes the
+            location the <?= $player[1]?> will lose those victory points.
 
             <p class="ruleComment">
                 Note: objectives start in the possession of the enemy, so they will have a label of the opposite color
@@ -32,10 +32,10 @@ You should have received a copy of the GNU General Public License
             </p>
             </li>
 
-        <li><?= $playerOne?>: win at the end of any Game turn that they have 35 points by turn 7 inclusive.
+        <li><?= $player[1]?>: win at the end of any Game turn that they have 35 points by turn 7 inclusive.
         </li>
 
-        <li> <?= $playerTwo?>: win at the end of any Game turn that they have 30 points by turn 7 inclusive, or if the <?= $playerOne?> fail to win
+        <li> <?= $player[2]?>: win at the end of any Game turn that they have 30 points by turn 7 inclusive, or if the <?= $player[1]?> fail to win
         by turn 7.</li>
 
         <li>A draw occurs if both sides meet the above victory conditions on same turn.</li>

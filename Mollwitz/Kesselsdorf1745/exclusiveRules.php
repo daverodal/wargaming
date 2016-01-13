@@ -44,15 +44,15 @@ You should have received a copy of the GNU General Public License
             <ol>
                 <li><span class="lessBig">Deploy Phase</span>
 
-                        The <?= $deployOne?> player deploys first. The <?= $deployTwo?> player deploys Second
+                        The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player deploys Second
 
                 </li>
                 <li>
                     <span class="lessBig">First Player</span>
-                    The <?= $playerOne?> player moves first. The  <?= $playerTwo?>  player moves second.
+                    The <?= $player[1]?> player moves first. The  <?= $player[2]?>  player moves second.
                 </li>
                 <li><span class="lessBig">Movement</span>
-                The movement rate of all <?= $playerTwo?> units is halved on turn one, drop fractions.</li>
+                The movement rate of all <?= $player[2]?> units is halved on turn one, drop fractions.</li>
 
             </ol>
             <ol class="ExclusiveRules topNumbers">

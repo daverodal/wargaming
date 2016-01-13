@@ -44,11 +44,11 @@ You should have received a copy of the GNU General Public License
             <div class="indent">
                 <h3>Deploy Phase</h3>
 
-                    <p class="indent">The <?= $deployOne?> player deploys first. The <?= $deployTwo?> player deploys Second</p>
+                    <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player deploys Second</p>
 
                 <h3>First Player</h3>
 
-                    <p class="indent">The <?= $playerOne?> player moves first. The  <?= $playerTwo?>  player moves second.</p>
+                    <p class="indent">The <?= $player[1]?> player moves first. The  <?= $player[2]?>  player moves second.</p>
             </div>
             <ol class="ExclusiveRules topNumbers">
                 <?php include "victoryConditions.php" ?>

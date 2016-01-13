@@ -1,4 +1,6 @@
 <?php
+namespace Mollwitz\Brandywine1777;
+
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -67,9 +69,14 @@ class Brandywine1777 extends \Mollwitz\JagCore
         @include_once "view.php";
     }
 
+    static function getPlayerData(){
+        $forceName = ["ovbserver", "Loyalist", "Rebel"];
+        $deployName = ["ovbserver", "Rebel", "Loyalist" ];
+    }
+
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -123,7 +130,7 @@ class Brandywine1777 extends \Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new Victory("Mollwitz/Brandywine1777/brandywine1777VictoryCore.php");
+            $this->victory = new \Victory('Mollwitz\Brandywine1777\brandywine1777VictoryCore');
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

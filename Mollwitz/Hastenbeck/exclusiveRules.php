@@ -40,14 +40,14 @@ You should have received a copy of the GNU General Public License
                 <li>
                     <span class="lessBig">Setting Up</span>
                 <ol>
-                    <li>The <?= $playerTwo ?> player sets up first. The <?= $playerOne ?> Setup second.</li>
+                    <li>The <?= $player[2] ?> player sets up first. The <?= $player[1] ?> Setup second.</li>
                     <?php if(!$scenario->redux && !$scenario->hastenbeck2){?>
-                    <li>When the <?= $playerOne ?> player starts deploying their units. There is a %50 chance they can
+                    <li>When the <?= $player[1] ?> player starts deploying their units. There is a %50 chance they can
                         deploy in the F2 hexes, and %50 they
                         have to deploy in the F1 Hexes.
                     </li>
                     <?php } ?>
-                    <li> <?= $playerOne ?> moves first. <?= $playerTwo ?> moves second.</li>
+                    <li> <?= $player[1] ?> moves first. <?= $player[2] ?> moves second.</li>
 
                     </li>
                 </ol>

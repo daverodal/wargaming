@@ -43,19 +43,19 @@ You should have received a copy of the GNU General Public License
             <h2 class="exclusive"> EXCLUSIVE RULES </h2>
             <ol>
                 <li><span class="lessBig">Deploy Phase</span>
-                    <p class="indent">The <?= $deployOne?> move first. The <?= $deployTwo?> player deploys Second</p>
+                    <p class="indent">The <?= $deployName[1]?> move first. The <?= $deployName[2]?> player deploys Second</p>
 
                 </li>
                 <li><span class="lessBig">Movement</span>
                     <ol>
-                        <li><?= $playerOne?>: player moves first.</li>
-                            <li><?= $playerTwo?>:  player moves second. May not move (But may attack) on turn 1.
-                                <?= $playerTwo?> units south of the River Kinzig may not move turn 2.
+                        <li><?= $player[1]?>: player moves first.</li>
+                            <li><?= $player[2]?>:  player moves second. May not move (But may attack) on turn 1.
+                                <?= $player[2]?> units south of the River Kinzig may not move turn 2.
                         </li>
                         <li >Towns: It is critically important in this game to remember that Town hexes are NOT road hexes.
                         </li>
                         <li >Depending upon the scenario, on turn two
-                        the <?= $playerTwo?> may not move any units south of the River Kinzig.
+                        the <?= $player[2]?> may not move any units south of the River Kinzig.
                         </li>
                         <li><img src="<?=url("js/orchard.png")?>">Orchard Parkland:
                             Orchard Parkland hexes do not effect movement and are treated as clear for purposes of movement.

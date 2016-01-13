@@ -49,6 +49,17 @@ class Amph extends \ModernLandBattle
         return UnitFactory::build($data);
     }
 
+
+    static function getPlayerData()
+    {
+        $forceName[0] = "Neutral Observer";
+        $forceName[1] = "Rebel";
+        $forceName[2] = "Loyalist";
+
+        $deployName = [$forceName[0], $forceName[2], $forceName[1]];
+        return compact("forceName", "deployName");
+    }
+
 //    static function getView($name, $mapUrl, $playerNum = 0, $arg = false, $scenario = false, $game = false, $units = [])
 //    {
 //        global $force_name;

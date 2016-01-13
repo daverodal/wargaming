@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Fraustadt1706;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -60,6 +61,11 @@ class Fraustadt1706 extends \Mollwitz\JagCore
         @include_once "view.php";
     }
 
+    static function getPlayerData(){
+        $forceName = ["ovbserver", "Swedish", "Saxon Russian"];
+        $deployName = ["ovbserver", "Saxon Russian", "Swedish" ];
+    }
+
     function terrainGen($mapDoc, $terrainDoc){
         $this->terrain->addTerrainFeature("frozenswamp", "frozenswamp", "s", 2, 1, 0, true, false);
 
@@ -70,7 +76,7 @@ class Fraustadt1706 extends \Mollwitz\JagCore
 
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -118,7 +124,7 @@ class Fraustadt1706 extends \Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new Victory("Mollwitz/Fraustadt1706/fraustadt1706VictoryCore.php");
+            $this->victory = new \Victory("Mollwitz\\Fraustadt1706\\fraustadt1706VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

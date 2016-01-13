@@ -26,6 +26,7 @@
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
+namespace Mollwitz;
 class victoryCore
 {
     public $victoryPoints;
@@ -43,7 +44,7 @@ class victoryCore
             $this->headQuarters = $data->headQuarters;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
             $this->headQuarters = [];
         }
@@ -51,7 +52,7 @@ class victoryCore
 
     public function save()
     {
-        $ret = new stdClass();
+        $ret = new \stdClass();
         $ret->victoryPoints = $this->victoryPoints;
         $ret->movementCache = $this->movementCache;
         $ret->gameOver = $this->gameOver;

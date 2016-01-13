@@ -1,4 +1,3 @@
-@include('wargame::global-header')
 <?php
 /**
  *
@@ -24,7 +23,7 @@
 <script type="text/javascript">
     x.register("specialHexes", function(specialHexes, data) {
         $('.specialHexes').remove();
-        var lab = ['unowned','<?=strtolower($force_name[1])?>','<?=strtolower($force_name[2])?>'];
+        var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
         for(var i in specialHexes){
             var newHtml = lab[specialHexes[i]];
             var curHtml = $("#special"+i).html();

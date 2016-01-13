@@ -24,7 +24,7 @@ namespace TMCW\Chawinda1965;
 class CombatResultsTable extends \TMCW\ModernCombatResultsTable
 {
     use \DivCombatHalfDoubleTerrain;
-    public $aggressorId = INDIAN_FORCE;
+    public $aggressorId = BLUE_FORCE;
 
     function __construct(){
         $this->combatResultsHeader = array("1:1","2:1","3:1","4:1","5:1","6:1");

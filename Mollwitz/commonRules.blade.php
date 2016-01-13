@@ -856,8 +856,9 @@
                 <a name="victoryConditions"></a>
 
                 <div class="exclusive">
+                    @section('victoryConditions')
 
-                    <?php //include "victoryConditions.php" ?>
+                    @show
                 </div>
             </ol>
             <div id="credits">

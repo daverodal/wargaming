@@ -47,9 +47,7 @@
     <div id="GR" style="display:none">
         <div class="close">X</div>
         <div id="gameRules">
-            <?php $playerOne = $force_name[1];
-            $playerTwo = $force_name[2]; ?>
-            <h1>    <?= $name ?>    </h1>
+            <h1>    {{ $gameName }}   </h1>
 
             <h2>Rules of Play</h2>
 

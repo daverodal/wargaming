@@ -26,7 +26,7 @@
     several phases. These are described below in the sequence of play.</p>
 <ol>
     <li>
-        <?= $playerOne ?> Player Turn
+        <?= $forceName[1] ?> Player Turn
         <ol>
             <li>
                 Movement Phase

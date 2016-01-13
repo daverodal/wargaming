@@ -24,8 +24,8 @@
 <p>The units are in two colors.</p>
 <ol>
     <li>
-        <?= $playerOne ?> units are this color.
-        <div class="unit <?= strtolower($playerOne) ?>" alt="0"
+        <?= $forceName[1] ?> units are this color.
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url(); ?>js/short-red-arrow-md.png"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;">
             <div class="unitSize">xx</div>
@@ -59,7 +59,7 @@
     <li>
         The symbol above the numbers represents the unit type.
         This is Armor (tanks).
-        <div class="unit <?= strtolower($playerOne) ?>" alt="0"
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url(); ?>js/short-red-arrow-md.png"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);  position: relative;">
 
@@ -73,7 +73,7 @@
     </li>
     <li>
         This is Mechinized Infantry (soldiers in half tracks, with small arms).
-        <div class="unit <?= strtolower($playerOne) ?>" alt="0"
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url(); ?>js/short-red-arrow-md.png"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);  position: relative;">
             <div class="unitSize">xx</div>
@@ -85,7 +85,7 @@
     </li>
     <li>
         This is Infantry. (soldiers on foot, with small arms).
-        <div class="unit <?= strtolower($playerOne) ?>" alt="0"
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url(); ?>js/short-red-arrow-md.png"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
@@ -98,7 +98,7 @@
     </li>
     <li>
         This is Airborne troops. (soldiers that jump out of planes with parachutes. They are armed with small arms).
-        <div class="unit <?= strtolower($playerOne) ?>" alt="0"
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url(); ?>js/short-red-arrow-md.png"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
@@ -111,7 +111,7 @@
     </li>
     <li>
         This is Glider troops. (soldiers that land in gliders, they have more heavy weapons than Airborne troops).
-        <div class="unit <?= strtolower($playerOne) ?>" alt="0"
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url(); ?>js/short-red-arrow-md.png"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
@@ -155,7 +155,7 @@
         replacements
         during the replacement phase.
         <div class="clear"></div>
-        <div class="unit <?= strtolower($playerOne) ?>" alt="0"
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url(); ?>js/short-red-arrow-md.png"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); float:left;  position: relative;">
             <div class="unitSize">xx</div>

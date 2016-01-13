@@ -59,14 +59,14 @@ class Chawinda1965 extends \ModernLandBattle
         @include_once "chawinda1965Header.php";
     }
 
-    static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false)
+    static function getPlayerData()
     {
-        global $force_name;
-        $player = $force_name[$player];
-        $youAre = $force_name[$player];
-        $deployTwo = $playerOne = $force_name[1];
-        $deployOne = $playerTwo = $force_name[2];
-        @include_once "view.php";
+        $forceName[0] = "Neutral Observer";
+        $forceName[1] = "Indian";
+        $forceName[2] = "Pakistani";
+
+        $deployName = [$forceName[0], $forceName[1], $forceName[2]];
+        return compact("forceName", "deployName");
     }
 
     public static function buildUnit($data = false){
@@ -125,7 +125,7 @@ class Chawinda1965 extends \ModernLandBattle
         $numPakistaniInf = 6;
         $defStrength = 7;
         $halfDefStrength = 7;
-        if($scenario->bigPakistani){
+        if(!empty($scenario->bigPakistani)){
             $numPakistaniInf += 6;
             $infStrength = 2;
             $halfInfStrength = 2;
@@ -153,7 +153,7 @@ class Chawinda1965 extends \ModernLandBattle
         for($i = 2; $i <= 8; $i++) {
             UnitFactory::create("x", PAKISTANI_FORCE, "gameTurn$i", "multiArmor.png", 5, 5,5, 5, 6, false, STATUS_CAN_REINFORCE, "C", $i, 1, "pakistani", true, "mech", "T $i 1");
             UnitFactory::create("x", PAKISTANI_FORCE, "gameTurn$i", "multiInf.png", $infStrength, $halfInfStrength,$defStrength, $halfDefStrength, 4, false, STATUS_CAN_REINFORCE, "C", $i, 1, "pakistani", true, "inf", "T $i 2");
-            if(!$scenario->bigPakistani) {
+            if(empty($scenario->bigPakistani)) {
                 UnitFactory::create("x", PAKISTANI_FORCE, "gameTurn$i", "multiInf.png", $infStrength, $halfInfStrength,$defStrength, $halfDefStrength, 4, false, STATUS_CAN_REINFORCE, "C", $i, 1, "pakistani", true, "inf", "T $i 3");
             }
         }

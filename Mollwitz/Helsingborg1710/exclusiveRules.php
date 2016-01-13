@@ -43,14 +43,14 @@ You should have received a copy of the GNU General Public License
             <h2 class="exclusive"> EXCLUSIVE RULES </h2>
             <ol>
                 <li><span class="lessBig">Deploy Phase</span>
-                <li><?= $deployOne?>: player deploys first.</li>
-                <li><?= $deployTwo?>:  player deploys second.
+                <li><?= $deployName[1]?>: player deploys first.</li>
+                <li><?= $deployName[2]?>:  player deploys second.
                 </li>
                 </li>
                 <li><span class="lessBig">Movement</span>
                     <ol>
-                        <li><?= $playerOne?>: player moves first.</li>
-                            <li><?= $playerTwo?>:  player moves second.
+                        <li><?= $player[1]?>: player moves first.</li>
+                            <li><?= $player[2]?>:  player moves second.
                         </li>
 
                     </ol>

@@ -21,9 +21,9 @@
  */
 ?>
 <script type="text/javascript">
-    DR.playerOne = "<?=$playerOne?>";
-    DR.playerTwo = "<?=$playerTwo?>";
-    DR.players = ["observer", "<?=$playerOne?>","<?=$playerTwo?>"];
+    DR.playerOne = "<?=$player[1]?>";
+    DR.playerTwo = "<?=$player[2]?>";
+    DR.players = ["observer", "<?=$player[1]?>","<?=$player[2]?>"];
 </script>
 <link rel="stylesheet" href="<?= asset("css/app.css"); ?>">
 

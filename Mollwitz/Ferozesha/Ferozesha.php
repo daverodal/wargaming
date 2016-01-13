@@ -59,7 +59,7 @@ class Ferozesha extends \Mollwitz\IndiaCore
 
     static function enterMulti()
     {
-        $deployTwo = $playerOne = "British";
+        $deployTwo = $player[1] = "British";
         $deployOne = $playerTwo = "Sikh";
         @include_once "enterMulti.php";
     }

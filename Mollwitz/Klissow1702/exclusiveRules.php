@@ -46,15 +46,15 @@ You should have received a copy of the GNU General Public License
             <h2 class="exclusive"> EXCLUSIVE RULES </h2>
             <ol>
                 <li><span class="lessBig">Deploy Phase</span>
-                    <p class="indent">The <?= $deployOne?> player deploys first. The <?= $deployTwo?> player deploys Second</p>
+                    <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player deploys Second</p>
 
                 </li>
                 <li><span class="lessBig">First Player</span>
-                    <p class="indent">The <?= $playerOne?> player moves first. The  <?= $playerTwo?>  player moves second.</p>
+                    <p class="indent">The <?= $player[1]?> player moves first. The  <?= $player[2]?>  player moves second.</p>
                 </li>
                 <li><span class="lessBig">Movement</span>
-                    <p class="indent">The <?= $playerOne?> units receive a 1 MP bonus on turn 1 only.</p>
-                    <p class="indent"> The  <?= $playerTwo?>  Units movement rate are halved on turn 1, normal thereafter.</p>
+                    <p class="indent">The <?= $player[1]?> units receive a 1 MP bonus on turn 1 only.</p>
+                    <p class="indent"> The  <?= $player[2]?>  Units movement rate are halved on turn 1, normal thereafter.</p>
                 </li>
                 <li><span class="lessBig">Terrain</span>
                     <p class="indent">Marsh: The Swedes experienced very little difficulty attacking across the marshes, therefore marshes are only +2 MP's to enter.

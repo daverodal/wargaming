@@ -25,6 +25,6 @@
 </style>
 <script type="text/javascript">
 x.register("vp", function(vp){
-        $("#victory").html(" Victory: <span class='playerOneFace'><?=$force_name[1]?> </span>"+vp[1]+ " <span class='playerTwoFace'><?=$force_name[2];?> </span>"+vp[2]+" Surrounded Soviets "+vp[3]);
+        $("#victory").html(" Victory: <span class='playerOneFace'><?=$forceName[1]?> </span>"+vp[1]+ " <span class='playerTwoFace'><?=$forceName[2];?> </span>"+vp[2]+" Surrounded Soviets "+vp[3]);
 });
 </script>

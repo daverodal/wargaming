@@ -41,8 +41,8 @@ You should have received a copy of the GNU General Public License
             <h3>Setting Up</h3>
 
             <ul>
-                <li>The <?= $playerTwo ?> player sets up first. The <?= $playerOne ?> play sets up second.</li>
-                <li> The <?= $playerOne ?> player moves.</li>
+                <li>The <?= $player[2] ?> player sets up first. The <?= $player[1] ?> play sets up second.</li>
+                <li> The <?= $player[1] ?> player moves.</li>
             </ul>
             <div class="indent">
                 <h3>Units</h3>
@@ -109,13 +109,13 @@ You should have received a copy of the GNU General Public License
                 <div class="clear"></div>
                 <h3>Deploy Phase</h3>
 
-                <p class="indent">The <?= $deployOne ?> player deploys first. The <?= $deployTwo ?> player deploys
+                <p class="indent">The <?= $deployName[1] ?> player deploys first. The <?= $deployName[2] ?> player deploys
                     Second</p>
 
                 <h3>First Player</h3>
 
-                <p class="indent">The <?= $playerOne ?> player moves first. The  <?= $playerTwo ?>  player moves second.
-                    After the <?= $playerTwo ?> player completes their
+                <p class="indent">The <?= $player[1] ?> player moves first. The  <?= $player[2] ?>  player moves second.
+                    After the <?= $player[2] ?> player completes their
                     turn, the game turn is incremented.</p>
             </div>
             <h2>Combat Variations </h2>

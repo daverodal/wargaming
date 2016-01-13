@@ -38,7 +38,7 @@ You should have received a copy of the GNU General Public License
             <h2 class="exclusive"> EXCLUSIVE RULES
             </h2>
             <h2>Special Rules</h2>
-            <h2><?= $playerOne ?> Movement Phase</h2>
+            <h2><?= $player[1] ?> Movement Phase</h2>
             <ul>
                 <li>On the first movement phase all of Austrian units have a movement allowance of two. This is for
                     the Austrian's first movement phase only.

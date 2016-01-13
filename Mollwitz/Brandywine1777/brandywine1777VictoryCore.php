@@ -22,9 +22,9 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
+namespace Mollwitz\Brandywine1777;
 
-class brandywine1777VictoryCore extends victoryCore
+class brandywine1777VictoryCore extends \Mollwitz\victoryCore
 {
     public $isDemoralized = false;
     public $rebelLosses = 0;
@@ -39,7 +39,7 @@ class brandywine1777VictoryCore extends victoryCore
             $this->rebelLosses = $data->victory->rebelLosses;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
         }
     }

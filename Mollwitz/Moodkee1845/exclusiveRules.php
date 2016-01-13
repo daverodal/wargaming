@@ -107,11 +107,11 @@
                 </div>
                 <h3>Deploy Phase</h3>
                 
-                    <p class="indent">The <?= $deployOne?> player deploys first. The <?= $deployTwo?> player deploys Second</p>
+                    <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player deploys Second</p>
                 
                 <h3>First Player</h3>
                 
-                    <p class="indent">The <?= $playerOne?> player moves first. The  <?= $playerTwo?>  player moves second. After the <?= $playerTwo?> player completes their
+                    <p class="indent">The <?= $player[1]?> player moves first. The  <?= $player[2]?>  player moves second. After the <?= $player[2]?> player completes their
                     turn, the game turn is incremented.</p>
             </div>
             <ol class="ExclusiveRules topNumbers">

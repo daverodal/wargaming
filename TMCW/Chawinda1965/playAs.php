@@ -59,9 +59,9 @@
 <h2 id='playastitle' style="text-align:center;font-size:70px;"><span>The Battle of Chawinda<br>(Chawinda ਦੀ ਲੜਾਈ)<br> The Indo-Pakistani war 1965</span></h2>
 <div class="clear">&nbsp;</div>
 <fieldset ><Legend>Play As </Legend>
-    <a class="link"  href="<?=site_url("wargame/enterHotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
-    <a class="link"  href="<?=site_url("wargame/enterMulti");?>/<?=$wargame?>">Play Multi Player </a><br>
-    <a class="link" href="<?=site_url("wargame/leaveGame");?>">Go to Lobby</a>
+    <a class="link"  href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
+    <a class="link"  href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
+    <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a>
     <div class="attribution">
         By Abhinayrathore at English Wikipedia [Public domain], <a href="http://commons.wikimedia.org/wiki/File%3ADestroyed_Patton_Tank_(1965_Indo-Pak_War).jpg">via Wikimedia Commons</a>    </div>
 </fieldset>
