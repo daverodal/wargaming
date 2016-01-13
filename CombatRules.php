@@ -159,6 +159,7 @@ class CombatRules
 //                unset($this->currnetDefender[$id]);
 //            }
                 if ($this->currentDefender === false) {
+                    var_dump($this->defenders);die('love');
                     $this->currentDefender = $this->defenders->$id;
                 } else {
                     if ($shift) {
