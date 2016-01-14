@@ -27,6 +27,7 @@
  * To change this template use File | Settings | File Templates.
  */
 namespace Mollwitz;
+use \Wargame\Battle;
 class victoryCore
 {
     public $victoryPoints;
@@ -245,7 +246,7 @@ class victoryCore
         if(($b->gameRules->phase == RED_COMBAT_PHASE || $b->gameRules->phase == BLUE_COMBAT_PHASE) && $unit->forceMarch){
             $unit->status = STATUS_UNAVAIL_THIS_PHASE;
         }
-        if($b->scenario->commandControl){
+        if(!empty($b->scenario->commandControl)){
             $this->checkCommand($unit);
         }
         if($unit->hexagon->parent === 'deployBox' && $b->gameRules->mode !== DEPLOY_MODE){

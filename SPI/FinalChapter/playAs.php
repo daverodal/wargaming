@@ -34,9 +34,9 @@
 <h1 style="text-align:center;font-size:90px;font-family:'Lobster'">Final Chapter</h1>
 <div class="clear">&nbsp;</div>
 <fieldset ><Legend>Play As </Legend>
-    <a class="link"  href="<?=site_url("wargame/enterHotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
-    <a class="link"  href="<?=site_url("wargame/enterMulti");?>/<?=$wargame?>">Play Multi Player </a><br>
-    <a class="link" href="<?=site_url("wargame/leaveGame");?>">Go to Lobby</a>
+    <a class="link"  href="<?= url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
+    <a class="link"  href="<?= url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
+    <a class="link" href="<?= url("wargame/leave-game");?>">Go to Lobby</a>
     <div class="attribution">
         By Unknown or not provided (U.S. National Archives and Records Administration) [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3AUnited_States_bombing_raid_over_a_German_city_-_NARA_-_197269.jpg">via Wikimedia Commons</a>
 

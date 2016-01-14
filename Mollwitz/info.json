@@ -3,7 +3,7 @@
         "name": "The Battle of Mollwitz",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Mollwitz/Mollwitz.php",
+        "fileName": "Mollwitz\\Mollwitz\\Mollwitz.php",
         "description":"April 10, 1741. The War of the Austrian Succession",
         "scenarios": {
             "main": {
@@ -29,7 +29,7 @@
         "name": "The Battle of Hastenbeck",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Hastenbeck/Hastenbeck.php",
+        "fileName": "Mollwitz\\Hastenbeck\\Hastenbeck.php",
         "description":"July 26, 1757. French vs Anglo Allies. The Seven Years War",
         "scenarios": {
             "main": {
@@ -53,7 +53,7 @@
         "name": "The Battle of Hohenfriedeberg",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Hohenfriedeberg/Hohenfriedeberg.php",
+        "fileName": "Mollwitz\\Hohenfriedeberg\\Hohenfriedeberg.php",
         "description": "June 4 1745. Prussian vs Austrian. The War of the Austrian Succession.",
         "scenarios": {
             "main": {
@@ -76,7 +76,7 @@
         "description": "August 1, 1759. The Seven Years War.",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Minden/Minden.php",
+        "fileName": "Mollwitz\\Minden\\Minden.php",
         "scenarios": {
             "main": {
                 "description": "Standard Scenario",
@@ -88,7 +88,7 @@
         "name": "The Battle of Malplaquet",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Malplaquet/Malplaquet.php",
+        "fileName": "Mollwitz\\Malplaquet\\Malplaquet.php",
         "description": "September 11, 1709. The War of the Spanish Succession",
         "scenarios": {
             "main": {
@@ -108,7 +108,7 @@
         "name": "The Battle of Burkersdorf",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Burkersdorf/Burkersdorf.php",
+        "fileName": "Mollwitz\\Burkersdorf\\Burkersdorf.php",
         "description":"July 21, 1762. Prussian vs Austrian. The Seven Years War.",
         "options":[
           {
@@ -139,7 +139,7 @@
         "name": "The Battle of Kolin 1757",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Kolin1757/Kolin1757.php",
+        "fileName": "Mollwitz\\Kolin1757\\Kolin1757.php",
         "description":"June 18, 1757. Prussian vs Austrian. The Seven Years War.",
         "scenarios": {
             "main": {
@@ -162,7 +162,7 @@
     "name": "The Battle of Oudenarde 1708",
     "path": "Mollwitz",
     "genre": "18'th Century Europe",
-    "fileName": "Oudenarde1708/Oudenarde1708.php",
+    "fileName": "Mollwitz\\Oudenarde1708\\Oudenarde1708.php",
     "description":"July 11, 1708. Anglo Allies vs Franco Bavarian. The war for Spanish Succession.",
     "scenarios": {
       "main": {
@@ -205,7 +205,7 @@
     "name": "The Battle of Kesselsdorf 1745",
     "path": "Mollwitz",
     "genre": "18'th Century Europe",
-    "fileName": "Kesselsdorf1745/Kesselsdorf1745.php",
+    "fileName": "Mollwitz\\Kesselsdorf1745\\Kesselsdorf1745.php",
     "description":"1745 ",
     "scenarios": {
       "main": {
@@ -282,7 +282,7 @@
     "name": "The battle of Lesnaya 1708",
     "path": "Mollwitz",
     "genre": "18'th Century Europe",
-    "fileName": "Lesnaya1708/Lesnaya1708.php",
+    "fileName": "Mollwitz\\Lesnaya1708\\Lesnaya1708.php",
     "description":"Battle of Lesnaya 1708",
     "params":{
       "weakRedoubts": true
@@ -326,7 +326,7 @@
     "name": "The Battle of Klissow 1702",
     "path": "Mollwitz",
     "genre": "18'th Century Europe",
-    "fileName": "Klissow1702/Klissow1702.php",
+    "fileName": "Mollwitz\\Klissow1702\\Klissow1702.php",
     "description":"The Battle of Klissow took place on July 8 (Julian calendar) / July 9 (Swedish calendar) / July 19, 1702 (Gregorian calendar) near Kliszów, Poland-Lithuania, during the Great Northern War.",
     "params":{
       "wimpySwamps": true
@@ -382,7 +382,7 @@
         "name": "The Battle of Lobositz",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Lobositz/Lobositz.php",
+        "fileName": "Mollwitz\\Lobositz\\Lobositz.php",
         "description": "October 1, 1756. The Seven Years War.",
         "scenarios": {
             "main": {
@@ -397,7 +397,7 @@
         "name": "The Battle of Zorndorf.",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Zorndorf/Zorndorf.php",
+        "fileName": "Mollwitz\\Zorndorf\\Zorndorf.php",
         "description":"August 25, 1758. The Seven Years War.",
         "scenarios": {
             "main": {
@@ -421,7 +421,7 @@
         "name": "The Battle of Gross Jagersdorf",
         "path": "Mollwitz",
         "genre": "18'th Century Europe",
-        "fileName": "Jagersdorf/Jagersdorf.php",
+        "fileName": "Mollwitz\\Jagersdorf\\Jagersdorf.php",
         "description": "August 30, 1757. Prussian vs Russian. The Seven Years War.",
         "params":{
             "jagersdorfCombat": true
@@ -447,7 +447,7 @@
       "name": "The Battle of Montmirail 1814",
       "path": "Mollwitz",
       "genre": "Napoleonic",
-      "fileName": "Montmirail1814/Montmirail1814.php",
+      "fileName": "Mollwitz\\Montmirail1814\\Montmirail1814.php",
       "description":"The Battle of Montmirail 1814 between the French and Prussian-Russian allies. ",
       "scenarios": {
         "main": {
@@ -609,7 +609,7 @@
     "name": "The Battle of Hanau 1813",
     "path": "Mollwitz",
     "genre": "Napoleonic",
-    "fileName": "Hanau1813/Hanau1813.php",
+    "fileName": "Mollwitz\\Hanau1813\\Hanau1813.php",
     "description":"The Battle of Hanau 1813 between the French and Austro-Bavarian-Russian allies. ",
     "params":{
       "units":[
@@ -675,7 +675,7 @@
     "name": "The Battle of Golymin 1806",
     "path": "Mollwitz",
     "genre": "Napoleonic",
-    "fileName": "Golymin1806/Golymin1806.php",
+    "fileName": "Mollwitz\\Golymin1806\\Golymin1806.php",
     "description":"The Battle of Golymin 1806 between the French and Russian. ",
     "params":{
       "units":[
@@ -715,7 +715,7 @@
     "name": "The Battle of Fontenoy 1745",
     "path": "Mollwitz",
     "genre": "18'th Century Europe",
-    "fileName": "Fontenoy1745/Fontenoy1745.php",
+    "fileName": "Mollwitz\\Fontenoy1745\\Fontenoy1745.php",
     "description":" Battle of Fontenoy, 11 May 1745. French vs Allies, The War for Austrian Succession ",
     "params":{
       "units":[
@@ -762,7 +762,7 @@
     "name": "The Battle of Gadebusch 1712",
     "path": "Mollwitz",
     "genre": "18'th Century Europe",
-    "fileName": "Gadebusch1712/Gadebusch1712.php",
+    "fileName": "Mollwitz\\Gadebusch1712\\Gadebusch1712.php",
     "description":"The Battle of Gadebusch 1712 between the Swedish and the Danes . ",
     "options":[
       {
@@ -897,7 +897,7 @@
     "name": "The Battle of Helsingborg 1710",
     "path": "Mollwitz",
     "genre": "18'th Century Europe",
-    "fileName": "Helsingborg1710/Helsingborg1710.php",
+    "fileName": "Mollwitz\\Helsingborg1710\\Helsingborg1710.php",
     "description":"The Battle of Helsingborg 1710 between the Swedish and the Danes . ",
     "options":[
       {
@@ -960,7 +960,7 @@
         "name": "Dubba 1843",
         "path": "Mollwitz",
         "genre": "19'th Century India",
-        "fileName": "Dubba1843/Dubba1843.php",
+        "fileName": "Mollwitz\\Dubba1843\\Dubba1843.php",
         "description":"March 24, 1843. British vs Beluchi. Part of Conquest of Sindh",
         "params":{
             "doubleArt": true,
@@ -983,7 +983,7 @@
         "name": "Meanee 1843",
         "path": "Mollwitz",
         "genre": "19'th Century India",
-        "fileName": "Meanee1843/Meanee1843.php",
+        "fileName": "Mollwitz\\Meanee1843\\Meanee1843.php",
         "description":"February 17, 1843. British vs Beluchi. Part of the conquest of Sindh.",
         "params":{
             "doubleArt": true
@@ -1006,7 +1006,7 @@
         "name": "Ferozesha Day One",
         "path": "Mollwitz",
         "genre": "19'th Century India",
-        "fileName": "Ferozesha/Ferozesha.php",
+        "fileName": "Mollwitz\\Ferozesha\\Ferozesha.php",
         "description":"December 21, 1845. British vs Sikh. First Anglo-Sikh War.",
         "params":{
             "doubleArt": true,
@@ -1031,7 +1031,7 @@
         "name": "Ferozesha Day Two",
         "path": "Mollwitz",
         "genre": "19'th Century India",
-        "fileName": "Ferozesha/FerozeshaDayTwo.php",
+        "fileName": "Mollwitz\\Ferozesha\\FerozeshaDayTwo.php",
         "description":"December 22, 1845. British vs Sikh. First Anglo-Sikh War.",
         "params":{
             "doubleArt": true,
@@ -1061,7 +1061,7 @@
         "name": "Chillianwallah 1849",
         "path": "Mollwitz",
         "genre": "19'th Century India",
-        "fileName": "Chillianwallah1849/Chillianwallah1849.php",
+        "fileName": "Mollwitz\\Chillianwallah1849\\Chillianwallah1849.php",
         "description":"January 13, 1849. British vs Sikh. The Second Anglo-Sikh War.",
         "playerNotes":"Key",
         "params":{
@@ -1085,7 +1085,7 @@
         "name": "Moodkee 1845",
         "path": "Mollwitz",
         "genre": "19'th Century India",
-        "fileName": "Moodkee1845/Moodkee1845.php",
+        "fileName": "Mollwitz\\Moodkee1845\\Moodkee1845.php",
         "description":"December 18, 1845. British vs Sikh. First Anglo-Sikh War.",
         "playerNotes":"Key",
         "params":{
@@ -1109,7 +1109,7 @@
         "name": "Goojerat 1849",
         "path": "Mollwitz",
         "genre": "19'th Century India",
-        "fileName": "Goojerat1849/Goojerat1849.php",
+        "fileName": "Mollwitz\\Goojerat1849\\Goojerat1849.php",
         "description":"February 21, 1849. British vs Sikh. Second Anglo-Sikh War.",
         "params":{
             "doubleArt": true,
@@ -1149,7 +1149,7 @@
         "name": "Aliwal 1845",
         "path": "Mollwitz",
         "genre": "19'th Century India",
-        "fileName": "Aliwal1845/Aliwal1845.php",
+        "fileName": "Mollwitz\\Aliwal1845\\Aliwal1845.php",
         "description":"January 28 1846. British vs Sikh. First Anglo-Sikh War.",
         "params":{
             "doubleArt": true,

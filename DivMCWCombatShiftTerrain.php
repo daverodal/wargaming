@@ -34,7 +34,7 @@ trait DivMCWCombatShiftTerrain
     function setCombatIndex($defenderId)
     {
         $combatLog = "";
-        $battle = Battle::getBattle();
+        $battle = \Wargame\Battle::getBattle();
         $combatRules = $battle->combatRules;
         $combats = $battle->combatRules->combats->$defenderId;
         /* @var Force $force */

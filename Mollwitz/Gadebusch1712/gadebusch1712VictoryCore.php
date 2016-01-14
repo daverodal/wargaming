@@ -1,5 +1,7 @@
 <?php
-/*
+namespace Mollwitz\Gadebusch1712;
+use \Wargame\Battle;
+    /*
 Copyright 2012-2015 David Rodal
 
 This program is free software; you can redistribute it
@@ -22,9 +24,8 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
 
-class gadebusch1712VictoryCore extends victoryCore
+class gadebusch1712VictoryCore extends \Mollwitz\victoryCore
 {
     public $wasIndecisive;
     public $isIndecisive;
@@ -40,7 +41,7 @@ class gadebusch1712VictoryCore extends victoryCore
             $this->isIndecisive = $data->victory->isIndecisive;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
             $this->deadGuardInf = false;
             $this->wasIndecisive = $this->isIndecisive = false;
@@ -168,7 +169,7 @@ class gadebusch1712VictoryCore extends victoryCore
 
         $b = Battle::getBattle();
         $scenario = $b->scenario;
-        if ($this->wasIndecisive || $scenario->noIndecision) {
+        if ($this->wasIndecisive || !empty($scenario->noIndecision)) {
             return;
         }
         $turn = $b->gameRules->turn;

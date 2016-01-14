@@ -71,9 +71,9 @@ class LandBattle extends \Wargame\Battle{
         $mapUnits = array();
         $moveRules = $doc->wargame->moveRules;
         $combatRules = $doc->wargame->combatRules;
-        $combats = $combatRules->combats;
+        $combats = isset($combatRules->combats) ? $combatRules->combats : false;
         if(!$combats){
-            $combats = $combatRules->combatsToResolve;
+            $combats = isset($combatRules->combatsToResolve) ? $combatRules->combatsToResolve : false;
         }
         if($playerData->trueRows && $combats) {
             foreach ($combats as $combat) {
@@ -84,7 +84,7 @@ class LandBattle extends \Wargame\Battle{
                 }
             }
         }
-        $combats = $combatRules->resolvedCombats;
+        $combats = isset($combatRules->resolvedCombats) ? $combatRules->resolvedCombats : false;
         if($playerData->trueRows && $combats) {
             foreach ($combats as $combat) {
                 foreach ($combat->thetas as $theta) {

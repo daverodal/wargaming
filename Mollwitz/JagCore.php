@@ -46,7 +46,6 @@ class JagCore extends \LandBattle{
             $this->arg = $data->arg;
             $this->scenario = $data->scenario;
             $this->terrainName = $data->terrainName;
-            $this->roadHex = $data->roadHex;
             $this->game = $data->game;
 
             $this->mapData->init($data->mapData);

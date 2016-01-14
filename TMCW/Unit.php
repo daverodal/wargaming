@@ -3,7 +3,7 @@ namespace TMCW;
 use \Hexagon;
 use \stdClass;
 use \MapData;
-use \Battle;
+use \Wargame\Battle;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal

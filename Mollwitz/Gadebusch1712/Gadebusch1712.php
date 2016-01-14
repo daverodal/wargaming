@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Gadebusch1712;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -64,9 +65,15 @@ class Gadebusch1712 extends \Mollwitz\JagCore
         @include_once "view.php";
     }
 
+    static function getPlayerData(){
+        $forceName = ["observer", "Swedish", "Danes"];
+        $deployName = [$forceName[0],$forceName[2],$forceName[1]];
+        return compact('forceName','deployName');
+    }
+
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -79,7 +86,6 @@ class Gadebusch1712 extends \Mollwitz\JagCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
 
@@ -115,11 +121,10 @@ class Gadebusch1712 extends \Mollwitz\JagCore
 
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new Victory("Mollwitz/Gadebusch1712/gadebusch1712VictoryCore.php");
+            $this->victory = new \Victory("Mollwitz\\Gadebusch1712\\gadebusch1712VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

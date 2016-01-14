@@ -23,7 +23,7 @@
     "name": "The Final Chapter",
     "path": "SPI",
     "genre": "SPI Clones",
-    "fileName": "FinalChapter/FinalChapter.php",
+    "fileName": "SPI\\FinalChapter\\FinalChapter.php",
     "description": "Final Chapter",
     "params":{
       "maxPlayers":3

@@ -1436,7 +1436,7 @@ class MoveRules
         }
     }
 
-    function stopReinforcing($Unit)
+    function stopReinforcing($unit)
     {
         /* @var Unit $unit */
         if ($unit->unitIsReinforcing() == true) {
@@ -1721,7 +1721,7 @@ class MoveRules
 
 
         $startHexagon = $unit->getUnitHexagon();
-        if ($this->force->advanceIsOnRetreatList($id, $hexagon) == true && $this->rangeIsOneHexagon($startHexagon, $hexagon) == true) {
+        if ($this->force->advanceIsOnRetreatList($unit->id, $hexagon) == true && $this->rangeIsOneHexagon($startHexagon, $hexagon) == true) {
             $isValid = true;
         } else {
         }

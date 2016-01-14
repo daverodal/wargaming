@@ -1,5 +1,5 @@
 <?php
-
+namespace SPI\FinalChapter;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -26,17 +26,13 @@ define("WESTERN_EMPIRE_FORCE", 3);
 define("WESTERN_FORCE", 2);
 define("EASTERN_EMPIRE_FORCE", 4);
 
-global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
-$force_name = array();
-$force_name[0] = "Neutral Observer";
-$force_name[1] = "Eastern";
-$force_name[2] = "Western";
-$force_name[3] = "German";
-$force_name[4] = "German";
+global $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
+
 
 class FinalChapter extends \ModernLandBattle
 {
 
+    public $specialHexD;
     public $specialHexesMap = ['SpecialHexA'=>3, 'SpecialHexB'=>3, 'SpecialHexC'=>3];
 
     static function getHeader($name, $playerData, $arg = false)
@@ -52,6 +48,19 @@ class FinalChapter extends \ModernLandBattle
         return UnitFactory::build($data);
     }
 
+    static function getPlayerData(){
+
+
+
+        $forceName[0] = "Neutral Observer";
+        $forceName[1] = "Eastern";
+        $forceName[2] = "Western";
+        $forceName[3] = "German";
+        $forceName[4] = "German";
+
+        $deployName = [0, 1, 2, 3, 4];
+        return compact('forceName','deployName');
+    }
     static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false)
     {
         global $force_name;
@@ -84,11 +93,11 @@ class FinalChapter extends \ModernLandBattle
         $this->mapData->alterSpecialHex(2302, WESTERN_FORCE);
         $this->mapData->alterSpecialHex(1804, WESTERN_FORCE);
         $this->mapData->alterSpecialHex(1706, WESTERN_FORCE);
-        $symbol = new stdClass();
+        $symbol = new \stdClass();
         $symbol->type = 'WestWall';
         $symbol->image = 'colHex.svg';
         $symbol->class = 'col-hex';
-        $symbols = new stdClass();
+        $symbols = new \stdClass();
         foreach([609,610,611,712, 2404, 2304, 2105, 2005, 1905, 1805, 1806, 1707, 1606, 1506] as $id){
             $symbols->$id = $symbol;
         }
@@ -298,7 +307,7 @@ class FinalChapter extends \ModernLandBattle
             $this->specialHexB = $data->specialHexB;
             $this->specialHexC = $data->specialHexC;
         } else {
-            $this->victory = new Victory("SPI\\FinalChapter\\finalChapterVictoryCore");
+            $this->victory = new \Victory("SPI\\FinalChapter\\finalChapterVictoryCore");
 
             foreach($this->mapViewer as $mapView){
                 $mapView->trueRows = true;
@@ -347,7 +356,7 @@ class FinalChapter extends \ModernLandBattle
              * if player 3 set, they become player 3 and four
              * if 3 and 4 not set 3 becomes 1 and 4 becomes 2
              */
-            if(!isset($this->players[4]) && $this->players[3]) {
+            if(!isset($this->players[4]) && isset($this->players[3])) {
                 $this->players[4] = $this->players[3];
             }
             if(!isset($this->players[3]) && $this->players[1]){

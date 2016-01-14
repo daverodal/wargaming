@@ -1,5 +1,7 @@
 <?php
-/*
+namespace Mollwitz\Golymin1806;
+use \Wargame\Battle;
+    /*
 Copyright 2012-2015 David Rodal
 
 This program is free software; you can redistribute it
@@ -22,9 +24,8 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
 
-class golymin1806VictoryCore extends victoryCore
+class golymin1806VictoryCore extends \Mollwitz\victoryCore
 {
 
     function __construct($data)
@@ -36,7 +37,7 @@ class golymin1806VictoryCore extends victoryCore
             $this->deadGuardInf = $data->victory->deadGuardInf;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
             $this->deadGuardInf = false;
         }

@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Golymin1806;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -63,9 +64,16 @@ class Golymin1806 extends \Mollwitz\JagCore
         @include_once "view.php";
     }
 
+    static function getPlayerData(){
+        $forceName = ['observer', "French", "Russian"];
+        $deployName = ['observer','Russian','French'];
+        return compact('forceName', 'deployName');
+
+    }
+
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -78,7 +86,6 @@ class Golymin1806 extends \Mollwitz\JagCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
 
@@ -89,7 +96,7 @@ class Golymin1806 extends \Mollwitz\JagCore
     function terrainGen($mapDoc, $terrainDoc){
 
         parent::terrainGen($mapDoc, $terrainDoc);
-        if($this->scenario->mudMovement){
+        if(!empty($this->scenario->mudMovement)){
             $this->terrain->addTerrainFeature("clear", "", "c", 2, 0, 0, true);
             $this->terrain->addTerrainFeature("road", "road", "r", 2, 0, 0, false);
         }
@@ -120,11 +127,10 @@ class Golymin1806 extends \Mollwitz\JagCore
 
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
-            $this->specialHexA = $data->specialHexA;
+                $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new Victory("Mollwitz/Golymin1806/golymin1806VictoryCore.php");
+            $this->victory = new \Victory('Mollwitz\Golymin1806\golymin1806VictoryCore');
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

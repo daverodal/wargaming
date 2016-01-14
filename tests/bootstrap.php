@@ -1,4 +1,5 @@
 <?php
+namespace Test;
 spl_autoload_register('spl_autoload');
 class Battle{
     public static $class;
@@ -9,7 +10,7 @@ class Battle{
 //require_once "Battle.php";
 set_include_path("Mollwitz". PATH_SEPARATOR .  get_include_path());
 set_include_path("Mollwitz/Klissow1702". PATH_SEPARATOR .  get_include_path());
-require_once("crtTraits.php");
+//require_once("crtTraits.php");
 set_include_path("TMCW". PATH_SEPARATOR .  get_include_path());
 
 set_include_path("TMCW/Kiev". PATH_SEPARATOR .  get_include_path());
