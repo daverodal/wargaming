@@ -488,7 +488,8 @@ function doitUnit(id, event) {
         },
         success: function (data, textstatus) {
             try {
-                var success = +$.parseJSON(data).success;
+                debugger;
+                var success = data.success;
             } catch (e) {
 //            alert(data);
             }
