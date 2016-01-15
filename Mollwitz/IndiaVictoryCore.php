@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -25,7 +26,7 @@
  * Date: 5/19/14
  * Time: 12:45 PM
  */
-class indiaVictoryCore extends victoryCore
+class IndiaVictoryCore extends victoryCore
 {
     public function preStartMovingUnit($arg){
         /* @var unit $unit */

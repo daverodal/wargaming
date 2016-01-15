@@ -18,6 +18,9 @@ You should have received a copy of the GNU General Public License
 ?><!doctype html>
 <html>
 <head>
+
+
+
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,7 +48,14 @@ You should have received a copy of the GNU General Public License
     DR.globalZoom = 1;
     DR.playerNameMap = ["Zero", "One", "Two", "Three", "Four"];
 
+    {{ $playerThree = isset($playerThree) ? $playerThree : 3 }}
+    {{ $playerFour = isset($playerFour) ? $playerFour : 4 }}
 
+    DR.playerOne = "{{$forceName[1]}}";
+    DR.playerTwo = "{{$forceName[2]}}";
+    DR.playerThree = "{{$forceName[3] or ''}}";
+    DR.playerFour = "{{$forceName[4] or ''}}";
+    DR.players = ["observer", DR.playerOne,DR.playerTwo,DR.playerThree,DR.playerFour];
 
     function rotateUnits(e, that){
         if (e.ctrlKey) {
@@ -386,13 +396,11 @@ function doitKeypress(key) {
 //    $("#"+id+"").addClass("pushed");
 
     $("#comlink").html('Waiting');
-    debugger;
     $.ajax({
         url: "<?=url("wargame/poke");?>",
         type: "POST",
         data: {id: key, event: <?=KEYPRESS_EVENT?>},
         error: function (data, text, third) {
-            debugger;
             try {
                 obj = jQuery.parseJSON(data.responseText);
             } catch (e) {
@@ -408,7 +416,6 @@ function doitKeypress(key) {
             $("#comlink").html('Working');
         },
         success: function (data, textstatus) {
-            debugger;
             try {
                 var success = +$.parseJSON(data).success;
             } catch (e) {
@@ -484,7 +491,6 @@ function doitUnit(id, event) {
         event.shiftKey = true;
         $("#shiftKey").click();
     }
-    debugger;
     $.ajax({
         url: "<?=url("wargame/poke");?>",
         type: "POST",
@@ -510,6 +516,7 @@ function doitUnit(id, event) {
             } catch (e) {
 //            alert(data);
             }
+            debugger;
             if (success) {
                 playAudioLow();
 

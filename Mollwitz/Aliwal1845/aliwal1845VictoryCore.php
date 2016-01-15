@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Aliwal1845;
 /*
 Copyright 2012-2015 David Rodal
 
@@ -23,10 +24,8 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
-include "indiaVictoryCore.php";
 
-class aliwal1845VictoryCore extends indiaVictoryCore
+class aliwal1845VictoryCore extends \Mollwitz\IndiaVictoryCore
 {
 
     function __construct($data)
@@ -37,14 +36,14 @@ class aliwal1845VictoryCore extends indiaVictoryCore
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
         }
     }
 
     public function specialHexChange($args)
     {
-        $battle = Battle::getBattle();
+        $battle = \Wargame\Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
         if(in_array($mapHexName,$battle->specialHexB)){

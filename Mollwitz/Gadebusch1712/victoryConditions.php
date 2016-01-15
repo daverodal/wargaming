@@ -20,6 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><li class="exclusive">
+    love that victory!
     <span class="lessBig">Victory Conditions</span>
     <h4>The Game ends at the end of any Player Turn when one or more of the following conditions applies.</h4>
     <ol>

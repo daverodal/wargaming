@@ -1,7 +1,7 @@
 <?php
 namespace Mollwitz;
 use \stdClass;
-use \Battle;
+use \Wargame\Battle;
 use \Hexpart;
 // crt.js
 

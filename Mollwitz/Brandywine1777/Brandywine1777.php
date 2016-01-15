@@ -72,6 +72,7 @@ class Brandywine1777 extends \Mollwitz\JagCore
     static function getPlayerData(){
         $forceName = ["ovbserver", "Loyalist", "Rebel"];
         $deployName = ["ovbserver", "Rebel", "Loyalist" ];
+        return compact("forceName","deployName");
     }
 
     function save()

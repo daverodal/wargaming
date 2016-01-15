@@ -1,4 +1,6 @@
 <?php
+namespace Mollwitz\Jagersdorf;
+use \Wargame\Battle;
 /*
 Copyright 2012-2015 David Rodal
 
@@ -26,7 +28,7 @@ require_once "victoryCore.php";
 
 
 
-class jagerVictoryCore extends victoryCore
+class jagerVictoryCore extends \Mollwitz\victoryCore
 {
 
     function __construct($data)
@@ -37,7 +39,7 @@ class jagerVictoryCore extends victoryCore
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
         }
     }

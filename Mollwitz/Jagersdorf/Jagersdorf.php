@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Jagersdorf;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -57,6 +58,14 @@ class Jagersdorf extends \Mollwitz\JagCore {
         @include_once "view.php";
     }
 
+    static function getPlayerData(){
+
+        $forceName = ["observer", "Prussian","Russian"];
+        $deployName = [$forceName[0], $forceName[2],$forceName[1]];
+        return compact("forceName", "deployName");
+
+    }
+
     function terrainGen($mapDoc, $terrainDoc){
         parent::terrainGen($mapDoc, $terrainDoc);
         $this->terrain->addAltEntranceCost('forest','artillery',3);
@@ -65,7 +74,7 @@ class Jagersdorf extends \Mollwitz\JagCore {
 
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -127,7 +136,7 @@ class Jagersdorf extends \Mollwitz\JagCore {
         UnitFactory::create("infantry-1", RED_FORCE, "deployBox", "RusCavBadge.png",1, 1, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Russian",false,'cavalry');
         UnitFactory::create("infantry-1", RED_FORCE, "deployBox", "RusCavBadge.png",1, 1, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Russian",false,'cavalry');
 
-        if($this->scenario && $this->scenario->prussianDeploy){
+        if($this->scenario && !empty($this->scenario->prussianDeploy)){
             UnitFactory::create("infantry-1", BLUE_FORCE, "deployBox", "PruCavBadge.png", 2, 2, 5, true, STATUS_CAN_DEPLOY, "C", 1, 1, "Prussian",false,'cavalry');
             UnitFactory::create("infantry-1", BLUE_FORCE, "deployBox", "PruCavBadge.png", 2, 2, 5, true, STATUS_CAN_DEPLOY, "C", 1, 1, "Prussian",false,'cavalry');
             UnitFactory::create("infantry-1", BLUE_FORCE, "deployBox", "PruCavBadge.png", 3, 3, 6, true, STATUS_CAN_DEPLOY, "C", 1, 1, "Prussian",false,'cavalry');
@@ -191,7 +200,7 @@ class Jagersdorf extends \Mollwitz\JagCore {
         if ($data) {
 
         } else {
-            $this->victory = new Victory("Mollwitz/Jagersdorf/jagerVictoryCore.php");
+            $this->victory = new \Victory("Mollwitz\\Jagersdorf\\jagerVictoryCore");
 
             $this->moveRules->enterZoc = "stop";
             $this->moveRules->exitZoc = "stop";
@@ -209,7 +218,7 @@ class Jagersdorf extends \Mollwitz\JagCore {
             /**
              * not not prussian deploy phase for now
              */
-            if($scenario->prussianDeploy){
+            if(!empty($scenario->prussianDeploy)){
                 $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
                 $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
             }else{

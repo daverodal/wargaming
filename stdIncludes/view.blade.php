@@ -20,16 +20,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?>
-<script type="text/javascript">
-    {{ $playerThree = isset($playerThree) ? $playerThree : 3 }}
-            {{ $playerFour = isset($playerFour) ? $playerFour : 4 }}
-
-            DR.playerOne = "{{$forceName[1]}}";
-    DR.playerTwo = "{{$forceName[2]}}";
-    DR.playerThree = "{{$forceName[3] or ''}}";
-    DR.playerFour = "{{$forceName[4] or ''}}";
-    DR.players = ["observer", DR.playerOne,DR.playerTwo,DR.playerThree,DR.playerFour];
-</script>
 <body xmlns="http://www.w3.org/1999/html">
 <div id="theDiv">
     <header id="header">
@@ -58,11 +48,11 @@
                 <div id="info">
                     <div class="close">X</div>
                     <ul>
-                        <li> Welcome {user}</li>
+                        <li> Welcome {{$user}}</li>
                         <li>you are playing as  <?= $player; ?></li>
                         <li>
-                            in <span class="game-name">{gameName}-{arg}</span></li>
-                        <li> The file is called {name}</li>
+                            in <span class="game-name">{{$gameName}}-{{$arg}}</span></li>
+                        <li> The file is called {{$name}}</li>
                         <!-- TODO: make game credits from DB -->
                         <li>Game Designer: David Rodal</li>
                         <li class="closer"></li>
@@ -140,24 +130,19 @@
             </div>
             <div id="zoomWrapper">
                     <span id="zoom">
-<!--                        <span class="minusZoom">-</span>-->
                         <span class="defaultZoom">1.0</span>
-<!--                        <span class="plusZoom">+</span>-->
                     </span>
             </div>
             <div class="dropDown">
                 <h4 class="WrapperLabel"><span class="tablet">?</span><span class="desktop">Rules</span></h4>
                 <div class="subMenu">
 
-                @section('commonRules')
-                @show
-                @section('exclusiveRules')
-                @show
-                @section('obc')
-                @show
-                    <?php //include_once "commonRules.php"; ?>
-                    <?php //include_once "exclusiveRules.php"; ?>
-                    <?php //include_once "obc.php"; ?>
+                    @section('commonRules')
+                    @show
+                    @section('exclusiveRules')
+                    @show
+                    @section('obc')
+                    @show
                 </div>
             </div>
             <?php include_once "tec.php"; ?>
@@ -170,6 +155,8 @@
                         <div class="dropDown" id="hideShow">Retired Units</div>
                         <div class="dropDown" id="showDeploy">Deploy/Staging Box</div>
                         <div class="dropDown" id="showExited">Exited Units</div>
+                        <div class="dropDown" id="showNotUsed">Not Used</div>
+
                 </div>
             </div>
 
@@ -206,6 +193,13 @@
                 </div>
                 <div style="clear:both;"></div>
             </div>
+            <div style="display:none;" id="notUsedWrapper">
+                <div class="close">X</div>
+                <div style="margin-right:3px;" class="left">Units not used.</div>
+                <div id="not-used"></div>
+                <div style="clear:both;"></div>
+            </div>
+
             <div style="display:none;" id="undeadpile"></div>
             <div id="gameViewer">
                 <div id="gameContainer">
@@ -260,9 +254,9 @@
                 </div>
             </div>
 
-            <audio class="pop" src="<?= 'js/pop.m4a' ?>"></audio>
-            <audio class="poop" src="<?=  'js/lowpop.m4a' ?>"></audio>
-            <audio class="buzz" src="<?=  'js/buzz.m4a' ?>"></audio>
+            <audio class="pop" src="{{asset('js/pop.m4a')}}"></audio>
+            <audio class="poop" src="{{asset('js/lowpop.m4a')}}"></audio>
+            <audio class="buzz" src="{{asset('js/buzz.m4a')}}"></audio>
 
         </div>
     </div>

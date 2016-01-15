@@ -22,10 +22,9 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
-include "indiaVictoryCore.php";
 
-class meanee1843VictoryCore extends indiaVictoryCore
+
+class meanee1843VictoryCore extends IndiaVictoryCore
 {
 
     function __construct($data)

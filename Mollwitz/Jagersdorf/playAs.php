@@ -22,7 +22,9 @@ You should have received a copy of the GNU General Public License
 <link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <style>
-    <?php include "playAs.css";?>
+
+    <?php //include "playAs.css";?>
+
     body{
         background:url("<?=url("js/GrossJaegersdorf.jpg")?>") #333 no-repeat;
         background-position:center 10%;
@@ -72,9 +74,9 @@ You should have received a copy of the GNU General Public License
 </div>
 <div style="clear:both"></div>
 <fieldset ><Legend>Play As </Legend>
-    <a  class="link" href="<?=site_url("wargame/enterHotseat");?>/<?=$wargame?>/">Play Hotseat</a><br>
-    <a  class="link" href="<?=site_url("wargame/enterMulti");?>/<?=$wargame?>/">Play Multi</a><br>
-    <a class="link" href="<?=site_url("wargame/leaveGame");?>">Go to Lobby</a><br>
+    <a  class="link" href="<?=url("wargame/enterHotseat");?>/<?=$wargame?>/">Play Hotseat</a><br>
+    <a  class="link" href="<?=url("wargame/enterMulti");?>/<?=$wargame?>/">Play Multi</a><br>
+    <a class="link" href="<?=url("wargame/leaveGame");?>">Go to Lobby</a><br>
     <div class="attribution">
         By Wladimirkusnezow at ru.wikipedia [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AGrossJaegersdorf.jpg">from Wikimedia Commons</a>
     </div>

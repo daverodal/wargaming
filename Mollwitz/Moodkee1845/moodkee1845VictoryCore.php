@@ -26,10 +26,8 @@
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
-include "indiaVictoryCore.php";
 
-class moodkee1845VictoryCore extends indiaVictoryCore
+class moodkee1845VictoryCore extends IndiaVictoryCore
 {
 
     function __construct($data)

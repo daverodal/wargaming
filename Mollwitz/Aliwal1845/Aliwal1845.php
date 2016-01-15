@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Aliwal1845;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -65,7 +66,7 @@ class Aliwal1845 extends \Mollwitz\IndiaCore
 
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -162,7 +163,7 @@ class Aliwal1845 extends \Mollwitz\IndiaCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new Victory("Mollwitz/Aliwal1845/aliwal1845VictoryCore.php");
+            $this->victory = new \Victory("Mollwitz\\Aliwal1845\\aliwal1845VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

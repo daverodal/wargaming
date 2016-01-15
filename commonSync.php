@@ -641,6 +641,8 @@ x.register("gameRules", function(gameRules,data) {
 });
 x.register("vp", function(vp, data){
 
+
+    debugger;
     var p1 = 'player'+DR.playerOne.replace(/ /,'-')+'Face';
     var p2 = 'player'+DR.playerTwo.replace(/ /,'-')+'Face';
 

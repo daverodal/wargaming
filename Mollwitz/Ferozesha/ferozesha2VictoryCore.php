@@ -23,10 +23,9 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
-include "indiaVictoryCore.php";
 
-class ferozesha2VictoryCore extends indiaVictoryCore
+
+class ferozesha2VictoryCore extends IndiaVictoryCore
 {
 
     function __construct($data)

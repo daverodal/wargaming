@@ -471,24 +471,29 @@ class Terrain
                 continue;
             }
 
-            $feature = $this->terrainFeatures->$terrainFeature;
-            if (!empty($unit->nationality) && $unit->class && !empty($feature->altEntranceCost->{$unit->nationality}->{$unit->class})) {
-                $cost = $feature->altEntranceCost->{$unit->nationality}->{$unit->class};
-                if ($cost === "blocked") {
-                    return "blocked";
+            /*
+             * blocksRanged is an exmample of one that breaks here.
+             */
+            if(isset($this->terrainFeatures->$terrainFeature)) {
+                $feature = $this->terrainFeatures->$terrainFeature;
+                if (!empty($unit->nationality) && $unit->class && !empty($feature->altEntranceCost->{$unit->nationality}->{$unit->class})) {
+                    $cost = $feature->altEntranceCost->{$unit->nationality}->{$unit->class};
+                    if ($cost === "blocked") {
+                        return "blocked";
+                    }
+                } else if ($unit->class && !empty($feature->altEntranceCost->{$unit->class})) {
+                    $cost = $feature->altEntranceCost->{$unit->class};
+                    if ($cost === "blocked") {
+                        return "blocked";
+                    }
+                } else {
+                    $cost = $feature->entranceCost;
+                    if ($cost === "blocked") {
+                        return "blocked";
+                    }
                 }
-            } else if ($unit->class && !empty($feature->altEntranceCost->{$unit->class})) {
-                $cost = $feature->altEntranceCost->{$unit->class};
-                if ($cost === "blocked") {
-                    return "blocked";
-                }
-            } else {
-                $cost = $feature->entranceCost;
-                if ($cost === "blocked") {
-                    return "blocked";
-                }
+                $entranceCost += $cost;
             }
-            $entranceCost += $cost;
         }
         return $entranceCost;
     }
@@ -517,24 +522,27 @@ class Terrain
     private function getTerrainTraverseCost($terrainCode, $unit){
         $traverseCost = 0;
         foreach ($terrainCode as $code) {
+            if(isset($this->terrainFeatures->$code)) {
+
                 $feature = $this->terrainFeatures->$code;
-            if(!empty($unit->nationality) && $unit->class && !empty($feature->altTraverseCost->{$unit->nationality}->{$unit->class})){
-                $cost = $feature->altTraverseCost->{$unit->nationality}->{$unit->class};
-                if($cost === "blocked"){
-                    return "blocked";
+                if (!empty($unit->nationality) && $unit->class && !empty($feature->altTraverseCost->{$unit->nationality}->{$unit->class})) {
+                    $cost = $feature->altTraverseCost->{$unit->nationality}->{$unit->class};
+                    if ($cost === "blocked") {
+                        return "blocked";
+                    }
+                } else if ($unit->class && !empty($feature->altTraverseCost->{$unit->class})) {
+                    $cost = $feature->altTraverseCost->{$unit->class};
+                    if ($cost === "blocked") {
+                        return "blocked";
+                    }
+                } else {
+                    $cost = $this->terrainFeatures->$code->traverseCost;
+                    if ($cost === "blocked") {
+                        return "blocked";
+                    }
                 }
-            }else if($unit->class && !empty($feature->altTraverseCost->{$unit->class})){
-                $cost = $feature->altTraverseCost->{$unit->class};
-                if($cost === "blocked"){
-                    return "blocked";
-                }
-            }else{
-                $cost = $this->terrainFeatures->$code->traverseCost;
-                if($cost === "blocked"){
-                    return "blocked";
-                }
+                $traverseCost += $cost;
             }
-            $traverseCost += $cost;
         }
         return $traverseCost;
 
