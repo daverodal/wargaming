@@ -32,7 +32,6 @@ class Brandywine1777 extends \Mollwitz\JagCore
 {
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
-    public $roadHex;
 
 
     public
@@ -69,7 +68,7 @@ class Brandywine1777 extends \Mollwitz\JagCore
         @include_once "view.php";
     }
 
-    static function getPlayerData(){
+    static function getPlayerData($scenario){
         $forceName = ["ovbserver", "Loyalist", "Rebel"];
         $deployName = ["ovbserver", "Rebel", "Loyalist" ];
         return compact("forceName","deployName");
@@ -90,7 +89,6 @@ class Brandywine1777 extends \Mollwitz\JagCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
 
@@ -127,7 +125,6 @@ class Brandywine1777 extends \Mollwitz\JagCore
         parent::__construct($data, $arg, $scenario, $game);
 //        $this->moveRules->noZoc = true;
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {

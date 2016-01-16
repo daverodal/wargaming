@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Ferozesha;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -73,6 +74,13 @@ class Ferozesha extends \Mollwitz\IndiaCore
         @include_once "view.php";
     }
 
+    static function getPlayerData($secnario){
+        $forceName = ["Observer", "British", "Sikh" ];
+        $deployName = [$forceName[0], $forceName[2], $forceName[1]];
+        return compact("forceName", "deployName");
+    }
+
+
     public function terrainInit($terrainDoc)
     {
         parent::terrainInit($terrainDoc);
@@ -81,7 +89,7 @@ class Ferozesha extends \Mollwitz\IndiaCore
 
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -163,7 +171,7 @@ class Ferozesha extends \Mollwitz\IndiaCore
 
         } else {
 
-            $this->victory = new Victory("Mollwitz/Ferozesha/ferozeshaVictoryCore.php");
+            $this->victory = new \Victory("\\Mollwitz\\Ferozesha\\ferozeshaVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;
@@ -174,7 +182,7 @@ class Ferozesha extends \Mollwitz\IndiaCore
             $this->moveRules->zocBlocksRetreat = true;
 
             // game data
-            if ($scenario->dayTwo) {
+            if (!empty($scenario->dayTwo)) {
                 $this->gameRules->setMaxTurn(14);
             } else {
                 $this->gameRules->setMaxTurn(11);

@@ -64,7 +64,7 @@ class Golymin1806 extends \Mollwitz\JagCore
         @include_once "view.php";
     }
 
-    static function getPlayerData(){
+    static function getPlayerData($scenario){
         $forceName = ['observer', "French", "Russian"];
         $deployName = ['observer','Russian','French'];
         return compact('forceName', 'deployName');

@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Goojerat1849;
 /*
 Copyright 2012-2015 David Rodal
 
@@ -25,7 +26,7 @@ You should have received a copy of the GNU General Public License
  */
 
 
-class goojerat1849VictoryCore extends IndiaVictoryCore
+class goojerat1849VictoryCore extends \Mollwitz\IndiaVictoryCore
 {
 
     function __construct($data)
@@ -36,14 +37,14 @@ class goojerat1849VictoryCore extends IndiaVictoryCore
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
         }
     }
 
     public function specialHexChange($args)
     {
-        $battle = Battle::getBattle();
+        $battle = \Wargame\Battle::getBattle();
 
         $scenario = $battle->scenario;
 

@@ -75,7 +75,6 @@ class Kesselsdorf1745 extends \Mollwitz\JagCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
 
@@ -105,7 +104,6 @@ class Kesselsdorf1745 extends \Mollwitz\JagCore
 
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {

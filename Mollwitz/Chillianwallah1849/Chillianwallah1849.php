@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Chillianwallah1849;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -49,18 +50,23 @@ class Chillianwallah1849 extends \Mollwitz\IndiaCore
         @include_once "playMulti.php";
     }
 
-    static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false, $game = false)
-    {
-        global $force_name;
-        $youAre = $force_name[$player];
-        $deployTwo = $playerOne = "British";
-        $deployOne = $playerTwo = "Sikh";
-        @include_once "view.php";
-    }
+//    static function getView($name, $mapUrl, $player = 0, $arg = false, $scenario = false, $game = false)
+//    {
+//        global $force_name;
+//        $youAre = $force_name[$player];
+//        $deployTwo = $playerOne = "British";
+//        $deployOne = $playerTwo = "Sikh";
+//        @include_once "view.php";
+//    }
 
+    static function getPlayerData($scenario){
+        $forceName = ["Obeserver", "British","Sikh"];
+        $deployName = [$forceName[0], $forceName[2], $forceName[1]];
+        return compact("forceName", "deployName");
+    }
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -73,7 +79,6 @@ class Chillianwallah1849 extends \Mollwitz\IndiaCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
 
@@ -138,11 +143,10 @@ class Chillianwallah1849 extends \Mollwitz\IndiaCore
     {
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new Victory("Mollwitz/Chillianwallah1849/chillianwallah1849VictoryCore.php");
+            $this->victory = new \Victory("Mollwitz\\Chillianwallah1849\\chillianwallah1849VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

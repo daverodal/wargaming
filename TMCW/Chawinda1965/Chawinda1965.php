@@ -59,7 +59,7 @@ class Chawinda1965 extends \ModernLandBattle
         @include_once "chawinda1965Header.php";
     }
 
-    static function getPlayerData()
+    static function getPlayerData($scenario)
     {
         $forceName[0] = "Neutral Observer";
         $forceName[1] = "Indian";

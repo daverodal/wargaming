@@ -58,7 +58,7 @@ class Jagersdorf extends \Mollwitz\JagCore {
         @include_once "view.php";
     }
 
-    static function getPlayerData(){
+    static function getPlayerData($scenario){
 
         $forceName = ["observer", "Prussian","Russian"];
         $deployName = [$forceName[0], $forceName[2],$forceName[1]];

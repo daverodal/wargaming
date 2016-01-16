@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
         <li>12 Turns</li>
         <li>British win at 50 points with a lead of 15</li>
         <li>All Sikh losses are scored a face value</li>
-        <?php if($scenario->altScenario){?>
+        <?php if(!empty($scenario->altScenario)){?>
             <li>Sikhs win if they score 45 points or British don't win by turn 10.</li>
         <?php }else{ ?>
             <li>Sikhs win if they score 50 points or British don't win by turn 10.</li>

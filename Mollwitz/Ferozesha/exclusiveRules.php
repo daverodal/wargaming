@@ -116,7 +116,7 @@ You should have received a copy of the GNU General Public License
             </div>
         </div>
             <ol class="ExclusiveRules">
-                <?php if($scenario->dayOne){ include "victoryConditions.php";}else{ include "victoryConditions2.php";} ?>
+                <?php if(!empty($scenario->dayOne)){ include "victoryConditions.php";}else{ include "victoryConditions2.php";} ?>
             </ol>
         <div id="credits">
             <h2><cite><?= $name ?></cite></h2>

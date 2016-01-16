@@ -50,7 +50,7 @@ class Amph extends \ModernLandBattle
     }
 
 
-    static function getPlayerData()
+    static function getPlayerData($scenario)
     {
         $forceName[0] = "Neutral Observer";
         $forceName[1] = "Rebel";

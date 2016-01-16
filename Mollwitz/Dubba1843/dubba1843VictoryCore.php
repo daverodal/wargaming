@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Dubba1843;
 /*
 Copyright 2012-2015 David Rodal
 
@@ -24,7 +25,7 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 
-class dubba1843VictoryCore extends IndiaVictoryCore
+class dubba1843VictoryCore extends \Mollwitz\IndiaVictoryCore
 {
 
     function __construct($data)
@@ -35,14 +36,14 @@ class dubba1843VictoryCore extends IndiaVictoryCore
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
         }
     }
 
     public function specialHexChange($args)
     {
-        $battle = Battle::getBattle();
+        $battle = \Wargame\Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
         if ($forceId == BELUCHI_FORCE) {

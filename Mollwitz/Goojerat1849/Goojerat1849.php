@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Goojerat1849;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -59,9 +60,15 @@ class Goojerat1849 extends \Mollwitz\IndiaCore
         @include_once "view.php";
     }
 
+    static function getPlayerData($scenario){
+        $forceName = ["Observer", "British", "Sikh"];
+        $deployName = [$forceName[0], $forceName[2], $forceName[1]];
+        return compact("forceName", "deployName");
+    }
+
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -74,7 +81,6 @@ class Goojerat1849 extends \Mollwitz\IndiaCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
         $data->specialHexC = $this->specialHexC;
@@ -91,10 +97,10 @@ class Goojerat1849 extends \Mollwitz\IndiaCore
 
         $scenario = $this->scenario;
         $sikhStrength = 4;
-        if($scenario->strongerSikh){
+        if(!empty($scenario->strongerSikh)){
             $sikhStrength = 5;
         }
-        if($scenario->commandControl){
+        if(!empty($scenario->commandControl)){
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("infantry-1", SIKH_FORCE, "deployBox", "SikhInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'hq');
             }
@@ -102,7 +108,7 @@ class Goojerat1849 extends \Mollwitz\IndiaCore
                 UnitFactory::create("infantry-1", BRITISH_FORCE, "deployBox", "BritInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'hq');
             }
         }
-        if ($scenario->theMoodkeeOOB) {
+        if (!empty($scenario->theMoodkeeOOB)) {
             /* Sikh */
             for ($i = 0; $i < 12; $i++) {
                 UnitFactory::create("infantry-1", SIKH_FORCE, "deployBox", "SikhInfBadge.png", $sikhStrength, $sikhStrength, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'infantry');
@@ -180,12 +186,11 @@ class Goojerat1849 extends \Mollwitz\IndiaCore
     {
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
             $this->specialHexC = $data->specialHexC;
         } else {
-            $this->victory = new Victory("Mollwitz/Goojerat1849/goojerat1849VictoryCore.php");
+            $this->victory = new \Victory("\\Mollwitz\\Goojerat1849\\goojerat1849VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

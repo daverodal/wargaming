@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Moodkee1845;
 use \Mollwitz\UnitFactory;
 /**
  *
@@ -57,11 +58,16 @@ class Moodkee1845 extends \Mollwitz\IndiaCore
         @include_once "view.php";
     }
 
+    static function getPlayerData($scenario){
+        $forceName = ["Observer", "British", "Sikh"];
+        $deployName = [$forceName[0], $forceName[2], $forceName[1]];
+        return compact("forceName", "deployName");
+    }
+
     function save()
     {
         $data = parent::save();
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
 
@@ -127,12 +133,11 @@ class Moodkee1845 extends \Mollwitz\IndiaCore
         parent::__construct($data, $arg, $scenario, $game);
 
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
 
-            $this->victory = new Victory("Mollwitz/Moodkee1845/moodkee1845VictoryCore.php");
+            $this->victory = new \Victory("\\Mollwitz\\Moodkee1845\\moodkee1845VictoryCore");
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;
 

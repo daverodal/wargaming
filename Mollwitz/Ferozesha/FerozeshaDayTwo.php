@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Ferozesha;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -59,9 +60,15 @@ class FerozeshaDayTwo extends \Mollwitz\IndiaCore
         @include_once "view.php";
     }
 
+    static function getPlayerData($secnario){
+        $forceName = ["Observer", "Sikh", "British"];
+        $deployName = [$forceName[0], $forceName[2], $forceName[1]];
+        return compact("forceName", "deployName");
+    }
+
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -74,7 +81,6 @@ class FerozeshaDayTwo extends \Mollwitz\IndiaCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
 
         return $data;
     }
@@ -123,7 +129,7 @@ class FerozeshaDayTwo extends \Mollwitz\IndiaCore
 
         $royalInf = 6;
         $nativeInf = 15;
-        if($scenario->weakBritish){
+        if(!empty($scenario->weakBritish)){
             $royalInf -= 2;
             $nativeInf -= 4;
         }
@@ -153,9 +159,8 @@ class FerozeshaDayTwo extends \Mollwitz\IndiaCore
     {
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-           $this->roadHex = $data->roadHex;
         } else {
-            $this->victory = new Victory("Mollwitz/Ferozesha/ferozesha2VictoryCore.php");
+            $this->victory = new \Victory("\\Mollwitz\\Ferozesha\\ferozesha2VictoryCore");
 
 
             $this->mapData->blocksZoc->blocked = true;

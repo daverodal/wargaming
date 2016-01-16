@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Moodkee1845;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -27,7 +28,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class moodkee1845VictoryCore extends IndiaVictoryCore
+class moodkee1845VictoryCore extends \Mollwitz\IndiaVictoryCore
 {
 
     function __construct($data)
@@ -38,7 +39,7 @@ class moodkee1845VictoryCore extends IndiaVictoryCore
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
         }
     }
@@ -55,7 +56,7 @@ class moodkee1845VictoryCore extends IndiaVictoryCore
 
     public function specialHexChange($args)
     {
-        $battle = Battle::getBattle();
+        $battle = \Wargame\Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
         if(in_array($mapHexName,$battle->specialHexA)){

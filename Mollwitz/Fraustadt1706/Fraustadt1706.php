@@ -29,7 +29,6 @@ class Fraustadt1706 extends \Mollwitz\JagCore
 {
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
-    public $roadHex;
     public
     static function getHeader($name, $playerData, $arg = false)
     {
@@ -61,7 +60,7 @@ class Fraustadt1706 extends \Mollwitz\JagCore
         @include_once "view.php";
     }
 
-    static function getPlayerData(){
+    static function getPlayerData($scenario){
         $forceName = ["ovbserver", "Swedish", "Saxon Russian"];
         $deployName = ["ovbserver", "Saxon Russian", "Swedish" ];
     }
@@ -89,7 +88,6 @@ class Fraustadt1706 extends \Mollwitz\JagCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
 
@@ -120,7 +118,6 @@ class Fraustadt1706 extends \Mollwitz\JagCore
 
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {

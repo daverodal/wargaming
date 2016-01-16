@@ -64,6 +64,12 @@ class Aliwal1845 extends \Mollwitz\IndiaCore
         @include_once "view.php";
     }
 
+    static function getPlayerData($scenario){
+        $forceName = ["Observer", "British","Sikh"];
+        $deployName = [$forceName[0], $forceName[2], $forceName[1]];
+        return compact("forceName", "deployName");
+    }
+
     function save()
     {
         $data = new \stdClass();
@@ -79,7 +85,6 @@ class Aliwal1845 extends \Mollwitz\IndiaCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
         return $data;
@@ -93,12 +98,12 @@ class Aliwal1845 extends \Mollwitz\IndiaCore
         UnitFactory::$injector = $this->force;
 
         $scenario = $this->scenario;
-        if ($scenario->commandControl) {
+        if (!empty($scenario->commandControl)) {
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("infantry-1", SIKH_FORCE, "deployBox", "SikhInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'hq');
             }
         }
-        if($scenario->weakSikh){
+        if(!empty($scenario->weakSikh)){
             /* Sikh */
             for ($i = 0; $i < 15; $i++) {
                 UnitFactory::create("infantry-1", SIKH_FORCE, "deployBox", "SikhInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'infantry');
@@ -128,7 +133,7 @@ class Aliwal1845 extends \Mollwitz\IndiaCore
             }
         }
         /* British */
-        if ($scenario->commandControl) {
+        if (!empty($scenario->commandControl)) {
             for ($i = 0; $i < 4; $i++) {
                 UnitFactory::create("infantry-1", BRITISH_FORCE, "deployBox", "BritInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'hq');
             }
@@ -159,7 +164,6 @@ class Aliwal1845 extends \Mollwitz\IndiaCore
     {
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {

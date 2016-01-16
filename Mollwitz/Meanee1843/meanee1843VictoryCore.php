@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Meanee1843;
 /*
 Copyright 2012-2015 David Rodal
 
@@ -24,7 +25,7 @@ You should have received a copy of the GNU General Public License
  */
 
 
-class meanee1843VictoryCore extends IndiaVictoryCore
+class meanee1843VictoryCore extends \Mollwitz\IndiaVictoryCore
 {
 
     function __construct($data)
@@ -35,7 +36,7 @@ class meanee1843VictoryCore extends IndiaVictoryCore
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
         }
     }
@@ -52,7 +53,7 @@ class meanee1843VictoryCore extends IndiaVictoryCore
 
     public function specialHexChange($args)
     {
-        $battle = Battle::getBattle();
+        $battle = \Wargame\Battle::getBattle();
     }
 
 
@@ -69,7 +70,7 @@ class meanee1843VictoryCore extends IndiaVictoryCore
             if (($this->victoryPoints[BRITISH_FORCE] >= $britVic && ($this->victoryPoints[BRITISH_FORCE] - ($this->victoryPoints[SIKH_FORCE]) >= 15))) {
                 $britishWin = true;
             }
-            if (($this->victoryPoints[SIKH_FORCE] >= 35)) {
+            if (($this->victoryPoints[BELUCHI_FORCE] >= 35)) {
                 $sikhWin = true;
             }
             if ($turn == $gameRules->maxTurn + 1) {

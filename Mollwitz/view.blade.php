@@ -18,6 +18,17 @@
     <?php } ?>
 @endsection
 
+@section('crt')
+    <h1> War </h1>
+    <?php $topCrt = new \Mollwitz\CombatResultsTable();?>
+@endsection
+
+@section('inner-crt')
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Mollwitz\CombatResultsTable()]);
+@endsection
+
+
+
 @section('obc')
     @include('wargame::Mollwitz.obc')
 @endsection

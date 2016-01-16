@@ -48,7 +48,7 @@ class FinalChapter extends \ModernLandBattle
         return UnitFactory::build($data);
     }
 
-    static function getPlayerData(){
+    static function getPlayerData($scenario){
 
 
 

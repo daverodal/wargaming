@@ -65,7 +65,7 @@ class Gadebusch1712 extends \Mollwitz\JagCore
         @include_once "view.php";
     }
 
-    static function getPlayerData(){
+    static function getPlayerData($scenario){
         $forceName = ["observer", "Swedish", "Danes"];
         $deployName = [$forceName[0],$forceName[2],$forceName[1]];
         return compact('forceName','deployName');

@@ -80,7 +80,6 @@ class Klissow1702 extends \Mollwitz\JagCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
         $data->pontoons = $this->pontoons;
@@ -112,7 +111,6 @@ class Klissow1702 extends \Mollwitz\JagCore
 
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
             if($data->pontoons) {

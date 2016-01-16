@@ -1,4 +1,5 @@
 <?php
+namespace Mollwitz\Dubba1843;
 use \Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -39,7 +40,6 @@ class Dubba1843 extends \Mollwitz\IndiaCore
     public $gameRules;
 
     public $victory;
-    public $roadHex;
 
 
     public $players;
@@ -70,10 +70,15 @@ class Dubba1843 extends \Mollwitz\IndiaCore
         @include_once "view.php";
     }
 
+    static function getPlayerData($scenario){
+        $forceName = ["Observer", "British", "Beluchi"];
+        $deployName = [$forceName[0], $forceName[2], $forceName[1]];
+        return compact("forceName", "deployName");
+    }
 
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -86,7 +91,6 @@ class Dubba1843 extends \Mollwitz\IndiaCore
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
         $data->game = $this->game;
-        $data->roadHex = $this->roadHex;
 
         return $data;
     }
@@ -170,9 +174,8 @@ class Dubba1843 extends \Mollwitz\IndiaCore
     {
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->roadHex = $data->roadHex;
         } else {
-            $this->victory = new Victory("Mollwitz/Dubba1843/dubba1843VictoryCore.php");
+            $this->victory = new \Victory("\\Mollwitz\\Dubba1843\\dubba1843VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;
