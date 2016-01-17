@@ -180,7 +180,6 @@
         $("#" + unit.id + " .torpedo").addClass(damage);
         $("#" + unit.id + " .ship-desig").addClass(hits);
         $("#" + unit.id + " .defense").html(unit.defenseStrength);
-        debugger;
         $("#" + unit.id + " .mp").html(unit.newSpeed);
 
         return "";

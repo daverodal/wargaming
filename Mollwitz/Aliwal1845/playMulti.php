@@ -15,8 +15,10 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 -->
+<?php
+?>
 <style type="text/css">
-        <?php include "playAs.css";?>
+        <?php include_once "Mollwitz/playAs.css";?>
         body{
             background:#ccc;
             color:#333;

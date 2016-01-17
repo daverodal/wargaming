@@ -368,13 +368,11 @@ function doitKeypress(key) {
 //    $("#"+id+"").addClass("pushed");
 
     $("#comlink").html('Waiting');
-    debugger;
     $.ajax({
         url: "<?=url("wargame/poke");?>",
         type: "POST",
         data: {id: key, event: <?=KEYPRESS_EVENT?>},
         error: function (data, text, third) {
-            debugger;
             try {
                 obj = jQuery.parseJSON(data.responseText);
             } catch (e) {
@@ -390,7 +388,6 @@ function doitKeypress(key) {
             $("#comlink").html('Working');
         },
         success: function (data, textstatus) {
-            debugger;
             try {
                 var success = +$.parseJSON(data).success;
             } catch (e) {
@@ -466,7 +463,6 @@ function doitUnit(id, event) {
         event.shiftKey = true;
         $("#shiftKey").click();
     }
-    debugger;
     $.ajax({
         url: "<?=url("wargame/poke");?>",
         type: "POST",
@@ -488,7 +484,6 @@ function doitUnit(id, event) {
         },
         success: function (data, textstatus) {
             try {
-                debugger;
                 var success = data.success;
             } catch (e) {
 //            alert(data);

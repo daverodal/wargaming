@@ -516,7 +516,6 @@ function doitUnit(id, event) {
             } catch (e) {
 //            alert(data);
             }
-            debugger;
             if (success) {
                 playAudioLow();
 

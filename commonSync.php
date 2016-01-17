@@ -216,8 +216,6 @@ function renderUnitNumbers(unit, moveAmount){
 
 x.register("force", function(force,data) {
 
-//    var units = force.units;
-//    debugger;
     var units = data.mapUnits;
 
     var status = "";
@@ -642,7 +640,6 @@ x.register("gameRules", function(gameRules,data) {
 x.register("vp", function(vp, data){
 
 
-    debugger;
     var p1 = 'player'+DR.playerOne.replace(/ /,'-')+'Face';
     var p2 = 'player'+DR.playerTwo.replace(/ /,'-')+'Face';
 
