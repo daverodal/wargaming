@@ -1,0 +1,80 @@
+/**
+ *
+ * Copyright 2012-2015 David Rodal
+ *
+ *  This program is free software; you can redistribute it
+ *  and/or modify it under the terms of the GNU General Public License
+ *  as published by the Free Software Foundation;
+ *  either version 2 of the License, or (at your option) any later version
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#map{
+}
+#tecImage{
+  width:800px;
+}
+$germanColor: #C7C5C6;
+$britishColor: #f11;
+$belgianColor: #9f9;
+$frenchColor: #00b9ff;
+$belgianNumberColor: #white;
+$russianColor: #0b0;
+
+
+
+$germanColor: #C7C5C6;
+$britishColor: #9ea837;
+$belgianColor: #ffffe3;
+$frenchColor: #9ea837;
+$belgianNumberColor: #a9b14a;
+$russianColor: #F0F4CF;
+
+
+
+@include player(British, British, $britishColor, $britishColor, $britishColor, white);
+@include player(German, German, $germanColor, $germanColor, $germanColor, black);
+@include player(Belgian, Belgian, $belgianColor, $belgianColor, $belgianNumberColor, $belgianNumberColor);
+@include player(Austro-Hungarian, Austro-Hungarian, $germanColor, black, #333, white);
+
+@include player(French, French, $frenchColor, $frenchColor, $frenchColor, black);
+@include player(Russian, Russian, $russianColor, $russianColor, darken($russianColor,30%), black);
+
+.unit.Native .counterWrapper {
+  background-color: $angloAlliedWrapperColor;
+}
+.sikh.specialHexes{
+  background-color: $beluchiWrapperColor;
+}
+.british.specialHexes{
+  background-color: $angloAlliedColor;
+}
+
+.sikh.specialHexes, .british.specialHexes{
+  color:white;
+}
+p.forceMarch,  p.range {
+  color:black;
+}
+
+.mapSymbols{
+  position:absolute;
+  color:white;
+  background-color: transparent;
+  margin-top:-30px;
+  margin-left:-35px;
+}
+.col-hex{
+  width:65px;
+}
+
+.unitNumbers.movement.infoLen3{
+  font-size:12px;
+  letter-spacing: -1.8px;
+}

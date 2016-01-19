@@ -866,7 +866,7 @@ class GameRules
                     $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
 
                     if ($this->turn > $this->maxTurn) {
-                        $victory->gameEnded();
+                        $victory->gameOver();
                         $this->flashMessages[] = "@gameover";
                     }
 

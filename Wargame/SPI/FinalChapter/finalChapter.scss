@@ -1,0 +1,184 @@
+/**
+ *
+ * Copyright 2012-2015 David Rodal
+ * User: David Markarian Rodal
+ * Date: 3/8/15
+ * Time: 5:48 PM
+ *
+ *  This program is free software; you can redistribute it
+ *  and/or modify it under the terms of the GNU General Public License
+ *  as published by the Free Software Foundation;
+ *  either version 2 of the License, or (at your option) any later version
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@import "finalChapterColors";
+
+@include player(eastern, One, $easternColor);
+@include player(westernGerman,Three,#ADDAD6);
+@include player(western,Two,$westernColor);
+@include player(easternGerman,Four, #afa2b3);
+@include player(yugoslavian, Five, #ffd189);
+@include player(polish, Six, #ac7b1e);
+@include player(bulgarian, Seven, #c16844);
+
+
+.dead-country{
+  height:100%;
+  width:24%;
+  background:#333;
+  border: #999 solid;
+  border-width: 0 0 0 3px;
+  float:left;
+  min-height:76px;
+  .dead-country-label{
+    font-size:20px;
+    font-family:sans-serif;
+    float:right;
+    color:#aaa;
+    height:38px;
+  }
+}
+#deadpile{
+  height:auto;
+}
+#map {
+}
+
+#crt {
+  width: 480px;
+  .crt-table-name{
+    display:none;
+  }
+}
+
+.reduced {
+  color: white;
+}
+
+
+#infoWrapper .WrapperLabel {
+  width: auto;
+}
+
+.game-name {
+  word-break: break-all;
+  font-family: 'Nosifer';
+}
+
+#gameTurn6 {
+}
+
+
+#gameTurn6 .unit {
+  float: left;
+}
+
+.specialHexesVP .easternVictoryPoints {
+  @include victoryPoints($easternColor)
+}
+
+.specialHexesVP .westernVictoryPoints {
+  @include victoryPoints($westernColor)
+}
+
+.col-hex{
+  width:65px;
+}
+.specialHexesVP .germanVictoryPoints {
+ @include victoryPoints(#666);
+}
+
+.mapSymbols{
+  position:absolute;
+  color:white;
+  background-color: transparent;
+  margin-top:-33px;
+  margin-left:-28px;
+}
+.specialHexes.german {
+  color: white;
+  background-color: #666;
+}
+
+.unit .unit-numbers{
+  font-family: sans-serif;
+  letter-spacing: normal;
+}
+
+.unit .unit-numbers .infoLen5{
+  letter-spacing: normal;
+}
+
+.unit .unit-numbers .infoLen6{
+  letter-spacing:-1px;
+}
+#TECWrapper #TEC {
+  padding-bottom:15px;
+  width:700px;
+  ul {
+    width: 600px;
+    margin-left: 10px;
+    li {
+      clear:both;
+      padding: 20px 5px 34px 0px;
+
+      &.row-one .column-image {
+        background-position: 0px 0px;
+      }
+      &.row-two .column-image {
+        background-position: 0px -55px;
+      }
+      &.row-three .column-image {
+        background-position: 0px -110px;
+      }
+      &.row-four .column-image {
+        background-position: 0px -165px;
+      }
+      &.row-five .column-image {
+        background-position: 0px -220px;
+      }
+      &.row-six .column-image {
+        background-position: 0px -303px;
+      }
+      &.row-seven .column-image {
+        background-position: 0px -412px;
+      }
+      &.row-eight .column-image {
+        background-position: 0px -522px;
+      }
+      &.row-nine .column-image {
+        background-position: 0px -605px;
+      }
+    }
+    .column-image {
+      float: left;
+      width: 94px;
+      height: 56px;
+      background-image: url('<?=url()?>js/AirborneTEC.png');
+      background-repeat: no-repeat;
+
+    }
+    .column-one {
+      float: left;
+      width: 24%;
+      padding-right: 4%;
+      padding-top: 10px;
+    }
+    .column-two {
+      float: left;
+      width: 24%;
+      padding-right: 4%;
+    }
+    .column-three {
+      float: left;
+      width: 24%;
+    }
+  }
+}

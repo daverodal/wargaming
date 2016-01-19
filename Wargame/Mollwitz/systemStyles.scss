@@ -1,0 +1,600 @@
+/**
+ *
+ * Copyright 2012-2015 David Rodal
+ * User: David Markarian Rodal
+ * Date: 3/8/15
+ * Time: 5:48 PM
+ *
+ *  This program is free software; you can redistribute it
+ *  and/or modify it under the terms of the GNU General Public License
+ *  as published by the Free Software Foundation;
+ *  either version 2 of the License, or (at your option) any later version
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+body {
+}
+
+$badge-size: 14px;
+$vintage-badge-size:19px;
+$unit-numbers-size:16px;
+$vintage-unit-numbers-size:10px;
+@mixin player($nationality, $player, $color, $counterColor: $color, $faceColor: $color) {
+  .player#{$player} {
+    background: $color;
+    border-color: $color !important;
+  }
+  .#{$nationality}Face, .player#{$player}Face {
+    color: $faceColor;
+  }
+  .#{$nationality} .counterWrapper {
+    background-color: $counterColor;
+  }
+}
+
+@mixin badge($nationality, $shortName) {
+   .vintage{
+
+     &.#{$nationality}.infantry .counterWrapper .counter {
+       background-image: url('../../js/#{$shortName}InfBadge.png');
+       background-size: $vintage-badge-size;
+     }
+     &.#{$nationality}.cavalry .counterWrapper .counter {
+       background-image: url('../../js/#{$shortName}CavBadge.png');
+       background-size: $vintage-badge-size;
+     }
+
+     &.#{$nationality}.artillery .counterWrapper .counter {
+       background-image: url('../../js/#{$shortName}ArtBadge.png');
+       background-size: $vintage-badge-size;
+     }
+     &.#{$nationality}.horseartillery .counterWrapper .counter {
+       background-image: url('../../js/#{$shortName}HorArtBadge.png');
+       background-size: $vintage-badge-size;
+     }
+     &.#{$nationality}.hq .counterWrapper .counter {
+       background-color:lightgreen;
+       background-image: url('../../js/HQBadge.png');
+       background-size: $vintage-badge-size;
+     }
+     &.#{$nationality}.pontoon {
+       .counterWrapper {
+         border:none;
+         .counter {
+
+           background-color: lightgreen;
+           background-image: url('../../js/#{$shortName}Pontoon.png');
+           background-size: 32px;
+           width: 32px;
+           height: 32px;
+           border:none;
+         }
+       }
+       .unit-numbers {
+         display:none;
+       }
+     }
+   }
+  .#{$nationality}.infantry .counterWrapper .counter {
+    background-image: url('../../js/#{$shortName}InfBadge.png');
+    background-size: $badge-size;
+  }
+  .#{$nationality}.cavalry .counterWrapper .counter {
+    background-image: url('../../js/#{$shortName}CavBadge.png');
+    background-size: $badge-size;
+  }
+
+  .#{$nationality}.artillery .counterWrapper .counter {
+    background-image: url('../../js/#{$shortName}ArtBadge.png');
+    background-size: $badge-size;
+  }
+  .#{$nationality}.horseartillery .counterWrapper .counter {
+    background-image: url('../../js/#{$shortName}HorArtBadge.png');
+    background-size: $badge-size;
+  }
+  .#{$nationality}.hq .counterWrapper .counter {
+    background-color:lightgreen;
+    background-image: url('../../js/HQBadge.png');
+    background-size: $badge-size;
+  }
+
+  .#{$nationality}.wagon .counterWrapper .counter {
+    background-image: url('../../js/Wagon.png');
+    background-size: $badge-size;
+  }
+
+  .#{$nationality}.pontoon {
+    .counterWrapper {
+      border:none;
+      .counter {
+
+        background-color: lightgreen;
+        background-image: url('../../js/#{$shortName}Pontoon.png');
+        background-size: 32px;
+        width: 32px;
+        height: 32px;
+        border:none;
+      }
+    }
+    .unit-numbers {
+      display:none;
+    }
+  }
+}
+
+.guard-unit{
+  display:none;
+}
+
+.Guard.unit .guard-unit{
+  display:block;
+  position:absolute;
+  width:6px;
+  right:13px;
+  background:yellow;
+  color:black;
+  font-size:7px;
+  top:16px;
+  word-wrap:break-word;
+  &.infoLen7{
+    right:16px;
+  }
+}
+
+.vintage.Guard.unit{
+  p.range{
+    top:-8px;
+  }
+  p.forceMarch{
+    top: -11px;
+  }
+  .guard-unit{
+    width:12px;
+    right:0px;
+    font-size:8px;
+    top:1px;
+  }
+
+}
+
+.unit {
+  border: solid black;
+  border-width: 3px;
+  .counterWrapper{
+    border: solid black 1px;
+    height: $badge-size;
+    div.counter{
+      width: $badge-size;
+      height: $badge-size;
+      display: block;
+      border-right: 1px solid black;
+    }
+  }
+
+  p.forceMarch, p.range {
+    position: absolute;
+    top: -19px;
+    right: 2px;
+    display: none;
+    color: black;
+    text-transform: lowercase;
+  }
+
+  p.range {
+    font-size: 15px;
+    top: -15px;
+    right: 5px;
+    display: block;
+    color: black;
+  }
+
+  .unit-numbers{
+    border: 1px solid black;
+    border-top-width: 0px;
+    height: $unit-numbers-size;
+    line-height: $unit-numbers-size;;
+    font-size: $unit-numbers-size !important;
+    background: white;
+    font-weight: bold;
+    font-family: 'Droid Serif', serif;
+
+    .infoLen5{
+      font-size:14px;
+    }
+    .infoLen7{
+      font-size: 13px;
+      letter-spacing: -1px;
+    }
+    .infoLen8{
+      font-size: 12px;
+      letter-spacing: -1px;
+    }
+    .infoLen9{
+      font-size: 11px;
+      letter-spacing: -1px;
+    }
+  }
+}
+
+.vintage.unit {
+  .counterWrapper {
+    height: $vintage-badge-size;
+
+    div.counter {
+
+      width: $vintage-badge-size;
+      height: $vintage-badge-size;
+    }
+  }
+
+  p.forceMarch{
+    right: 0px;
+    top:-17px;
+  }
+  p.range {
+    right: 2px;
+    top:-13px;
+  }
+  .unit-numbers {
+    border: 1px solid black;
+    border-top-width: 0px;
+    height: $vintage-unit-numbers-size;
+    line-height: $vintage-unit-numbers-size;
+    font-size: $vintage-unit-numbers-size+2 !important;
+    background: white;
+    font-weight: bold;
+    font-family: serif;
+    .infoLen5{
+      font-size: 12px;
+      letter-spacing: 0px;
+    }
+    .infoLen7 {
+      font-size: 11px;
+      letter-spacing: 0px;
+    }
+    .infoLen8 {
+      font-size: 9px;
+      letter-spacing: 0px;
+    }
+  }
+}
+
+
+$austrianColor: #df5842;
+$austrianWrapperColor: white;
+
+$prussianColor: #fffd7f;
+$prussianWrapperColor: #0117de;
+
+$rebelColor: #d4d300;
+$rebelWrapperColor: #0117de;
+
+$angloAlliedColor: #df5842;
+$angloAlliedWrapperColor: #f00;
+
+$britishColor: $angloAlliedColor;
+$britishWrapperColor: $angloAlliedWrapperColor;
+
+$frenchColor: #84b5ff;
+$frenchWrapperColor: white;
+$frenchSaxonWrapperColor: #9f9f9f;
+
+$russianColor: #4cb800;
+$russianWrapperColor: #006114;
+
+
+$beluchiColor: #c68100;
+$beluchiWrapperColor: #c6c102;
+
+$swedishColor: #FECC00;
+$swedishWrapperColor: #006AA7;
+
+$saxonColor: #FD4223;
+
+
+$danishColor: #ff3f1f;
+$danishWrapperColor: #bfbfbf;
+
+@include badge(Sikh, Sikh);
+@include badge(Beluchi, Sikh);
+@include badge(British, Brit);
+@include badge(SaxonPolish, Rus);
+
+.British.horseartillery .counterWrapper .counter {
+  background-image: url('../../js/BritHorArtBadge.png');
+  background-size: 14px;
+}
+
+@include badge(Native, Native);
+@include badge(Austrian, Aus);
+@include badge(Prussian, Pru);
+@include badge(Russian, Rus);
+@include badge(French, French);
+@include badge(AngloAllied, Ang);
+@include badge(Anglo, Ang);
+@include badge(Allied, Ang);
+@include badge(Swedish, Swe);
+
+#header #GR a {
+  color: black;
+}
+
+.indent {
+  margin-left: 20px;
+}
+
+
+.RussianaVP {
+  color: rgb(132, 181, 255);
+  background: transparent;
+  opacity: 1.0;
+}
+
+.PrussianlVP {
+  color: rgb(239, 115, 74);
+  background: transparent;
+}
+
+
+
+
+.Russian, .Prussian {
+  p.forceMarch, p.range {
+    color: white;
+  }
+}
+
+#OBC {
+  background: white;
+  width: 514px;
+}
+
+#TEC {
+  background: white;
+  width: 780px;
+  margin-left:-400px;
+}
+
+#crt {
+  width: 476px;
+}
+
+.tableWrapper.alt {
+  display: none;
+}
+
+.alt {
+  display: none;
+  width: 476px;
+}
+
+.Prussian div {
+  color: black;
+}
+
+.russian div {
+  color: black;
+}
+
+#clock {
+  margin-left: 0;
+}
+
+.dropDownSelected {
+  background: white;
+  color: black;
+}
+
+#tecImage {
+  width: 760px;
+}
+
+#TECWrapper .closer {
+  height: 0px;
+  padding: 0px;
+}
+
+#VCWrapper .closer {
+  height: 0px;
+  padding: 0px;
+}
+
+#GR {
+  width: 600px;
+}
+
+.game-name {
+  font-family: 'Berkshire Swash';
+}
+
+#altTable, #mainTable {
+  position: absolute;
+  right: 18px;
+}
+
+#crtDetailsButton {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#crtDetails {
+  display: none;
+}
+
+.specialHexes.russian {
+  color: white;
+  background-color: $russianColor;
+}
+.specialHexes.saxon.polish {
+  color: white;
+  background-color: $russianColor;
+}
+
+#CombatLog {
+  width: 300px;
+}
+
+@mixin victoryPoints($color) {
+  text-shadow: 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 10px $color;
+}
+
+.specialHexesVP .austrian, .specialHexesVP .anglo {
+  background: transparent;
+  @include victoryPoints($austrianColor);
+}
+
+.specialHexesVP .prussian {
+  color: black;
+  background: transparent;
+  @include victoryPoints($prussianColor);
+
+}
+
+.specialHexesVP .british {
+  color: black;
+  background: transparent;
+  @include victoryPoints($britishColor);
+
+}
+
+.specialHexesVP .russian {
+  color: white;
+  background: transparent;
+  @include victoryPoints($russianColor);
+}
+
+.specialHexesVP .french {
+  color: white;
+  background: transparent;
+  @include victoryPoints($frenchColor);
+}
+
+.specialHexesVP .beluchi {
+  color: white;
+  background: transparent;
+  @include victoryPoints($beluchiWrapperColor);
+}
+
+.ruleComment {
+  font-style: italic;
+  margin-left: 10px;
+  color: #999;
+}
+
+#GR ol.ExclusiveRules {
+  counter-reset: item 6;
+}
+
+.left {
+  float: left;
+  margin-right: 15px;
+}
+
+.austrian.specialHexes {
+  background-color: $austrianColor;
+  color: white;
+}
+
+.prussian.specialHexes , .swedish.specialHexes{
+  background-color: $prussianColor;
+  color: black;
+}
+
+.unitOdds {
+  &.altColor {
+    background: #00ec00;
+    &:hover {
+      background: transparent;
+    }
+  }
+  &.determinedColor {
+    background: red;
+    color: white;
+    &:hover {
+      background: transparent;
+      color: transparent;
+    }
+  }
+  &.pinnedColor {
+    background: #ff00ff;
+    color: white;
+    &:hover {
+      background: transparent;
+      color: transparent;
+    }
+  }
+}
+
+#not-used{
+}
+
+.specialHexesVP .Swedish.victory-points{
+  @include victoryPoints($swedishWrapperColor);
+}
+
+.specialHexesVP .Saxon.Russian.victory-points{
+  @include victoryPoints($russianWrapperColor);
+}
+
+.specialHexesVP .Rebel.victory-points{
+  @include victoryPoints($prussianWrapperColor);
+}
+
+.specialHexesVP .Loyalist.victory-points{
+  @include victoryPoints($angloAlliedWrapperColor);
+}
+
+.specialHexesVP .French.victory-points{
+  @include victoryPoints($frenchColor);
+}
+
+.specialHexesVP .Allied.victory-points{
+  @include victoryPoints($angloAlliedWrapperColor);
+}
+
+.specialHexesVP .Sikh.victory-points{
+  @include victoryPoints($beluchiColor);
+}
+
+.specialHexesVP .Beluchi.victory-points{
+  @include victoryPoints($beluchiColor);
+}
+
+.specialHexesVP .British.victory-points{
+  @include victoryPoints($britishWrapperColor);
+}
+
+.specialHexesVP .Prussian.victory-points{
+  @include victoryPoints($prussianWrapperColor);
+}
+
+.specialHexesVP .Austrian.victory-points{
+  @include victoryPoints($austrianColor);
+}
+
+.specialHexesVP .Allies.victory-points{
+  @include victoryPoints($angloAlliedWrapperColor);
+}
+.specialHexesVP .Allied.victory-points{
+  @include victoryPoints($angloAlliedWrapperColor);
+}
+.specialHexesVP .Russian.victory-points{
+  @include victoryPoints($russianColor);
+}
+.specialHexesVP .Danish.victory-points{
+  @include victoryPoints($danishColor);
+}
+.specialHexesVP .AngloAllied.victory-points{
+  @include victoryPoints($angloAlliedWrapperColor);
+}
+.specialHexesVP .Anglo.Allied.victory-points{
+  @include victoryPoints($angloAlliedWrapperColor);
+}
+
+.one{}

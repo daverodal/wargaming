@@ -170,7 +170,9 @@ class LandBattle extends \Wargame\Battle{
         $gameRules = $wargame->gameRules;
         $gameRules->phase_name = $phase_name;
         $gameRules->mode_name = $mode_name;
-        $gameRules->exchangeAmount = $force->exchangeAmount;
+        if(isset($force->exchangeAmount)){
+            $gameRules->exchangeAmount = $force->exchangeAmount;
+        }
         $newSpecialHexes = new stdClass();
         $phaseClicks = $gameRules->phaseClicks;
         if ($doc->wargame->mapData->specialHexes) {

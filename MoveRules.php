@@ -1075,7 +1075,7 @@ class MoveRules
                     continue;
                 }
                 $head = false;
-                if ($bias[$i]) {
+                if (!empty($bias[$i])) {
                     $head = true;
                 }
                 if (isset($this->moves->$newHexNum)) {

@@ -73,7 +73,7 @@ class NavalCombatRules
             $this->defenders = new stdClass();
             $this->currentDefender = false;
         }
-        $this->crt = new \SPI\TinCans\CombatResultsTable();
+        $this->crt = new \Wargame\SPI\TinCans\CombatResultsTable();
     }
 
     function pinCombat($pinVal)

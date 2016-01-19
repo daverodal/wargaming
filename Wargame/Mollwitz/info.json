@@ -1,0 +1,1175 @@
+{
+    "Mollwitz": {
+        "name": "The Battle of Mollwitz",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Mollwitz\\Mollwitz",
+        "description":"April 10, 1741. The War of the Austrian Succession",
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario",
+                "longDescription":"Historical scenario. Hard for Austrians to win."
+            },
+            "extraArt":{
+                "description":"1 Extra Artillery for Austrians.",
+                "longDescription":"Extra artillery gives Austrians more opportunities to attack.",
+                "extraArt":true,
+                "artStr":true
+            },
+            "command": {
+                "description": "Command Control",
+                "longDescription":"Experimental version using command head quarters.",
+                "extraArt":true,
+                "artStr":true,
+                "commandControl":true
+            }
+        }
+    },
+    "Hastenbeck": {
+        "name": "The Battle of Hastenbeck",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Hastenbeck\\Hastenbeck",
+        "description":"July 26, 1757. French vs Anglo Allies. The Seven Years War",
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario.",
+                "longDescription": "Original version of game. Prussians have 50-50 chance of deploying up and to the right, or fartherback.",
+                "showHexNums":true
+            },
+            "Hastenbeck2": {
+                "description": "Hastenbeck2",
+                "longDescription": "Same game as original, but french are always deployed farther back",
+                "hastenbeck2":true
+            },
+            "hastenbeckredux": {
+                "description": "Hastenbeck redux.",
+                "longDescription": "French deploy farther forward but, there are less of them.",
+                "redux": true
+            }
+        }
+    },
+    "Hohenfriedeberg": {
+        "name": "The Battle of Hohenfriedeberg",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Hohenfriedeberg\\Hohenfriedeberg",
+        "description": "June 4 1745. Prussian vs Austrian. The War of the Austrian Succession.",
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario"
+            },
+            "BigAustrian":{
+              "description": "Larger Austrian force for play balance",
+              "bigAustrian":true
+            },
+            "deployForward": {
+                "description": "Prussians deploy farther forward, Bigger Austrians too.",
+                "longDescription":"Prussians deploy farther forward. Larger Russian units for play balance. Game is one turn shorter",
+                "bigAustrian":true,
+                "deployForward": true
+            }
+        }
+    },
+    "Minden": {
+        "name": "The Battle of Minden",
+        "description": "August 1, 1759. The Seven Years War.",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Minden\\Minden",
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario",
+                "longDescription":"A balanced game."
+            }
+        }
+    },
+    "Malplaquet": {
+        "name": "The Battle of Malplaquet",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Malplaquet\\Malplaquet",
+        "description": "September 11, 1709. The War of the Spanish Succession",
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario",
+                "longDescription": "Can be hard for British",
+                "angloCavBonus": true
+            },
+            "bigBritish": {
+                "description": "Big British",
+                "longDescription":"+3 5-3's for play balance.",
+                "angloCavBonus": true,
+                "bigBritish":true
+            }
+        }
+    },
+    "Burkersdorf": {
+        "name": "The Battle of Burkersdorf",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Burkersdorf\\Burkersdorf",
+        "description":"July 21, 1762. Prussian vs Austrian. The Seven Years War.",
+        "options":[
+          {
+          "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+          "keyName":"fogDeploy",
+          "value": false
+          }
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario.",
+                "longDescription": "Historical Forces, favors Prussians."
+            },
+            "bigAustrian": {
+                "description": "Stronger Austrian Force.",
+                "longDescription": " 6 3-3 infantry units  are 4-3",
+                "bigAustrian": true
+            },
+            "requiredDeploy": {
+                "description": "Prussians limited deploy.",
+                "longDescription": "New Map, Prussians must deploy in a limited number of hexes.",
+                "requiredDeploy": true,
+                "showHexNums":true
+            }
+        }
+    },
+    "Kolin1757": {
+        "name": "The Battle of Kolin 1757",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Kolin1757\\Kolin1757",
+        "description":"June 18, 1757. Prussian vs Austrian. The Seven Years War.",
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario.",
+                "longDescription":"favors Austrians"
+            },
+            "fredBringsMore": {
+                "description": "More Prussians.",
+                "longDescription":"Frederick the Great brings more troops to be even greater.",
+                "fredBringsMore": true
+            },
+            "fredBringsABitMore": {
+                "description": "A Little More Prussians. ",
+                "longDescription":"Frederick the Great brings just a few more troops, justa  few.",
+                "fredBringsALittleMore": true
+            }
+        }
+    },
+  "Oudenarde1708": {
+    "name": "The Battle of Oudenarde 1708",
+    "path": "Mollwitz",
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Oudenarde1708\\Oudenarde1708",
+    "description":"July 11, 1708. Anglo Allies vs Franco Bavarian. The war for Spanish Succession.",
+    "scenarios": {
+      "main": {
+        "description": "Standard Scenario.",
+        "longDescription":"Original",
+        "units":[
+          {"num":4,"forceId":1,"combat":6,"movement":3,"reinforce":"A","range":1,"nationality":"AngloAllied","class":"infantry"},
+          {"num":12,"forceId":1,"combat":4,"movement":3,"reinforce":"A","range":1,"nationality":"AngloAllied","class":"infantry"},
+          {"num":5,"forceId":1,"combat":4,"movement":5,"reinforce":"A","range":1,"nationality":"AngloAllied","class":"cavalry"},
+          {"num":2,"forceId":1,"combat":5,"movement":5,"reinforce":"A","range":1,"nationality":"AngloAllied","class":"cavalry"},
+          {"num":5,"forceId":1,"combat":3,"movement":2,"reinforce":"A","range":3,"nationality":"AngloAllied","class":"artillery"},
+          {"num":3,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"French","class":"infantry"},
+          {"num":7,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"French","class":"infantry"},
+          {"num":8,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"French","class":"infantry"},
+          {"num":2,"forceId":2,"combat":5,"movement":5,"reinforce":"B","range":1,"nationality":"French","class":"cavalry"},
+          {"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"French","class":"cavalry"},
+          {"num":3,"forceId":2,"combat":3,"movement":2,"reinforce":"B","range":3,"nationality":"French","class":"artillery"},
+          {"num":2,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"French","class":"artillery"}]
+      },
+      "slightlyBiggerFrench": {
+        "description": "Play balance.",
+        "longDescription":"3 more 3-3's for the french.",
+        "slightlyBiggerFrench": true,
+        "units":[{"num":4,"forceId":1,"combat":6,"movement":3,"reinforce":"A","range":1,"nationality":"AngloAllied","class":"infantry"}
+        ,{"num":12,"forceId":1,"combat":4,"movement":3,"reinforce":"A","range":1,"nationality":"AngloAllied","class":"infantry"}
+        ,{"num":5,"forceId":1,"combat":4,"movement":5,"reinforce":"A","range":1,"nationality":"AngloAllied","class":"cavalry"}
+        ,{"num":2,"forceId":1,"combat":5,"movement":5,"reinforce":"A","range":1,"nationality":"AngloAllied","class":"cavalry"}
+        ,{"num":5,"forceId":1,"combat":3,"movement":2,"reinforce":"A","range":3,"nationality":"AngloAllied","class":"artillery"}
+        ,{"num":3,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"French","class":"infantry"}
+        ,{"num":7,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"French","class":"infantry"}
+        ,{"num":10,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"French","class":"infantry"}
+        ,{"num":2,"forceId":2,"combat":5,"movement":5,"reinforce":"B","range":1,"nationality":"French","class":"cavalry"}
+        ,{"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"French","class":"cavalry"}
+        ,{"num":3,"forceId":2,"combat":3,"movement":2,"reinforce":"B","range":3,"nationality":"French","class":"artillery"}
+        ,{"num":2,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"French","class":"artillery"}]
+      }
+    }
+  },
+  "Kesselsdorf1745": {
+    "name": "The Battle of Kesselsdorf 1745",
+    "path": "Mollwitz",
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Kesselsdorf1745\\Kesselsdorf1745",
+    "description":"1745 ",
+    "scenarios": {
+      "main": {
+        "description": "Standard Scenario.",
+        "longDescription":"Original",
+        "units":[
+          {"num":3,"forceId":1,"combat":5,"movement":3,"reinforce":"A","range":1,"nationality":"Prussian","class":"infantry"},
+          {"num":7,"forceId":1,"combat":4,"movement":3,"reinforce":"A","range":1,"nationality":"Prussian","class":"infantry"},
+          {"num":3,"forceId":1,"combat":4,"movement":5,"reinforce":"A","range":1,"nationality":"Prussian","class":"cavalry"},
+          {"num":1,"forceId":1,"combat":5,"movement":5,"reinforce":"A","range":1,"nationality":"Prussian","class":"cavalry"},
+          {"num":1,"forceId":1,"combat":3,"movement":6,"reinforce":"A","range":1,"nationality":"Prussian","class":"cavalry"},
+          {"num":4,"forceId":1,"combat":2,"movement":2,"reinforce":"A","range":3,"nationality":"Prussian","class":"artillery"},
+
+          {"num":2,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Austrian","class":"infantry"},
+          {"num":10,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"Austrian","class":"infantry"},
+          {"num":1,"forceId":2,"combat":5,"movement":5,"reinforce":"B","range":1,"nationality":"Austrian","class":"cavalry"},
+          {"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"Austrian","class":"cavalry"},
+          {"num":1,"forceId":2,"combat":3,"movement":6,"reinforce":"B","range":1,"nationality":"Austrian","class":"cavalry"},
+          {"num":1,"forceId":2,"combat":3,"movement":2,"reinforce":"B","range":3,"nationality":"Austrian","class":"artillery"},
+          {"num":3,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Austrian","class":"artillery"}]
+      }
+    }
+  },
+  "Fraustadt1706": {
+    "name": "The battle of Fraustadt 1706",
+    "path": "Mollwitz",
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Fraustadt1706\\Fraustadt1706",
+    "description":"Battle of Fraustadt, 13 February 1706. Swedish vs Saxon and Russian. Great Northern War",
+    "params":{
+      "weakRedoubts": true
+    },
+    "options":[
+      {
+        "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
+        "keyName":"stepReduction",
+        "value": true
+      },
+      {
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName":"fogDeploy",
+        "value": false
+      }],
+    "scenarios": {
+      "main": {
+        "description": "Standard Scenario.",
+        "longDescription":"Original",
+        "units":[
+          {"num":4,"forceId":1,"combat":6,"reduced": 3,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+          {"num":6,"forceId":1,"combat":6,"reduced": 3,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+
+          {"num":1,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"Saxon","class":"infantry"},
+          {"num":9,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"Saxon","class":"infantry"},
+          {"num":5,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+          {"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"Saxon","class":"cavalry"}
+        ]
+      },
+      "totalSurprise": {
+        "description": "No Movement First Turn for Saxon/Russian.",
+        "longDescription":"Original",
+        "noMovementFirstTurn":true,
+        "units":[
+          {"num":4,"forceId":1,"combat":6,"reduced": 3,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+          {"num":6,"forceId":1,"combat":6,"reduced": 3,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+
+          {"num":1,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"Saxon","class":"infantry"},
+          {"num":9,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"Saxon","class":"infantry"},
+          {"num":5,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+          {"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"Saxon","class":"cavalry"}
+        ]
+      }    }
+  },
+  "Lesnaya1708": {
+    "name": "The battle of Lesnaya 1708",
+    "path": "Mollwitz",
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Lesnaya1708\\Lesnaya1708",
+    "description":"Battle of Lesnaya 1708",
+    "params":{
+      "weakRedoubts": true
+    },
+    "options":[
+      {
+        "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
+        "keyName":"stepReduction",
+        "value": true
+      },
+      {
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName":"fogDeploy",
+        "value": false
+      }],
+    "scenarios": {
+      "main": {
+        "description": "Standard Scenario.",
+        "longDescription":"Original",
+        "units":[
+          {"num":5,"forceId":2,"combat":6,"reduced": 3,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+          {"num":4,"forceId":2,"combat":2, "movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+          {"num":3,"forceId":2,"combat":6,"reduced": 3,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+          {"num":2,"forceId":2,"combat":2, "movement":2,"reinforce":"A","range":3,"nationality":"Swedish","class":"artillery"},
+          {"num":7,"forceId":2,"combat":2,"movement":2,"reinforce":"C","range":1,"nationality":"Swedish","class":"wagon"},
+
+
+          {"num":1,"forceId":1,"combat":6,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+          {"num":6,"forceId":1,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+          {"num":5,"forceId":1,"combat":2,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+          {"num":3,"forceId":1,"combat":2,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+          {"num":3,"forceId":1,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+          {"num":3,"forceId":1,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+          {"num":4,"forceId":1,"combat":2, "movement":2,"reinforce":"B","range":3,"nationality":"Russian","class":"artillery"}
+
+        ]
+      }
+    }
+  },
+  "Klissow1702": {
+    "name": "The Battle of Klissow 1702",
+    "path": "Mollwitz",
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Klissow1702\\Klissow1702",
+    "description":"The Battle of Klissow took place on July 8 (Julian calendar) / July 9 (Swedish calendar) / July 19, 1702 (Gregorian calendar) near Kliszów, Poland-Lithuania, during the Great Northern War.",
+    "params":{
+      "wimpySwamps": true
+    },
+    "options":[
+      {
+        "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
+        "keyName":"stepReduction",
+        "value": true
+      }],
+    "scenarios": {
+      "main": {
+        "description": "Standard Scenario.",
+        "longDescription":"Historical Scenario. Hard for Sweden to win.",
+        "units":[
+          {"num":1,"forceId":1,"combat":8,"reduced":4,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+          {"num":5,"forceId":1,"combat":6,"reduced":3,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+          {"num":1,"forceId":1,"combat":8,"reduced":4,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+          {"num":5,"forceId":1,"combat":6,"reduced":3,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+          {"num":1,"forceId":1,"combat":0,"movement":0,"reinforce":"C","range":1,"nationality":"Swedish","class":"pontoon"},
+
+          {"num":1,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"SaxonPolish","class":"infantry"},
+          {"num":6,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"SaxonPolish","class":"infantry"},
+          {"num":6,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"SaxonPolish","class":"cavalry"},
+          {"num":8,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"SaxonPolish","class":"cavalry"},
+          {"num":1,"forceId":2,"combat":0,"movement":0,"reinforce":"D","range":1,"nationality":"SaxonPolish","class":"pontoon"}
+
+        ]
+      },
+      "alternate": {
+        "description": "Reduced Saxon Polish Scenario.",
+        "longDescription":"Historical Scenario very hard for Swedish to win. Play Balance variation",
+        "units":[
+          {"num":1,"forceId":1,"combat":8,"reduced":4,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+          {"num":5,"forceId":1,"combat":6,"reduced":3,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+          {"num":1,"forceId":1,"combat":8,"reduced":4,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+          {"num":5,"forceId":1,"combat":6,"reduced":3,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+          {"num":1,"forceId":1,"combat":0,"movement":0,"reinforce":"C","range":1,"nationality":"Swedish","class":"pontoon"},
+
+          {"num":1,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"SaxonPolish","class":"infantry"},
+          {"num":6,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"SaxonPolish","class":"infantry"},
+          {"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"SaxonPolish","class":"cavalry"},
+          {"num":10,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"SaxonPolish","class":"cavalry"},
+          {"num":1,"forceId":2,"combat":0,"movement":0,"reinforce":"D","range":1,"nationality":"SaxonPolish","class":"pontoon"}
+
+        ]
+      }
+    }
+
+  },
+
+  "Lobositz": {
+        "name": "The Battle of Lobositz",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Lobositz\\Lobositz",
+        "description": "October 1, 1756. The Seven Years War.",
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario"
+            },
+            "restrictedDeployTwo": {
+                "description": "Restricted deployment area"
+            }
+        }
+    },
+    "Zorndorf": {
+        "name": "The Battle of Zorndorf.",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Zorndorf\\Zorndorf",
+        "description":"August 25, 1758. The Seven Years War.",
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario",
+                "longDescription": "Historical balance. Tends to favor the Prussians."
+            },
+            "bigRussian": {
+                "description": "Bigger Russians.",
+                "longDescription":"Larger Russian units for play balance.",
+                "bigRussian": true
+            },
+            "deployForward": {
+                "description": "Prussians deploy farther forward, Bigger Russians too.",
+                "longDescription":"Prussians deploy farther forward. Larger Russian units for play balance. Game is one turn shorter",
+                "bigRussian": true,
+                "deployForward": true
+            }
+        }
+    },
+    "Jagersdorf": {
+        "name": "The Battle of Gross Jagersdorf",
+        "path": "Mollwitz",
+        "genre": "18'th Century Europe",
+        "fileName": "\\Wargame\\Mollwitz\\Jagersdorf\\Jagersdorf",
+        "description": "August 30, 1757. Prussian vs Russian. The Seven Years War.",
+        "params":{
+            "jagersdorfCombat": true
+        },
+        "scenarios": {
+            "main": {
+                "jagersdorfCombat": true,
+                "description": "Prussians are pre deployed"
+            },
+            "prussianDeploys": {
+                "description": "Prussians has setup mode ",
+
+                "prussianDeploy": true
+            },
+            "extraArt": {
+                "description": "Extra Artillery, Prussians has setup mode ",
+                "prussianDeploy": true,
+                "extraArt": true
+            }
+        }
+    },
+    "Montmirail1814": {
+      "name": "The Battle of Montmirail 1814",
+      "path": "Mollwitz",
+      "genre": "Napoleonic",
+      "fileName": "\\Wargame\\Mollwitz\\Montmirail1814\\Montmirail1814",
+      "description":"The Battle of Montmirail 1814 between the French and Prussian-Russian allies. ",
+      "scenarios": {
+        "main": {
+          "description": "Standard Scenario.",
+          "longDescription":"Original",
+          "units":[
+            {"num":4,"forceId":1,"combat":8,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+            {"num":3,"forceId":1,"combat":7,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+            {"num":1,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+
+            {"num":2,"forceId":1,"combat":8,"movement":6,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+            {"num":2,"forceId":1,"combat":6,"movement":7,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+            {"num":1,"forceId":1,"combat":6,"movement":6,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+
+            {"num":3,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":4,"nationality":"Guard","class":"artillery"},
+            {"num":1,"forceId":1,"combat":3,"movement":4,"reinforce":"A","range":4,"nationality":"Guard","class":"artillery"},
+
+            {"num":2,"forceId":1,"combat":4,"movement":5,"reinforce":"A","range":4,"nationality":"Guard","class":"horseartillery"},
+
+            {"num":4,"forceId":1,"combat":4,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+            {"num":2,"forceId":1,"combat":3,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+
+            {"num":1,"forceId":1,"combat":4,"movement":6,"reinforce":"A","range":1,"nationality":"French","class":"cavalry"},
+            {"num":1,"forceId":1,"combat":3,"movement":6,"reinforce":"A","range":1,"nationality":"French","class":"cavalry"},
+
+            {"num":1,"forceId":1,"combat":1,"movement":3,"reinforce":"A","range":4,"nationality":"French","class":"artillery"},
+
+
+            {"num":3,"forceId":2,"combat":5,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+            {"num":7,"forceId":2,"combat":4,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+            {"num":2,"forceId":2,"combat":3,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+
+            {"num":1,"forceId":2,"combat":5,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":1,"forceId":2,"combat":3,"movement":7,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":2,"forceId":2,"combat":3,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":3,"forceId":2,"combat":2,"movement":7,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+
+            {"num":3,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+            {"num":1,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+            {"num":4,"forceId":2,"combat":3,"movement":4,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+
+            {"num":1,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":4,"nationality":"Russian","class":"horseartillery"},
+
+
+            {"num":3,"forceId":2,"combat":5,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+            {"num":2,"forceId":2,"combat":4,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+            {"num":1,"forceId":2,"combat":3,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+
+            {"num":2,"forceId":2,"combat":3,"movement":7,"reinforce":"C","range":1,"nationality":"Prussian","class":"cavalry"},
+
+            {"num":2,"forceId":2,"combat":2,"movement":4,"reinforce":"C","range":4,"nationality":"Prussian","class":"artillery"}
+          ]
+        },
+        "russianForward": {
+          "description": "Russian deploys forward.",
+          "longDescription":"On the morning of the battle, the Russians ate oatmeal, and not the instant kind, the kind you cook for 45 minutes. This scenario assumes the russian had pop tarts, cold. So they got to the battle quicker.",
+          "units":[
+            {"num":4,"forceId":1,"combat":8,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+            {"num":3,"forceId":1,"combat":7,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+            {"num":1,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+
+            {"num":2,"forceId":1,"combat":8,"movement":6,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+            {"num":2,"forceId":1,"combat":6,"movement":7,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+            {"num":1,"forceId":1,"combat":6,"movement":6,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+
+            {"num":3,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":4,"nationality":"Guard","class":"artillery"},
+            {"num":1,"forceId":1,"combat":3,"movement":4,"reinforce":"A","range":4,"nationality":"Guard","class":"artillery"},
+
+            {"num":2,"forceId":1,"combat":4,"movement":5,"reinforce":"A","range":4,"nationality":"Guard","class":"horseartillery"},
+
+            {"num":4,"forceId":1,"combat":4,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+            {"num":2,"forceId":1,"combat":3,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+
+            {"num":1,"forceId":1,"combat":4,"movement":6,"reinforce":"A","range":1,"nationality":"French","class":"cavalry"},
+            {"num":1,"forceId":1,"combat":3,"movement":6,"reinforce":"A","range":1,"nationality":"French","class":"cavalry"},
+
+            {"num":1,"forceId":1,"combat":1,"movement":3,"reinforce":"A","range":4,"nationality":"French","class":"artillery"},
+
+
+            {"num":3,"forceId":2,"combat":5,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+            {"num":7,"forceId":2,"combat":4,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+            {"num":2,"forceId":2,"combat":3,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+
+            {"num":1,"forceId":2,"combat":5,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":1,"forceId":2,"combat":3,"movement":7,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":2,"forceId":2,"combat":3,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":3,"forceId":2,"combat":2,"movement":7,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+
+            {"num":3,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+            {"num":1,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+            {"num":4,"forceId":2,"combat":3,"movement":4,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+
+            {"num":1,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":4,"nationality":"Russian","class":"horseartillery"},
+
+
+            {"num":3,"forceId":2,"combat":5,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+            {"num":2,"forceId":2,"combat":4,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+            {"num":1,"forceId":2,"combat":3,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+
+            {"num":2,"forceId":2,"combat":3,"movement":7,"reinforce":"C","range":1,"nationality":"Prussian","class":"cavalry"},
+
+            {"num":2,"forceId":2,"combat":2,"movement":4,"reinforce":"C","range":4,"nationality":"Prussian","class":"artillery"}
+          ]
+        },
+        "frenchBack": {
+          "description": "French Deploy Back.",
+          "longDescription":"The french had eaten bad food the previous night and they all had to spend extra time in the out house. So they got to the battle later.",
+          "units":[
+            {"num":4,"forceId":1,"combat":8,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+            {"num":3,"forceId":1,"combat":7,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+            {"num":1,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+
+            {"num":2,"forceId":1,"combat":8,"movement":6,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+            {"num":2,"forceId":1,"combat":6,"movement":7,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+            {"num":1,"forceId":1,"combat":6,"movement":6,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+
+            {"num":3,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":4,"nationality":"Guard","class":"artillery"},
+            {"num":1,"forceId":1,"combat":3,"movement":4,"reinforce":"A","range":4,"nationality":"Guard","class":"artillery"},
+
+            {"num":2,"forceId":1,"combat":4,"movement":5,"reinforce":"A","range":4,"nationality":"Guard","class":"horseartillery"},
+
+            {"num":4,"forceId":1,"combat":4,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+            {"num":2,"forceId":1,"combat":3,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+
+            {"num":1,"forceId":1,"combat":4,"movement":6,"reinforce":"A","range":1,"nationality":"French","class":"cavalry"},
+            {"num":1,"forceId":1,"combat":3,"movement":6,"reinforce":"A","range":1,"nationality":"French","class":"cavalry"},
+
+            {"num":1,"forceId":1,"combat":1,"movement":3,"reinforce":"A","range":4,"nationality":"French","class":"artillery"},
+
+
+            {"num":3,"forceId":2,"combat":5,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+            {"num":7,"forceId":2,"combat":4,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+            {"num":2,"forceId":2,"combat":3,"movement":4,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+
+            {"num":1,"forceId":2,"combat":5,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":1,"forceId":2,"combat":3,"movement":7,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":2,"forceId":2,"combat":3,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+            {"num":3,"forceId":2,"combat":2,"movement":7,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+
+            {"num":3,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+            {"num":1,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+            {"num":4,"forceId":2,"combat":3,"movement":4,"reinforce":"B","range":4,"nationality":"Russian","class":"artillery"},
+
+            {"num":1,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":4,"nationality":"Russian","class":"horseartillery"},
+
+
+            {"num":3,"forceId":2,"combat":5,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+            {"num":2,"forceId":2,"combat":4,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+            {"num":1,"forceId":2,"combat":3,"movement":4,"reinforce":"C","range":1,"nationality":"Prussian","class":"infantry"},
+
+            {"num":2,"forceId":2,"combat":3,"movement":7,"reinforce":"C","range":1,"nationality":"Prussian","class":"cavalry"},
+
+            {"num":2,"forceId":2,"combat":2,"movement":4,"reinforce":"C","range":4,"nationality":"Prussian","class":"artillery"}
+          ]
+        }
+      }
+    },
+  "Hanau1813": {
+    "name": "The Battle of Hanau 1813",
+    "path": "Mollwitz",
+    "genre": "Napoleonic",
+    "fileName": "\\Wargame\\Mollwitz\\Hanau1813\\Hanau1813",
+    "description":"The Battle of Hanau 1813 between the French and Austro-Bavarian-Russian allies. ",
+    "params":{
+      "units":[
+        {"num":2,"forceId":1,"combat":9,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+        {"num":2,"forceId":1,"combat":8,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+        {"num":2,"forceId":1,"combat":7,"movement":4,"reinforce":"A","range":1,"nationality":"Guard","class":"infantry"},
+
+        {"num":2,"forceId":1,"combat":8,"movement":6,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+        {"num":3,"forceId":1,"combat":6,"movement":6,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+        {"num":1,"forceId":1,"combat":5,"movement":7,"reinforce":"A","range":1,"nationality":"Guard","class":"cavalry"},
+
+        {"num":4,"forceId":1,"combat":5,"movement":4,"reinforce":"A","range":4,"nationality":"Guard","class":"artillery"},
+        {"num":2,"forceId":1,"combat":3,"movement":5,"reinforce":"A","range":4,"nationality":"Guard","class":"horseartillery"},
+
+        {"num":4,"forceId":1,"combat":4,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+        {"num":4,"forceId":1,"combat":3,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+
+        {"num":2,"forceId":1,"combat":3,"movement":6,"reinforce":"A","range":1,"nationality":"French","class":"cavalry"},
+        {"num":1,"forceId":1,"combat":2,"movement":6,"reinforce":"A","range":1,"nationality":"French","class":"cavalry"},
+
+        {"num":1,"forceId":1,"combat":1,"movement":3,"reinforce":"A","range":4,"nationality":"French","class":"artillery"},
+
+
+        {"num":3,"forceId":2,"combat":5,"movement":4,"reinforce":"C","range":1,"nationality":"Austrian","class":"infantry"},
+        {"num":12,"forceId":2,"combat":4,"movement":4,"reinforce":"C","range":1,"nationality":"Austrian","class":"infantry"},
+        {"num":3,"forceId":2,"combat":3,"movement":4,"reinforce":"C","range":1,"nationality":"Austrian","class":"infantry"},
+
+        {"num":1,"forceId":2,"combat":5,"movement":6,"reinforce":"B","range":1,"nationality":"Austrian","class":"cavalry"},
+        {"num":2,"forceId":2,"combat":4,"movement":6,"reinforce":"B","range":1,"nationality":"Austrian","class":"cavalry"},
+        {"num":2,"forceId":2,"combat":3,"movement":6,"reinforce":"B","range":1,"nationality":"Austrian","class":"cavalry"},
+        {"num":1,"forceId":2,"combat":3,"movement":7,"reinforce":"B","range":1,"nationality":"Austrian","class":"cavalry"},
+
+        {"num":2,"forceId":2,"combat":2,"movement":3,"reinforce":"C","range":4,"nationality":"Austrian","class":"artillery"},
+
+        {"num":1,"forceId":2,"combat":5,"movement":4,"reinforce":"C","range":1,"nationality":"Bavarian","class":"infantry"},
+        {"num":9,"forceId":2,"combat":4,"movement":4,"reinforce":"C","range":1,"nationality":"Bavarian","class":"infantry"},
+        {"num":4,"forceId":2,"combat":3,"movement":4,"reinforce":"C","range":1,"nationality":"Bavarian","class":"infantry"},
+
+        {"num":4,"forceId":2,"combat":3,"movement":6,"reinforce":"B","range":1,"nationality":"Bavarian","class":"cavalry"},
+
+        {"num":2,"forceId":2,"combat":2,"movement":3,"reinforce":"C","range":4,"nationality":"Bavarian","class":"artillery"},
+        {"num":2,"forceId":2,"combat":4,"movement":3,"reinforce":"C","range":4,"nationality":"Bavarian","class":"artillery"},
+
+        {"num":2,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":4,"nationality":"Bavarian","class":"horseartillery"},
+
+
+        {"num":2,"forceId":2,"combat":2,"movement":7,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"}
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription":"French Usually win as they did historically."
+      },
+      "balance": {
+        "description": "Play Balance Scenario.",
+        "longDescription":"Allies may move on second turn, french may deploy one hex closer.",
+        "earlyMovement": true
+      }
+    }
+  },
+  "Golymin1806": {
+    "name": "The Battle of Golymin 1806",
+    "path": "Mollwitz",
+    "genre": "Napoleonic",
+    "fileName": "\\Wargame\\Mollwitz\\Golymin1806\\Golymin1806",
+    "description":"The Battle of Golymin 1806 between the French and Russian. ",
+    "params":{
+      "units":[
+
+        {"num":6,"forceId":1,"combat":5,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+        {"num":17,"forceId":1,"combat":4,"movement":4,"reinforce":"A","range":1,"nationality":"French","class":"infantry"},
+
+        {"num":2,"forceId":1,"combat":4,"movement":7,"reinforce":"B","range":1,"nationality":"French","class":"cavalry"},
+        {"num":5,"forceId":1,"combat":4,"movement":6,"reinforce":"B","range":1,"nationality":"French","class":"cavalry"},
+
+
+        {"num":4,"forceId":2,"combat":5,"movement":4,"reinforce":"C","range":1,"nationality":"Russian","class":"infantry"},
+        {"num":9,"forceId":2,"combat":4,"movement":4,"reinforce":"C","range":1,"nationality":"Russian","class":"infantry"},
+
+        {"num":1,"forceId":2,"combat":6,"movement":6,"reinforce":"D","range":1,"nationality":"Russian","class":"cavalry"},
+        {"num":2,"forceId":2,"combat":4,"movement":7,"reinforce":"D","range":1,"nationality":"Russian","class":"cavalry"},
+        {"num":4,"forceId":2,"combat":4,"movement":6,"reinforce":"D","range":1,"nationality":"Russian","class":"cavalry"},
+
+        {"num":1,"forceId":2,"combat":2,"movement":4,"reinforce":"E","range":4,"nationality":"Russian","class":"artillery"},
+        {"num":2,"forceId":2,"combat":3,"movement":3,"reinforce":"E","range":4,"nationality":"Russian","class":"artillery"},
+        {"num":1,"forceId":2,"combat":2,"movement":5,"reinforce":"E","range":4,"nationality":"Russian","class":"horseartillery"}
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription":"Mud Rule in effect. Clear/Trail 2 mp's.",
+        "mudMovement": true
+      },
+      "balance": {
+        "description": "Play Balance Scenario.",
+        "longDescription":"Twas a clear day that."
+      }
+    }
+  },
+  "Fontenoy1745": {
+    "name": "The Battle of Fontenoy 1745",
+    "path": "Mollwitz",
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Fontenoy1745\\Fontenoy1745",
+    "description":" Battle of Fontenoy, 11 May 1745. French vs Allies, The War for Austrian Succession ",
+    "params":{
+      "units":[
+
+        {"num":6,"forceId":2,"combat":6,"movement":3,"reinforce":"B","range":1,"nationality":"French","class":"infantry"},
+        {"num":20,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"French","class":"infantry"},
+
+        {"num":6,"forceId":2,"combat":6,"movement":5,"reinforce":"B","range":1,"nationality":"French","class":"cavalry"},
+        {"num":3,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"French","class":"cavalry"},
+
+        {"num":1,"forceId":2,"combat":6,"movement":2,"reinforce":"B","range":3,"nationality":"French","class":"artillery"},
+        {"num":1,"forceId":2,"combat":3,"movement":2,"reinforce":"B","range":3,"nationality":"French","class":"artillery"},
+        {"num":4,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"French","class":"artillery"},
+
+        {"num":8,"forceId":1,"combat":6,"movement":3,"reinforce":"A","range":1,"nationality":"Anglo","class":"infantry"},
+        {"num":4,"forceId":1,"combat":4,"movement":3,"reinforce":"A","range":1,"nationality":"Anglo","class":"infantry"},
+
+        {"num":4,"forceId":1,"combat":6,"movement":5,"reinforce":"A","range":1,"nationality":"Anglo","class":"cavalry"},
+
+        {"num":2,"forceId":1,"combat":3,"movement":2,"reinforce":"A","range":3,"nationality":"Anglo","class":"artillery"},
+        {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"A","range":2,"nationality":"Anglo","class":"artillery"},
+
+        {"num":1,"forceId":1,"combat":4,"movement":5,"reinforce":"A","range":1,"nationality":"Austrian","class":"cavalry"},
+        {"num":1,"forceId":1,"combat":2,"movement":6,"reinforce":"A","range":1,"nationality":"Austrian","class":"cavalry"},
+
+
+        {"num":7,"forceId":1,"combat":6,"movement":3,"reinforce":"A","range":1,"nationality":"Dutch","class":"infantry"},
+        {"num":3,"forceId":1,"combat":4,"movement":3,"reinforce":"A","range":1,"nationality":"Dutch","class":"infantry"},
+
+        {"num":3,"forceId":1,"combat":6,"movement":5,"reinforce":"A","range":1,"nationality":"Dutch","class":"cavalry"},
+
+        {"num":1,"forceId":1,"combat":3,"movement":2,"reinforce":"A","range":3,"nationality":"Dutch","class":"artillery"},
+        {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"A","range":2,"nationality":"Dutch","class":"artillery"}
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription":"The Battle of Fontenoy, 11 May 1745, was a major engagement of the War of the Austrian Succession"
+      }
+    }
+  },
+  "Gadebusch1712": {
+    "name": "The Battle of Gadebusch 1712",
+    "path": "Mollwitz",
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Gadebusch1712\\Gadebusch1712",
+    "description":"The Battle of Gadebusch 1712 between the Swedish and the Danes . ",
+    "options":[
+      {
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName":"fogDeploy",
+        "value": false
+      }],
+    "params":{
+      "units":[
+
+        {"num":2,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"Danish","class":"infantry"},
+        {"num":8,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Danish","class":"infantry"},
+
+        {"num":2,"forceId":2,"combat":5,"movement":5,"reinforce":"B","range":1,"nationality":"Danish","class":"cavalry"},
+        {"num":8,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"Danish","class":"cavalry"},
+
+        {"num":2,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Danish","class":"artillery"},
+
+        {"num":8,"forceId":1,"combat":6,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+
+        {"num":8,"forceId":1,"combat":6,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+
+        {"num":4,"forceId":1,"combat":2,"movement":2,"reinforce":"A","range":3,"nationality":"Swedish","class":"artillery"}
+
+
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription":"The Battle of Gadebusch 1712 Swedish vs Danish"
+      },
+      "lessSwedes":{
+        "description": "Alternate Less Swedes.",
+        "longDescription":"The Swedish player has 6 infantry instead of 8. No Danish indecision either.",
+        "noIndecision": true,
+        "units":[
+
+          {"num":2,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"Danish","class":"infantry"},
+          {"num":8,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Danish","class":"infantry"},
+
+          {"num":2,"forceId":2,"combat":5,"movement":5,"reinforce":"B","range":1,"nationality":"Danish","class":"cavalry"},
+          {"num":8,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"Danish","class":"cavalry"},
+
+          {"num":2,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Danish","class":"artillery"},
+
+          {"num":6,"forceId":1,"combat":6,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+
+          {"num":8,"forceId":1,"combat":6,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+
+          {"num":4,"forceId":1,"combat":2,"movement":2,"reinforce":"A","range":3,"nationality":"Swedish","class":"artillery"}
+
+
+        ]
+      },
+      "moreDanes":{
+        "description": "Alternate More Danes",
+        "longDescription":"The Danish player has 10 4-3's instead of 8. No Danish indecision either.",
+        "noIndecision": true,
+        "units":[
+
+          {"num":2,"forceId":2,"combat":5,"movement":3,"reinforce":"B","range":1,"nationality":"Danish","class":"infantry"},
+          {"num":10,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Danish","class":"infantry"},
+
+          {"num":2,"forceId":2,"combat":5,"movement":5,"reinforce":"B","range":1,"nationality":"Danish","class":"cavalry"},
+          {"num":8,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"Danish","class":"cavalry"},
+
+          {"num":2,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Danish","class":"artillery"},
+
+          {"num":8,"forceId":1,"combat":6,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+
+          {"num":8,"forceId":1,"combat":6,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+
+          {"num":4,"forceId":1,"combat":2,"movement":2,"reinforce":"A","range":3,"nationality":"Swedish","class":"artillery"}
+
+
+        ]
+      }
+    }
+  },
+
+  "Brandywine1777": {
+    "name": "The Battle of Brandywine 1777",
+    "path": "Mollwitz",
+    "genre": "Americas",
+    "fileName": "\\Wargame\\Mollwitz\\Brandywine1777\\Brandywine1777",
+    "description":"The Battle of Brandywine 1777. ",
+    "options":[
+      {
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName":"fogDeploy",
+        "value": false
+      }],
+    "params":{
+      "americanRevolution": true,
+      "units":[
+
+        {"num":1,"forceId":2,"combat":6,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+        {"num":2,"forceId":2,"combat":5,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+        {"num":2,"forceId":2,"combat":3,"movement":4,"reinforce":"B","range":1,"nationality":"Militia","class":"infantry"},
+        {"num":6,"forceId":2,"combat":4,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+
+        {"num":1,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Rebel","class":"artillery"},
+        {"num":3,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"Rebel","class":"artillery"},
+
+        {"num":1,"forceId":1,"combat":8,"movement":4,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
+        {"num":7,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
+        {"num":5,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":1,"nationality":"Hessian","class":"infantry"},
+
+        {"num":1,"forceId":1,"combat":2,"movement":6,"reinforce":"A","range":1,"nationality":"Loyalist","class":"cavalry"},
+
+        {"num":2,"forceId":1,"combat":2,"movement":3,"reinforce":"A","range":2,"nationality":"Loyalist","class":"artillery"},
+        {"num":1,"forceId":1,"combat":3,"movement":2,"reinforce":"A","range":3,"nationality":"Loyalist","class":"artillery"},
+        {"num":1,"forceId":1,"combat":4,"movement":2,"reinforce":"A","range":4,"nationality":"Loyalist","class":"artillery"}
+
+
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription":"Fords do not affect Combat."
+      },
+      "hardfords": {
+        "description": "Optional Scenario",
+        "longDescription":"Attacks across fords are halved."
+      }
+    }
+  },
+
+  "Helsingborg1710": {
+    "name": "The Battle of Helsingborg 1710",
+    "path": "Mollwitz",
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Helsingborg1710\\Helsingborg1710",
+    "description":"The Battle of Helsingborg 1710 between the Swedish and the Danes . ",
+    "options":[
+      {
+        "name": "Swedish 8-5 cavalry have step reduction and can be reduced to half strength in an exchange.",
+        "keyName":"stepReduction",
+        "value": true
+      },
+      {
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName":"fogDeploy",
+        "value": false
+      },
+      {
+        "name": "Stronger Danish Force, upgrade 4-5 to 6-4 and 4-3 to 6-3.",
+        "keyName":"strongerDanes",
+        "value": false
+      },
+      {
+        "name": "Hasty raised Swedish Army, half the 6-3's are 5-3.",
+        "keyName":"weakerSwedes",
+        "value": false
+      }],
+    "params":{
+      "units":[
+
+        {"num":2,"forceId":2,"combat":6,"movement":3,"reinforce":"B","range":1,"nationality":"Danish","class":"infantry"},
+        {"num":8,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Danish","class":"infantry"},
+
+        {"num":1,"forceId":2,"combat":6,"movement":5,"reinforce":"B","range":1,"nationality":"Danish","class":"cavalry"},
+        {"num":3,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"Danish","class":"cavalry"},
+
+        {"num":1,"forceId":2,"combat":3,"movement":2,"reinforce":"B","range":3,"nationality":"Danish","class":"artillery"},
+        {"num":2,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"Danish","class":"artillery"},
+
+        {"num":8,"forceId":1,"combat":6,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+
+        {"num":2,"forceId":1,"combat":8,"reduced":4, "movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+        {"num":4,"forceId":1,"combat":6,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+
+        {"num":1,"forceId":1,"combat":4,"movement":2,"reinforce":"A","range":3,"nationality":"Swedish","class":"artillery"},
+        {"num":2,"forceId":1,"combat":2,"movement":3,"reinforce":"A","range":2,"nationality":"Swedish","class":"artillery"}
+
+
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription":"Swedish units move +1 first turn. Danish units move half first turn."
+      },
+      "noSurprise": {
+        "description": "Alternate Scenario",
+        "longDescription":"No +1 movement for Swedish units, Danish units move full amount first turn.",
+        "noSurprise":true
+      }
+
+    }
+  },
+    "Dubba1843": {
+        "name": "Dubba 1843",
+        "path": "Mollwitz",
+        "genre": "19'th Century India",
+        "fileName": "\\Wargame\\Mollwitz\\Dubba1843\\Dubba1843",
+        "description":"March 24, 1843. British vs Beluchi. Part of Conquest of Sindh",
+        "params":{
+            "doubleArt": true,
+            "toughBritish":true
+        },
+        "options":[
+            {
+                "name": "Command and Control. 2HQ Beluchi, 4HQ British ",
+                "keyName":"commandControl",
+                "value": true
+            }],
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario",
+                "longDescription":"This game is best with option command control selected."
+            }
+        }
+    },
+    "Meanee1843": {
+        "name": "Meanee 1843",
+        "path": "Mollwitz",
+        "genre": "19'th Century India",
+        "fileName": "\\Wargame\\Mollwitz\\Meanee1843\\Meanee1843",
+        "description":"February 17, 1843. British vs Beluchi. Part of the conquest of Sindh.",
+        "params":{
+            "doubleArt": true
+        },
+        "options":[
+            {
+                "name": "Command and Control. 2HQ Beluchi, 4HQ British ",
+                "keyName":"commandControl",
+                "value": true
+            }
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario",
+                "longDescription": "The Battle of Meanee"
+            }
+        }
+    },
+    "Ferozesha": {
+        "name": "Ferozesha Day One",
+        "path": "Mollwitz",
+        "genre": "19'th Century India",
+        "fileName": "\\Wargame\\Mollwitz\\Ferozesha\\Ferozesha",
+        "description":"December 21, 1845. British vs Sikh. First Anglo-Sikh War.",
+        "params":{
+            "doubleArt": true,
+            "zocBlocksRetreat":true
+        },
+        "options":[
+            {
+                "name": "Command and Control. 3HQ Sikh, 4HQ British ",
+                "keyName":"commandControl",
+                "value": true
+            }
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Day One",
+                "longDescription":"Day of one of a two day battle. Battle continued in sister game, Ferozesha Day Two",
+                "dayOne": true
+            }
+        }
+    },
+    "FerozeshaDayTwo": {
+        "name": "Ferozesha Day Two",
+        "path": "Mollwitz",
+        "genre": "19'th Century India",
+        "fileName": "\\Wargame\\Mollwitz\\Ferozesha\\FerozeshaDayTwo",
+        "description":"December 22, 1845. British vs Sikh. First Anglo-Sikh War.",
+        "params":{
+            "doubleArt": true,
+            "zocBlocksRetreat":true
+        },
+        "options":[
+            {
+                "name": "Command and Control. 3HQ Sikh, 4HQ British ",
+                "keyName":"commandControl",
+                "value": true
+            }
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Day Two",
+                "longDescription":"Day of two of a two day battle. Battle continued from sister game, Ferozesha Day One",
+                "dayTwo": true
+            },
+          "alternate": {
+            "description": "Less British for day two.",
+            "longDescription":"4 less Native infantry and 2 less Royal, Day of two of a two day battle. Battle continued from sister game, Ferozesha Day One",
+            "weakBritish":true,
+            "dayTwo": true
+          }        }
+    },
+    "Chillianwallah1849": {
+        "name": "Chillianwallah 1849",
+        "path": "Mollwitz",
+        "genre": "19'th Century India",
+        "fileName": "\\Wargame\\Mollwitz\\Chillianwallah1849\\Chillianwallah1849",
+        "description":"January 13, 1849. British vs Sikh. The Second Anglo-Sikh War.",
+        "playerNotes":"Key",
+        "params":{
+            "doubleArt": true,
+            "zocBlocksRetreat":true
+        },
+        "options":[
+            {
+                "name": "Command and Control. 3HQ Sikh, 4HQ British ",
+                "keyName":"commandControl",
+                "value": true
+            }
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario"
+            }
+        }
+    },
+    "Moodkee1845": {
+        "name": "Moodkee 1845",
+        "path": "Mollwitz",
+        "genre": "19'th Century India",
+        "fileName": "\\Wargame\\Mollwitz\\Moodkee1845\\Moodkee1845",
+        "description":"December 18, 1845. British vs Sikh. First Anglo-Sikh War.",
+        "playerNotes":"Key",
+        "params":{
+            "doubleArt": true,
+            "zocBlocksRetreat":true
+        },
+        "options":[
+            {
+                "name": "Command and Control. 3HQ Sikh, 4HQ British ",
+                "keyName":"commandControl",
+                "value": true
+            }
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario"
+            }
+        }
+    },
+    "Goojerat1849": {
+        "name": "Goojerat 1849",
+        "path": "Mollwitz",
+        "genre": "19'th Century India",
+        "fileName": "\\Wargame\\Mollwitz\\Goojerat1849\\Goojerat1849",
+        "description":"February 21, 1849. British vs Sikh. Second Anglo-Sikh War.",
+        "params":{
+            "doubleArt": true,
+            "zocBlocksRetreat":true
+        },
+        "options":[
+            {
+                "name": "Command and Control. 3HQ Sikh, 4HQ British ",
+                "keyName":"commandControl",
+                "value": true
+            },
+            {
+                "name": "Stronger Sikh Infantry. 5-3",
+                "keyName":"strongerSikh",
+                "value": false
+            }
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario",
+                "longDescription": "Original scenario, Historical forces."
+            },
+            "altScenario": {
+                "description": "Sikh need 45 instead of 50 to win.",
+                "altScenario": true,
+                "longDescription": "Play Balance Scenario."
+            },
+            "moodkeeVariant": {
+                "description": "Same OOB as moodkee, Alt Scenarios rules too",
+                "altScenario": true,
+                "theMoodkeeOOB":true,
+                "longDescription": "Accidental Order of Battle, made game enjoyable, so we kept it."
+            }
+        }
+    },
+    "Aliwal1845": {
+        "name": "Aliwal 1845",
+        "path": "Mollwitz",
+        "genre": "19'th Century India",
+        "fileName": "\\Wargame\\Mollwitz\\Aliwal1845\\Aliwal1845",
+        "description":"January 28 1846. British vs Sikh. First Anglo-Sikh War.",
+        "params":{
+            "doubleArt": true,
+            "zocBlocksRetreat":true
+        },
+        "options":[
+            {
+                "name": "Command and Control. 3HQ Sikh, 4HQ British ",
+                "keyName":"commandControl",
+                "value": true
+            }
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Standard Scenario"
+            },
+            "weakSikh":{
+                "description": "Weaker Sikh, and all 3-3's instead of 4-3's",
+                "weakSikh": true
+            }
+        }
+    }
+}

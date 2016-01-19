@@ -365,7 +365,7 @@ You should have received a copy of the GNU General Public License
 //        $("#gameViewer").width(width);
     }
 </script>
-<?php include_once("commonSync.php"); ?>
+    @include("wargame::commonSync")
 <script>
 function seeMap() {
     $(".unit").css("opacity", .0);

@@ -208,7 +208,7 @@ class Terrain
                 break;
 
         }
-        if(!$this->terrainArray[$y][$x]){
+        if(empty($this->terrainArray[$y][$x])){
             $this->terrainArray[$y][$x] = new stdClass();
         }
         if ($feature = $this->terrainFeatures->$terrainName) {
