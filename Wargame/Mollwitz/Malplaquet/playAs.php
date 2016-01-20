@@ -24,7 +24,7 @@ You should have received a copy of the GNU General Public License
 <style>
     body{
         background:#000;
-        background:url("<?=url("js/Battle_of_Malplaquet,_1709.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/mollwitz/images/The_Battle_of_Malplaquet_1709.png")?>") #333 no-repeat;
         background-position:center 10%;
         background-size:100%;
 

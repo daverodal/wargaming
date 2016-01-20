@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 <?php
 ?>
 <style type="text/css">
-        <?php include_once "Mollwitz/playAs.css";?>
+        <?php include_once "Wargame/Mollwitz/playAs.css";?>
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("js/Bataille_d'Aliwal_1.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Bataille_d_Aliwal_1.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

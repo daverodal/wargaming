@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <style>
         body{
             background:#000;
-            background:url("<?=url("js/The_Duke_of_Marlborough_at_the_Battle_of_Oudenaarde_(1708)_by_John_Wootton.jpg")?>") #333 no-repeat;
+            background:url("<?=url("vendor/wargame/mollwitz/images/The_Duke_of_Marlborough_at_the_Battle_of_Oudenaarde_(1708)_by_John_Wootton.jpg")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 

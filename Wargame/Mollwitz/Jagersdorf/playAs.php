@@ -26,7 +26,7 @@ You should have received a copy of the GNU General Public License
     <?php //include "playAs.css";?>
 
     body{
-        background:url("<?=url("js/GrossJaegersdorf.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/mollwitz/images/GrossJaegersdorf.jpg")?>") #333 no-repeat;
         background-position:center 10%;
         background-size:100%;
 

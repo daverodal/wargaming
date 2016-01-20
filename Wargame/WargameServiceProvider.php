@@ -27,6 +27,11 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/SPI/TinCans/Images' => public_path('vendor/wargame/spi/tincans/images'),
         ], 'tincans');
 
+
+        $this->publishes([
+            __DIR__.'/Mollwitz/Images' => public_path('vendor/wargame/mollwitz/images'),
+        ], 'mollwitz');
+
         $this->publishes([
             __DIR__.'/SPI/FinalChapter/Images' => public_path('vendor/wargame/spi/finalchapter/images'),
         ], 'finalchapter');

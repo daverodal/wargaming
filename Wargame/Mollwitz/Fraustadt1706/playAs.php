@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <style>
         body{
             background:#000;
-            background:url("<?=url("js/Regementets_Kalk.jpg")?>") #333 no-repeat;
+            background:url("<?=url("vendor/wargame/mollwitz/images/Regementets_Kalk.jpg")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 

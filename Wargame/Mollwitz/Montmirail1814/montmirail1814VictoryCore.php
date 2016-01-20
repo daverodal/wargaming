@@ -1,4 +1,5 @@
 <?php
+namespace Wargame\Mollwitz\Montmirail1814;
 /*
 Copyright 2012-2015 David Rodal
 
@@ -22,9 +23,8 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
 
-class montmirail1814VictoryCore extends victoryCore
+class montmirail1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
 
     function __construct($data)
@@ -36,7 +36,7 @@ class montmirail1814VictoryCore extends victoryCore
             $this->deadGuardInf = $data->victory->deadGuardInf;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
             $this->deadGuardInf = false;
         }
@@ -63,7 +63,7 @@ class montmirail1814VictoryCore extends victoryCore
 
     public function specialHexChange($args)
     {
-        $battle = Battle::getBattle();
+        $battle = \Wargame\Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {

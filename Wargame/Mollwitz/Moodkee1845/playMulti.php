@@ -20,12 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><style type="text/css">
-        <?php include "playAs.css";?>
+        <?php include "Wargame/Mollwitz/playAs.css";?>
 
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("js/British_Indian_Empire_1909_Imperial_Gazetteer_of_India.png")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/British_Indian_Empire_1909_Imperial_Gazetteer_of_India.png")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

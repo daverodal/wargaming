@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 <style>
     body{
         background:#000;
-        background:url("<?=url("js/Bataille_d'Aliwal_1.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/mollwitz/images/Bataille_d_Aliwal_1.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
 

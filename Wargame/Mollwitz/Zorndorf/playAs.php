@@ -31,7 +31,7 @@
 <style>
     body{
         background:#000;
-        background:url("<?=url("js/Schlacht-zorndorf.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/mollwitz/images/Schlacht-zorndorf.jpg")?>") #333 no-repeat;
         background-position:center 10%;
         background-size:100%;
 

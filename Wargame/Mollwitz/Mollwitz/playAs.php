@@ -29,7 +29,7 @@
     <?php include "playAs.css";?>
     body{
         background:#000;
-        background:url("<?=url("js/Prussian_Army_during_battle_of_Mollwitz_1741.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/mollwitz/images/Prussian_Army_during_battle_of_Mollwitz_1741.jpg")?>") #333 no-repeat;
         background-position:center 10%;
         background-size:100%;
 

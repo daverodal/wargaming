@@ -1,4 +1,5 @@
 <?php
+namespace Wargame\Mollwitz\Montmirail1814;
 use \Wargame\Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -46,7 +47,7 @@ class Montmirail1814 extends \Wargame\Mollwitz\JagCore
 
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -91,7 +92,7 @@ class Montmirail1814 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new Victory("Mollwitz/Montmirail1814/montmirail1814VictoryCore.php");
+            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Montmirail1814\\montmirail1814VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

@@ -16,11 +16,11 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 ?><style type="text/css">
-        <?php include "playAs.css";?>
+        <?php include "Wargame/Mollwitz/playAs.css";?>
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("js/Schlacht_von_Kesselsdorf.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Schlacht_von_Kesselsdorf.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }

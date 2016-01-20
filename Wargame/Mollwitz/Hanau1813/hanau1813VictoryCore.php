@@ -1,5 +1,7 @@
 <?php
-/*
+namespace Wargame\Mollwitz\Hanau1813;
+use \Wargame\Battle;
+    /*
 Copyright 2012-2015 David Rodal
 
 This program is free software; you can redistribute it
@@ -22,9 +24,8 @@ You should have received a copy of the GNU General Public License
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-include "victoryCore.php";
 
-class hanau1813VictoryCore extends victoryCore
+class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
 
     function __construct($data)
@@ -36,7 +37,7 @@ class hanau1813VictoryCore extends victoryCore
             $this->deadGuardInf = $data->victory->deadGuardInf;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
+            $this->movementCache = new \stdClass();
             $this->gameOver = false;
             $this->deadGuardInf = false;
         }
@@ -202,3 +203,4 @@ class hanau1813VictoryCore extends victoryCore
         }
     }
 }
+use Wargame\Mollwitz\Hanau1813\Hanau1813;

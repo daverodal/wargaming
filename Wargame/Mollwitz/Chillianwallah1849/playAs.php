@@ -24,7 +24,7 @@ You should have received a copy of the GNU General Public License
 <style>
     body{
         background:#000;
-        background:url("<?=url("js/Monument_of_the_Battle_of_Chillianwala_-_inscription.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/mollwitz/images/Monument_of_the_Battle_of_Chillianwala_-_inscription.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
 

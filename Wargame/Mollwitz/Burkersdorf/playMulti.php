@@ -15,11 +15,11 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 ?><style type="text/css">
-        <?php include "playAs.css";?>
+        <?php include "Wargame/Mollwitz/playAs.css";?>
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("js/Antoine_Pesne_-_Frederick_the_Great_as_Crown_Prince_-_WGA17377.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Antoine_Pesne_-_Frederick_the_Great_as_Crown_Prince_-_WGA17377.jpg")?>") #333 no-repeat;
             background-position: center 0;
             background-size:50%;
         }

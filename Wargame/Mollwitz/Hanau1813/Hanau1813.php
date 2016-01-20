@@ -1,4 +1,5 @@
 <?php
+namespace Wargame\Mollwitz\Hanau1813;
 use \Wargame\Mollwitz\UnitFactory;
 /*
 Copyright 2012-2015 David Rodal
@@ -52,7 +53,7 @@ class Hanau1813 extends \Wargame\Mollwitz\JagCore
 
     function save()
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();
@@ -97,7 +98,7 @@ class Hanau1813 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new Victory("Mollwitz/Hanau1813/hanau1813VictoryCore.php");
+            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Hanau1813\\hanau1813VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

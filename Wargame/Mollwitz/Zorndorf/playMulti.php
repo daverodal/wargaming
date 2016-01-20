@@ -20,11 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><style type="text/css">
-        <?php include "playAs.css";?>
+        <?php include "Wargame/Mollwitz/playAs.css";?>
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("js/Bataille_de_Zorndorf.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Bataille_de_Zorndorf.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:1700px;
         }

@@ -24,7 +24,7 @@ You should have received a copy of the GNU General Public License
 <style>
     body{
         background:#000;
-        background:url("<?=url("js/British_Indian_Empire_1909_Imperial_Gazetteer_of_India.png")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/mollwitz/images/British_Indian_Empire_1909_Imperial_Gazetteer_of_India.png")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
 
