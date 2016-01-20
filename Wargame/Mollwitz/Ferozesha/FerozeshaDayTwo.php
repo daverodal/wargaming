@@ -144,7 +144,7 @@ class FerozeshaDayTwo extends \Wargame\Mollwitz\IndiaCore
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
         } else {
-            $this->victory = new \Victory("\\Mollwitz\\Ferozesha\\ferozesha2VictoryCore");
+            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Ferozesha\\ferozesha2VictoryCore");
 
 
             $this->mapData->blocksZoc->blocked = true;

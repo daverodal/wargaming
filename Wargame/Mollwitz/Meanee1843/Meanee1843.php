@@ -129,7 +129,7 @@ class Meanee1843 extends \Wargame\Mollwitz\IndiaCore
         if ($data) {
 
         } else {
-            $this->victory = new \Victory("\\Mollwitz\\Meanee1843\\meanee1843VictoryCore");
+            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Meanee1843\\meanee1843VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

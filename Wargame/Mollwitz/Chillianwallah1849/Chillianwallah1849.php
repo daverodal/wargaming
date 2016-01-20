@@ -147,7 +147,7 @@ class Chillianwallah1849 extends \Wargame\Mollwitz\IndiaCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("Mollwitz\\Chillianwallah1849\\chillianwallah1849VictoryCore");
+            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Chillianwallah1849\\chillianwallah1849VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

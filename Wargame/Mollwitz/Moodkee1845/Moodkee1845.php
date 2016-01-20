@@ -119,7 +119,7 @@ class Moodkee1845 extends \Wargame\Mollwitz\IndiaCore
             $this->specialHexB = $data->specialHexB;
         } else {
 
-            $this->victory = new \Victory("\\Mollwitz\\Moodkee1845\\moodkee1845VictoryCore");
+            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Moodkee1845\\moodkee1845VictoryCore");
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;
 

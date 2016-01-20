@@ -149,7 +149,7 @@ class Aliwal1845 extends \Wargame\Mollwitz\IndiaCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("Mollwitz\\Aliwal1845\\aliwal1845VictoryCore");
+            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Aliwal1845\\aliwal1845VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;
