@@ -49,8 +49,8 @@ class Minden extends \Wargame\Mollwitz\JagCore
     }
 
     static function getPlayerData($scenario){
-        return \Wargame\Battle::register(["Observer", "Anglo Allied", "French"],
-            ["Observer", "French", "Anglo Allied" ]);
+        return \Wargame\Battle::register(["Observer", "French", "Anglo Allied"],
+            ["Observer", "Anglo Allied", "French" ]);
     }
 
 
