@@ -22,6 +22,9 @@
 
 
 
+@include player(Rebel, One, $rebelColor);
+@include player(Loyalist,Two,$loyalistColor);
+@include player(LoyalGuards,Three,$loyalistGuardColor);
 @include player(rebel, One, $rebelColor);
 @include player(loyalist,Two,$loyalistColor);
 @include player(loyalGuards,Three,$loyalistGuardColor);

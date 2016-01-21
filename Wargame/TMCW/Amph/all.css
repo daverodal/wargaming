@@ -1207,6 +1207,42 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+.playerRebel {
+  background: #5c5;
+  border-color: #5c5 !important; }
+
+.RebelFace, .playerRebelFace {
+  color: #5c5; }
+
+.Rebel {
+  background-color: #5c5; }
+  .Rebel .unit-desig {
+    color: white; }
+
+.playerLoyalist {
+  background: #84b5ff;
+  border-color: #84b5ff !important; }
+
+.LoyalistFace, .playerLoyalistFace {
+  color: #84b5ff; }
+
+.Loyalist {
+  background-color: #84b5ff; }
+  .Loyalist .unit-desig {
+    color: white; }
+
+.playerLoyalGuards {
+  background: #aaa;
+  border-color: #aaa !important; }
+
+.LoyalGuardsFace, .playerLoyalGuardsFace {
+  color: #aaa; }
+
+.LoyalGuards {
+  background-color: #aaa; }
+  .LoyalGuards .unit-desig {
+    color: white; }
+
 .playerrebel {
   background: #5c5;
   border-color: #5c5 !important; }
