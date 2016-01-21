@@ -85,7 +85,7 @@ class Dubba1843 extends \Wargame\Mollwitz\IndiaCore
         $beluchiStrength = 2;
 
         UnitFactory::$injector = $this->force;
-        if($this->scenario->commandControl){
+        if(!empty($this->scenario->commandControl)){
             $beluchiStrength = 3;
 
             for ($i = 0; $i < 2; $i++) {
@@ -103,7 +103,7 @@ class Dubba1843 extends \Wargame\Mollwitz\IndiaCore
             UnitFactory::create("infantry-1", BELUCHI_FORCE, "deployBox", "SikhArtBadge.png", 2, 2, 3, true, STATUS_CAN_DEPLOY, "B", 1, 2, "Beluchi", false, 'artillery');
         }
 
-        if($this->scenario->toughBritish){
+        if(!empty($this->scenario->toughBritish)){
 
             for ($i = 0; $i < 4; $i++) {
                 UnitFactory::create("infantry-1", BRITISH_FORCE, "deployBox", "BritInfBadge.png", 7, 7, 4, true, STATUS_CAN_DEPLOY, "A", 1, 1, "British", false, 'infantry');
@@ -144,7 +144,7 @@ class Dubba1843 extends \Wargame\Mollwitz\IndiaCore
             }
         }
 
-        if($this->scenario->commandControl) {
+        if(!empty($this->scenario->commandControl)) {
             for ($i = 0; $i < 4; $i++) {
                 UnitFactory::create("infantry-1", BRITISH_FORCE, "deployBox", "BritInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "British", false, 'hq');
             }

@@ -80,7 +80,7 @@ class FerozeshaDayTwo extends \Wargame\Mollwitz\IndiaCore
 
         /* Sikh */
 
-        if ($scenario->commandControl) {
+        if (!empty($scenario->commandControl)) {
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("infantry-1", SIKH_FORCE, "deployBox", "SikhInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Sikh", false, 'hq');
             }
@@ -105,7 +105,7 @@ class FerozeshaDayTwo extends \Wargame\Mollwitz\IndiaCore
         /* British */
 
         /* British */
-        if ($scenario->commandControl) {
+        if (!empty($scenario->commandControl)) {
             for ($i = 0; $i < 4; $i++) {
                 UnitFactory::create("infantry-1", BRITISH_FORCE, "deployBox", "BritInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "British", false, 'hq');
             }

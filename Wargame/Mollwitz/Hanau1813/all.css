@@ -2133,51 +2133,51 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-.playerTwo {
+.playerAustrian {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.AustrianFace, .playerTwoFace {
+.AustrianFace, .playerAustrianFace {
   color: #df5842; }
 
 .Austrian .counterWrapper {
   background-color: white; }
 
-.playerOne {
+.playerFrench {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.FrenchFace, .playerOneFace {
+.FrenchFace, .playerFrenchFace {
   color: #84b5ff; }
 
 .French .counterWrapper {
   background-color: #0003b4; }
 
-.playerThree {
+.playerRussian {
   background: #4cb800;
   border-color: #4cb800 !important; }
 
-.RussianFace, .playerThreeFace {
+.RussianFace, .playerRussianFace {
   color: #4cb800; }
 
 .Russian .counterWrapper {
   background-color: #006114; }
 
-.playerFour {
+.playerGuard {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.GuardFace, .playerFourFace {
+.GuardFace, .playerGuardFace {
   color: white; }
 
 .Guard .counterWrapper {
   background-color: #0003b4; }
 
-.playerThree {
+.playerBavarian {
   background: #FD0013;
   border-color: #FD0013 !important; }
 
-.BavarianFace, .playerThreeFace {
+.BavarianFace, .playerBavarianFace {
   color: #FD0013; }
 
 .Bavarian .counterWrapper {

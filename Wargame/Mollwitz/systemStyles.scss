@@ -25,12 +25,13 @@ $badge-size: 14px;
 $vintage-badge-size:19px;
 $unit-numbers-size:16px;
 $vintage-unit-numbers-size:10px;
+
 @mixin player($nationality, $player, $color, $counterColor: $color, $faceColor: $color) {
-  .player#{$player} {
+  .player#{$nationality} {
     background: $color;
     border-color: $color !important;
   }
-  .#{$nationality}Face, .player#{$player}Face {
+  .#{$nationality}Face, .player#{$nationality}Face {
     color: $faceColor;
   }
   .#{$nationality} .counterWrapper {

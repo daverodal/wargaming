@@ -2136,21 +2136,21 @@ You should have received a copy of the GNU General Public License
 #tecImage {
   width: 750px; }
 
-.playerOne {
+.playerBritish {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.BritishFace, .playerOneFace {
+.BritishFace, .playerBritishFace {
   color: #df5842; }
 
 .British .counterWrapper {
   background-color: #f00; }
 
-.playerTwo {
+.playerSikh {
   background: #c68100;
   border-color: #c68100 !important; }
 
-.SikhFace, .playerTwoFace {
+.SikhFace, .playerSikhFace {
   color: #c6c102; }
 
 .Sikh .counterWrapper {

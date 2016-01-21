@@ -2151,11 +2151,11 @@ svg marker#head {
 .French .counterWrapper {
   background-color: white; }
 
-.playerAnglo-Allied {
+.playerAngloAllied {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.AngloAlliedFace, .playerAnglo-AlliedFace {
+.AngloAlliedFace, .playerAngloAlliedFace {
   color: #df5842; }
 
 .AngloAllied .counterWrapper {

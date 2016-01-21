@@ -2133,31 +2133,31 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-.playerOne {
+.playerLoyalist {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.LoyalistFace, .playerOneFace {
+.LoyalistFace, .playerLoyalistFace {
   color: #df5842; }
 
 .Loyalist .counterWrapper {
   background-color: #f00; }
 
-.playerTwo {
+.playerRebel {
   background: #d4d300;
   border-color: #d4d300 !important; }
 
-.RebelFace, .playerTwoFace {
+.RebelFace, .playerRebelFace {
   color: #0117de; }
 
 .Rebel .counterWrapper {
   background-color: #0117de; }
 
-.playerThree {
+.playerMilitia {
   background: #fffd7f;
   border-color: #fffd7f !important; }
 
-.MilitiaFace, .playerThreeFace {
+.MilitiaFace, .playerMilitiaFace {
   color: #fffd7f; }
 
 .Militia .counterWrapper {
@@ -2293,11 +2293,11 @@ You should have received a copy of the GNU General Public License
 .Militia.pontoon .unit-numbers {
   display: none; }
 
-.playerThree {
+.playerHessian {
   background: #4cb800;
   border-color: #4cb800 !important; }
 
-.HessianFace, .playerThreeFace {
+.HessianFace, .playerHessianFace {
   color: #4cb800; }
 
 .Hessian .counterWrapper {

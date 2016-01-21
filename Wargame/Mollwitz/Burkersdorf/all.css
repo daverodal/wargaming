@@ -2133,21 +2133,21 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-.playerOne {
+.playerAustrian {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.AustrianFace, .playerOneFace {
+.AustrianFace, .playerAustrianFace {
   color: #df5842; }
 
 .Austrian .counterWrapper {
   background-color: white; }
 
-.playerTwo {
+.playerPrussian {
   background: #fffd7f;
   border-color: #fffd7f !important; }
 
-.PrussianFace, .playerTwoFace {
+.PrussianFace, .playerPrussianFace {
   color: #0117de; }
 
 .Prussian .counterWrapper {

@@ -131,7 +131,7 @@ class Jagersdorf extends \Wargame\Mollwitz\JagCore {
 
             UnitFactory::create("infantry-1", BLUE_FORCE, "deployBox", "PruArtBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "D", 1, $artRange, "Prussian",false,'artillery');
             UnitFactory::create("infantry-1", BLUE_FORCE, "deployBox", "PruArtBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "D", 1, $artRange, "Prussian",false,'artillery');
-            if($this->scenario->extraArt){
+            if(!empty($this->scenario->extraArt)){
                 UnitFactory::create("infantry-1", BLUE_FORCE, "deployBox", "PruArtBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "D", 1, $artRange, "Prussian",false,'artillery');
             }
 

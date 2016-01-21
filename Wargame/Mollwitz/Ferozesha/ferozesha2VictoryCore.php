@@ -45,7 +45,7 @@ class ferozesha2VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
     public function specialHexChange($args)
     {
         $battle = \Wargame\Battle::getBattle();
-        if ($battle->scenario->dayTwo) {
+        if (!empty($battle->scenario->dayTwo)) {
             list($mapHexName, $forceId) = $args;
 
             if ($forceId == SIKH_FORCE) {

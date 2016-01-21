@@ -2133,11 +2133,11 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-.playerAnglo-Allied {
+.playerAngloAllied {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.AngloAlliedFace, .playerAnglo-AlliedFace {
+.AngloAlliedFace, .playerAngloAlliedFace {
   color: #df5842; }
 
 .AngloAllied .counterWrapper {

@@ -23,7 +23,7 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 namespace Wargame\Mollwitz\Brandywine1777;
-
+use \Wargame\Battle;
 class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
     public $isDemoralized = false;

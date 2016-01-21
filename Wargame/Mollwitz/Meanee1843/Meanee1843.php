@@ -80,7 +80,7 @@ class Meanee1843 extends \Wargame\Mollwitz\IndiaCore
 
 
             /* Beluchi */
-        if($this->scenario->commandControl) {
+        if(!empty($this->scenario->commandControl)) {
             $sikhStrength = 3;
             for ($i = 0; $i < 2; $i++) {
                 UnitFactory::create("infantry-1", BELUCHI_FORCE, "deployBox", "SikhInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Beluchi", false, 'hq');
@@ -115,7 +115,7 @@ class Meanee1843 extends \Wargame\Mollwitz\IndiaCore
             for ($i = 0; $i < 1; $i++) {
                 UnitFactory::create("infantry-1", BRITISH_FORCE, "deployBox", "BritHorArtBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "B", 1, 3, "British", false, 'horseartillery');
             }
-        if($this->scenario->commandControl) {
+        if(!empty($this->scenario->commandControl)) {
             for ($i = 0; $i < 4; $i++) {
                 UnitFactory::create("infantry-1", BRITISH_FORCE, "deployBox", "BritInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'hq');
             }
