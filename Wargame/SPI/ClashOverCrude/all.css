@@ -963,11 +963,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #df5842; }
 
 .rebel {
@@ -975,11 +975,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: black; }
 
-.playerTwo {
+.playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
 .loyalist {
@@ -1207,11 +1207,11 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-.playerOne {
+.playerus {
   background: #9bac3c;
   border-color: #9bac3c !important; }
 
-.usFace, .playerOneFace {
+.usFace, .playerusFace {
   color: #9bac3c; }
 
 .us {
@@ -1219,11 +1219,11 @@ svg marker#head {
   .us .unit-desig {
     color: black; }
 
-.playerTwo {
+.playersaudi {
   background: #f6de74;
   border-color: #f6de74 !important; }
 
-.saudiFace, .playerTwoFace {
+.saudiFace, .playersaudiFace {
   color: #f6de74; }
 
 .saudi {
@@ -1231,11 +1231,11 @@ svg marker#head {
   .saudi .unit-desig {
     color: black; }
 
-.playerThree {
+.playeriraqi {
   background: #fed81b;
   border-color: #fed81b !important; }
 
-.iraqiFace, .playerThreeFace {
+.iraqiFace, .playeriraqiFace {
   color: #fed81b; }
 
 .iraqi {
@@ -1243,11 +1243,11 @@ svg marker#head {
   .iraqi .unit-desig {
     color: black; }
 
-.playerFour {
+.playeriranian {
   background: #ba9d25;
   border-color: #ba9d25 !important; }
 
-.iranianFace, .playerFourFace {
+.iranianFace, .playeriranianFace {
   color: #ba9d25; }
 
 .iranian {
@@ -1255,11 +1255,11 @@ svg marker#head {
   .iranian .unit-desig {
     color: black; }
 
-.playerFive {
+.playerkuwati {
   background: #bba866;
   border-color: #bba866 !important; }
 
-.kuwatiFace, .playerFiveFace {
+.kuwatiFace, .playerkuwatiFace {
   color: #bba866; }
 
 .kuwati {
@@ -1267,11 +1267,11 @@ svg marker#head {
   .kuwati .unit-desig {
     color: black; }
 
-.playerSix {
+.playerquatar {
   background: #bfb8b2;
   border-color: #bfb8b2 !important; }
 
-.quatarFace, .playerSixFace {
+.quatarFace, .playerquatarFace {
   color: #bfb8b2; }
 
 .quatar {
@@ -1279,11 +1279,11 @@ svg marker#head {
   .quatar .unit-desig {
     color: black; }
 
-.playerSix {
+.playerbahrain {
   background: #bfb8b2;
   border-color: #bfb8b2 !important; }
 
-.bahrainFace, .playerSixFace {
+.bahrainFace, .playerbahrainFace {
   color: #bfb8b2; }
 
 .bahrain {
@@ -1291,11 +1291,11 @@ svg marker#head {
   .bahrain .unit-desig {
     color: black; }
 
-.playerThree {
+.playerloyalGuards {
   background: #aaa;
   border-color: #aaa !important; }
 
-.loyalGuardsFace, .playerThreeFace {
+.loyalGuardsFace, .playerloyalGuardsFace {
   color: #aaa; }
 
 .loyalGuards {
@@ -1303,11 +1303,11 @@ svg marker#head {
   .loyalGuards .unit-desig {
     color: black; }
 
-.playerFour {
+.playereec {
   background: #99b87c;
   border-color: #99b87c !important; }
 
-.eecFace, .playerFourFace {
+.eecFace, .playereecFace {
   color: #99b87c; }
 
 .eec {
@@ -1315,11 +1315,11 @@ svg marker#head {
   .eec .unit-desig {
     color: black; }
 
-.playerFive {
+.playerusn {
   background: #4a9cb2;
   border-color: #4a9cb2 !important; }
 
-.usnFace, .playerFiveFace {
+.usnFace, .playerusnFace {
   color: #4a9cb2; }
 
 .usn {
@@ -1327,11 +1327,11 @@ svg marker#head {
   .usn .unit-desig {
     color: black; }
 
-.playerFive {
+.playerisraeli {
   background: powderblue;
   border-color: powderblue !important; }
 
-.israeliFace, .playerFiveFace {
+.israeliFace, .playerisraeliFace {
   color: powderblue; }
 
 .israeli {

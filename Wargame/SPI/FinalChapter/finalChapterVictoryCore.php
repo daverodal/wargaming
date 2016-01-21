@@ -199,7 +199,7 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
         }
         if ($gameRules->mode === MOVING_MODE) {
             $gameRules->flashMessages[] = "@hide deadpile";
-            if ($battle->force->reinforceTurns->$turn->$forceId) {
+            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
@@ -216,26 +216,6 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
         }
     }
 
-    public function preRecoverUnits($args)
-    {
-        /* @var unit $unit */
-        $unit = $args[0];
-
-        $b = Battle::getBattle();
-
-        $goal = array_merge([101], $this->airdropZones);
-        $this->rebelGoal = $goal;
-
-        $goal = array();
-        for($row = 1;$row <= 20;$row++){
-            $goal[] = 2000+$row;
-        }
-        /* Don't put lower right corner in twice! */
-        for($col = 1;$col <= 19;$col++){
-            $goal[] = ($col*100)+20;
-        }
-        $this->loyalistGoal = $goal;
-    }
 
 
     public function postRecoverUnit($args)
@@ -323,9 +303,9 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
     public function playerTurnChange($arg)
     {
         $battle = Battle::getBattle();
+        $force_name = Battle::$forceName;
         $attackingId = $arg[0];
         $gameRules = $battle->gameRules;
-        global $force_name;
         $gameRules->flashMessages[] = $force_name[$attackingId]." Player Turn";
     }
 

@@ -134,12 +134,12 @@ $phase_name[20] = "<span class='playerOneFace'>fNameOne</span> First ";
 $phase_name[21] = "<span class='playerTwoFace'>fNameTwo</span> Second ";
 $phase_name[22] = "<span class='playerOneFace'>fNameOne</span> Second ";
 
-$phase_name[23] = "<span class='playerOneFace'>fNameThree</span> Replacement";
-$phase_name[24] = "<span class='playerOneFace'>fNameThree</span> Move";
-$phase_name[25] = "<span class='playerOneFace'>fNameThree</span>";
-$phase_name[26] = "<span class='playerOneFace'>fNameFour</span> Replacement";
-$phase_name[27] = "<span class='playerOneFace'>fNameFour</span> Move";
-$phase_name[28] = "<span class='playerOneFace'>fNameFour</span>";
+$phase_name[23] = "<span class='playerThreeFace'>fNameThree</span> Replacement";
+$phase_name[24] = "<span class='playerThreeFace'>fNameThree</span> Move";
+$phase_name[25] = "<span class='playerThreeFace'>fNameThree</span>";
+$phase_name[26] = "<span class='playerFourFace'>fNameFour</span> Replacement";
+$phase_name[27] = "<span class='playerFourFace'>fNameFour</span> Move";
+$phase_name[28] = "<span class='playerFourFace'>fNameFour</span>";
 $phase_name[29] = "<span class='playerOneFace'>fNameOne</span> Air ";
 $phase_name[30] = "<span class='playerOneFace'>fNameTwo</span> Air ";
 $phase_name[31] = "<span class='playerOneFace'>fNameOne</span> Torp ";

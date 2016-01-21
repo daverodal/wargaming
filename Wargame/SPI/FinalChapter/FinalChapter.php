@@ -50,13 +50,11 @@ class FinalChapter extends \ModernLandBattle
 
     static function getPlayerData($scenario){
 
-
-
         $forceName[0] = "Neutral Observer";
         $forceName[1] = "Eastern";
         $forceName[2] = "Western";
-        $forceName[3] = "German";
-        $forceName[4] = "German";
+        $forceName[3] = "West German";
+        $forceName[4] = "East German";
 
         $deployName = [0, 1, 2, 3, 4];
         return \Wargame\Battle::register($forceName,$deployName);

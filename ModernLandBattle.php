@@ -76,6 +76,7 @@ class ModernLandBattle extends LandBattle
             $this->combatRules = new CombatRules($this->force, $this->terrain);
             $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
         }
+        static::getPlayerData($scenario);
     }
     /*
      * terrainInit() gets called during game init, from unitInit(). It happens as a new game gets started.

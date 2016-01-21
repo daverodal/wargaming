@@ -963,11 +963,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #df5842; }
 
 .rebel {
@@ -975,11 +975,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: black; }
 
-.playerTwo {
+.playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
 .loyalist {
@@ -1207,11 +1207,23 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-.playerOne {
+.playerEastern {
   background: #ff6c29;
   border-color: #ff6c29 !important; }
 
-.easternFace, .playerOneFace {
+.EasternFace, .playerEasternFace {
+  color: #ff6c29; }
+
+.Eastern {
+  background-color: #ff6c29; }
+  .Eastern .unit-desig {
+    color: black; }
+
+.playereastern {
+  background: #ff6c29;
+  border-color: #ff6c29 !important; }
+
+.easternFace, .playereasternFace {
   color: #ff6c29; }
 
 .eastern {
@@ -1219,11 +1231,11 @@ svg marker#head {
   .eastern .unit-desig {
     color: black; }
 
-.playerThree {
+.playerwesternGerman {
   background: #ADDAD6;
   border-color: #ADDAD6 !important; }
 
-.westernGermanFace, .playerThreeFace {
+.westernGermanFace, .playerwesternGermanFace {
   color: #ADDAD6; }
 
 .westernGerman {
@@ -1231,11 +1243,23 @@ svg marker#head {
   .westernGerman .unit-desig {
     color: black; }
 
-.playerTwo {
+.playerWest-German {
+  background: #ADDAD6;
+  border-color: #ADDAD6 !important; }
+
+.West-GermanFace, .playerWest-GermanFace {
+  color: #ADDAD6; }
+
+.West-German {
+  background-color: #ADDAD6; }
+  .West-German .unit-desig {
+    color: black; }
+
+.playerwestern {
   background: #5c4;
   border-color: #5c4 !important; }
 
-.westernFace, .playerTwoFace {
+.westernFace, .playerwesternFace {
   color: #5c4; }
 
 .western {
@@ -1243,11 +1267,23 @@ svg marker#head {
   .western .unit-desig {
     color: black; }
 
-.playerFour {
+.playerWestern {
+  background: #5c4;
+  border-color: #5c4 !important; }
+
+.WesternFace, .playerWesternFace {
+  color: #5c4; }
+
+.Western {
+  background-color: #5c4; }
+  .Western .unit-desig {
+    color: black; }
+
+.playereasternGerman {
   background: #afa2b3;
   border-color: #afa2b3 !important; }
 
-.easternGermanFace, .playerFourFace {
+.easternGermanFace, .playereasternGermanFace {
   color: #afa2b3; }
 
 .easternGerman {
@@ -1255,11 +1291,23 @@ svg marker#head {
   .easternGerman .unit-desig {
     color: black; }
 
-.playerFive {
+.playerEast-German {
+  background: #afa2b3;
+  border-color: #afa2b3 !important; }
+
+.East-GermanFace, .playerEast-GermanFace {
+  color: #afa2b3; }
+
+.East-German {
+  background-color: #afa2b3; }
+  .East-German .unit-desig {
+    color: black; }
+
+.playeryugoslavian {
   background: #ffd189;
   border-color: #ffd189 !important; }
 
-.yugoslavianFace, .playerFiveFace {
+.yugoslavianFace, .playeryugoslavianFace {
   color: #ffd189; }
 
 .yugoslavian {
@@ -1267,11 +1315,11 @@ svg marker#head {
   .yugoslavian .unit-desig {
     color: black; }
 
-.playerSix {
+.playerpolish {
   background: #ac7b1e;
   border-color: #ac7b1e !important; }
 
-.polishFace, .playerSixFace {
+.polishFace, .playerpolishFace {
   color: #ac7b1e; }
 
 .polish {
@@ -1279,11 +1327,11 @@ svg marker#head {
   .polish .unit-desig {
     color: black; }
 
-.playerSeven {
+.playerbulgarian {
   background: #c16844;
   border-color: #c16844 !important; }
 
-.bulgarianFace, .playerSevenFace {
+.bulgarianFace, .playerbulgarianFace {
   color: #c16844; }
 
 .bulgarian {

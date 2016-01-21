@@ -574,9 +574,12 @@ x.register("gameRules", function(gameRules,data) {
 
     var html = "<span id='turn'>Turn "+turn+" of "+maxTurn+"</span> ";
     var phase = gameRules.phase_name[gameRules.phase];
+    debugger;
     phase = phase.replace(/fNameOne/,DR.playerOne);
     phase = phase.replace(/playerOneFace/,"player"+DR.playerOne.replace(/ /g,'-')+"Face");
     phase = phase.replace(/playerTwoFace/,"player"+DR.playerTwo.replace(/ /g,'-')+"Face");
+    phase = phase.replace(/playerThreeFace/,"player"+DR.playerThree.replace(/ /g,'-')+"Face");
+    phase = phase.replace(/playerFourFace/,"player"+DR.playerFour.replace(/ /g,'-')+"Face");
 
     phase = phase.replace(/fNameTwo/,DR.playerTwo);
     phase = phase.replace(/fNameThree/,DR.playerThree);
