@@ -14,7 +14,7 @@
 @endsection
 
 @section('victoryConditions')
-    @include('wargame::SPI.FinalCHapter.victoryConditions')
+    @include('wargame::SPI.FinalChapter.victoryConditions')
 @endsection
 
 @section('commonRules')
