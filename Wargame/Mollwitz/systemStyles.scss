@@ -143,6 +143,7 @@ $vintage-unit-numbers-size:10px;
   font-size:7px;
   top:16px;
   word-wrap:break-word;
+  height:16px;
   &.infoLen7{
     right:16px;
   }
@@ -312,15 +313,15 @@ $danishWrapperColor: #bfbfbf;
   background-size: 14px;
 }
 
-@include badge(Native, Native);
-@include badge(Austrian, Aus);
-@include badge(Prussian, Pru);
-@include badge(Russian, Rus);
-@include badge(French, French);
-@include badge(AngloAllied, Ang);
-@include badge(Anglo, Ang);
-@include badge(Allied, Ang);
-@include badge(Swedish, Swe);
+//@include badge(Native, Native);
+//@include badge(Austrian, Aus);
+//@include badge(Prussian, Pru);
+//@include badge(Russian, Rus);
+//@include badge(French, French);
+//@include badge(AngloAllied, Ang);
+//@include badge(Anglo, Ang);
+//@include badge(Allied, Ang);
+//@include badge(Swedish, Swe);
 
 #header #GR a {
   color: black;

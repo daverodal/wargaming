@@ -26,6 +26,10 @@ $bavarianColor: #FD0013;
 @include player(Austrian, Three, $austrianColor, $austrianWrapperColor, $austrianWrapperColor);
 @include player(Dutch, Four, $prussianColor, $prussianWrapperColor);
 
+
+@include headerColor(French,$frenchColor, $frenchColor );
+@include headerColor(Allies,$angloAlliedColor, $angloAlliedWrapperColor );
+
 .french.specialHexes{
   background-color: $frenchColor;
 }

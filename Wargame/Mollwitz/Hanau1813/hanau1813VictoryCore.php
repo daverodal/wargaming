@@ -156,7 +156,7 @@ class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
         $scenario = $b->scenario;
 
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
-            if($scenario->earlyMovement){
+            if(!empty($scenario->earlyMovement)){
                 $b->gameRules->flashMessages[] = "Allies south the the river Kinzig may not move.";
             }else{
                 $b->gameRules->flashMessages[] = "No Allied movement this turn.";
