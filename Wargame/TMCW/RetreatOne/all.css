@@ -963,11 +963,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #df5842; }
 
 .rebel {
@@ -975,11 +975,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
 .loyalist {
@@ -1187,11 +1187,11 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-.playerOne {
+.playerlaconians {
   background: #dd4f2b;
   border-color: #dd4f2b !important; }
 
-.laconiansFace, .playerOneFace {
+.laconiansFace, .playerlaconiansFace {
   color: #dd4f2b; }
 
 .laconians {
@@ -1199,11 +1199,11 @@ svg marker#head {
   .laconians .unit-desig {
     color: white; }
 
-.playerTwo {
+.playercaprolians {
   background: #e8e22c;
   border-color: #e8e22c !important; }
 
-.caproliansFace, .playerTwoFace {
+.caproliansFace, .playercaproliansFace {
   color: #c8c21c; }
 
 .caprolians {

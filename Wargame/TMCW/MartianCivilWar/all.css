@@ -963,11 +963,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #df5842; }
 
 .rebel {
@@ -975,11 +975,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
 .loyalist {

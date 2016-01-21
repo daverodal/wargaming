@@ -963,11 +963,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #df5842; }
 
 .rebel {
@@ -975,11 +975,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
 .loyalist {
@@ -1207,11 +1207,11 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-.playerOne {
+.playerindian {
   background: #ff9933;
   border-color: #ff9933 !important; }
 
-.indianFace, .playerOneFace {
+.indianFace, .playerindianFace {
   color: #ff9933; }
 
 .indian {
@@ -1219,11 +1219,11 @@ svg marker#head {
   .indian .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerpakistani {
   background: #02b500;
   border-color: #02b500 !important; }
 
-.pakistaniFace, .playerTwoFace {
+.pakistaniFace, .playerpakistaniFace {
   color: #02b500; }
 
 .pakistani {

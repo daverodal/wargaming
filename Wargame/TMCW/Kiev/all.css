@@ -963,11 +963,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #df5842; }
 
 .rebel {
@@ -975,11 +975,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
 .loyalist {
@@ -1207,11 +1207,11 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-.playerOne {
+.playergerman {
   background: #58c3ff;
   border-color: #58c3ff !important; }
 
-.germanFace, .playerOneFace {
+.germanFace, .playergermanFace {
   color: #58c3ff; }
 
 .german {
@@ -1219,11 +1219,11 @@ svg marker#head {
   .german .unit-desig {
     color: white; }
 
-.playerFour {
+.playersecondArmy {
   background: #5d6cff;
   border-color: #5d6cff !important; }
 
-.secondArmyFace, .playerFourFace {
+.secondArmyFace, .playersecondArmyFace {
   color: #5d6cff; }
 
 .secondArmy {
@@ -1231,11 +1231,11 @@ svg marker#head {
   .secondArmy .unit-desig {
     color: white; }
 
-.playerFive {
+.playerfirstPanzerArmy {
   background: #ff3f3c;
   border-color: #ff3f3c !important; }
 
-.firstPanzerArmyFace, .playerFiveFace {
+.firstPanzerArmyFace, .playerfirstPanzerArmyFace {
   color: #ff3f3c; }
 
 .firstPanzerArmy {
@@ -1243,11 +1243,11 @@ svg marker#head {
   .firstPanzerArmy .unit-desig {
     color: white; }
 
-.playerFive {
+.playersixthArmy {
   background: #ff8f47;
   border-color: #ff8f47 !important; }
 
-.sixthArmyFace, .playerFiveFace {
+.sixthArmyFace, .playersixthArmyFace {
   color: #ff8f47; }
 
 .sixthArmy {
@@ -1255,11 +1255,11 @@ svg marker#head {
   .sixthArmy .unit-desig {
     color: white; }
 
-.playerFive {
+.playerseventeenthArmy {
   background: #ff8fd6;
   border-color: #ff8fd6 !important; }
 
-.seventeenthArmyFace, .playerFiveFace {
+.seventeenthArmyFace, .playerseventeenthArmyFace {
   color: #58c3ff; }
 
 .seventeenthArmy {
@@ -1267,11 +1267,11 @@ svg marker#head {
   .seventeenthArmy .unit-desig {
     color: black; }
 
-.playerTwo {
+.playersoviet {
   background: #ba9f34;
   border-color: #ba9f34 !important; }
 
-.sovietFace, .playerTwoFace {
+.sovietFace, .playersovietFace {
   color: #ba9f34; }
 
 .soviet {

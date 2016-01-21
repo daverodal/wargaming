@@ -17,11 +17,11 @@
  */
 /* Unit Styles */
 @mixin player($nationality, $player, $color, $faceColor: $color, $desigColor: white){
-  .player#{$player}{
+  .player#{$nationality}{
     background:$color;
     border-color:$color !important;
   }
-  .#{$nationality}Face, .player#{$player}Face{
+  .#{$nationality}Face, .player#{$nationality}Face{
     color:$faceColor;
   }
 

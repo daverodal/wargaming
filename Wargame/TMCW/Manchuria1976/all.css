@@ -963,11 +963,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #df5842; }
 
 .rebel {
@@ -975,11 +975,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
 .loyalist {
@@ -1188,11 +1188,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playersoviet {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.sovietFace, .playerOneFace {
+.sovietFace, .playersovietFace {
   color: #df5842; }
 
 .soviet {
@@ -1200,11 +1200,11 @@ svg marker#head {
   .soviet .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerprc {
   background: #f7ce00;
   border-color: #f7ce00 !important; }
 
-.prcFace, .playerTwoFace {
+.prcFace, .playerprcFace {
   color: #f7ce00; }
 
 .prc {

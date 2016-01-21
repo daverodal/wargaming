@@ -963,11 +963,11 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-.playerOne {
+.playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #df5842; }
 
 .rebel {
@@ -975,11 +975,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
 .loyalist {
@@ -1207,11 +1207,11 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-.playerOne {
+.playerrebel {
   background: #5c5;
   border-color: #5c5 !important; }
 
-.rebelFace, .playerOneFace {
+.rebelFace, .playerrebelFace {
   color: #5c5; }
 
 .rebel {
@@ -1219,11 +1219,11 @@ svg marker#head {
   .rebel .unit-desig {
     color: white; }
 
-.playerTwo {
+.playerloyalist {
   background: #83aee9;
   border-color: #83aee9 !important; }
 
-.loyalistFace, .playerTwoFace {
+.loyalistFace, .playerloyalistFace {
   color: #83aee9; }
 
 .loyalist {
@@ -1231,11 +1231,11 @@ svg marker#head {
   .loyalist .unit-desig {
     color: white; }
 
-.playerThree {
+.playerloyalGuards {
   background: #c0c0c0;
   border-color: #c0c0c0 !important; }
 
-.loyalGuardsFace, .playerThreeFace {
+.loyalGuardsFace, .playerloyalGuardsFace {
   color: #c0c0c0; }
 
 .loyalGuards {
