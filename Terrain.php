@@ -136,7 +136,7 @@ class Terrain
     public function addNatAltTraverseCost($terrain, $nationality,$altClass,$traverseCost){
         $feature = $this->terrainFeatures->$terrain;
         if($feature){
-            if(!$feature->altTraverseCost->$nationality){
+            if(empty($feature->altTraverseCost->$nationality)){
                 $feature->altTraverseCost->$nationality = new stdClass();
             }
             $feature->altTraverseCost->$nationality->$altClass = $traverseCost;
