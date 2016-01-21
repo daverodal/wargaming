@@ -2143,6 +2143,16 @@ You should have received a copy of the GNU General Public License
 .French .counterWrapper {
   background-color: #0003b4; }
 
+.playerPrussian-Russian-Allies {
+  background: #4cb800;
+  border-color: #4cb800 !important; }
+
+.Prussian-Russian-AlliesFace, .playerPrussian-Russian-AlliesFace {
+  color: #4cb800; }
+
+.Prussian-Russian-Allies .counterWrapper {
+  background-color: #4cb800; }
+
 .playerPrussian {
   background: #fffd7f;
   border-color: #fffd7f !important; }

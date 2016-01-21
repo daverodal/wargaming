@@ -558,14 +558,14 @@ x.register("gameRules", function(gameRules,data) {
     }
 
     var pix = turn  + (turn - 1) * 36 + 1;
-    var playerName = "player"+(DR.players[gameRules.attackingForceId].replace(/ /,'-'));
+    var playerName = "player"+(DR.players[gameRules.attackingForceId].replace(/ /g,'-'));
     var removeThese = "";
     $("#header").removeClass().addClass(playerName);
     $("#turnCounter").css("background","rgb(0,128,0)");
     $("#turnCounter").css("color","white");
 
     var alsoRemoveThese = DR.players.join('@@@').trim();
-    alsoRemoveThese = alsoRemoveThese.replace(/ /,'-');
+    alsoRemoveThese = alsoRemoveThese.replace(/ /g,'-');
     alsoRemoveThese = alsoRemoveThese.replace(/@@@/g,' ');
     alsoRemoveThese = alsoRemoveThese.replace(/([^ ]+)/g,"player$1");
     removeThese += " "+alsoRemoveThese;
@@ -575,8 +575,8 @@ x.register("gameRules", function(gameRules,data) {
     var html = "<span id='turn'>Turn "+turn+" of "+maxTurn+"</span> ";
     var phase = gameRules.phase_name[gameRules.phase];
     phase = phase.replace(/fNameOne/,DR.playerOne);
-    phase = phase.replace(/playerOneFace/,"player"+DR.playerOne.replace(/ /,'-')+"Face");
-    phase = phase.replace(/playerTwoFace/,"player"+DR.playerTwo.replace(/ /,'-')+"Face");
+    phase = phase.replace(/playerOneFace/,"player"+DR.playerOne.replace(/ /g,'-')+"Face");
+    phase = phase.replace(/playerTwoFace/,"player"+DR.playerTwo.replace(/ /g,'-')+"Face");
 
     phase = phase.replace(/fNameTwo/,DR.playerTwo);
     phase = phase.replace(/fNameThree/,DR.playerThree);
@@ -640,8 +640,8 @@ x.register("gameRules", function(gameRules,data) {
 x.register("vp", function(vp, data){
 
 
-    var p1 = 'player'+DR.playerOne.replace(/ /,'-')+'Face';
-    var p2 = 'player'+DR.playerTwo.replace(/ /,'-')+'Face';
+    var p1 = 'player'+DR.playerOne.replace(/ /g,'-')+'Face';
+    var p2 = 'player'+DR.playerTwo.replace(/ /g,'-')+'Face';
 
     $("#victory").html(" Victory: <span class='"+p1+"'>"+DR.playerOne+" </span>"+vp[1]+ " <span class='"+p2+"'>"+DR.playerTwo+" </span>"+vp[2]+"");
     if (typeof victoryExtend === 'function') {

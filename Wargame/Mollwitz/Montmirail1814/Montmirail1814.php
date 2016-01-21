@@ -35,12 +35,12 @@ class Montmirail1814 extends \Wargame\Mollwitz\JagCore
     static function playMulti($name, $wargame, $arg = false)
     {
         $deployTwo = $playerOne = "French";
-        $deployOne = $playerTwo = "Prussian-Russian Allies";
+        $deployOne = $playerTwo = "Prussian Russian Allies";
         @include_once "playMulti.php";
     }
 
     static function getPlayerData($scenario){
-        $forceName = ["Observer", "French", "Prussian-Russian Allies"];
+        $forceName = ["Observer", "French", "Prussian Russian Allies"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
