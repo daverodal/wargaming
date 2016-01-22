@@ -27,7 +27,10 @@
     @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\Mollwitz\CombatResultsTable()])
 @endsection
 
-
+@section('inner-menu')
+    @parent
+    <li><a id="vintageButton">vintage</a></li>
+@endsection
 
 @section('obc')
     @include('wargame::Mollwitz.obc')

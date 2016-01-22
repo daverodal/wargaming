@@ -26,6 +26,23 @@ $vintage-badge-size:19px;
 $unit-numbers-size:16px;
 $vintage-unit-numbers-size:10px;
 
+@mixin unitColor($nationality, $color, $shortName) {
+  .#{$nationality} .counterWrapper {
+    background-color: $color;
+  }
+  @include badge($nationality, $shortName);
+}
+
+@mixin headerColor($nationality, $color, $faceColor: $color){
+  .player#{$nationality}{
+    background:$color;
+    border-color:$color !important;
+  }
+  .#{$nationality}Face, .player#{$nationality}Face{
+    color:$faceColor;
+  }
+}
+
 @mixin player($nationality, $player, $color, $counterColor: $color, $faceColor: $color) {
   .player#{$nationality} {
     background: $color;
@@ -128,6 +145,7 @@ $vintage-unit-numbers-size:10px;
     }
   }
 }
+
 
 .guard-unit{
   display:none;
@@ -303,25 +321,25 @@ $saxonColor: #FD4223;
 $danishColor: #ff3f1f;
 $danishWrapperColor: #bfbfbf;
 
-@include badge(Sikh, Sikh);
-@include badge(Beluchi, Sikh);
-@include badge(British, Brit);
-@include badge(SaxonPolish, Rus);
+@include unitColor(Sikh, $beluchiWrapperColor, Sikh);
+@include unitColor(Beluchi,$beluchiWrapperColor, Sikh);
+@include unitColor(British,$britishWrapperColor, Brit);
+@include unitColor(SaxonPolish,$russianWrapperColor, Rus);
 
 .British.horseartillery .counterWrapper .counter {
   background-image: url('../../js/BritHorArtBadge.png');
   background-size: 14px;
 }
 
-//@include badge(Native, Native);
-//@include badge(Austrian, Aus);
-//@include badge(Prussian, Pru);
-//@include badge(Russian, Rus);
-//@include badge(French, French);
-//@include badge(AngloAllied, Ang);
-//@include badge(Anglo, Ang);
-//@include badge(Allied, Ang);
-//@include badge(Swedish, Swe);
+@include unitColor(Native,$britishWrapperColor, Native);
+@include unitColor(Austrian, $austrianWrapperColor, Aus);
+@include unitColor(Prussian,$prussianWrapperColor, Pru);
+@include unitColor(Russian, $russianWrapperColor, Rus);
+@include unitColor(French,$frenchWrapperColor, French);
+@include unitColor(AngloAllied,$angloAlliedWrapperColor, Ang);
+@include unitColor(Anglo,$angloAlliedWrapperColor , Ang);
+@include unitColor(Allied, $angloAlliedWrapperColor, Ang);
+@include unitColor(Swedish, $swedishWrapperColor, Swe);
 
 #header #GR a {
   color: black;
@@ -600,3 +618,4 @@ $danishWrapperColor: #bfbfbf;
 }
 
 .one{}
+@include unitColor(Native, $angloAlliedWrapperColor, Native);

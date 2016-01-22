@@ -71,7 +71,8 @@ class Lesnaya1708VictoryCore extends \Wargame\Mollwitz\victoryCore
     public function scoreKills($unit, $mult = 1)
     {
         if($unit->class === "wagon"){
-            $mult = 1.5;
+            /* 2 * 2.5 = 5 */
+            $mult = 2.5;
         }
 
         parent::scoreKills($unit, $mult);

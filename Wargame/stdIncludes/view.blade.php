@@ -32,6 +32,7 @@
                 <div id="menu">
                     <div class="close">X</div>
                     <ul>
+                        @section('inner-menu')
                         <li><a id="muteButton">mute</a></li>
                         <li><a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a></li>
                         <li><a href="<?= url("users/logout"); ?>">logout</a></li>
@@ -39,6 +40,7 @@
                         <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
                         <li><a href="#" onclick="seeBoth();return false;">See Both</a></li>
                         <li><a href="#" onclick="seeMap();return false;">See Map</a></li>
+                        @show
                         <li class="closer"></li>
                     </ul>
                 </div>
@@ -135,33 +137,33 @@
     </header>
     <div id="content">
         <div id="rightCol">
-            <div id="deployWrapper">
+            <div class="unit-wrapper" id="deployWrapper">
                 <div class="close">X</div>
                 <div style="margin-right:3px;" class="left">Deploy/Staging area</div>
                 <div id="deployBox"></div>
                 <div style="clear:both;"></div>
             </div>
-            <div style="display:none;" id="deadpile">
+            <div class="unit-wrapper" style="display:none;" id="deadpile">
                 <div class="close">X</div>
                 <div style="right:10px;font-size:50px;font-family:sans-serif;bottom:10px;position:absolute;color:#666;">
                     Retired Units
                 </div>
             </div>
-            <div style="display:none;" id="exitWrapper">
+            <div class="unit-wrapper" style="display:none;" id="exitWrapper">
                 <div class="close">X</div>
                 <div style="margin-right:3px;" class="left">Exited Units</div>
                 <div id="exitBox">
                 </div>
                 <div style="clear:both;"></div>
             </div>
-            <div style="display:none;" id="notUsedWrapper">
+            <div class="unit-wrapper" style="display:none;" id="notUsedWrapper">
                 <div class="close">X</div>
                 <div style="margin-right:3px;" class="left">Units not used.</div>
                 <div id="not-used"></div>
                 <div style="clear:both;"></div>
             </div>
 
-            <div style="display:none;" id="undeadpile"></div>
+            <div class="unit-wrapper" style="display:none;" id="undeadpile"></div>
             <div id="gameViewer">
                 <div id="gameContainer">
                     <div id="gameImages">

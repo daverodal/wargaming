@@ -1008,6 +1008,18 @@ function initialize() {
         fixHeader();
         return;
     });
+
+
+
+    $("#showNotUsed").click(function () {
+        up ^= 1;
+        $("#notUsedWrapper").toggle({effect: "blind", direction: "up", complete: fixHeader});
+        $(this).parent().parent().find(".WrapperLabel").click();
+        fixHeader();
+        return;
+    });
+
+
     $("#showDeploy").click(function () {
         up ^= 1;
         $("#deployWrapper").toggle({effect: "blind", direction: "up", complete: fixHeader});
@@ -1016,9 +1028,7 @@ function initialize() {
         return;
     });
     $("#closeAllUnits").click(function(){
-        $("#deployWrapper").hide({effect: "blind", direction: "up", complete: fixHeader});
-        $("#exitWrapper").hide({effect: "blind", direction: "up", complete: fixHeader});
-        $("#deadpile").hide({effect: "blind", direction: "up", complete: fixHeader});
+        $(".unit-wrapper").hide({effect: "blind", direction: "up", complete: fixHeader});
         $("#units").hide({effect: "blind", direction: "up", complete: fixHeader});
         $("#unitsWrapper .WrapperLabel").removeClass('dropDownSelected');
         fixHeader();
