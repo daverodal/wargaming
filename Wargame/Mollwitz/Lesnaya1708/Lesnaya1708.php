@@ -112,7 +112,7 @@ class Lesnaya1708 extends \Wargame\Mollwitz\JagCore
 
             // game data
 
-            $this->gameRules->setMaxTurn(10);
+            $this->gameRules->setMaxTurn(8);
             $this->gameRules->setInitialPhaseMode(BLUE_DEPLOY_PHASE, DEPLOY_MODE);
             $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
             $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
