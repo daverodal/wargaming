@@ -35,7 +35,7 @@ You should have received a copy of the GNU General Public License
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <H1>
                 <?= $name ?>
             </H1>
@@ -49,8 +49,8 @@ You should have received a copy of the GNU General Public License
                 </li>
                 <li><span class="lessBig">Movement</span>
                     <ol>
-                        <li><?= $player[1]?>: player moves first.</li>
-                            <li><?= $player[2]?>:  player moves second.
+                        <li><?= $forceName[1]?>: player moves first.</li>
+                            <li><?= $forceName[2]?>:  player moves second.
                         </li>
 
                     </ol>

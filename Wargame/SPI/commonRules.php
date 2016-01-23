@@ -25,15 +25,15 @@
         color: green;
     }
 
-    #gameRules {
+    .game-rules {
         font-family: sans-serif;
     }
 
-    #gameRules table, #gameRules th, #gameRules td {
+    .game-rules table, .game-rules th, .game-rules td {
         border: 1px solid black;
     }
 
-    #gameRules h1 {
+    .game-rules h1 {
         color: #338833;
         font-size: 60px;
 
@@ -46,7 +46,7 @@
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <?php $playerOne = $force_name[1];
             $playerTwo = $force_name[2]; ?>
             <h1>    <?= $name ?>    </h1>

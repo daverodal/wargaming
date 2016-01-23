@@ -21,8 +21,8 @@ $playerTwo = $force_name[2];?>
 <li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
     <ol>
-        <li> At the end of any <?=$playerTwo?> player turn, that the <?=$playerOne?>'s occupy or were the last to pass through
-            Malplaquet and at least one other city. and have a 10 point lead in victory points, the <?=$playerOne?>'s win.
+        <li> At the end of any <?=$forceNameTwo?> player turn, that the <?=$forceNameOne?>'s occupy or were the last to pass through
+            Malplaquet and at least one other city. and have a 10 point lead in victory points, the <?=$forceNameOne?>'s win.
             <p>
                 Victory points are awared as follows:
                 For each infantry strength eliminated, one victory point.
@@ -30,7 +30,7 @@ $playerTwo = $force_name[2];?>
             </p>
             </li>
         <li>
-            If the <?=$playerTwo?> player can avoid the above victory until the end of turn 12, and hold all the cities, the <?=$playerTwo?> wins.
+            If the <?=$forceNameTwo?> player can avoid the above victory until the end of turn 12, and hold all the cities, the <?=$forceNameTwo?> wins.
             </li>
         <li>
             Any other outcome, a draw.

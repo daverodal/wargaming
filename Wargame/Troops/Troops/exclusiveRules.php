@@ -35,7 +35,7 @@
 
     <div class="exclusive" id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <H1>
                 <?= $name ?>
             </H1>

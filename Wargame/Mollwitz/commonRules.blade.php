@@ -28,78 +28,6 @@
  */
 ?>
 <style type="text/css">
-    #gameRules {
-        font-family: sans-serif;
-    }
-
-    #gameRules table, #gameRules th, #gameRules td {
-        border: 1px solid black;
-    }
-
-    #gameRules h1 {
-        color: #338833;
-        font-size: 60px;
-
-    }
-
-    #GR #credits h2 {
-        color: #338833;
-    }
-
-    #GR li {
-        margin: 15px 0;
-    }
-
-    #GR h4 {
-        margin-bottom: 5px;
-    }
-
-    #GR #credits h4 {
-        margin-bottom: 0px;
-    }
-
-    #gameRules h4:hover {
-        text-decoration: none;
-    }
-
-    .exclusive {
-        color: green;
-    }
-
-    #GR {
-        left: -200px;
-    }
-
-    #GR OL {
-        counter-reset: item;
-        padding-left: 10px;
-    }
-
-    #GR LI {
-        display: block;
-    }
-
-    #GR LI:before {
-        content: "[" counters(item, ".") "] ";
-        counter-increment: item;
-        font-size: 15px;
-        font-weight: bold;
-    }
-
-    .big {
-        font-size: 19px;
-        font-weight: bold;
-
-    }
-
-    .lessBig {
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    #GR OL.topNumbers {
-        counter-reset: item -1;
-    }
 
 </style>
 <div class="dropDown" id="GRWrapper">
@@ -107,7 +35,7 @@
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <H1>
                 <?= $name ?>
             </H1>
@@ -815,7 +743,7 @@
                                     hex sides.
                                 </li>
                                 <li>See the Terrain Effects Chart, the TEC button, for more info.</li>
-                                <?php @include "combatTerrainEffects.php"; ?>
+                                <?php @include "combatTerrainEffects.php";?>
                             </ol>
                         </li>
                         <li><span class="lessBig">Combined Arms Bonus</span>

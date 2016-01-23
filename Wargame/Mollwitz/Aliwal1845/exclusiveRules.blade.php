@@ -37,21 +37,32 @@ You should have received a copy of the GNU General Public License
         <div class="close">X</div>
         <div class="game-rules">
             <H1>
-                <?= $gameName ?>
+                <?= $name ?>
             </H1>
 
             <h2 class="exclusive"> EXCLUSIVE RULES </h2>
             <div class="indent">
+            <h3>Units</h3>
+                <div class="indent">
+                    <ol>
+                        @section('inner-units')
+                            @parent
+                            @include('wargame::Mollwitz.india-units')
+                        @show
+                    </ol>
+                </div>
                 <h3>Deploy Phase</h3>
-
+                
                     <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player deploys Second</p>
-
+                
                 <h3>First Player</h3>
-
-                    <p class="indent">The <?= $forceName[1]?> player moves first. The  <?= $forceName[2]?>  player moves second.</p>
+                
+                    <p class="indent">The <?= $forceName[1]?> player moves first. The  <?= $forceName[2]?>  player moves second. After the <?= $forceName[2]?> player completes their
+                    turn, the game turn is incremented.</p>
             </div>
             <ol class="ExclusiveRules topNumbers">
-                <?php include "victoryConditions.php" ?>
+                @section("victoryConditions")
+                    @show
             </ol>
             <div id="credits">
                 <h2><cite><?= $name ?></cite></h2>

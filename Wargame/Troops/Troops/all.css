@@ -381,10 +381,10 @@ You should have received a copy of the GNU General Public License
     font-weight: bold;
     display: inline-block; }
 
-#gameRules h4:hover {
+.game-rules h4:hover {
   text-decoration: none; }
 
-#gameRules p {
+.game-rules p {
   font-size: 18px;
   font-weight: normal; }
 

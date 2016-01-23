@@ -19,7 +19,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 /**
  * Created by JetBrains PhpStorm.
  * User: david
@@ -29,15 +28,10 @@
  */
 ?>
 <style type="text/css">
-    #GR ul li{
-        list-style:none;
-    }
-    #GR ol li{
-        list-style:inherit;
-    }
-    #GR li {
-        margin: 10px 0;
-    }
+
+    /*#GR ol.ExclusiveRules{*/
+    /*counter-reset: item 6;*/
+    /*}*/
 </style>
 <div class="dropDown" id="GRWrapper">
     <h4 class="WrapperLabel" title="Game Rules">Exclusive Rules</h4>
@@ -46,13 +40,43 @@
         <div class="close">X</div>
         <div class="game-rules">
             <H1>
-                <?=$name?>
+                <?= $name ?>
             </H1>
-            <h2 class="exclusive"> EXCLUSIVE RULES
-            </h2>
-            <?php include "victoryConditions.php" ?>
+
+            <h2 class="exclusive"> EXCLUSIVE RULES </h2>
+            <div class="indent">
+                <h3>Units</h3>
+                <div class="indent">
+                    <ol>
+                        @section('inner-units')
+                            @parent
+                            @include('wargame::Mollwitz.india-units')
+                        @show
+                        <li>
+                            <span>Deploy Phase</span>
+
+                            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?>
+                                player deploys Second</p>
+                        </li>
+                        <li>
+                            <span>First Player</span>
+
+                            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player
+                                moves second. After the <?= $forceName[2]?> player completes their
+                                turn, the game turn is incremented.</p>
+                        </li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+            <ol class="ExclusiveRules topNumbers">
+                @section('victoryConditions')
+                @show
+            </ol>
             <div id="credits">
-                <h2><cite><?=$name?></cite></h2>
+                <h2><cite><?= $name ?></cite></h2>
                 <h4>Design Credits</h4>
 
                 <h4>Game Design:</h4>

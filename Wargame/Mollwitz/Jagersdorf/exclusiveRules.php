@@ -24,15 +24,15 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 <style type="text/css">
-    #gameRules {
+    .game-rules {
         font-family: sans-serif;
     }
 
-    #gameRules table, #gameRules th, #gameRules td {
+    .game-rules table, .game-rules th, .game-rules td {
         border: 1px solid black;
     }
 
-    #gameRules h1 {
+    .game-rules h1 {
         color: #338833;
         font-size: 60px;
 
@@ -54,7 +54,7 @@ You should have received a copy of the GNU General Public License
         margin-bottom: 0px;
     }
 
-    #gameRules h4:hover {
+    .game-rules h4:hover {
         text-decoration: none;
     }
 
@@ -64,7 +64,7 @@ You should have received a copy of the GNU General Public License
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <H1>
                 Gross Jagersdorf
             </H1>
@@ -72,10 +72,10 @@ You should have received a copy of the GNU General Public License
             </h2>
             <ul>
                 <li>
-                    <h4><?= $player[2] ?> Movement Phase </h4>
+                    <h4><?= $forceName[2] ?> Movement Phase </h4>
                     <ul>
                         <li>
-                            No <?= $player[2] ?> unit may expend more than 2 MP on turn 1 only
+                            No <?= $forceName[2] ?> unit may expend more than 2 MP on turn 1 only
                         </li>
                     </ul>
                 </li>

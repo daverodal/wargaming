@@ -31,7 +31,7 @@ You should have received a copy of the GNU General Public License
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <H1>
                 <?=$name?>
             </H1>

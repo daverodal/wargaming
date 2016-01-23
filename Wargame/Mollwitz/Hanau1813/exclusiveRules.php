@@ -35,7 +35,7 @@ You should have received a copy of the GNU General Public License
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <H1>
                 <?= $name ?>
             </H1>
@@ -48,14 +48,14 @@ You should have received a copy of the GNU General Public License
                 </li>
                 <li><span class="lessBig">Movement</span>
                     <ol>
-                        <li><?= $player[1]?>: player moves first.</li>
-                            <li><?= $player[2]?>:  player moves second. May not move (But may attack) on turn 1.
-                                <?= $player[2]?> units south of the River Kinzig may not move turn 2.
+                        <li><?= $forceName[1]?>: player moves first.</li>
+                            <li><?= $forceName[2]?>:  player moves second. May not move (But may attack) on turn 1.
+                                <?= $forceName[2]?> units south of the River Kinzig may not move turn 2.
                         </li>
                         <li >Towns: It is critically important in this game to remember that Town hexes are NOT road hexes.
                         </li>
                         <li >Depending upon the scenario, on turn two
-                        the <?= $player[2]?> may not move any units south of the River Kinzig.
+                        the <?= $forceName[2]?> may not move any units south of the River Kinzig.
                         </li>
                         <li><img src="<?=url("js/orchard.png")?>">Orchard Parkland:
                             Orchard Parkland hexes do not effect movement and are treated as clear for purposes of movement.

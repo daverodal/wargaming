@@ -31,14 +31,14 @@ You should have received a copy of the GNU General Public License
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <H1>
                 <?=$name?>
             </H1>
             <h2 class="exclusive"> EXCLUSIVE RULES
             </h2>
             <h2>Special Rules</h2>
-            <h2><?= $player[1] ?> Movement Phase</h2>
+            <h2><?= $forceName[1] ?> Movement Phase</h2>
             <ul>
                 <li>On the first movement phase all of Austrian units have a movement allowance of two. This is for
                     the Austrian's first movement phase only.

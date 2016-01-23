@@ -45,7 +45,7 @@
                     <li><span class="lessBig">Victory Cities.</span>
 
                         <p class="ruleComment">
-                            There are some cities labeled on the map either <?= $player[1] ?> or <?= $player[2] ?>.
+                            There are some cities labeled on the map either <?= $forceName[1] ?> or <?= $forceName[2] ?>.
                             These give no points to the original owners. But if the opponent takes these cities or hexes,
                             the opponent will be awarded some victory points. If the original owner retakes them,
                             the opponents loses the victory points they were awarded.

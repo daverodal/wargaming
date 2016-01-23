@@ -384,10 +384,10 @@ You should have received a copy of the GNU General Public License
     font-weight: bold;
     display: inline-block; }
 
-#gameRules h4:hover {
+.game-rules h4:hover {
   text-decoration: none; }
 
-#gameRules p {
+.game-rules p {
   font-size: 18px;
   font-weight: normal; }
 
@@ -994,6 +994,66 @@ svg marker#head {
   right: 0px;
   font-size: 8px;
   top: 1px; }
+
+/* found in the commonRules blade */
+.game-rules {
+  font-family: sans-serif; }
+
+.game-rules table, .game-rules th, .game-rules td {
+  border: 1px solid black; }
+
+.game-rules h1 {
+  color: #338833;
+  font-size: 60px; }
+
+#GR #credits h2 {
+  color: #338833; }
+
+#GR li {
+  margin: 15px 0; }
+
+#GR h4 {
+  margin-bottom: 5px; }
+
+#GR #credits h4 {
+  margin-bottom: 0px; }
+
+.game-rules h4:hover {
+  text-decoration: none; }
+
+.exclusive {
+  color: green; }
+
+#GR {
+  left: -200px; }
+
+#GR OL {
+  counter-reset: item;
+  padding-left: 10px; }
+
+#GR LI {
+  display: block; }
+
+#GR LI:before {
+  content: "[" counters(item,".") "] ";
+  counter-increment: item;
+  font-size: 15px;
+  font-weight: bold; }
+
+.big {
+  font-size: 19px;
+  font-weight: bold; }
+
+.lessBig {
+  font-size: 18px;
+  font-weight: bold; }
+
+#GR OL.topNumbers {
+  counter-reset: item -1; }
+
+/* found in the common rules blade */
+.game-rules .unit .p.range {
+  font-size: 15px; }
 
 .unit {
   border: solid black;

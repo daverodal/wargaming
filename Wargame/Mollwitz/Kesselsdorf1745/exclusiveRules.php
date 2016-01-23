@@ -35,7 +35,7 @@ You should have received a copy of the GNU General Public License
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
-        <div id="gameRules">
+        <div class="game-rules">
             <H1>
                 <?= $name ?>
             </H1>
@@ -49,10 +49,10 @@ You should have received a copy of the GNU General Public License
                 </li>
                 <li>
                     <span class="lessBig">First Player</span>
-                    The <?= $player[1]?> player moves first. The  <?= $player[2]?>  player moves second.
+                    The <?= $forceName[1]?> player moves first. The  <?= $forceName[2]?>  player moves second.
                 </li>
                 <li><span class="lessBig">Movement</span>
-                The movement rate of all <?= $player[2]?> units is halved on turn one, drop fractions.</li>
+                The movement rate of all <?= $forceName[2]?> units is halved on turn one, drop fractions.</li>
 
             </ol>
             <ol class="ExclusiveRules topNumbers">

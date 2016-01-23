@@ -26,9 +26,9 @@ You should have received a copy of the GNU General Public License
 ?>
 <style type="text/css">
 
-        /*#GR ol.ExclusiveRules{*/
-            /*counter-reset: item 6;*/
-       /*}*/
+    /*#GR ol.ExclusiveRules{*/
+    /*counter-reset: item 6;*/
+    /*}*/
 </style>
 <div class="dropDown" id="GRWrapper">
     <h4 class="WrapperLabel" title="Game Rules">Exclusive Rules</h4>
@@ -37,21 +37,40 @@ You should have received a copy of the GNU General Public License
         <div class="close">X</div>
         <div class="game-rules">
             <H1>
-                <?= $gameName ?>
+                <?= $name ?>
             </H1>
 
             <h2 class="exclusive"> EXCLUSIVE RULES </h2>
+
             <div class="indent">
-                <h3>Deploy Phase</h3>
+                <ol>
 
-                    <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player deploys Second</p>
+                    @section('inner-units')
+                        @parent
+                        @include('wargame::Mollwitz.india-units',['beluchi'=>'Beluchi'])
+                    @show
+                    <li>
+                        <span>Deploy Phase</span>
 
-                <h3>First Player</h3>
+                        <p class="indent">The <?= $deployName[1] ?> player deploys first. The <?= $deployName[2] ?> player deploys
+                            Second</p>
+                    </li>
+                    <li>
+                        <span>First Player</span>
 
-                    <p class="indent">The <?= $forceName[1]?> player moves first. The  <?= $forceName[2]?>  player moves second.</p>
+                        <p class="indent">The <?= $forceName[1] ?> player moves first. The  <?= $forceName[2] ?>  player moves second.
+                            After the <?= $forceName[2] ?> player completes their
+                            turn, the game turn is incremented.</p>
+                    </li>
+
+                </ol>
+
+
+
             </div>
             <ol class="ExclusiveRules topNumbers">
-                <?php include "victoryConditions.php" ?>
+                @section('victoryConditions')
+                @show
             </ol>
             <div id="credits">
                 <h2><cite><?= $name ?></cite></h2>
