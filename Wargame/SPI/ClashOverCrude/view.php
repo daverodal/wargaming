@@ -21,11 +21,11 @@
  */
 ?>
 <script type="text/javascript">
-    DR.playerOne = "<?=$playerOne?>";
-    DR.playerTwo = "<?=$playerTwo?>";
-    DR.playerThree = "<?=$playerThree?>";
-    DR.playerFour = "<?=$playerFour?>";
-    DR.players = ["observer", "<?=$playerOne?>","<?=$playerTwo?>","<?=$playerThree?>","<?=$playerFour?>"];
+    DR.playerOne = "<?=$forceName[1]?>";
+    DR.playerTwo = "<?=$forceName[2]?>";
+    DR.playerThree = "3";
+    DR.playerFour = "4";
+    DR.players = ["observer", "<?=$forceName[1]?>","<?=$forceName[2]?>","3","4"];
 </script>
 <link rel="stylesheet" href="<?= url("js/font-awesome-4.2.0/css/font-awesome.min.css"); ?>">
 <body xmlns="http://www.w3.org/1999/html">
@@ -41,8 +41,8 @@
                     <div class="close">X</div>
                     <ul>
                         <li><a id="muteButton">mute</a></li>
-                        <li><a href="<?= site_url("wargame/leaveGame"); ?>">Go To Lobby</a></li>
-                        <li><a href="<?= site_url("users/logout"); ?>">logout</a></li>
+                        <li><a href="<?= url("wargame/leaveGame"); ?>">Go To Lobby</a></li>
+                        <li><a href="<?= url("users/logout"); ?>">logout</a></li>
                         <li><a id="arrowButton">show arrows</a></li>
                         <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
                         <li><a href="#" onclick="seeBoth();return false;">See Both</a></li>
@@ -125,7 +125,7 @@
                     <div id="crtOddsExp"></div>
                 </div>
             </div>
-            <?php include "timeTravel.php"; ?>
+            <?php //include "timeTravel.php"; ?>
             <div id="statusWrapper">
                 <div id="comlinkWrapper">
                     <div id="comlink"></div>
@@ -146,9 +146,9 @@
             <div class="dropDown">
                 <h4 class="WrapperLabel"><span class="tablet">?</span><span class="desktop">Rules</span></h4>
                 <div class="subMenu">
-                    <?php include_once "commonRules.php"; ?>
-                    <?php include_once "exclusiveRules.php"; ?>
-                    <?php include_once "obc.php"; ?>
+                    <?php //include_once "commonRules.php"; ?>
+                    <?php //include_once "exclusiveRules.php"; ?>
+                    <?php //include_once "obc.php"; ?>
                 </div>
             </div>
             <?php include_once "tec.php"; ?>
@@ -248,10 +248,10 @@
                         {units}
                         <div class="unit {nationality} {type}" id="{id}" alt="0">
                             <div class="shadow-mask"></div>
-                            <img class="arrow" src="<?php echo url(); ?>js/short-red-arrow-md.png" class="counter">
+                            <img class="arrow" src="<?php echo asset('js/short-red-arrow-md.png'); ?>" class="counter">
                             <div class="counterWrapper">
                                 <div class="air-strength"></div>
-                                <img src="<?php echo url(); ?>js/{image}" class="counter"><span class="unit-desig">{unitDesig}</span>
+                                <img src="<?php echo url("js/image"); ?>" class="counter"><span class="unit-desig">{unitDesig}</span>
                             </div>
                             <div class="unit-numbers">5 - 4</div>
                         </div>
@@ -264,9 +264,9 @@
                 </div>
             </div>
 
-            <audio class="pop" src="<?= url() . 'js/pop.m4a' ?>"></audio>
-            <audio class="poop" src="<?= url() . 'js/lowpop.m4a' ?>"></audio>
-            <audio class="buzz" src="<?= url() . 'js/buzz.m4a' ?>"></audio>
+            <audio class="pop" src="<?= url('js/pop.m4a')  ?>"></audio>
+            <audio class="poop" src="<?= url('js/lowpop.m4a')  ?>"></audio>
+            <audio class="buzz" src="<?= url( 'js/buzz.m4a')  ?>"></audio>
 
         </div>
     </div>

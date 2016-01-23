@@ -1,6 +1,6 @@
 <?php
 namespace Wargame\SPI\ClashOverCrude;
-use \Battle;
+use \Wargame\Battle;
 use \stdClass;
 use \Hexagon;
 
@@ -115,7 +115,7 @@ class LandAirUnit extends \BaseUnit implements \JsonSerializable
         $this->combatOdds = "";
         $this->moveCount = 0;
         $this->retreatCountRequired = 0;
-        $this->combatResults = NR;
+        $this->combatResults = NE;
         $this->range = $range;
         $this->nationality = $nationality;
         $this->forceMarch = $forceMarch;

@@ -33,6 +33,7 @@ class WargameServiceProvider extends ServiceProvider
         ], 'mollwitz');
 
         $this->publishes([
+            __DIR__.'/SPI/ClashOverCrude/Images' => public_path('vendor/wargame/spi/clashovercrude/images'),
             __DIR__.'/SPI/FinalChapter/Images' => public_path('vendor/wargame/spi/finalchapter/images'),
         ], 'finalchapter');
         $this->publishes([

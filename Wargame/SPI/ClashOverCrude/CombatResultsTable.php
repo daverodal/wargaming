@@ -34,7 +34,7 @@ class CombatResultsTable extends \Wargame\SPI\ModernCombatResultsTable
     use \DivCombatShiftTerrain;
 
 
-    public $aggressorId = EASTERN_FORCE;
+    public $aggressorId = 1;
 
     function __construct(){
         $this->combatResultsHeader = array("-1","0","+1","+2","+3","+4","+6","+8","+12","+16", "+20");

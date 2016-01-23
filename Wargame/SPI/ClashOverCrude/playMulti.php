@@ -24,7 +24,7 @@
     body {
         background: #ccc;
         color: #333;
-        background: url("<?=url("js/CF-18_Cold_Lake_Alberta.jpg")?>") #333 no-repeat;
+        background: url("<?=url("vendor/wargame/spi/clashovercrude/images/CF-18_Cold_Lake_Alberta.jpg")?>") #333 no-repeat;
         background-position: 10% 0;
         background-size: 100%;
     }

@@ -34,7 +34,7 @@
         "scenarios": {
             "main": {
                 "description": "Standard Scenario.",
-                "longDescription": "Original version of game. Prussians have 50-50 chance of deploying up and to the right, or fartherback.",
+                "longDescription": "Original version of game. French have 50-50 chance of deploying up and to the right, or fartherback.",
                 "showHexNums":true
             },
             "Hastenbeck2": {

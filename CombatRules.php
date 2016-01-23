@@ -123,7 +123,7 @@ class CombatRules
             unset($this->attackers->$attackerId);
             unset($this->combats->$cd->attackers->$attackerId);
             unset($this->combats->$cd->thetas->$attackerId);
-            $victory->postUnsetAttacker($this->units[$attackerId]);
+            $victory->postUnsetAttacker($this->force->units[$attackerId]);
         }
         $this->combats->$cd->useDetermined = false;
 
@@ -244,7 +244,7 @@ class CombatRules
         {
 
             if ($this->currentDefender !== false && $this->force->units[$id]->status != STATUS_UNAVAIL_THIS_PHASE) {
-                if (!empty($this->combats->$cd->attackers->$id) && $this->attackers->$id === $cd) {
+                if (isset($this->combats->$cd->attackers->$id) && $this->combats->$cd->attackers->$id !== false && $this->attackers->$id === $cd) {
                     $this->force->undoAttackerSetup($id);
                     unset($this->attackers->$id);
                     unset($this->combats->$cd->attackers->$id);

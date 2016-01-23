@@ -24,7 +24,7 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("js/1024px-Operation_Desert_Storm_22.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/spi/clashovercrude/images/1024px-Operation_Desert_Storm_22.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
@@ -34,9 +34,9 @@
 <h1 style="text-align:center;font-size:90px;font-family:'Lobster'">Clash Over Crude</h1>
 <div class="clear">&nbsp;</div>
 <fieldset ><Legend>Play As </Legend>
-    <a class="link"  href="<?=site_url("wargame/enterHotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
-    <a class="link"  href="<?=site_url("wargame/enterMulti");?>/<?=$wargame?>">Play Multi Player </a><br>
-    <a class="link" href="<?=site_url("wargame/leaveGame");?>">Go to Lobby</a>
+    <a class="link"  href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
+    <a class="link"  href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
+    <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a>
     <div class="attribution">
         By Tech. Sgt. David McLeod (Defenseimagery.mil, VIRIN DF-ST-92-09166) [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3AOperation_Desert_Storm_22.jpg">via Wikimedia Commons</a>
 

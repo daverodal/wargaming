@@ -165,7 +165,7 @@ class ClashOverCrude extends \ModernLandBattle
 
         parent::__construct($data, $arg, $scenario, $game);
 
-        $crt =new \Wargame\SPI\ClashOverCrude\CombatResultsTable();
+        $crt = new \Wargame\SPI\ClashOverCrude\CombatResultsTable();
         $this->combatRules->injectCrt($crt);
 
         if ($data) {
