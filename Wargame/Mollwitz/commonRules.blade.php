@@ -124,13 +124,13 @@
             <p>Exclusive rules contained in here will be in green</p>
 
             <h3> Quick Start Guide #3</h3>
-            <header>
+            <p>
                 The assumption is made that the reader is extensively familiar with Hex and counter games. Boiler Plate
                 is omitted.
                 E.G. I tell you what a ZOC does but not what it is. All number rounding is down for all calculations. No
                 stacking.
                 No Supply.
-            </header>
+            </p>
             <ol class="topNumbers">
                 <li><span class="big">Contents</span>
                     <ol>
@@ -147,10 +147,11 @@
                 <li><a name="units"></a><span class="big">Units</span>
 
                     <ol>
+                        @section('inner-units')
                         <li>
-                            <?= "$player[1]" ?> infantry units look like this. You can tell by the symbol in the upper
+                            <?= "$forceName[1]" ?> infantry units look like this. You can tell by the symbol in the upper
                             left corner.
-                            <div class="unit <?= $player[1] ?> infantry"
+                            <div class="unit <?= $forceName[1] ?> infantry"
                                  style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;"
                                  alt="0">
                                 <nav class="counterWrapper">
@@ -162,7 +163,7 @@
                                 <section></section>
 
 
-                                <div class="unit-numbers">5 - 4</div>
+                                <div class="unit-numbers"><span class="unit-info reduced infoLen5">5 - 4</span></div>
 
                             </div>
                             <p class='ruleComment'>The left number is the combat strength. Right right number is the
@@ -170,8 +171,8 @@
                                 allowance.</p>
                         </li>
                         <li>
-                            <?= $player[1] ?> cavalry units look like this.
-                            <div class="unit <?= $player[1] ?> cavalry"
+                            <?= $forceName[1] ?> cavalry units look like this.
+                            <div class="unit <?= $forceName[1] ?> cavalry"
                                  style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;"
                                  alt="0">
                                 <nav class="counterWrapper">
@@ -183,7 +184,7 @@
                                 <section></section>
 
 
-                                <div class="unit-numbers">4 - 5</div>
+                                <div class="unit-numbers"><span class="unit-info reduced infoLen5">4 - 5</span></div>
 
                             </div>
                             <p class='ruleComment'>Note they tend to move faster than infantry units, and are sometimes
@@ -192,31 +193,31 @@
                                 units.</p>
                         </li>
                         <li>
-                            <?= $player[1] ?> artillery units look like this. Note the number in the upper right corner.
+                            <?= $forceName[1] ?> artillery units look like this. Note the number in the upper right corner.
                             That's the
                             units
                             range.
-                            <div class="unit <?= $player[1] ?> artillery"
+                            <div class="unit <?= $forceName[1] ?> artillery"
                                  style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;"
                                  alt="0">
                                 <nav class="counterWrapper">
                                     <div class="counter">
                                 </nav>
-                                <p class="range">3</p>
+                                <p style="font-size:15px" class="range">3</p>
 
                                 <p class="forceMarch">M</p>
                                 <section></section>
 
 
-                                <div class="unit-numbers">3 - 3</div>
+                                <div class="unit-numbers"><span class="unit-info reduced infoLen5">3 - 3</span></div>
 
                             </div>
                             <p class='ruleComment'>Artillery units can fire at non adjacent units.</p>
                         </li>
                         <li>
-                            <?= $player[2] ?> infantry, cavalry and artillery look similar.
+                            <?= $forceName[2] ?> infantry, cavalry and artillery look similar.
                             <div>
-                                <div class="unit <?= $player[2] ?> infantry"
+                                <div class="unit <?= $forceName[2] ?> infantry"
                                      style="float:left;margin-left:10px; border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;"
                                      alt="0">
                                     <nav class="counterWrapper">
@@ -228,10 +229,10 @@
                                     <section></section>
 
 
-                                    <div class="unit-numbers">5 - 4</div>
+                                    <div class="unit-numbers"><span class="unit-info reduced infoLen5">5 - 4</span></div>
 
                                 </div>
-                                <div class="unit <?= $player[2] ?> cavalry"
+                                <div class="unit <?= $forceName[2] ?> cavalry"
                                      style="float:left;margin-left:10px; border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;"
                                      alt="0">
                                     <nav class="counterWrapper">
@@ -243,34 +244,35 @@
                                     <section></section>
 
 
-                                    <div class="unit-numbers">5 - 5</div>
+                                    <div class="unit-numbers"><span class="unit-info reduced infoLen5">5 - 5</span></div>
 
                                 </div>
-                                <div class="unit <?= $player[2] ?> artillery"
+                                <div class="unit <?= $forceName[2] ?> artillery"
                                      style="float:left;margin-left:10px; border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;"
                                      alt="0">
                                     <nav class="counterWrapper">
                                         <div class="counter">
                                     </nav>
-                                    <p class="range">3</p>
+                                    <p style="font-size:15px" class="range">3</p>
 
                                     <p class="forceMarch">M</p>
                                     <section></section>
 
 
-                                    <div class="unit-numbers">3 - 3</div>
+                                    <div class="unit-numbers"><span class="unit-info reduced infoLen5">3 - 3</span></div>
 
                                 </div>
                             </div>
                             <div style="clear:both"></div>
                         </li>
+                        @show
                     </ol>
                 </li>
                 <li><a name="sop"></a><span class="big">Sequence of play.</span>
 
 
-                    <p>Each game turn is composed of two player turns. The <?= $player[1] ?> is the first player, and
-                        the <?= $player[2] ?> is the second.
+                    <p>Each game turn is composed of two player turns. The <?= $forceName[1] ?> is the first player, and
+                        the <?= $forceName[2] ?> is the second.
                     </p>
 
                     <p>Each player turn is divided into a movement phase and a combat phase.</p>
@@ -285,11 +287,11 @@
                                 the <?= $deployName[2] ?> player.</p>
 
                         </li>
-                        <li><span class="lessBig"><?= $player[1] ?> Player Turn</span>
+                        <li><span class="lessBig"><?= $forceName[1] ?> Player Turn</span>
                             <ol>
                                 <li><span class="lessBig">Movement Phase</span>
 
-                                    <p class="ruleComment">The <?= $player[1] ?> may move as many or as few units as
+                                    <p class="ruleComment">The <?= $forceName[1] ?> may move as many or as few units as
                                         they desire.
                                         If they have reinforcements available
                                         they may enter the map now.</p>
@@ -297,9 +299,9 @@
 
                                 </li>
 
-                                <li><span class="lessBig"><?= $player[1] ?> Player Combat Phase</span>
+                                <li><span class="lessBig"><?= $forceName[1] ?> Player Combat Phase</span>
 
-                                    <p class="ruleComment">The <?= $player[1] ?> may initiate as many or as few attacks
+                                    <p class="ruleComment">The <?= $forceName[1] ?> may initiate as many or as few attacks
                                         as they wish.
                                         Combat is broken up into two
                                         phases, Combat setup and Combat Resolution.</p>
@@ -308,11 +310,11 @@
                                 </li>
                             </ol>
                         </li>
-                        <li><span class="lessBig"><?= $player[2] ?> Player Turn</span>
+                        <li><span class="lessBig"><?= $forceName[2] ?> Player Turn</span>
                             <ol>
                                 <li><span class="lessBig">Movement Phase</span>
 
-                                    <p class="ruleComment">The <?= $player[2] ?> may move as many or as few units as
+                                    <p class="ruleComment">The <?= $forceName[2] ?> may move as many or as few units as
                                         they desire.
                                         If they have reinforcements available
                                         they may enter the map now.</p>
@@ -320,9 +322,9 @@
 
                                 </li>
 
-                                <li><span class="lessBig"><?= $player[2] ?> Player Combat Phase</span>
+                                <li><span class="lessBig"><?= $forceName[2] ?> Player Combat Phase</span>
 
-                                    <p class="ruleComment">The <?= $player[2] ?> may initiate as many or as few attacks
+                                    <p class="ruleComment">The <?= $forceName[2] ?> may initiate as many or as few attacks
                                         as they wish.
                                         Combat is broken up into two
                                         phases, Combat setup and Combat Resolution.</p>
@@ -376,7 +378,7 @@
                 <li><a name="movement"></a><span class="big">Movement</span>
 
 
-                    <p class="ruleComment">The <?= $player[1] ?> player moves first, the <?= $player[2] ?> moves
+                    <p class="ruleComment">The <?= $forceName[1] ?> player moves first, the <?= $forceName[2] ?> moves
                         second.</p>
 
                     <p>The Second Number on the counter is Movement Points <abbr title="Movement Points">(MP)</abbr>.
@@ -385,6 +387,7 @@
                     <p>Units expend different amounts of <abbr title="Movement Points">MP</abbr> for different terrains
                     </p>
                     <ol>
+                        @section('inner-movement')
                         <li>Units pay different amounts of Movement Points or <abbr title="Movement Points">MP</abbr> to
                             enter different
                             hexes.
@@ -454,6 +457,7 @@
                                 </li>
                             </ol>
                         </li>
+                        @show
                     </ol>
                 </li>
                 <li><a name="combat"></a><span class="lessBig">Combat (Attacks)</span>
@@ -778,14 +782,14 @@
                             <ol>
                                 <?php if (!empty($scenario->jagersdorfCombat)) { ?>
                                     <?php if ($name == "Jagersdorf") { ?>
-                                        <li class="exclusive"><?= $player[2] ?> Infantry units are +1 to their combat
+                                        <li class="exclusive"><?= $forceName[2] ?> Infantry units are +1 to their combat
                                             factor when
                                             Attacking
                                             into or Defending in woods or
                                             towns, unless they are attacking across a creek or bridge.
                                         </li>
                                     <?php } ?>
-                                    <li class="exclusive"><?= $player[1] ?> Infantry units are +1 to their combat factor
+                                    <li class="exclusive"><?= $forceName[1] ?> Infantry units are +1 to their combat factor
                                         when Attacking
                                         into
                                         or Defending
