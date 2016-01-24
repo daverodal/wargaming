@@ -1,4 +1,5 @@
 <?php
+use \Wargame\Battle;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal

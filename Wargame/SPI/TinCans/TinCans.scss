@@ -22,9 +22,12 @@
 
 
 
-@include player(usn, USN, $rebelColor);
-@include player(rn, RN, $rebelColor);
+@include player(usn, USN, #2496E8);
+@include player(rn, RN, #2496E8);
 @include player(ijn,IJN, #ffcd00, #ffcd00);
+@include headerColor(USN, #2496E8, #2496E8);
+@include headerColor(IJN, #ffcd00, #ffcd00);
+@include headerColor(RN, #2496E8, #2496E8);
 
 
 #map {

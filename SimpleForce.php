@@ -88,7 +88,6 @@ abstract class SimpleForce{
         $unit->damage = $unit->getUnmodifiedStrength();
         $battle->victory->reduceUnit($unit);
         $forceId = $unit->forceId;
-        $this->deleteCount++;
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
         $mapHex = $mapData->getHex($unit->hexagon->getName());

@@ -207,7 +207,11 @@ $mode_name[17] = "phase ";
 $mode_name[18] = "exchanging mode";
 $mode_name[19] = "replacing mode";
 $mode_name[20] = "attacker loss mode";
-$mode_name[21] = "";
+$mode_name[21] = "display mode";
+$mode_name[22] = "speed mode";
+$mode_name[23] = "combining mode";
+$mode_name[24] = "rebase mode";
+$mode_name[25] = "supply mode";
 
 // form event constants
 define("OVER_MAP_EVENT",1);

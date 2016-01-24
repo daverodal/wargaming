@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\Nta;
+namespace Wargame\NTA;
 use \UnitFactory;
 /**
  *
@@ -46,18 +46,6 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
 
 
     public $players;
-    static function getHeader($name, $playerData, $arg = false){
-        @include_once "globalHeader.php";
-        @include_once "header.php";
-    }
-
-    static function getView($name, $mapUrl,$player = 0, $arg = false, $argTwo = false){
-        global $force_name;
-        $youAre = $force_name[$player];
-        $deployTwo = $playerOne = $force_name[1];
-        $deployOne = $playerTwo = $force_name[2];
-        @include_once "view.php";
-    }
 
     static function getPlayerData($scenario){
         $forceName = ["Observer", "Red", "Blue"];
@@ -87,47 +75,6 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
         return $data;
     }
 
-    function poke($event, $id, $x, $y, $user, $click){
-        $playerId = $this->gameRules->attackingForceId;
-        if($this->players[$this->gameRules->attackingForceId] != $user){
-            return false;
-        }
-
-
-        switch($event){
-            case SELECT_MAP_EVENT:
-                $mapGrid = new \MapGrid($this->mapViewer[$playerId]);
-                $mapGrid->setPixels($x, $y);
-                $this->gameRules->processEvent(SELECT_MAP_EVENT, MAP, $mapGrid->getHexagon(),$click );
-                break;
-
-            case SELECT_COUNTER_EVENT:
-                /* fall through */
-            case SELECT_SHIFT_COUNTER_EVENT:
-            $hexagon = "";
-            if (strpos($id, "Hex")) {
-                $matchId = array();
-                preg_match("/^[^H]*/", $id, $matchId);
-                $matchHex = array();
-                preg_match("/Hex(.*)/", $id, $matchHex);
-                $id = $matchId[0];
-                $hexagon = $matchHex[1];
-                if($event === SELECT_COUNTER_EVENT){
-                    $event = SELECT_MAP_EVENT;
-                }
-            }
-            /* fall through */
-
-                $this->gameRules->processEvent($event, $id, $hexagon,$click);
-                break;
-
-            case SELECT_BUTTON_EVENT:
-                $this->gameRules->processEvent(SELECT_BUTTON_EVENT, "next_phase", 0,$click );
-
-
-        }
-        return true;
-    }
 
     public function init(){
         // unit data -----------------------------------------------
@@ -265,74 +212,4 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
   * related to a game start or a game file. It just generates the terrain info that gets saved to the
   * file terrain-Gamename
   */
-    function terrainGen($mapDoc, $terrainDoc)
-    {
-        // code, name, displayName, letter, entranceCost, traverseCost, combatEffect, is Exclusive
-        $this->terrain->addTerrainFeature("offmap", "offmap", "o", 1, 0, 0, true);
-        $this->terrain->addTerrainFeature("blocked", "blocked", "b", 1, 0, 0, true);
-        $this->terrain->addTerrainFeature("clear", "", "c", 1, 0, 0, true);
-        $this->terrain->addTerrainFeature("road", "road", "r", .5, 0, 0, false);
-        $this->terrain->addTerrainFeature("trail", "trail", "r", 1, 0, 0, false);
-        $this->terrain->addTerrainFeature("fortified", "fortified", "h", 1, 0, 1, true);
-        $this->terrain->addTerrainFeature("town", "town", "t", 0, 0, 0, false);
-        $this->terrain->addTerrainFeature("forest", "forest", "f", 2, 0, 1, true);
-        $this->terrain->addTerrainFeature("mountain", "mountain", "g", 3, 0, 2, true);
-        $this->terrain->addTerrainFeature("river", "Martian River", "v", 0, 1, 1, true);
-        $this->terrain->addTerrainFeature("newrichmond", "New Richmond", "m", 0, 0, 1, false);
-        $this->terrain->addTerrainFeature("eastedge", "East Edge", "m", 0, 0, 0, false);
-        $this->terrain->addTerrainFeature("westedge", "West Edge", "m", 0, 0, 0, false);
-        /* handle fort's in crtTraits */
-        $this->terrain->addTerrainFeature("forta", "forta", "f", 1, 0, 0, true);
-        $this->terrain->addTerrainFeature("fortb", "fortb", "f", 1, 0, 0, true);
-        $this->terrain->addTerrainFeature("mine", "mine", "m", 0, 0, 0, false);
-        $this->terrain->addNatAltEntranceCost("mine", "rebel", 'mech', 2);
-        $this->terrain->addNatAltEntranceCost("mine", "rebel", 'inf', 1);
-
-
-        $terrainArr = json_decode($terrainDoc->hexStr->hexEncodedStr);
-
-        $map = $mapDoc->map;
-        $this->terrain->mapUrl = $mapUrl = $map->mapUrl;
-        $this->terrain->maxCol = $maxCol = $map->numX;
-        $this->terrain->maxRow = $maxRow = $map->numY;
-        $this->terrain->mapWidth = $map->mapWidth;
-        $this->mapData->setData($maxCol, $maxRow, $mapUrl);
-
-        Hexagon::setMinMax();
-        $this->terrain->setMaxHex();
-        $a = $map->a;
-        $b = $map->b;
-        $c = $map->c;
-        $this->terrain->a = $a;
-        $this->terrain->b = $b;
-        $this->terrain->c = $c;
-        $this->terrain->originY = $b * 3 - $map->y;
-        $xOff = ($a + $c) * 2 - ($c / 2 + $a);
-        $this->terrain->originX = $xOff - $map->x;
-
-
-        for ($col = 100; $col <= $maxCol * 100; $col += 100) {
-            for ($row = 1; $row <= $maxRow; $row++) {
-                $this->terrain->addTerrain($row + $col, LOWER_LEFT_HEXSIDE, "clear");
-                $this->terrain->addTerrain($row + $col, UPPER_LEFT_HEXSIDE, "clear");
-                $this->terrain->addTerrain($row + $col, BOTTOM_HEXSIDE, "clear");
-                $this->terrain->addTerrain($row + $col, HEXAGON_CENTER, "clear");
-
-            }
-        }
-        foreach ($terrainArr as $terrain) {
-            foreach ($terrain->type as $terrainType) {
-                $name = $terrainType->name;
-                $matches = [];
-                if (preg_match("/SpecialHex/", $name)) {
-                    $this->terrain->addSpecialHex($terrain->number, $name);
-                } else if (preg_match("/^ReinforceZone(.*)$/", $name, $matches)) {
-                    $this->terrain->addReinforceZone($terrain->number, $matches[1]);
-                } else {
-                    $tNum = sprintf("%04d", $terrain->number);
-                    $this->terrain->addTerrain($tNum, $terrain->hexpartType, strtolower($name));
-                }
-            }
-        }
-    }
 }

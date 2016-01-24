@@ -150,11 +150,6 @@ class CombatRules
 //                $cd = $this->defenders->$id;
                 $combats = $this->combats->$combatId;
             }
-            if (isset($this->defenders->$id)) {
-                $combatId = $this->defenders->$id;
-//                $cd = $this->defenders->$id;
-                $combats = $this->combats->$combatId;
-            }
             if ($combats) {
 //            if(count($this->combats->$this->currnetDefender->attackers) == 0){
 //                unset($this->currnetDefender[$id]);

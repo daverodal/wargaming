@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\SPI\TinCans;
 use \stdClass;
-use \Battle;
+use \Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -150,17 +150,18 @@ class TinCansVictoryCore extends \Wargame\SPI\victoryCore
         }
         if($newVp) {
             $unit->vp += $newVp;
+            $hex = $unit->hexagon;
+            $battle = Battle::getBattle();
+            if(!isset($battle->mapData->specialHexesVictory->{$hex->name}))
+            {
+                $battle->mapData->specialHexesVictory->{$hex->name} = '';
+            }
             if ($unit->forceId == 1) {
                 $victorId = 2;
-
                 $this->victoryPoints[$victorId] += $newVp;
-                $hex = $unit->hexagon;
-                $battle = Battle::getBattle();
                 $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='ijnVictoryPoints'>+$newVp vp</span>";
             } else {
                 $victorId = 1;
-                $hex = $unit->hexagon;
-                $battle = Battle::getBattle();
                 $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='usnVictoryPoints'>+$newVp vp</span>";
                 $this->victoryPoints[$victorId] += $newVp;
             }
@@ -226,17 +227,16 @@ class TinCansVictoryCore extends \Wargame\SPI\victoryCore
         }
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
             $gameRules->flashMessages[] = "@hide deadpile";
-            if ($battle->force->reinforceTurns->$turn->$forceId) {
+            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
         }
     }
 
-    public function preRecoverUnits($args)
+    public function preRecoverUnits()
     {
-        /* @var unit $unit */
-        $unit = $args[0];
+
 
     }
 

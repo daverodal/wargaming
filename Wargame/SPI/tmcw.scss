@@ -34,6 +34,24 @@
 
 }
 
+
+@mixin unitColor($nationality, $color, $shortName) {
+  .#{$nationality} .counterWrapper {
+    background-color: $color;
+  }
+  @include badge($nationality, $shortName);
+}
+
+@mixin headerColor($nationality, $color, $faceColor: $color){
+  .player#{$nationality}{
+    background:$color;
+    border-color:$color !important;
+  }
+  .#{$nationality}Face, .player#{$nationality}Face{
+    color:$faceColor;
+  }
+}
+
 @include player(rebel, One, rgb(223, 88, 66));
 @include player(loyalist, Two, rgb(132, 181, 255));
 

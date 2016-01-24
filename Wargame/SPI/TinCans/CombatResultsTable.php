@@ -1,6 +1,6 @@
 <?php
 namespace Wargame\SPI\TinCans;
-use \Battle;
+use \Wargame\Battle;
 use \stdClass;
 // crt.js
 

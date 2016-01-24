@@ -1,4 +1,5 @@
 <?php
+use \Wargame\Battle;
 // moveRules.js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -764,7 +765,7 @@ class NavalMoveRules
         // need move points, but can always move at least one hexagon
         //  can always move at least one hexagon if this->oneHex is true
         //  only check move amount if unit has been moving
-        if (!($firstHex == true && $this->oneHex)) {
+        if (!($firstHex == true && !empty($this->oneHex))) {
             if ($movingUnit->unitHasMoveAmountAvailable($moveAmount) == false) {
                 $isValid = false;
             }

@@ -1,4 +1,5 @@
 <?php
+use \Wargame\Battle;
 // combatRules->js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -120,7 +121,7 @@ class NavalCombatRules
             unset($this->attackers->$attackerId);
             unset($this->combats->$cd->attackers->$attackerId);
             unset($this->combats->$cd->thetas->$attackerId);
-            $victory->postUnsetAttacker($this->units[$attackerId]);
+            $victory->postUnsetAttacker($this->force->units[$attackerId]);
         }
         $this->combats->$cd->useDetermined = false;
 
@@ -137,18 +138,17 @@ class NavalCombatRules
         $cd = $this->currentDefender;
 
         if ($this->force->unitIsEnemy($id) == true) {
-            if(!$this->dayTime && $unit->spotted === false){
+            if(empty($this->dayTime) && $unit->spotted === false){
                 return false;
             }
             // defender is already in combatRules, so make it currently selected
 //            if(isset($this->defenders->$id)){
 //                $id = $this->defenders->$id;
 //            }
-            $combats = $this->combats->$id;
-            $combatId = $id;
+
+            $combats = $combatId = false;
             if (isset($this->defenders->$id)) {
                 $combatId = $this->defenders->$id;
-//                $cd = $this->defenders->$id;
                 $combats = $this->combats->$combatId;
             }
             if ($combats) {
@@ -227,7 +227,7 @@ class NavalCombatRules
                 if (!$this->combats) {
                     $this->combats = new  stdClass();
                 }
-                if (!$this->combats->$cd) {
+                if (empty($this->combats->$cd)) {
                     $this->combats->$cd = new Combat();
                 }
                 $this->combats->$cd->defenders->$id = $id;
@@ -237,12 +237,12 @@ class NavalCombatRules
         {
 
             if ($this->currentDefender !== false && $this->force->units[$id]->status != STATUS_UNAVAIL_THIS_PHASE) {
-                if ($this->combats->$cd->attackers->$id !== false && $this->attackers->$id === $cd) {
+                if (isset($this->combats->$cd->attackers->$id) && $this->combats->$cd->attackers->$id !== false && $this->attackers->$id === $cd) {
                     $this->force->undoAttackerSetup($id);
                     unset($this->attackers->$id);
                     unset($this->combats->$cd->attackers->$id);
                     unset($this->combats->$cd->thetas->$id);
-                    $victory->postUnsetAttacker($this->units[$id]);
+                    $victory->postUnsetAttacker($this->force->units[$id]);
                     $this->crt->setCombatIndex($cd);
                 } else {
                     $good = true;
@@ -287,7 +287,7 @@ class NavalCombatRules
                                 $this->attackers->$id = $cd;
                                 $this->combats->$cd->attackers->$id = $bearing;
                                 $this->combats->$cd->defenders->$defenderId = $bearing;
-                                if (!is_object($this->combats->$cd->thetas->$id)) {
+                                if (empty($this->combats->$cd->thetas->$id)) {
                                     $this->combats->$cd->thetas->$id = new stdClass();
                                 }
                                 $this->combats->$cd->thetas->$id->$defenderId = $bearing;

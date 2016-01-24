@@ -53,7 +53,6 @@ class AreaForce
     public $ZOCrule;
     public $attackingForceId;
     public $defendingForceId;
-    public $deleteCount;
     public $reinforceTurns;
     public $retreatHexagonList;
     public $exchangeAmount;
@@ -88,7 +87,6 @@ class AreaForce
             $this->units = array();
             $this->victor = RED_FORCE;
             $this->ZOCrule = true;
-            $this->deleteCount = 0;
 
             $this->retreatHexagonList = array();
             $this->requiredAttacks = new stdClass();
@@ -417,7 +415,6 @@ class AreaForce
         $unit->damage = $unit->getUnmodifiedStrength();
         $battle->victory->reduceUnit($unit);
         $forceId = $unit->forceId;
-        $this->deleteCount++;
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
         $mapHex = $mapData->getHex($unit->hexagon->getName());

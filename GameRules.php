@@ -65,7 +65,6 @@ class GameRules
     public $gameHasCombatResolutionMode;
     public $attackingForceId;
     public $defendingForceId;
-    public $deleteCount;
     public $interactions;
     public $replacementsAvail;
     public $currentReplacement;
@@ -115,7 +114,6 @@ class GameRules
             $this->gameHasCombatResolutionMode = true;
             $this->trayX = 0;
             $this->trayY = 0;
-            $this->deleteCount = 0;
             $this->attackingForceId = BLUE_FORCE;
             $this->defendingForceId = RED_FORCE;
             $this->interactions = array();

@@ -137,6 +137,7 @@
     </header>
     <div id="content">
         <div id="rightCol">
+            @section('unit-boxes')
             <div class="unit-wrapper" id="deployWrapper">
                 <div class="close">X</div>
                 <div style="margin-right:3px;" class="left">Deploy/Staging area</div>
@@ -164,6 +165,7 @@
             </div>
 
             <div class="unit-wrapper" style="display:none;" id="undeadpile"></div>
+            @show
             <div id="gameViewer">
                 <div id="gameContainer">
                     <div id="gameImages">

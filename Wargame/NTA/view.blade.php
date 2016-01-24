@@ -20,9 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?>
+@include('wargame::NTA.header')
+@include('wargame::global-header')
 <script type="text/javascript">
     DR.playerOne = "<?=$forceName[1]?>";
-    DR.playerTwo = "<?=$player[2]?>";
+    DR.playerTwo = "<?=$forceName[2]?>";
     DR.playerThree = "";
     DR.playerFour = "";
     DR.players = ["observer", DR.playerOne, DR.playerTwo, DR.playerThree, DR.playerFour];
@@ -41,7 +43,7 @@
                     <div class="close">X</div>
                     <ul>
                         <li><a id="muteButton">mute</a></li>
-                        <li><a href="<?= url("wargame/leaveGame"); ?>">Go To Lobby</a></li>
+                        <li><a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a></li>
                         <li><a href="<?= url("users/logout"); ?>">logout</a></li>
                         <li><a id="arrowButton">show arrows</a></li>
                         <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
@@ -78,7 +80,7 @@
                     <h3>Combat Odds</h3>
 
                     <?php
-                    $topCrt = new \NTA\CombatResultsTable();
+                    $topCrt = new \Wargame\NTA\CombatResultsTable();
                     $crts = $topCrt->crts;
                     ?>
                     <div id="crt-buttons">
@@ -146,9 +148,9 @@
             <div class="dropDown">
                 <h4 class="WrapperLabel"><span class="tablet">?</span><span class="desktop">Rules</span></h4>
                 <div class="subMenu">
-                    <?php include_once "commonRules.php"; ?>
-                    <?php include_once "exclusiveRules.php"; ?>
-                    <?php include_once "obc.php"; ?>
+                    <?php //include_once "commonRules.php"; ?>
+                    <?php //include_once "exclusiveRules.php"; ?>
+                    <?php //include_once "obc.php"; ?>
                 </div>
             </div>
             <?php //include_once "tec.php"; ?>
@@ -227,19 +229,19 @@
                             </svg>
                         </div>
 
-                        <img id="map" alt="map" src="/js/<?=$mapUrl?>">
+                        <img id="map" alt="map" src="/<?=$mapUrl?>">
                         <?php $id = 0; ?>
-                        {units}
-                        <div class="unit {nationality}" id="{id}" alt="0">
+                        @foreach($units as $unit)
+                        <div class="unit {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
                             <div class="shadow-mask"></div>
-                            <div class="unitSize">{unitSize}</div>
+                            <div class="unitSize">{{$unit['unitSize']}}</div>
                             <img class="arrow" src="<?php echo url('js/short-red-arrow-md.png'); ?>" class="counter">
                             <div class="counterWrapper">
-                                <img src="<?php echo url('js/{image}'); ?>" class="counter"><span class="unit-desig">{unitDesig}</span>
+                                <img src="{{url("js/".$unit['image'])}}" class="counter"><span class="unit-desig">{{$unit['unitDesig']}}</span>
                             </div>
                             <div class="unit-numbers">5 - 4</div>
                         </div>
-                        {/units}
+                        @endforeach
                         <div id="floatMessage">
                             <header></header>
                             <p></p>

@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\SPI\ClashOverCrude;
 use \stdClass;
-use \Battle;
+use \Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -38,7 +38,6 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
     protected $supplyLen = false;
     private $landingZones;
     private $airdropZones;
-    private $scienceCenterDestroyed = false;
     public $gameOver = false;
     public $winner = false;
 
@@ -54,7 +53,6 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
             $this->supplyLen = $data->victory->supplyLen;
             $this->landingZones = $data->victory->landingZones;
             $this->airdropZones = $data->victory->airdropZones;
-            $this->scienceCenterDestroyed = $data->victory->scienceCenterDestroyed;
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 25);
@@ -89,11 +87,6 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
 
         list($mapHexName, $forceId) = $args;
 
-//        if ($mapHexName == 1807 && $forceId == REBEL_FORCE) {
-//            $this->scienceCenterDestroyed;
-//            $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebelVictoryPoints'>Marine Science Facility Destroyed</span>";
-//            $battle->gameRules->flashMessages[] = "Rebel units may now withdraw from beachheads";
-//        }
         if ($forceId == LOYALIST_FORCE) {
             $newLandings = [];
             foreach ($this->landingZones as $landingZone) {
@@ -253,7 +246,7 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
             $battle->terrain->reinforceZones = [];
             $units = $force->units;
             $num = count($units);
-            for ($i = 0; $i <= $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $unit = $units[$i];
                 if ($unit->forceId == BLUE_FORCE && $unit->hexagon->parent === "gameImages") {
                     $supply[$unit->hexagon->name] = BLUE_FORCE;
@@ -288,11 +281,8 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
         }
     }
 
-    public function preRecoverUnits($args)
+    public function preRecoverUnits()
     {
-        /* @var unit $unit */
-        $unit = $args[0];
-
         $b = Battle::getBattle();
 
         $goal = array_merge($this->landingZones, $this->airdropZones);
@@ -344,7 +334,7 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == REBEL_FORCE) {
                 $bias = array(5 => true, 6 => true, 1 => true);
                 $goal = $this->rebelGoal;

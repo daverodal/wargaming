@@ -40,6 +40,12 @@ class ModernNavalBattle extends LandBattle
 
     public $players;
 
+    public function save()
+    {
+        $ret = parent::save();
+        $ret->game = $this->game;
+        return $ret;
+    }
 
     function __construct($data = null, $arg = false, $scenario = false, $game = false){
         $this->mapData = MapData::getInstance();

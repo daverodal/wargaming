@@ -1,5 +1,6 @@
 <?php
 namespace Wargame\Troops;
+use \Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -29,8 +30,8 @@ class troopersVictoryCore extends \Wargame\Troops\victoryCore
         /* @var unit $unit */
         list($unit) = $arg;
         /* @var Dubba1843 $battle */
-        $battle = \Battle::getBattle();
-        $zocBlocksRetreat = $battle->scenario->zocBlocksRetreat;
+        $battle = Battle::getBattle();
+        $zocBlocksRetreat = !empty($battle->scenario->zocBlocksRetreat);
         if($unit->forceId !== BRITISH_FORCE || $zocBlocksRetreat ){
             $battle->moveRules->zocBlocksRetreat = true;
         }else{

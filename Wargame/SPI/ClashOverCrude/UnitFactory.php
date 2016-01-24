@@ -52,7 +52,7 @@ class LandAirUnit extends \BaseUnit implements \JsonSerializable
         }
 
         $battle = Battle::getBattle();
-        if($battle->gameRules->phase === BLUE_AIR_COMBAT_PHASE || $battle->gameRules->phase === AIR_AIR_COMBAT_PHASE){
+        if($battle->gameRules->phase === BLUE_AIR_COMBAT_PHASE || $battle->gameRules->phase === RED_AIR_COMBAT_PHASE){
             $strength = $this->unitAirStrength;
         }
         foreach ($this->adjustments as $adjustment) {

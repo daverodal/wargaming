@@ -971,7 +971,7 @@ svg marker#head {
 #unitsWrapper {
   display: none; }
 
-.blueUnit, .blue, .playerTwo {
+.blueUnit, .blue, .playerBlue {
   background-color: #84b5ff;
   border-color: #84b5ff; }
 
@@ -1000,7 +1000,7 @@ svg marker#head {
 .flesh {
   background-color: #efc69c; }
 
-.brightRed, .british, .playerOne {
+.brightRed, .british, .playerRed {
   background-color: #df5842;
   border-color: #df5842; }
 

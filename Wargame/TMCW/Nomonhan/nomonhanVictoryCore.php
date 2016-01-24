@@ -59,13 +59,8 @@ class nomonhanVictoryCore{
         return $ret;
     }
 
-    public function preRecoverUnits($args)
+    public function preRecoverUnits()
     {
-        /* @var unit $unit */
-        $unit = $args[0];
-
-        $b = Battle::getBattle();
-
         $this->japaneseGoal = [101];
 
         $this->sovietGoal = [2020];

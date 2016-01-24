@@ -26,7 +26,17 @@
         </div>
     </div>
     @endforeach
-    @endsection
+@endsection
+
+@section('crt')
+    <h1> War </h1>
+    <?php $topCrt = new \Wargame\SPI\TinCans\CombatResultsTable();?>
+@endsection
+
+@section('inner-crt')
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\SPI\TinCans\CombatResultsTable()])
+@endsection
+
 @section('victoryConditions')
     @include('wargame::SPI.TinCans.victoryConditions')
 @endsection

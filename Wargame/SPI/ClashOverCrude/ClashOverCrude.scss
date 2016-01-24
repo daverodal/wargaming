@@ -20,6 +20,9 @@
  */
 @import "ClashOverCrudeColors";
 
+@include headerColor(US, $usColor, $usColor );
+
+@include headerColor(Arab, $iranianColor, $iranianColor );
 
 
 @include player(us, One, $usColor, $usColor, black);
@@ -92,7 +95,7 @@
       float: left;
       width: 94px;
       height: 56px;
-      background-image: url('<?=url()?>js/AmphTEC.png');
+      background-image: url('js/AmphTEC.png');
       background-repeat: no-repeat;
 
     }

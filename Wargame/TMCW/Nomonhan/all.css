@@ -1214,6 +1214,20 @@ svg marker#head {
   .soviet .unit-desig {
     color: white; }
 
+.playerSoviet {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
+.SovietFace, .playerSovietFace {
+  color: #df5842; }
+
+.playerJapanese {
+  background: orange;
+  border-color: orange !important; }
+
+.JapaneseFace, .playerJapaneseFace {
+  color: orange; }
+
 #crt {
   width: 308px; }
   #crt .crt-table-name {

@@ -221,7 +221,7 @@ class NavalUnit extends \MovableUnit implements \JsonSerializable
     {
         $battle = Battle::getBattle();
 
-        if($battle->scenario->two && $this->class === 'ca' && $this->nationality === 'usn'){
+        if(!empty($battle->scenario->two) && $this->class === 'ca' && $this->nationality === 'usn'){
             $this->startFire();
         }
         switch($result){
@@ -385,25 +385,6 @@ class NavalUnit extends \MovableUnit implements \JsonSerializable
             case STATUS_ATTACKING:
                 $this->status = $status;
                 $id = $this->id;
-                if ($status === STATUS_ATTACKING) {
-                    if ($battle->force->combatRequired && isset($battle->force->requiredAttacks->$id)) {
-                        $battle->force->requiredAttacks->$id = false;
-                    }
-                }
-                if ($status === STATUS_DEFENDING) {
-                    if ($battle->force->combatRequired && isset($battle->force->requiredDefenses->$id)) {
-                        $battle->force->requiredDefenses->$id = false;
-                    }
-                }
-                if ($status === STATUS_READY) {
-
-                    if ($battle->force->combatRequired && isset($battle->force->requiredAttacks->$id)) {
-                        $battle->force->requiredAttacks->$id = true;
-                    }
-                    if ($battle->force->combatRequired && isset($battle->force->requiredDefenses->$id)) {
-                        $battle->force->requiredDefenses->$id = true;
-                    }
-                }
                 break;
 
             case STATUS_MOVING:

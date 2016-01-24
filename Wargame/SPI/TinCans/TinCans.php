@@ -103,7 +103,7 @@ class TinCans extends \ModernNavalBattle
     function save()
     {
         $data = parent::save();
-        $data->specialHexA = $this->specialHexA;
+
         return $data;
     }
 
@@ -272,7 +272,6 @@ class TinCans extends \ModernNavalBattle
         parent::__construct($data, $arg, $scenario, $game);
 
         if ($data) {
-            $this->specialHexA = $data->specialHexA;
 
         } else {
             $this->victory = new \Victory("\\Wargame\\SPI\\TinCans\\TinCansVictoryCore");

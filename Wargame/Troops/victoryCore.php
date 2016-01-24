@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\Troops;
 use \stdClass;
-use \Battle;
+use \Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal

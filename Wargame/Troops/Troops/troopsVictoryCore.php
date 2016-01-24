@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\Troops\Troops;
 use \stdClass;
-use \Battle;
+use \Wargame\Battle;
 use \Hexpart;
 /**
  *

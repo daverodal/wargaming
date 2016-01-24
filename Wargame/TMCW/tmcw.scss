@@ -60,4 +60,19 @@
 
 
 
+@mixin unitColor($nationality, $color, $shortName) {
+  .#{$nationality} .counterWrapper {
+    background-color: $color;
+  }
+  @include badge($nationality, $shortName);
+}
 
+@mixin headerColor($nationality, $color, $faceColor: $color){
+  .player#{$nationality}{
+    background:$color;
+    border-color:$color !important;
+  }
+  .#{$nationality}Face, .player#{$nationality}Face{
+    color:$faceColor;
+  }
+}

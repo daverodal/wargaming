@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\NTA;
 use \stdClass;
-use \Battle;
+use \Wargame\Battle;
 // crt.js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -121,6 +121,8 @@ class CombatResultsTable
         $attackers = $combats->attackers;
         $attackStrength = 0;
         $attackersCav = false;
+        $combinedArms = ['infantry'=>0, 'artillery'=>0, 'cavalry'=>0];
+
         foreach($attackers as $attackerId => $attacker){
             $unit = $battle->force->units[$attackerId];
             $unitStrength = $unit->strength;
@@ -165,7 +167,6 @@ class CombatResultsTable
             $defenseStrength += $unitDefense * (($isTown && $class != 'cavalry') || $isHill ? 2 : 1);
         }
 
-        $combinedArms = array();
 
         if($attackStrength >= $defenseStrength){
             foreach($combats->attackers as $attackerId => $attacker){
@@ -176,11 +177,19 @@ class CombatResultsTable
             }
         }
 
-        $armsShift = count($combinedArms) - 1;
-        if($armsShift < 0){
-            $armsShift = 0;
+        $armsShift = 0;
+        if ($attackStrength >= $defenseStrength) {
+            foreach($combinedArms as $arms){
+                if($arms > 0){
+                    $armsShift++;
+                }
+            }
+            $armsShift--;
         }
 
+        if ($armsShift < 0) {
+            $armsShift = 0;
+        }
 
         $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
         /* Do this before terrain effects */

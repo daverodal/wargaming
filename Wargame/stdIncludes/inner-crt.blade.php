@@ -20,8 +20,13 @@ $crts = $topCrt->crts;
 
         <div id="odds">
             <span class="col0">&nbsp;</span>
-            <?php  $i = 1;?>
-            @foreach ($topCrt->combatResultsHeader as $odds)
+            <?php  $i = 1;
+            $header = $topCrt->combatResultsHeader;
+            $headerName = $crtName."ResultsHeader";
+            if(isset($topCrt->$headerName)){
+                $header = $topCrt->$headerName;
+            }?>
+            @foreach ($header as $odds)
                 <span class="col{{$i++}}">{{$odds}}</span>
             @endforeach
         </div>

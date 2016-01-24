@@ -1076,74 +1076,6 @@ svg marker#head {
 #crt {
   width: 308px; }
 
-#TEC {
-  background: white;
-  width: 579px; }
-
-#TECWrapper .closer {
-  height: 0px;
-  padding: 0px; }
-
-#TECWrapper .colOne.riverHex {
-  background-image: url("<?=url()?>js/river.png");
-  background-position: 0px -26px; }
-
-#TECWrapper .colOne.bridgeHex {
-  background-image: url("<?=url()?>js/riverRoad.png");
-  background-position: 0px -26px; }
-
-#TECWrapper .colOne.blankHex {
-  background-image: url("<?=url()?>js/blank.png"); }
-
-#TECWrapper .colOne.forestHex {
-  background-image: url("<?=url()?>js/forest 2.png"); }
-
-#TECWrapper .colOne.mountainHex {
-  background-image: url("<?=url()?>js/mountain.png"); }
-
-#TECWrapper .colOne.roadHex {
-  background-image: url("<?=url()?>js/road.png");
-  background-position: 0px -26px; }
-
-#TECWrapper .colOne.trailHex {
-  background-image: url("<?=url()?>js/trail.png");
-  background-position: 0px -26px;
-  background-size: 516px;
-  /* TODO why this different from others */ }
-
-#TECWrapper .colOne {
-  background-size: 400px;
-  width: 220px;
-  height: 56px;
-  margin-left: 20px; }
-
-#TECWrapper .colTwo {
-  width: 170px;
-  padding-right: 10px; }
-
-#TECWrapper .colThree {
-  width: 136px; }
-
-#TECWrapper .colOne span {
-  margin-top: 12px;
-  margin-left: 80px;
-  display: inline-block; }
-
-#TECWrapper .colTwo, #TECWrapper .colThree {
-  margin-top: 12px; }
-
-#TECWrapper .colOne,
-#TECWrapper .colTwo,
-#TECWrapper .colThree {
-  float: left; }
-
-#TECWrapper li {
-  list-style-type: none;
-  padding: 5px 20px 5px 0px; }
-
-#GR {
-  width: 600px; }
-
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -1211,26 +1143,26 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 .playerusn {
-  background: #2496e8;
-  border-color: #2496e8 !important; }
+  background: #2496E8;
+  border-color: #2496E8 !important; }
 
 .usnFace, .playerusnFace {
-  color: #2496e8; }
+  color: #2496E8; }
 
 .usn {
-  background-color: #2496e8; }
+  background-color: #2496E8; }
   .usn .unit-desig {
     color: black; }
 
 .playerrn {
-  background: #2496e8;
-  border-color: #2496e8 !important; }
+  background: #2496E8;
+  border-color: #2496E8 !important; }
 
 .rnFace, .playerrnFace {
-  color: #2496e8; }
+  color: #2496E8; }
 
 .rn {
-  background-color: #2496e8; }
+  background-color: #2496E8; }
   .rn .unit-desig {
     color: black; }
 
@@ -1245,6 +1177,27 @@ svg marker#head {
   background-color: #ffcd00; }
   .ijn .unit-desig {
     color: black; }
+
+.playerUSN {
+  background: #2496E8;
+  border-color: #2496E8 !important; }
+
+.USNFace, .playerUSNFace {
+  color: #2496E8; }
+
+.playerIJN {
+  background: #ffcd00;
+  border-color: #ffcd00 !important; }
+
+.IJNFace, .playerIJNFace {
+  color: #ffcd00; }
+
+.playerRN {
+  background: #2496E8;
+  border-color: #2496E8 !important; }
+
+.RNFace, .playerRNFace {
+  color: #2496E8; }
 
 .fa-fire {
   animation: pulsate .6s linear infinite;

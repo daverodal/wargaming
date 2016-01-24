@@ -26,7 +26,6 @@ class Force extends SimpleForce
     public $ZOCrule;
 
     public $landForce = true;
-    public $deleteCount;
     public $retreatHexagonList;
     public $exchangeAmount;
     public $requiredAttacks;
@@ -61,7 +60,6 @@ class Force extends SimpleForce
             $this->units = array();
             $this->victor = RED_FORCE;
             $this->ZOCrule = true;
-            $this->deleteCount = 0;
 
             $this->retreatHexagonList = array();
             $this->requiredAttacks = new stdClass();

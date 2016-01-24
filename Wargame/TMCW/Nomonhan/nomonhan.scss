@@ -20,6 +20,8 @@
  */
 @include player(japanese, One, orange);
 @include player(soviet, Two, rgb(223,88,66));
+@include headerColor(Soviet, rgb(223,88,66), rgb(223,88,66));
+@include headerColor(Japanese, orange,orange);
 
 
 #crt{
