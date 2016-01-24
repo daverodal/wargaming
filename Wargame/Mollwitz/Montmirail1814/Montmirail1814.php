@@ -92,7 +92,7 @@ class Montmirail1814 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Montmirail1814\\montmirail1814VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Montmirail1814\\montmirail1814VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

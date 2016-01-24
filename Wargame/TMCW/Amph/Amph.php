@@ -1,6 +1,8 @@
 <?php
 namespace Wargame\TMCW\Amph;
+use \Wargame\ModernLandBattle;
 use \Wargame\TMCW\UnitFactory;
+use \Wargame\MoveRules;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -31,7 +33,7 @@ $force_name[0] = "Neutral Observer";
 $force_name[1] = "Rebel";
 $force_name[2] = "Loyalist";
 
-class Amph extends \ModernLandBattle
+class Amph extends ModernLandBattle
 {
     /* a comment */
 
@@ -164,11 +166,11 @@ class Amph extends \ModernLandBattle
 
         } else {
 
-            $this->victory = new \Victory("Wargame\\TMCW\\Amph\\amphVictoryCore");
+            $this->victory = new \Wargame\Victory("Wargame\\TMCW\\Amph\\amphVictoryCore");
             if ($scenario->supplyLen) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }
-            $this->moveRules = new \MoveRules($this->force, $this->terrain);
+            $this->moveRules = new MoveRules($this->force, $this->terrain);
             if ($scenario && $scenario->supply === true) {
                 $this->moveRules->enterZoc = 2;
                 $this->moveRules->exitZoc = 1;

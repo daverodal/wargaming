@@ -185,7 +185,7 @@ class Chawinda1965 extends \ModernLandBattle
             $this->specialHexB = $data->specialHexB;
             $this->specialHexC = $data->specialHexC;
         } else {
-            $this->victory = new \Victory("Wargame\TMCW\Chawinda1965\chawinda1965VictoryCore");
+            $this->victory = new \Wargame\Victory("Wargame\TMCW\Chawinda1965\chawinda1965VictoryCore");
             if ($scenario->supplyLen) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }

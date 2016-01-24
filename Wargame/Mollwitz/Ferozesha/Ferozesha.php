@@ -151,7 +151,7 @@ class Ferozesha extends \Wargame\Mollwitz\IndiaCore
 
         } else {
 
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Ferozesha\\ferozeshaVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Ferozesha\\ferozeshaVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

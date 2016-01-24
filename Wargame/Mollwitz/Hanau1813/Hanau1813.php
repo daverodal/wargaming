@@ -98,7 +98,7 @@ class Hanau1813 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Hanau1813\\hanau1813VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Hanau1813\\hanau1813VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

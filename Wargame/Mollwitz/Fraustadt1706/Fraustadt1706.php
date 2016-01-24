@@ -104,7 +104,7 @@ class Fraustadt1706 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Fraustadt1706\\fraustadt1706VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Fraustadt1706\\fraustadt1706VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

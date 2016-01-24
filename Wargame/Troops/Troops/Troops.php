@@ -237,7 +237,7 @@ class Troops extends \Wargame\Troops\TroopersCore
 
         } else {
 
-            $this->victory = new \Victory("\\Wargame\\Troops\\Troops\\troopsVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Troops\\Troops\\troopsVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

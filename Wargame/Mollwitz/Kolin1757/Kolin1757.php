@@ -174,7 +174,7 @@ class Kolin1757 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Kolin1757\\kolin1757VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Kolin1757\\kolin1757VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

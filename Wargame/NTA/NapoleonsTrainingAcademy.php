@@ -116,7 +116,7 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
             $this->arg = $data->arg;
             $this->scenario = $data->scenario;
             $this->genTerrain = false;
-            $this->victory = new \Victory("\\Wargame\\NTA\\victoryCore",$data);
+            $this->victory = new \Wargame\Victory("\\Wargame\\NTA\\victoryCore",$data);
             $this->mapData->init($data->mapData);
             $this->mapViewer = array(new \MapViewer($data->mapViewer[0]),new \MapViewer($data->mapViewer[1]),new \MapViewer($data->mapViewer[2]));
             $units = $data->force->units;
@@ -136,7 +136,7 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
             $this->arg = $arg;
             $this->scenario = $scenario;
             $this->genTerrain = true;
-            $this->victory = new \Victory("\\Wargame\\NTA\\victoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\NTA\\victoryCore");
 
             $this->mapData->setData(19,9,"js/centre.png");
 

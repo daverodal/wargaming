@@ -100,7 +100,7 @@ class Lesnaya1708 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Lesnaya1708\\Lesnaya1708VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Lesnaya1708\\Lesnaya1708VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

@@ -123,7 +123,7 @@ class Gadebusch1712 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Gadebusch1712\\gadebusch1712VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Gadebusch1712\\gadebusch1712VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

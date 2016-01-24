@@ -95,7 +95,7 @@ class Fontenoy1745 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Fontenoy1745\\fontenoy1745VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Fontenoy1745\\fontenoy1745VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

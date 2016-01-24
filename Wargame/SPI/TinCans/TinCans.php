@@ -274,7 +274,7 @@ class TinCans extends \ModernNavalBattle
         if ($data) {
 
         } else {
-            $this->victory = new \Victory("\\Wargame\\SPI\\TinCans\\TinCansVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\SPI\\TinCans\\TinCansVictoryCore");
 
             // game data
             $this->gameRules->setInitialPhaseMode(BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE);

@@ -192,7 +192,7 @@ class Nomonhan extends \ModernLandBattle
         if ($data) {
 
         } else {
-            $this->victory = new \Victory("\\Wargame\\TMCW\\Nomonhan\\nomonhanVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\Nomonhan\\nomonhanVictoryCore");
 //            $this->mapData->setData(40, 25, "js/Nomonhan3Small.png");
 
 //            $this->terrain->setMaxHex("4025");

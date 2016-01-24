@@ -156,7 +156,7 @@ class Dubba1843 extends \Wargame\Mollwitz\IndiaCore
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Dubba1843\\dubba1843VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Dubba1843\\dubba1843VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

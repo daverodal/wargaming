@@ -111,7 +111,7 @@ class Klissow1702 extends \Wargame\Mollwitz\JagCore
                 }
             }
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Klissow1702\\klissow1702VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Klissow1702\\klissow1702VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

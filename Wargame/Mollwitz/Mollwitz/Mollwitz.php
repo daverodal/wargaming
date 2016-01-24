@@ -168,7 +168,7 @@ class Mollwitz extends \Wargame\Mollwitz\JagCore
         if ($data) {
 
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Mollwitz\\mollwitzVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Mollwitz\\mollwitzVictoryCore");
 
             $this->moveRules->enterZoc = "stop";
             $this->moveRules->exitZoc = "stop";

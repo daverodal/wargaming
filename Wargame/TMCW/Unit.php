@@ -1,8 +1,8 @@
 <?php
 namespace Wargame\TMCW;
-use \Hexagon;
+use \Wargame\Hexagon;
 use \stdClass;
-use \MapData;
+use \Wargame\MapData;
 use \Wargame\Battle;
 /**
  * Copyright 2015 David Rodal
@@ -23,7 +23,7 @@ use \Wargame\Battle;
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class Unit extends \BaseUnit implements \JsonSerializable
+class Unit extends \Wargame\BaseUnit implements \JsonSerializable
 {
 
 //    public $strength;

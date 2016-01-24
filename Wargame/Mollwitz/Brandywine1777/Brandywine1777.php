@@ -106,7 +106,7 @@ class Brandywine1777 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory('\Wargame\Mollwitz\Brandywine1777\brandywine1777VictoryCore');
+            $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\Brandywine1777\brandywine1777VictoryCore');
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

@@ -186,7 +186,7 @@ class Jagersdorf extends \Wargame\Mollwitz\JagCore {
         if ($data) {
 
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Jagersdorf\\jagerVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Jagersdorf\\jagerVictoryCore");
 
             $this->moveRules->enterZoc = "stop";
             $this->moveRules->exitZoc = "stop";

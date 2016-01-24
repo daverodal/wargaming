@@ -195,7 +195,7 @@ class Hastenbeck extends \Wargame\Mollwitz\JagCore
             $this->specialHexB = $data->specialHexB;
             $this->specialHexC = $data->specialHexC;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Hastenbeck\\hastenbeckVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Hastenbeck\\hastenbeckVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

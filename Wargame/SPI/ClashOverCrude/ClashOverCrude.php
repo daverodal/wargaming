@@ -172,7 +172,7 @@ class ClashOverCrude extends \ModernLandBattle
             $this->specialHexA = $data->specialHexA;
 
         } else {
-            $this->victory = new \Victory("\\Wargame\\SPI\\ClashOverCrude\\ClashOverCrudeVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\SPI\\ClashOverCrude\\ClashOverCrudeVictoryCore");
             $this->moveRules = new \MoveRules($this->force, $this->terrain);
 
             $this->moveRules->enterZoc = 0;

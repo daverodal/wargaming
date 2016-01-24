@@ -30,7 +30,7 @@ use \stdClass;
 
 class ModernCombatResultsTable
 {
-    use \DivMCWCombatShiftTerrain;
+    use \Wargame\DivMCWCombatShiftTerrain;
 
 //    use crtTraits
     public $combatIndexCount;

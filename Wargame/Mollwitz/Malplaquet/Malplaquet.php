@@ -127,7 +127,7 @@ class Malplaquet extends \Wargame\Mollwitz\JagCore
             $this->malplaquet = $data->malplaquet;
             $this->otherCities = $data->otherCities;
         } else {
-            $this->victory = new \Victory("\Wargame\\Mollwitz\\Malplaquet\\malplaquetVictoryCore");
+            $this->victory = new \Wargame\Victory("\Wargame\\Mollwitz\\Malplaquet\\malplaquetVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

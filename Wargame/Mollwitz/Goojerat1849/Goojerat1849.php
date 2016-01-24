@@ -171,7 +171,7 @@ class Goojerat1849 extends \Wargame\Mollwitz\IndiaCore
             $this->specialHexB = $data->specialHexB;
             $this->specialHexC = $data->specialHexC;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Goojerat1849\\goojerat1849VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Goojerat1849\\goojerat1849VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

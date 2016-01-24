@@ -138,7 +138,7 @@ class Moskow extends \ModernLandBattle
             $this->specialHexB = $data->specialHexB;
             $this->specialHexC = $data->specialHexC;
         } else {
-            $this->victory = new \Victory("Wargame\\TMCW\\Moskow\\moskowVictoryCore");
+            $this->victory = new \Wargame\Victory("Wargame\\TMCW\\Moskow\\moskowVictoryCore");
             if ($scenario->supplyLen) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }

@@ -90,7 +90,7 @@ class Oudenarde1708 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Oudenarde1708\\oudenarde1708VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Oudenarde1708\\oudenarde1708VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

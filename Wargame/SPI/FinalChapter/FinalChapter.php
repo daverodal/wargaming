@@ -306,7 +306,7 @@ class FinalChapter extends \ModernLandBattle
             $this->specialHexB = $data->specialHexB;
             $this->specialHexC = $data->specialHexC;
         } else {
-            $this->victory = new \Victory("\\Wargame\\SPI\\FinalChapter\\finalChapterVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\SPI\\FinalChapter\\finalChapterVictoryCore");
 
             foreach($this->mapViewer as $mapView){
                 $mapView->trueRows = true;

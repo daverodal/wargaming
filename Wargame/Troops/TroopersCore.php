@@ -11,7 +11,7 @@ use \Terrain;
 use \MoveRules;
 use \TacticalCombatRules;
 use \GameRules;
-use \Victory;
+use \Wargame\Victory;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -31,7 +31,7 @@ use \Victory;
  */
 global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
 
-class TroopersCore extends \LandBattle{
+class TroopersCore extends \Wargame\LandBattle{
 
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>2];
     /* @var MapData $mapData */

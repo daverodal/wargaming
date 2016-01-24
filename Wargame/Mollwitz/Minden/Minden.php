@@ -158,7 +158,7 @@ class Minden extends \Wargame\Mollwitz\JagCore
             $this->angloSpecialHexes = $data->angloSpecialHexes;
             $this->frenchSpecialHexes = $data->frenchSpecialHexes;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Minden\\mindenVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Minden\\mindenVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

@@ -345,7 +345,7 @@ class Kiev extends \ModernLandBattle
             $this->specialHexC = $data->specialHexC;
 
         } else {
-            $this->victory = new \Victory("\\Wargame\\TMCW\\Kiev\\kievVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\Kiev\\kievVictoryCore");
             if ($scenario->supplyLen) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }

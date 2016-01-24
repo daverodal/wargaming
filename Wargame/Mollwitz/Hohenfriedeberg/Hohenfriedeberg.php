@@ -154,7 +154,7 @@ class Hohenfriedeberg extends \Wargame\Mollwitz\JagCore
             $this->specialHexB = $data->specialHexB;
             $this->specialHexC = $data->specialHexC;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Hohenfriedeberg\\hohenfriedebergVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Hohenfriedeberg\\hohenfriedebergVictoryCore");
 
             $this->moveRules->enterZoc = "stop";
             $this->moveRules->exitZoc = "stop";

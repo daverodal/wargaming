@@ -154,7 +154,7 @@ class Burkersdorf extends \Wargame\Mollwitz\JagCore
             $this->cities = $data->cities;
             $this->loc = $data->loc;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Burkersdorf\\burkersdorfVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Burkersdorf\\burkersdorfVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

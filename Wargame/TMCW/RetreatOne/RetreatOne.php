@@ -138,7 +138,7 @@ class RetreatOne extends \ModernLandBattle
         if ($data) {
 
         } else {
-            $this->victory = new \Victory("\\Wargame\\TMCW\\RetreatOne\\retreatOneVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\RetreatOne\\retreatOneVictoryCore");
 
             if ($scenario->supplyLen) {
                 $this->victory->setSupplyLen($scenario->supplyLen);

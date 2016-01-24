@@ -113,7 +113,7 @@ class Helsingborg1710 extends \Wargame\Mollwitz\JagCore
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Helsingborg1710\\helsingborg1710VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Helsingborg1710\\helsingborg1710VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

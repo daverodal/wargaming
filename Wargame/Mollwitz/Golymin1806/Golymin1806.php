@@ -112,7 +112,7 @@ class Golymin1806 extends \Wargame\Mollwitz\JagCore
                 $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Victory('\Wargame\Mollwitz\Golymin1806\golymin1806VictoryCore');
+            $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\Golymin1806\golymin1806VictoryCore');
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

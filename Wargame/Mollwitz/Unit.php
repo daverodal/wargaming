@@ -1,9 +1,10 @@
 <?php
 namespace Wargame\Mollwitz;
 use \stdClass;
-use \Hexagon;
-use \MapData;
+use \Wargame\Hexagon;
+use \Wargame\MapData;
 use \Wargame\Battle;
+use \Wargame\BaseUnit;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal
@@ -23,7 +24,7 @@ use \Wargame\Battle;
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class Unit extends \BaseUnit implements \JsonSerializable
+class Unit extends BaseUnit implements \JsonSerializable
 {
 
 //    public $strength;

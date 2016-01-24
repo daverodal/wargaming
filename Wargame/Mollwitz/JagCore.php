@@ -1,6 +1,14 @@
 <?php
 namespace Wargame\Mollwitz;
-
+use \Wargame\MapData;
+use \Wargame\MapViewer;
+use \Wargame\MoveRules;
+use \Wargame\CombatRules;
+use \Wargame\Force;
+use \Wargame\Terrain;
+use \Wargame\GameRules;
+use \Wargame\Victory;
+use \Wargame\Hexagon;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -23,7 +31,7 @@ namespace Wargame\Mollwitz;
  */
 global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
 
-class JagCore extends \LandBattle{
+class JagCore extends \Wargame\LandBattle{
 
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>2];
     /* @var MapData $mapData */
@@ -41,7 +49,7 @@ class JagCore extends \LandBattle{
 
     function __construct($data = null, $arg = false, $scenario = false, $game = false)
     {
-        $this->mapData = \MapData::getInstance();
+        $this->mapData = MapData::getInstance();
         if ($data) {
             $this->arg = $data->arg;
             $this->scenario = $data->scenario;
@@ -49,21 +57,21 @@ class JagCore extends \LandBattle{
             $this->game = $data->game;
 
             $this->mapData->init($data->mapData);
-            $this->mapViewer = array(new \MapViewer($data->mapViewer[0]), new \MapViewer($data->mapViewer[1]), new \MapViewer($data->mapViewer[2]));
+            $this->mapViewer = array(new MapViewer($data->mapViewer[0]), new MapViewer($data->mapViewer[1]), new MapViewer($data->mapViewer[2]));
 
             $units = $data->force->units;
             unset($data->force->units);
-            $this->force = new \Force($data->force);
+            $this->force = new Force($data->force);
             foreach($units as $unit){
                 $this->force->injectUnit(static::buildUnit($unit));
             }
 
 
-            $this->terrain = new \Terrain($data->terrain);
-            $this->moveRules = new \MoveRules($this->force, $this->terrain, $data->moveRules);
-            $this->combatRules = new \CombatRules($this->force, $this->terrain, $data->combatRules);
-            $this->gameRules = new \GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
-            $this->victory = new \Victory($data);
+            $this->terrain = new Terrain($data->terrain);
+            $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
+            $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
+            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
+            $this->victory = new Victory($data);
 
             $this->players = $data->players;
         } else {
@@ -71,14 +79,14 @@ class JagCore extends \LandBattle{
             $this->scenario = $scenario;
             $this->game = $game;
 
-            $this->mapViewer = array(new \MapViewer(), new \MapViewer(), new \MapViewer());
-            $this->force = new \Force();
+            $this->mapViewer = array(new MapViewer(), new MapViewer(), new MapViewer());
+            $this->force = new Force();
             $this->force->exchangesKill = true;
-            $this->terrain = new \Terrain();
+            $this->terrain = new Terrain();
 
-            $this->moveRules = new \MoveRules($this->force, $this->terrain);
-            $this->combatRules = new \CombatRules($this->force, $this->terrain);
-            $this->gameRules = new \GameRules($this->moveRules, $this->combatRules, $this->force);
+            $this->moveRules = new MoveRules($this->force, $this->terrain);
+            $this->combatRules = new CombatRules($this->force, $this->terrain);
+            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
         }
         static::getPlayerData($this->scenario);
         $crt = new \Wargame\Mollwitz\CombatResultsTable();
@@ -118,7 +126,7 @@ class JagCore extends \LandBattle{
             $mapUrl = $terrainInfo->mapUrl;
             $this->mapData->setData($maxCol, $maxRow, $mapUrl);
 
-            \Hexagon::setMinMax();
+            Hexagon::setMinMax();
             $this->terrain->setMaxHex();
         }
         return;

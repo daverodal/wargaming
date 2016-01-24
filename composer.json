@@ -8,7 +8,7 @@
       "": "."
     },
     "files":[
-      "./constants.php"
+      "Wargame/constants.php"
     ]
   }
 

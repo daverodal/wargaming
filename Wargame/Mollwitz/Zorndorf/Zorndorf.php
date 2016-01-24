@@ -231,7 +231,7 @@ class Zorndorf extends \Wargame\Mollwitz\JagCore
 
         } else {
             $this->game = $game;
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Zorndorf\\zorndorfVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Zorndorf\\zorndorfVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

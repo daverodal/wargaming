@@ -140,7 +140,7 @@ class Lobositz extends \Wargame\Mollwitz\JagCore
             $this->prussianSpecialHexes = $data->prussianSpecialHexes;
         } else {
 
-            $this->victory = new \Victory("\\Wargame\\Mollwitz\\Lobositz\\lobositzVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Lobositz\\lobositzVictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

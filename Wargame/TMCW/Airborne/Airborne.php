@@ -179,7 +179,7 @@ class Airborne extends \ModernLandBattle
         if ($data) {
             $this->specialHexA = $data->specialHexA;
         } else {
-            $this->victory = new \Victory("\\Wargame\\TMCW\\Airborne\\airborneVictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\Airborne\\airborneVictoryCore");
             if (!empty($scenario->supplyLen)) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }

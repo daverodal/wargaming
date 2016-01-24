@@ -107,7 +107,7 @@ class Manchuria1976 extends \ModernLandBattle
         if ($data) {
             $this->specialHexA = $data->specialHexA;
         } else {
-            $this->victory = new \Victory("\\Wargame\\TMCW\\Manchuria1976\\victoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\Manchuria1976\\victoryCore");
 
             if ($scenario && $scenario->supply === true) {
                 $this->moveRules->enterZoc = 2;
