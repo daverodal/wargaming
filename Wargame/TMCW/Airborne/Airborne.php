@@ -29,7 +29,7 @@ global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results
 $force_name = array();
 
 
-class Airborne extends \ModernLandBattle
+class Airborne extends \Wargame\ModernLandBattle
 {
 
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>1];

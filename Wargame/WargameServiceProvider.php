@@ -37,6 +37,9 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/SPI/FinalChapter/Images' => public_path('vendor/wargame/spi/finalchapter/images'),
         ], 'finalchapter');
         $this->publishes([
+            __DIR__.'/TMCW/Airborne/Images' => public_path('vendor/wargame/tmcw/airborne/images'),
+        ], 'airborne');
+        $this->publishes([
             __DIR__.'/TMCW/Kiev/Images' => public_path('vendor/wargame/tmcw/kiev/images'),
             __DIR__.'/TMCW/Kiev/Fonts' => public_path('vendor/wargame/tmcw/kiev/fonts'),
         ], 'kiev');

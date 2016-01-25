@@ -122,8 +122,8 @@ trait DivMCWCombatShiftTerrain
         if(isset($this->aggressorId) && $attackingForceId !== $this->aggressorId){
 
         }else{
-            global $force_name;
-            $player = $force_name[$attackingForceId];
+            $forceName = Battle::$forceName;
+            $player = $forceName[$attackingForceId];
             if($isFortB){
                 $combatLog .= "<br>Shift 2 left for $player attacking into Fortified B";
                 $terrainCombatEffect += 2;

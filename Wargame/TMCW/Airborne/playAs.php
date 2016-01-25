@@ -23,7 +23,7 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("js/C-47_Dakotas_and_paratroops.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/airborne/images/C-47_Dakotas_and_paratroops.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }

@@ -26,7 +26,7 @@ define("GERMAN_FORCE", 1);
 define("SOVIET_FORCE", 2);
 
 
-class Moskow extends \ModernLandBattle
+class Moskow extends \Wargame\ModernLandBattle
 {
     /* a comment */
 

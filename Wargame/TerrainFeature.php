@@ -46,8 +46,8 @@ class TerrainFeature
         $this->combatEffect = $terrainFeatureCombatEffect;
         $this->isExclusive = $terrainFeatureIsExclusive;
         $this->blocksRanged = $blocksRanged;
-        $this->altEntranceCost = new stdClass();
-        $this->altTraverseCost = new stdClass();
+        $this->altEntranceCost = new \stdClass();
+        $this->altTraverseCost = new \stdClass();
 
     }
 }

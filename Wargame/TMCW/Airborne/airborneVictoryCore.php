@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\TMCW\Airborne;
 use \stdClass;
-use \Battle;
+use \Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -37,7 +37,6 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
     protected $supplyLen = false;
     private $landingZones;
     private $airdropZones;
-    private $scienceCenterDestroyed = false;
     public $gameOver = false;
 
 
@@ -49,7 +48,6 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
             $this->supplyLen = $data->victory->supplyLen;
             $this->landingZones = $data->victory->landingZones;
             $this->airdropZones = $data->victory->airdropZones;
-            $this->scienceCenterDestroyed = $data->victory->scienceCenterDestroyed;
             $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
@@ -82,11 +80,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
 
         list($mapHexName, $forceId) = $args;
 
-//        if ($mapHexName == 1807 && $forceId == REBEL_FORCE) {
-//            $this->scienceCenterDestroyed;
-//            $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebelVictoryPoints'>Marine Science Facility Destroyed</span>";
-//            $battle->gameRules->flashMessages[] = "Rebel units may now withdraw from beachheads";
-//        }
+
         if ($forceId == LOYALIST_FORCE) {
             $newLandings = [];
             foreach ($this->landingZones as $landingZone) {
@@ -122,7 +116,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
 
             if ($zone == "A") {
                 foreach ($this->airdropZones as $airdropZone) {
-                    $zones[] = new \ReinforceZone($airdropZone, "C");
+                    $zones[] = new \Wargame\ReinforceZone($airdropZone, "C");
                 }
             }
         }
@@ -195,7 +189,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
             $battle->terrain->reinforceZones = [];
             $units = $force->units;
             $num = count($units);
-            for ($i = 0; $i <= $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $unit = $units[$i];
                 if ($unit->forceId == BLUE_FORCE && $unit->hexagon->parent === "gameImages") {
                     if ($unit->class === "para") {
@@ -221,18 +215,15 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
             $gameRules->flashMessages[] = "@hide deadpile";
-            if ($battle->force->reinforceTurns->$turn->$forceId) {
+            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
         }
     }
 
-    public function preRecoverUnits($args)
+    public function preRecoverUnits()
     {
-        /* @var unit $unit */
-        $unit = $args[0];
-
         $b = Battle::getBattle();
 
         $goal = array_merge([101], $this->airdropZones);

@@ -1246,6 +1246,20 @@ svg marker#head {
   .loyalGuards .unit-desig {
     color: white; }
 
+.playerRebel {
+  background: #5c5;
+  border-color: #5c5 !important; }
+
+.RebelFace, .playerRebelFace {
+  color: #5c5; }
+
+.playerLoyalist {
+  background: #83aee9;
+  border-color: #83aee9 !important; }
+
+.LoyalistFace, .playerLoyalistFace {
+  color: #83aee9; }
+
 .crt-table-name {
   display: none; }
 

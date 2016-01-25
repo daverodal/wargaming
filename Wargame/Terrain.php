@@ -119,9 +119,9 @@ class Terrain
     }
 
     public function addNatAltEntranceCost($terrain, $nationality,$altClass,$entranceCost){
-        $feature = $this->terrainFeatures->$terrain;
-        if($feature){
-            if(!$feature->altEntranceCost->$nationality){
+        if(isset($this->terrainFeatures->$terrain)){
+            $feature = $this->terrainFeatures->$terrain;
+            if(empty($feature->altEntranceCost->$nationality)){
                 $feature->altEntranceCost->$nationality = new stdClass();
             }
             $feature->altEntranceCost->$nationality->$altClass = $entranceCost;
@@ -213,7 +213,8 @@ class Terrain
         if(empty($this->terrainArray[$y][$x])){
             $this->terrainArray[$y][$x] = new stdClass();
         }
-        if ($feature = $this->terrainFeatures->$terrainName) {
+        if (isset($this->terrainFeatures->$terrainName)) {
+            $feature = $this->terrainFeatures->$terrainName;
             /* new feature is exclusive */
             if ($feature->isExclusive === true) {
                 $thisHexpart = $this->terrainArray[$y][$x];

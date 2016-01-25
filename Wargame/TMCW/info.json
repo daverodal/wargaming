@@ -42,7 +42,7 @@
         "name": "Sur La Mer",
         "path": "TMCW",
         "genre": "20'th Century Games",
-        "fileName": "Wargame\\TMCW\\Amph\\Amph.php",
+        "fileName": "\\Wargame\\TMCW\\Amph\\Amph.php",
         "description": "Hypothetical amphibious invasion. The goal is the castle town, Chateau Sur Mer.",
         "options":[
           {
@@ -101,28 +101,11 @@
             }
         }
     },
-  "Area1": {
-    "name": "Area 1",
-    "path": "TMCW",
-    "genre": "20'th Century Games",
-    "fileName": "\\Wargame\\TMCW\\Area1\\Area1",
-    "description": "Area 1",
-    "params":{
-      "maxPlayers":3
-    },
-    "scenarios": {
-      "main": {
-        "description": "Area 1",
-        "longDescription":"Area 1, the game."
-      }
-    }
-  },
-
     "Moskow": {
         "name": "Moskow...",
         "path": "TMCW",
         "genre": "20'th Century Games",
-        "fileName": "Wargame\\TMCW\\Moskow\\Moskow.php",
+        "fileName": "\\Wargame\\TMCW\\Moskow\\Moskow.php",
         "description": "Germans drive on Moscow in October 1941. Turns are 5 days. 11 Turns.",
         "scenarios": {
             "Main": {
@@ -193,7 +176,7 @@
         "name": "Chawinda 1965",
         "path": "TMCW",
         "genre": "20'th Century Games",
-        "fileName": "Wargame\\TMCW\\Chawinda1965\\Chawinda1965.php",
+        "fileName": "\\Wargame\\TMCW\\Chawinda1965\\Chawinda1965.php",
         "scenarios": {
             "Main": {
                 "description": "The Battle of Chawinda 1965",
@@ -249,23 +232,6 @@
             "standard": {
                 "description": "Standard scenario.",
                 "supply": true
-            }
-        }
-    },
-    "TankDual": {
-        "disabled": true,
-        "name": "Tank Dual!!!",
-        "path": "TMCW",
-        "genre": "20'th Century Games",
-        "fileName": "TankDual/TankDual.php",
-        "scenarios": {
-            "main": {
-                "description": "VERY VERY FRESH! USE AT OWN RISK!!!!!!",
-                "loyalMechMove": 8,
-                "loyalExtraInf": true,
-                "supplyLen": 8,
-                "hardCuneiform": true,
-                "showHexNums": true
             }
         }
     },

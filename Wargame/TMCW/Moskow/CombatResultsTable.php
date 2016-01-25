@@ -23,6 +23,6 @@ namespace Wargame\TMCW\Moskow;
 
 class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 {
-    use \DivMCWCombatShiftTerrain;
+    use \Wargame\DivMCWCombatShiftTerrain;
     public $aggressorId = GERMAN_FORCE;
 }
