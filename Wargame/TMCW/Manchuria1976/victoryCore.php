@@ -210,7 +210,7 @@ class victoryCore
 
         $b = Battle::getBattle();
 
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             $bias = array(2 => true, 3 => true);
             $goal = $b->moveRules->calcRoadSupply(SOVIET_FORCE, 3920, $bias);
             $goal = array_merge($goal, $b->moveRules->calcRoadSupply(SOVIET_FORCE, 1932, $bias));
@@ -233,7 +233,7 @@ class victoryCore
 //            return;
         }
         $goal = $this->sovietGoal;
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == PRC_FORCE) {
                 return; /* in supply in china, should verify we ARE in china, but..... */
             }
@@ -319,7 +319,7 @@ class victoryCore
     {
         $unit = $arg[0];
         $battle = Battle::getBattle();
-        if ($battle->scenario->supply === true) {
+        if (!empty($battle->scenario->supply) === true) {
             if ($unit->class != 'mech') {
                 $battle->moveRules->enterZoc = "stop";
                 $battle->moveRules->exitZoc = 0;

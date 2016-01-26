@@ -188,7 +188,7 @@ class nomonhanVictoryCore{
         if($unit->forceId != $b->gameRules->attackingForceId){
 //            return;
         }
-        if($b->scenario->supply === true){
+        if(!empty($b->scenario->supply) === true){
             if($unit->forceId == JAPANESE_FORCE){
                 for($i = 101;$i <= 3701;$i += 100){
                     $goal[] = $i;

@@ -94,7 +94,7 @@ class ModernNavalBattle extends LandBattle
         $terrainInfo = $terrainDoc->terrain;
 
         $specialHexes = $terrainInfo->specialHexes ? $terrainInfo->specialHexes : [];
-        $mapHexes = new stdClass();
+        $mapHexes = new \stdClass();
         foreach ($specialHexes as $hexName => $specialHex) {
             $mapHexes->$hexName = $this->specialHexesMap[$specialHex];
             $this->{lcfirst($specialHex)}[] = $hexName;

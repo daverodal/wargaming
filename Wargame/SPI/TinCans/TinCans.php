@@ -38,7 +38,7 @@ define("South", 3);
 define("SouthWest", 4);
 define("NorthWest", 5);
 
-class TinCans extends \ModernNavalBattle
+class TinCans extends \Wargame\ModernNavalBattle
 {
     /* a comment */
 

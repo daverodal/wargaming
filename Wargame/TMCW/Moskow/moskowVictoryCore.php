@@ -255,7 +255,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == GERMAN_FORCE) {
                 $bias = array(5 => true, 6 => true, 1 => true);
                 $goal = $this->germanGoal;
@@ -309,7 +309,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
             if($gameRules->turn <= $gameRules->maxTurn){
                 $gameRules->flashMessages[] = "German Player Turn";
                 $gameRules->replacementsAvail = 1;
-                if($scenario->weakGermans) {
+                if(!empty($scenario->weakGermans)) {
                     if($battle->gameRules->turn & 2 !== 0){
                         $gameRules->replacementsAvail = 0;
                     }
@@ -322,10 +322,10 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
         if ($attackingId == SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
             $gameRules->replacementsAvail = 8;
-            if($scenario->weakSoviets){
+            if(!empty($scenario->weakSoviets)){
                 $gameRules->replacementsAvail = 6;
             }
-            if($scenario->veryWeakSoviets){
+            if(!empty($scenario->veryWeakSoviets)){
                 $gameRules->replacementsAvail = 4;
             }
         }

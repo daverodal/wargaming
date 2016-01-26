@@ -773,7 +773,7 @@
                         <li>
                             <span class="lessBig">Terrain Effects on Combat</span>
                             <ol>
-                                <?php if ($scenario->jagersdorfCombat) { ?>
+                                <?php if (!empty($scenario->jagersdorfCombat)) { ?>
                                     <?php if ($name == "Jagersdorf") { ?>
                                         <li class="exclusive"><?= $playerTwo ?> Infantry units are +1 to their combat
                                             factor when

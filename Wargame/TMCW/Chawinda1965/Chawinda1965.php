@@ -172,9 +172,9 @@ class Chawinda1965 extends \ModernLandBattle
 
     }
 
-    function __construct($data = null, $arg = false, $scenario = false, $game = false)
+    function __construct($data = null, $arg = false, $scenario = false)
     {
-        parent::__construct($data, $arg, $scenario, $game);
+        parent::__construct($data, $arg, $scenario);
 
         $crt = new \Wargame\TMCW\Chawinda1965\CombatResultsTable();
         $this->combatRules->injectCrt($crt);
@@ -186,7 +186,7 @@ class Chawinda1965 extends \ModernLandBattle
             $this->specialHexC = $data->specialHexC;
         } else {
             $this->victory = new \Wargame\Victory("Wargame\TMCW\Chawinda1965\chawinda1965VictoryCore");
-            if ($scenario->supplyLen) {
+            if (!empty($scenario->supplyLen)) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }
             $this->moveRules->enterZoc = 1;

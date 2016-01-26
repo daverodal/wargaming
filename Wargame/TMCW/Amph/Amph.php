@@ -153,10 +153,10 @@ class Amph extends ModernLandBattle
     public static function myName(){
         echo __CLASS__;
     }
-    function __construct($data = null, $arg = false, $scenario = false, $game = false)
+    function __construct($data = null, $arg = false, $scenario = false)
     {
 
-        parent::__construct($data, $arg, $scenario, $game);
+        parent::__construct($data, $arg, $scenario);
 
         $crt = new \Wargame\TMCW\CombatResultsTable();
         $this->combatRules->injectCrt($crt);
@@ -167,11 +167,11 @@ class Amph extends ModernLandBattle
         } else {
 
             $this->victory = new \Wargame\Victory("Wargame\\TMCW\\Amph\\amphVictoryCore");
-            if ($scenario->supplyLen) {
+            if (!empty($scenario->supplyLen)) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }
             $this->moveRules = new MoveRules($this->force, $this->terrain);
-            if ($scenario && $scenario->supply === true) {
+            if ($scenario && !empty($scenario->supply) === true) {
                 $this->moveRules->enterZoc = 2;
                 $this->moveRules->exitZoc = 1;
                 $this->moveRules->noZocZocOneHex = true;

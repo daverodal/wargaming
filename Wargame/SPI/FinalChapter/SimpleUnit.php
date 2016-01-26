@@ -1,9 +1,9 @@
 <?php
 namespace Wargame\SPI\FinalChapter;
-use \Hexagon;
+use \Wargame\Hexagon;
 use \stdClass;
 use \Wargame\Battle;
-use \BaseUnit;
+use \Wargame\BaseUnit;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal

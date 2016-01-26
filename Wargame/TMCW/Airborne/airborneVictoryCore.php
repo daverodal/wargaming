@@ -251,7 +251,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == REBEL_FORCE) {
                 $bias = array(5 => true, 6 => true, 1 => true);
                 $goal = $this->rebelGoal;
@@ -267,7 +267,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
     {
         $unit = $arg[0];
         $battle = Battle::getBattle();
-        if ($battle->scenario->supply === true) {
+        if (!empty($battle->scenario->supply) === true) {
             if ($unit->class != 'mech') {
                 $battle->moveRules->enterZoc = "stop";
                 $battle->moveRules->exitZoc = 0;

@@ -1,6 +1,5 @@
 <?php
 namespace Wargame\SPI;
-use \Battle;
 // crt.js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -30,7 +29,7 @@ use \Battle;
 
 class ModernCombatResultsTable
 {
-    use \DivMCWCombatShiftTerrain;
+    use \Wargame\DivMCWCombatShiftTerrain;
 
 //    use crtTraits
     public $combatIndexCount;

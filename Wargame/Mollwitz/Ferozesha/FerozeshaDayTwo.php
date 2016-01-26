@@ -156,7 +156,7 @@ class FerozeshaDayTwo extends \Wargame\Mollwitz\IndiaCore
             $this->moveRules->zocBlocksRetreat = true;
 
             // game data
-            if($scenario->dayTwo){
+            if(!empty($scenario->dayTwo)){
                 $this->gameRules->setMaxTurn(14);
             }else{
                 $this->gameRules->setMaxTurn(12);

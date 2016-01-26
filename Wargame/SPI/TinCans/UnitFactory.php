@@ -1,6 +1,6 @@
 <?php
 namespace Wargame\SPI\TinCans;
-use \Hexagon;
+use \Wargame\Hexagon;
 use \Wargame\Battle;
 use \stdClass;
 
@@ -24,7 +24,7 @@ use \stdClass;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class NavalUnit extends \MovableUnit implements \JsonSerializable
+class NavalUnit extends \Wargame\MovableUnit implements \JsonSerializable
 {
 
     public $origStrength;

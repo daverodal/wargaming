@@ -206,7 +206,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
         /* @var Moverules $moveRules */
         $moveRules = $b->moveRules;
 
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             $bias = array(5 => true, 6 => true);
             $goal = $moveRules->calcRoadSupply(CAPROLIANS_FORCE, [107, 116, 230], $bias);
             $this->rebelGoal = $goal;
@@ -270,7 +270,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == CAPROLIANS_FORCE) {
                 $bias = array(5 => true, 6 => true);
                 $goal = $this->rebelGoal;
@@ -316,7 +316,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
     {
         $unit = $arg[0];
         $battle = Battle::getBattle();
-        if ($battle->scenario->supply === true) {
+        if (!empty($battle->scenario->supply) === true) {
             if ($unit->class != 'mech') {
                 $battle->moveRules->enterZoc = "stop";
                 $battle->moveRules->exitZoc = 0;
@@ -354,7 +354,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
         /*only get special VPs' at end of first Movement Phase */
         if ($specialHexes) {
             $scenario = $battle->scenario;
-            if ($scenario->supply === true) {
+            if (!empty($scenario->supply) === true) {
                 $inCity = false;
                 $roadCut = false;
                 foreach ($specialHexes as $k => $v) {

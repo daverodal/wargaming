@@ -201,10 +201,10 @@ class MapData implements JsonSerializable
     {
         $name = sprintf("%04d", "0000" . $hex);
 
-        if (!$this->mapSymbols) {
+        if (empty($this->mapSymbols)) {
             return false;
         }
-        if (!$this->mapSymbols->$name) {
+        if (empty($this->mapSymbols->$name)) {
             return false;
         }
         return $this->mapSymbols->$name->$symbol;

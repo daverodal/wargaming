@@ -2,20 +2,60 @@
 @include('wargame::SPI.FinalChapter.finalChapterHeader')
 <style type="text/css">
     <?php
-         include_once "Wargame/SPI/FinalChapter/all.css";
-?>
+    include_once "Wargame/SPI/FinalChapter/all.css";
+    ?>
 </style>
 </head>
+
+@section('inner-crt')
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\SPI\FinalChapter\CombatResultsTable()])
+@endsection
 
 @section('unitRules')
     @parent
     <li class="exclusive">No units may be receive replacements in this game.
     </li>
 @endsection
-
+@section('unit-boxes')
+    <div class="unit-wrapper" style="display:none;" id="deadpile">
+        <div class="close">X</div>
+        <div style="right:10px;font-size:50px;font-family:sans-serif;bottom:10px;position:absolute;color:#666;">
+            Retired Units
+        </div>
+        <div class="dead-country" id="western">
+            <div class="dead-country-label">
+                Western
+            </div>
+        </div>
+        <div class="dead-country" id="westGerman">
+            <div class="dead-country-label">
+                West German
+            </div>
+        </div>
+        <div class="dead-country" id="eastGerman">
+            <div class="dead-country-label">
+                East German
+            </div>
+        </div>
+        <div class="dead-country" id="eastern">
+            <div class="dead-country-label">
+                Eastern
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="unit-wrapper" style="display:none;" id="undeadpile"></div>
+@endsection
 @section('victoryConditions')
     @include('wargame::SPI.FinalChapter.victoryConditions')
 @endsection
+
+@section('outer-units-menu')
+    <div class="dropDown" id="hideShow">
+        <h4 class="WrapperLabel" title="Offmap Units">Units</h4>
+    </div>
+@endsection
+
 
 @section('commonRules')
     {{--@include('wargame::SPI.commonRules')--}}

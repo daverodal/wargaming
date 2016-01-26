@@ -94,7 +94,7 @@ class Helsingborg1710 extends \Wargame\Mollwitz\JagCore
                 }
             }
             for ($i = 0; $i < $unitSet->num; $i++) {
-                if($scenario->stepReduction && isset($unitSet->reduced)){
+                if(!empty($scenario->stepReduction) && isset($unitSet->reduced)){
                     UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->reduced, $unitSet->movement, false, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
                 }else{
                     UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);

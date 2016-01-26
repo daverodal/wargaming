@@ -250,7 +250,7 @@ class chawinda1965VictoryCore extends \Wargame\TMCW\victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == INDIAN_FORCE) {
                 $bias = array(2 => true, 3 => true);
                 $goal = $this->indianGoal;

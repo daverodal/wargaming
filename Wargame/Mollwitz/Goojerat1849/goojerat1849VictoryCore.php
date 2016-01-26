@@ -69,7 +69,7 @@ class goojerat1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='sikh'>-15 British vp</span>";
             }
         }
-        if($scenario->altScenario && in_array($mapHexName,$battle->specialHexC)){
+        if(!empty($scenario->altScenario) && in_array($mapHexName,$battle->specialHexC)){
             if ($forceId == BRITISH_FORCE) {
                 $this->victoryPoints[BRITISH_FORCE]  += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>+5 British vp</span>";
@@ -90,7 +90,7 @@ class goojerat1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
             $britVic = 50;
-            if($scenario->altScenario){
+            if(!empty($scenario->altScenario)){
                 $sikhVic = 45;
             }else{
                 $sikhVic = 50;

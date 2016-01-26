@@ -431,7 +431,7 @@ class Area1
 
 
 
-    function __construct($data = null, $arg = false, $scenario = false, $game = false)
+    function __construct($data = null, $arg = false, $scenario = false)
     {
 
 

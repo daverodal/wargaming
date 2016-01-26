@@ -168,7 +168,7 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
         }
     }
     public function calcFromAttackers(){
-        $mapData = \MapData::getInstance();
+        $mapData = \Wargame\MapData::getInstance();
 
         $battle = Battle::getBattle();
         /* @var CombatRules $cR */

@@ -218,7 +218,7 @@ class CombatRules
                             if (!$this->combats) {
                                 $this->combats = new  stdClass();
                             }
-                            if (!$this->combats->$cd) {
+                            if (empty($this->combats->$cd)) {
                                 $this->combats->$cd = new Combat();
                             }
                             $this->combats->$cd->defenders->$force = $id;

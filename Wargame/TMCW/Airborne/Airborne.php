@@ -168,10 +168,10 @@ class Airborne extends \Wargame\ModernLandBattle
 
     }
 
-    function __construct($data = null, $arg = false, $scenario = false, $game = false)
+    function __construct($data = null, $arg = false, $scenario = false)
     {
 
-        parent::__construct($data, $arg, $scenario, $game);
+        parent::__construct($data, $arg, $scenario);
 
         $crt = new \Wargame\TMCW\Airborne\CombatResultsTable;
         $this->combatRules->injectCrt($crt);

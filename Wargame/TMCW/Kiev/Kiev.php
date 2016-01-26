@@ -55,7 +55,7 @@ class Kiev extends \ModernLandBattle
         parent::terrainInit($terrainDoc);
         UnitFactory::$injector = $this->force;
 
-        if($this->scenario->preDeploy) {
+        if(!empty($this->scenario->preDeploy)) {
 
             $list = $terrainDoc->terrain->reinforceZones;
             $cnt = 0;
@@ -220,7 +220,7 @@ class Kiev extends \ModernLandBattle
         }
 
 
-        if(!$scenario->preDeploy) {
+        if(empty($scenario->preDeploy)) {
 
 
             for ($i = 0; $i < 60; $i++) {
@@ -331,10 +331,10 @@ class Kiev extends \ModernLandBattle
 
     }
 
-    function __construct($data = null, $arg = false, $scenario = false, $game = false)
+    function __construct($data = null, $arg = false, $scenario = false)
     {
 
-        parent::__construct($data, $arg, $scenario, $game);
+        parent::__construct($data, $arg, $scenario);
 
         $crt = new \Wargame\TMCW\Kiev\CombatResultsTable();
         $this->combatRules->injectCrt($crt);
@@ -346,7 +346,7 @@ class Kiev extends \ModernLandBattle
 
         } else {
             $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\Kiev\\kievVictoryCore");
-            if ($scenario->supplyLen) {
+            if (!empty($scenario->supplyLen)) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }
             $this->moveRules->enterZoc = 3;

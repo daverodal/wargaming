@@ -135,7 +135,7 @@ class victoryCore
     }
 
     public function calcFromAttackers(){
-        $mapData = \MapData::getInstance();
+        $mapData = \Wargame\MapData::getInstance();
 
         $battle = Battle::getBattle();
         /* @var CombatRules $cR */
@@ -222,7 +222,7 @@ class victoryCore
                 if($id == $hq){
                     return;
                 }
-                $los = new Los();
+                $los = new \Wargame\Los();
 
                 $los->setOrigin($b->force->getUnitHexagon($id));
                 $los->setEndPoint($b->force->getUnitHexagon($hq));

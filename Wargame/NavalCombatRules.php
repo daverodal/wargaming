@@ -1,6 +1,6 @@
 <?php
 namespace Wargame;
-use \Wargame\Battle;
+use \stdClass;
 // combatRules->js
 
 // Copyright (c) 2009-2011 Mark Butler

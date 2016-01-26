@@ -31,7 +31,7 @@ namespace Wargame\SPI\FinalChapter;
 
 class CombatResultsTable extends \Wargame\SPI\ModernCombatResultsTable
 {
-    use \DivCombatDoubleMultipleTerrain;
+    use \Wargame\DivCombatDoubleMultipleTerrain;
 
 
     public $aggressorId = EASTERN_FORCE;

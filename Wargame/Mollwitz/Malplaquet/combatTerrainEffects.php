@@ -15,7 +15,7 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-if ($scenario->angloCavBonus) { ?>
+if (!empty($scenario->angloCavBonus)) { ?>
     <li class="exclusive">Anglo Allied Cavalry units are +1 to their combat factor when Attacking into
         clear, unless they are attacking across a creek or bridge or redoubt.
     </li>

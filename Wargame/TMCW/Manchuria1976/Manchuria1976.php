@@ -99,17 +99,17 @@ class Manchuria1976 extends \ModernLandBattle
             UnitFactory::create("xxx", SOVIET_FORCE, "deployBox", "multiArt.png", 3, 1, 6, false, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "mech");
         }
     }
-    function __construct($data = null, $arg = false, $scenario = false, $game = false)
+    function __construct($data = null, $arg = false, $scenario = false)
     {
 
-        parent::__construct($data, $arg, $scenario, $game);
+        parent::__construct($data, $arg, $scenario);
 
         if ($data) {
             $this->specialHexA = $data->specialHexA;
         } else {
             $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\Manchuria1976\\victoryCore");
 
-            if ($scenario && $scenario->supply === true) {
+            if ($scenario && !empty($scenario->supply) === true) {
                 $this->moveRules->enterZoc = 2;
                 $this->moveRules->exitZoc = 1;
                 $this->moveRules->noZocZocOneHex = true;

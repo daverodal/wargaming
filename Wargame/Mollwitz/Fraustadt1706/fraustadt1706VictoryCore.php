@@ -125,7 +125,7 @@ class fraustadt1706VictoryCore extends \Wargame\Mollwitz\victoryCore
             $b->gameRules->flashMessages[] = "Swedish Movement allowance +1 this turn.";
         }
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
-            if($scenario->noMovementFirstTurn) {
+            if(!empty($scenario->noMovementFirstTurn)) {
                 $b->gameRules->flashMessages[] = "No Saxon Polish Movement this turn.";
             }else{
                 $b->gameRules->flashMessages[] = "Saxon Polish Movement halved this turn.";
@@ -152,7 +152,7 @@ class fraustadt1706VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
             $this->movementCache->$id = $unit->maxMove;
-            if($scenario->noMovementFirstTurn){
+            if(!empty($scenario->noMovementFirstTurn)){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
             }else{
                 $unit->maxMove = floor($unit->maxMove/2);

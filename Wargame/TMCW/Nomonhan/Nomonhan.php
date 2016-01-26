@@ -35,7 +35,7 @@ $force_name[0] = "Neutral Observer";
 $force_name[1] = "Japanese";
 $force_name[2] = "Soviet";
 
-class Nomonhan extends \ModernLandBattle
+class Nomonhan extends \Wargame\ModernLandBattle
 {
     static function getPlayerData($scenario){
         $forceName = ["Neutral Observer", "Japanese", "Soviet"];
@@ -183,9 +183,9 @@ class Nomonhan extends \ModernLandBattle
 //        $this->mapData->setData($maxCol, $maxRow, $mapUrl);
 
     }
-    function __construct($data = null, $arg = false, $scenario = false, $game = false)
+    function __construct($data = null, $arg = false, $scenario = false)
     {
-        parent::__construct($data, $arg, $scenario, $game);
+        parent::__construct($data, $arg, $scenario);
 
         $crt = new NomonhanCombatResultsTable();
         $this->combatRules->injectCrt($crt);
@@ -196,7 +196,7 @@ class Nomonhan extends \ModernLandBattle
 //            $this->mapData->setData(40, 25, "js/Nomonhan3Small.png");
 
 //            $this->terrain->setMaxHex("4025");
-            if ($scenario && $scenario->supply === true) {
+            if ($scenario && !empty($scenario->supply) === true) {
                 $this->moveRules->enterZoc = 2;
                 $this->moveRules->exitZoc = 1;
                 $this->moveRules->noZocZocOneHex = true;

@@ -29,39 +29,31 @@ $dir = dirname(__DIR__);
  * Time: 5:03 PM
  * Link: http://davidrodal.com
  * */
-//if(strpos(__FILE__,"/var/www") === false){
-//    if(strpos(__FILE__, "/Library/WebServer/Documents") !== false) {
-//        define ("WARGAMES", "/Library/WebServer/Documents/MartianCivilWar/");
-//    }else if(strpos(__FILE__, "/Users/david/Sites/") !== false){
-//        define ("WARGAMES","/Users/david/Sites/MartianCivilWar/");
-//    }else  if(strpos(__FILE__,"/Users/david_rodal") !== false){
-//        define ("WARGAMES","/Users/david_rodal/MampRoot/Game/");
-//    }else{
-//        define ("WARGAMES","/xampp/htdocs/MartianCivilWar/");
-//    }
-//}else{
-//    define ("WARGAMES","/var/www/MartianCivilWar/");
-//}
-define("WARGAMES","$dir");
-set_include_path(WARGAMES . PATH_SEPARATOR .  get_include_path());
+
+define("WARGAMES", "$dir");
+set_include_path(WARGAMES . PATH_SEPARATOR . get_include_path());
 
 class Battle
 {
 
     static $forceName = [];
     static $deployName = [];
+
     public function __construct(AdminService $ad)
     {
         Battle::$ad = $ad;
 
     }
 
-    public static function register($forceName, $deployName){
+    public static function register($forceName, $deployName)
+    {
         static::$forceName = $forceName;
         static::$deployName = $deployName;
         return compact("forceName", "deployName");
     }
-    public static function pokePlayer($player){
+
+    public static function pokePlayer($player)
+    {
 //        $CI =& get_instance();
 //
 //        $CI->load->database();
@@ -81,11 +73,13 @@ class Battle
 //            }
 //        }
     }
-    public static function sendReminder($emailAddr){
+
+    public static function sendReminder($emailAddr)
+    {
         $CI =& get_instance();
         $poke_user = $CI->config->item('poke_users');
 
-        if(!$poke_user){
+        if (!$poke_user) {
             return;
         }
         $CI->load->library('email');
@@ -93,7 +87,7 @@ class Battle
         $CI->email->from('gameBot@davidrodal.com', 'GameBot ');
         $CI->email->to('dave.rodal@gmail.com');
 
-        $CI->email->subject('Email Test sending to '.$emailAddr);
+        $CI->email->subject('Email Test sending to ' . $emailAddr);
         $CI->email->message('Your turn.');
 
         $CI->email->send();
@@ -102,163 +96,117 @@ class Battle
 
 
     }
+
     private static $theBattle;
     private static $isLoaded = false;
     private static $game;
     public static $ad;
-       public function resize($size,$player){
 
-       }
-//    public static function getInit($dir){
-//        $file = file_get_contents(WARGAMES."/".$dir."/info.json");
-//        return json_decode($file);
-//    }
-    public static  function getBattle($name = false,$doc = null, $arg = false, $options = false){
-        try{
-        if(self::$theBattle){
-            return self::$theBattle;
-        }
-//        if(!self::$ad){
-//            self::$ad = new \App\Services\AdminService(new \App\Services\CouchService());
-//        }
-        $game = self::loadGame($name, $arg);
 
-        if($game !== false && $arg !== false){
-            $scenarios = $game->scenarios->$arg;
-            if(!$scenarios){
-                $scenarios = new stdClass();
+    public static function battleFromDoc($doc)
+    {
+        self::$theBattle = new $doc->className($doc->wargame, $doc->wargame->arg, $doc->wargame->scenario);
+        return self::$theBattle;
+    }
+
+    public static function battleFromName($name, $arg, $options = false)
+    {
+
+        try {
+            if (self::$theBattle) {
+                return self::$theBattle;
             }
-            $className = $game->className;
-            $params = isset($game->params) ? $game->params : new \stdClass();
-            foreach($params as $pKey => $pValue){
-                if(!isset($scenarios->$pKey)){
-                    $scenarios->$pKey = $pValue;
+
+            $game = self::loadGame($name, $arg);
+
+            if ($game !== false && $arg !== false) {
+                $scenarios = $game->scenarios->$arg;
+                if (!$scenarios) {
+                    $scenarios = new stdClass();
                 }
-            }
-            if(!empty($options)){
-                foreach($options as $name){
-                    foreach($game->options as $gameOption){
-                        if($gameOption->keyName === $name){
-                            if(!empty($gameOption->extra)){
-                                foreach($gameOption->extra as $k=>$v){
-                                    $scenarios->$k = $v;
+                $className = $game->className;
+                $params = isset($game->params) ? $game->params : new \stdClass();
+                foreach ($params as $pKey => $pValue) {
+                    if (!isset($scenarios->$pKey)) {
+                        $scenarios->$pKey = $pValue;
+                    }
+                }
+                if (!empty($options)) {
+                    foreach ($options as $name) {
+                        foreach ($game->options as $gameOption) {
+                            if ($gameOption->keyName === $name) {
+                                if (!empty($gameOption->extra)) {
+                                    foreach ($gameOption->extra as $k => $v) {
+                                        $scenarios->$k = $v;
+                                    }
                                 }
+                                $scenarios->$name = true;
                             }
-                            $scenarios->$name = true;
                         }
                     }
-
                 }
+                $thisBattle = new $className(null, $arg, $scenarios);
+            } else {
+                $className = $game->className;
+
+                $thisBattle = new $className(null);
             }
-            $thisBattle = new $className($doc, $arg, $scenarios, $game);
-        }else{
-            $className = $game->className;
+            self::$theBattle = $thisBattle;
+            return self::$theBattle;
 
-            $thisBattle = new $className($doc);
+        } catch (Exception $e) {
+            echo $e->getMessage() . " " . $e->getFile() . " " . $e->getLine();
         }
-        self::$theBattle = $thisBattle;
-        return self::$theBattle;
-
-        }catch(Exception $e){echo $e->getMessage()." ".$e->getFile()." ".$e->getLine();}
     }
-//    public static function getView($name,$mapUrl, $player = 0, $arg = false, $argTwo = false, $scenario = false, $units = []){
-//        try{
-//        $game = self::loadGame($name, $arg);
-//            $className = $game->className;
-//        $className::getView($name, $mapUrl,$player, $arg, $argTwo, $game,  $units);
-//        }catch(Exception $e){echo $e->getMessage()." ".$e->getFile()." ".$e->getLine();}
-//    }
-//    public static function getHeader($name,$data,$arg){
-//
-//        if(!isset($arg)){
-//            die("NO HEADER");
-//        }
-//        try{
-//        $game = self::loadGame($name, $arg);
-//            $className = $game->className;
-//
-//            $className::getHeader($name,$data);
-//        }catch(Exception $e){echo $e->getMessage()." ".$e->getFile()." ".$e->getLine();}
-//
-//    }
 
-//    public static function playAs($name,$wargame,$arg){
-//        try{
-//            $game = self::loadGame($name,$arg);
-//            $className = $game->className;
-//            $className::playAs($name,$wargame);
-//
-//        }catch(Exception $e){echo $e->getMessage()." ".$e->getFile()." ".$e->getLine();}
-//
-//    }
+    public static function getBattle()
+    {
 
-//    public static function playMulti($name,$wargame,$arg){
-//        try{
-//            $game = self::loadGame($name,$arg);
-//            $className = $game->className;
-//            $className::playMulti($name,$wargame, $arg);
-//
-//        }catch(Exception $e){echo $e->getMessage()." ".$e->getFile()." ".$e->getLine();}
-//
-//    }
-
-    public static function transformChanges($doc, $last_seq, $user){
-        try{
-            $game = self::loadGame($doc->gameName,$doc->wargame->arg);
-            $className = $game->className;
-            return $className::transformChanges($doc, $last_seq, $user);
-
-        }catch(Exception $e){echo $e->getMessage()." ".$e->getFile()." ".$e->getLine();}
-
+        if (self::$theBattle) {
+            return self::$theBattle;
+        }
+        throw(new Exception("No Object Found getBattle"));
     }
 
 
-    public static function loadGame($name, $arg = false){
-        if(self::$isLoaded){
+    public static function loadGame($name, $arg = false)
+    {
+        if (self::$isLoaded) {
             return self::$game;
         }
-        if($arg === false){
+        if ($arg === false) {
             var_dump(debug_backtrace());
             die("loadGame no arg");
         }
 
-        try{
+        try {
             $game = self::$ad->getGame($name);
-//            $CI =& get_instance();
-//            $CI->load->model('users/users_model');
-//            $game = $CI->users_model->getGame($name);
 
-            if($game !== false){
+            if ($game !== false) {
                 self::$isLoaded = true;
                 self::$game = $game;
                 $path = $game->path;
                 $argTwo = $game->scenarios->$arg;
                 set_include_path(WARGAMES . $path . PATH_SEPARATOR . get_include_path());
-                $className = preg_replace("/.php$/","",$game->fileName);
+                $className = preg_replace("/.php$/", "", $game->fileName);
 
                 $matches = [];
-                if(preg_match("%([^/]*)/%",$className, $matches)){
-                    set_include_path(WARGAMES . "$path/".$matches[1] . PATH_SEPARATOR . get_include_path());
-                }
 
+                preg_match("/([^\\\\]*)\\\\[^\\\\]*$/", $className, $matches);
+                set_include_path(WARGAMES . "$path/" . $matches[1] . PATH_SEPARATOR . get_include_path());
 
-                if(preg_match("/([^\\\\]*)\\\\[^\\\\]*$/",$className, $matches)){
-                    set_include_path(WARGAMES . "$path/".$matches[1] . PATH_SEPARATOR . get_include_path());
+                $game->className = $className;
 
-                    $game->className = $className;
-                }else{
-                    require_once(WARGAMES . $path."/".$game->fileName);
-                    $game->className = preg_replace("%[^/]*/%","",$className);
-                }
 
                 return $game;
             }
-            switch($name){
-            default:
-                throw(new Exception("Bad Class in loadGame '$name'"));
+
+            throw(new Exception("Bad Class in loadGame '$name'"));
+
+        } catch (Exception $e) {
+            echo $e->getMessage() . " " . $e->getFile() . " " . $e->getLine();
         }
-    }catch(Exception $e){echo $e->getMessage()." ".$e->getFile()." ".$e->getLine();}
-    return false;
-}
+        return false;
+    }
 
 }

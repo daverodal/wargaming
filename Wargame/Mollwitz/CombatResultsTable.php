@@ -2,7 +2,7 @@
 namespace Wargame\Mollwitz;
 use \stdClass;
 use \Wargame\Battle;
-use \Hexpart;
+use \Wargame\Hexpart;
 // crt.js
 
 // Copyright (c) 2009-2011 Mark Butler

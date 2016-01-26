@@ -1,5 +1,6 @@
 <?php
 namespace Wargame\SPI\FinalChapter;
+use \Wargame\ModernLandBattle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -29,7 +30,7 @@ define("EASTERN_EMPIRE_FORCE", 4);
 global $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
 
 
-class FinalChapter extends \ModernLandBattle
+class FinalChapter extends ModernLandBattle
 {
 
     public $specialHexD;

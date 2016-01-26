@@ -102,7 +102,7 @@ class MartianCivilWar extends \ModernLandBattle
         UnitFactory::create("xx", RED_FORCE, 2517, "multiArmor.png", 7, 3, $loyalMechMove, true, STATUS_READY, "B", 1, 1, "loyalist", true, "mech");
 
         $bigLoyalist = false;
-        if ($scenario && $scenario->bigLoyal) {
+        if ($scenario && !empty($scenario->bigLoyal)) {
             $bigLoyalist = true;
         }
         if (isset($scenario->loyalExtraInf)) {
@@ -252,10 +252,10 @@ class MartianCivilWar extends \ModernLandBattle
 
     }
 
-    function __construct($data = null, $arg = false, $scenario = false, $game = false)
+    function __construct($data = null, $arg = false, $scenario = false)
     {
 //        die("const");
-        parent::__construct($data, $arg, $scenario, $game);
+        parent::__construct($data, $arg, $scenario);
 
         $crt = new \Wargame\TMCW\MartianCivilWar\CombatResultsTable();
         $this->combatRules->injectCrt($crt);

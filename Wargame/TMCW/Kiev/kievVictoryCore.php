@@ -247,7 +247,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         $b = Battle::getBattle();
 
 
-        if ($b->scenario->supplyRailroads === true) {
+        if (!empty($b->scenario->supplyRailroads) === true) {
             $germanBias = array(5 => true, 6 => true);
             $sovietBias = array(2 => true, 3 => true);
             $germanGoal = array_merge($b->moveRules->calcRoadSupply(GERMAN_FORCE, 112, $germanBias),
@@ -300,7 +300,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == GERMAN_FORCE) {
                 $bias = array(5 => true, 6 => true);
                 $goal = $this->germanGoal;

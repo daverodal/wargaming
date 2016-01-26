@@ -191,13 +191,13 @@ class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE) {
             /* if early Movement set and unit is north of river they can move */
-            if(!(isset($scenario->earlyMovement) && !$this->southOfTheRiver[$unit->hexagon->name])){
+            if(!(isset($scenario->earlyMovement) && empty($this->southOfTheRiver[$unit->hexagon->name]))){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
             }
         }
 
         if ($b->gameRules->turn == 2 && $b->gameRules->phase == RED_MOVE_PHASE){
-          if($unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE && $this->southOfTheRiver[$unit->hexagon->name]) {
+          if($unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE && !empty($this->southOfTheRiver[$unit->hexagon->name])) {
               $unit->status = STATUS_UNAVAIL_THIS_PHASE;
           }
         }

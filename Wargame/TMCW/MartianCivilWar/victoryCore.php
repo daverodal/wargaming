@@ -174,7 +174,7 @@ class victoryCore
 
         $b = Battle::getBattle();
 
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             $bias = array(5 => true, 6 => true);
             $goal = $b->moveRules->calcRoadSupply(REBEL_FORCE, 401, $bias);
             $goal = array_merge($goal, array(101, 102, 103, 104, 201, 301, 401, 501, 601, 701, 801, 901, 1001));
@@ -200,7 +200,7 @@ class victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
-        if ($b->scenario->supply === true) {
+        if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == REBEL_FORCE) {
                 $bias = array(5 => true, 6 => true);
                 $goal = $this->rebelGoal;
@@ -239,7 +239,7 @@ class victoryCore
     {
         $unit = $arg[0];
         $battle = Battle::getBattle();
-        if ($battle->scenario->supply === true) {
+        if (!empty($battle->scenario->supply) === true) {
             if ($unit->class != 'mech') {
                 $battle->moveRules->enterZoc = "stop";
                 $battle->moveRules->exitZoc = 0;
@@ -277,7 +277,7 @@ class victoryCore
         /*only get special VPs' at end of first Movement Phase */
         if ($specialHexes) {
             $scenario = $battle->scenario;
-            if ($scenario->supply === true) {
+            if (!empty($scenario->supply) === true) {
                 $inCity = false;
                 $roadCut = false;
                 foreach ($specialHexes as $k => $v) {

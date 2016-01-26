@@ -1,5 +1,6 @@
 <?php
 namespace Wargame;
+use \stdClass;
 // moveRules.js
 
 // Copyright (c) 2009-2011 Mark Butler
