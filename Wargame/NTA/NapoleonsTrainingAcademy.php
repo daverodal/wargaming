@@ -125,7 +125,13 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
             foreach($units as $unit){
                 $this->force->injectUnit(static::buildUnit($unit));
             }
-            $this->terrain = new \Terrain($data->terrain);
+            if(isset($data->terrain)){
+                $this->terrain = new Terrain($data->terrain);
+
+            }else{
+                $this->terrain = new \stdClass();
+            }
+
             $this->moveRules = new \MoveRules($this->force, $this->terrain, $data->moveRules);
             $this->moveRules->stickyZOC = true;
             $this->combatRules = new \CombatRules($this->force, $this->terrain, $data->combatRules);

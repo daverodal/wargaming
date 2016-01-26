@@ -36,7 +36,12 @@ class LandBattle extends \Wargame\Battle{
 
 
         global $mode_name, $phase_name;
+        $battle = Battle::battleFromDoc($doc);
 
+        $val = print_r($doc->wargame->force, true);
+        file_put_contents('/tmp/loggy', $val, FILE_APPEND);
+        $val = print_r($doc->wargame->force, true);
+        file_put_contents('/tmp/loggy', $val, FILE_APPEND);
         $chatsIndex = 0;/* remove me */
         $click = $doc->_rev;
         $matches = array();
@@ -62,7 +67,7 @@ class LandBattle extends \Wargame\Battle{
         }
 
 //        $revs = $doc->_revs_info;
-        \Wargame\Battle::loadGame($gameName, $doc->wargame->arg);
+//        \Wargame\Battle::loadGame($gameName, $doc->wargame->arg);
 //Battle::getHeader();
         if (isset($doc->wargame->mapViewer)) {
             $playerData = $doc->wargame->mapViewer[$player];
@@ -96,10 +101,12 @@ class LandBattle extends \Wargame\Battle{
                 }
             }
         }
-        $units = $force->units;
+        $units = $battle->force->units;
+
         $attackingId = $doc->wargame->gameRules->attackingForceId;
+
         foreach ($units as $unit) {
-            $unit = static::buildUnit($unit);
+//            $unit = static::buildUnit($unit);
             if (is_object($unit->hexagon)) {
 //                $unit->hexagon->parent = $unit->parent;
             } else {

@@ -65,7 +65,12 @@ class TroopersCore extends \Wargame\LandBattle{
                 $this->force->injectUnit(static::buildUnit($unit));
             }
 
-            $this->terrain = new Terrain($data->terrain);
+            if(ifset($data->terrain)){
+                $this->terrain = new Terrain($data->terrain);
+
+            }else{
+                $this->terrain = new \stdClass();
+            }
             $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
             $this->combatRules = new TacticalCombatRules($this->force, $this->terrain, $data->combatRules);
             $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force,  $data->gameRules);

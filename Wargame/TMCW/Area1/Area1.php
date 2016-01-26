@@ -445,7 +445,12 @@ class Area1
         if ($data) {
 
             $this->force = new AreaForce($data->force);
-            $this->terrain = new AreaTerrain($data->terrain);
+            if(isset($data->terrain)){
+                $this->terrain = new AreaTerrain($data->terrain);
+
+            }else{
+                $this->terrain = new \stdClass();
+            }
 
 
             $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
