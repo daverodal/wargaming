@@ -1,16 +1,16 @@
 <?php
 namespace Wargame\Troops;
 use \stdClass;
-use \Battle;
-use \MapData;
-use \Display;
-use \Force;
-use \MapViewer;
-use \Hexagon;
-use \Terrain;
-use \MoveRules;
-use \TacticalCombatRules;
-use \GameRules;
+use \Wargame\Battle;
+use \Wargame\MapData;
+use \Wargame\Display;
+use \Wargame\Force;
+use \Wargame\MapViewer;
+use \Wargame\Hexagon;
+use \Wargame\Terrain;
+use \Wargame\MoveRules;
+use \Wargame\TacticalCombatRules;
+use \Wargame\GameRules;
 use \Wargame\Victory;
 /**
  *

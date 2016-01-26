@@ -1,9 +1,9 @@
 <?php
 namespace Wargame\Troops;
 use \stdClass;
-use \Battle;
-use \Hexpart;
-use \Los;
+use \Wargame\Battle;
+use \Wargame\Hexpart;
+use \Wargame\Los;
 // crt.js
 
 // Copyright (c) 2009-2011 Mark Butler

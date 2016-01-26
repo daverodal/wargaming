@@ -1,9 +1,9 @@
 <?php
 namespace Wargame\Troops;
-use \Battle;
-use \Hexagon;
+use \Wargame\Battle;
+use \Wargame\Hexagon;
 use \stdClass;
-use \MapData;
+use \Wargame\MapData;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal
@@ -23,7 +23,7 @@ use \MapData;
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class TacticalUnit extends \BaseUnit implements \JsonSerializable
+class TacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
 {
 
 //    public $strength;

@@ -3,7 +3,7 @@
       "name": "Troops Fighting!",
       "path": "Troops",
       "genre": "early 20'th century tactical",
-      "fileName": "Troops/Troops.php",
+      "fileName": "\\Wargame\\Troops\\Troops\\Troops",
       "description": "1900s",
       "scenarios": {
         "one": {
