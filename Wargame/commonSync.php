@@ -170,37 +170,6 @@ x.register("mapUnits", function(mapUnits, data) {
         if(mapUnits[i].parent == "gameImages"){
 
             $("#"+i).css({left:mapUnits[i].x-width/2-fudge+"px",top:mapUnits[i].y-height/2-fudge+"px", zIndex: zIndex});
-debugger;
-            var hexSideLen = 35.2;
-
-            var b = hexSideLen * .866;
-            var unit = mapUnits[i];
-            unit.id = i;
-            drawHex(hexSideLen, unit, 'short');
-            var range = mapUnits[i].range || 1;
-            drawHex(b * (range * 2 + 1), unit);
-            $("#"+i).hover(function(){
-                var id = $(this).attr('id');
-                var curClass = $('#arrow-svg #rangeHex'+id).attr('class');
-                if(curClass){
-                    curClass = curClass.replace(/hovered/,'');
-                    $('#arrow-svg #rangeHex'+id).attr('class', curClass+' hovered');
-                }
-                $('#arrow-svg #rangeHex'+id).attr('style','stroke:red;stroke-opacity:1;');
-
-                $('#arrow-svg #rangeHex'+id+'short').attr('style','stroke:red;stroke-opacity:1;');
-            }, function(){
-                var id = $(this).attr('id');
-                var curClass = $('#arrow-svg #rangeHex'+id).attr('class');
-                if(curClass){
-                    curClass = curClass.replace(/hovered/,'');
-                    $('#arrow-svg #rangeHex'+id).attr('class', curClass);
-                }
-                $('#arrow-svg #rangeHex'+id).attr('style','');
-
-                $('#arrow-svg #rangeHex'+id+'short').attr('style','');
-            });
-
 
         }
         var img = $("#"+i+" img").attr("src");
