@@ -24,7 +24,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("js/Bundesarchiv_Bild_146-1981-149-34A,_Russland,_Herausziehen_eines_Autos.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/tmcw/moskow/images/Bundesarchiv_Bild_146-1981-149-34A,_Russland,_Herausziehen_eines_Autos.jpg")?>") #333 no-repeat;
             background-position: 10% 0;
             background-size:100%;
         }

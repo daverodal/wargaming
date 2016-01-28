@@ -29,26 +29,7 @@ class extHex extends Hexagon implements JsonSerializable{
     }
 
 }
-class HexPath implements JsonSerializable{
-    public $name = false;
-    public $pointsLeft = false;
-    public $isZoc = false;
-    public $isValid = true;
-    public $isOccupied = false;
-    public $pathToHere = array();
-    public $depth = false;
-    public $firstHex = false;
-    public function jsonSerialize(){
-        unset($this->isZoc);
-        unset($this->isValid);
-//        unset($this->isOccupied);
-        unset($this->name);
-        unset($this->depth);
-        unset($this->firstHex);
-        return $this;
-    }
 
-}
 class Hexagon  {
 
 	public static $evenColumnShiftDown;

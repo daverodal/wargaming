@@ -82,7 +82,7 @@ class victoryCore
     {
         list($zones, $unit) = $args;
 
-        $zones[] = new \ReinforceZone(2414, 2414);
+        $zones[] = new \Wargame\ReinforceZone(2414, 2414);
         return array($zones);
     }
 

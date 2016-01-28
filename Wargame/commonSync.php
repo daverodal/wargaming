@@ -15,6 +15,45 @@
      You should have received a copy of the GNU General Public License
      along with this program.  If not, see <http://www.gnu.org/licenses/>.
      */
+
+    function drawHex(hexside, unit, isShort){
+
+        var decoration = isShort || "";
+        var c = hexside - 0;
+        var a = (c / 2);
+        var b = .866 * c;
+        var ac = a+c;
+        var x = unit.x;
+        var y = unit.y;
+        var id = unit.id+decoration;
+        var nat = DR.players[unit.forceId];
+        var type= nat+'-'+unit.class;
+        var cls = unit.class;
+        var width = 2;
+        var strokeDash = "1,0";
+
+        if(unit.range > 7){
+            width = 4;
+            strokeDash = "5,5";
+        }
+        if(unit.range > 11){
+            width = 6;
+            strokeDash = "1,10";
+        }
+
+        x = x - b;
+        y = y - c;
+
+        var path = '<path stroke-dasharray="'+strokeDash+'" class="range-hex '+nat+' '+decoration+' '+cls+'" stroke="transparent" id="rangeHex'+id+'" fill="#000" fill-opacity="0" stroke-width="'+width+'" d="M '+x+' ' + (ac + y) + ' L ' + x + ' '+ (a + y) + ' L ' + (b + x) + ' ' + y;
+        path += ' L ' + (2 * b + x) + ' ' + (a + y) + ' L ' + (2 * b + x) + ' ' + (ac + y) + ' L ' + (b + x) + ' '+ (2 * c + y)+' Z"></path>';
+
+        $('#arrow-svg').append(path);
+        $('#arrow-svg').html($('#arrow-svg').html());
+    }
+
+    function clearHexes(){
+        $('#arrow-svg path').remove();
+    }
     x = new Sync("<?=url("wargame/fetch/");?>");
 x.register("sentBreadcrumbs", function(breadcrumbs,data) {
 //    return;
@@ -131,6 +170,38 @@ x.register("mapUnits", function(mapUnits, data) {
         if(mapUnits[i].parent == "gameImages"){
 
             $("#"+i).css({left:mapUnits[i].x-width/2-fudge+"px",top:mapUnits[i].y-height/2-fudge+"px", zIndex: zIndex});
+debugger;
+            var hexSideLen = 35.2;
+
+            var b = hexSideLen * .866;
+            var unit = mapUnits[i];
+            unit.id = i;
+            drawHex(hexSideLen, unit, 'short');
+            var range = mapUnits[i].range || 1;
+            drawHex(b * (range * 2 + 1), unit);
+            $("#"+i).hover(function(){
+                var id = $(this).attr('id');
+                var curClass = $('#arrow-svg #rangeHex'+id).attr('class');
+                if(curClass){
+                    curClass = curClass.replace(/hovered/,'');
+                    $('#arrow-svg #rangeHex'+id).attr('class', curClass+' hovered');
+                }
+                $('#arrow-svg #rangeHex'+id).attr('style','stroke:red;stroke-opacity:1;');
+
+                $('#arrow-svg #rangeHex'+id+'short').attr('style','stroke:red;stroke-opacity:1;');
+            }, function(){
+                var id = $(this).attr('id');
+                var curClass = $('#arrow-svg #rangeHex'+id).attr('class');
+                if(curClass){
+                    curClass = curClass.replace(/hovered/,'');
+                    $('#arrow-svg #rangeHex'+id).attr('class', curClass);
+                }
+                $('#arrow-svg #rangeHex'+id).attr('style','');
+
+                $('#arrow-svg #rangeHex'+id+'short').attr('style','');
+            });
+
+
         }
         var img = $("#"+i+" img").attr("src");
 
@@ -1521,6 +1592,48 @@ x.register("combatRulez", function(combatRules,data) {
 
 
 });
+    function drawHex(hexside, unit, isShort){
+
+        var decoration = isShort || "";
+        var c = hexside - 0;
+        var a = (c / 2);
+        var b = .866 * c;
+        var ac = a+c;
+        var x = unit.x;
+        var y = unit.y;
+        var id = unit.id+decoration;
+        var nat = DR.players[unit.forceId];
+        var type= nat+'-'+unit.class;
+        var cls = unit.class;
+        var width = 2;
+        var strokeDash = "1,0";
+
+        if(unit.range > 7){
+            width = 4;
+            strokeDash = "5,5";
+        }
+        if(unit.range > 11){
+            width = 6;
+            strokeDash = "1,10";
+        }
+
+        x = x - b;
+        y = y - c;
+
+        var path = '<path stroke-dasharray="'+strokeDash+'" class="range-hex '+nat+' '+decoration+' '+cls+'" stroke="transparent" id="rangeHex'+id+'" fill="#000" fill-opacity="0" stroke-width="'+width+'" d="M '+x+' ' + (ac + y) + ' L ' + x + ' '+ (a + y) + ' L ' + (b + x) + ' ' + y;
+        path += ' L ' + (2 * b + x) + ' ' + (a + y) + ' L ' + (2 * b + x) + ' ' + (ac + y) + ' L ' + (b + x) + ' '+ (2 * c + y)+' Z"></path>';
+
+        $('#arrow-svg').append(path);
+        $('#arrow-svg').html($('#arrow-svg').html());
+    }
+
+    function clearHexes(){
+        $('#arrow-svg path').remove();
+    }
 var globInit = true;
+
+
 x.fetch(0);
+
+
 </script>

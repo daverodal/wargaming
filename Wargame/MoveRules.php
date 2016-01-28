@@ -1381,7 +1381,7 @@ class MoveRules
                 }
                 $startHex = $zone->hexagon->name;
                 $hexPath = new HexPath();
-                $hexPath->name = $startHex->name;
+                $hexPath->name = $startHex;
                 $hexPath->pointsLeft = $movesLeft;
                 $hexPath->pathToHere = array();
                 $hexPath->firstHex = true;

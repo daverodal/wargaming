@@ -153,7 +153,7 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
                 }
                 $zones = [];
                 foreach($inverse as $key=>$val){
-                    $zones[] = new \ReinforceZone($key, "O");
+                    $zones[] = new \Wargame\ReinforceZone($key, "O");
                 }
             }
         }

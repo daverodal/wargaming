@@ -1258,6 +1258,20 @@ svg marker#head {
   .sovietguard .unit-desig {
     color: white; }
 
+.playerSoviet {
+  background: #ba9f34;
+  border-color: #ba9f34 !important; }
+
+.SovietFace, .playerSovietFace {
+  color: #ba9f34; }
+
+.playerGerman {
+  background: #9ee0ff;
+  border-color: #9ee0ff !important; }
+
+.GermanFace, .playerGermanFace {
+  color: #9ee0ff; }
+
 #crt {
   width: 308px; }
   #crt .crt-table-name {

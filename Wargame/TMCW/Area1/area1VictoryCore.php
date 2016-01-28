@@ -144,12 +144,12 @@ class area1VictoryCore extends victoryCore
             $zones = [];
             if ($zone == "A") {
                 foreach ($this->landingZones as $landingZone) {
-                    $zones[] = new \ReinforceZone($landingZone, "A");
+                    $zones[] = new \Wargame\ReinforceZone($landingZone, "A");
                 }
             }
             if ($zone == "C") {
                 foreach ($this->airdropZones as $airdropZone) {
-                    $zones[] = new \ReinforceZone($airdropZone, "C");
+                    $zones[] = new \Wargame\ReinforceZone($airdropZone, "C");
                 }
             }
         }
@@ -227,7 +227,7 @@ class area1VictoryCore extends victoryCore
             $battle->terrain->reinforceZones = [];
             $units = $force->units;
             $num = count($units);
-            for ($i = 0; $i <= $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $unit = $units[$i];
                 if ($unit->forceId == BLUE_FORCE && $unit->hexagon->parent === "gameImages") {
                     $supply[$unit->hexagon->name] = BLUE_FORCE;

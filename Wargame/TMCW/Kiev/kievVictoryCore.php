@@ -105,7 +105,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         }
         $reinforceZones = [];
         foreach($zones as $zone){
-            $reinforceZones[] = new \ReinforceZone($zone, $zone);
+            $reinforceZones[] = new \Wargame\ReinforceZone($zone, $zone);
         }
         $battle = Battle::getBattle();
 
@@ -207,7 +207,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
             $battle->terrain->reinforceZones = [];
             $units = $force->units;
             $num = count($units);
-            for ($i = 0; $i <= $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $unit = $units[$i];
                 if ($unit->forceId == BLUE_FORCE && $unit->hexagon->parent === "gameImages") {
                     $supply[$unit->hexagon->name] = BLUE_FORCE;

@@ -185,7 +185,7 @@ class chawinda1965VictoryCore extends \Wargame\TMCW\victoryCore
             $battle->terrain->reinforceZones = [];
             $units = $force->units;
             $num = count($units);
-            for ($i = 0; $i <= $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $unit = $units[$i];
                 if ($unit->forceId == BLUE_FORCE && $unit->hexagon->parent === "gameImages") {
                     $supply[$unit->hexagon->name] = BLUE_FORCE;

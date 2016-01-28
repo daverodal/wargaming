@@ -143,12 +143,12 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             $zones = [];
             if ($zone == "A") {
                 foreach ($this->landingZones as $landingZone) {
-                    $zones[] = new \ReinforceZone($landingZone, "A");
+                    $zones[] = new \Wargame\ReinforceZone($landingZone, "A");
                 }
             }
             if ($zone == "C") {
                 foreach ($this->airdropZones as $airdropZone) {
-                    $zones[] = new \ReinforceZone($airdropZone, "C");
+                    $zones[] = new \Wargame\ReinforceZone($airdropZone, "C");
                 }
             }
         }

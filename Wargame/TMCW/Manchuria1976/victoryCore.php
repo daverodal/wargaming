@@ -118,7 +118,7 @@ class victoryCore
             $zones = [];
             foreach ($specialHexes as $specialHex) {
                 if ($mapData->getSpecialHex($specialHex) == PRC_FORCE) {
-                    $zones[] = new \ReinforceZone($specialHex, $specialHex);
+                    $zones[] = new \Wargame\ReinforceZone($specialHex, $specialHex);
                 }
             }
         }

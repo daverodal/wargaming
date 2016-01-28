@@ -1,6 +1,6 @@
 <?php
 namespace Wargame\TMCW\Moskow;
-use \Battle;
+use \Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -105,14 +105,14 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
         }
         $reinforceZones = [];
         foreach($zones as $zone){
-            $reinforceZones[] = new \ReinforceZone($zone, $zone);
+            $reinforceZones[] = new \Wargame\ReinforceZone($zone, $zone);
         }
         $battle = Battle::getBattle();
 
         $specialHexes = $battle->mapData->specialHexes;
         foreach($specialHexes as $hexNum => $specialHex){
             if($specialHex == $forceId){
-                $reinforceZones[] = new \ReinforceZone($hexNum, $hexNum);
+                $reinforceZones[] = new \Wargame\ReinforceZone($hexNum, $hexNum);
             }
         }
         return array($reinforceZones);
@@ -189,7 +189,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
             $battle->terrain->reinforceZones = [];
             $units = $force->units;
             $num = count($units);
-            for ($i = 0; $i <= $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $unit = $units[$i];
                 if ($unit->forceId == BLUE_FORCE && $unit->hexagon->parent === "gameImages") {
                     $supply[$unit->hexagon->name] = BLUE_FORCE;
@@ -211,18 +211,15 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
             $gameRules->flashMessages[] = "@hide deadpile";
-            if ($battle->force->reinforceTurns->$turn->$forceId) {
+            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
         }
     }
 
-    public function preRecoverUnits($args)
+    public function preRecoverUnits()
     {
-        /* @var unit $unit */
-        $unit = $args[0];
-
         $germanGoal = $sovietGoal = [];
 
         /* German goal is west Edge */

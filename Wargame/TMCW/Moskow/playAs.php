@@ -23,21 +23,21 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("js/lossy-page1-1280px-German_troops_in_Russia_-_NARA_-_540156.tif.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/moskow/images/lossy-page1-1280px-German_troops_in_Russia_-_NARA_-_540156.tif.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
     @font-face{
         font-family: OctoberGuard;
-        src: url('<?=url("js/octoberguard.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/kiev/fonts/octoberguard.ttf");?>');
     }
     @font-face{
         font-family: Ussr;
-        src: url('<?=url("js/Back_In_the_USSR_DL_k.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/kiev/fonts/Back_In_the_USSR_DL_k.ttf");?>');
     }
     @font-face{
         font-family: Kremlin;
-        src: url('<?=url("js/kremlin.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/kiev/fonts/kremlin.ttf");?>');
     }
     .guard{
         font-family:OctoberGuard;

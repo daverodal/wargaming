@@ -24,6 +24,8 @@
 @include player(soviet,Two,$sovietColor);
 @include player(loyalGuards,Three,$loyalistGuardColor);
 @include player(sovietguard, Four, red);
+@include headerColor(Soviet, $sovietColor, $sovietColor);
+@include headerColor(German, $germanColor, $germanColor);
 
 #map {
 }
