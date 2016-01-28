@@ -339,6 +339,8 @@ class LandBattle extends \Wargame\Battle{
             }
         }
 
+        $hexagon = null;
+
         switch ($event) {
             case SELECT_MAP_EVENT:
                 $mapGrid = new MapGrid($this->mapViewer[0]);
