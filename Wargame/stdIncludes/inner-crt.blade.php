@@ -29,6 +29,7 @@ $crts = $topCrt->crts;
             @foreach ($header as $odds)
                 <span class="col{{$i++}}">{{$odds}}</span>
             @endforeach
+            <div class="clear"></div>
         </div>
         <?php
         $rowNum = 1;
@@ -40,6 +41,7 @@ $crts = $topCrt->crts;
                 @foreach ($row as $cell)
                     <span class="col{{$col++}}">{{$results_name[$cell]}}</span>
                 @endforeach
+                <div class="clear"></div>
             </div>
         @endforeach
     </div>

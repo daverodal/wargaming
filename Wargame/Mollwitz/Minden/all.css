@@ -615,8 +615,7 @@ fieldset {
   left: 220px; }
 
 .roll, #odds {
-  height: 20px;
-  /*background :#1af;*/
+  padding-top: 3px;
   background: #84b5ff;
   margin-right: 14px; }
 
@@ -878,6 +877,9 @@ svg marker#head {
     line-height: 66px; }
     #nextPhaseWrapper button#fullScreenButton i, .dropDown#fullScreenButton i, #zoomWrapper#fullScreenButton i {
       min-width: 66px; }
+    #nextPhaseWrapper button .game-rules, .dropDown .game-rules, #zoomWrapper .game-rules {
+      line-height: normal;
+      height: auto; }
 
   #crtWrapper {
     height: 66px; }

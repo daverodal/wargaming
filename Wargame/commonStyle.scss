@@ -674,8 +674,7 @@ fieldset {
 }
 
 .roll, #odds {
-  height: 20px;
-  /*background :#1af;*/
+  padding-top: 3px;
   background: rgb(132, 181, 255);
   margin-right: 14px
 }
@@ -1024,6 +1023,10 @@ svg {
     }
     height:66px;
     line-height: 66px;
+    .game-rules{
+      line-height:normal;
+      height:auto;
+    }
   }
   #crtWrapper{
     height:66px;
