@@ -183,7 +183,7 @@ class TinCansVictoryCore extends \Wargame\SPI\victoryCore
         }
     }
 
-    public function gameOver()
+    public function gameEnded()
     {
         $battle = Battle::getBattle();
         if ($this->victoryPoints[LOYALIST_FORCE] > $this->victoryPoints[REBEL_FORCE]) {

@@ -160,7 +160,7 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
         }
     }
 
-    public function gameOver()
+    public function gameEnded()
     {
         $battle = Battle::getBattle();
         $city = $battle->specialHexA[0];

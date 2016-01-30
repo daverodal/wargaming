@@ -191,7 +191,7 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
-    public function gameOver()
+    public function gameEnded()
     {
         $battle = Battle::getBattle();
         if ($this->victoryPoints[LOYALIST_FORCE] > $this->victoryPoints[REBEL_FORCE]) {
@@ -330,26 +330,20 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
     {
         $attackingId = $arg[0];
         $battle = Battle::getBattle();
-        $mapData = $battle->mapData;
-        $vp = $this->victoryPoints;
-        $specialHexes = $mapData->specialHexes;
         $gameRules = $battle->gameRules;
 
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if($gameRules->turn < $gameRules->maxTurn) {
+        if($gameRules->turn <= $gameRules->maxTurn) {
             if ($attackingId == REBEL_FORCE) {
                 $gameRules->flashMessages[] = "Rebel Player Turn";
-                $gameRules->replacementsAvail = 1;
             }
             if ($attackingId == LOYALIST_FORCE) {
                 $gameRules->flashMessages[] = "Loyalist Player Turn";
-                $gameRules->replacementsAvail = 10;
             }
         }
 
         /*only get special VPs' at end of first Movement Phase */
-        $this->victoryPoints = $vp;
     }
 }

@@ -90,7 +90,7 @@ class victoryCore
 //        }
 
     }
-    public function gameOver(){
+    public function gameEnded(){
 
         $battle = Battle::getBattle();
 

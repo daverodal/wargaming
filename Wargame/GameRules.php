@@ -845,6 +845,10 @@ class GameRules
                     $this->phaseClicks[] = $click + 1;
                     $this->phaseClickNames[] = $phase_name[$this->phase];
 
+                    if ($this->phaseChanges[$i]->phaseWillIncrementTurn == true) {
+                        $this->incrementTurn();
+                    }
+
                     if ($this->attackingForceId != $this->phaseChanges[$i]->nextAttackerId) {
                         $battle = Battle::getBattle();
                         $players = $battle->players;
@@ -854,9 +858,7 @@ class GameRules
                         }
                         $victory->playerTurnChange($this->phaseChanges[$i]->nextAttackerId);
                     }
-                    if ($this->phaseChanges[$i]->phaseWillIncrementTurn == true) {
-                        $this->incrementTurn();
-                    }
+
                     $this->attackingForceId = $this->phaseChanges[$i]->nextAttackerId;
                     $this->defendingForceId = $this->phaseChanges[$i]->nextDefenderId;
 
@@ -866,7 +868,7 @@ class GameRules
                     $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
 
                     if ($this->turn > $this->maxTurn) {
-                        $victory->gameOver();
+                        $victory->gameEnded();
                         $this->flashMessages[] = "@gameover";
                     }
 

@@ -159,7 +159,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
-    public function gameOver()
+    public function gameEnded()
     {
         $battle = Battle::getBattle();
         $moskow = $battle->specialHexC[0];

@@ -140,7 +140,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
-    public function gameOver(){
+    public function gameEnded(){
         $battle = Battle::getBattle();
 
         if($this->victoryPoints[REBEL_FORCE] > $this->victoryPoints[LOYALIST_FORCE]){
@@ -151,6 +151,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
         $this->gameOver = true;
         return true;
     }
+
     public function phaseChange()
     {
 

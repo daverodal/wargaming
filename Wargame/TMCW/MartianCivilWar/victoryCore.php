@@ -127,7 +127,7 @@ class victoryCore
         }
     }
 
-    public function gameOver(){
+    public function gameEnded(){
         $battle = Battle::getBattle();
 
         if($this->victoryPoints[REBEL_FORCE] > $this->victoryPoints[LOYALIST_FORCE]){

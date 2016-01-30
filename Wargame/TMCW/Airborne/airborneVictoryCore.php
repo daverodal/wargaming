@@ -159,7 +159,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
-    public function gameOver()
+    public function gameEnded()
     {
         $battle = Battle::getBattle();
         $city = $battle->specialHexA[0];

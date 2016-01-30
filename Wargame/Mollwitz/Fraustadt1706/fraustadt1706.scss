@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 @include player(Saxon, Saxon-Russian, #FD4223, #FD4223);
 @include player(Russian, Three, $russianColor, $russianWrapperColor);
 @include badge(Saxon, Saxon);
-@include headerColor(Saxon-Russian, $russianColor,$russianColor );
+@include headerColor(Saxon-Russian, $saxonColor,$saxonColor );
 @include headerColor(Swedish, $swedishColor, $swedishColor);
 
 .french.specialHexes{
