@@ -316,10 +316,10 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             if ($unit->class != 'mech') {
                 $battle->moveRules->enterZoc = "stop";
                 $battle->moveRules->exitZoc = 0;
-                $battle->moveRules->noZocZoc = false;
+                $battle->moveRules->noZocZoc = true;
             } else {
-                $battle->moveRules->enterZoc = 2;
-                $battle->moveRules->exitZoc = 1;
+                $battle->moveRules->enterZoc = stop;
+                $battle->moveRules->exitZoc = 0;
                 $battle->moveRules->noZocZoc = false;
 
             }
