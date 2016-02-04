@@ -187,7 +187,7 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
                     $units = $hex->forces[$defenderForceId];
                     foreach($units as $unitId=>$unitVal){
                         $requiredVal = true;
-                        $combatId = $cR->defenders->$unitId;
+                        $combatId = isset($cR->defenders->$unitId) ? $cR->defenders->$unitId : null;
                         if($combatId !== null){
                             $attackers = $cR->combats->$combatId->attackers;
                             if($attackers){
