@@ -40,7 +40,7 @@ class MoveRules
     protected $moves;
     protected $path;
     protected $moveQueue;
-    public $stickyZOC;
+    public $stickyZoc;
     public $enterZoc = "stop";
     public $exitZoc = 0;
     public $noZocZoc = false;
@@ -88,7 +88,7 @@ class MoveRules
             $this->anyUnitIsMoving = false;
             $this->storm = false;
             $this->railMove = true;
-            $this->stickyZOC = false;
+            $this->stickyZoc = false;
         }
     }
 
@@ -1116,7 +1116,7 @@ class MoveRules
         /*
          * Don't think this is important test. Unit will be STATUS_STOPPED if cannot move.
          */
-        if (!$this->stickyZOC || $this->force->unitIsZOC($id) == false) {
+        if (!$this->stickyZoc || $this->force->unitIsZOC($id) == false) {
             if ($unit->setStatus(STATUS_MOVING) == true) {
                 $this->anyUnitIsMoving = true;
                 $this->movingUnitId = $id;

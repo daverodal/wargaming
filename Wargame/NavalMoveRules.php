@@ -77,7 +77,7 @@ class NavalMoveRules
             $this->anyUnitIsMoving = false;
             $this->storm = false;
             $this->railMove = true;
-            $this->stickyZOC = false;
+            $this->stickyZoc = false;
         }
     }
 

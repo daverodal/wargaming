@@ -598,7 +598,7 @@ x.register("gameRules", function(gameRules,data) {
     }
 
     var pix = turn  + (turn - 1) * 36 + 1;
-    var playerName = "player"+(DR.players[gameRules.attackingForceId].replace(/ /g,'-'));
+    var playerName = "player"+(DR.players[gameRules.attackingForceId].replace(/ /g,'-').replace(/\//gi,'_'));
     var removeThese = "";
     $("#header").removeClass().addClass(playerName);
     $("#turnCounter").css("background","rgb(0,128,0)");
@@ -682,8 +682,12 @@ x.register("gameRules", function(gameRules,data) {
 x.register("vp", function(vp, data){
 
 
-    var p1 = 'player'+DR.playerOne.replace(/ /g,'-')+'Face';
-    var p2 = 'player'+DR.playerTwo.replace(/ /g,'-')+'Face';
+    debugger;
+    var p1 = DR.playerOne.replace(/ /g,'-');
+    var p2 = DR.playerTwo.replace(/ /g,'-');
+
+    var p1 = 'player'+p1.replace(/\//ig,'_')+'Face';
+    var p2 = 'player'+p2.replace(/\//ig,'_')+'Face';
 
     $("#victory").html(" Victory: <span class='"+p1+"'>"+DR.playerOne+" </span>"+vp[1]+ " <span class='"+p2+"'>"+DR.playerTwo+" </span>"+vp[2]+"");
     if (typeof victoryExtend === 'function') {

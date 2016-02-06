@@ -1,5 +1,6 @@
 <?php
 namespace Wargame\Mollwitz;
+use Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal

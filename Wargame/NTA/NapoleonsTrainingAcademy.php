@@ -133,7 +133,7 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
             }
 
             $this->moveRules = new \MoveRules($this->force, $this->terrain, $data->moveRules);
-            $this->moveRules->stickyZOC = true;
+            $this->moveRules->stickyZoc = true;
             $this->combatRules = new \CombatRules($this->force, $this->terrain, $data->combatRules);
             $this->gameRules = new \GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
             $this->players = $data->players;

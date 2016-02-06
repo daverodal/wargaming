@@ -239,7 +239,7 @@ class Zorndorf extends \Wargame\Mollwitz\JagCore
             $this->moveRules->enterZoc = "stop";
             $this->moveRules->exitZoc = "stop";
             $this->moveRules->noZocZoc = true;
-            $this->moveRules->stickyZOC = false;
+            $this->moveRules->stickyZoc = false;
             $this->players = array("", "", "");
             // game data
 

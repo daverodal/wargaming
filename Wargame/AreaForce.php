@@ -727,7 +727,7 @@ class AreaForce
                         }
                     }
 
-                if ($mode == MOVING_MODE && $moveRules->stickyZOC) {
+                if ($mode == MOVING_MODE && $moveRules->stickyZoc) {
                         if ($this->units[$id]->forceId == $this->attackingForceId &&
                             $this->unitIsZOC($id)
                         ) {
