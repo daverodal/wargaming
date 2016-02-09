@@ -173,6 +173,7 @@
             <div id="gameViewer">
                 <div id="gameContainer">
                     <div id="gameImages">
+                        @section('game-images')
                         <div id="svgWrapper">
                             <svg id="arrow-svg" style="opacity:.6;position:absolute;" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -220,6 +221,7 @@
                             <p></p>
                         </div>
                     </div>
+                    @show
                 </div>
             </div>
 

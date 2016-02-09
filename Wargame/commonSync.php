@@ -682,7 +682,6 @@ x.register("gameRules", function(gameRules,data) {
 x.register("vp", function(vp, data){
 
 
-    debugger;
     var p1 = DR.playerOne.replace(/ /g,'-');
     var p2 = DR.playerTwo.replace(/ /g,'-');
 

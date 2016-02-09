@@ -61,10 +61,12 @@
 
 
 @mixin unitColor($nationality, $color, $shortName) {
+  .#{$nationality} {
+    background-color: $color;
+  }
   .#{$nationality} .counterWrapper {
     background-color: $color;
   }
-  @include badge($nationality, $shortName);
 }
 
 @mixin headerColor($nationality, $color, $faceColor: $color){
