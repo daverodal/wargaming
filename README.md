@@ -8,6 +8,14 @@ http://www.webwargaming.org/
 
 It's being released under the license found in the code
 
+This has since become a large php/composer/laravel project. Supporting many games of
+different historical eras.
+
+It connects via guzzelHttp to couchDB on the back end.
+
+It's multiplayer, no computer AI.
+
+The origin copyright was from Mark Butler below.
 -------------------------------------------------------------------------------
 
  Copyright (c) 2008-2011 Mark Butler
@@ -22,10 +30,4 @@ It's being released under the license found in the code
 
 ------------------------------------------------------------------------------
 
-I'm modifying to PHP and connecting it to a Couchdb Database via http://cloudant.com
-
-It's very rough right now. only two files converted
-
-the goal is to be able to play hex games with remote players via the web.
-
-Copyright (c) 2012 David Rodal
+Copyright (c) 2012-2016 David Rodal
