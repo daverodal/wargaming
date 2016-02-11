@@ -45,7 +45,7 @@ class ScenarioTest extends PHPUnit_Framework_TestCase
 			['Golymin1806'],
 			['Goojerat1849'],
 			['Hanau1813'],
-			['hastenbeck'],
+			['Hastenbeck'],
 			['Helsingborg1710'],
 			['Hohenfriedeberg'],
 			['Jagersdorf'],
