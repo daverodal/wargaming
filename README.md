@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/daverodal/wargaming.svg?branch=master)](https://travis-ci.org/daverodal/wargaming)
+
 WebWargaming Markup
 ===================
 
