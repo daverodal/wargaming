@@ -1,6 +1,7 @@
 WebWargaming Markup
 ===================
 
+https://travis-ci.org/daverodal/wargaming.svg?branch=master
 
 This is a clone of the Javascript code found at
 http://www.webwargaming.org/
