@@ -443,7 +443,9 @@ class Force extends SimpleForce
                     case DR2:
                     case DRL:
                     case DR:
-                        $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
+                        if($this->units[$attacker]->status !== STATUS_NO_RESULT){
+                            $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
+                        }
                         $this->units[$attacker]->retreatCountRequired = 0;
                         break;
 
@@ -485,6 +487,23 @@ class Force extends SimpleForce
         $this->retreatHexagonList = array();
     }
 
+
+
+    public function groomRetreatList(){
+        $b = Battle::getBattle();
+        $mapData = $b->mapData;
+        $newList = [];
+
+        foreach($this->retreatHexagonList as $retreatHexagon){
+            $hex = $retreatHexagon->hexagon->name;
+            $mapHex = $mapData->getHex($hex);
+            if($mapHex->isOccupied($this->defendingForceId)){
+                continue;
+            }
+            $newList[] = $retreatHexagon;
+        }
+        $this->retreatHexagonList = $newList;
+    }
 
     function mapHexIsZoc(MapHex $mapHex, $defendingForceId = false)
     {
@@ -654,7 +673,7 @@ class Force extends SimpleForce
                     }
 
 
-                    if ($mode == MOVING_MODE && $moveRules->stickyZOC) {
+                    if ($mode == MOVING_MODE && $moveRules->stickyZoc) {
                         if ($this->units[$id]->forceId == $this->attackingForceId &&
                             $this->unitIsZOC($id)
                         ) {

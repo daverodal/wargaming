@@ -12,6 +12,7 @@ class WargameServiceProvider extends ServiceProvider
     public function boot()
     {
         \App\Services\WargameService::$viewBase = "Wargame";
+//        $this->loadViewsFrom("/Users/david/game-dispatcher/vendor/daverodal/rebellion", 'wargame');
         $this->loadViewsFrom(__DIR__, 'wargame');
 
 

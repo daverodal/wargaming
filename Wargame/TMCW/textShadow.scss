@@ -15,10 +15,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-@mixin textShadow($color){
-  text-shadow: 0 0 5px $color,0 0 5px $color,0 0 5px $color,0 0 5px $color,0 0 5px $color,0 0 5px $color,
-  0 0 5px $color,0 0 5px $color,0 0 5px $color,0 0 5px $color,0 0 5px $color,0 0 5px $color,0 0 5px $color,
-  0 0 5px $color,0 0 5px $color,0 0 5px $color, 0 0 5px $color,0 0 5px $color,0 0 5px $color,0 0 5px $color,
-  0 0 5px $color,0 0 5px $color,0 0 5px $color;
+@mixin textShadow($color, $width : 5px){
+  text-shadow: 0 0 $width $color,0 0 $width $color,0 0 $width $color,0 0 $width $color,0 0 $width $color,0 0 $width $color,
+  0 0 $width $color,0 0 $width $color,0 0 $width $color,0 0 $width $color,0 0 $width $color,0 0 $width $color,0 0 $width $color,
+  0 0 $width $color,0 0 $width $color,0 0 $width $color, 0 0 $width $color,0 0 $width $color,0 0 $width $color,0 0 $width $color,
+  0 0 $width $color,0 0 $width $color,0 0 $width $color;
 }
 

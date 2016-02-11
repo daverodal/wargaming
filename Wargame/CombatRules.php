@@ -438,7 +438,11 @@ class CombatRules
 
     function getDefenderTerrainCombatEffect($defenderId)
     {
-        $defenders = $this->combats->$defenderId->defenders;
+        if(empty($this->combats->$defenderId->defenders)){
+            $defenders = [];
+        }else{
+            $defenders = $this->combats->$defenderId->defenders;
+        }
         $bestDefenderTerrainEffect = 0;
         foreach ($defenders as $defId => $def) {
             $unit = $this->force->getUnit($defId);
@@ -494,7 +498,7 @@ class CombatRules
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
         $Die = floor($this->crt->dieSideCount * (rand() / getrandmax()));
-//        $Die = 2;
+//        $Die = 5;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {
@@ -556,8 +560,12 @@ class CombatRules
         foreach ($this->lastResolvedCombat->attackers as $attacker => $v) {
             unset($this->attackers->$attacker);
         }
+        /* remove retreat list hexes that are still occupied */
+
+        $this->force->groomRetreatList();
         return $Die;
     }
+
 
     function resolveFireCombat($id)
     {
