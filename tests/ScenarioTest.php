@@ -28,7 +28,7 @@ class ScenarioTest extends PHPUnit_Framework_TestCase
 		$this->assertObjectNotHasAttribute('fake',$doc);
 		$this->assertTrue($doc->scenario->stepReduction);
 
-		$k->gameRules->selectNextPhase(1);
+//		$k->gameRules->selectNextPhase(1);
 
 	}
 

@@ -16,7 +16,7 @@ class WargameServiceProvider extends ServiceProvider
 
 
         $this->publishes([
-            __DIR__.'/TMCW/Amph/Images' => public_path('vendor/wargame/tmcw/amph/images'),
+            __DIR__.'/TMCW/Amph/Images/' => public_path('vendor/wargame/tmcw/amph/images'),
         ], 'amph');
 
         $this->publishes([
