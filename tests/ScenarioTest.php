@@ -28,7 +28,7 @@ class ScenarioTest extends PHPUnit_Framework_TestCase
 		$this->assertObjectNotHasAttribute('fake',$doc);
 		$this->assertTrue($doc->scenario->stepReduction);
 
-		$k->gameRules->selectNextPhase(1);
+//		$k->gameRules->selectNextPhase(1);
 
 	}
 
@@ -44,8 +44,8 @@ class ScenarioTest extends PHPUnit_Framework_TestCase
 			['Gadebusch1712'],
 			['Golymin1806'],
 			['Goojerat1849'],
-			['hanau1813'],
-			['hastenbeck'],
+			['Hanau1813'],
+			['Hastenbeck'],
 			['Helsingborg1710'],
 			['Hohenfriedeberg'],
 			['Jagersdorf'],

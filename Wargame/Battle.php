@@ -154,7 +154,7 @@ class Battle
             self::$theBattle = $thisBattle;
             return self::$theBattle;
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo $e->getMessage() . " " . $e->getFile() . " " . $e->getLine();
         }
     }
@@ -165,7 +165,7 @@ class Battle
         if (self::$theBattle) {
             return self::$theBattle;
         }
-        throw(new Exception("No Object Found getBattle"));
+        throw(new \Exception("No Object Found getBattle"));
     }
 
 
@@ -201,9 +201,9 @@ class Battle
                 return $game;
             }
 
-            throw(new Exception("Bad Class in loadGame '$name'"));
+            throw(new \Exception("Bad Class in loadGame '$name'"));
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo $e->getMessage() . " " . $e->getFile() . " " . $e->getLine();
         }
         return false;
