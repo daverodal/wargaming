@@ -153,7 +153,7 @@ class JagCore extends \Wargame\LandBattle{
         $this->terrain->mapWidth = $map->mapWidth;
         $this->mapData->setData($maxCol, $maxRow, $mapUrl);
 
-        \Hexagon::setMinMax();
+        \Wargame\Hexagon::setMinMax();
         $this->terrain->setMaxHex();
         $a = $map->a;
         $b = $map->b;
