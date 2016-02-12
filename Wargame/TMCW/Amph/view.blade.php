@@ -2,7 +2,7 @@
 @include('wargame::TMCW.Amph.amph-header')
 <style type="text/css">
     <?php
-    include_once "Wargame/TMCW/Amph/all.css";
+    include_once "Wargame/TMCW/Amph/css/all.css";
 ?>
 </style>
 </head>

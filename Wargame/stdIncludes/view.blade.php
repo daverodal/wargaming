@@ -124,6 +124,8 @@
                 </div>
             </div>
             @show
+            @section('outer-aux-menu')
+            @show
 
             <div id="nextPhaseWrapper">
                 <button id="nextPhaseButton">Next Phase</button>
