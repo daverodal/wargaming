@@ -1,10 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Amph.amph-header')
-<style type="text/css">
-    <?php
-    include_once "Wargame/TMCW/Amph/css/all.css";
-?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/amph/css/all.css')}}">
 </head>
 
 @section('unitRules')

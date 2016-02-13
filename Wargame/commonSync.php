@@ -611,6 +611,7 @@ x.register("gameRules", function(gameRules,data) {
     removeThese += " "+alsoRemoveThese;
     $("#crt").removeClass(removeThese).addClass(playerName);
     $(".row1,.row3,.row5").removeClass(removeThese).addClass(playerName);
+    $("#revolt-table").removeClass(removeThese).addClass(playerName);
 
     var html = "<span id='turn'>Turn "+turn+" of "+maxTurn+"</span> ";
     var phase = gameRules.phase_name[gameRules.phase];
