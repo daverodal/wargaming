@@ -606,9 +606,11 @@ x.register("gameRules", function(gameRules,data) {
 
     var alsoRemoveThese = DR.players.join('@@@').trim();
     alsoRemoveThese = alsoRemoveThese.replace(/ /g,'-');
+    alsoRemoveThese = alsoRemoveThese.replace(/\//g,'_');
     alsoRemoveThese = alsoRemoveThese.replace(/@@@/g,' ');
     alsoRemoveThese = alsoRemoveThese.replace(/([^ ]+)/g,"player$1");
     removeThese += " "+alsoRemoveThese;
+    debugger;
     $("#crt").removeClass(removeThese).addClass(playerName);
     $(".row1,.row3,.row5").removeClass(removeThese).addClass(playerName);
     $("#revolt-table").removeClass(removeThese).addClass(playerName);
