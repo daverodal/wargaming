@@ -18,6 +18,7 @@ use \stdClass;
 
 class LandBattle extends \Wargame\Battle{
 
+    public $players = [];
     static function playAs($name, $wargame, $arg = false)
     {
         @include_once "playAs.php";
