@@ -1,10 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::SPI.ClashOverCrude.ClashOverCrudeHeader')
-<style type="text/css">
-    <?php
-         include_once "Wargame/SPI/CLashOverCrude/all.css";
-?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/spi/clashovercrude/css/all.css')}}">
 </head>
 @section('units')
     @foreach($units as $unit)

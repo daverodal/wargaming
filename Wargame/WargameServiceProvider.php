@@ -36,6 +36,7 @@ class WargameServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/SPI/ClashOverCrude/Images' => public_path('vendor/wargame/spi/clashovercrude/images'),
             __DIR__.'/SPI/FinalChapter/Images' => public_path('vendor/wargame/spi/finalchapter/images'),
+            __DIR__.'/SPI/ClashOverCrude/all.css' => public_path('vendor/wargame/spi/clashovercrude/css/all.css'),
         ], 'finalchapter');
         $this->publishes([
             __DIR__.'/TMCW/Airborne/Images' => public_path('vendor/wargame/tmcw/airborne/images'),
