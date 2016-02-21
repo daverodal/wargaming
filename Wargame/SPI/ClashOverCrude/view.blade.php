@@ -15,11 +15,13 @@
     </div>
     @endforeach
     @endsection
+
 @section('unitRules')
     @parent
     <li class="exclusive">No units may be receive replacements in this game.
     </li>
 @endsection
+
 @section('unit-boxes')
     @parent
     <div class="unit-wrapper" style="display:none;" id="israel">
@@ -44,7 +46,7 @@
 @endsection
 
 @section('victoryConditions')
-    @include('wargame::SPI.CLashOverCrude.victoryConditions')
+    @include('wargame::SPI.ClashOverCrude.victoryConditions')
 @endsection
 
 @section('commonRules')
