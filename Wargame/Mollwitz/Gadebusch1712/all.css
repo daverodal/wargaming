@@ -2391,6 +2391,13 @@ You should have received a copy of the GNU General Public License
 .Danish.pontoon .unit-numbers {
   display: none; }
 
+.playerDanes {
+  background: #ff3f1f;
+  border-color: #ff3f1f !important; }
+
+.DanesFace, .playerDanesFace {
+  color: #ff3f1f; }
+
 .swedes.specialHexes {
   background-color: #006AA7;
   color: white; }

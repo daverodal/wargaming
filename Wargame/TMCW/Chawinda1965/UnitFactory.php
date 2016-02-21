@@ -1,10 +1,11 @@
 <?php
 namespace Wargame\TMCW\Chawinda1965;
 
-    use \Hexagon;
-    use \stdClass;
-    use \MapData;
-    use \Battle;
+use Wargame\Hexagon;
+use Wargame\MapData;
+use Wargame\Battle;
+use Wargame\BaseUnit;
+use \stdClass;
 
     /**
      * Copyright 2015 David Rodal
@@ -25,7 +26,7 @@ namespace Wargame\TMCW\Chawinda1965;
      *   You should have received a copy of the GNU General Public License
      *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
      */
-    class ChawindaUnit extends \BaseUnit implements \JsonSerializable
+    class ChawindaUnit extends BaseUnit implements \JsonSerializable
     {
 
 

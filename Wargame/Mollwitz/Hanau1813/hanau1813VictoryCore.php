@@ -27,19 +27,13 @@ You should have received a copy of the GNU General Public License
 
 class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-
+    public $deadGuardInf = false;
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->movementCache = $data->victory->movementCache;
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
+
             $this->deadGuardInf = $data->victory->deadGuardInf;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new \stdClass();
-            $this->gameOver = false;
-            $this->deadGuardInf = false;
         }
     }
 

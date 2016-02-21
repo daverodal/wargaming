@@ -35,19 +35,6 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
     public $movementCache;
     public $gameOver;
 
-    function __construct($data)
-    {
-        if($data) {
-            $this->movementCache = $data->victory->movementCache;
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new \stdClass();
-            $this->gameOver = false;
-        }
-    }
-
     public function save()
     {
         $ret = new \stdClass();

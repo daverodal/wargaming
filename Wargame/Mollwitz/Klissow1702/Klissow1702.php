@@ -107,7 +107,9 @@ class Klissow1702 extends \Wargame\Mollwitz\JagCore
             if($data->pontoons) {
                 $this->pontoons = $data->pontoons;
                 foreach ($this->pontoons as $pontoon) {
-                    $this->terrain->changeTerrain($pontoon, HEXAGON_CENTER, "clear");
+                    if(isset($this->terrain) && is_object($this->terrain) && method_exists($this->terrain,'changeTerrain')) {
+                        $this->terrain->changeTerrain($pontoon, HEXAGON_CENTER, "clear");
+                    }
                 }
             }
         } else {

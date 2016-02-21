@@ -32,30 +32,10 @@ use \Wargame\Battle;
 
 class TinCansVictoryCore extends \Wargame\SPI\victoryCore
 {
-    public $victoryPoints;
-    protected $movementCache;
-    protected $combatCache;
-    protected $supplyLen = false;
-
-    private $scienceCenterDestroyed = false;
-    public $gameOver = false;
-    public $winner = false;
-
 
     function __construct($data)
     {
-        if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->movementCache = $data->victory->movementCache;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
-            $this->gameOver = $data->victory->gameOver;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
-            $this->combatCache = new stdClass();
-
-        }
+        parent::__construct($data);
     }
 
     public function setSupplyLen($supplyLen)
@@ -65,12 +45,7 @@ class TinCansVictoryCore extends \Wargame\SPI\victoryCore
 
     public function save()
     {
-        $ret = new stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->movementCache = $this->movementCache;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
-        $ret->gameOver = $this->gameOver;
+        $ret = parent::save();
         return $ret;
     }
 

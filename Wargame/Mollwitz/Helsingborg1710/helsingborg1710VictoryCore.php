@@ -28,38 +28,10 @@ You should have received a copy of the GNU General Public License
 class helsingborg1710VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
 
-    function __construct($data)
-    {
-        if ($data) {
-            $this->movementCache = $data->victory->movementCache;
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
-            $this->deadGuardInf = $data->victory->deadGuardInf;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new \stdClass();
-            $this->gameOver = false;
-            $this->deadGuardInf = false;
-        }
-    }
-
-    public function save()
-    {
-        $ret = parent::save();
-        $ret->deadGuardInf = $this->deadGuardInf;
-        return $ret;
-    }
     public function reduceUnit($args)
     {
         $unit = $args[0];
         $mult = 1;
-        if($unit->nationality == "Guard"){
-            $mult = 1.5;
-            if($unit->class == "infantry" && $unit->maxStrength == 9){
-                $mult = 2.0;
-                $this->deadGuardInf = true;
-            }
-        }
         $this->scoreKills($unit, $mult);
     }
 

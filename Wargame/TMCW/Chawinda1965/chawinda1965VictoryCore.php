@@ -31,31 +31,32 @@ use \Battle;
 
 class chawinda1965VictoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $victoryPoints;
-    protected $combatCache;
-    protected $supplyLen = false;
+
     public $pakistaniGoal;
     public $indianGoal;
 
     public $unsuppliedDefenderHalved = true;
 
-    public $gameOver = false;
 
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
+
             $this->indianGoal = $data->victory->indianGoal;
             $this->pakistaniGoal = $data->victory->pakistaniGoal;
-            $this->gameOver = $data->victory->gameOver;
         } else {
-            $this->victoryPoints = [0, 0, 0];
-            $this->combatCache = new \stdClass();
             $this->indianGoal = $this->pakistaniGoal = [];
         }
+    }
+
+    public function save()
+    {
+        $ret = parent::save();
+        $ret->indianGoal = $this->indianGoal;
+        $ret->pakistaniGoal = $this->pakistaniGoal;
+        return $ret;
     }
 
     public function setSupplyLen($supplyLen)
@@ -66,18 +67,6 @@ class chawinda1965VictoryCore extends \Wargame\TMCW\victoryCore
     public function setInitialPakistaniVP($args){
         list($vp) = $args;
         $this->victoryPoints[PAKISTANI_FORCE] = $vp;
-    }
-
-    public function save()
-    {
-        $ret = new \stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
-        $ret->indianGoal = $this->indianGoal;
-        $ret->pakistaniGoal = $this->pakistaniGoal;
-        $ret->gameOver = $this->gameOver;
-        return $ret;
     }
 
     public function specialHexChange($args)

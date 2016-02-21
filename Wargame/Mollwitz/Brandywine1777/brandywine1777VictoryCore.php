@@ -31,16 +31,10 @@ class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->movementCache = $data->victory->movementCache;
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
             $this->isDemoralized = $data->victory->isDemoralized;
             $this->rebelLosses = $data->victory->rebelLosses;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new \stdClass();
-            $this->gameOver = false;
         }
     }
 

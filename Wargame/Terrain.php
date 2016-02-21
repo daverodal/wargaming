@@ -220,7 +220,7 @@ class Terrain
                 $thisHexpart = $this->terrainArray[$y][$x];
                 /* reset all exclusive terrains found, leave non exclusive ones */
                 foreach($thisHexpart as $thisTerrainName => $thisTerrainValue){
-                    if($this->terrainFeatures->$thisTerrainName->isExclusive){
+                    if(isset($this->terrainFeatures->$thisTerrainName) && $this->terrainFeatures->$thisTerrainName->isExclusive){
                         unset($this->terrainArray[$y][$x]->$thisTerrainName);
                     }
                 }

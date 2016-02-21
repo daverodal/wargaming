@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
 
 @include player(Swedish, Swedish , $swedishColor, $swedishWrapperColor, $swedishWrapperColor);
 @include player(SaxonPolish, Saxon-Polish, $saxonColor, $saxonColor);
-
+@include headerColor(Saxon-Polish, $saxonColor,$saxonColor);
 .french.specialHexes{
   background-color: $frenchColor;
 }

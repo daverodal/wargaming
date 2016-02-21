@@ -30,19 +30,6 @@ namespace Wargame\Mollwitz\Minden;
 class mindenVictoryCore extends \Wargame\Mollwitz\victoryCore
 {
 
-    function __construct($data)
-    {
-        if($data) {
-            $this->movementCache = $data->victory->movementCache;
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new \stdClass();
-            $this->gameOver = false;
-        }
-    }
-
     public function reduceUnit($args)
     {
         $unit = $args[0];

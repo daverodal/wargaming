@@ -27,31 +27,21 @@ You should have received a copy of the GNU General Public License
 
 class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-    public $wasIndecisive;
-    public $isIndecisive;
+    public $wasIndecisive = false;
+    public $isIndecisive = false;
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->movementCache = $data->victory->movementCache;
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
-            $this->deadGuardInf = $data->victory->deadGuardInf;
             $this->wasIndecisive = $data->victory->wasIndecisive;
             $this->isIndecisive = $data->victory->isIndecisive;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new \stdClass();
-            $this->gameOver = false;
-            $this->deadGuardInf = false;
-            $this->wasIndecisive = $this->isIndecisive = false;
         }
     }
 
     public function save()
     {
         $ret = parent::save();
-        $ret->deadGuardInf = $this->deadGuardInf;
         $ret->wasIndecisive = $this->wasIndecisive;
         $ret->isIndecisive = $this->isIndecisive;
         return $ret;
@@ -61,13 +51,6 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
     {
         $unit = $args[0];
         $mult = 1;
-        if ($unit->nationality == "Guard") {
-            $mult = 1.5;
-            if ($unit->class == "infantry" && $unit->maxStrength == 9) {
-                $mult = 2.0;
-                $this->deadGuardInf = true;
-            }
-        }
         $this->scoreKills($unit, $mult);
     }
 
@@ -143,8 +126,6 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->gameOver = true;
                 return true;
             }
-            echo "$turn ";
-            echo $gameRules->maxTurn;
             if ($turn > $gameRules->maxTurn) {
                 if($battle->mapData->getSpecialHex(1113)  == DANISH_FORCE || $this->victoryPoints[DANISH_FORCE] >= 15){
                     $this->winner = DANISH_FORCE;

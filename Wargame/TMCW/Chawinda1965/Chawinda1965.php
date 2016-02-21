@@ -1,6 +1,7 @@
 <?php
 namespace Wargame\TMCW\Chawinda1965;
 use Wargame\TMCW\Chawinda1965\UnitFactory;
+use Wargame\MapData;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -31,7 +32,7 @@ $force_name[0] = "Neutral Observer";
 $force_name[1] = "Indian";
 $force_name[2] = "Pakistani";
 
-class Chawinda1965 extends \ModernLandBattle
+class Chawinda1965 extends \Wargame\ModernLandBattle
 {
     /* a comment */
 
@@ -179,7 +180,7 @@ class Chawinda1965 extends \ModernLandBattle
         $crt = new \Wargame\TMCW\Chawinda1965\CombatResultsTable();
         $this->combatRules->injectCrt($crt);
 
-        $this->mapData = \MapData::getInstance();
+        $this->mapData = MapData::getInstance();
         if ($data) {
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;

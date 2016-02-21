@@ -28,36 +28,31 @@
  */
 namespace Wargame\Mollwitz;
 use \Wargame\Battle;
-class victoryCore
+class victoryCore extends \Wargame\VictoryCore
 {
     public $victoryPoints;
     public $movementCache;
-    public $gameOver;
-
     public $headQuarters;
-    protected $forceName;
 
     function __construct($data)
     {
+        parent::__construct($data);
         if($data) {
             $this->movementCache = $data->victory->movementCache;
             $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
-            $this->headQuarters = $data->headQuarters;
+            $this->headQuarters = $data->victory->headQuarters;
         } else {
             $this->victoryPoints = array(0, 0, 0);
             $this->movementCache = new \stdClass();
-            $this->gameOver = false;
             $this->headQuarters = [];
         }
     }
 
     public function save()
     {
-        $ret = new \stdClass();
+        $ret = parent::save();
         $ret->victoryPoints = $this->victoryPoints;
         $ret->movementCache = $this->movementCache;
-        $ret->gameOver = $this->gameOver;
         $ret->headQuarters = $this->headQuarters;
         return $ret;
     }

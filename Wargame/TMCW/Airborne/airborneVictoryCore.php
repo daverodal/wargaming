@@ -32,46 +32,34 @@ use \Wargame\Battle;
 
 class airborneVictoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $victoryPoints;
-    protected $combatCache;
-    protected $supplyLen = false;
+
     private $landingZones;
     private $airdropZones;
-    public $gameOver = false;
 
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
             $this->landingZones = $data->victory->landingZones;
             $this->airdropZones = $data->victory->airdropZones;
-            $this->gameOver = $data->victory->gameOver;
         } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->combatCache = new stdClass();
             $this->landingZones = [];
             $this->airdropZones = [];
         }
     }
 
+    public function save()
+    {
+        $ret = parent::save();
+        $ret->landingZones = $this->landingZones;
+        $ret->airdropZones = $this->airdropZones;
+        return $ret;
+    }
+
     public function setSupplyLen($supplyLen)
     {
         $this->supplyLen = $supplyLen[0];
-    }
-
-    public function save()
-    {
-        $ret = new stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
-        $ret->landingZones = $this->landingZones;
-        $ret->airdropZones = $this->airdropZones;
-        $ret->gameOver = $this->gameOver;
-        return $ret;
     }
 
     public function specialHexChange($args)

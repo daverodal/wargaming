@@ -33,29 +33,19 @@ use \Wargame\Battle;
 
 class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $victoryPoints;
-    public $combatCache;
-    public $supplyLen = false;
+
     public $rebelGoal;
     public $loyalistGoal;
-    public $gameOver = false;
-
     public $headQuarters;
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
             $this->rebelGoal = $data->victory->rebelGoal;
             $this->loyalistGoal = $data->victory->loyalistGoal;
-            $this->gameOver = $data->victory->gameOver;
             $this->headQuarters = $data->victory->headQuarters;
-
         } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->combatCache = new \stdClass();
             $this->rebelGoal = [];
             $this->loyalistGoal = [];
             $this->headQuarters = [];
@@ -66,15 +56,12 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
     public function setSupplyLen($supplyLen){
         $this->supplyLen = $supplyLen[0];
     }
+
     public function save()
     {
-        $ret = new \stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
+        $ret = parent::save();
         $ret->rebelGoal = $this->rebelGoal;
         $ret->loyalistGoal = $this->loyalistGoal;
-        $ret->gameOver = $this->gameOver;
         $ret->headQuarters = $this->headQuarters;
         return $ret;
     }

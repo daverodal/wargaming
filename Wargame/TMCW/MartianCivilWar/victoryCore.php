@@ -31,26 +31,13 @@ use \Wargame\Battle;
  */
 //include "supplyRulesTraits.php";
 
-class victoryCore
+class victoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $victoryPoints;
-    protected $combatCache;
-    protected $supplyLen = false;
-    public $gameOver = false;
 
-    use \Wargame\TMCW\ModernSupplyRules;
 
     function __construct($data = false)
     {
-        if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
-            $this->gameOver = $data->victory->gameOver;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->combatCache = new \stdClass();
-        }
+        parent::__construct($data);
     }
 
     public function setSupplyLen($supplyLen){
@@ -58,11 +45,7 @@ class victoryCore
     }
     public function save()
     {
-        $ret = new \stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
-        $ret->gameOver = $this->gameOver;
+        $ret = parent::save();
         return $ret;
     }
 

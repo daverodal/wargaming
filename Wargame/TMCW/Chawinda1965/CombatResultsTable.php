@@ -23,7 +23,7 @@ namespace Wargame\TMCW\Chawinda1965;
 
 class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 {
-    use \DivCombatHalfDoubleTerrain;
+    use \Wargame\DivCombatHalfDoubleTerrain;
     public $aggressorId = BLUE_FORCE;
 
     function __construct(){

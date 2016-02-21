@@ -1,7 +1,6 @@
 <?php
 namespace Wargame\NTA;
-use \stdClass;
-use \Wargame\Battle;
+use Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -30,30 +29,24 @@ use \Wargame\Battle;
  * To change this template use File | Settings | File Templates.
  */
 
-class victoryCore
+class victoryCore extends \Wargame\VictoryCore
 {
     public $victoryPoints;
-    private $movementCache;
 
     function __construct($data)
     {
+        parent::__construct($data);
         if($data) {
-            $this->movementCache = $data->victory->movementCache;
             $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
-            $this->gameOver = false;
         }
     }
 
     public function save()
     {
-        $ret = new stdClass();
+        $ret = parent::save();
         $ret->victoryPoints = $this->victoryPoints;
-        $ret->movementCache = $this->movementCache;
-        $ret->gameOver = $this->gameOver;
         return $ret;
     }
 
@@ -83,13 +76,7 @@ class victoryCore
             $gameRules->flashMessages[] = "Blue Player Turn";
         }
     }
-    public function postRecoverUnits($args){
-        $b = Battle::getBattle();
-//        if($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
-//            $b->gameRules->flashMessages[] = "French Movement halved this turn.";
-//        }
 
-    }
     public function gameEnded(){
 
         $battle = Battle::getBattle();
@@ -119,14 +106,5 @@ class victoryCore
         }
         $b = Battle::getBattle();
         $id = $unit->id;
-//
-//        if($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
-//            $this->movementCache->$id = $unit->maxMove;
-//            $unit->maxMove = floor($unit->maxMove / 2);
-//        }
-//        if($b->gameRules->turn == 1 && $b->gameRules->phase == RED_COMBAT_PHASE && isset($this->movementCache->$id)) {
-//            $unit->maxMove = $this->movementCache->$id;
-//            unset($this->movementCache->$id);
-//        }
     }
 }

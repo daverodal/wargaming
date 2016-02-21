@@ -29,37 +29,25 @@ use \Wargame\Battle;
  * To change this template use File | Settings | File Templates.
  */
 
-class victoryCore
+class victoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $victoryPoints;
-    private $movementCache;
-    private $combatCache;
     public $sovietGoal;
     private $gameOver = false;
 
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->movementCache = $data->victory->movementCache;
-            $this->combatCache = $data->victory->combatCache;
             $this->sovietGoal = $data->victory->sovietGoal;
-            $this->gameOver = $data->victory->gameOver;
         } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new \stdClass();
-            $this->combatCache = new \stdClass();
             $this->sovietGoal = [];
         }
     }
 
     public function save()
     {
-        $ret = new \stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->movementCache = $this->movementCache;
-        $ret->combatCache = $this->combatCache;
+        $ret = parent::save();
         $ret->sovietGoal = $this->sovietGoal;
         return $ret;
     }

@@ -32,35 +32,20 @@ use \Wargame\Battle;
 
 class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
 {
-    public $victoryPoints;
-    protected $movementCache;
-    protected $combatCache;
-    public $gameOver = false;
     public $germanySurrenders = false;
 
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->movementCache = $data->victory->movementCache;
-            $this->combatCache = $data->victory->combatCache;
-            $this->gameOver = $data->victory->gameOver;
             $this->germanySurrenders = $data->victory->germanySurrenders;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new stdClass();
-            $this->combatCache = new stdClass();
         }
     }
 
     public function save()
     {
-        $ret = new stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->movementCache = $this->movementCache;
-        $ret->combatCache = $this->combatCache;
-        $ret->gameOver = $this->gameOver;
+        $ret = parent::save();
         $ret->germanySurrenders = $this->germanySurrenders;
         return $ret;
     }

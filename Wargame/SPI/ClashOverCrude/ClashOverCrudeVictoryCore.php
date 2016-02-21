@@ -32,32 +32,19 @@ use \Wargame\Battle;
 
 class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
 {
-    public $victoryPoints;
-    protected $movementCache;
-    protected $combatCache;
-    protected $supplyLen = false;
     private $landingZones;
     private $airdropZones;
-    public $gameOver = false;
-    public $winner = false;
 
     public $airXferPts = 30;
 
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->movementCache = $data->victory->movementCache;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
             $this->landingZones = $data->victory->landingZones;
             $this->airdropZones = $data->victory->airdropZones;
-            $this->gameOver = $data->victory->gameOver;
         } else {
-            $this->victoryPoints = array(0, 0, 25);
-            $this->movementCache = new stdClass();
-            $this->combatCache = new stdClass();
             $this->landingZones = [];
             $this->airdropZones = [];
         }
@@ -70,14 +57,9 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
 
     public function save()
     {
-        $ret = new stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->movementCache = $this->movementCache;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
+        $ret = parent::save();
         $ret->landingZones = $this->landingZones;
         $ret->airdropZones = $this->airdropZones;
-        $ret->gameOver = $this->gameOver;
         return $ret;
     }
 

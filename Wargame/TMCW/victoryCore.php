@@ -1,5 +1,6 @@
 <?php
 namespace Wargame\TMCW;
+use stdClass;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -27,24 +28,23 @@ namespace Wargame\TMCW;
  */
 //include "supplyRulesTraits.php";
 
-class victoryCore
+class victoryCore extends \Wargame\VictoryCore
 {
     public $victoryPoints;
     protected $movementCache;
     protected $combatCache;
     protected $supplyLen = false;
-    public $gameOver = false;
 
     use \Wargame\TMCW\ModernSupplyRules;
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
             $this->victoryPoints = $data->victory->victoryPoints;
             $this->movementCache = $data->victory->movementCache;
             $this->combatCache = $data->victory->combatCache;
             $this->supplyLen = $data->victory->supplyLen;
-            $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
             $this->movementCache = new stdClass();
@@ -52,18 +52,18 @@ class victoryCore
         }
     }
 
-    public function setSupplyLen($supplyLen){
-        $this->supplyLen = $supplyLen[0];
-    }
-
     public function save()
     {
-        $ret = new stdClass();
+        $ret = parent::save();
         $ret->victoryPoints = $this->victoryPoints;
         $ret->movementCache = $this->movementCache;
         $ret->combatCache = $this->combatCache;
         $ret->supplyLen = $this->supplyLen;
         return $ret;
+    }
+
+    public function setSupplyLen($supplyLen){
+        $this->supplyLen = $supplyLen[0];
     }
 
     public function incrementTurn()

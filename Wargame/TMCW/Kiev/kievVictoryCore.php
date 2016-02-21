@@ -32,49 +32,32 @@ use \stdClass;
 
 class kievVictoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $victoryPoints;
-    protected $combatCache;
-    protected $supplyLen = false;
+
     public $sovietGoal;
     public $germanGoal;
 
-    public $gameOver = false;
-
-    public $unsuppliedDefenderHalved = true;
-
-
-
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
             $this->germanGoal = $data->victory->germanGoal;
             $this->sovietGoal = $data->victory->sovietGoal;
-            $this->gameOver = $data->victory->gameOver;
         } else {
-            $this->victoryPoints = [0,0,0,0];
-            $this->combatCache = new stdClass();
             $this->germanGoal = $this->sovietGoal = [];
         }
+    }
+
+    public function save()
+    {
+        $ret = parent::save();
+        $ret->germanGoal = $this->germanGoal;
+        $ret->sovietGoal = $this->sovietGoal;
+        return $ret;
     }
 
     public function setSupplyLen($supplyLen)
     {
         $this->supplyLen = $supplyLen[0];
-    }
-
-    public function save()
-    {
-        $ret = new stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
-        $ret->germanGoal = $this->germanGoal;
-        $ret->sovietGoal = $this->sovietGoal;
-        $ret->gameOver = $this->gameOver;
-        return $ret;
     }
 
     public function specialHexChange($args)

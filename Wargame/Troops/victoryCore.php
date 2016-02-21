@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\Troops;
-use \stdClass;
-use \Wargame\Battle;
+use stdClass;
+use Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -26,32 +26,28 @@ use \Wargame\Battle;
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-class victoryCore
+class victoryCore extends \Wargame\VictoryCore
 {
     public $victoryPoints;
     public $movementCache;
-    public $gameOver;
-
 
     function __construct($data)
     {
+        parent::__construct($data);
         if($data) {
             $this->movementCache = $data->victory->movementCache;
             $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = array(0, 0, 0);
             $this->movementCache = new stdClass();
-            $this->gameOver = false;
         }
     }
 
     public function save()
     {
-        $ret = new stdClass();
+        $ret = parent::save();
         $ret->victoryPoints = $this->victoryPoints;
         $ret->movementCache = $this->movementCache;
-        $ret->gameOver = $this->gameOver;
         return $ret;
     }
 

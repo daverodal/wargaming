@@ -61,11 +61,13 @@ class Victory{
             $this->core = new $className($data);
         }
     }
+
     public function save(){
         $ret = $this->core->save();
         $ret->coreName = $this->coreName;
         return $ret;
     }
+
     public function __call($name, $arguments){
         if($this->core && method_exists($this->core,$name)){
             return $this->core->$name($arguments);
@@ -80,8 +82,10 @@ class Victory{
         return $arguments;
 
     }
+
     public function &__get($name){
-        if($this->core && $this->core->$name){
+
+        if($this->core && isset($this->core->$name)){
             return $this->core->$name;
         }
         return false;

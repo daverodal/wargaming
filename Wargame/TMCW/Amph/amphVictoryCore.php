@@ -32,29 +32,19 @@ use \Wargame\Battle;
 
 class amphVictoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $victoryPoints;
-    protected $combatCache;
-    protected $supplyLen = false;
     private $landingZones;
     private $airdropZones;
     private $scienceCenterDestroyed = false;
-    public $gameOver = false;
-    public $winner = false;
 
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
             $this->landingZones = $data->victory->landingZones;
             $this->airdropZones = $data->victory->airdropZones;
             $this->scienceCenterDestroyed = $data->victory->scienceCenterDestroyed;
-            $this->gameOver = $data->victory->gameOver;
         } else {
-            $this->victoryPoints = array(0, 0, 25);
-            $this->combatCache = new \stdClass();
             $this->landingZones = [];
             $this->airdropZones = [];
         }
@@ -67,13 +57,9 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
 
     public function save()
     {
-        $ret = new \stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
+        $ret = parent::save();
         $ret->landingZones = $this->landingZones;
         $ret->airdropZones = $this->airdropZones;
-        $ret->gameOver = $this->gameOver;
         $ret->scienceCenterDestroyed = $this->scienceCenterDestroyed;
         return $ret;
     }

@@ -28,21 +28,21 @@ use \Wargame\Battle;
 
 class burkersdorfVictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-    public $prussianEnterVictory;
+    public $prussianEnterVictory = false;
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->movementCache = $data->victory->movementCache;
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->gameOver = $data->victory->gameOver;
-            $this->prussianEnterVictory = $this->prussianEnterVictory;
-        } else {
-            $this->victoryPoints = array(0, 0, 0);
-            $this->movementCache = new \stdClass();
-            $this->gameOver = false;
-            $this->prussianEnterVictory = false;
+            $this->prussianEnterVictory = $data->victory->prussianEnterVictory;
         }
+    }
+
+    public function save()
+    {
+        $ret = parent::save();
+        $ret->prussianEnterVictory = $this->prussianEnterVictory;
+        return $ret;
     }
 
     public function reduceUnit($args)

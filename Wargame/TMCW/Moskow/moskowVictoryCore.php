@@ -31,10 +31,6 @@ use \Wargame\Battle;
 
 class moskowVictoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $victoryPoints;
-    protected $movementCache;
-    protected $combatCache;
-    protected $supplyLen = false;
     public $sovietGoal;
     public $germanGoal;
 
@@ -43,18 +39,12 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
 
     function __construct($data)
     {
+        parent::__construct($data);
         if ($data) {
-            $this->victoryPoints = $data->victory->victoryPoints;
-            $this->movementCache = $data->victory->movementCache;
-            $this->combatCache = $data->victory->combatCache;
-            $this->supplyLen = $data->victory->supplyLen;
             $this->germanGoal = $data->victory->germanGoal;
             $this->sovietGoal = $data->victory->sovietGoal;
-            $this->gameOver = $data->victory->gameOver;
         } else {
             $this->victoryPoints = "The Soviets hold Moskow";
-            $this->movementCache = new \stdClass();
-            $this->combatCache = new \stdClass();
             $this->germanGoal = $this->sovietGoal = [];
         }
     }
@@ -66,14 +56,9 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
 
     public function save()
     {
-        $ret = new \stdClass();
-        $ret->victoryPoints = $this->victoryPoints;
-        $ret->movementCache = $this->movementCache;
-        $ret->combatCache = $this->combatCache;
-        $ret->supplyLen = $this->supplyLen;
+        $ret = parent::save();
         $ret->germanGoal = $this->germanGoal;
         $ret->sovietGoal = $this->sovietGoal;
-        $ret->gameOver = $this->gameOver;
         return $ret;
     }
 
