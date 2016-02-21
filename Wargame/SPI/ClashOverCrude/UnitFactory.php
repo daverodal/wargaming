@@ -1,8 +1,9 @@
 <?php
 namespace Wargame\SPI\ClashOverCrude;
-use \Wargame\Battle;
-use \stdClass;
-use \Hexagon;
+use Wargame\Battle;
+use stdClass;
+use Wargame\Hexagon;
+use JsonSerializable;
 
 /**
  * Copyright 2015 David Rodal
@@ -24,7 +25,7 @@ use \Hexagon;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class LandAirUnit extends \BaseUnit implements \JsonSerializable
+class LandAirUnit extends \Wargame\BaseUnit implements JsonSerializable
 {
 
     public $origStrength;

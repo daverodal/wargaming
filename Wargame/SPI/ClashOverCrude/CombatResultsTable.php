@@ -31,7 +31,7 @@ namespace Wargame\SPI\ClashOverCrude;
 
 class CombatResultsTable extends \Wargame\SPI\ModernCombatResultsTable
 {
-    use \DivCombatShiftTerrain;
+    use \Wargame\DivCombatShiftTerrain;
 
 
     public $aggressorId = 1;

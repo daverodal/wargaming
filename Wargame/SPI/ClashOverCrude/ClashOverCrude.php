@@ -1,6 +1,7 @@
 <?php
 namespace Wargame\SPI\ClashOverCrude;
-use \Wargame\SPI\ClashOverCrude\UnitFactory;
+use Wargame\SPI\ClashOverCrude\UnitFactory;
+use Wargame\ModernLandBattle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -25,7 +26,7 @@ use \Wargame\SPI\ClashOverCrude\UnitFactory;
 define("REBEL_FORCE", 1);
 define("LOYALIST_FORCE", 2);
 
-class ClashOverCrude extends \ModernLandBattle
+class ClashOverCrude extends ModernLandBattle
 {
     /* a comment */
 
@@ -173,7 +174,7 @@ class ClashOverCrude extends \ModernLandBattle
 
         } else {
             $this->victory = new \Wargame\Victory("\\Wargame\\SPI\\ClashOverCrude\\ClashOverCrudeVictoryCore");
-            $this->moveRules = new \MoveRules($this->force, $this->terrain);
+            $this->moveRules = new \Wargame\MoveRules($this->force, $this->terrain);
 
             $this->moveRules->enterZoc = 0;
             $this->moveRules->exitZoc = 0;
