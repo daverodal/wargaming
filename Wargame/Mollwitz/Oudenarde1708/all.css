@@ -2326,6 +2326,13 @@ You should have received a copy of the GNU General Public License
 .French .counterWrapper {
   background-color: #9f9f9f; }
 
+.playerAnglo-Allied {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
+.Anglo-AlliedFace, .playerAnglo-AlliedFace {
+  color: #f00; }
+
 .french.specialHexes {
   background-color: #84b5ff; }
 

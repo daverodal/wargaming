@@ -20,6 +20,8 @@ You should have received a copy of the GNU General Public License
 @include player(AngloAllied,Anglo-Allied , $angloAlliedColor, $angloAlliedWrapperColor);
 @include player(French, French, $frenchColor, $frenchSaxonWrapperColor);
 
+@include headerColor(Anglo-Allied, $angloAlliedColor, $angloAlliedWrapperColor);
+
 .french.specialHexes{
   background-color: $frenchColor;
 }
