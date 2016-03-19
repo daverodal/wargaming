@@ -24,7 +24,7 @@ use \stdClass;
 
 class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 {
-    use \DivMCWCombatShiftTerrain;
+    use \Wargame\DivMCWCombatShiftTerrain;
     public $aggressorId = GERMAN_FORCE;
 
     function __construct(){

@@ -25,7 +25,7 @@ use \Wargame\TMCW\UnitFactory;
 define("GERMAN_FORCE", 1);
 define("SOVIET_FORCE", 2);
 
-class Kiev extends \ModernLandBattle
+class Kiev extends \Wargame\ModernLandBattle
 {
 
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>2];
