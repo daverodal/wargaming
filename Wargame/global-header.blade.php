@@ -1044,7 +1044,7 @@ function initialize() {
 
     fixHeader();
     $("body").keydown(function (event) {
-        if(event.which == 37 || event.which == 39){
+        if(event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40){
             doitKeypress(event.which);
             return false;
         }

@@ -37,7 +37,7 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
 
     public function save()
     {
-        $ret = new \stdClass();
+        $ret = parent::save();
         $ret->victoryPoints = $this->victoryPoints;
         $ret->movementCache = $this->movementCache;
         $ret->gameOver = $this->gameOver;

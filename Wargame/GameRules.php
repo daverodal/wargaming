@@ -286,6 +286,28 @@ class GameRules
 
                             }
                         }
+
+                        if($id == 37){
+                            if(method_exists($this->moveRules, 'turnLeft')){
+                                $ret = $this->moveRules->turnLeft(true);
+                                return $ret;
+                            }
+                        }
+
+                        if($id == 40){
+                            if(method_exists($this->moveRules, 'turnAbout')){
+                                $ret = $this->moveRules->turnAbout(true);
+                                return $ret;
+                            }
+                        }
+
+                        if($id == 39){
+                            if(method_exists($this->moveRules, 'turnRight')){
+                                $ret = $this->moveRules->turnRight(true);
+                                return $ret;
+                            }
+                        }
+
                     case SELECT_MAP_EVENT:
                     case SELECT_COUNTER_EVENT:
 
@@ -513,6 +535,12 @@ class GameRules
                                 }
                             }
 
+                            if($id == 40){
+                                if(method_exists($this->moveRules, 'turnAbout')){
+                                    $ret = $this->moveRules->turnAbout();
+                                    return $ret;
+                                }
+                            }
 
                             if($id == 39){
                                 if(method_exists($this->moveRules, 'turnRight')){

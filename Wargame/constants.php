@@ -338,6 +338,10 @@ define("HH", 21);
 define("S", 22);
 define("P2", 23);
 define("S2", 24);
+define("D", 25);
+define("R", 26);
+define("F", 27);
+define("E", 28);
 
 $results_name = array();
 //results_name[DE] = "Defender eliminated";
@@ -369,6 +373,10 @@ $results_name[H] = 'H';
 $results_name[HH] = '2H';
 $results_name[S] = 'S';
 $results_name[P2] = '2P';
+$results_name[D] = 'D';
+$results_name[R] = 'R';
+$results_name[F] = 'F';
+$results_name[E] = 'E';
 
 // combat ratio
 $combatRatio_name = array();

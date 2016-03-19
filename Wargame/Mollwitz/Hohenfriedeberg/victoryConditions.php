@@ -50,9 +50,9 @@ You should have received a copy of the GNU General Public License
             will be awarded the points again.
         </li>
 
-        <li>If the Prussian cannot accumulate the required victory points until after turn 12, it's considered a draw..
+        <li>If the Prussian cannot accumulate the required victory points until after turn <?echo isset($scenario->deployForward) ? 11 : 12 ?>, it's considered a draw..
         </li>
 
-        <li>If the Prussian player cannot gain the above victory by the end of turn 15. The Austrian player wins.</li>
+        <li>If the Prussian player cannot gain the above victory by the end of turn <?echo isset($scenario->deployForward) ? 14 : 15 ?>. The Austrian player wins.</li>
     </ol>
 </li>
