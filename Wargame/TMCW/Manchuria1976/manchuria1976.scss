@@ -22,6 +22,9 @@
 @include player(soviet, One, rgb(223, 88, 66));
 @include player(prc, Two, rgb(247, 206, 0));
 
+@include headerColor(PRC, rgb(247, 206, 0),rgb(247, 206, 0));
+@include headerColor(Soviet, rgb(223, 88, 66),rgb(223, 88, 66));
+
 #crt{
   .crt-table-name{
     display:none;

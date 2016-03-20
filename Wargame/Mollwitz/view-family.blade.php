@@ -17,5 +17,10 @@
     @endsection
 @endif
 
+@if(view()->exists("$curPath.tec"))
+@section('tec')
+    @include("$curPath.tec")
+@endsection
+@endif
 @include('wargame::Mollwitz.view')
 @include('wargame::stdIncludes.view' )

@@ -32,8 +32,6 @@ use \Wargame\Battle;
 class victoryCore extends \Wargame\TMCW\victoryCore
 {
     public $sovietGoal;
-    private $gameOver = false;
-
 
     function __construct($data)
     {
@@ -185,16 +183,14 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
             $gameRules->flashMessages[] = "@hide deadpile";
-            if ($battle->force->reinforceTurns->$turn->$forceId) {
+            if (isset($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
         }
     }
 
-    public function preRecoverUnits($args){
-        /* @var unit $unit */
-        $unit = $args[0];
+    public function preRecoverUnits(){
 
         $b = Battle::getBattle();
 

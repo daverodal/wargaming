@@ -95,6 +95,87 @@ class MoveRules
     public function movesLeft(){
         return false;
     }
+
+    function turnLeft($isDeploy = false){
+        if ($this->anyUnitIsMoving) {
+            $movingUnit = $this->force->units[$this->movingUnitId];
+            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $turnCost = 1;
+            if($isDeploy || $movesLeft >= $turnCost){
+                $movingUnit->facing--;
+                if($movingUnit->facing < 0){
+                    $movingUnit->facing += 6;
+                }
+                if($isDeploy){
+                    return true;
+                }
+                $movingUnit->moveAmountUsed += $turnCost;
+                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                    $this->stopMove($movingUnit);
+                    return true;
+                }
+                $this->calcMove($this->movingUnitId);
+                return true;
+            }
+            return false;
+        }
+        return false;
+
+    }
+
+    function turnAbout($isDeploy = false){
+        if ($this->anyUnitIsMoving) {
+            $movingUnit = $this->force->units[$this->movingUnitId];
+            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $turnCost = 2;
+            if($isDeploy || $movesLeft >= $turnCost){
+                $movingUnit->facing += 3;
+                if($movingUnit->facing >= 6){
+                    $movingUnit->facing -= 6;
+                }
+                if($isDeploy){
+                    return true;
+                }
+                $movingUnit->moveAmountUsed += $turnCost;
+                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                    $this->stopMove($movingUnit);
+                    return true;
+                }
+                $this->calcMove($this->movingUnitId);
+                return true;
+            }
+            return false;
+        }
+        return false;
+
+    }
+
+    function turnRight($isDeploy = false){
+        if ($this->anyUnitIsMoving) {
+            $movingUnit = $this->force->units[$this->movingUnitId];
+            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $turnCost = 1;
+            if($isDeploy || $movesLeft >= $turnCost){
+                $movingUnit->facing++;
+                if($movingUnit->facing >= 6){
+                    $movingUnit->facing -= 6;
+                }
+                if($isDeploy){
+                    return true;
+                }
+                $movingUnit->moveAmountUsed += $turnCost;
+                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                    $this->stopMove($movingUnit);
+                    return true;
+                }
+                $this->calcMove($this->movingUnitId);
+                return true;
+            }
+            return false;
+        }
+        return false;
+
+    }
 // id will be map if map event, id will be unit id if counter event
     function moveUnit($eventType, $id, $hexagon, $turn)
     {
@@ -122,6 +203,10 @@ class MoveRules
                             $this->move($movingUnit, $moveHex);
                         }
                         $movesLeft = $this->moves->$newHex->pointsLeft;
+                        if(isset($this->moves->$newHex->facing)) {
+                            $facing = $this->moves->$newHex->facing;
+                            $movingUnit->facing = $facing;
+                        }
                         $this->moves = new stdClass();
 
                         $this->move($movingUnit, $newHex);
@@ -134,6 +219,9 @@ class MoveRules
                             $hexPath->pathToHere = array();
                             $hexPath->firstHex = false;
                             $hexPath->isOccupied = true;
+                            if(isset($facing)){
+                                $hexPath->facing = $facing;
+                            }
 
                             $this->moveQueue[] = $hexPath;
                             $this->bfsMoves();
@@ -371,6 +459,9 @@ class MoveRules
         $hexPath->pathToHere = array();
         $hexPath->firstHex = true;
         $hexPath->isOccupied = true;
+        if(isset($this->force->units[$id]->facing)){
+            $hexPath->facing = $this->force->units[$id]->facing;
+        }
         $this->moveQueue[] = $hexPath;
         $this->bfsMoves();
 
@@ -551,8 +642,12 @@ class MoveRules
             $path = $hexPath->pathToHere;
             $path[] = $hexNum;
 
-
             $neighbors = $mapHex->neighbors;
+
+            if(isset($hexPath->facing)){
+                $newFacing = $hexPath->facing;
+                $neighbors = array_slice(array_merge($mapHex->neighbors,$mapHex->neighbors), ($hexPath->facing + 6 - 1)%6, 3);
+            }
             $curHex = Hexagon::getHexPartXY($hexNum);
 
             foreach ($neighbors as $neighbor) {
@@ -614,6 +709,10 @@ class MoveRules
                     $newPath->name = $newHexNum;
                     $newPath->pathToHere = $path;
                     $newPath->pointsLeft = $movePoints - $moveAmount;
+
+                    if(isset($newFacing)){
+                        $newPath->facing = $newFacing;
+                    }
 
                     if ($newPath->pointsLeft < 0) {
                         $newPath->pointsLeft = 0;
@@ -1125,7 +1224,7 @@ class MoveRules
         $victory->postStartMovingUnit($unit);
     }
 
-    function airMove(BaseUnit $movingUnit, $hexagon)
+    function airMove(MovableUnit $movingUnit, $hexagon)
     {
         if ($movingUnit->unitIsMoving()
             && $this->airMoveIsValid($movingUnit, $hexagon)
@@ -1136,7 +1235,7 @@ class MoveRules
         return true;
     }
 
-    function move(BaseUnit $movingUnit, $hexagon)
+    function move(MovableUnit $movingUnit, $hexagon)
     {
         if ($movingUnit->unitIsMoving()
             && $this->moveIsValid($movingUnit, $hexagon)
@@ -1145,7 +1244,7 @@ class MoveRules
         }
     }
 
-    function stopMove(BaseUnit $movingUnit, $force = false)
+    function stopMove(MovableUnit $movingUnit, $force = false)
     {
         $battle = Battle::getBattle();
         $victory = $battle->victory;
@@ -1192,12 +1291,12 @@ class MoveRules
         }
         return false;
     }
-    function airMoveIsValid(BaseUnit $movingUnit, $hexagon, $startHex = false, $firstHex = false)
+    function airMoveIsValid(MovableUnit $movingUnit, $hexagon, $startHex = false, $firstHex = false)
     {
         return true;
     }
 
-    function moveIsValid(BaseUnit $movingUnit, $hexagon, $startHex = false, $firstHex = false)
+    function moveIsValid(MovableUnit $movingUnit, $hexagon, $startHex = false, $firstHex = false)
     {
         // all 4 conditions must be true, so any one that is false
         //    will make the move invalid
@@ -1242,7 +1341,7 @@ class MoveRules
         return $isValid;
     }
 
-    function updateMoveData(BaseUnit $movingUnit, $hexagon)
+    function updateMoveData(MovableUnit $movingUnit, $hexagon)
     {
         $battle = Battle::getBattle();
         /* @var MapData $mapData */

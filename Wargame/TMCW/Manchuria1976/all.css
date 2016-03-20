@@ -1217,6 +1217,20 @@ svg marker#head {
   .prc .unit-desig {
     color: white; }
 
+.playerPRC {
+  background: #f7ce00;
+  border-color: #f7ce00 !important; }
+
+.PRCFace, .playerPRCFace {
+  color: #f7ce00; }
+
+.playerSoviet {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
+.SovietFace, .playerSovietFace {
+  color: #df5842; }
+
 #crt .crt-table-name {
   display: none; }
 

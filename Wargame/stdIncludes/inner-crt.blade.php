@@ -33,6 +33,9 @@ $crts = $topCrt->crts;
         </div>
         <?php
         $rowNum = 1;
+        if(isset($topCrt->rowNum)){
+            $rowNum = $topCrt->rowNum;
+        }
         $odd = ($rowNum & 1) ? "odd" : "even";?>
         @foreach ($crt as $row)
             <div class="roll {{"row$rowNum $odd"}}">

@@ -63,7 +63,7 @@
             another.</p>
 
         <?php if ($name == "Manchuria1976") { ?>
-            <p class="exclusive"><?= $playerTwo ?> Infantry that start their turn in a mountain
+            <p class="exclusive"><?= $forceName[2] ?> Infantry that start their turn in a mountain
                 hex
                 in an enemy <abbr title="Zone Of Control">ZOC</abbr>, may move directly to
                 another

@@ -47,6 +47,7 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         } else {
             $this->landingZones = [];
             $this->airdropZones = [];
+            $this->victoryPoints[LOYALIST_FORCE] = 25;
         }
     }
 

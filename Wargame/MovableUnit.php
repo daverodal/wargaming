@@ -105,6 +105,11 @@ class MovableUnit{
         return $this->hexagon;
     }
 
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
     function updateMoveStatus($hexagon, $moveAmount)
     {
 

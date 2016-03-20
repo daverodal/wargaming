@@ -30,7 +30,7 @@ global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results
 $force_name = array();
 
 
-class Manchuria1976 extends \ModernLandBattle
+class Manchuria1976 extends \Wargame\ModernLandBattle
 {
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>1];
 

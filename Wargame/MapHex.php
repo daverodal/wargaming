@@ -102,6 +102,36 @@ class MapHex
         $unitHex = $unit->hexagon;
 
         if($unit->noZoc !== true) {
+            if(isset($unit->facing)){
+                $neighbors = array_slice(array_merge($neighbors,$neighbors), ($unit->facing + 6 - 1)%6, 3);
+
+            }
+
+            foreach ($neighbors as $neighbor) {
+                $hex = $mapData->getHex($neighbor);
+
+                if (!empty($blocksZoc->blocked) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocked")) {
+                    continue;
+                }
+
+                if (!empty($blocksZoc->blocksnonroad) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocksnonroad")) {
+                    continue;
+                }
+                if ($hex) {
+                    if (!$hex->zocs) {
+                        $hex->zocs = array(new stdClass(), new stdClass(), new stdClass(), new stdClass(), new stdClass());
+                    }
+
+                    if (!$hex->zocs[$forceId]) {
+                        $hex->zocs[$forceId] = new stdClass();
+                    }
+                    $hex->zocs[$forceId]->$id = $id;
+                }
+            }
+        }
+
+            $neighbors = $this->neighbors;
+
             foreach ($neighbors as $neighbor) {
                 $hex = $mapData->getHex($neighbor);
 
@@ -119,21 +149,8 @@ class MapHex
                     }
                     $hex->adjacent[$forceId]->$id = $id;
                 }
-                if (!empty($blocksZoc->blocksnonroad) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocksnonroad")) {
-                    continue;
-                }
-                if ($hex) {
-                    if (!$hex->zocs) {
-                        $hex->zocs = array(new stdClass(), new stdClass(), new stdClass(), new stdClass(), new stdClass());
-                    }
-
-                    if (!$hex->zocs[$forceId]) {
-                        $hex->zocs[$forceId] = new stdClass();
-                    }
-                    $hex->zocs[$forceId]->$id = $id;
-                }
             }
-        }
+
 
         $this->dirty = true;
     }
