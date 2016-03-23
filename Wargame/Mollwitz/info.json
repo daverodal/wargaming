@@ -932,12 +932,12 @@
     },
     "scenarios": {
       "main": {
-        "description": "Historical Scenario.",
-        "longDescription":"Fords do not affect Combat."
+        "description": "All In",
+        "longDescription":"other things here."
       },
-      "hardfords": {
-        "description": "Optional Scenario",
-        "longDescription":"Attacks across fords are halved."
+      "historical": {
+        "description": "Historical",
+        "longDescription":"something here."
       }
     }
   },
