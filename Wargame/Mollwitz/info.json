@@ -893,6 +893,55 @@
     }
   },
 
+  "FreemansFarm1777": {
+    "name": "The Battle of Freeman's Farm 1777",
+    "path": "Mollwitz",
+    "genre": "Americas",
+    "fileName": "\\Wargame\\Mollwitz\\FreemansFarm1777\\FreemansFarm1777",
+    "description":"The Battle of FreemansFarm 1777. ",
+    "options":[
+      {
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName":"fogDeploy",
+        "value": false
+      }],
+    "params":{
+      "americanRevolution": true,
+      "units":[
+
+        {"num":1,"forceId":2,"combat":6,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+        {"num":2,"forceId":2,"combat":5,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+        {"num":2,"forceId":2,"combat":3,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+        {"num":6,"forceId":2,"combat":4,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+
+        {"num":1,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Rebel","class":"artillery"},
+        {"num":3,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"Rebel","class":"artillery"},
+
+        {"num":1,"forceId":1,"combat":8,"movement":4,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
+        {"num":7,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
+        {"num":5,"forceId":1,"combat":6,"movement":4,"reinforce":"A","range":1,"nationality":"Hessian","class":"infantry"},
+
+        {"num":1,"forceId":1,"combat":2,"movement":6,"reinforce":"A","range":1,"nationality":"Loyalist","class":"cavalry"},
+
+        {"num":2,"forceId":1,"combat":2,"movement":3,"reinforce":"A","range":2,"nationality":"Loyalist","class":"artillery"},
+        {"num":1,"forceId":1,"combat":3,"movement":2,"reinforce":"A","range":3,"nationality":"Loyalist","class":"artillery"},
+        {"num":1,"forceId":1,"combat":4,"movement":2,"reinforce":"A","range":4,"nationality":"Loyalist","class":"artillery"}
+
+
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription":"Fords do not affect Combat."
+      },
+      "hardfords": {
+        "description": "Optional Scenario",
+        "longDescription":"Attacks across fords are halved."
+      }
+    }
+  },
+
   "Helsingborg1710": {
     "name": "The Battle of Helsingborg 1710",
     "path": "Mollwitz",
