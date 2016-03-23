@@ -47,8 +47,8 @@
     <div id="GR" style="display:none">
         <div class="close">X</div>
         <div class="game-rules">
-            <?php $playerOne = $force_name[1];
-            $playerTwo = $force_name[2]; ?>
+            <?php $playerOne = $forceName[1];
+            $playerTwo = $forceName[2]; ?>
             <h1>    <?= $name ?>    </h1>
 
             <h2>Rules of Play</h2>
@@ -61,30 +61,33 @@
 
             <ol class="topNumbers">
                 <li id="contentsRules">
-                    <?php include "commonContents.php";?>
+                    @include("wargame::SPI.commonContents")
                 </li>
                 <li id="unitsRules">
-                    <?php include "commonUnitsRules.php" ?>
+                    @section('commonUnitsRules')
+                        @include("wargame::SPI.commonUnitsRules")
+                    @show
                 </li>
                 <li id="sopRules">
-                    <?php include "commonSequenceOfPlay.php" ?>
+                    @include("wargame::SPI.commonSequenceOfPlay")
                 </li>
                 <li id="stackingRules">
-                    <?php include "commonStacking.php" ?>
+                    @include("wargame::SPI.commonStacking")
                 </li>
                 <li id="moveRules">
-                    <?php include "commonMoveRules.php" ?>
+                    @include("wargame::SPI.commonMoveRules")
                 </li>
                 <li id="zocRules">
-                    <?php include "commonZocRules.php"; ?>
-
+                    @include("wargame::SPI.commonZocRules")
                 </li>
                 <li id="combatRules">
-                    <?php include "commonCombatRules.php"; ?>
+                    @include("wargame::SPI.commonCombatRules")
                 </li>
 
                 <li class="exclusive" id="victoryConditions">
-                    <?php include "victoryConditions.php"; ?>
+                    @section('victoryConditions')
+                        @include("wargame::SPI.victoryConditions")
+                    @show
                 </li>
 
             </ol>

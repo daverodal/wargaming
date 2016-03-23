@@ -21,6 +21,11 @@ class WargameServiceProvider extends ServiceProvider
         ], 'amph');
 
         $this->publishes([
+            __DIR__.'/TMCW/Chawinda1965/Images/' => public_path('vendor/wargame/tmcw/chawinda1965/images'),
+            __DIR__.'/TMCW/Chawinda1965/all.css' => public_path('vendor/wargame/tmcw/chawinda1965/css/all.css'),
+        ], 'amph');
+
+        $this->publishes([
             __DIR__.'/Genre/Images' => public_path('vendor/wargame/genre/images'),
         ], 'genre');
 
@@ -44,6 +49,8 @@ class WargameServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/TMCW/Kiev/Images' => public_path('vendor/wargame/tmcw/kiev/images'),
             __DIR__.'/TMCW/Kiev/Fonts' => public_path('vendor/wargame/tmcw/kiev/fonts'),
+            __DIR__.'/TMCW/Kiev/all.css' => public_path('vendor/wargame/tmcw/kiev/css/all.css'),
+
             __DIR__.'/TMCW/Moskow/Images' => public_path('vendor/wargame/tmcw/moskow/images'),
         ], 'kiev');
     }

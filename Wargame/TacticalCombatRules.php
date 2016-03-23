@@ -1,5 +1,6 @@
 <?php
 namespace Wargame;
+use stdClass;
 // combatRules->js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -68,7 +69,7 @@ class TacticalCombatRules extends CombatRules
 //            if(isset($this->defenders->$id)){
 //                $id = $this->defenders->$id;
 //            }
-            $combats = $this->combats->$id;
+            $combats = isset($this->combats->$id) ? $this->combats->$id : [];
             $combatId = $id;
             if (isset($this->defenders->$id)) {
                 $combatId = $this->defenders->$id;
@@ -154,7 +155,7 @@ class TacticalCombatRules extends CombatRules
                 if (!$this->combats) {
                     $this->combats = new  stdClass();
                 }
-                if (!$this->combats->$cd) {
+                if (empty($this->combats->$cd)) {
                     $this->combats->$cd = new Combat();
                 }
                 $this->combats->$cd->defenders->$id = $id;
@@ -164,7 +165,7 @@ class TacticalCombatRules extends CombatRules
         {
 
             if ($this->currentDefender !== false && $this->force->units[$id]->status != STATUS_UNAVAIL_THIS_PHASE) {
-                if ($this->combats->$cd->attackers->$id !== false && $this->attackers->$id === $cd) {
+                if (!empty($this->combats->$cd->attackers->$id) && $this->attackers->$id === $cd) {
                     $this->force->undoAttackerSetup($id);
                     unset($this->attackers->$id);
                     unset($this->combats->$cd->attackers->$id);
@@ -245,7 +246,7 @@ class TacticalCombatRules extends CombatRules
                                 $this->attackers->$id = $cd;
                                 $this->combats->$cd->attackers->$id = $bearing;
                                 $this->combats->$cd->defenders->$defenderId = $bearing;
-                                if (!is_object($this->combats->$cd->thetas->$id)) {
+                                if (empty($this->combats->$cd->thetas->$id)) {
                                     $this->combats->$cd->thetas->$id = new stdClass();
                                 }
                                 $this->combats->$cd->thetas->$id->$defenderId = $bearing;

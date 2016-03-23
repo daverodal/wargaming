@@ -968,6 +968,9 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
+#GR {
+  width: 700px; }
+
 .playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
@@ -1258,7 +1261,7 @@ svg marker#head {
       float: left;
       width: 94px;
       height: 56px;
-      background-image: url("<?=url()?>js/AmphTEC.png");
+      background-image: url("../../js/AmphTEC.png");
       background-repeat: no-repeat; }
     #TECWrapper #TEC ul .column-one {
       float: left;

@@ -7,6 +7,10 @@
 </style>
 </head>
 
+@section('inner-crt')
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\TMCW\Kiev\CombatResultsTable()])
+@endsection
+
 @section('unitRules')
     @parent
     <li class="exclusive">No units may be receive replacements in this game.

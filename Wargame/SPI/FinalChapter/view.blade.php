@@ -7,9 +7,28 @@
 </style>
 </head>
 
+@section('victoryConditions')
+    @include('wargame::SPI.FinalChapter.victoryConditions')
+@endsection
+
+@section('tec')
+    @include("wargame::SPI.FinalChapter.tec")
+@endsection
+
+
 @section('inner-crt')
     @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\SPI\FinalChapter\CombatResultsTable()])
 @endsection
+
+@section('commonRules')
+    @include('wargame::SPI.commonRules')
+@endsection
+
+@section('commonUnitsRules')
+    @include("wargame::SPI.FinalChapter.commonUnitsRules")
+@endsection
+
+
 
 @section('unitRules')
     @parent
@@ -46,9 +65,7 @@
     </div>
     <div class="unit-wrapper" style="display:none;" id="undeadpile"></div>
 @endsection
-@section('victoryConditions')
-    @include('wargame::SPI.FinalChapter.victoryConditions')
-@endsection
+
 
 @section('outer-units-menu')
     <div class="dropDown" id="hideShow">

@@ -93,6 +93,20 @@ class JagCore extends \Wargame\LandBattle{
             $this->combatRules = new CombatRules($this->force, $this->terrain);
             $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
         }
+        
+        $this->moveRules->stacking = function($mapHex, $forceId, $unit){
+            $armyGroup = false;
+            if($unit->class == "hq"){
+                return false;
+            }
+
+            foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                if($this->force->units[$mKey]->class !== "hq"){
+                    return true;
+                }
+            }
+            return count((array)$mapHex->forces[$forceId]) >= 1;
+        };
         static::getPlayerData($this->scenario);
         $crt = new \Wargame\Mollwitz\CombatResultsTable();
         $this->combatRules->injectCrt($crt);

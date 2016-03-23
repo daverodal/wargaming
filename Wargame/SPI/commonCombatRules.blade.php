@@ -197,45 +197,10 @@
     </li>
 
     <li>Combat Results Table<br><br>
-        <?php                 $crt = new CombatResultsTable();
-        foreach($crt->crts as $crtName => $crtValue){
-            echo "<br><br>$crtName";
-            ?>
-        <div class="clear">&nbsp;</div>
 
-        <div class="left">
-            <div id="odds">
-                <span class="col0">&nbsp;</span>
-                <?php
-
-                $i = 1;
-                foreach ($crt->combatResultsHeader as $odds) {
-                    ?>
-                    <span class="col<?= $i++ ?>"><?= $odds ?></span>
-                <?php } ?>
-            </div>
-            <?php
-            $rowNum = 1;
-            $odd = ($rowNum & 1) ? "odd" : "even";
-            foreach ($crt->crts->normal as $row) {
-                ?>
-                <div class="roll <?= "row$rowNum $odd" ?>">
-                    <span class="col0"><?= $rowNum++ ?></span>
-                    <?php $col = 1;
-                    foreach ($row as $cell) {
-                        ?>
-                        <span class="col<?= $col++ ?>"><?= $results_name[$cell] ?></span>
-
-                    <?php } ?>
-                </div>
-            <?php } ?>
-        </div>
-
-
-
-
-        <div class="clear"></div>
-        <?php }?>
+        @section('inner-crt')
+            @include('wargame::stdIncludes.inner-crt',['topCrt'=> new \Wargame\TMCW\CombatResultsTable()])
+        @show
     </li>
 
 

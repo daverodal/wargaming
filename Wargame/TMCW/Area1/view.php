@@ -246,9 +246,9 @@
                         <div class="unit {nationality}" id="{id}" alt="0">
                             <div class="shadow-mask"></div>
                             <div class="unitSize">{unitSize}</div>
-                            <img class="arrow" src="<?php echo url(); ?>js/short-red-arrow-md.png" class="counter">
+                            <img class="arrow" src="<?php echo url('js/short-red-arrow-md.png'); ?>" class="counter">
                             <div class="counterWrapper">
-                                <img src="<?php echo url(); ?>js/{image}" class="counter"><span class="unit-desig">{unitDesig}</span>
+                                <img src="<?php echo url('js/{image}'); ?>" class="counter"><span class="unit-desig">{unitDesig}</span>
                             </div>
                             <div class="unit-numbers">5 - 4</div>
                         </div>
@@ -261,9 +261,9 @@
                 </div>
             </div>
 
-            <audio class="pop" src="<?= url() . 'js/pop.m4a' ?>"></audio>
-            <audio class="poop" src="<?= url() . 'js/lowpop.m4a' ?>"></audio>
-            <audio class="buzz" src="<?= url() . 'js/buzz.m4a' ?>"></audio>
+            <audio class="pop" src="<?= url('js/pop.m4a')  ?>"></audio>
+            <audio class="poop" src="<?= url('js/lowpop.m4a') ?>"></audio>
+            <audio class="buzz" src="<?= url('js/buzz.m4a') ?>"></audio>
 
         </div>
     </div>

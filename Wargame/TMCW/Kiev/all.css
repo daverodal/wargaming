@@ -1272,6 +1272,20 @@ svg marker#head {
   .seventeenthArmy .unit-desig {
     color: black; }
 
+.playerSoviet {
+  background: #ba9f34;
+  border-color: #ba9f34 !important; }
+
+.SovietFace, .playerSovietFace {
+  color: #ba9f34; }
+
+.playerGerman {
+  background: #58c3ff;
+  border-color: #58c3ff !important; }
+
+.GermanFace, .playerGermanFace {
+  color: #58c3ff; }
+
 .playersoviet {
   background: #ba9f34;
   border-color: #ba9f34 !important; }

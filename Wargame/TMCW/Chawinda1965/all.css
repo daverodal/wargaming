@@ -1236,6 +1236,20 @@ svg marker#head {
   .pakistani .unit-desig {
     color: white; }
 
+.playerIndian {
+  background: #ff9933;
+  border-color: #ff9933 !important; }
+
+.IndianFace, .playerIndianFace {
+  color: #ff9933; }
+
+.playerPakistani {
+  background: #02b500;
+  border-color: #02b500 !important; }
+
+.PakistaniFace, .playerPakistaniFace {
+  color: #02b500; }
+
 .mapSymbols {
   position: absolute;
   color: white;

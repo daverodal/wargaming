@@ -22,6 +22,8 @@
 
 @include player(indian, One, $indianColor);
 @include player(pakistani, Two, $pakistaniColor);
+@include headerColor(Indian, $indianColor, $indianColor);
+@include headerColor(Pakistani, $pakistaniColor, $pakistaniColor);
 
 #map {
 }

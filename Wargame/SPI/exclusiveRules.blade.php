@@ -43,11 +43,12 @@
         <div class="close">X</div>
         <div class="game-rules">
             <H1>
-                <?=$name?>
+                {{$name}}
             </H1>
             <h2 class="exclusive"> EXCLUSIVE RULES
             </h2>
-            <?php include "victoryConditions.php" ?>
+            @section('victoryConditions')
+            @show
 
         </div>
     </div>

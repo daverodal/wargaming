@@ -1,6 +1,7 @@
 <?php
 namespace Wargame\TMCW;
 use stdClass;
+use Wargame\Battle;
 /**
  *
  * Copyright 2012-2015 David Rodal

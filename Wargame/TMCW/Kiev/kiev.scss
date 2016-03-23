@@ -25,6 +25,9 @@
 @include player(firstPanzerArmy, Five, $firstPanzerArmyColor);
 @include player(sixthArmy, Five, $sixthArmyColor);
 @include player(seventeenthArmy, Five, $seventeenthArmyColor, $germanColor, black);
+@include headerColor(Soviet, $sovietColor, $sovietColor);
+@include headerColor(German, $germanColor, $germanColor);
+
 
 @include player(soviet,Two,$sovietColor);
 
