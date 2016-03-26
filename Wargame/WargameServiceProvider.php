@@ -52,6 +52,7 @@ class WargameServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/Mollwitz/Images' => public_path('vendor/wargame/mollwitz/images'),
+            __DIR__.'/Mollwitz/FreemansFarm1777/Images' => public_path('vendor/wargame/mollwitz/images'),
         ], 'mollwitz');
 
         $this->publishes([

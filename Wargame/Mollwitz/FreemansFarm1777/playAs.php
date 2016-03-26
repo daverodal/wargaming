@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <style>
         body{
             background:#000;
-            background:url("<?= asset("images/PhiladelCampaignHessianMap.jpg")?>") #333 no-repeat;
+            background:url("<?= asset("vendor/wargame/mollwitz/images/Sarratoga.jpg")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 
@@ -89,6 +89,6 @@ You should have received a copy of the GNU General Public License
     <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
-        See page for author [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3APhiladelCampaignHessianMap.jpg">via Wikimedia Commons</a>
+        By François Godefroy d'après Louis-François-Sébastien Fauvel [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3ASarratoga.jpg">via Wikimedia Commons</a>
     </div>
 </fieldset>

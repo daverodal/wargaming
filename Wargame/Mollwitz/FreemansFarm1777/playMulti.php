@@ -20,11 +20,12 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/mollwitz/images/PhiladelCampaignHessianMap.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Battle_of_Saratoga_-_Gen._Arnold_wounded_in_the_attack_on_the_Hessian_redoubt_(NYPL_Hades-249148-422738).tif.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }
     </style>
 
 <footer class="attribution">
-    See page for author [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3APhiladelCampaignHessianMap.jpg">via Wikimedia Commons</a></footer>
+    By Scan by NYPL [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3ABattle_of_Saratoga_-_Gen._Arnold_wounded_in_the_attack_on_the_Hessian_redoubt_(NYPL_Hades-249148-422738).tif">via Wikimedia Commons</a>
+</footer>
