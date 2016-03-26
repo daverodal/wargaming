@@ -929,10 +929,6 @@
       ]
     },
     "scenarios": {
-      "main": {
-        "description": "All In",
-        "longDescription":"other things here."
-      },
       "historical": {
         "description": "Historical",
         "longDescription":"something here."
