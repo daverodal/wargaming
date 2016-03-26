@@ -90,7 +90,8 @@ class FreemansFarm1777 extends \Wargame\Mollwitz\JagCore
 
         foreach($unitSets as $unitSet) {
             for ($i = 0; $i < $unitSet->num; $i++) {
-                UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                $name = isset($unitSet->name) ? $unitSet->name : "infantry-1";
+                UnitFactory::create($name, $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
             }
         }
 
@@ -119,14 +120,13 @@ class FreemansFarm1777 extends \Wargame\Mollwitz\JagCore
             // game data
 
             $this->gameRules->setMaxTurn(6);
-            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
-            $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
-            $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
+            $this->gameRules->setInitialPhaseMode(BLUE_DEPLOY_PHASE, DEPLOY_MODE);
+            $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
+            $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
             $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
 
 
-            $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
-            $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
+            $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, RED_FORCE, BLUE_FORCE, false);
             $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
 
             $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);
@@ -136,5 +136,39 @@ class FreemansFarm1777 extends \Wargame\Mollwitz\JagCore
             $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, true);
 
         }
+
+        $this->moveRules->stacking = function($mapHex, $forceId, $unit){
+            $armyGroup = false;
+            if($unit->class == "hq"){
+                return false;
+            }
+            if($unit->name === "sharpshooter"){
+                $nUnits = 0;
+                foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                    if($this->force->units[$mKey]->class == "hq"){
+                        continue;
+                    }
+                    $nUnits++;
+                }
+                return $nUnits >= 2;
+            }
+
+            $nUnits = 0;
+            $smallUnit = false;
+            foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                if($this->force->units[$mKey]->class == "hq"){
+                    continue;
+                }
+                if($this->force->units[$mKey]->name == "sharpshooter"){
+                    $smallUnit = true;
+                }
+                $nUnits++;
+            }
+            if($smallUnit){
+                return $nUnits >= 2;
+            }
+            return $nUnits >= 1;
+        };
+
     }
 }

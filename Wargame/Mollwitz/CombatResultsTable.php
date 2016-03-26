@@ -242,7 +242,9 @@ class CombatResultsTable
                     $terrainReason .= "attack across redoubt ";
                 }
             }
-
+            if ($unit->class == "hq") {
+                $combatLog .= "$unitStrength HQ Leardership ";
+            }
             if ($unit->class == "infantry") {
                 $combinedArms[$battle->force->units[$attackerId]->class]++;
                 $combatLog .= "$unitStrength Infantry ";
