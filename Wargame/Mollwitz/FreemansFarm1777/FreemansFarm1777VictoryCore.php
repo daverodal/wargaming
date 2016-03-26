@@ -76,7 +76,6 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
 
-        if (in_array($mapHexName, $battle->specialHexC)) {
             if ($forceId == REBEL_FORCE) {
                 $this->victoryPoints[REBEL_FORCE] += 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+10 Rebel vp</span>";
@@ -85,7 +84,7 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->victoryPoints[REBEL_FORCE] -= 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-10 Rebel vp</span>";
             }
-        }
+        
     }
 
     protected function checkVictory( $battle)
