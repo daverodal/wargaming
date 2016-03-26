@@ -903,7 +903,7 @@
       {
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName":"fogDeploy",
-        "value": false
+        "value": true
       }],
     "params":{
       "americanRevolution": true,
