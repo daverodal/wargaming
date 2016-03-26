@@ -76,14 +76,14 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
 
-        if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == LOYALIST_FORCE) {
-                $this->victoryPoints[LOYALIST_FORCE] += 10;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+10 Loyalist vp</span>";
-            }
+        if (in_array($mapHexName, $battle->specialHexC)) {
             if ($forceId == REBEL_FORCE) {
-                $this->victoryPoints[LOYALIST_FORCE] -= 10;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>-10 Loyalist vp</span>";
+                $this->victoryPoints[REBEL_FORCE] += 10;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+10 Rebel vp</span>";
+            }
+            if ($forceId == LOYALIST_FORCE) {
+                $this->victoryPoints[REBEL_FORCE] -= 10;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-10 Rebel vp</span>";
             }
         }
     }
