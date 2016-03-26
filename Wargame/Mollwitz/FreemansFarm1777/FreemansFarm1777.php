@@ -91,7 +91,8 @@ class FreemansFarm1777 extends \Wargame\Mollwitz\JagCore
         foreach($unitSets as $unitSet) {
             for ($i = 0; $i < $unitSet->num; $i++) {
                 $name = isset($unitSet->name) ? $unitSet->name : "infantry-1";
-                UnitFactory::create($name, $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                $deploy = isset($unitSet->deploy) ? $unitSet->deploy : "deployBox";
+                UnitFactory::create($name, $unitSet->forceId, $deploy, "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
             }
         }
 
@@ -119,7 +120,7 @@ class FreemansFarm1777 extends \Wargame\Mollwitz\JagCore
 
             // game data
 
-            $this->gameRules->setMaxTurn(6);
+            $this->gameRules->setMaxTurn(12);
             $this->gameRules->setInitialPhaseMode(BLUE_DEPLOY_PHASE, DEPLOY_MODE);
             $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
             $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */

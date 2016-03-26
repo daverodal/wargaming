@@ -84,7 +84,7 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->victoryPoints[REBEL_FORCE] -= 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-10 Rebel vp</span>";
             }
-        
+
     }
 
     protected function checkVictory( $battle)
@@ -99,8 +99,8 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         $victoryReason = "";
 
         if (!$this->gameOver) {
-            $loyalScore = 40;
-            $rebelScore = 30;
+            $loyalScore = 16;
+            $rebelScore = 16;
 
             if ($this->victoryPoints[LOYALIST_FORCE] >= $loyalScore) {
                 $loyalWin = true;
@@ -152,22 +152,7 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     }
 
-    public function postRecoverUnits($args)
-    {
-//        parent::postRecoverUnits($args);
-        $b = Battle::getBattle();
 
-        if($this->isDemoralized){
-            if($b->gameRules->phase == RED_MOVE_PHASE) {
-                $b->moveRules->noZoc = true;
-            }
-            else{
-                $b->moveRules->noZoc = false;
-            }
-
-        }
-
-    }
 
     public function postRecoverUnit($args)
     {
@@ -176,11 +161,28 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         $scenario = $b->scenario;
         $id = $unit->id;
 
-        parent::postRecoverUnit($args);
-        if($this->isDemoralized){
-            if ($b->gameRules->phase == RED_COMBAT_PHASE) {
-                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+        if($b->gameRules->turn <= 2 && !isset($this->southOfTheRiver)){
+            $terrain = $b->terrain;
+            $reinforceZones = $terrain->reinforceZones;
+            $southOfTheRiver = [];
+            foreach($reinforceZones as $reinforceZone){
+                if($reinforceZone->name == 'D'){
+                    $southOfTheRiver[$reinforceZone->hexagon->name] = true;
+                }
             }
+            $this->southOfTheRiver = $southOfTheRiver;
+        }
+
+        parent::postRecoverUnit($args);
+
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == LOYALIST_FORCE) {
+            /* if early Movement set and unit is north of river they can move */
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+        }
+
+        if ($b->gameRules->turn <= 3 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY
+            && $unit->hexagon->number >= 2413 &&  $unit->hexagon->number <= 2416 &&  $unit->forceId == LOYALIST_FORCE){
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
         }
     }
 }
