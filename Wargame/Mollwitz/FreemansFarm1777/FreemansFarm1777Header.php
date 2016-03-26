@@ -39,9 +39,7 @@ You should have received a copy of the GNU General Public License
             str = "("+str+")";
         }
         var sep = unit.name === "sharpshooter" ? ' s ' : ' - '
-        if(unit.name === "morgan"){
-            sep = ' m ';
-        }
+
         var symb = unit.supplied !== false ? sep : " <span class='reduced'>u</span> ";
 //        symb = "-"+unit.defStrength+"-";
         var html = reduceDisp + str + symb + move + "</span>";
