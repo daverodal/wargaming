@@ -1,7 +1,8 @@
 <?php
 namespace Wargame\TMCW\RetreatOne;
-use \stdClass;
-use \Wargame\Battle;
+use stdClass;
+use Wargame\Battle;
+use Wargame\Los;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -163,7 +164,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
             $gameRules->flashMessages[] = "@hide deadpile";
-            if ($battle->force->reinforceTurns->$turn->$forceId) {
+            if (isset($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
@@ -186,9 +187,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
         return false;
     }
 
-    public function preRecoverUnits($args){
-        /* @var unit $unit */
-        $unit = $args[0];
+    public function preRecoverUnits(){
 
         $b = Battle::getBattle();
         /* @var Moverules $moveRules */
@@ -233,7 +232,7 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
                 if($id == $hq){
                     return;
                 }
-                $los = new \Los();
+                $los = new Los();
 
                 $los->setOrigin($b->force->getUnitHexagon($id));
                 $los->setEndPoint($b->force->getUnitHexagon($hq));
@@ -329,14 +328,6 @@ class retreatOneVictoryCore extends \Wargame\TMCW\victoryCore
 
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
-        }
-        if ($attackingId == REBEL_FORCE) {
-            $gameRules->flashMessages[] = "Rebel Player Turn";
-            $gameRules->replacementsAvail = 1;
-        }
-        if ($attackingId == LOYALIST_FORCE) {
-            $gameRules->flashMessages[] = "Loyalist Player Turn";
-            $gameRules->replacementsAvail = 10;
         }
 
         /*only get special VPs' at end of first Movement Phase */

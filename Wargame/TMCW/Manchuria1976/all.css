@@ -1231,6 +1231,9 @@ svg marker#head {
 .SovietFace, .playerSovietFace {
   color: #df5842; }
 
+#tecImage {
+  width: 500px; }
+
 #crt .crt-table-name {
   display: none; }
 

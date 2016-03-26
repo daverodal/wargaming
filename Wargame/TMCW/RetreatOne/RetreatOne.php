@@ -1,6 +1,7 @@
 <?php
 namespace Wargame\TMCW\RetreatOne;
-use \Wargame\TMCW\UnitFactory;
+use Wargame\TMCW\UnitFactory;
+use Wargame\ModernLandBattle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -38,7 +39,7 @@ $mode_name[19] = "";
 $mode_name[1] = "";
 $mode_name[2] = "";
 
-class RetreatOne extends \ModernLandBattle
+class RetreatOne extends ModernLandBattle
 {
 
     static function getPlayerData($scenario){

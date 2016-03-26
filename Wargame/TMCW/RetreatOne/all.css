@@ -1216,6 +1216,20 @@ svg marker#head {
   .caprolians .unit-desig {
     color: white; }
 
+.playerLaconians {
+  background: #dd4f2b;
+  border-color: #dd4f2b !important; }
+
+.LaconiansFace, .playerLaconiansFace {
+  color: #dd4f2b; }
+
+.playerCaprolians {
+  background: #e8e22c;
+  border-color: #e8e22c !important; }
+
+.CaproliansFace, .playerCaproliansFace {
+  color: #e8e22c; }
+
 .unit .counter {
   margin-top: -5px; }
 

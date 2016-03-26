@@ -23,8 +23,24 @@ class WargameServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/TMCW/Chawinda1965/Images/' => public_path('vendor/wargame/tmcw/chawinda1965/images'),
             __DIR__.'/TMCW/Chawinda1965/all.css' => public_path('vendor/wargame/tmcw/chawinda1965/css/all.css'),
-        ], 'amph');
+        ], 'chawinda');
 
+        $this->publishes([
+            __DIR__.'/TMCW/MartianCivilWar/Images/' => public_path('vendor/wargame/tmcw/martiancivilwar/images'),
+            __DIR__.'/TMCW/MartianCivilWar/all.css' => public_path('vendor/wargame/tmcw/martiancivilwar/css/all.css'),
+        ], 'martiancivilwar');
+        
+        $this->publishes([
+            __DIR__.'/TMCW/RetreatOne/Images/' => public_path('vendor/wargame/tmcw/retreatone/images'),
+            __DIR__.'/TMCW/RetreatOne/all.css' => public_path('vendor/wargame/tmcw/retreatone/css/all.css'),
+        ], 'retreatone');
+
+
+        $this->publishes([
+            __DIR__.'/TMCW/Manchuria1976/Images/' => public_path('vendor/wargame/tmcw/manchuria1976/images'),
+            __DIR__.'/TMCW/Manchuria1976/all.css' => public_path('vendor/wargame/tmcw/manchuria1976/css/all.css'),
+        ], 'retreatone');
+        
         $this->publishes([
             __DIR__.'/Genre/Images' => public_path('vendor/wargame/genre/images'),
         ], 'genre');

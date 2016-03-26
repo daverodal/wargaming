@@ -112,7 +112,7 @@ trait DivCombatHalfDoubleTerrain
 
         $combats->attackStrength = $attackStrength;
         $combats->defenseStrength = $defenseStrength;
-        $combats->terrainCombatEffect = $terrainCombatEffect;
+//        $combats->terrainCombatEffect = $terrainCombatEffect;
         $combats->index = $combatIndex;
         $combats->combatLog = $combatLog;
     }

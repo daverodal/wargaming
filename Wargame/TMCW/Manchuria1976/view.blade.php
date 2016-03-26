@@ -1,5 +1,7 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Manchuria1976.Manchuria1976Header')
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/manchuria1976/css/all.css')}}">
+
 <style type="text/css">
     <?php
     include_once "Wargame/TMCW/Manchuria1976/all.css";
@@ -23,6 +25,10 @@
 
 @section('exclusiveRules')
     @include('wargame::TMCW.exclusiveRules')
+@endsection
+
+@section('tec')
+    @include("wargame::TMCW.Manchuria1976.tec")
 @endsection
 
 @section('obc')

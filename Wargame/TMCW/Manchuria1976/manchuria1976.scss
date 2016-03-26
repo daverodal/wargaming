@@ -25,6 +25,9 @@
 @include headerColor(PRC, rgb(247, 206, 0),rgb(247, 206, 0));
 @include headerColor(Soviet, rgb(223, 88, 66),rgb(223, 88, 66));
 
+#tecImage{
+  width:500px;
+}
 #crt{
   .crt-table-name{
     display:none;

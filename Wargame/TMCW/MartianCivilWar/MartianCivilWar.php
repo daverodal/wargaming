@@ -1,6 +1,7 @@
 <?php
 namespace Wargame\TMCW\MartianCivilWar;
-use \Wargame\TMCW\UnitFactory;
+use Wargame\TMCW\UnitFactory;
+use Wargame\ModernLandBattle;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -32,7 +33,7 @@ $force_name[2] = "Loyalist";
 
 global $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
 
-class MartianCivilWar extends \ModernLandBattle
+class MartianCivilWar extends ModernLandBattle
 {
 
     static function getPlayerData($scenario){

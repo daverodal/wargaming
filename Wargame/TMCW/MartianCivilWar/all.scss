@@ -20,9 +20,13 @@
  */
 @import "../../commonStyle";
 @import "../tmcw";
+@import "martiancivilwar";
 
 #crt{
   .crt-table-name{
     display:none;
+  }
+  .nothingness{
+    color:transparent;
   }
 }

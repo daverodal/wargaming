@@ -7,6 +7,10 @@
 </style>
 </head>
 
+@section('tec')
+    @include("wargame::TMCW.MartianCivilWar.tec")
+@endsection
+
 @section('unitRules')
     @parent
     <li class="exclusive">No units may be receive replacements in this game.

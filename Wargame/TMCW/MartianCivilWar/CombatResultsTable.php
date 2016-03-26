@@ -1,5 +1,6 @@
 <?php
 namespace Wargame\TMCW\MartianCivilWar;
+use Wargame\DivMCWCombatShiftTerrain;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -23,6 +24,6 @@ namespace Wargame\TMCW\MartianCivilWar;
 
 class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 {
-    use \DivMCWCombatShiftTerrain;
+    use DivMCWCombatShiftTerrain;
     public $aggressorId = REBEL_FORCE;
 }

@@ -28,7 +28,7 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("js/Destroyed_Patton_Tank_(1965_Indo-Pak_War).jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/chawinda1965/images/Destroyed_Patton_Tank_(1965_Indo-Pak_War).jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }

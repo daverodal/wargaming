@@ -23,7 +23,7 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("js/MoyaleEastAfrica1941.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/retreatone/images/MoyaleEastAfrica1941.jpg")?>") #333 no-repeat;
         background-size:100%;
     }
     h1{

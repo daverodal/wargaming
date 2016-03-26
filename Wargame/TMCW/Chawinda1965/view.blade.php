@@ -36,6 +36,10 @@ $playerTwo = $forceName[2];
     </div>
 @endsection
 
+@section('inner-crt')
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\TMCW\Chawinda1965\CombatResultsTable()])
+@endsection
+
 @section('commonRules')
     @include('wargame::TMCW.commonRules')
 @endsection

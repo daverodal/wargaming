@@ -2,6 +2,9 @@
 @include('wargame::TMCW.Amph.amph-header')
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/amph/css/all.css')}}">
 </head>
+@section('tec')
+    @include("wargame::TMCW.Amph.tec")
+@endsection
 
 @section('unitRules')
     @parent
