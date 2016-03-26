@@ -175,6 +175,7 @@ class Unit extends BaseUnit implements \JsonSerializable
         $mapUnit->forceMarch = $this->forceMarch;
         $mapUnit->status = $this->status;
         $mapUnit->range = $this->range;
+        $mapUnit->name = $this->name;
         return $mapUnit;
     }
 
