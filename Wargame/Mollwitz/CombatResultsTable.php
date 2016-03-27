@@ -175,7 +175,7 @@ class CombatResultsTable
             }
 
             if($unit->name === "morgan"){
-                $combatLog .= "Morgan was here";
+                $combatLog .= " Morgan was here ";
                 $morgan = true;
             }
             $hexagon = $unit->hexagon;
@@ -265,8 +265,10 @@ class CombatResultsTable
                 }
                 if(!empty($scenario->americanRevolution)){
                     if ($unit->forceId == LOYALIST_FORCE && $isClear && !$acrossRiver) {
-                        $unitStrength++;
-                        $combatLog .= "+1 for attack into clear ";
+                        if($unit->name !== "sharpshooter") {
+                            $unitStrength++;
+                            $combatLog .= "+1 for attack into clear ";
+                        }
                     }
                 }
                 if (($unit->nationality == "Beluchi" || $unit->nationality == "Sikh") && ($isTown || $isForest) && !$acrossRiver) {
@@ -408,8 +410,10 @@ class CombatResultsTable
             }
             if(!empty($scenario->americanRevolution)){
                 if ($unit->forceId == LOYALIST_FORCE && $class == "infantry" && $isClear) {
-                    $unitDefense += 1;
-                    $combatLog .= "+1 for defending in clear ";
+                    if($unit->name !== "sharpshooter"){
+                        $unitDefense += 1;
+                        $combatLog .= "+1 for defending in clear ";
+                    }
                 }
                 if ($unit->forceId == REBEL_FORCE && $class == "infantry" && (!$isClear || $battle->combatRules->allAreAttackingThisAcrossRiver($defId))) {
                     $unitDefense += 1;

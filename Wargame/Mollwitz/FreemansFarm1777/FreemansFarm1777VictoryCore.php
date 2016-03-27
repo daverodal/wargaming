@@ -188,7 +188,7 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
 
         if ($b->gameRules->turn <= 3 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY
-            && $unit->hexagon->number >= 2413 &&  $unit->hexagon->number <= 2416 &&  $unit->forceId == LOYALIST_FORCE){
+            && $unit->hexagon->number >= 2413 &&  $unit->hexagon->number <= 2417 &&  $unit->forceId == LOYALIST_FORCE){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
         }
     }
