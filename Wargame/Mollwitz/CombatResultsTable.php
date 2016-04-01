@@ -163,7 +163,7 @@ class CombatResultsTable
         $attackStrength = 0;
         $attackersCav = false;
         $combinedArms = ['infantry'=>0, 'artillery'=>0, 'cavalry'=>0];
-        $morgan = false;
+        $arnold = $morgan = false;
 
         $combatLog .= "Attackers<br>";
         foreach ($attackers as $attackerId => $attacker) {
@@ -174,10 +174,16 @@ class CombatResultsTable
                 $unitStrength = 0;
             }
 
+            if($unit->class === "hq"){
+                $combatLog .= " Arnold was here ";
+                $arnold = true;
+            }
+
             if($unit->name === "morgan"){
                 $combatLog .= " Morgan was here ";
                 $morgan = true;
             }
+
             $hexagon = $unit->hexagon;
             $hexpart = new Hexpart();
             $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
@@ -455,7 +461,7 @@ class CombatResultsTable
         $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
         /* Do this before terrain effects */
         $combatIndex += $armsShift;
-        if($morgan){
+        if($morgan || $arnold){
             $combatIndex++;
         }
 
