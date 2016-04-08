@@ -58,15 +58,19 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         $battle = Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
-
+        
         if (in_array($mapHexName, $battle->specialHexA)) {
 
             if ($forceId == REBEL_FORCE) {
                 $this->rebelVictoryHex = true;
+                $this->victoryPoints[REBEL_FORCE] += 10;
+
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+10 Rebel vp</span>";
             }
             if ($forceId == LOYALIST_FORCE) {
                 $this->rebelVictoryHex = false;
+                $this->victoryPoints[REBEL_FORCE] -= 10;
+
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-10 Rebel vp</span>";
             }
         }
@@ -75,10 +79,14 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
             if ($forceId == LOYALIST_FORCE) {
                 $this->loyalVictoryHex = true;
+                $this->victoryPoints[LOYALIST_FORCE] += 20;
+
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+20 Loyalist vp</span>";
             }
             if ($forceId == REBEL_FORCE) {
                 $this->loyalVictoryHex = false;
+                $this->victoryPoints[LOYALIST_FORCE] -= 20;
+
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-20 Loyalist vp</span>";
             }
         }
@@ -100,14 +108,14 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
             $loyalScore = 16;
             $rebelScore = 16;
 
-            if ($turn > $gameRules->maxTurn) {
-                if($this->loyalVictoryHex){
-                    $this->victoryPoints[LOYALIST_FORCE] += 20;
-                }
-                if($this->rebelVictoryHex){
-                    $this->victoryPoints[REBEL_FORCE] += 10;
-                }
-            }
+//            if ($turn > $gameRules->maxTurn) {
+//                if($this->loyalVictoryHex){
+//                    $this->victoryPoints[LOYALIST_FORCE] += 20;
+//                }
+//                if($this->rebelVictoryHex){
+//                    $this->victoryPoints[REBEL_FORCE] += 10;
+//                }
+//            }
 
             if ($this->victoryPoints[LOYALIST_FORCE] >= $loyalScore) {
                 $loyalWin = true;
