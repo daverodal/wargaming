@@ -499,7 +499,7 @@ class CombatRules
 
         $Die = floor($this->crt->dieSideCount * (rand() / getrandmax()));
 //        $Die = $this->crt->dieSideCount - 1;
-        $Die = 0;
+//        $Die = 0;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {
