@@ -307,6 +307,7 @@ class Force extends SimpleForce
                 break;
 
             case AL:
+            case ALF:
                 $defUnit->status = STATUS_DEFENDED;
                 $defUnit->retreatCountRequired = 0;
                 break;
@@ -331,6 +332,8 @@ class Force extends SimpleForce
             case DRL2:
                 $distance = 2;
             case DRL:
+            case DLR:
+            case DLF:
                 $eliminated = $defUnit->damageUnit();
                 if ($eliminated) {
                     $defUnit->moveCount = 0;
@@ -355,6 +358,7 @@ class Force extends SimpleForce
                 $battle->victory->noEffectUnit($defUnit);
             break;
             case DL:
+            case BL:
                 $eliminated = $defUnit->damageUnit();
                 if ($eliminated) {
                     $vacated = true;
@@ -424,6 +428,8 @@ class Force extends SimpleForce
                         break;
 
                     case AL:
+                    case ALF:
+                    case BL:
                         $this->units[$attacker]->status = STATUS_CAN_ATTACK_LOSE;
                         $this->units[$attacker]->retreatCountRequired = 0;
                         $this->exchangeAmount = 1;
@@ -442,7 +448,9 @@ class Force extends SimpleForce
                     case DRL2:
                     case DR2:
                     case DRL:
+                    case DLR:
                     case DR:
+                    case DLF:
                         if($this->units[$attacker]->status !== STATUS_NO_RESULT){
                             $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
                         }

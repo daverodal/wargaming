@@ -342,6 +342,13 @@ define("D", 25);
 define("R", 26);
 define("F", 27);
 define("E", 28);
+define("ALF", 29);
+define("ALR", 30);
+define("DLR", 31);
+define("BL", 32);
+define("BLDR", 33);
+define("DLF", 34);
+define("DEAL", 35);
 
 $results_name = array();
 //results_name[DE] = "Defender eliminated";
@@ -377,6 +384,15 @@ $results_name[D] = 'D';
 $results_name[R] = 'R';
 $results_name[F] = 'F';
 $results_name[E] = 'E';
+$results_name[ALF] = 'ALF';
+$results_name[ALR] = 'ALR';
+$results_name[DLR] = 'DLR';
+$results_name[BL] = 'BL';
+$results_name[BLDR] = 'BL/DR';
+$results_name[DLF] = 'DLF';
+$results_name[DEAL] = 'DE/AL';
+
+
 
 // combat ratio
 $combatRatio_name = array();

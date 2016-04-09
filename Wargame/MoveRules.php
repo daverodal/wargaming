@@ -102,14 +102,15 @@ class MoveRules
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
             $turnCost = 1;
             if($isDeploy || $movesLeft >= $turnCost){
-                $movingUnit->facing--;
-                if($movingUnit->facing < 0){
-                    $movingUnit->facing += 6;
-                }
+
                 if($isDeploy){
+                    $movingUnit->facing--;
+                    if($movingUnit->facing < 0){
+                        $movingUnit->facing += 6;
+                    }
                     return true;
                 }
-                $movingUnit->moveAmountUsed += $turnCost;
+                $movingUnit->updateFacingStatus(-1, $turnCost);
                 if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
                     $this->stopMove($movingUnit);
                     return true;
@@ -120,7 +121,6 @@ class MoveRules
             return false;
         }
         return false;
-
     }
 
     function turnAbout($isDeploy = false){
@@ -129,14 +129,15 @@ class MoveRules
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
             $turnCost = 2;
             if($isDeploy || $movesLeft >= $turnCost){
-                $movingUnit->facing += 3;
-                if($movingUnit->facing >= 6){
-                    $movingUnit->facing -= 6;
-                }
+
                 if($isDeploy){
+                    $movingUnit->facing += 3;
+                    if($movingUnit->facing >= 6){
+                        $movingUnit->facing -= 6;
+                    }
                     return true;
                 }
-                $movingUnit->moveAmountUsed += $turnCost;
+                $movingUnit->updateFacingStatus(3, $turnCost);
                 if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
                     $this->stopMove($movingUnit);
                     return true;
@@ -156,14 +157,16 @@ class MoveRules
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
             $turnCost = 1;
             if($isDeploy || $movesLeft >= $turnCost){
-                $movingUnit->facing++;
-                if($movingUnit->facing >= 6){
-                    $movingUnit->facing -= 6;
-                }
+
                 if($isDeploy){
+                    $movingUnit->facing++;
+                    if($movingUnit->facing >= 6){
+                        $movingUnit->facing -= 6;
+                    }
                     return true;
                 }
-                $movingUnit->moveAmountUsed += $turnCost;
+
+                $movingUnit->updateFacingStatus(1, $turnCost);
                 if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
                     $this->stopMove($movingUnit);
                     return true;

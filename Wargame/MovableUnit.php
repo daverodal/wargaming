@@ -110,6 +110,39 @@ class MovableUnit{
         $this->status = $status;
     }
 
+    function updateFacingStatus($facing, $moveAmount)
+    {
+
+        $battle = Battle::getBattle();
+        $gameRules = $battle->gameRules;
+        /* @var MapData $mapData */
+        $mapData = $battle->mapData;
+        $attackingForceId = $battle->force->attackingForceId;
+        /* @var MapHex $mapHex */
+        $fromHex = $this->hexagon->getName();
+        $toHex = $fromHex;
+        $mapHex = $mapData->getHex($fromHex);
+        if ($mapHex) {
+            $mapHex->unsetUnit($this->forceId, $this->id);
+        }
+
+        $this->dirty = true;
+        $this->facing += $facing;
+        if($this->facing < 0){
+            $this->facing += 6;
+        }
+        if($this->facing >= 6){
+            $this->facing -= 6;
+        }
+        $mapData->breadcrumbMove($this->id, $attackingForceId, $gameRules->turn, $gameRules->phase, $gameRules->mode, $fromHex, $toHex);
+        $mapHex = $mapData->getHex($this->hexagon->getName());
+        if ($mapHex) {
+            $mapHex->setUnit($this->forceId, $this);
+        }
+        $this->moveCount++;
+        $this->moveAmountUsed = $this->moveAmountUsed + $moveAmount;
+    }
+
     function updateMoveStatus($hexagon, $moveAmount)
     {
 
