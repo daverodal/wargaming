@@ -51,6 +51,7 @@ class MoveRules
     public $stacking = 1;
     public $blockedRetreatDamages = false;
     public $noZoc = false;
+    public $retreatCannotOverstack = false;
     /* usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
      * so 1 means you can't stack with even 1 enemy. Use a closure here to allow for air units stacking with
      * enemy land units only, for example. and vice a versa.
@@ -110,12 +111,23 @@ class MoveRules
                     }
                     return true;
                 }
+                $battle = Battle::getBattle();
+                $mapHex = $battle->mapData->getHex($movingUnit->hexagon->name);
+
+
+
                 $movingUnit->updateFacingStatus(-1, $turnCost);
+                if ($mapHex->isZoc($this->force->defendingForceId) == true) {
+                    if ($this->enterZoc === "stop") {
+                        $this->stopMove($movingUnit);
+                        return true;
+                    }
+                }
                 if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
                     $this->stopMove($movingUnit);
                     return true;
                 }
-                $this->calcMove($this->movingUnitId);
+                $this->calcMove($this->movingUnitId, false);
                 return true;
             }
             return false;
@@ -137,12 +149,20 @@ class MoveRules
                     }
                     return true;
                 }
+                $battle = Battle::getBattle();
+                $mapHex = $battle->mapData->getHex($movingUnit->hexagon->name);
                 $movingUnit->updateFacingStatus(3, $turnCost);
+                if ($mapHex->isZoc($this->force->defendingForceId) == true) {
+                    if ($this->enterZoc === "stop") {
+                        $this->stopMove($movingUnit);
+                        return true;
+                    }
+                }
                 if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
                     $this->stopMove($movingUnit);
                     return true;
                 }
-                $this->calcMove($this->movingUnitId);
+                $this->calcMove($this->movingUnitId, false);
                 return true;
             }
             return false;
@@ -167,11 +187,19 @@ class MoveRules
                 }
 
                 $movingUnit->updateFacingStatus(1, $turnCost);
+                $battle = Battle::getBattle();
+                $mapHex = $battle->mapData->getHex($movingUnit->hexagon->name);
+                if ($mapHex->isZoc($this->force->defendingForceId) == true) {
+                    if ($this->enterZoc === "stop") {
+                        $this->stopMove($movingUnit);
+                        return true;
+                    }
+                }
                 if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
                     $this->stopMove($movingUnit);
                     return true;
                 }
-                $this->calcMove($this->movingUnitId);
+                $this->calcMove($this->movingUnitId, false);
                 return true;
             }
             return false;
@@ -445,7 +473,7 @@ class MoveRules
         return $this->calcSupplyHex($startHex->name, $goal, $bias, $attackingForceId, $maxHex);
     }
 
-    function calcMove($id)
+    function calcMove($id, $firstHex = true)
     {
         global $numWalks;
         global $numBangs;
@@ -460,7 +488,7 @@ class MoveRules
         $hexPath->name = $startHex->name;
         $hexPath->pointsLeft = $movesLeft;
         $hexPath->pathToHere = array();
-        $hexPath->firstHex = true;
+        $hexPath->firstHex = $firstHex;
         $hexPath->isOccupied = true;
         if(isset($this->force->units[$id]->facing)){
             $hexPath->facing = $this->force->units[$id]->facing;
@@ -525,7 +553,7 @@ class MoveRules
             }else{
                 $movesLeft++;
                 /* fail safe for strange things */
-                if($movesLeft > 12){
+                if($this->retreatCannotOverstack || $movesLeft > 12){
                     $this->force->addToRetreatHexagonList($id, $startHex);
                     $this->movingUnitId = NONE;
                     $this->anyUnitIsMoving = false;
@@ -533,6 +561,9 @@ class MoveRules
                     if($this->blockedRetreatDamages){
                         if($this->force->units[$id]->damageUnit()) {
                             $this->force->eliminateUnit($id);
+                        }else{
+                            $this->force->units[$id]->setStatus(STATUS_STOPPED);
+                            $this->force->clearAdvancing();
                         }
                     }else{
                         $this->force->eliminateUnit($id);
@@ -646,10 +677,18 @@ class MoveRules
             $path[] = $hexNum;
 
             $neighbors = $mapHex->neighbors;
-
+            $backupHexNum = false;
+            $behind = false;
             if(isset($hexPath->facing)){
                 $newFacing = $hexPath->facing;
                 $neighbors = array_slice(array_merge($mapHex->neighbors,$mapHex->neighbors), ($hexPath->facing + 6 - 1)%6, 3);
+                /* first hex can do backup move */
+                if($hexPath->firstHex === true){
+                    $behind = $hexPath->facing + 3;
+                    $behind %= 6;
+                    $backupHexNum = $neighbors[] = $mapHex->neighbors[$behind];
+                }
+
             }
             $curHex = Hexagon::getHexPartXY($hexNum);
 
@@ -700,6 +739,9 @@ class MoveRules
                  * TODO order is important in if statement check if doing zoc zoc move first then if just one hex move.
                  * Then check if oneHex and firstHex
                  */
+                if($moveAmount <= $movePoints && $behind !== false && $newHexNum === $backupHexNum){
+                    $moveAmount = $movePoints;
+                }
                 if ($movePoints - $moveAmount >= 0 || (($isZoc && $hexPath->isZoc && !$this->noZocZocOneHex) && $hexPath->firstHex === true) || ($hexPath->firstHex === true && $this->oneHex === true && !($isZoc && $hexPath->isZoc && !$this->noZocZoc))) {
                     $head = false;
                     if (isset($this->moves->$newHexNum)) {
@@ -1366,10 +1408,10 @@ class MoveRules
         }
 
         $movingUnit->updateMoveStatus(new Hexagon($hexagon), $moveAmount);
-
-        if (($this->storm && !$this->railMove) && !$movingUnit->unitHasNotMoved()) {
-            $this->stopMove($movingUnit);
-        }
+//
+//        if (($this->storm && !$this->railMove) && !$movingUnit->unitHasNotMoved()) {
+//            $this->stopMove($movingUnit);
+//        }
         if ($movingUnit->unitHasUsedMoveAmount() == true) {
             $this->stopMove($movingUnit);
         }
