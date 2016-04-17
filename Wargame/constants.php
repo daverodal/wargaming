@@ -349,6 +349,9 @@ define("BL", 32);
 define("BLDR", 33);
 define("DLF", 34);
 define("DEAL", 35);
+define("AL2", 36);
+define("DL2", 37);
+define("DL2R", 38);
 
 $results_name = array();
 //results_name[DE] = "Defender eliminated";
@@ -391,6 +394,10 @@ $results_name[BL] = 'BL';
 $results_name[BLDR] = 'BL/DR';
 $results_name[DLF] = 'DLF';
 $results_name[DEAL] = 'DE/AL';
+$results_name[AL2] = "AL2";
+$results_name[DL2] = "DL2";
+$results_name[DL2R] = "DL2R";
+
 
 
 

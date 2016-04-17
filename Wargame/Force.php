@@ -334,7 +334,12 @@ class Force extends SimpleForce
             case DRL:
             case DLR:
             case DLF:
+            case DL2R:
+
                 $eliminated = $defUnit->damageUnit();
+                if($combatResults === DL2R && !$eliminated){
+                    $eliminated = $defUnit->damageUnit();
+                }
                 if ($eliminated) {
                     $defUnit->moveCount = 0;
                     $this->addToRetreatHexagonList($defenderId, $this->getUnitHexagon($defenderId));
@@ -359,7 +364,12 @@ class Force extends SimpleForce
             break;
             case DL:
             case BL:
+            case DL2:
+
                 $eliminated = $defUnit->damageUnit();
+                if($combatResults === DL2 && !$eliminated){
+                    $eliminated = $defUnit->damageUnit();
+                }
                 if ($eliminated) {
                     $vacated = true;
                     $defUnit->retreatCountRequired = 0;
@@ -428,11 +438,15 @@ class Force extends SimpleForce
                         break;
 
                     case AL:
+                    case AL2:
                     case ALF:
                     case BL:
                         $this->units[$attacker]->status = STATUS_CAN_ATTACK_LOSE;
                         $this->units[$attacker]->retreatCountRequired = 0;
                         $this->exchangeAmount = 1;
+                        if($combatResults === AL2){
+                            $this->exchangeAmount = ceil(ceil($this->units[$attacker]->getUnmodifiedStrength()/2) + .1);
+                        }
                         break;
 
                     case DE:
