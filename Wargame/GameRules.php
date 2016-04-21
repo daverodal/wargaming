@@ -733,6 +733,12 @@ class GameRules
                                 $this->mode = ATTACKER_LOSING_MODE;
                             }
 
+                            /* Defender losses are taken before attacker losses */
+
+                            if ($this->force->unitsAreDefenderLosing() == true) {
+                                $this->mode = DEFENDER_LOSING_MODE;
+                            }
+
                             if ($this->force->unitsAreRetreating() == true) {
                                 $this->force->clearRetreatHexagonList();
                                 $this->mode = RETREATING_MODE;
@@ -816,6 +822,7 @@ class GameRules
                 break;
             case EXCHANGING_MODE:
             case ATTACKER_LOSING_MODE:
+            case DEFENDER_LOSING_MODE:
 
                 switch ($event) {
 

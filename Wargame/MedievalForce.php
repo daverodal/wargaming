@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 use \Wargame\Battle;
-class Force extends SimpleForce
+class MedievalForce extends Force
 {
     /* @var  unit $units */
     public $victor;
@@ -71,183 +71,165 @@ class Force extends SimpleForce
     }
 
 
-    function xxxaddUnit($unitName, $unitForceId, $unitHexagon, $unitImage, $unitMaxStrength, $unitMinStrength, $unitMaxMove, $isReduced, $unitStatus, $unitReinforceZoneName, $unitReinforceTurn, $range = 1, $nationality = "neutral", $forceMarch = true, $class = false, $unitDesig = false)
-    {
-        if ($unitStatus == STATUS_CAN_REINFORCE) {
-            if (!$this->reinforceTurns->$unitReinforceTurn) {
-                $this->reinforceTurns->$unitReinforceTurn = new stdClass();
-            }
-            $this->reinforceTurns->$unitReinforceTurn->$unitForceId++;
-        }
-        $id = count($this->units);
-        $unit = UnitFactory::build();
-        $unit->set($id, $unitName, $unitForceId, $unitHexagon, $unitImage, $unitMaxStrength, $unitMinStrength, $unitMaxMove, $isReduced, $unitStatus, $unitReinforceZoneName, $unitReinforceTurn, $range, $nationality, $forceMarch, $class, $unitDesig);
-
-        array_push($this->units, $unit);
-        return $id;
-    }
 
 
-    /*
-     * Move Rules
-     */
-
-
-    function addToRetreatHexagonList($id, $retreatHexagon)
-    {
-
-        //alert("function .prototype. adding: " + id + " : " + retreatHexagon.getName());
-        // note: addToRetreatHexagonList() is invoked before retreat move, so
-        //  the moveCount is 0 for 1st step and 1 for 2nd step
-
-        $retreatStep = new RetreatStep();
-        $retreatStep->set($this->units[$id]->moveCount, $retreatHexagon);
-
-        $this->retreatHexagonList[] = $retreatStep;
-    }
-
-    function getFirstRetreatHex($id)
-    {
-        if (count($this->retreatHexagonList) == 0) {
-            throw new Exception("Cannot get reatreat hex");
-        }
-        return $this->retreatHexagonList[0]->hexagon;
-    }
-
-    function getAllFirstRetreatHexes($id)
-    {
-        if (count($this->retreatHexagonList) == 0) {
-            throw new Exception("Cannot get reatreat hex");
-        }
-        $hexes = array();
-        foreach ($this->retreatHexagonList as $hexList) {
-            if ($hexList->stepNumber == 0) {
-                $hexes[] = $hexList->hexagon;
-            }
-        }
-        return $hexes;
-    }
-
-    function advanceIsOnRetreatList($id, $hexagon)
-    {
-        $isOnList = false;
-        for ($i = 0; $i < count($this->retreatHexagonList); $i++) {
-            // note: addToRetreatHexagonList() is invoked before retreat move, so
-            //  the moveCount is 0 for 1st step and 1 for 2nd step
-            //  when advancing unit.moveCount will be 0 which will match 1st step retreat number
-
-            //alert("function .prototype. checkingt: " + id + " hexagon: " + hexagon.getName() + " with array " + $this->retreatHexagonList[i].hexagon.getName());
-            if ($this->retreatHexagonList[$i]->stepNumber == $this->units[$id]->moveCount
-                && $this->retreatHexagonList[$i]->hexagon->equals($hexagon)
-            ) {
-                $isOnList = true;
-            }
-        }
-
-        return $isOnList;
-    }
-
-
-
-    function resetRemainingNonAdvancingUnits()
-    {
-        for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_ADVANCE) {
-                $this->units[$id]->status = STATUS_ATTACKED;
-            }
-        }
-    }
-
-    function resetRemainingAdvancingUnits()
-    {
-        for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_ADVANCING || $this->units[$id]->status == STATUS_CAN_ADVANCE) {
-                $this->units[$id]->status = STATUS_ATTACKED;
-            }
-        }
-    }
-
-
-
-
-    function unitCanAdvance($id)
-    {
-        $Advance = false;
-        if ($this->units[$id]->status == STATUS_CAN_ADVANCE) {
-            $Advance = true;
-        }
-        return $Advance;
-    }
-
-    function unitCanRetreat($id)
-    {
-        $canRetreat = false;
-        if ($this->units[$id]->status == STATUS_CAN_RETREAT) {
-            $canRetreat = true;
-        }
-        return $canRetreat;
-    }
-
-    function unitHasMetRetreatCountRequired($id)
-    {
-        $unitHasMetRetreatCountRequired = false;
-
-        if ($this->units[$id]->moveCount >= $this->units[$id]->retreatCountRequired) {
-            $unitHasMetRetreatCountRequired = true;
-        }
-
-        return $unitHasMetRetreatCountRequired;
-    }
-
-
-
-    /*
-     * Force.php Move Rules
-     */
-
-    function unitIsZOC($id)
-    {
-        $battle = Battle::getBattle();
-        /* @var mapData $mapData */
-        $mapData = $battle->mapData;
-        /* @var unit $unit */
-        $unit = $this->units[$id];
-
-        $mapHex = $mapData->getHex($unit->hexagon->name);
-        if ($this->mapHexIsZoc($mapHex, $unit->forceId == $this->attackingForceId ? $this->defendingForceId : $this->attackingForceId)) {
-            return true;
-        }
-        return false;
-    }
-
-    function unitIsAdjacent($id)
-    {
-        $battle = Battle::getBattle();
-        /* @var mapData $mapData */
-        $mapData = $battle->mapData;
-        /* @var unit $unit */
-        $unit = $this->units[$id];
-
-        $mapHex = $mapData->getHex($unit->hexagon->name);
-
-        if ($mapHex->isAdjacent($unit->forceId == $this->attackingForceId ? $this->defendingForceId : $this->attackingForceId)) {
-            return true;
-        }
-        return false;
-    }
-
-    function getAdjacentUnits($id)
-    {
-        $battle = Battle::getBattle();
-        /* @var mapData $mapData */
-        $mapData = $battle->mapData;
-        /* @var unit $unit */
-        $unit = $this->units[$id];
-
-        $mapHex = $mapData->getHex($unit->hexagon->name);
-
-        return $mapHex->getAdjacentUnits($unit->forceId == $this->attackingForceId ? $this->defendingForceId : $this->attackingForceId);
-    }
+//    /*
+//     * Move Rules
+//     */
+//
+//
+//    function addToRetreatHexagonList($id, $retreatHexagon)
+//    {
+//
+//        //alert("function .prototype. adding: " + id + " : " + retreatHexagon.getName());
+//        // note: addToRetreatHexagonList() is invoked before retreat move, so
+//        //  the moveCount is 0 for 1st step and 1 for 2nd step
+//
+//        $retreatStep = new RetreatStep();
+//        $retreatStep->set($this->units[$id]->moveCount, $retreatHexagon);
+//
+//        $this->retreatHexagonList[] = $retreatStep;
+//    }
+//
+//    function getFirstRetreatHex($id)
+//    {
+//        if (count($this->retreatHexagonList) == 0) {
+//            throw new Exception("Cannot get reatreat hex");
+//        }
+//        return $this->retreatHexagonList[0]->hexagon;
+//    }
+//
+//    function getAllFirstRetreatHexes($id)
+//    {
+//        if (count($this->retreatHexagonList) == 0) {
+//            throw new Exception("Cannot get reatreat hex");
+//        }
+//        $hexes = array();
+//        foreach ($this->retreatHexagonList as $hexList) {
+//            if ($hexList->stepNumber == 0) {
+//                $hexes[] = $hexList->hexagon;
+//            }
+//        }
+//        return $hexes;
+//    }
+//
+//    function advanceIsOnRetreatList($id, $hexagon)
+//    {
+//        $isOnList = false;
+//        for ($i = 0; $i < count($this->retreatHexagonList); $i++) {
+//            // note: addToRetreatHexagonList() is invoked before retreat move, so
+//            //  the moveCount is 0 for 1st step and 1 for 2nd step
+//            //  when advancing unit.moveCount will be 0 which will match 1st step retreat number
+//
+//            //alert("function .prototype. checkingt: " + id + " hexagon: " + hexagon.getName() + " with array " + $this->retreatHexagonList[i].hexagon.getName());
+//            if ($this->retreatHexagonList[$i]->stepNumber == $this->units[$id]->moveCount
+//                && $this->retreatHexagonList[$i]->hexagon->equals($hexagon)
+//            ) {
+//                $isOnList = true;
+//            }
+//        }
+//
+//        return $isOnList;
+//    }
+//
+//
+//
+//    function resetRemainingNonAdvancingUnits()
+//    {
+//        for ($id = 0; $id < count($this->units); $id++) {
+//            if ($this->units[$id]->status == STATUS_CAN_ADVANCE) {
+//                $this->units[$id]->status = STATUS_ATTACKED;
+//            }
+//        }
+//    }
+//
+//    function resetRemainingAdvancingUnits()
+//    {
+//        for ($id = 0; $id < count($this->units); $id++) {
+//            if ($this->units[$id]->status == STATUS_ADVANCING || $this->units[$id]->status == STATUS_CAN_ADVANCE) {
+//                $this->units[$id]->status = STATUS_ATTACKED;
+//            }
+//        }
+//    }
+//    
+//    function unitCanAdvance($id)
+//    {
+//        $Advance = false;
+//        if ($this->units[$id]->status == STATUS_CAN_ADVANCE) {
+//            $Advance = true;
+//        }
+//        return $Advance;
+//    }
+//
+//    function unitCanRetreat($id)
+//    {
+//        $canRetreat = false;
+//        if ($this->units[$id]->status == STATUS_CAN_RETREAT) {
+//            $canRetreat = true;
+//        }
+//        return $canRetreat;
+//    }
+//
+//    function unitHasMetRetreatCountRequired($id)
+//    {
+//        $unitHasMetRetreatCountRequired = false;
+//
+//        if ($this->units[$id]->moveCount >= $this->units[$id]->retreatCountRequired) {
+//            $unitHasMetRetreatCountRequired = true;
+//        }
+//
+//        return $unitHasMetRetreatCountRequired;
+//    }
+//
+//
+//
+//    /*
+//     * Force.php Move Rules
+//     */
+//
+//    function unitIsZOC($id)
+//    {
+//        $battle = Battle::getBattle();
+//        /* @var mapData $mapData */
+//        $mapData = $battle->mapData;
+//        /* @var unit $unit */
+//        $unit = $this->units[$id];
+//
+//        $mapHex = $mapData->getHex($unit->hexagon->name);
+//        if ($this->mapHexIsZoc($mapHex, $unit->forceId == $this->attackingForceId ? $this->defendingForceId : $this->attackingForceId)) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    function unitIsAdjacent($id)
+//    {
+//        $battle = Battle::getBattle();
+//        /* @var mapData $mapData */
+//        $mapData = $battle->mapData;
+//        /* @var unit $unit */
+//        $unit = $this->units[$id];
+//
+//        $mapHex = $mapData->getHex($unit->hexagon->name);
+//
+//        if ($mapHex->isAdjacent($unit->forceId == $this->attackingForceId ? $this->defendingForceId : $this->attackingForceId)) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    function getAdjacentUnits($id)
+//    {
+//        $battle = Battle::getBattle();
+//        /* @var mapData $mapData */
+//        $mapData = $battle->mapData;
+//        /* @var unit $unit */
+//        $unit = $this->units[$id];
+//
+//        $mapHex = $mapData->getHex($unit->hexagon->name);
+//
+//        return $mapHex->getAdjacentUnits($unit->forceId == $this->attackingForceId ? $this->defendingForceId : $this->attackingForceId);
+//    }
 
 
     /*
@@ -278,6 +260,9 @@ class Force extends SimpleForce
             $combatResults = EX;
         }
         $defUnit = $this->units[$defenderId];
+        $battle = Battle::getBattle();
+        $numDefenders = $battle->combatRules->numDefenders($defenderId);
+
         switch ($combatResults) {
             case EX2:
                 $distance = 2;
@@ -336,6 +321,12 @@ class Force extends SimpleForce
             case DLF:
             case DL2R:
 
+                if($numDefenders > 1){
+                    $defUnit->status = STATUS_CAN_DEFEND_LOSE;
+                    $defUnit->retreatCountRequired = 0;
+                    $this->exchangeAmount = 1;
+                    break;
+                }
                 $eliminated = $defUnit->damageUnit();
                 if($combatResults === DL2R && !$eliminated){
                     $eliminated = $defUnit->damageUnit();
@@ -357,7 +348,6 @@ class Force extends SimpleForce
                 break;
 
             case NE:
-            case MISS:
                 $defUnit->status = STATUS_NO_RESULT;
                 $defUnit->retreatCountRequired = 0;
                 $battle->victory->noEffectUnit($defUnit);
@@ -366,6 +356,13 @@ class Force extends SimpleForce
             case BL:
             case DL2:
 
+                if($numDefenders > 1){
+                    $defUnit->status = STATUS_CAN_DEFEND_LOSE;
+                    $defUnit->retreatCountRequired = 0;
+                    $this->exchangeAmount = 1;
+                    break;
+                }
+                
                 $eliminated = $defUnit->damageUnit();
                 if($combatResults === DL2 && !$eliminated){
                     $eliminated = $defUnit->damageUnit();
@@ -380,22 +377,9 @@ class Force extends SimpleForce
                     $defUnit->status = STATUS_DEFENDED;
                     $defUnit->retreatCountRequired = 0;
                 }
-                break;
-            case P:
-            case W:
-            case PW:
-            case P2:
-            case S:
-                $eliminated = $defUnit->damageUnit($combatResults);
-                if ($eliminated) {
-                    $vacated = true;
-                    $defUnit->retreatCountRequired = 0;
-                    $defUnit->moveCount = 0;
-                } else {
-                    $defUnit->status = STATUS_DEFENDED;
-                    $defUnit->retreatCountRequired = 0;
-                }
-                break;
+                $defUnit->retreatCountRequired = 1;
+
+            break;
             default:
                 break;
         }
@@ -465,13 +449,16 @@ class Force extends SimpleForce
                     case DLR:
                     case DR:
                     case DLF:
-                        if($this->units[$attacker]->status !== STATUS_NO_RESULT){
+                    case DL2R:
+
+                    if($this->units[$attacker]->status !== STATUS_NO_RESULT){
                             $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
                         }
                         $this->units[$attacker]->retreatCountRequired = 0;
                         break;
 
                     case DL:
+                    case DL2:
                         /* for multi defender combats */
                         if ($vacated || $this->units[$attacker]->status == STATUS_CAN_ADVANCE) {
                             $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
@@ -504,90 +491,90 @@ class Force extends SimpleForce
         $this->removeEliminatingUnits();
     }
 
-    function clearRetreatHexagonList()
-    {
-        $this->retreatHexagonList = array();
-    }
+//    function clearRetreatHexagonList()
+//    {
+//        $this->retreatHexagonList = array();
+//    }
 
 
 
-    public function groomRetreatList(){
-        $b = Battle::getBattle();
-        $mapData = $b->mapData;
-        $newList = [];
+//    public function groomRetreatList(){
+//        $b = Battle::getBattle();
+//        $mapData = $b->mapData;
+//        $newList = [];
+//
+//        foreach($this->retreatHexagonList as $retreatHexagon){
+//            $hex = $retreatHexagon->hexagon->name;
+//            $mapHex = $mapData->getHex($hex);
+//            if($mapHex->isOccupied($this->defendingForceId)){
+//                continue;
+//            }
+//            $newList[] = $retreatHexagon;
+//        }
+//        $this->retreatHexagonList = $newList;
+//    }
 
-        foreach($this->retreatHexagonList as $retreatHexagon){
-            $hex = $retreatHexagon->hexagon->name;
-            $mapHex = $mapData->getHex($hex);
-            if($mapHex->isOccupied($this->defendingForceId)){
-                continue;
-            }
-            $newList[] = $retreatHexagon;
-        }
-        $this->retreatHexagonList = $newList;
-    }
-
-    function mapHexIsZoc(MapHex $mapHex, $defendingForceId = false)
-    {
-        if ($defendingForceId === false) {
-            $defendingForceId = $this->defendingForceId;
-        }
-        return $mapHex->isZoc($defendingForceId);
-        $neighbors = $mapHex->neighbors;
-
-        if ($neighbors) {
-            $battle = Battle::getBattle();
-            $mapData = $battle->mapData;
-            foreach ($neighbors as $neighbor) {
-                if ($this->mapHexIsOccupiedEnemy($mapData->getHex($neighbor))) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
+//    function mapHexIsZoc(MapHex $mapHex, $defendingForceId = false)
+//    {
+//        if ($defendingForceId === false) {
+//            $defendingForceId = $this->defendingForceId;
+//        }
+//        return $mapHex->isZoc($defendingForceId);
+//        $neighbors = $mapHex->neighbors;
+//
+//        if ($neighbors) {
+//            $battle = Battle::getBattle();
+//            $mapData = $battle->mapData;
+//            foreach ($neighbors as $neighbor) {
+//                if ($this->mapHexIsOccupiedEnemy($mapData->getHex($neighbor))) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+//
     function exchangeUnit($unit){
-        $this->exchangeAmount -= $unit->exchangeAmount;
+        $this->exchangeAmount--;
     }
-
-
-    function clearExchangeAmount()
-    {
-        $this->exchangeAmount = 0;
-    }
-
-    function setupAttacker($id, $range)
-    {
-        if ($range > 1) {
-            $this->units[$id]->status = STATUS_BOMBARDING;
-
-        } else {
-            $this->units[$id]->status = STATUS_ATTACKING;
-        }
-
-        if ($this->combatRequired && isset($this->requiredAttacks->$id)) {
-            $this->requiredAttacks->$id = false;
-        }
-    }
-
-    function setupDefender($id)
-    {
-        $this->units[$id]->status = STATUS_DEFENDING;
-
-        if ($this->combatRequired && isset($this->requiredDefenses->$id)) {
-            $this->requiredDefenses->$id = false;
-        }
-    }
-
-
-    function undoAttackerSetup($id)
-    {
-        parent::undoAttackerSetup($id);
-        if ($this->combatRequired && isset($this->requiredAttacks->$id)) {
-            $this->requiredAttacks->$id = true;
-        }
-    }
+//
+//
+//    function clearExchangeAmount()
+//    {
+//        $this->exchangeAmount = 0;
+//    }
+//
+//    function setupAttacker($id, $range)
+//    {
+//        if ($range > 1) {
+//            $this->units[$id]->status = STATUS_BOMBARDING;
+//
+//        } else {
+//            $this->units[$id]->status = STATUS_ATTACKING;
+//        }
+//
+//        if ($this->combatRequired && isset($this->requiredAttacks->$id)) {
+//            $this->requiredAttacks->$id = false;
+//        }
+//    }
+//
+//    function setupDefender($id)
+//    {
+//        $this->units[$id]->status = STATUS_DEFENDING;
+//
+//        if ($this->combatRequired && isset($this->requiredDefenses->$id)) {
+//            $this->requiredDefenses->$id = false;
+//        }
+//    }
+//
+//
+//    function undoAttackerSetup($id)
+//    {
+//        parent::undoAttackerSetup($id);
+//        if ($this->combatRequired && isset($this->requiredAttacks->$id)) {
+//            $this->requiredAttacks->$id = true;
+//        }
+//    }
 
     /*
      * GAME RULES
@@ -722,216 +709,201 @@ class Force extends SimpleForce
         $victory->postRecoverUnits();
 
     }
+//
+//
+//    function markRequired($id)
+//    {
+//        if ($this->combatRequired) {
+//            if ($this->units[$id]->forceId == $this->attackingForceId) {
+//                $this->markRequiredAttack($id);
+//            } else {
+//                $this->markRequiredDefense($id);
+//            }
+//        }
+//    }
+//
+//    function markRequiredAttack($id)
+//    {
+//        $this->requiredAttacks->$id = true;
+//    }
+//
+//    function markRequiredDefense($id)
+//    {
+//        $this->requiredDefenses->$id = true;
+//    }
 
 
-    function markRequired($id)
-    {
-        if ($this->combatRequired) {
-            if ($this->units[$id]->forceId == $this->attackingForceId) {
-                $this->markRequiredAttack($id);
-            } else {
-                $this->markRequiredDefense($id);
-            }
-        }
-    }
-
-    function markRequiredAttack($id)
-    {
-        $this->requiredAttacks->$id = true;
-    }
-
-    function markRequiredDefense($id)
-    {
-        $this->requiredDefenses->$id = true;
-    }
-
-
-    function replace($id)
-    {
-        if ($this->units[$id]->isReduced && $this->units[$id]->status != STATUS_REPLACED) {
-//            $this->units[$id]->strength = $this->units[$id]->maxStrength;
-            $this->units[$id]->isReduced = false;
-            $this->units[$id]->status = STATUS_REPLACED;
-            return true;
-        }
-        return false;
-    }
-
-
-    function getExchangeAmount()
-    {
-        return $this->exchangeAmount;
-    }
-
-
-
-
-    function clearRequiredCombats()
-    {
-        $this->requiredAttacks = new stdClass();
-        $this->requiredDefenses = new stdClass();
-    }
-
-
-    function requiredCombats()
-    {
-        foreach ($this->requiredAttacks as $attack) {
-            if ($attack === true) {
-                return true;
-            }
-        }
-        foreach ($this->requiredDefenses as $defense) {
-            if ($defense === true) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function exchangingAreAdvancing()
-    {
-        $areAdvancing = false;
-        /*
-         * Todo should not assign to status, should set status
-         */
-        for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_EXCHANGE) {
-                if(count($this->retreatHexagonList)){
-                    $this->units[$id]->status = STATUS_CAN_ADVANCE;
-                    $areAdvancing = true;
-                }else{
-                    $this->units[$id]->status = STATUS_ATTACKED;
-                }
-            }
-            if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
-                $this->units[$id]->status = STATUS_ATTACKED;
-            }
-            if ($this->units[$id]->status == STATUS_CAN_DEFEND_LOSE) {
-                $this->units[$id]->status = STATUS_DEFENDED;
-            }
-        }
-        return $areAdvancing;
-    }
-
-    function unitsAreExchanging()
-    {
-        $areAdvancing = false;
-
-        for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_EXCHANGE) {
-                return true;
-            }
-        }
-        return $areAdvancing;
-    }
-
-    function unitsAreAttackerLosing()
-    {
-        $areAdvancing = false;
-
-        for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
-                return true;
-            }
-        }
-        return $areAdvancing;
-    }
-
-    function unitsAreDefenderLosing()
-    {
-        $areAdvancing = false;
-
-        for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_DEFEND_LOSE) {
-                return true;
-            }
-        }
-        return $areAdvancing;
-    }
-    
-    function clearAdvancing()
-    {
-        foreach($this->units as $unit){
-            if($unit->status == STATUS_CAN_ADVANCE){
-                $unit->setStatus(STATUS_ADVANCING);
-            }
-            if($unit->status == STATUS_ADVANCING){
-                $unit->setStatus(STATUS_ADVANCED);
-            }
-        }
-    }
-
-    function unitsAreAdvancing()
-    {
-        $areAdvancing = false;
-
-        for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_ADVANCE
-                || $this->units[$id]->status == STATUS_ADVANCING
-            ) {
-                $areAdvancing = true;
-                break;
-            }
-        }
-        return $areAdvancing;
-    }
-
-
-
-    function unitsAreRetreating()
-    {
-        $areRetreating = false;
-        for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_RETREAT
-                || $this->units[$id]->status == STATUS_RETREATING
-            ) {
-                $areRetreating = true;
-                break;
-            }
-        }
-        return $areRetreating;
-    }
-
-    public function getCombine(){
-        $idMap = [];
-        $numCombines = 0;
-        $fId = $this->attackingForceId;
-        $units = $this->units;
-        foreach($units as $unit){
-            if($unit->forceId === $fId){
-                if(!empty($idMap[$unit->id])){
-                    continue;
-                }
-                $inHex = $this->findSimilarInHex($unit);
-                if($inHex && count($inHex) > 0){
-                    $unit->status = STATUS_CAN_COMBINE;
-                    $idMap[$inHex[0]->id] = true;
-                    $this->units[$inHex[0]->id]->status = STATUS_CAN_COMBINE;
-                    $numCombines++;
-                }
-            }
-        }
-        return $numCombines;
-    }
-    public function findSimilarInHex($unit){
-        $b = Battle::getBattle();
-        /* @var mapData $mapData */
-        $mapData = $b->mapData;
-        if($unit->isReduced !== true){
-            return false;
-        }
-        $units = $mapData->getHex($unit->hexagon->name)->getForces($unit->forceId);
-        $similarUnits = [];
-        foreach($units as $k => $v){
-            if($this->units[$k]->forceId === $unit->forceId){
-                if( $this->units[$k]->class === $unit->class && $k != $unit->id){
-                    if( $this->units[$k]->isReduced === true){
-                        $similarUnits[] = $this->units[$k];
-                    }
-                }
-            }
-        }
-        return $similarUnits;
-    }
+//    function replace($id)
+//    {
+//        if ($this->units[$id]->isReduced && $this->units[$id]->status != STATUS_REPLACED) {
+////            $this->units[$id]->strength = $this->units[$id]->maxStrength;
+//            $this->units[$id]->isReduced = false;
+//            $this->units[$id]->status = STATUS_REPLACED;
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//
+//    function getExchangeAmount()
+//    {
+//        return $this->exchangeAmount;
+//    }
+//
+//
+//
+//
+//    function clearRequiredCombats()
+//    {
+//        $this->requiredAttacks = new stdClass();
+//        $this->requiredDefenses = new stdClass();
+//    }
+//
+//
+//    function requiredCombats()
+//    {
+//        foreach ($this->requiredAttacks as $attack) {
+//            if ($attack === true) {
+//                return true;
+//            }
+//        }
+//        foreach ($this->requiredDefenses as $defense) {
+//            if ($defense === true) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    function exchangingAreAdvancing()
+//    {
+//        $areAdvancing = false;
+//        /*
+//         * Todo should not assign to status, should set status
+//         */
+//        for ($id = 0; $id < count($this->units); $id++) {
+//            if ($this->units[$id]->status == STATUS_CAN_EXCHANGE) {
+//                if(count($this->retreatHexagonList)){
+//                    $this->units[$id]->status = STATUS_CAN_ADVANCE;
+//                    $areAdvancing = true;
+//                }else{
+//                    $this->units[$id]->status = STATUS_ATTACKED;
+//                }
+//            }
+//            if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
+//                $this->units[$id]->status = STATUS_ATTACKED;
+//            }
+//        }
+//        return $areAdvancing;
+//    }
+//
+//    function unitsAreExchanging()
+//    {
+//        $areAdvancing = false;
+//
+//        for ($id = 0; $id < count($this->units); $id++) {
+//            if ($this->units[$id]->status == STATUS_CAN_EXCHANGE) {
+//                return true;
+//            }
+//        }
+//        return $areAdvancing;
+//    }
+//
+//    function unitsAreAttackerLosing()
+//    {
+//        $areAdvancing = false;
+//
+//        for ($id = 0; $id < count($this->units); $id++) {
+//            if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
+//                return true;
+//            }
+//        }
+//        return $areAdvancing;
+//    }
+//
+//    function clearAdvancing()
+//    {
+//        foreach($this->units as $unit){
+//            if($unit->status == STATUS_CAN_ADVANCE){
+//                $unit->setStatus(STATUS_ADVANCING);
+//            }
+//            if($unit->status == STATUS_ADVANCING){
+//                $unit->setStatus(STATUS_ADVANCED);
+//            }
+//        }
+//    }
+//
+//    function unitsAreAdvancing()
+//    {
+//        $areAdvancing = false;
+//
+//        for ($id = 0; $id < count($this->units); $id++) {
+//            if ($this->units[$id]->status == STATUS_CAN_ADVANCE
+//                || $this->units[$id]->status == STATUS_ADVANCING
+//            ) {
+//                $areAdvancing = true;
+//                break;
+//            }
+//        }
+//        return $areAdvancing;
+//    }
+//
+//
+//
+//    function unitsAreRetreating()
+//    {
+//        $areRetreating = false;
+//        for ($id = 0; $id < count($this->units); $id++) {
+//            if ($this->units[$id]->status == STATUS_CAN_RETREAT
+//                || $this->units[$id]->status == STATUS_RETREATING
+//            ) {
+//                $areRetreating = true;
+//                break;
+//            }
+//        }
+//        return $areRetreating;
+//    }
+//
+//    public function getCombine(){
+//        $idMap = [];
+//        $numCombines = 0;
+//        $fId = $this->attackingForceId;
+//        $units = $this->units;
+//        foreach($units as $unit){
+//            if($unit->forceId === $fId){
+//                if(!empty($idMap[$unit->id])){
+//                    continue;
+//                }
+//                $inHex = $this->findSimilarInHex($unit);
+//                if($inHex && count($inHex) > 0){
+//                    $unit->status = STATUS_CAN_COMBINE;
+//                    $idMap[$inHex[0]->id] = true;
+//                    $this->units[$inHex[0]->id]->status = STATUS_CAN_COMBINE;
+//                    $numCombines++;
+//                }
+//            }
+//        }
+//        return $numCombines;
+//    }
+//    public function findSimilarInHex($unit){
+//        $b = Battle::getBattle();
+//        /* @var mapData $mapData */
+//        $mapData = $b->mapData;
+//        if($unit->isReduced !== true){
+//            return false;
+//        }
+//        $units = $mapData->getHex($unit->hexagon->name)->getForces($unit->forceId);
+//        $similarUnits = [];
+//        foreach($units as $k => $v){
+//            if($this->units[$k]->forceId === $unit->forceId){
+//                if( $this->units[$k]->class === $unit->class && $k != $unit->id){
+//                    if( $this->units[$k]->isReduced === true){
+//                        $similarUnits[] = $this->units[$k];
+//                    }
+//                }
+//            }
+//        }
+//        return $similarUnits;
+//    }
 
 }

@@ -629,6 +629,14 @@ class CombatRules
         return $allAttackingAcrossRiver;
     }
 
+    function numDefenders($defenderId)
+    {
+        if(!isset($this->defenders->$defenderId)){
+            return 0;
+        }
+        $defenderId = $this->defenders->$defenderId;
+        return  count((array)$this->combatsToResolve->$defenderId->defenders);
+    }
     function thisAttackAcrossRiver($defenderId, $attackerId)
     {
 

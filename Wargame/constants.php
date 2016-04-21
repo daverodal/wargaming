@@ -182,6 +182,8 @@ define("SPEED_MODE", 22);
 define("COMBINING_MODE", 23);
 define("REBASE_MODE", 24);
 define("SUPPLY_MODE", 25);
+define("DEFENDER_LOSING_MODE",26);
+
 
 
 
@@ -212,6 +214,7 @@ $mode_name[22] = "speed mode";
 $mode_name[23] = "combining mode";
 $mode_name[24] = "rebase mode";
 $mode_name[25] = "supply mode";
+$mode_name[26] = "defender loss mode";
 
 // form event constants
 define("OVER_MAP_EVENT",1);
@@ -280,6 +283,7 @@ define("STATUS_DEPLOYING",36);
 define("STATUS_REPLACING",37);
 define("STATUS_COMBINED",38);
 define("STATUS_CAN_COMBINE",39);
+define("STATUS_CAN_DEFEND_LOSE",40);
 
 
 // unit status names
