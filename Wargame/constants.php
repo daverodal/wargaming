@@ -356,6 +356,9 @@ define("DEAL", 35);
 define("AL2", 36);
 define("DL2", 37);
 define("DL2R", 38);
+define("DL2F", 39);
+define("AL2F", 40);
+define("AL2R", 41);
 
 $results_name = array();
 //results_name[DE] = "Defender eliminated";
@@ -401,8 +404,9 @@ $results_name[DEAL] = 'DE/AL';
 $results_name[AL2] = "AL2";
 $results_name[DL2] = "DL2";
 $results_name[DL2R] = "DL2R";
-
-
+$results_name[DL2F] = "DL2F";
+$results_name[AL2F] = "AL2F";
+$results_name[AL2R] = "AL2R";
 
 
 // combat ratio
