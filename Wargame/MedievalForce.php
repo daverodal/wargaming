@@ -291,11 +291,13 @@ class MedievalForce extends Force
                 $battle->victory->disruptUnit($defUnit);
                 break;
 
+
+            case ALR:
+            case ALF:
             case AL:
             case AL2:
             case AL2F:
             case AL2R:
-            case ALF:
                 $defUnit->status = STATUS_DEFENDED;
                 $defUnit->retreatCountRequired = 0;
                 break;
@@ -430,6 +432,7 @@ class MedievalForce extends Force
                         break;
 
                     case AL:
+                    case ALR:
                     case AL2:
                     case ALF:
                     case AL2R:
