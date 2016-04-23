@@ -292,6 +292,9 @@ class MedievalForce extends Force
                 break;
 
             case AL:
+            case AL2:
+            case AL2F:
+            case AL2R:
             case ALF:
                 $defUnit->status = STATUS_DEFENDED;
                 $defUnit->retreatCountRequired = 0;
@@ -308,6 +311,7 @@ class MedievalForce extends Force
                 break;
 
             case DE:
+            case DEAL:
                 $defUnit->status = STATUS_ELIMINATING;
                 $defUnit->retreatCountRequired = $distance;
                 $defUnit->moveCount = 0;
@@ -325,6 +329,9 @@ class MedievalForce extends Force
                     $defUnit->status = STATUS_CAN_DEFEND_LOSE;
                     $defUnit->retreatCountRequired = 0;
                     $this->exchangeAmount = 1;
+                    if($combatResults === DL2R){
+                        $this->exchangeAmount = 2;
+                    }
                     break;
                 }
                 $eliminated = $defUnit->damageUnit();
@@ -354,6 +361,7 @@ class MedievalForce extends Force
             break;
             case DL:
             case BL:
+            case BLDR:
             case DL2:
 
                 if($numDefenders > 1){
@@ -424,12 +432,15 @@ class MedievalForce extends Force
                     case AL:
                     case AL2:
                     case ALF:
+                    case AL2R:
                     case BL:
+                    case BLDR:
+                    case DEAL:
                         $this->units[$attacker]->status = STATUS_CAN_ATTACK_LOSE;
                         $this->units[$attacker]->retreatCountRequired = 0;
                         $this->exchangeAmount = 1;
                         if($combatResults === AL2){
-                            $this->exchangeAmount = ceil(ceil($this->units[$attacker]->getUnmodifiedStrength()/2) + .1);
+                            $this->exchangeAmount = 2;
                         }
                         break;
 
