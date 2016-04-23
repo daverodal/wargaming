@@ -326,18 +326,19 @@ class MedievalForce extends Force
             case DLR:
             case DLF:
             case DL2R:
+            case DL2F:
 
                 if($numDefenders > 1){
                     $defUnit->status = STATUS_CAN_DEFEND_LOSE;
                     $defUnit->retreatCountRequired = 0;
                     $this->exchangeAmount = 1;
-                    if($combatResults === DL2R){
+                    if($combatResults === DL2R || $combatResults === DL2F){
                         $this->exchangeAmount = 2;
                     }
                     break;
                 }
                 $eliminated = $defUnit->damageUnit();
-                if($combatResults === DL2R && !$eliminated){
+                if(($combatResults === DL2R || $combatResults === DL2F) && !$eliminated){
                     $eliminated = $defUnit->damageUnit();
                 }
                 if ($eliminated) {
@@ -465,6 +466,7 @@ class MedievalForce extends Force
                     case DR:
                     case DLF:
                     case DL2R:
+                    case DL2F:
 
                     if($this->units[$attacker]->status !== STATUS_NO_RESULT){
                             $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
