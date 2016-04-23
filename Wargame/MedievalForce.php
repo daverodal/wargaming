@@ -439,7 +439,7 @@ class MedievalForce extends Force
                         $this->units[$attacker]->status = STATUS_CAN_ATTACK_LOSE;
                         $this->units[$attacker]->retreatCountRequired = 0;
                         $this->exchangeAmount = 1;
-                        if($combatResults === AL2){
+                        if($combatResults === AL2 || $combatResults === AL2R){
                             $this->exchangeAmount = 2;
                         }
                         break;
