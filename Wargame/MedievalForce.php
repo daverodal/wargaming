@@ -433,13 +433,14 @@ class MedievalForce extends Force
                     case AL2:
                     case ALF:
                     case AL2R:
+                    case AL2F:
                     case BL:
                     case BLDR:
                     case DEAL:
                         $this->units[$attacker]->status = STATUS_CAN_ATTACK_LOSE;
                         $this->units[$attacker]->retreatCountRequired = 0;
                         $this->exchangeAmount = 1;
-                        if($combatResults === AL2 || $combatResults === AL2R){
+                        if($combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F){
                             $this->exchangeAmount = 2;
                         }
                         break;
