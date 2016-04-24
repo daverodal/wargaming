@@ -1,6 +1,8 @@
 <?php
 namespace Wargame;
+
 use \stdClass;
+
 // force.js
 
 // Copyright (c) 20092011 Mark Butler
@@ -21,6 +23,7 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 use \Wargame\Battle;
+
 class Force extends SimpleForce
 {
     /* @var  unit $units */
@@ -148,7 +151,6 @@ class Force extends SimpleForce
     }
 
 
-
     function resetRemainingNonAdvancingUnits()
     {
         for ($id = 0; $id < count($this->units); $id++) {
@@ -166,8 +168,6 @@ class Force extends SimpleForce
             }
         }
     }
-
-
 
 
     function unitCanAdvance($id)
@@ -198,7 +198,6 @@ class Force extends SimpleForce
 
         return $unitHasMetRetreatCountRequired;
     }
-
 
 
     /*
@@ -510,8 +509,8 @@ class Force extends SimpleForce
     }
 
 
-
-    public function groomRetreatList(){
+    public function groomRetreatList()
+    {
         $b = Battle::getBattle();
         $mapData = $b->mapData;
         $newList = [];
@@ -547,7 +546,8 @@ class Force extends SimpleForce
         return false;
     }
 
-    function exchangeUnit($unit){
+    function exchangeUnit($unit)
+    {
         $this->exchangeAmount -= $unit->exchangeAmount;
     }
 
@@ -764,8 +764,6 @@ class Force extends SimpleForce
     }
 
 
-
-
     function clearRequiredCombats()
     {
         $this->requiredAttacks = new stdClass();
@@ -787,7 +785,6 @@ class Force extends SimpleForce
         }
         return false;
     }
-
     function exchangingAreAdvancing()
     {
         $areAdvancing = false;
@@ -803,11 +800,41 @@ class Force extends SimpleForce
                     $this->units[$id]->status = STATUS_ATTACKED;
                 }
             }
+        }
+        return $areAdvancing;
+    }  
+    function defendingAreRetreating()
+{
+    $areRetreating = false;
+    /*
+     * Todo should not assign to status, should set status
+     */
+    for ($id = 0; $id < count($this->units); $id++) {
+        if ($this->units[$id]->status == STATUS_CAN_DEFEND_LOSE) {
+            if ($this->units[$id]->retreatCountRequired) {
+                $this->units[$id]->status = STATUS_CAN_RETREAT;
+                $areRetreating = true;
+            } else {
+                $this->units[$id]->status = STATUS_DEFENDED;
+            }
+        }
+    }
+    return $areRetreating;
+}
+    function attackingAreAdvancing()
+    {
+        $areAdvancing = false;
+        /*
+         * Todo should not assign to status, should set status
+         */
+        for ($id = 0; $id < count($this->units); $id++) {
             if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
+                if (count($this->retreatHexagonList)) {
+                    $this->units[$id]->status = STATUS_CAN_ADVANCE;
+                    $areAdvancing = true;
+                } else {
                 $this->units[$id]->status = STATUS_ATTACKED;
             }
-            if ($this->units[$id]->status == STATUS_CAN_DEFEND_LOSE) {
-                $this->units[$id]->status = STATUS_DEFENDED;
             }
         }
         return $areAdvancing;
@@ -877,7 +904,6 @@ class Force extends SimpleForce
     }
 
 
-
     function unitsAreRetreating()
     {
         $areRetreating = false;
@@ -892,7 +918,8 @@ class Force extends SimpleForce
         return $areRetreating;
     }
 
-    public function getCombine(){
+    public function getCombine()
+    {
         $idMap = [];
         $numCombines = 0;
         $fId = $this->attackingForceId;
@@ -913,7 +940,9 @@ class Force extends SimpleForce
         }
         return $numCombines;
     }
-    public function findSimilarInHex($unit){
+
+    public function findSimilarInHex($unit)
+    {
         $b = Battle::getBattle();
         /* @var mapData $mapData */
         $mapData = $b->mapData;
