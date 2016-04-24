@@ -52,6 +52,7 @@ class MoveRules
     public $blockedRetreatDamages = false;
     public $noZoc = false;
     public $retreatCannotOverstack = false;
+    public $moveCannotOverstack = false;
     /* usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
      * so 1 means you can't stack with even 1 enemy. Use a closure here to allow for air units stacking with
      * enemy land units only, for example. and vice a versa.
@@ -722,6 +723,12 @@ class MoveRules
                 if ($newMapHex->isOccupied($this->force->defendingForceId, $this->enemyStackingLimit, $unit)) {
                     continue;
                 }
+
+
+                if ($this->moveCannotOverstack && $hexPath->firstHex !== true && $mapHex->isOccupied($this->force->attackingForceId, $this->stacking, $unit)) {
+                    continue;
+                }
+
                 $isZoc = $this->force->mapHexIsZOC($newMapHex);
                 if($isZoc && $this->noZoc){
                     continue;

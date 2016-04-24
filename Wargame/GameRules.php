@@ -737,6 +737,7 @@ class GameRules
 
                             if ($this->force->unitsAreDefenderLosing() == true) {
                                 $this->mode = DEFENDER_LOSING_MODE;
+                                break;
                             }
 
                             if ($this->force->unitsAreRetreating() == true) {
@@ -771,20 +772,29 @@ class GameRules
                             if ($this->force->unitsAreExchanging() == true) {
                                 $this->mode = EXCHANGING_MODE;
                             } else {
-                                if ($this->force->unitsAreAdvancing() == true) {
-                                    $this->mode = ADVANCING_MODE;
-                                } else { // melee
-                                    if ($this->combatModeType == COMBAT_SETUP_MODE) {
-                                        if ($this->gameHasCombatResolutionMode == true) {
-                                            $this->mode = COMBAT_RESOLUTION_MODE;
-                                        } else {
-                                            $this->mode = COMBAT_SETUP_MODE;
-                                        }
-                                    } else { // fire
-                                        if ($this->gameHasCombatResolutionMode == true) {
-                                            $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
-                                        } else {
-                                            $this->mode = FIRE_COMBAT_SETUP_MODE;
+                                if($this->force->unitsAreAttackerLosing()){
+                                    $this->mode = ATTACKER_LOSING_MODE;
+
+                                }else {
+                                    if($this->force->unitsAreDefenderLosing()) {
+                                        $this->mode = DEFENDER_LOSING_MODE;
+                                    }else{
+                                        if ($this->force->unitsAreAdvancing() == true) {
+                                            $this->mode = ADVANCING_MODE;
+                                        } else { // melee
+                                            if ($this->combatModeType == COMBAT_SETUP_MODE) {
+                                                if ($this->gameHasCombatResolutionMode == true) {
+                                                    $this->mode = COMBAT_RESOLUTION_MODE;
+                                                } else {
+                                                    $this->mode = COMBAT_SETUP_MODE;
+                                                }
+                                            } else { // fire
+                                                if ($this->gameHasCombatResolutionMode == true) {
+                                                    $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
+                                                } else {
+                                                    $this->mode = FIRE_COMBAT_SETUP_MODE;
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -835,10 +845,29 @@ class GameRules
                                 $this->force->removeEliminatingUnits();
                             }
                             if($this->legacyExchangeRule || $this->force->getExchangeAmount() <= 0 || $this->combatRules->noMoreAttackers()) {
-                                if ($this->force->exchangingAreAdvancing() == true && $this->mode == EXCHANGING_MODE) { // melee
+                                if ($this->force->exchangingAreAdvancing() == true ) { // melee
                                     $this->mode = ADVANCING_MODE;
                                 } else {
-                                    $this->mode = COMBAT_RESOLUTION_MODE;
+                                    if($this->force->defendingAreRetreating() === true){
+                                        $this->mode = RETREATING_MODE;
+                                    }else{
+                                        if($this->force->attackingAreAdvancing() === true){
+                                            $this->mode = ADVANCING_MODE;
+
+                                        }else{
+                                            if ($this->force->unitsAreRetreating() == true) {
+                                                $this->force->clearRetreatHexagonList();
+                                                $this->mode = RETREATING_MODE;
+                                            } else { // check if advancing after eliminated unit
+                                                if ($this->force->unitsAreAdvancing() == true) {
+                                                    $this->mode = ADVANCING_MODE;
+                                                }else{
+                                                    $this->mode = COMBAT_RESOLUTION_MODE;
+
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

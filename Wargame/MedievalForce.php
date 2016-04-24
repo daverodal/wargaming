@@ -245,12 +245,12 @@ class MedievalForce extends Force
         list($defenderId, $attackers, $combatResults, $dieRoll) = $battle->victory->preCombatResults($defenderId, $attackers, $combatResults, $dieRoll);
         $vacated = false;
         $exchangeMultiplier = 1;
-        if($combatResults === EX02){
+        if ($combatResults === EX02) {
             $distance = 0;
             $combatResults = EX;
             $exchangeMultiplier = 2;
         }
-        if($combatResults === EX03){
+        if ($combatResults === EX03) {
             $distance = 0;
             $combatResults = EX;
             $exchangeMultiplier = 3;
@@ -268,15 +268,15 @@ class MedievalForce extends Force
                 $distance = 2;
             case EX:
                 $eliminated = $defUnit->damageUnit($this->exchangesKill);
-                if (!$eliminated){
-                    if($distance) {
+                if (!$eliminated) {
+                    if ($distance) {
                         $defUnit->status = STATUS_CAN_RETREAT;
-                    }else{
+                    } else {
                         $this->clearAdvancing();
                         $defUnit->status = STATUS_EXCHANGED;
                     }
                     $defUnit->retreatCountRequired = $distance;
-                }else{
+                } else {
                     $defUnit->moveCount = 0;
                     $this->addToRetreatHexagonList($defenderId, $this->getUnitHexagon($defenderId));
                 }
@@ -328,17 +328,17 @@ class MedievalForce extends Force
             case DL2R:
             case DL2F:
 
-                if($numDefenders > 1){
+                if ($numDefenders > 1) {
                     $defUnit->status = STATUS_CAN_DEFEND_LOSE;
                     $defUnit->retreatCountRequired = 0;
                     $this->exchangeAmount = 1;
-                    if($combatResults === DL2R || $combatResults === DL2F){
+                    if ($combatResults === DL2R || $combatResults === DL2F) {
                         $this->exchangeAmount = 2;
                     }
                     break;
                 }
                 $eliminated = $defUnit->damageUnit();
-                if(($combatResults === DL2R || $combatResults === DL2F) && !$eliminated){
+                if (($combatResults === DL2R || $combatResults === DL2F) && !$eliminated) {
                     $eliminated = $defUnit->damageUnit();
                 }
                 if ($eliminated) {
@@ -349,6 +349,9 @@ class MedievalForce extends Force
                     $defUnit->status = STATUS_CAN_RETREAT;
                 }
                 $defUnit->retreatCountRequired = $distance;
+                if($combatResults === DL2F || $combatResults === DLF){
+                    $defUnit->retreatCountRequired = $defUnit->maxMove;
+                }
                 break;
             case DR2:
                 $distance = 2;
@@ -361,21 +364,24 @@ class MedievalForce extends Force
                 $defUnit->status = STATUS_NO_RESULT;
                 $defUnit->retreatCountRequired = 0;
                 $battle->victory->noEffectUnit($defUnit);
-            break;
+                break;
             case DL:
             case BL:
             case BLDR:
             case DL2:
 
-                if($numDefenders > 1){
+                if ($numDefenders > 1) {
                     $defUnit->status = STATUS_CAN_DEFEND_LOSE;
                     $defUnit->retreatCountRequired = 0;
+                    if($combatResults === BLDR){
+                        $defUnit->retreatCountRequired = 1;
+                    }
                     $this->exchangeAmount = 1;
                     break;
                 }
-                
+
                 $eliminated = $defUnit->damageUnit();
-                if($combatResults === DL2 && !$eliminated){
+                if ($combatResults === DL2 && !$eliminated) {
                     $eliminated = $defUnit->damageUnit();
                 }
                 if ($eliminated) {
@@ -388,9 +394,12 @@ class MedievalForce extends Force
                     $defUnit->status = STATUS_DEFENDED;
                     $defUnit->retreatCountRequired = 0;
                 }
+                if($combatResults === BLDR){
+                    $defUnit->status = STATUS_CAN_RETREAT;
+                }
                 $defUnit->retreatCountRequired = 1;
 
-            break;
+                break;
             default:
                 break;
         }
@@ -400,6 +409,7 @@ class MedievalForce extends Force
         $defUnit->moveCount = 0;
 
 
+        $numAttackers = count((array)$attackers);
         foreach ($attackers as $attacker => $val) {
             if ($this->units[$attacker]->status == STATUS_BOMBARDING) {
                 $this->units[$attacker]->status = STATUS_ATTACKED;
@@ -410,15 +420,7 @@ class MedievalForce extends Force
                 $this->units[$attacker]->combatNumber = 0;
                 $this->units[$attacker]->moveCount = 0;
             }
-
-            if($battle->gameRules->phase == BLUE_TORP_COMBAT_PHASE || $battle->gameRules->phase == RED_TORP_COMBAT_PHASE){
-                $this->units[$attacker]->torpFired();
-            }else{
-                if(is_callable([$this->units[$attacker],'firedGun'])){
-                    $this->units[$attacker]->firedGun();
-                }
-            }
-
+            $attUnit = $this->units[$attacker];
             if ($this->units[$attacker]->status == STATUS_ATTACKING) {
                 switch ($combatResults) {
                     case EX2:
@@ -441,11 +443,33 @@ class MedievalForce extends Force
                     case BL:
                     case BLDR:
                     case DEAL:
-                        $this->units[$attacker]->status = STATUS_CAN_ATTACK_LOSE;
-                        $this->units[$attacker]->retreatCountRequired = 0;
-                        $this->exchangeAmount = 1;
-                        if($combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F){
-                            $this->exchangeAmount = 2;
+                        if ($numAttackers > 1) {
+                            $this->units[$attacker]->status = STATUS_CAN_ATTACK_LOSE;
+                            $this->units[$attacker]->retreatCountRequired = 0;
+                            $this->exchangeAmount = 1;
+                            if ($combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F) {
+                                $this->exchangeAmount = 2;
+                            }
+                            break;
+                        }
+                        $eliminated = $attUnit->damageUnit();
+                        if (($combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F) && !$eliminated) {
+                            $eliminated = $attUnit->damageUnit();
+                        }
+                        if (!$eliminated) {
+                            $attUnit->status = STATUS_ATTACKED;
+                            $attUnit->retreatCountRequired = 0;
+                            if ($combatResults === ALR || $combatResults === ALF || $combatResults === AL2R || $combatResults === AL2F) {
+                                $attUnit->status = STATUS_CAN_RETREAT;
+                                $attUnit->retreatCountRequired = 1;
+                                if ($combatResults === ALF || $combatResults === AL2F) {
+                                    $attUnit->retreatCountRequired = $attUnit->maxMove;
+
+                                }
+                            }
+                            if ($combatResults === DEAL || $combatResults === BLDR) {
+                                $attUnit->status = STATUS_CAN_ADVANCE;
+                            }
                         }
                         break;
 
@@ -468,7 +492,7 @@ class MedievalForce extends Force
                     case DL2R:
                     case DL2F:
 
-                    if($this->units[$attacker]->status !== STATUS_NO_RESULT){
+                        if ($this->units[$attacker]->status !== STATUS_NO_RESULT) {
                             $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
                         }
                         $this->units[$attacker]->retreatCountRequired = 0;
@@ -501,7 +525,7 @@ class MedievalForce extends Force
         }
         $gameRules = $battle->gameRules;
         $mapData = $battle->mapData;
-        $mapData->breadcrumbCombat($defenderId,$this->attackingForceId, $gameRules->turn, $gameRules->phase, $gameRules->mode, $combatResults, $dieRoll, $this->getUnitHexagon($defenderId)->name);
+        $mapData->breadcrumbCombat($defenderId, $this->attackingForceId, $gameRules->turn, $gameRules->phase, $gameRules->mode, $combatResults, $dieRoll, $this->getUnitHexagon($defenderId)->name);
 
         $battle->victory->postCombatResults($defenderId, $attackers, $combatResults, $dieRoll);
 
@@ -512,7 +536,6 @@ class MedievalForce extends Force
 //    {
 //        $this->retreatHexagonList = array();
 //    }
-
 
 
 //    public function groomRetreatList(){
@@ -551,7 +574,8 @@ class MedievalForce extends Force
 //        return false;
 //    }
 //
-    function exchangeUnit($unit){
+    function exchangeUnit($unit)
+    {
         $this->exchangeAmount--;
     }
 //
@@ -609,14 +633,14 @@ class MedievalForce extends Force
 
 
                 case STATUS_ELIMINATED:
-                    if($mode === REPLACING_MODE){
-                        if ($this->units[$id]->forceId == $this->attackingForceId){
+                    if ($mode === REPLACING_MODE) {
+                        if ($this->units[$id]->forceId == $this->attackingForceId) {
                             $this->units[$id]->status = STATUS_CAN_REPLACE;
                         }
                     }
                     break;
                 case STATUS_CAN_DEPLOY:
-                    if($mode == DEPLOY_MODE){
+                    if ($mode == DEPLOY_MODE) {
                         continue;
                     }
                     if ($this->units[$id]->isDeploy()) {
@@ -645,9 +669,9 @@ class MedievalForce extends Force
                     $status = STATUS_READY;
 
 
-                    if($mode === COMBINING_MODE){
+                    if ($mode === COMBINING_MODE) {
                         $status = STATUS_UNAVAIL_THIS_PHASE;
-                        if($this->units[$id]->status === STATUS_CAN_COMBINE){
+                        if ($this->units[$id]->status === STATUS_CAN_COMBINE) {
                             $status = STATUS_READY;
                         }
                     }
@@ -714,7 +738,7 @@ class MedievalForce extends Force
                 default:
                     break;
             }
-            if($phase === BLUE_MOVE_PHASE || $phase === RED_MOVE_PHASE || $phase == TEAL_MOVE_PHASE || $phase == PURPLE_MOVE_PHASE){
+            if ($phase === BLUE_MOVE_PHASE || $phase === RED_MOVE_PHASE || $phase == TEAL_MOVE_PHASE || $phase == PURPLE_MOVE_PHASE) {
                 $this->units[$id]->moveAmountUnused = $this->units[$id]->getMaxMove();
             }
             $this->units[$id]->combatIndex = 0;
