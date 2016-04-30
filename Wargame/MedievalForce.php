@@ -450,6 +450,13 @@ class MedievalForce extends Force
                             if ($combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F) {
                                 $this->exchangeAmount = 2;
                             }
+                            if ($combatResults === ALR || $combatResults === ALF || $combatResults === AL2R || $combatResults === AL2F) {
+                                $attUnit->retreatCountRequired = 1;
+                                if ($combatResults === ALF || $combatResults === AL2F) {
+                                    $attUnit->retreatCountRequired = $attUnit->maxMove;
+
+                                }
+                            }
                             break;
                         }
                         $eliminated = $attUnit->damageUnit();

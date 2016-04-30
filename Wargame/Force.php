@@ -802,25 +802,45 @@ class Force extends SimpleForce
             }
         }
         return $areAdvancing;
-    }  
+    }
     function defendingAreRetreating()
-{
-    $areRetreating = false;
-    /*
-     * Todo should not assign to status, should set status
-     */
-    for ($id = 0; $id < count($this->units); $id++) {
-        if ($this->units[$id]->status == STATUS_CAN_DEFEND_LOSE) {
-            if ($this->units[$id]->retreatCountRequired) {
-                $this->units[$id]->status = STATUS_CAN_RETREAT;
-                $areRetreating = true;
-            } else {
-                $this->units[$id]->status = STATUS_DEFENDED;
+    {
+        $areRetreating = false;
+        /*
+         * Todo should not assign to status, should set status
+         */
+        for ($id = 0; $id < count($this->units); $id++) {
+            if ($this->units[$id]->status == STATUS_CAN_DEFEND_LOSE) {
+                if ($this->units[$id]->retreatCountRequired) {
+                    $this->units[$id]->status = STATUS_CAN_RETREAT;
+                    $areRetreating = true;
+                } else {
+                    $this->units[$id]->status = STATUS_DEFENDED;
+                }
             }
         }
+        return $areRetreating;
     }
-    return $areRetreating;
-}
+
+    function attackingAreRetreating()
+    {
+        $areRetreating = false;
+        /*
+         * Todo should not assign to status, should set status
+         */
+        for ($id = 0; $id < count($this->units); $id++) {
+            if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
+                if ($this->units[$id]->retreatCountRequired) {
+                    $this->units[$id]->status = STATUS_CAN_RETREAT;
+                    $areRetreating = true;
+                } else {
+                    $this->units[$id]->status = STATUS_ATTACKED;
+                }
+            }
+        }
+        return $areRetreating;
+    }
+    
     function attackingAreAdvancing()
     {
         $areAdvancing = false;

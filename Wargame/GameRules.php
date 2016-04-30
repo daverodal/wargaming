@@ -851,19 +851,23 @@ class GameRules
                                     if($this->force->defendingAreRetreating() === true){
                                         $this->mode = RETREATING_MODE;
                                     }else{
-                                        if($this->force->attackingAreAdvancing() === true){
-                                            $this->mode = ADVANCING_MODE;
+                                        if($this->force->attackingAreRetreating() === true) {
+                                            $this->mode = RETREATING_MODE;
+                                        }else {
+                                            if ($this->force->attackingAreAdvancing() === true) {
+                                                $this->mode = ADVANCING_MODE;
 
-                                        }else{
-                                            if ($this->force->unitsAreRetreating() == true) {
-                                                $this->force->clearRetreatHexagonList();
-                                                $this->mode = RETREATING_MODE;
-                                            } else { // check if advancing after eliminated unit
-                                                if ($this->force->unitsAreAdvancing() == true) {
-                                                    $this->mode = ADVANCING_MODE;
-                                                }else{
-                                                    $this->mode = COMBAT_RESOLUTION_MODE;
+                                            } else {
+                                                if ($this->force->unitsAreRetreating() == true) {
+                                                    $this->force->clearRetreatHexagonList();
+                                                    $this->mode = RETREATING_MODE;
+                                                } else { // check if advancing after eliminated unit
+                                                    if ($this->force->unitsAreAdvancing() == true) {
+                                                        $this->mode = ADVANCING_MODE;
+                                                    } else {
+                                                        $this->mode = COMBAT_RESOLUTION_MODE;
 
+                                                    }
                                                 }
                                             }
                                         }
