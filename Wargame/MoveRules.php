@@ -53,6 +53,9 @@ class MoveRules
     public $noZoc = false;
     public $retreatCannotOverstack = false;
     public $moveCannotOverstack = false;
+    public $turnHex = false;
+    public $turnFacing = false;
+    public $turnId = false;
     /* usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
      * so 1 means you can't stack with even 1 enemy. Use a closure here to allow for air units stacking with
      * enemy land units only, for example. and vice a versa.
@@ -103,7 +106,9 @@ class MoveRules
             $movingUnit = $this->force->units[$this->movingUnitId];
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
             $turnCost = 1;
+            $origFacing = $movingUnit->facing;
             if($isDeploy || $movesLeft >= $turnCost){
+
 
                 if($isDeploy){
                     $movingUnit->facing--;
@@ -114,10 +119,17 @@ class MoveRules
                 }
                 $battle = Battle::getBattle();
                 $mapHex = $battle->mapData->getHex($movingUnit->hexagon->name);
-
-
+                if($movingUnit->hexagon->name === $this->turnHex && $this->rightOf($origFacing, $this->turnFacing)){
+                    $turnCost =  0 - $turnCost;
+                }
 
                 $movingUnit->updateFacingStatus(-1, $turnCost);
+                if($this->turnHex === false || $movingUnit->hexagon->name !== $this->turnHex || $movingUnit->id !== $this->turnId){
+                    $this->turnHex = $movingUnit->hexagon->name;
+                    $this->turnFacing = $origFacing;
+                    $this->turnId = $movingUnit->id;
+                }
+
                 if ($mapHex->isZoc($this->force->defendingForceId) == true) {
                     if ($this->enterZoc === "stop") {
                         $this->stopMove($movingUnit);
@@ -172,10 +184,33 @@ class MoveRules
 
     }
 
+    function leftOf($newCourse, $prevCourse){
+
+        if(($newCourse + 1) % 6 === $prevCourse ){
+            return true;
+        }
+        if(($newCourse + 2) % 6 === $prevCourse ){
+            return true;
+        }
+        return false;
+    }
+
+    function rightOf($newCourse, $prevCourse){
+
+        if(($prevCourse + 1) % 6 === $newCourse ){
+            return true;
+        }
+        if(($prevCourse + 2) % 6 === $newCourse ){
+            return true;
+        }
+        return false;
+    }
+
     function turnRight($isDeploy = false){
         if ($this->anyUnitIsMoving) {
             $movingUnit = $this->force->units[$this->movingUnitId];
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $origFacing = $movingUnit->facing;
             $turnCost = 1;
             if($isDeploy || $movesLeft >= $turnCost){
 
@@ -187,7 +222,16 @@ class MoveRules
                     return true;
                 }
 
+                if($movingUnit->hexagon->name === $this->turnHex && $this->leftOf($origFacing, $this->turnFacing)){
+                    $turnCost =  0 - $turnCost;
+                }
                 $movingUnit->updateFacingStatus(1, $turnCost);
+                if($this->turnHex === false || $movingUnit->hexagon->name !== $this->turnHex || $movingUnit->id !== $this->turnId){
+                    $this->turnHex = $movingUnit->hexagon->name;
+                    $this->turnFacing = $origFacing;
+                    $this->turnId = $movingUnit->id;
+                }
+
                 $battle = Battle::getBattle();
                 $mapHex = $battle->mapData->getHex($movingUnit->hexagon->name);
                 if ($mapHex->isZoc($this->force->defendingForceId) == true) {
@@ -212,6 +256,8 @@ class MoveRules
     function moveUnit($eventType, $id, $hexagon, $turn)
     {
         $dirty = false;
+        $this->turnHex = false;
+        $this->turnFacing = false;
         if ($eventType == SELECT_MAP_EVENT) {
             if ($this->anyUnitIsMoving) {
                 // click on map, so try to move
