@@ -41,7 +41,8 @@ class CombatResultsTable
 
     //     combatIndexeCount is 6; maxCombatIndex = 5
     //     index is 0 to 5;  dieSidesCount = 6
-
+    use \Wargame\CRTResults;
+    
     function __construct()
     {
         $this->combatResultsHeader = array("1:4", "1:3", "1:2", "1:1", "1.5:1", "2:1", "3:1", "4:1", "5:1", "6:1");

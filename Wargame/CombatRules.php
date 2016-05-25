@@ -546,11 +546,20 @@ class CombatRules
         }
         /* apply combat results to defenders */
         foreach ($defenders as $defenderId => $defender) {
-            $this->force->applyCRTresults($defenderId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
+            if(method_exists($this->crt, 'applyCRTResults')){
+                $this->crt->applyCRTResults($defenderId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die,$this->force);
+
+            }else{
+                $this->force->applyCRTResults($defenderId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
+            }
         }
         /* apply combat results to other units in defending hexes */
         foreach ($others as $otherId) {
-            $this->force->applyCRTresults($otherId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
+            if(method_exists($this->crt, 'applyCRTResults')) {
+                $this->crt->applyCRTResults($otherId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die, $this->force);
+            }else{
+                $this->force->applyCRTResults($otherId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
+            }
         }
         $this->lastResolvedCombat = $this->combatsToResolve->$id;
         if (!$this->resolvedCombats) {
