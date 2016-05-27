@@ -70,7 +70,13 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/TMCW/Kiev/Fonts' => public_path('vendor/wargame/tmcw/kiev/fonts'),
             __DIR__.'/TMCW/Kiev/all.css' => public_path('vendor/wargame/tmcw/kiev/css/all.css'),
 
+            __DIR__.'/TMCW/KievCorps/Images' => public_path('vendor/wargame/tmcw/kievcorps/images'),
+            __DIR__.'/TMCW/KievCorps/Fonts' => public_path('vendor/wargame/tmcw/kievcorps/fonts'),
+            __DIR__.'/TMCW/KievCorps/all.css' => public_path('vendor/wargame/tmcw/kievcorps/css/all.css'),
+
             __DIR__.'/TMCW/Moskow/Images' => public_path('vendor/wargame/tmcw/moskow/images'),
+            __DIR__.'/TMCW/Maps' => public_path('battle-maps')
+
         ], 'kiev');
     }
 
