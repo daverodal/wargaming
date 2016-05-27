@@ -7,7 +7,7 @@
         "description": "Attack from above.",
         "options":[
             {
-                "name": "For of war during Deployment. Enemy units remain hidden until movement phase..",
+                "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
                 "keyName":"fogDeploy",
                 "value": false
             }
