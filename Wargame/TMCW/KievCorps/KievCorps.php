@@ -73,7 +73,7 @@ class KievCorps extends \Wargame\ModernLandBattle
                     $cnt++;
                     if ($cnt & 1) {
                         $isReduced = $unitsDeployed & 1;
-                        UnitFactory::create("xxxx", SOVIET_FORCE, $item->hexagon->number, "multiInf.png", 3, 4, STATUS_CAN_DEPLOY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 2, 3);
+                        UnitFactory::create("xxxx", SOVIET_FORCE, $item->hexagon->number, "multiInf.png", 3, 4, STATUS_CAN_DEPLOY, "A", 1, "soviet", 'inf', $unitsDeployed+1, $isReduced?2:3 , 3);
                         $unitsDeployed++;
                     }
                     if ($unitsDeployed >= 20) {
@@ -255,6 +255,7 @@ class KievCorps extends \Wargame\ModernLandBattle
         }
 
 
+        return;
         if(empty($scenario->preDeploy)) {
 
 

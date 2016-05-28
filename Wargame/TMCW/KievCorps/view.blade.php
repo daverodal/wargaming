@@ -48,5 +48,5 @@
             <div class="unit-numbers">5 - 4</div>
         </div>
     @endforeach
-@show
+@endsection
 @include('wargame::stdIncludes.view' )
