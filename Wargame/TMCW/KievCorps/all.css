@@ -1303,6 +1303,8 @@ svg marker#head {
 
 #crt {
   width: 520px; }
+  #crt #odds span, #crt .roll span {
+    width: 40px; }
   #crt .crt-table-name {
     display: none; }
 
@@ -1322,8 +1324,11 @@ svg marker#head {
 .specialHexesVP .rebelVictoryPoints {
   text-shadow: 0px 0px 1px orange, 0px 0px 1px orange, 0px 0px 1px orange, 0px 0px 2px orange, 0px 0px 2px orange, 0px 0px 2px orange, 0px 0px 3px orange, 0px 0px 3px orange, 0px 0px 3px orange, 0px 0px 4px orange, 0px 0px 4px orange, 0px 0px 4px orange, 0px 0px 5px orange, 0px 0px 5px orange, 0px 0px 5px orange, 0px 0px 6px orange, 0px 0px 6px orange, 0px 0px 6px orange, 0px 0px 7px orange, 0px 0px 7px orange, 0px 0px 7px orange, 0px 0px 8px orange, 0px 0px 8px orange, 0px 0px 8px orange, 0px 0px 9px orange, 0px 0px 9px orange, 0px 0px 9px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 1px orange, 0px 0px 1px orange, 0px 0px 1px orange, 0px 0px 2px orange, 0px 0px 2px orange, 0px 0px 2px orange, 0px 0px 3px orange, 0px 0px 3px orange, 0px 0px 3px orange, 0px 0px 4px orange, 0px 0px 4px orange, 0px 0px 4px orange, 0px 0px 5px orange, 0px 0px 5px orange, 0px 0px 5px orange, 0px 0px 6px orange, 0px 0px 6px orange, 0px 0px 6px orange, 0px 0px 7px orange, 0px 0px 7px orange, 0px 0px 7px orange, 0px 0px 8px orange, 0px 0px 8px orange, 0px 0px 8px orange, 0px 0px 9px orange, 0px 0px 9px orange, 0px 0px 9px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 10px orange; }
 
-.specialHexesVP .loyalistVictoryPoints {
-  text-shadow: 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666; }
+.specialHexesVP .germanVictoryPoints {
+  text-shadow: 0px 0px 1px gray, 0px 0px 1px gray, 0px 0px 1px gray, 0px 0px 2px gray, 0px 0px 2px gray, 0px 0px 2px gray, 0px 0px 3px gray, 0px 0px 3px gray, 0px 0px 3px gray, 0px 0px 4px gray, 0px 0px 4px gray, 0px 0px 4px gray, 0px 0px 5px gray, 0px 0px 5px gray, 0px 0px 5px gray, 0px 0px 6px gray, 0px 0px 6px gray, 0px 0px 6px gray, 0px 0px 7px gray, 0px 0px 7px gray, 0px 0px 7px gray, 0px 0px 8px gray, 0px 0px 8px gray, 0px 0px 8px gray, 0px 0px 9px gray, 0px 0px 9px gray, 0px 0px 9px gray, 0px 0px 10px gray, 0px 0px 10px gray, 0px 0px 10px gray, 0px 0px 1px gray, 0px 0px 1px gray, 0px 0px 1px gray, 0px 0px 2px gray, 0px 0px 2px gray, 0px 0px 2px gray, 0px 0px 3px gray, 0px 0px 3px gray, 0px 0px 3px gray, 0px 0px 4px gray, 0px 0px 4px gray, 0px 0px 4px gray, 0px 0px 5px gray, 0px 0px 5px gray, 0px 0px 5px gray, 0px 0px 6px gray, 0px 0px 6px gray, 0px 0px 6px gray, 0px 0px 7px gray, 0px 0px 7px gray, 0px 0px 7px gray, 0px 0px 8px gray, 0px 0px 8px gray, 0px 0px 8px gray, 0px 0px 9px gray, 0px 0px 9px gray, 0px 0px 9px gray, 0px 0px 10px gray, 0px 0px 10px gray, 0px 0px 10px gray; }
+
+.specialHexesVP .sovietVictoryPoints {
+  text-shadow: 0px 0px 1px brown, 0px 0px 1px brown, 0px 0px 1px brown, 0px 0px 2px brown, 0px 0px 2px brown, 0px 0px 2px brown, 0px 0px 3px brown, 0px 0px 3px brown, 0px 0px 3px brown, 0px 0px 4px brown, 0px 0px 4px brown, 0px 0px 4px brown, 0px 0px 5px brown, 0px 0px 5px brown, 0px 0px 5px brown, 0px 0px 6px brown, 0px 0px 6px brown, 0px 0px 6px brown, 0px 0px 7px brown, 0px 0px 7px brown, 0px 0px 7px brown, 0px 0px 8px brown, 0px 0px 8px brown, 0px 0px 8px brown, 0px 0px 9px brown, 0px 0px 9px brown, 0px 0px 9px brown, 0px 0px 10px brown, 0px 0px 10px brown, 0px 0px 10px brown, 0px 0px 1px brown, 0px 0px 1px brown, 0px 0px 1px brown, 0px 0px 2px brown, 0px 0px 2px brown, 0px 0px 2px brown, 0px 0px 3px brown, 0px 0px 3px brown, 0px 0px 3px brown, 0px 0px 4px brown, 0px 0px 4px brown, 0px 0px 4px brown, 0px 0px 5px brown, 0px 0px 5px brown, 0px 0px 5px brown, 0px 0px 6px brown, 0px 0px 6px brown, 0px 0px 6px brown, 0px 0px 7px brown, 0px 0px 7px brown, 0px 0px 7px brown, 0px 0px 8px brown, 0px 0px 8px brown, 0px 0px 8px brown, 0px 0px 9px brown, 0px 0px 9px brown, 0px 0px 9px brown, 0px 0px 10px brown, 0px 0px 10px brown, 0px 0px 10px brown; }
 
 /* RULES OVERRIDES */
 .gameLength {
@@ -1352,5 +1357,17 @@ svg marker#head {
     color: #333333;
     color: #333;
     font-size: 16px; }
+
+.unit .steps {
+  position: absolute;
+  font-size: 10px;
+  left: 2px; }
+  .unit .steps .step {
+    background: #333;
+    border: 1px solid #333;
+    border-radius: 100%;
+    width: 1px;
+    height: 1px;
+    margin-top: 3px; }
 
 /*# sourceMappingURL=all.css.map */

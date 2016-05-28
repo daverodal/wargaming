@@ -748,10 +748,14 @@ class Force extends SimpleForce
 
     function replace($id)
     {
-        if ($this->units[$id]->isReduced && $this->units[$id]->status != STATUS_REPLACED) {
-//            $this->units[$id]->strength = $this->units[$id]->maxStrength;
-            $this->units[$id]->isReduced = false;
-            $this->units[$id]->status = STATUS_REPLACED;
+        $unit = $this->units[$id];
+        if ($unit->isReduced && $unit->status != STATUS_REPLACED) {
+            if(method_exists($unit, 'replace')){
+                $unit->replace();
+            }else{
+                $unit->isReduced = false;
+            }
+            $unit->status = STATUS_REPLACED;
             return true;
         }
         return false;

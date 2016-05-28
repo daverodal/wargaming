@@ -25,18 +25,19 @@ use \stdClass;
 class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 {
     use \Wargame\DivMCWCombatShiftTerrain;
+    use CRTResults;
     public $aggressorId = GERMAN_FORCE;
 
     function __construct(){
-        $this->combatResultsHeader = array("1:1","2:1","3:1","4:1","5:1","6:1", "7:1", "8:1", "9:1", "10:1", "11:1");
+        $this->combatResultsHeader = array("1:1","2:1","3:1","4:1","5:1","6:1", "7:1");
         $this->crts = new stdClass();
         $this->crts->normal = array(
-            array(AE, AE, AE, AR, AR, NE, NE, EX, EX, EX, EX),
-            array(AE, AE, AL, AR, NE, DR, EX, EX, DRL, DRL, DRL),
-            array(AE, AL, AR, NE, DR, EX, EX, EX, DRL, DE, DE),
-            array(AE, AL, NE, NE, DR, EX, EX, DRL, DE, DE, DE),
-            array(AL, AR, NE, DR, EX, DRL, DRL, DRL, DE, DE, DE),
-            array(AL, AR, DR, DR, EX, DRL, DE, DE, DE, DE, DE),
+            array(AL, AL, NE, BL, DRL, DRL, DRL),
+            array(AL, AL, BL, DR, DRL, DRL, DL2R),
+            array(AL, AR, DR, DRL, DRL, DL2R, DL2R),
+            array(AR, AR, DR, DRL, DL2R, DL2R, DL2R),
+            array(AR, NE, DRL, DRL, DL2R, DL2R, DL2R),
+            array(AR, DR, DRL, DRL, DL2R, DL2R, DL2R),
         );
 
         $this->combatOddsTable = array(
@@ -53,10 +54,10 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
             array(),
         );
 
-        $this->combatIndexCount = 11;
+        $this->combatIndexCount = 7;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
-        $this->combatResultCount = 10;
+        $this->combatResultCount = 6;
 
         $this->setCombatOddsTable();
     }

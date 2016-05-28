@@ -35,6 +35,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 
     public $sovietGoal;
     public $germanGoal;
+    public $unsuppliedDefenderHalved = true;
 
     function __construct($data)
     {
@@ -60,21 +61,21 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         $this->supplyLen = $supplyLen[0];
     }
 
-    public function specialHexChange($args)
-    {
-        $battle = Battle::getBattle();
-        list($mapHexName, $forceId) = $args;
-
-//        if(in_array($mapHexName, $battle->specialHexC)){
+//    public function specialHexChange($args)
+//    {
+//        $battle = Battle::getBattle();
+//        list($mapHexName, $forceId) = $args;
 //
-//            if ($forceId == SOVIET_FORCE) {
-//                $this->victoryPoints = "The Soviets hold Kiev";
-//            }
-//            if ($forceId == GERMAN_FORCE) {
-//                $this->victoryPoints = "The Germans hold Kiev";
-//            }
-//        }
-    }
+////        if(in_array($mapHexName, $battle->specialHexC)){
+////
+////            if ($forceId == SOVIET_FORCE) {
+////                $this->victoryPoints = "The Soviets hold Kiev";
+////            }
+////            if ($forceId == GERMAN_FORCE) {
+////                $this->victoryPoints = "The Germans hold Kiev";
+////            }
+////        }
+//    }
 
     public function postReinforceZones($args)
     {
@@ -98,31 +99,24 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
     public function reduceUnit($args)
     {
         $unit = $args[0];
-        if ($unit->strength == $unit->maxStrength) {
-            if ($unit->status == STATUS_ELIMINATING || $unit->status == STATUS_RETREATING) {
-                $vp = $unit->maxStrength;
-            } else {
-                $vp = $unit->maxStrength - $unit->minStrength;
-            }
-        } else {
-            $vp = $unit->minStrength;
-        }
+        $vp = $unit->damage;
         if ($unit->forceId == 1) {
             $victorId = 2;
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='loyalistVictoryPoints'>+$vp vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='sovietVictoryPoints'>+$vp</span>";
         } else {
             $victorId = 1;
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "+$vp vp";
+            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='germanVictoryPoints'>+$vp</span>";
             $this->victoryPoints[$victorId] += $vp;
         }
     }
 
     protected function checkVictory($attackingId, $battle){
+
         $battle = Battle::getBattle();
 
         global $force_name;
@@ -249,12 +243,12 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 
         }else{
             /* German goal is west Edge */
-            for($i = 1; $i <= 38;$i++){
+            for($i = 1; $i <= 20;$i++){
                 $germanGoal[] = 100 + $i;
             }
             /* Soviet goal is west Edge */
-            for($i = 1; $i <= 38    ;$i++){
-                $sovietGoal[] = 4600 + $i;
+            for($i = 1; $i <= 20    ;$i++){
+                $sovietGoal[] = 2100 + $i;
             }
         }
 
@@ -315,7 +309,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($attackingId == SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
-            $gameRules->replacementsAvail = 6;
+            $gameRules->replacementsAvail = 2;
         }
 
         /*only get special VPs' at end of first Movement Phase */
