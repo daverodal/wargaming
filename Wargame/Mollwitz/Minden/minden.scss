@@ -22,7 +22,7 @@
 }
 @include player(French, French, $frenchColor, $frenchWrapperColor);
 @include player(AngloAllied, Anglo-Allied, $angloAlliedColor, $angloAlliedWrapperColor);
-
+@include headerColor(Anglo-Allied, $angloAlliedColor);
 .anglo.specialHexes{
   background-color: $angloAlliedColor;
   color:white;

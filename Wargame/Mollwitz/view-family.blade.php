@@ -5,6 +5,9 @@
 
 <?php  include_once "Wargame/Mollwitz/$clsName/all.css";?>
 </style>
+@section('credit')
+    @include('wargame::Mollwitz.credit')
+@endsection
 @if(view()->exists("$curPath.victoryConditions"))
     @section('victoryConditions')
         @include("$curPath.victoryConditions")

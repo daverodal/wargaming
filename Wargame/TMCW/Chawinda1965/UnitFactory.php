@@ -54,7 +54,6 @@ use \stdClass;
                 }
                 $this->dirty = false;
             } else {
-                $this->adjustments = new stdClass();
             }
         }
 
@@ -97,21 +96,7 @@ use \stdClass;
         public function getMaxMove()
         {
             $maxMove = $this->maxMove;
-            foreach ($this->adjustments as $name => $adjustment) {
-                if ($name === 'movement') {
-                    switch ($adjustment) {
-                        case 'floorHalfMovement':
-                            $maxMove = floor($maxMove / 2);
-                            break;
-                        case 'halfMovement':
-                            $maxMove = $maxMove / 2;
-                            break;
-                        case 'oneMovement':
-                            $maxMove = 1;
-                            break;
-                    }
-                }
-            }
+            $maxMove = $this->getMovementAdjustments($maxMove);
             return $maxMove;
         }
 
@@ -135,21 +120,9 @@ use \stdClass;
                     $strength = $this->unitDefStrength + $this->secondUnitDefStrength + 2;
                 }
             }
-
-            foreach ($this->adjustments as $name => $adjustment) {
-                switch ($adjustment) {
-                    case 'floorHalf':
-                        $strength = floor($strength / 2);
-                        break;
-                    case 'half':
-                        $strength = floor($strength / 2);
-                        break;
-                    case 'double':
-                        $strength = $strength * 2;
-                        break;
-                }
-            }
-
+            
+            $strength = $this->getCombatAdjustments($strength);
+            
             return $strength;
         }
 

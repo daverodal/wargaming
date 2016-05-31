@@ -56,19 +56,8 @@ class LandAirUnit extends \Wargame\BaseUnit implements JsonSerializable
         if($battle->gameRules->phase === BLUE_AIR_COMBAT_PHASE || $battle->gameRules->phase === RED_AIR_COMBAT_PHASE){
             $strength = $this->unitAirStrength;
         }
-        foreach ($this->adjustments as $adjustment) {
-            switch ($adjustment) {
-                case 'floorHalf':
-                    $strength = floor($strength / 2);
-                    break;
-                case 'half':
-                    $strength = $strength / 2;
-                    break;
-                case 'double':
-                    $strength = $strength * 2;
-                    break;
-            }
-        }
+        $strength = $this->getCombatAdjustments($strength);
+
         return $strength;
     }
 
@@ -148,7 +137,6 @@ class LandAirUnit extends \Wargame\BaseUnit implements JsonSerializable
             }
             $this->dirty = false;
         } else {
-            $this->adjustments = new stdClass();
         }
     }
 

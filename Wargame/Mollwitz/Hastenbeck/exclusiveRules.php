@@ -23,64 +23,35 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<style type="text/css">
-</style>
-<div class="dropDown" id="GRWrapper">
-    <h4 class="WrapperLabel" title="Game Rules">Exclusive Rules</h4>
 
-    <div id="GR" style="display:none">
-        <div class="close">X</div>
-        <div class="game-rules">
-            <H1>
-                <?=$name?>
-            </H1>
-            <h2 class="exclusive"> EXCLUSIVE RULES
-            </h2>
-            <ol class="topNumbers">
-                <li>
-                    <span class="lessBig">Setting Up</span>
-                <ol>
-                    <li>The <?= $forceName[2] ?> player sets up first. The <?= $forceName[1] ?> Setup second.</li>
-                    <?php if(empty($scenario->redux) && empty($scenario->hastenbeck2)){?>
-                    <li>When the <?= $forceName[1] ?> player starts deploying their units. There is a %50 chance they can
-                        deploy in the F2 hexes, and %50 they
-                        have to deploy in the F1 Hexes.
-                    </li>
-                    <?php } ?>
-                    <li> <?= $forceName[1] ?> moves first. <?= $forceName[2] ?> moves second.</li>
-
-                    </li>
-                </ol>
-                <li><span class="lessBig">Terrain</span>
-                    <ol>
-                        <li>
-                            Streams are +2 MP's to cross
-                        </li>
-                        <li>
-                            Major Rivers (dark thick blue) are impassable
-                        </li>
-                        <li>
-                            HAMELN Is a Major Fortification Garrisoned by the Allies No French unit may ever enter it.
-                        </li>
-                    </ol>
-
+<ol class="topNumbers">
+    <li>
+        <span class="lessBig">Setting Up</span>
+        <ol>
+            <li>The <?= $forceName[2] ?> player sets up first. The <?= $forceName[1] ?> Setup second.</li>
+            <?php if (empty($scenario->redux) && empty($scenario->hastenbeck2)) { ?>
+                <li>When the <?= $forceName[1] ?> player starts deploying their units. There is a %50 chance they can
+                    deploy in the F2 hexes, and %50 they
+                    have to deploy in the F1 Hexes.
                 </li>
+            <?php } ?>
+            <li> <?= $forceName[1] ?> moves first. <?= $forceName[2] ?> moves second.</li>
 
-                    <?php include "victoryConditions.php"?>
-            </ol>
-            <div id="credits">
-                <h2><cite><?=$name?></cite></h2>
-                <h4>Design Credits</h4>
+            </li>
+        </ol>
+    <li><span class="lessBig">Terrain</span>
+        <ol>
+            <li>
+                Streams are +2 MP's to cross
+            </li>
+            <li>
+                Major Rivers (dark thick blue) are impassable
+            </li>
+            <li>
+                HAMELN Is a Major Fortification Garrisoned by the Allies No French unit may ever enter it.
+            </li>
+        </ol>
 
-                <div class="indent">
-                    <h4>Game Design:</h4>
-                    <cite>Lance Runolfsson</cite>
-                    <h4>Graphics and Rules:</h4>
-                    <cite>Lance Runolfsson</cite>
-                    <h4>HTML 5 Version:</h4>
-                    <cite>David M. Rodal</cite>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </li>
+</ol>
+           

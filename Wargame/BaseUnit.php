@@ -30,7 +30,6 @@ class BaseUnit extends MovableUnit{
     public $retreatCountRequired;
     public $combatResults;
     public $dieRoll;
-    public $adjustments;
 
 
     /* damage is related to exchangeAmount, damage is always strength points, for victory points,
@@ -52,17 +51,7 @@ class BaseUnit extends MovableUnit{
         }
         return $this;
     }
-
-
-    function addAdjustment($name, $adjustment)
-    {
-        $this->adjustments->$name = $adjustment;
-    }
-
-    function removeAdjustment($name)
-    {
-        unset($this->adjustments->$name);
-    }
+    
 
     function setStatus($status)
     {

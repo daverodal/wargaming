@@ -15,6 +15,9 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
+$fa-font-path:   "/fonts/font-awesome";
+@import "font-awesome";
+
 $darkBlack: #333;
 $stdFont: 16px;
 
@@ -177,7 +180,7 @@ h5 {
 
 #nextPhaseWrapper {
   float: left;
-  #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey {
+  .dynamicButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey {
     font-size: 28px;
     position: static;
   }
@@ -431,11 +434,16 @@ body {
     margin-bottom: 5px;
   }
   #credits {
+    font-size:16px;
+    font-weight:normal;
     h2 {
       color: #338833;
+      font-weight:bold;
     }
     h4 {
       margin-bottom: 0px;
+      font-size:16px;
+      font-weight:bold;
     }
   }
 

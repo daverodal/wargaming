@@ -15,14 +15,12 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-global $force_name;
-$playerOne = $force_name[1];
-$playerTwo = $force_name[2];?>
+?>
 <li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
     <ol>
-        <li> At the end of any <?=$forceNameTwo?> player turn, that the <?=$forceNameOne?>'s occupy or were the last to pass through
-            Malplaquet and at least one other city. and have a 10 point lead in victory points, the <?=$forceNameOne?>'s win.
+        <li> At the end of any <?=$forceName[2]?> player turn, that the <?=$forceName[1]?>'s occupy or were the last to pass through
+            Malplaquet and at least one other city. and have a 10 point lead in victory points, the <?=$forceName[1]?>'s win.
             <p>
                 Victory points are awared as follows:
                 For each infantry strength eliminated, one victory point.
@@ -30,7 +28,7 @@ $playerTwo = $force_name[2];?>
             </p>
             </li>
         <li>
-            If the <?=$forceNameTwo?> player can avoid the above victory until the end of turn 12, and hold all the cities, the <?=$forceNameTwo?> wins.
+            If the <?=$forceName[2]?> player can avoid the above victory until the end of turn 12, and hold all the cities, the <?=$forceName[2]?> wins.
             </li>
         <li>
             Any other outcome, a draw.

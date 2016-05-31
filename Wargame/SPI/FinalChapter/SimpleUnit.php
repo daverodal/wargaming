@@ -79,19 +79,8 @@ use \Wargame\BaseUnit;
                 $strength = $this->unitDefStrength;
             }
 
-            foreach ($this->adjustments as $adjustment) {
-                switch ($adjustment) {
-                    case 'floorHalf':
-                        $strength = floor($strength / 2);
-                        break;
-                    case 'half':
-                        $strength = $strength / 2;
-                        break;
-                    case 'double':
-                        $strength = $strength * 2;
-                        break;
-                }
-            }
+            $strength = $this->getCombatAdjustments($strength);
+           
             return $strength;
         }
 
@@ -164,7 +153,6 @@ use \Wargame\BaseUnit;
                 }
                 $this->dirty = false;
             } else {
-                $this->adjustments = new stdClass();
             }
         }
 

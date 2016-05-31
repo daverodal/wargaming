@@ -17,6 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?>
+    @section('unitRules.unitColors')
     <li>
         <?= $forceName[1] ?> units are this color.
         <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
@@ -42,6 +43,7 @@
             <div class="unit-numbers">9 - 6</div>
         </div>
     </li>
+    @show
     <li>
         The symbol above the numbers represents the unit type.
         This is Armor (tanks).
@@ -79,7 +81,7 @@
                 <img src="<?= url('js/multiInf.png'); ?>" class="counter">
             </div>
 
-            <div class="unit-numbers">2 - 8</div>
+            <div class="unit-numbers">2 - 5</div>
         </div>
     </li>
     <li>
@@ -97,6 +99,7 @@
         <p class="ruleComment">
             The above unit has a combat strength of 9 and a movenent allowance of 6.</p>
     </li>
+    @section('unitRules.reducedUnits')
     <li>
         If a units numbers are in white, that means this unit is at reduced strength and can receive
         replacements
@@ -126,3 +129,4 @@
 
         <div class="clear">&nbsp;</div>
     </li>
+    @show

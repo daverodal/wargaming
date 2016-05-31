@@ -3,7 +3,7 @@
     "name": "Napoleon's Training Academy",
     "path": "NTA",
     "genre": "Training",
-    "fileName": "NapoleonsTrainingAcademy.php",
+    "fileName": "\\Wargame\\NTA\\NapoleonsTrainingAcademy",
     "scenarios": {
       "main": {
         "description":"Introductory Game "

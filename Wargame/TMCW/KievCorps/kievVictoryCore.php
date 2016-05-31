@@ -36,6 +36,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
     public $sovietGoal;
     public $germanGoal;
     public $unsuppliedDefenderHalved = true;
+    public $dismissed = false;
 
     function __construct($data)
     {
@@ -43,8 +44,10 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         if ($data) {
             $this->germanGoal = $data->victory->germanGoal;
             $this->sovietGoal = $data->victory->sovietGoal;
+            $this->dismissed = $data->victory->dismissed;
         } else {
             $this->germanGoal = $this->sovietGoal = [];
+            $this->victoryPoints[3] = 0;
         }
     }
 
@@ -53,6 +56,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         $ret = parent::save();
         $ret->germanGoal = $this->germanGoal;
         $ret->sovietGoal = $this->sovietGoal;
+        $ret->dismissed = $this->dismissed;
         return $ret;
     }
 
@@ -105,23 +109,26 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='sovietVictoryPoints'>+$vp</span>";
+            if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
+                $battle->mapData->specialHexesVictory->{$hex->name} = '';
+            }
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
         } else {
             $victorId = 1;
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='germanVictoryPoints'>+$vp</span>";
+            if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
+                $battle->mapData->specialHexesVictory->{$hex->name} = '';
+            }
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='germanVictoryPoints'>+$vp</span>";
             $this->victoryPoints[$victorId] += $vp;
         }
     }
 
-    protected function checkVictory($attackingId, $battle){
-
+    public function checkSurrounded(){
         $battle = Battle::getBattle();
 
-        global $force_name;
         $gameRules = $battle->gameRules;
-        $turn = $gameRules->turn;
         $this->victoryPoints[3] = 0;
         if(!$this->gameOver){
             $battle = Battle::getBattle();
@@ -136,7 +143,17 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
                     }
                 }
             }
+            if(!$this->dismissed && $this->victoryPoints[1] + $this->victoryPoints[3] >= 35){
+                $this->dismissed = true;
+                $battle->gameRules->flashMessages[] = "Budyonny Relieved.";
+                $battle->gameRules->flashMessages[] = "Unsupplied units may not enter zoc or attack.";
+
+            }
         }
+    }
+    protected function checkVictory($attackingId, $battle){
+
+        $this->checkSurrounded();
         return false;
     }
 
@@ -213,6 +230,34 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
+    public function preStartMovingUnit($arg)
+    {
+        $unit = $arg[0];
+        $battle = Battle::getBattle();
+        if ($unit->class != 'mech') {
+            $battle->moveRules->enterZoc = "stop";
+            $battle->moveRules->exitZoc = 1;
+            $battle->moveRules->noZocZoc = true;
+        } else {
+
+            $battle->moveRules->enterZoc = 3;
+            $battle->moveRules->exitZoc = 2;
+            $battle->moveRules->noZocZocOneHex = true;
+            $battle->moveRules->noZocZoc = false;
+
+        }
+        if($this->dismissed){
+            if($battle->gameRules->phase == RED_MOVE_PHASE && $unit->supplied !== true) {
+                $battle->moveRules->noZoc = true;
+            }
+            else{
+                $battle->moveRules->noZoc = false;
+            }
+
+        }
+
+    }
+
     public function preRecoverUnits()
     {
 
@@ -285,8 +330,13 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
             }
             $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
         }
+        $this->checkSurrounded();
+        if($this->dismissed){
+            if ($b->gameRules->phase == RED_COMBAT_PHASE && $unit->supplied !== true) {
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
+        }
     }
-
 
     public function playerTurnChange($arg)
     {
@@ -309,7 +359,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($attackingId == SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
-            $gameRules->replacementsAvail = 2;
+            $gameRules->replacementsAvail = 6;
         }
 
         /*only get special VPs' at end of first Movement Phase */

@@ -69,19 +69,8 @@ class Unit extends BaseUnit implements \JsonSerializable
         } else {
             $strength = $this->maxStrength;
         }
-        foreach ($this->adjustments as $adjustment) {
-            switch ($adjustment) {
-                case 'floorHalf':
-                    $strength = floor($strength / 2);
-                    break;
-                case 'half':
-                    $strength = $strength / 2;
-                    break;
-                case 'double':
-                    $strength = $strength * 2;
-                    break;
-            }
-        }
+        $strength = $this->getCombatAdjustments($strength);
+
         return $strength;
     }
 
@@ -158,7 +147,6 @@ class Unit extends BaseUnit implements \JsonSerializable
             }
             $this->dirty = false;
         } else {
-            $this->adjustments = new stdClass();
         }
     }
 

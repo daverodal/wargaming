@@ -24,24 +24,6 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<style type="text/css">
-
-    /*#GR ol.ExclusiveRules{*/
-    /*counter-reset: item 6;*/
-    /*}*/
-</style>
-<div class="dropDown" id="GRWrapper">
-    <h4 class="WrapperLabel" title="Game Rules">Exclusive Rules</h4>
-
-    <div class="exclusive" id="GR" style="display:none">
-        <div class="close">X</div>
-        <div class="game-rules">
-            <H1>
-                <?= $name ?>
-            </H1>
-
-            <h2 class="exclusive"> EXCLUSIVE RULES </h2>
-
             <div class="indent">
                 <ol style="counter-reset: item 0;">
                     @section('inner-units')
@@ -50,23 +32,4 @@ You should have received a copy of the GNU General Public License
                     @show
                 </ol>
             </div>
-        </div>
-            <ol class="ExclusiveRules">
 
-                @section('victoryConditions')
-                @show
-
-            </ol>
-        <div id="credits">
-            <h2><cite><?= $name ?></cite></h2>
-            <h4>Design Credits</h4>
-
-            <h4>Game Design:</h4>
-            Lance Runolfsson
-            <h4>Graphics and Rules:</h4>
-            <site>Lance Runolfsson</site>
-            <h4>HTML 5 Version:</h4>
-            David M. Rodal
-        </div>
-    </div>
-</div>

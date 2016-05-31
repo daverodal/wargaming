@@ -1,6 +1,13 @@
 <?php
 namespace Wargame\NTA;
-use \UnitFactory;
+use Wargame\UnitFactory;
+use Wargame\MapViewer;
+use Wargame\Force;
+use Wargame\MoveRules;
+use Wargame\CombatRules;
+use Wargame\GameRules;
+use Wargame\Terrain;
+use \stdClass;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -31,7 +38,7 @@ global $phase_name,$mode_name, $event_name, $status_name, $results_name,$combatR
 
 
 
-class NapoleonsTrainingAcademy extends \ModernLandBattle{
+class NapoleonsTrainingAcademy extends \Wargame\ModernLandBattle{
 
     /* @var Mapdata */
     public $mapData;
@@ -111,17 +118,17 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
 
     function __construct($data = null, $arg = false, $scenario = false)
     {
-        $this->mapData = \MapData::getInstance();
+        $this->mapData = \Wargame\MapData::getInstance();
         if ($data) {
             $this->arg = $data->arg;
             $this->scenario = $data->scenario;
             $this->genTerrain = false;
             $this->victory = new \Wargame\Victory("\\Wargame\\NTA\\victoryCore",$data);
             $this->mapData->init($data->mapData);
-            $this->mapViewer = array(new \MapViewer($data->mapViewer[0]),new \MapViewer($data->mapViewer[1]),new \MapViewer($data->mapViewer[2]));
+            $this->mapViewer = array(new MapViewer($data->mapViewer[0]),new MapViewer($data->mapViewer[1]),new MapViewer($data->mapViewer[2]));
             $units = $data->force->units;
             unset($data->force->units);
-            $this->force = new \Force($data->force);
+            $this->force = new Force($data->force);
             foreach($units as $unit){
                 $this->force->injectUnit(static::buildUnit($unit));
             }
@@ -132,10 +139,10 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
                 $this->terrain = new \stdClass();
             }
 
-            $this->moveRules = new \MoveRules($this->force, $this->terrain, $data->moveRules);
+            $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
             $this->moveRules->stickyZoc = true;
-            $this->combatRules = new \CombatRules($this->force, $this->terrain, $data->combatRules);
-            $this->gameRules = new \GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
+            $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
+            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
             $this->players = $data->players;
         } else {
 
@@ -147,14 +154,14 @@ class NapoleonsTrainingAcademy extends \ModernLandBattle{
             $this->mapData->setData(19,9,"js/centre.png");
 
             $this->mapData->setSpecialHexes(array(1005=>0));
-            $this->mapViewer = array(new \MapViewer(),new \MapViewer(),new \MapViewer());
-            $this->force = new \Force();
+            $this->mapViewer = array(new MapViewer(),new MapViewer(),new MapViewer());
+            $this->force = new \Wargame\Force();
             $this->force->combatRequired = true;
-            $this->terrain = new \Terrain();
+            $this->terrain = new \Wargame\Terrain();
 //            $this->terrain->setMaxHex("2010");
-            $this->moveRules = new \MoveRules($this->force, $this->terrain);
-            $this->combatRules = new \CombatRules($this->force, $this->terrain);
-            $this->gameRules = new \GameRules($this->moveRules, $this->combatRules, $this->force);
+            $this->moveRules = new \Wargame\MoveRules($this->force, $this->terrain);
+            $this->combatRules = new \Wargame\CombatRules($this->force, $this->terrain);
+            $this->gameRules = new \Wargame\GameRules($this->moveRules, $this->combatRules, $this->force);
             $this->players = array("","","");
             for($player = 0;$player <= 2;$player++){
                 $this->mapViewer[$player]->setData(65,85, // originX, originY

@@ -25,72 +25,35 @@ You should have received a copy of the GNU General Public License
  */
 
 ?>
-<style type="text/css">
 
-        /*#GR ol.ExclusiveRules{*/
-            /*counter-reset: item 6;*/
-       /*}*/
-</style>
-<div class="dropDown" id="GRWrapper">
-    <h4 class="WrapperLabel" title="Game Rules">Exclusive Rules</h4>
+<ol>
+    <li><span class="lessBig">Deploy Phase</span>
+    <li><?= $deployName[1] ?>: player deploys first.</li>
+    <li><?= $deployName[2] ?>: player deploys second.
+    </li>
+    </li>
+    <li><span class="lessBig">Movement</span>
+        <ol>
+            <li><?= $forceName[1] ?>: player moves first.</li>
+            <li><?= $forceName[2] ?>: player moves second.
+            </li>
 
-    <div id="GR" style="display:none">
-        <div class="close">X</div>
-        <div class="game-rules">
-            <H1>
-                <?= $name ?>
-            </H1>
+        </ol>
+    </li>
+    <li><span class="lessBig">Combat</span>
+        <ol>
+            <li><?= $forceName[1] ?>: Units: Add 1 to their combat factor when defending in or attacking into clear
+                terrain.
+            </li>
+            <li><?= $forceName[2] ?>: Units: Add 1 to their combat factor when defending in Hexes or all opponents are
+                attacking across (hex sides) other than clear.
 
-            <h2 class="exclusive"> EXCLUSIVE RULES </h2>
-            <ol>
-                <li><span class="lessBig">Deploy Phase</span>
-                <li><?= $deployName[1]?>: player deploys first.</li>
-                <li><?= $deployName[2]?>:  player deploys second.
-                </li>
-                </li>
-                <li><span class="lessBig">Movement</span>
-                    <ol>
-                        <li><?= $forceName[1]?>: player moves first.</li>
-                            <li><?= $forceName[2]?>:  player moves second.
-                        </li>
+            </li>
+            <li>
+                Attacks across Fords: The Hessians were able to force the fords with little difficulty. Do not half
+                units attacking across the fords (Trail Bridges).
+            </li>
 
-                    </ol>
-                </li>
-                <li> <span class="lessBig">Demoralization</span>
-                    <ol>
-                        <li>
-                            Once the Rebels have lost 30 combat strength points their units my not enter voluntarily enter hostile ZOC’s or attack.
-                        </li>
-                    </ol>
-                </li>
-                <li><span class="lessBig">Combat</span>
-                    <ol>
-                        <li><?= $forceName[1]?>: Units: Add 1 to their combat factor when defending in or attacking into clear terrain.
-                        </li>
-                        <li><?= $forceName[2]?>: Units: Add 1 to their combat factor when defending in Hexes or all opponents are attacking across (hex sides) other than clear.
-
-                        </li>
-                        <li>
-                            Attacks across Fords: The Hessians were able to force the fords with little difficulty. Do not half units attacking across the fords (Trail Bridges).
-                        </li>
-
-                    </ol>
-                </li>
-            </ol>
-            <ol class="ExclusiveRules topNumbers">
-                <?php include "victoryConditions.php" ?>
-            </ol>
-            <div id="credits">
-                <h2><cite><?= $name ?></cite></h2>
-                <h4>Design Credits</h4>
-
-                <h4>Game Design:</h4>
-                Lance Runolfsson
-                <h4>Graphics and Rules:</h4>
-                <site>Lance Runolfsson</site>
-                <h4>HTML 5 Version:</h4>
-                David M. Rodal
-            </div>
-        </div>
-    </div>
-</div>
+        </ol>
+    </li>
+</ol>

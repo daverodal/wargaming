@@ -723,3 +723,7 @@ $danishWrapperColor: #bfbfbf;
 
 .one{}
 @include unitColor(Native, $angloAlliedWrapperColor, Native);
+
+.clear{
+  clear:both;
+}

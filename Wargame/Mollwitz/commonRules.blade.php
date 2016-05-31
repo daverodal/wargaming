@@ -793,17 +793,9 @@
                     @show
                 </div>
             </ol>
-            <div id="credits">
-                <h2><cite><?= $name ?></cite></h2>
-                <h4>Design Credits</h4>
-
-                <h4>Game Design:</h4>
-                Lance Runolfsson
-                <h4>Graphics and Rules:</h4>
-                <site>Lance Runolfsson</site>
-                <h4>HTML 5 Version:</h4>
-                David M. Rodal
-            </div>
+            @section('credit')
+                @include('wargame::Mollwitz.credit')
+            @show
         </div>
     </div>
 </div>

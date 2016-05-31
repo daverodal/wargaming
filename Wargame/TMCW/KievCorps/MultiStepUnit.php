@@ -51,17 +51,6 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
     }
 
 
-    function addAdjustment($name, $adjustment)
-    {
-        $this->adjustments->$name = $adjustment;
-    }
-
-    function removeAdjustment($name)
-    {
-        unset($this->adjustments->$name);
-    }
-
-
     public function getUnmodifiedStrength(){
 
         $strength = $this->origStrength;
@@ -98,20 +87,8 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
             return $this->origSteps > $this->steps;
         }
         $strength = $this->getUnmodifiedStrength();
+        $strength = $this->getCombatAdjustments($strength);
 
-        foreach ($this->adjustments as $adjustment) {
-            switch ($adjustment) {
-                case 'floorHalf':
-                    $strength = floor($strength / 2);
-                    break;
-                case 'half':
-                    $strength = $strength / 2;
-                    break;
-                case 'double':
-                    $strength = $strength * 2;
-                    break;
-            }
-        }
         return $strength;
     }
 
@@ -213,7 +190,6 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
             }
             $this->dirty = false;
         } else {
-            $this->adjustments = new stdClass();
         }
     }
 

@@ -64,13 +64,10 @@
                 <li id="unitsRules">
                     <span class="big">UNITS</span>
 
-                    <p>The units are in two colors.</p>
                     <ol>
                         @section('unitRules')
-
-                            <li>Brore</li>
                             @include('wargame::TMCW.commonUnitsRules')
-                    @show
+                        @show
                     </ol>
 
                 <?php //include "commonUnitsRules.php" ?>
@@ -97,18 +94,26 @@
                 </li>
                 <li id="combatRules">
                     {{--@include('wargame::TMCW.commonCombatRules')--}}
-
-                <?php //include "commonCombatRules.php"; ?>
                 </li>
 
+                <li id="exclusiveRules" class="exclusive">
+                    <span class="big">Exclusive Rules</span>
+                    @section('exclusiveRules')
+                        @include('wargame::TMCW.exclusiveRules')
+                    @show
+                </li>
                 <li class="exclusive" id="victoryConditions">
                     @section('victoryConditions')
                         @include('wargame::TMCW.victoryConditions')
                     @show
 
-                <?php //include "victoryConditions.php"; ?>
                 </li>
-
+                <li id="designCredits">
+                    <span class="big">Design Credits</span>
+                    @section('credit')
+                        @include('wargame::TMCW.credit')
+                    @show
+                </li>
             </ol>
         </div>
     </div>

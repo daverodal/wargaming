@@ -83,21 +83,9 @@ class NavalUnit extends \Wargame\MovableUnit implements \JsonSerializable
         if($name === "strength" && ($b->gameRules->phase == BLUE_TORP_COMBAT_PHASE || $b->gameRules->phase == RED_TORP_COMBAT_PHASE)){
             $strength = $this->torpedoStrength;
         }
-
-
-        foreach ($this->adjustments as $adjustment) {
-            switch ($adjustment) {
-                case 'floorHalf':
-                    $strength = floor($strength / 2);
-                    break;
-                case 'half':
-                    $strength = $strength / 2;
-                    break;
-                case 'double':
-                    $strength = $strength * 2;
-                    break;
-            }
-        }
+        
+        $strength = $this->getCombatAdjustments($strength);
+        
         return $strength;
     }
 
@@ -305,7 +293,6 @@ class NavalUnit extends \Wargame\MovableUnit implements \JsonSerializable
             }
             $this->dirty = false;
         } else {
-            $this->adjustments = new stdClass();
         }
     }
 

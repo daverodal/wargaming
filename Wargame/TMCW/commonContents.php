@@ -26,5 +26,8 @@
     <li><a href="#moveRules">Movement.</a></li>
     <li><a href="#zocRules">Zones of Control.</a></li>
     <li><a href="#combatRules">Combat.</a></li>
-    <li><a href="#victoryConditions">Victory & Exclusive Rules.</a></li>
+    <li><a href="#exclusiveRules">Exclusive Rules.</a></li>
+    <li><a href="#victoryConditions">Victory Conditions.</a></li>
+    <li><a href="#designCredits">Design Credits.</a></li>
+
 </ol>

@@ -25,9 +25,13 @@
 </style>
 <script type="text/javascript">
 x.register("vp", function(vp){
-        $("#victory").html(" Victory: <span class='playerOneFace'><?=$forceName[1]?> </span>"+vp[1]+ " <span class='playerTwoFace'><?=$forceName[2];?> </span>"+vp[2]+" Surrounded Soviets "+vp[3]);
 });
-
+x.register("victory", function(victory){
+        var vp = victory.victoryPoints;
+        var dismissed = victory.dismissed ? " dismissed" : "";
+        $("#victory").html(" Victory: <span class='playerOneFace'><?=$forceName[1]?> </span>"+vp[1]+ " <span class='playerTwoFace'><?=$forceName[2];?> </span>"+vp[2]+" Surrounded Soviets "+vp[3] + dismissed);
+        //        $("#victory").html(" Victory: <span class='playerOneFace'><?//=$forceName[1]?>// </span>"+vp[1]+ " <span class='playerTwoFace'><?//=$forceName[2];?>// </span>"+vp[2]+" Surrounded Soviets "+vp[3]);
+});
 function renderUnitNumbers(unit, moveAmount){
 
         var  move = unit.maxMove - unit.moveAmountUsed;
@@ -47,9 +51,14 @@ function renderUnitNumbers(unit, moveAmount){
 //        symb = "-"+unit.defStrength+"-";
         var html = reduceDisp + str + symb + move + "</span>";
 //        $("#"+unit.id+" .steps").html(unit.steps);
+        var stepsLost = unit.origSteps - unit.steps;
         var stepHtml = "";
-        for(var i = 0;i < unit.steps;i++){
-                stepHtml += '<div class="step"></div>';
+        for(var i = 0;i < unit.origSteps;i++){
+                if(i < stepsLost){
+                        stepHtml += '<div class="white step"></div>';
+                }else{
+                        stepHtml += '<div class="step"></div>';
+                }
         }
         $("#"+unit.id+" .steps").html(stepHtml);
         return html;
@@ -57,5 +66,15 @@ function renderUnitNumbers(unit, moveAmount){
 
 
 }
+function renderCrtDetails(combat){
+        var atk = combat.attackStrength;
+        var def = combat.defenseStrength;
+        var div = atk / def;
+        var ter = combat.terrainCombatEffect;
+        var combatCol = combat.index + 1;
 
+        var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Terrain Effects Shift  " + ter + " = " + $(".col" + combatCol).html() + "</div>"
+        /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
+        return html;
+}
 </script>

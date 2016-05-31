@@ -36,12 +36,12 @@
 }
 
 #crt {
+  width:680px;
   #odds, .roll{
     span{
-      width:40px;
+      width:45px;
     }
   }
-  width: 520px;
   .crt-table-name{
     display:none;
   }
@@ -123,5 +123,9 @@
     width:1px;
     height:1px;
     margin-top:3px;
+    &.white{
+      background:white;
+      border-color:white;
+    }
   }
 }

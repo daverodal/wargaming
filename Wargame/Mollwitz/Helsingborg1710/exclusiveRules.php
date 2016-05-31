@@ -24,52 +24,19 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<style type="text/css">
+<ol>
+    <li><span class="lessBig">Deploy Phase</span>
+    <li><?= $deployName[1] ?>: player deploys first.</li>
+    <li><?= $deployName[2] ?>: player deploys second.
+    </li>
+    </li>
+    <li><span class="lessBig">Movement</span>
+        <ol>
+            <li><?= $forceName[1] ?>: player moves first.</li>
+            <li><?= $forceName[2] ?>: player moves second.
+            </li>
 
-        /*#GR ol.ExclusiveRules{*/
-            /*counter-reset: item 6;*/
-       /*}*/
-</style>
-<div class="dropDown" id="GRWrapper">
-    <h4 class="WrapperLabel" title="Game Rules">Exclusive Rules</h4>
-
-    <div id="GR" style="display:none">
-        <div class="close">X</div>
-        <div class="game-rules">
-            <H1>
-                <?= $name ?>
-            </H1>
-
-            <h2 class="exclusive"> EXCLUSIVE RULES </h2>
-            <ol>
-                <li><span class="lessBig">Deploy Phase</span>
-                <li><?= $deployName[1]?>: player deploys first.</li>
-                <li><?= $deployName[2]?>:  player deploys second.
-                </li>
-                </li>
-                <li><span class="lessBig">Movement</span>
-                    <ol>
-                        <li><?= $forceName[1]?>: player moves first.</li>
-                            <li><?= $forceName[2]?>:  player moves second.
-                        </li>
-
-                    </ol>
-                </li>
-            </ol>
-            <ol class="ExclusiveRules topNumbers">
-                <?php include "victoryConditions.php" ?>
-            </ol>
-            <div id="credits">
-                <h2><cite><?= $name ?></cite></h2>
-                <h4>Design Credits</h4>
-
-                <h4>Game Design:</h4>
-                Lance Runolfsson
-                <h4>Graphics and Rules:</h4>
-                <site>Lance Runolfsson</site>
-                <h4>HTML 5 Version:</h4>
-                David M. Rodal
-            </div>
-        </div>
-    </div>
-</div>
+        </ol>
+    </li>
+</ol>
+            

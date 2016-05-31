@@ -2,9 +2,6 @@
 /**
  *
  * Copyright 2012-2015 David Rodal
- * User: David Markarian Rodal
- * Date: 3/8/15
- * Time: 5:48 PM
  *
  *  This program is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU General Public License
@@ -40,7 +37,7 @@
     }
 </style>
 <div class="dropDown" id="GRWrapper">
-    <h4 class="WrapperLabel" title="Game Rules">Exclusive Rules</h4>
+    <h4 class="WrapperLabel" title="Game Rules">Ex Rules</h4>
 
     <div id="GR" style="display:none">
         <div class="close">X</div>
@@ -50,18 +47,16 @@
             </H1>
             <h2 class="exclusive"> EXCLUSIVE RULES
             </h2>
-            <?php include "victoryConditions.php" ?>
-            <div id="credits">
-                <h2><cite><?=$name?></cite></h2>
-                <h4>Design Credits</h4>
-
-                <h4>Game Design:</h4>
-                Lance Runolfsson
-                <h4>Graphics and Rules:</h4>
-                <site>Lance Runolfsson</site>
-                <h4>HTML 5 Version:</h4>
-                David M. Rodal
-            </div>
+            @section('exclusiveRules')
+                @include('wargame::TMCW.exclusiveRules')
+            @show
+            @section('victoryConditions')
+                @include('wargame::TMCW.victoryConditions')
+            @show
+            <h2 class="exclusive">Design Credits</h2>
+            @section('credit')
+                @include('wargame::TMCW.credit')
+            @show
         </div>
     </div>
 </div>

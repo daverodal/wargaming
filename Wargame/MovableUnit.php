@@ -39,6 +39,8 @@ class MovableUnit{
     public $unitDesig;
     public $moveAmountUnused;
 
+    use UnitAdjustment;
+
     function unitHasMoveAmountAvailable($moveAmount)
     {
         if ($this->moveAmountUsed + $moveAmount <= $this->getMaxMove()) {
@@ -51,21 +53,8 @@ class MovableUnit{
 
     public function getMaxMove(){
         $maxMove = $this->maxMove;
-        foreach ($this->adjustments as $name => $adjustment) {
-            if($name === 'movement') {
-                switch ($adjustment) {
-                    case 'floorHalfMovement':
-                        $maxMove = floor($maxMove / 2);
-                        break;
-                    case 'halfMovement':
-                        $maxMove = $maxMove / 2;
-                        break;
-                    case 'oneMovement':
-                        $maxMove = 1;
-                        break;
-                }
-            }
-        }
+        $maxMove = $this->getMovementAdjustments($maxMove);
+
         return $maxMove;
     }
 
