@@ -68,6 +68,7 @@
                         <li><a href="#stacking">Stacking.</a></li>
                         <li><a href="#movement">Moving.</a></li>
                         <li><a href="#combat">Combat.</a></li>
+                        <li><a href="#exclusiveRules">Exclusive Rules.</a></li>
                         <li><a href="#victoryConditions">Victory.</a></li>
                     </ol>
                 </li>
@@ -784,8 +785,8 @@
                         </li>
                     </ol>
                 </li>
-                <li><span class="lessBig">Exclusive Rules</span>
                 <a name="exclusiveRules"></a>
+                <li><span class="lessBig">Exclusive Rules</span>
 
                 <div class="exclusive">
                     @section('exclusiveRules')
