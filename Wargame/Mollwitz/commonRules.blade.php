@@ -784,7 +784,15 @@
                         </li>
                     </ol>
                 </li>
+                <li><span class="lessBig">Exclusive Rules</span>
+                <a name="exclusiveRules"></a>
 
+                <div class="exclusive">
+                    @section('exclusiveRules')
+
+                    @show
+                </div>
+                </li>
                 <a name="victoryConditions"></a>
 
                 <div class="exclusive">
