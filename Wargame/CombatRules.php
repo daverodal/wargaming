@@ -261,11 +261,18 @@ class CombatRules
                             break;
                         }
                         if ($range > 1) {
-                            $good = $this->checkBlocked($los,$id);
+                            if($this->checkBlocked($los,$id) === false){
+                                $good = false;
+                            }
                         }
                         if ($range == 1) {
                             if ($this->terrain->terrainIsHexSide($this->force->getUnitHexagon($id)->name, $this->force->getUnitHexagon($defenderId)->name, "blocked" )
                             && !($unit->class === "artillery" || $unit->class === "horseartillery") ) {
+                                $good = false;
+                            }
+                        }
+                        if(method_exists($unit, "checkLos")){
+                            if($unit->checkLos($los, $defenderId) === false){
                                 $good = false;
                             }
                         }
@@ -499,7 +506,7 @@ class CombatRules
 
         $Die = floor($this->crt->dieSideCount * (rand() / getrandmax()));
 //        $Die = $this->crt->dieSideCount - 1;
-        $Die = 9;
+//        $Die = 9;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {
@@ -523,7 +530,7 @@ class CombatRules
             $unit = $this->force->units[$defenderId];
             $hex = $unit->hexagon;
             if($this->force->units[$defenderId]->class === "air" &&  ($phase == RED_COMBAT_PHASE || $phase == BLUE_COMBAT_PHASE || $phase == TEAL_COMBAT_PHASE || $phase == PURPLE_COMBAT_PHASE)) {
-                unset($defenders->$defenderId);
+//                unset($defenders->$defenderId);
                 continue;
             }
             if(!isset($defendingHexes[$hex->name])){
