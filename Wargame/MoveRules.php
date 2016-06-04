@@ -594,7 +594,9 @@ class MoveRules
                 }
 
                 $done = true;
+                return;
             }
+
             if($validCount > 0){
                 $done = true;
             }else{
@@ -618,6 +620,7 @@ class MoveRules
                     $done = true;
                 }
             }
+
         }while($done === false);
 
 

@@ -782,6 +782,7 @@ class GameRules
                                         if ($this->force->unitsAreAdvancing() == true) {
                                             $this->mode = ADVANCING_MODE;
                                         } else { // melee
+
                                             if ($this->combatModeType == COMBAT_SETUP_MODE) {
                                                 if ($this->gameHasCombatResolutionMode == true) {
                                                     $this->mode = COMBAT_RESOLUTION_MODE;
@@ -795,6 +796,7 @@ class GameRules
                                                     $this->mode = FIRE_COMBAT_SETUP_MODE;
                                                 }
                                             }
+
                                         }
                                     }
                                 }

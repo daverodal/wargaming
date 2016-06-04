@@ -1,10 +1,10 @@
 @include('wargame::global-header')
 @include('wargame::Mollwitz.header')
 @include("$curPath.$clsName"."Header")
-<style type="text/css">
-
-<?php  include_once "Wargame/Mollwitz/$clsName/all.css";?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/mollwitz/'.$clsName.'/css/all.css')}}">
+</head>
+@extends('wargame::stdIncludes.view' )
+@extends('wargame::Mollwitz.view')
 @section('credit')
     @include('wargame::Mollwitz.credit')
 @endsection
@@ -25,5 +25,3 @@
     @include("$curPath.tec")
 @endsection
 @endif
-@include('wargame::Mollwitz.view')
-@include('wargame::stdIncludes.view' )

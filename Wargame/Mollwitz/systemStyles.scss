@@ -60,25 +60,25 @@ $vintage-unit-numbers-size:10px;
    .vintage{
 
      &.#{$nationality}.infantry .counterWrapper .counter {
-       background-image: url('../../js/#{$shortName}InfBadge.png');
+       background-image: url('/js/#{$shortName}InfBadge.png');
        background-size: $vintage-badge-size;
      }
      &.#{$nationality}.cavalry .counterWrapper .counter {
-       background-image: url('../../js/#{$shortName}CavBadge.png');
+       background-image: url('/js/#{$shortName}CavBadge.png');
        background-size: $vintage-badge-size;
      }
 
      &.#{$nationality}.artillery .counterWrapper .counter {
-       background-image: url('../../js/#{$shortName}ArtBadge.png');
+       background-image: url('/js/#{$shortName}ArtBadge.png');
        background-size: $vintage-badge-size;
      }
      &.#{$nationality}.horseartillery .counterWrapper .counter {
-       background-image: url('../../js/#{$shortName}HorArtBadge.png');
+       background-image: url('/js/#{$shortName}HorArtBadge.png');
        background-size: $vintage-badge-size;
      }
      &.#{$nationality}.hq .counterWrapper .counter {
        background-color:lightgreen;
-       background-image: url('../../js/HQBadge.png');
+       background-image: url('/js/HQBadge.png');
        background-size: $vintage-badge-size;
      }
      &.#{$nationality}.pontoon {
@@ -87,7 +87,7 @@ $vintage-unit-numbers-size:10px;
          .counter {
 
            background-color: lightgreen;
-           background-image: url('../../js/#{$shortName}Pontoon.png');
+           background-image: url('/js/#{$shortName}Pontoon.png');
            background-size: 32px;
            width: 32px;
            height: 32px;
@@ -100,30 +100,30 @@ $vintage-unit-numbers-size:10px;
      }
    }
   .#{$nationality}.infantry .counterWrapper .counter {
-    background-image: url('../../js/#{$shortName}InfBadge.png');
+    background-image: url('/js/#{$shortName}InfBadge.png');
     background-size: $badge-size;
   }
   .#{$nationality}.cavalry .counterWrapper .counter {
-    background-image: url('../../js/#{$shortName}CavBadge.png');
+    background-image: url('/js/#{$shortName}CavBadge.png');
     background-size: $badge-size;
   }
 
   .#{$nationality}.artillery .counterWrapper .counter {
-    background-image: url('../../js/#{$shortName}ArtBadge.png');
+    background-image: url('/js/#{$shortName}ArtBadge.png');
     background-size: $badge-size;
   }
   .#{$nationality}.horseartillery .counterWrapper .counter {
-    background-image: url('../../js/#{$shortName}HorArtBadge.png');
+    background-image: url('/js/#{$shortName}HorArtBadge.png');
     background-size: $badge-size;
   }
   .#{$nationality}.hq .counterWrapper .counter {
     background-color:lightgreen;
-    background-image: url('../../js/HQBadge.png');
+    background-image: url('/js/HQBadge.png');
     background-size: $badge-size;
   }
 
   .#{$nationality}.wagon .counterWrapper .counter {
-    background-image: url('../../js/Wagon.png');
+    background-image: url('/js/Wagon.png');
     background-size: $badge-size;
   }
 
@@ -133,7 +133,7 @@ $vintage-unit-numbers-size:10px;
       .counter {
 
         background-color: lightgreen;
-        background-image: url('../../js/#{$shortName}Pontoon.png');
+        background-image: url('/js/#{$shortName}Pontoon.png');
         background-size: 32px;
         width: 32px;
         height: 32px;
@@ -431,7 +431,7 @@ $danishWrapperColor: #bfbfbf;
 @include unitColor(SaxonPolish,$russianWrapperColor, Rus);
 
 .British.horseartillery .counterWrapper .counter {
-  background-image: url('../../js/BritHorArtBadge.png');
+  background-image: url('/js/BritHorArtBadge.png');
   background-size: 14px;
 }
 

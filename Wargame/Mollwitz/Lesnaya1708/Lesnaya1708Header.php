@@ -45,7 +45,3 @@ You should have received a copy of the GNU General Public License
     }
 
 </script>
-<style type="text/css">
-<?php
-include "all.css";?>
-</style>
