@@ -45,9 +45,10 @@
             <H1>
                 <?=$name?>
             </H1>
-            <h2 class="exclusive"> EXCLUSIVE RULES
-            </h2>
+
             @section('exclusiveRules')
+                <h2 class="exclusive"> EXCLUSIVE RULES
+                </h2>
                 @include('wargame::TMCW.exclusiveRules')
             @show
             @section('victoryConditions')

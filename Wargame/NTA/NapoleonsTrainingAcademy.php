@@ -151,7 +151,7 @@ class NapoleonsTrainingAcademy extends \Wargame\ModernLandBattle{
             $this->genTerrain = true;
             $this->victory = new \Wargame\Victory("\\Wargame\\NTA\\victoryCore");
 
-            $this->mapData->setData(19,9,"js/centre.png");
+//            $this->mapData->setData(19,9,"js/centre.png");
 
             $this->mapData->setSpecialHexes(array(1005=>0));
             $this->mapViewer = array(new MapViewer(),new MapViewer(),new MapViewer());

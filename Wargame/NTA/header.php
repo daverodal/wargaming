@@ -240,6 +240,7 @@ x.register("combatRules", function(combatRules, data){
 });
 
 x.register("vp", function(vp, data){
+    debugger;
     var ownerObj = data.specialHexes;
     var owner;
     for(i in ownerObj){

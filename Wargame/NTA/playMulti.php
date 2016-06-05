@@ -23,7 +23,7 @@
         body{
             background:#ccc;
             color:#333;
-            background:url("<?=url("js/Napoleon.jpg")?>") #333 no-repeat;
+            background:url("<?=url("vendor/wargame/genre/images/Napoleon.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:1700px;
         }

@@ -24,7 +24,7 @@
 <style>
     body{
         background:#000;
-        background:url("<?=url("js/Napoleon.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/genre/images/Napoleon.jpg")?>") #333 no-repeat;
         background-position:center top;
 
     }

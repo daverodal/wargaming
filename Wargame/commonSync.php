@@ -979,6 +979,8 @@ x.register("moveRules", function(moveRules,data) {
         var activeCombatLine = "";
         str = "";
         var toResolveLog = "";
+        $('.unit .unitOdds').remove();
+
 
         if(combatRules){
             cD = combatRules.currentDefender;

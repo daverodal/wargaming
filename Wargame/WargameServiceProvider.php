@@ -50,6 +50,11 @@ class WargameServiceProvider extends ServiceProvider
         ], 'tincans');
 
         $this->publishes([
+            __DIR__.'/NTA/all.css' => public_path('vendor/wargame/nta/css/all.css'),
+            __DIR__.'/NTA/Images' => public_path('vendor/wargame/nta/images')
+        ]);
+
+        $this->publishes([
             __DIR__.'/Mollwitz/Aliwal1845/all.css' => public_path('vendor/wargame/mollwitz/Aliwal1845/css/all.css'),
             __DIR__.'/Mollwitz/Brandywine1777/all.css' => public_path('vendor/wargame/mollwitz/Brandywine1777/css/all.css'),
             __DIR__.'/Mollwitz/Burkersdorf/all.css' => public_path('vendor/wargame/mollwitz/Burkersdorf/css/all.css'),

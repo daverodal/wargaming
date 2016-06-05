@@ -1,7 +1,8 @@
 <?php
 namespace Wargame\NTA;
-use \stdClass;
-use \Wargame\Battle;
+use stdClass;
+use Wargame\Battle;
+use Wargame\Hexpart;
 // crt.js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -100,7 +101,7 @@ class CombatResultsTable
         $battle = Battle::getBattle();
         $combats = $battle->combatRules->combats->$defenderId;
         $hexagon = $battle->force->units[$defenderId]->hexagon;
-        $hexpart = new \Hexpart();
+        $hexpart = new Hexpart();
         $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
 
         if (count((array)$combats->attackers) == 0) {
