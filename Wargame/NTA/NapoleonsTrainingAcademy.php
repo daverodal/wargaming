@@ -127,7 +127,8 @@ class NapoleonsTrainingAcademy extends \Wargame\ModernLandBattle{
 
             $this->mapData->setSpecialHexes(array(1005=>0));
             $this->force->combatRequired = true;
-            
+            $this->moveRules->stickyZoc = true;
+
             // game data
             $this->gameRules->setMaxTurn(7);
             $this->gameRules->setInitialPhaseMode(BLUE_MOVE_PHASE,MOVING_MODE);
