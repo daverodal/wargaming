@@ -72,7 +72,7 @@ class NapoleonsTrainingAcademy extends \Wargame\ModernLandBattle{
         $data->combatRules = $this->combatRules->save();
         $data->players = $this->players;
         $data->victory = $this->victory->save();
-        $data->terrainName = "terrain-".get_class($this);
+        $data->terrainName = $this->terrainName;
         $data->genTerrain = $this->genTerrain;
         $data->arg = $this->arg;
         $data->scenario = $this->scenario;
@@ -116,61 +116,18 @@ class NapoleonsTrainingAcademy extends \Wargame\ModernLandBattle{
 
     }
 
-    function __construct($data = null, $arg = false, $scenario = false)
+    function __construct($data = null, $arg = false, $scenario = false, $game = false)
     {
-        $this->mapData = \Wargame\MapData::getInstance();
+        parent::__construct($data, $arg, $scenario, $game);
+
         if ($data) {
-            $this->arg = $data->arg;
-            $this->scenario = $data->scenario;
-            $this->genTerrain = false;
-            $this->victory = new \Wargame\Victory("\\Wargame\\NTA\\victoryCore",$data);
-            $this->mapData->init($data->mapData);
-            $this->mapViewer = array(new MapViewer($data->mapViewer[0]),new MapViewer($data->mapViewer[1]),new MapViewer($data->mapViewer[2]));
-            $units = $data->force->units;
-            unset($data->force->units);
-            $this->force = new Force($data->force);
-            foreach($units as $unit){
-                $this->force->injectUnit(static::buildUnit($unit));
-            }
-            if(isset($data->terrain)){
-                $this->terrain = new Terrain($data->terrain);
-
-            }else{
-                $this->terrain = new \stdClass();
-            }
-
-            $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
-            $this->moveRules->stickyZoc = true;
-            $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
-            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
-            $this->players = $data->players;
         } else {
-
-            $this->arg = $arg;
-            $this->scenario = $scenario;
-            $this->genTerrain = true;
             $this->victory = new \Wargame\Victory("\\Wargame\\NTA\\victoryCore");
 
-//            $this->mapData->setData(19,9,"js/centre.png");
 
             $this->mapData->setSpecialHexes(array(1005=>0));
-            $this->mapViewer = array(new MapViewer(),new MapViewer(),new MapViewer());
-            $this->force = new \Wargame\Force();
             $this->force->combatRequired = true;
-            $this->terrain = new \Wargame\Terrain();
-//            $this->terrain->setMaxHex("2010");
-            $this->moveRules = new \Wargame\MoveRules($this->force, $this->terrain);
-            $this->combatRules = new \Wargame\CombatRules($this->force, $this->terrain);
-            $this->gameRules = new \Wargame\GameRules($this->moveRules, $this->combatRules, $this->force);
-            $this->players = array("","","");
-            for($player = 0;$player <= 2;$player++){
-                $this->mapViewer[$player]->setData(65,85, // originX, originY
-                    27.5, 27.5, // top hexagon height, bottom hexagon height
-                    16, 32,// hexagon edge width, hexagon center width
-                1070);
-            }
-
-
+            
             // game data
             $this->gameRules->setMaxTurn(7);
             $this->gameRules->setInitialPhaseMode(BLUE_MOVE_PHASE,MOVING_MODE);
@@ -190,29 +147,6 @@ class NapoleonsTrainingAcademy extends \Wargame\ModernLandBattle{
             //$this->force->setEliminationTrayXY(900);
 
 
-            // code, name, displayName, letter, entranceCost, traverseCost, combatEffect, is Exclusive
-            $this->terrain->addTerrainFeature("offmap", "offmap", "o", 1, 0, 0, true);
-            $this->terrain->addTerrainFeature("clear", "", "c", 1, 0, 0, true);
-            $this->terrain->addTerrainFeature("road", "road", "r", .5, 0, 0, false);
-            $this->terrain->addTerrainFeature("fortified", "fortified", "h", 0, 0, 1, false);
-            $this->terrain->addTerrainFeature("town", "town", "t", 0, 0, 1, false);
-            $this->terrain->addTerrainFeature("forest", "forest", "f", 2, 0, 1, true);
-            $this->terrain->addTerrainFeature("rough", "rough", "g", 3, 0, 1, true);
-            $this->terrain->addTerrainFeature("river", "Martian River", "v", 0, 1, 1, false);
-            $this->terrain->addTerrainFeature("newrichmond", "New Richmond", "m", 0, 0, 1, false);
-            $this->terrain->addTerrainFeature("eastedge", "East Edge", "m", 0, 0, 0, false);
-
-
-
-            for ($col = 100; $col <= 1900; $col += 100) {
-                for ($row = 1; $row <= 9; $row++) {
-                    $this->terrain->addTerrain($row + $col, LOWER_LEFT_HEXSIDE, "clear");
-                    $this->terrain->addTerrain($row + $col, UPPER_LEFT_HEXSIDE, "clear");
-                    $this->terrain->addTerrain($row + $col, BOTTOM_HEXSIDE, "clear");
-                    $this->terrain->addTerrain($row + $col, HEXAGON_CENTER, "clear");
-
-                }
-            }
             // end terrain data ----------------------------------------
 
         }
