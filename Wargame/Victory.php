@@ -88,7 +88,8 @@ class Victory{
         if($this->core && isset($this->core->$name)){
             return $this->core->$name;
         }
-        return false;
+        $ret = false;
+        return $ret;
     }
 
     public function __set($name, $val){
