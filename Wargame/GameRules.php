@@ -646,6 +646,7 @@ class GameRules
                 break;
 
             case COMBAT_SETUP_MODE:
+            case FIRE_COMBAT_SETUP_MODE:
                 $shift = false;
                 switch ($event) {
 
@@ -676,7 +677,12 @@ class GameRules
                         if ($this->gameHasCombatResolutionMode == true) {
                             if (!(isset($this->force->landForce) && $this->force->landForce && $this->force->requiredCombats())) {
                                 $this->combatRules->combatResolutionMode();
-                                $this->mode = COMBAT_RESOLUTION_MODE;
+                                if($this->mode == FIRE_COMBAT_SETUP_MODE){
+                                    $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
+
+                                }else{
+                                    $this->mode = COMBAT_RESOLUTION_MODE;
+                                }
                                 if(isset($this->force->landForce) && $this->force->landForce){
                                     $this->force->clearRequiredCombats();
                                 }
@@ -715,6 +721,7 @@ class GameRules
                 break;
 
             case COMBAT_RESOLUTION_MODE:
+            case FIRE_COMBAT_RESOLUTION_MODE:
 
                 switch ($event) {
 
