@@ -705,8 +705,8 @@ class MedievalForce extends Force
                         }
                     }
 
-                    if ($phase == BLUE_COMBAT_PHASE || $phase == RED_COMBAT_PHASE || $phase == TEAL_COMBAT_PHASE || $phase == PURPLE_COMBAT_PHASE) {
-                        if ($mode == COMBAT_SETUP_MODE) {
+                    if ($phase == RED_FIRE_COMBAT_PHASE || $phase == BLUE_FIRE_COMBAT_PHASE || $phase == BLUE_COMBAT_PHASE || $phase == RED_COMBAT_PHASE || $phase == TEAL_COMBAT_PHASE || $phase == PURPLE_COMBAT_PHASE) {
+                        if ($mode == COMBAT_SETUP_MODE || $mode == FIRE_COMBAT_SETUP_MODE) {
                             $status = STATUS_UNAVAIL_THIS_PHASE;
                             /* unitIsZoc has Side Effect */
                             $isZoc = $this->unitIsZoc($id);
@@ -721,7 +721,7 @@ class MedievalForce extends Force
                                 $status = STATUS_UNAVAIL_THIS_PHASE;
                             }
                         }
-                        if ($mode == COMBAT_RESOLUTION_MODE) {
+                        if ($mode == COMBAT_RESOLUTION_MODE || $mode == FIRE_COMBAT_RESOLUTION_MODE) {
                             $status = STATUS_UNAVAIL_THIS_PHASE;
                             if ($this->units[$id]->status == STATUS_ATTACKING ||
                                 $this->units[$id]->status == STATUS_DEFENDING
