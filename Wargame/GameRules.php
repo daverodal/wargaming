@@ -502,8 +502,7 @@ class GameRules
                                 $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
                                 if ($unit->hexagon->parent == "gameImages") {
-                                    $this->moveRules->exitUnit($unit->id);
-                                    return;
+                                    return $this->moveRules->exitUnit($unit->id);
 
                                 }
                             }

@@ -1386,7 +1386,7 @@ class MoveRules
                 $this->anyUnitIsMoving = false;
                 $this->movingUnitId = NONE;
                 $this->moves = new stdClass();
-                return;
+                return true;
             }
 
         }
