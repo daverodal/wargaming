@@ -71,6 +71,7 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/Mollwitz/Hastenbeck/all.css' => public_path('vendor/wargame/mollwitz/gamename/css/all.css'),
             __DIR__.'/Mollwitz/Helsingborg1710/all.css' => public_path('vendor/wargame/mollwitz/Helsingborg1710/css/all.css'),
             __DIR__.'/Mollwitz/Hohenfriedeberg/all.css' => public_path('vendor/wargame/mollwitz/Hohenfriedeberg/css/all.css'),
+            __DIR__.'/Mollwitz/Holowczyn1708/all.css' => public_path('vendor/wargame/mollwitz/Holowczyn1708/css/all.css'),
             __DIR__.'/Mollwitz/Jagersdorf/all.css' => public_path('vendor/wargame/mollwitz/Jagersdorf/css/all.css'),
             __DIR__.'/Mollwitz/Kesselsdorf1745/all.css' => public_path('vendor/wargame/mollwitz/Kesselsdorf1745/css/all.css'),
             __DIR__.'/Mollwitz/Klissow1702/all.css' => public_path('vendor/wargame/mollwitz/Klissow1702/css/all.css'),
