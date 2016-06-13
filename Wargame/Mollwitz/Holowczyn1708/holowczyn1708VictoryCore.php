@@ -27,6 +27,24 @@ You should have received a copy of the GNU General Public License
 
 class holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
+    public $divisionReleased = false;
+
+
+    function __construct($data)
+    {
+        parent::__construct($data);
+        if ($data) {
+            $this->divisionReleased = $data->victory->divisionReleased;
+        }
+    }
+
+    public function save()
+    {
+        $ret = parent::save();
+        $ret->divisionReleased = $this->divisionReleased;
+        return $ret;
+    }
+
     public function reduceUnit($args)
     {
         $unit = $args[0];
@@ -142,6 +160,18 @@ class holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
             $battle->mapData->setSpecialHexes($supply);
 
         }
+        if ($turn >= 2 && $gameRules->phase == RED_MOVE_PHASE && $this->divisionReleased === false){
+            $dieRoll = rand(1,6);
+            if($dieRoll === 6){
+                $this->divisionReleased = true;
+            }
+            if($this->divisionReleased === false){
+                $battle->gameRules->flashMessages[] = "Russian Division Not Released $dieRoll";
+            }else{
+                $battle->gameRules->flashMessages[] = "Russian Division Released!!!!!!! $dieRoll";
+            }
+
+        }
     }
 
     public function postRecoverUnits($args)
@@ -160,6 +190,15 @@ class holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
         $unit = $args[0];
         $b = Battle::getBattle();
         $id = $unit->id;
+
+        $reserveHexes = [];
+        $dZones = $b->terrain->getReinforceZonesByName('D');
+        foreach($dZones as $dZone){
+            $reserveHexes[$dZone->hexagon->name] = true;
+        }
+        if($this->divisionReleased === false && $unit->status == STATUS_READY && isset($reserveHexes[$unit->hexagon->name])){
+            $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+        }
 
         parent::postRecoverUnit($args);
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY) {
