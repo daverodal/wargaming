@@ -1,3 +1,4 @@
+<?php
 /*
 Copyright 2012-2015 David Rodal
 
@@ -14,30 +15,17 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
+?><style type="text/css">
+        <?php include "Wargame/Mollwitz/playAs.css";?>
+        body{
+            background:#ccc;
+            color:#333;
+            background: url("<?=url("vendor/wargame/mollwitz/images/1280px-Battle_of_Klissow_1702.jpg")?>") #333 no-repeat;
+            background-position: 25% 0;
+            background-size:100%;
+        }
+    </style>
 
-@include player(Loyalist ,One , $angloAlliedColor, $angloAlliedWrapperColor);
-@include player(Rebel, Two, $rebelColor,  $rebelWrapperColor, $rebelWrapperColor);
-@include player(Militia, Three, $prussianColor, $prussianWrapperColor);
-@include badge(Rebel, Rebel);
-@include badge(Militia, Rebel);
-@include player(Hessian, Three, $russianColor, $russianWrapperColor);
-@include badge(Loyalist, Ang);
-@include badge(Hessian, Rus);
-
-
-.Rebel {
-  p.forceMarch, p.range{
-    color:white;
-  }
-}
-.specialHexes.loyalist{
-  background-color: $angloAlliedWrapperColor;
-  color:white;
-}
-.specialHexes.rebel{
-  background-color: $prussianWrapperColor;
-  color:white;
-}
-
+<footer class="attribution">
+    By Anonymous (Zbigniew Anusik, Karol XII, 2006) [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File%3ABattle_of_Kliszow_1702.JPG">via Wikimedia Commons</a>    </div>
+</footer>

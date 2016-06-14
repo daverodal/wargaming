@@ -418,6 +418,57 @@
     }
 
   },
+  "Germantown1777": {
+    "name": "The Battle of Germantown 1777",
+    "path": "Mollwitz",
+    "genre": "Americas",
+    "fileName": "\\Wargame\\Mollwitz\\Germantown1777\\Germantown1777",
+    "description":"Germantown 1777",
+    "params":{
+      "wimpySwamps": true
+    },
+    "options":[
+      {
+        "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
+        "keyName":"stepReduction",
+        "value": true
+      }],
+    "scenarios": {
+      "main": {
+        "description": "Standard Scenario.",
+        "longDescription":"Historical Scenario. Hard for Sweden to win.",
+        "units":[
+          {"num":3,"forceId":1,"combat":5,"movement":4,"reinforce":"A","range":1,"nationality":"Rebel","class":"infantry"},
+          {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"Rebel","class":"artillery"},
+
+          {"num":4,"forceId":1,"combat":7,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+          {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"Rebel","class":"artillery"},
+
+          {"num":3,"forceId":1,"combat":7,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+          {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"Rebel","class":"artillery"},
+
+          {"num":4,"forceId":1,"combat":7,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+          {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"Rebel","class":"artillery"},
+
+          {"num":7,"forceId":1,"combat":7,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+
+          {"num":2,"forceId":1,"combat":6,"movement":4,"reinforce":"B","range":1,"nationality":"Rebel","class":"infantry"},
+          {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"B","range":2,"nationality":"Rebel","class":"artillery"},
+
+
+          {"num":7,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+          {"num":7,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+          {"num":7,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+
+          {"num":4,"forceId":2,"combat":2,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+          {"num":4,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+          {"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+          {"num":3,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Russian","class":"artillery"}
+
+        ]
+      }
+    }
+  },
 
   "Lobositz": {
         "name": "The Battle of Lobositz",

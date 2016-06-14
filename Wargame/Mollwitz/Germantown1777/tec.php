@@ -1,3 +1,4 @@
+<?php
 /*
 Copyright 2012-2015 David Rodal
 
@@ -14,30 +15,9 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
-
-@include player(Loyalist ,One , $angloAlliedColor, $angloAlliedWrapperColor);
-@include player(Rebel, Two, $rebelColor,  $rebelWrapperColor, $rebelWrapperColor);
-@include player(Militia, Three, $prussianColor, $prussianWrapperColor);
-@include badge(Rebel, Rebel);
-@include badge(Militia, Rebel);
-@include player(Hessian, Three, $russianColor, $russianWrapperColor);
-@include badge(Loyalist, Ang);
-@include badge(Hessian, Rus);
-
-
-.Rebel {
-  p.forceMarch, p.range{
-    color:white;
-  }
-}
-.specialHexes.loyalist{
-  background-color: $angloAlliedWrapperColor;
-  color:white;
-}
-.specialHexes.rebel{
-  background-color: $prussianWrapperColor;
-  color:white;
-}
-
+?><div class="dropDown"  id="TECWrapper">
+    <h4 class="WrapperLabel" title='Terrain Effects Chart'>TEC</h4>
+    <DIV id="TEC" style="display:none;"><div class="close">X</div>
+        <img id="tecImage" src="<?=url('js/TEC-6-11-15.jpg')?>">
+    </div>
+</div>
