@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <style>
         body{
             background:#000;
-            background:url("<?=url("vendor/wargame/mollwitz/images/1280px-Battle_of_Klissow_1702.jpg")?>") #333 no-repeat;
+            background:url("<?=url("vendor/wargame/mollwitz/images/CharlesXII_Holowczyn_1708.jpg")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 
@@ -81,7 +81,7 @@ You should have received a copy of the GNU General Public License
 
 <div class="backBox">
 <h2 style="text-align:center;font-size:30px;font-family:'Monsieur La Doulaise'"> Welcome to</h2>
-    <h1 style=""><span>Klissow 1702</span></h1>
+    <h1 style=""><span>Holowczyn 1708</span></h1>
 </div>
 <div style="clear:both"></div>
 <fieldset ><Legend>Play As </Legend>
@@ -89,5 +89,5 @@ You should have received a copy of the GNU General Public License
     <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
-        By Anonymous (Zbigniew Anusik, Karol XII, 2006) [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File%3ABattle_of_Kliszow_1702.JPG">via Wikimedia Commons</a>    </div>
+        See page for author [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3ACharlesXII_Holowczyn_1708.jpg">via Wikimedia Commons</a>    </div>
 </fieldset>

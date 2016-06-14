@@ -20,12 +20,11 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/mollwitz/images/1280px-Battle_of_Klissow_1702.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/CharlesXII_Holowczyn_1708.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }
     </style>
 
 <footer class="attribution">
-    By Anonymous (Zbigniew Anusik, Karol XII, 2006) [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File%3ABattle_of_Kliszow_1702.JPG">via Wikimedia Commons</a>    </div>
-</footer>
+    See page for author [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3ACharlesXII_Holowczyn_1708.jpg">via Wikimedia Commons</a></footer>
