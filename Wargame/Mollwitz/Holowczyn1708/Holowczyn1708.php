@@ -114,7 +114,7 @@ class Holowczyn1708 extends \Wargame\Mollwitz\JagCore
                 }
             }
         } else {
-            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Holowczyn1708\\holowczyn1708VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Holowczyn1708\\Holowczyn1708VictoryCore");
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

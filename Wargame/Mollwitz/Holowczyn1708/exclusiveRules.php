@@ -38,6 +38,16 @@ You should have received a copy of the GNU General Public License
         <p class="indent">The <?= $forceName[1] ?> units receive a 1 MP bonus on turn 1 only.</p>
         <p class="indent"> The <?= $forceName[2] ?> Units movement rate are halved on turn 1, normal thereafter.</p>
     </li>
+    <li>
+        <span class="lessBig">Reserve Division</span>
+        <p>Sheremetiev’s Division, Did not participate in the battle but could have done.
+            At the beginning of each Russian Movement Phase starting with turn 2 the Russian player rolls a die.
+            No unit deployed on one of the R6 hexes may move until a six is scored or until any Unit deployed on an R6 Hex has been attacked by the Swedes.
+            In either case those Russian units may subsequently move normally
+
+
+        </p>
+    </li>
     <li><span class="lessBig">Pontoons</span>
         <p class="indent">
             <img id="pontoon-image" src="<?= url("js/SwePontoon.png") ?>">
