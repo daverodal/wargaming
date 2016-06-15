@@ -25,9 +25,10 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 
-class holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
+class Holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
     public $divisionReleased = false;
+    public $reserveDivisionIds;
 
 
     function __construct($data)
@@ -35,6 +36,9 @@ class holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
         parent::__construct($data);
         if ($data) {
             $this->divisionReleased = $data->victory->divisionReleased;
+            $this->reserveDivisionIds = $data->victory->reserveDivisionIds;
+        }else{
+            $this->reserveDivisionIds = new \stdClass();
         }
     }
 
@@ -42,6 +46,8 @@ class holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
     {
         $ret = parent::save();
         $ret->divisionReleased = $this->divisionReleased;
+        $ret->reserveDivisionIds = $this->reserveDivisionIds;
+
         return $ret;
     }
 
@@ -185,18 +191,37 @@ class holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
     }
 
+    public function postCombatResults($arg){
+
+        list($defenderId, $attackers, $combatResults, $dieRoll) = $arg;
+        if($this->divisionReleased === false && isset($this->reserveDivisionIds->$defenderId)){
+            $this->divisionReleased = true;
+            $b = Battle::getBattle();
+
+            $b->gameRules->flashMessages[] = "Reserve Division Released.";
+
+        }
+    }
+
     public function postRecoverUnit($args)
     {
         $unit = $args[0];
         $b = Battle::getBattle();
         $id = $unit->id;
 
-        $reserveHexes = [];
-        $dZones = $b->terrain->getReinforceZonesByName('D');
-        foreach($dZones as $dZone){
-            $reserveHexes[$dZone->hexagon->name] = true;
+        if($b->gameRules->turn === 1 && $b->gameRules->phase === BLUE_MOVE_PHASE){
+            $reserveHexes = [];
+            $dZones = $b->terrain->getReinforceZonesByName('D');
+            foreach($dZones as $dZone){
+                $reserveHexes[$dZone->hexagon->name] = true;
+            }
+            /* this will get turned into an object */
+            if(isset($reserveHexes[$unit->hexagon->name])){
+                $this->reserveDivisionIds->$id = true;
+            }
         }
-        if($this->divisionReleased === false && $unit->status == STATUS_READY && isset($reserveHexes[$unit->hexagon->name])){
+
+        if($this->divisionReleased === false && $unit->status == STATUS_READY && isset($this->reserveDivisionIds->$id)){
             $unit->status = STATUS_UNAVAIL_THIS_PHASE;
         }
 
