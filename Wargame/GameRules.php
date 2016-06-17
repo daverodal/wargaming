@@ -816,6 +816,27 @@ class GameRules
 
                 switch ($event) {
 
+                    case KEYPRESS_EVENT:
+                        if ($id == 27) {
+                            if($this->moveRules->anyUnitIsMoving == false) {
+                                $this->force->resetRemainingAdvancingUnits();
+                                if ($this->combatModeType == COMBAT_SETUP_MODE) {
+                                    if ($this->gameHasCombatResolutionMode == true) {
+                                        $this->mode = COMBAT_RESOLUTION_MODE;
+                                    } else {
+                                        $this->mode = COMBAT_SETUP_MODE;
+                                    }
+                                } else {
+                                    if ($this->gameHasCombatResolutionMode == true) {
+                                        $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
+                                    } else {
+                                        $this->mode = FIRE_COMBAT_SETUP_MODE;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    
                     case SELECT_MAP_EVENT:
                     case SELECT_COUNTER_EVENT:
                         $this->moveRules->advanceUnit($event, $id, $location);

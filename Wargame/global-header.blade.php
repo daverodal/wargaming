@@ -1051,6 +1051,16 @@ function initialize() {
         return true;
     });
 
+
+    $("body").keyup(function(event){
+        /* why this has to be a keyup event i don't know */
+        if(event.which == 27){
+            doitKeypress(event.which);
+            return false;
+        }
+        return true;
+    });
+
     $("body").keypress(function (event) {
         doitKeypress(event.which);
     });
