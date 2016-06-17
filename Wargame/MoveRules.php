@@ -773,8 +773,7 @@ class MoveRules
                     continue;
                 }
 
-
-                if ($this->moveCannotOverstack && $hexPath->firstHex !== true && $mapHex->isOccupied($this->force->attackingForceId, $this->stacking, $unit)) {
+                if ($this->moveCannotOverstack  && $newMapHex->isOccupied($this->force->attackingForceId, $this->stacking, $unit)) {
                     continue;
                 }
 
