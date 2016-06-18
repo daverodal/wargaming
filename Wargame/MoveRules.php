@@ -56,6 +56,7 @@ class MoveRules
     public $turnHex = false;
     public $turnFacing = false;
     public $turnId = false;
+    public $transitStacking = 1;
     /* usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
      * so 1 means you can't stack with even 1 enemy. Use a closure here to allow for air units stacking with
      * enemy land units only, for example. and vice a versa.
@@ -773,7 +774,7 @@ class MoveRules
                     continue;
                 }
 
-                if ($this->moveCannotOverstack  && $newMapHex->isOccupied($this->force->attackingForceId, $this->stacking, $unit)) {
+                if ($this->moveCannotOverstack  && $newMapHex->isOccupied($this->force->attackingForceId, $this->transitStacking, $unit)) {
                     continue;
                 }
 
