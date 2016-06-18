@@ -170,6 +170,26 @@ class Force extends SimpleForce
     }
 
 
+    function resetNonFittingAdvancingUnits($advancedUnit)
+    {
+        $b = Battle::getBattle();
+        $advancingQueue = [];
+        for ($id = 0; $id < count($this->units); $id++) {
+            if ($this->units[$id]->status == STATUS_ADVANCING || $this->units[$id]->status == STATUS_CAN_ADVANCE) {
+                $advancingQueue[] = $this->units[$id];
+            }
+        }
+        $hexNum = $advancedUnit->hexagon->name;
+        $mapHex = $b->mapData->getHex($hexNum);
+
+        foreach($advancingQueue as $advancingProspect) {
+            if ($mapHex->isOccupied($this->attackingForceId, $b->moveRules->stacking, $advancingProspect)) {
+                $advancingProspect->status = STATUS_ATTACKED;
+            }
+        }
+        
+    }
+
     function unitCanAdvance($id)
     {
         $Advance = false;

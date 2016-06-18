@@ -1860,11 +1860,10 @@ class MoveRules
             }
         } else {
             if (($this->anyUnitIsMoving == true) && ($id == $this->movingUnitId)) {
-                $this->stopAdvance($this->movingUnitId);
+                $this->endAdvancing($this->movingUnitId);
             } else {
                 if ($this->force->unitCanAdvance($id) == true) {
                     $this->startAdvancing($id);
-                    $this->force->resetRemainingNonAdvancingUnits();
                 }
             }
         }
@@ -1906,6 +1905,18 @@ class MoveRules
     }
 
     function stopAdvance($id)
+    {
+        /* @var Unit $unit */
+        $unit = $this->force->getUnit($id);
+        if ($unit->setStatus(STATUS_ADVANCED) == true) {
+            $this->moves = new stdClass();
+            $this->anyUnitIsMoving = false;
+            $this->movingUnitId = NONE;
+            $this->force->resetNonFittingAdvancingUnits($unit);
+        }
+    }
+
+    function endAdvancing($id)
     {
         /* @var Unit $unit */
         $unit = $this->force->getUnit($id);

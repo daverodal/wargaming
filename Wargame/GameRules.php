@@ -833,6 +833,8 @@ class GameRules
                                         $this->mode = FIRE_COMBAT_SETUP_MODE;
                                     }
                                 }
+                            }else{
+                                $this->moveRules->endAdvancing($this->moveRules->movingUnitId);
                             }
                         }
                         break;

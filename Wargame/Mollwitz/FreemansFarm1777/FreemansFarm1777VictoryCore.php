@@ -151,6 +151,17 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
+                /*
+                 * if no american points, british win!
+                 */
+                if($this->victoryPoints[REBEL_FORCE] === 0){
+                    $this->winner = LOYALIST_FORCE;
+                    $gameRules->flashMessages[] = "Loyal Win";
+                    $gameRules->flashMessages[] = "Rebel fail to score points.";
+                    $gameRules->flashMessages[] = "Game Over";
+                    $this->gameOver = true;
+                    return true;
+                }
                 $gameRules->flashMessages[] = "Tie Game";
                 $gameRules->flashMessages[] = "Nobody over 16";
                 $gameRules->flashMessages[] = "Game Over";

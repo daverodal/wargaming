@@ -26,10 +26,14 @@
         <li>Each side gains 1 point for each hostile combat strength point destroyed.
         </li>
         <li>
-            Loyalists Win: at the end of any Loyalist turn before the end of turn 6, that they have accumulated 40 or more points with a lead of at least 10 points.
+            Either side wins at the end of player any turn that it has 16 points.
         </li>
 
-        <li>Rebels Win: If the Loyalists do not, or if they score 30 points before losing 30 of their own.
+        <li>Objective points only count on the end of the last turn of the game at which time both sides points are compared if both are 16 points or over it is a tie.
+        </li>
+        <li>
+            If Neither side gets 16 points by the end of the game it's a tie game, <strong>unless</strong>, the Rebel player fails to score any points, in which case,
+            it's a Loyalist win.
         </li>
     </ol>
 </li>
