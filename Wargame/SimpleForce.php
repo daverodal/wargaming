@@ -93,6 +93,9 @@ abstract class SimpleForce{
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
         $mapHex = $mapData->getHex($unit->hexagon->getName());
+        if($unit->forceId === $this->defendingForceId){
+            $this->addToRetreatHexagonList($id, $unit->hexagon);
+        }
 
         if ($mapHex) {
             $mapHex->unsetUnit($forceId, $id);

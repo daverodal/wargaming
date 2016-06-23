@@ -34,6 +34,7 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
     public $range = 1;
     public $adjustments;
     public $supplied = true;
+    public $forceMarch = true;
 
 
 
@@ -191,6 +192,7 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
             $this->dirty = false;
         } else {
         }
+        $this->forceMarch = true;
     }
 
 

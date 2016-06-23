@@ -95,6 +95,21 @@ class CombatRules
         }
     }
 
+    function noMoreDefenders(){
+
+        $cd = $this->currentDefender;
+        if ($cd !== false) {
+            $attackers = $this->resolvedCombats->$cd->defenders;
+            $battle = Battle::getBattle();
+            foreach($attackers as $attackId => $val){
+                if( $battle->force->units[$attackId]->status === STATUS_CAN_DEFEND_LOSE){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     function noMoreAttackers(){
 
         $cd = $this->currentDefender;
@@ -651,7 +666,10 @@ class CombatRules
             return 0;
         }
         $defenderId = $this->defenders->$defenderId;
-        return  count((array)$this->combatsToResolve->$defenderId->defenders);
+        if(!isset($this->combatsToResolve->$defenderId)){
+            return 0;
+        }
+        return  count(get_object_vars($this->combatsToResolve->$defenderId->defenders));
     }
     function thisAttackAcrossRiver($defenderId, $attackerId)
     {

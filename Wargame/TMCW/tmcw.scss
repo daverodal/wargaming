@@ -60,7 +60,7 @@
 
 
 
-@mixin unitColor($nationality, $color, $shortName) {
+@mixin unitColor($nationality, $color) {
   .#{$nationality} {
     background-color: $color;
   }

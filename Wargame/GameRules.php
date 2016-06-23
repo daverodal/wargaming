@@ -863,7 +863,6 @@ class GameRules
                 break;
             case EXCHANGING_MODE:
             case ATTACKER_LOSING_MODE:
-            case DEFENDER_LOSING_MODE:
 
                 switch ($event) {
 
@@ -875,7 +874,12 @@ class GameRules
                             if ($this->force->unitsAreBeingEliminated() == true) {
                                 $this->force->removeEliminatingUnits();
                             }
-                            if($this->legacyExchangeRule || $this->force->getExchangeAmount() <= 0 || $this->combatRules->noMoreAttackers()) {
+                            $outOfMen = false;
+
+                            if($this->mode === ATTACKER_LOSING_MODE && $this->mode === EXCHANGING_MODE && $this->combatRules->noMoreAttackers()){
+                                $outOfMen = true;
+                            }
+                            if($this->legacyExchangeRule || $this->force->getExchangeAmount() <= 0 || $outOfMen === true) {
                                 if ($this->force->exchangingAreAdvancing() == true ) { // melee
                                     $this->mode = ADVANCING_MODE;
                                 } else {
@@ -886,6 +890,7 @@ class GameRules
                                             $this->mode = RETREATING_MODE;
                                         }else {
                                             if ($this->force->attackingAreAdvancing() === true) {
+
                                                 $this->mode = ADVANCING_MODE;
 
                                             } else {
@@ -908,7 +913,56 @@ class GameRules
                         }
                 }
                 break;
-        }
+            case DEFENDER_LOSING_MODE:
+
+                switch ($event) {
+
+                    case SELECT_COUNTER_EVENT:
+
+                        $unit = $this->force->getUnit($id);
+                        if ($unit->setStatus(STATUS_EXCHANGED)) {
+                            $this->force->defenderLoseUnit($unit);
+                            if ($this->force->unitsAreBeingEliminated() == true) {
+                                $this->force->removeEliminatingUnits();
+                            }
+                            $outOfMen = false;
+                            if($this->combatRules->noMoreDefenders()){
+                                $outOfMen = true;
+                            }
+
+                            if($this->force->getDefenderLosingAmount() <= 0 || $outOfMen === true) {
+                                    if($this->force->defendingAreRetreating() === true){
+                                        $this->mode = RETREATING_MODE;
+                                    }else{
+                                        if($this->force->attackingAreRetreating() === true) {
+                                            $this->mode = RETREATING_MODE;
+                                        }else {
+                                            if ($this->force->unitsAreAttackerLosing() == true) {
+                                                $this->mode = ATTACKER_LOSING_MODE;
+                                            }else{
+                                            if ($this->force->attackingAreAdvancing() === true) {
+                                                $this->mode = ADVANCING_MODE;
+
+                                            } else {
+                                                if ($this->force->unitsAreRetreating() == true) {
+                                                    $this->force->clearRetreatHexagonList();
+                                                    $this->mode = RETREATING_MODE;
+                                                } else { // check if advancing after eliminated unit
+                                                    if ($this->force->unitsAreAdvancing() == true) {
+                                                        $this->mode = ADVANCING_MODE;
+                                                    } else {
+                                                        $this->mode = COMBAT_RESOLUTION_MODE;
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                }
+                break;        }
 
 //        $this->interactions[] = $interaction;
 

@@ -14,9 +14,6 @@
     </li>
 @endsection
 
-6
-
-
 @section('units')
     @foreach ($units as $unit)
         <div class="unit {{$unit['class']}} {{$unit['type']}} topDiv smallUnit" id="{{$unit['id']}}">

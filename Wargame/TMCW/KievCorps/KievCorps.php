@@ -372,7 +372,7 @@ class KievCorps extends \Wargame\ModernLandBattle
 
         parent::__construct($data, $arg, $scenario);
 
-        $crt = new \Wargame\TMCW\KievCorps\CombatResultsTable();
+        $crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(GERMAN_FORCE);
         $this->combatRules->injectCrt($crt);
 
         if ($data) {

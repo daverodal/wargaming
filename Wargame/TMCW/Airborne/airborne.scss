@@ -22,10 +22,10 @@
 
 @include player(rebel, One, $rebelColor);
 @include player(loyalist,Two,$loyalistColor);
-@include player(loyalGuards,Three,$loyalistGuardColor);
+//@include player(loyalGuards,Three,$loyalistGuardColor);
 @include headerColor(Rebel, $rebelColor, $rebelColor);
 @include headerColor(Loyalist, $loyalistColor, $loyalistColor);
-
+@include unitColor(loyalGuards, $loyalistGuardColor);
 .crt-table-name{
   display:none;
 }
@@ -33,13 +33,23 @@
 }
 
 #crt {
-  width: 308px;
+  width:680px;
+  #odds, .roll{
+    span{
+      width:45px;
+    }
+  }
+  .crt-table-name{
+    display:none;
+  }
 }
-
 .reduced {
   color: white;
 }
 
+#OBC{
+  width:800px;
+}
 #infoWrapper .WrapperLabel {
   width: auto;
 }
@@ -64,7 +74,25 @@
  @include victoryPoints(#666);
 }
 
+.unit{
+  .unitSize{
+    height:9px;
+  }
+  .counterWrapper{
+    height:11px;
+    .counter-symbol{
+      stroke:black;
+      margin-left:7px;
+      display:block;
+    }
+  }
+}
 
+.unit.loyalGuards{
+  .couterWrapper .couter-symbol{
+    stroke:white;
+  }
+}
 #TECWrapper #TEC {
   padding-bottom:15px;
   width:700px;

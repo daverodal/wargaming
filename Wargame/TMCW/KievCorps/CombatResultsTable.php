@@ -26,10 +26,11 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 {
     use \Wargame\DivMCWCombatShiftTerrain;
     use CRTResults;
-    public $aggressorId = GERMAN_FORCE;
+    public $aggressorId;
 
-    function __construct(){
+    function __construct($aggressor){
         global $results_name;
+        $this->aggressorId = $aggressor;
         $results_name[DRL] = "DLR";
 
         $this->combatResultsHeader = array("1:1","2:1","3:1","4:1","5:1","6:1", "7:1", "8:1", "9:1", "10:1", "11:1");

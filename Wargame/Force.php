@@ -37,6 +37,7 @@ class Force extends SimpleForce
     public $requiredDefenses;
     public $combatRequired;
     public $exchangesKill = false;
+    public $defenderLoseAmount = 0;
 
     function __construct($data = null)
     {
@@ -570,7 +571,11 @@ class Force extends SimpleForce
     {
         $this->exchangeAmount -= $unit->exchangeAmount;
     }
-
+    
+    function defenderLoseUnit($unit)
+    {
+        $this->defenderLoseAmount -= $unit->exchangeAmount;
+    }
 
     function clearExchangeAmount()
     {
@@ -786,7 +791,11 @@ class Force extends SimpleForce
     {
         return $this->exchangeAmount;
     }
-
+    
+    function getDefenderLosingAmount()
+    {
+        return $this->defenderLoseAmount;
+    }
 
     function clearRequiredCombats()
     {
@@ -858,7 +867,6 @@ class Force extends SimpleForce
                     $this->units[$id]->status = STATUS_CAN_RETREAT;
                     $areRetreating = true;
                 } else {
-                    $this->units[$id]->status = STATUS_ATTACKED;
                 }
             }
         }

@@ -150,12 +150,8 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
     public function gameEnded()
     {
         $battle = Battle::getBattle();
-        $city = $battle->specialHexA[0];
-        if ($battle->mapData->getSpecialHex($city) === LOYALIST_FORCE) {
-            $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
-        }else{
-            $battle->gameRules->flashMessages[] = "Rebel Player Wins";
-        }
+        $battle->gameRules->flashMessages[] = "Does anybody really win in war?";
+        $this->winner = 0;
         $this->gameOver = true;
         return true;
     }

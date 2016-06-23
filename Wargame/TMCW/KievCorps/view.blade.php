@@ -73,7 +73,7 @@
 @endsection
 
 @section('inner-crt')
-    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable()])
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(GERMAN_FORCE)])
 @endsection
 @section('unitRules.unitColors')
     @include('wargame::TMCW.KievCorps.unitColors')

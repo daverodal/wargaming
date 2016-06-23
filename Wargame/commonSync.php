@@ -403,6 +403,14 @@ x.register("force", function(force,data) {
                 }
                 color = "red";
                 break;
+
+            case <?=STATUS_CAN_DEFEND_LOSE?>:
+                if(data.gameRules.mode == <?=DEFENDER_LOSING_MODE?>){
+                    status = "Click on one of the red units to reduce it."
+                }
+                color = "red";
+                break;
+
             case <?=STATUS_REPLACED?>:
                 color = "blue";
                 break;
@@ -646,6 +654,18 @@ x.register("gameRules", function(gameRules,data) {
             var result = data.combatRules.lastResolvedCombat.combatResult;
 
             $("#floatMessage header").html(result+": Exchanging Mode");
+
+        case <?=DEFENDER_LOSING_MODE?>:
+            var result = data.combatRules.lastResolvedCombat.combatResult;
+
+            $("#floatMessage header").html(result+": Defender Loss Mode.");
+            var floatStat = $("#floatMessage p").html();
+
+            floatStat = "Lose at least "+data.force.exchangeAmount+ " strength points<br>" + floatStat;
+            $("#floatMessage p").html(floatStat);
+
+//            html += "<br>Lose at least "+gameRules.exchangeAmount+" strength points from the units outlined in red";
+            break;
 
         case <?=ATTACKER_LOSING_MODE?>:
             var result = data.combatRules.lastResolvedCombat.combatResult;

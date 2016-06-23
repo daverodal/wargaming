@@ -3317,18 +3317,6 @@ svg marker#head {
   .loyalist .unit-desig {
     color: white; }
 
-.playerloyalGuards {
-  background: #c0c0c0;
-  border-color: #c0c0c0 !important; }
-
-.loyalGuardsFace, .playerloyalGuardsFace {
-  color: #c0c0c0; }
-
-.loyalGuards {
-  background-color: #c0c0c0; }
-  .loyalGuards .unit-desig {
-    color: white; }
-
 .playerRebel {
   background: #5c5;
   border-color: #5c5 !important; }
@@ -3343,14 +3331,27 @@ svg marker#head {
 .LoyalistFace, .playerLoyalistFace {
   color: #83aee9; }
 
+.loyalGuards {
+  background-color: #c0c0c0; }
+
+.loyalGuards .counterWrapper {
+  background-color: #c0c0c0; }
+
 .crt-table-name {
   display: none; }
 
 #crt {
-  width: 308px; }
+  width: 680px; }
+  #crt #odds span, #crt .roll span {
+    width: 45px; }
+  #crt .crt-table-name {
+    display: none; }
 
 .reduced {
   color: white; }
+
+#OBC {
+  width: 800px; }
 
 #infoWrapper .WrapperLabel {
   width: auto; }
@@ -3367,6 +3368,18 @@ svg marker#head {
 
 .specialHexesVP .loyalistVictoryPoints {
   text-shadow: 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666; }
+
+.unit .unitSize {
+  height: 9px; }
+.unit .counterWrapper {
+  height: 11px; }
+  .unit .counterWrapper .counter-symbol {
+    stroke: black;
+    margin-left: 7px;
+    display: block; }
+
+.unit.loyalGuards .couterWrapper .couter-symbol {
+  stroke: white; }
 
 #TECWrapper #TEC {
   padding-bottom: 15px;
