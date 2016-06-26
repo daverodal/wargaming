@@ -186,6 +186,18 @@ class Battle
                 self::$isLoaded = true;
                 self::$game = $game;
                 $path = $game->path;
+                $gameName = preg_replace("/.*\\\\/","",$game->fileName);
+
+
+                $customScenarios = self::$ad->getCustomScenarios($path, $game->genre, $gameName);
+                foreach($customScenarios as $customScenario){
+                    $theScenario = $customScenario->scenario;
+                    $thisScenario = $customScenario->value;
+                    $thisScenario->sName = $theScenario;
+//                $theGame->value->scenarios->$theScenario->mapUrl = $terrain->terrain->mapUrl;
+                    $game->scenarios->$theScenario = $thisScenario;
+                }
+
                 $argTwo = $game->scenarios->$arg;
                 set_include_path(WARGAMES . $path . PATH_SEPARATOR . get_include_path());
                 $className = preg_replace("/.php$/", "", $game->fileName);
