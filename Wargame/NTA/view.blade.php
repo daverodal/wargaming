@@ -1,5 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::Mollwitz.header')
+@include('wargame::NTA.header')
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/nta/css/all.css')}}">
 </head>
 

@@ -1009,13 +1009,14 @@
 
         {"num":1,"name":"sharpshooter", "forceId":1,"combat":1,"movement":2,"reinforce":"A","range":4,"nationality":"Loyalist","class":"artillery"},
         {"num":3,"name":"sharpshooter", "forceId":1,"combat":1,"movement":2,"reinforce":"A","range":2,"nationality":"Loyalist","class":"artillery"},
-        {"num":1,"forceId":1,"combat":4,"movement":3,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
-        {"num":4,"forceId":1,"combat":3,"movement":3,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
+        {"num":2,"forceId":1,"combat":4,"movement":3,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
+        {"num":3,"forceId":1,"combat":3,"movement":3,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
         {"num":1,"forceId":1,"combat":3,"movement":4,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
         {"num":1,"name":"sharpshooter", "forceId":1,"combat":1,"movement":4,"reinforce":"A","range":1,"nationality":"Loyalist","class":"infantry"},
         {"num":1,"forceId":1,"combat":3,"movement":2,"reinforce":"D","range":4,"nationality":"Hessian","class":"artillery"},
         {"num":1,"forceId":1,"combat":3,"movement":3,"reinforce":"A","range":1,"nationality":"Hessian","class":"infantry"},
-        {"num":3,"forceId":1,"combat":4,"movement":3,"reinforce":"D","range":1,"nationality":"Hessian","class":"infantry"},
+        {"num":1,"forceId":1,"combat":5,"movement":3,"reinforce":"D","range":1,"nationality":"Hessian","class":"infantry"},
+        {"num":2,"forceId":1,"combat":4,"movement":3,"reinforce":"D","range":1,"nationality":"Hessian","class":"infantry"},
         {"num":1, "forceId":1,"combat":2,"movement":4,"reinforce":"A","range":1,"nationality":"Hessian","class":"infantry"},
         {"num":1, "forceId":1,"combat":2,"movement":4,"reinforce":"D","range":1,"nationality":"Hessian","class":"infantry"}
       ]
