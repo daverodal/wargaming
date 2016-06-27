@@ -124,6 +124,7 @@ class Germantown1777 extends \Wargame\Mollwitz\JagCore
             $this->moveRules->exitZoc = "stop";
             $this->moveRules->noZocZoc = true;
             $this->moveRules->zocBlocksRetreat = true;
+            $this->moveRules->oneHex = false;
 
             // game data
 
