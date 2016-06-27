@@ -427,16 +427,11 @@
     "params":{
       "wimpySwamps": true
     },
-    "options":[
-      {
-        "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
-        "keyName":"stepReduction",
-        "value": true
-      }],
+    "options":[],
     "scenarios": {
       "main": {
-        "description": "Standard Scenario.",
-        "longDescription":"Historical Scenario. Hard for Sweden to win.",
+        "description": "Historical Scenario.",
+        "longDescription":"Historical Scenario. ",
         "units":[
           {"num":3,"forceId":1,"combat":5,"movement":4,"reinforce":"A","range":1,"nationality":"Rebel","class":"infantry"},
           {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"A","range":2,"nationality":"Rebel","class":"artillery","name":"sharpshooter"},
