@@ -89,10 +89,12 @@ class Germantown1777 extends \Wargame\Mollwitz\JagCore
 
         foreach($unitSets as $unitSet) {
             for ($i = 0; $i < $unitSet->num; $i++) {
+                $name = isset($unitSet->name) ? $unitSet->name : "infantry-1";
+
                 if(!empty($scenario->stepReduction) && isset($unitSet->reduced)){
-                    UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->reduced, $unitSet->movement, false, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                    UnitFactory::create($name, $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->reduced, $unitSet->movement, false, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
                 }else{
-                    UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                    UnitFactory::create($name, $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
                 }
             }
         }
@@ -100,7 +102,6 @@ class Germantown1777 extends \Wargame\Mollwitz\JagCore
 
     function __construct($data = null, $arg = false, $scenario = false, $game = false)
     {
-
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
             $this->specialHexA = $data->specialHexA;
@@ -146,5 +147,38 @@ class Germantown1777 extends \Wargame\Mollwitz\JagCore
             $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, true);
 
         }
+        $this->moveRules->stacking = function($mapHex, $forceId, $unit){
+            $armyGroup = false;
+            if($unit->class == "hq"){
+                return false;
+            }
+            if($unit->name === "sharpshooter"){
+                $nUnits = 0;
+                foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                    if($this->force->units[$mKey]->class == "hq"){
+                        continue;
+                    }
+                    $nUnits++;
+                }
+                return $nUnits >= 2;
+            }
+
+            $nUnits = 0;
+            $smallUnit = false;
+            foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                if($this->force->units[$mKey]->class == "hq"){
+                    continue;
+                }
+                if($this->force->units[$mKey]->name == "sharpshooter"){
+                    $smallUnit = true;
+                }
+                $nUnits++;
+            }
+            if($smallUnit){
+                return $nUnits >= 2;
+            }
+            return $nUnits >= 1;
+        };
+
     }
 }
