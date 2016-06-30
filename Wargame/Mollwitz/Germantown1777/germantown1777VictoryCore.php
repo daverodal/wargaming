@@ -126,20 +126,18 @@ class germantown1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         return false;
     }
 
-    public function phaseChange()
-    {
 
 
-
-    }
-
-    public function postRecoverUnits($args)
-    {
-
-    }
-
-    public function postRecoverUnit($args)
-    {
+    public function preCombatResults($args){
+        list($defenderId, $attackers, $combatResults, $dieRoll) = $args;
+        $b = Battle::getBattle();
+        if($b->force->units[$defenderId]->maxMove  === 0){
+            if($combatResults === DR){
+                $combatResults = NE;
+            }
+        }
+        return [$defenderId, $attackers, $combatResults, $dieRoll];
 
     }
+
 }
