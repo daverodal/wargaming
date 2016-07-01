@@ -34,17 +34,4 @@ You should have received a copy of the GNU General Public License
     <li><span class="lessBig">First Player</span>
         <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.</p>
     </li>
-    <li><span class="lessBig">Movement</span>
-        <p class="indent">The <?= $forceName[1] ?> units receive a 1 MP bonus on turn 1 only.</p>
-        <p class="indent"> The <?= $forceName[2] ?> Units movement rate are halved on turn 1, normal thereafter.</p>
-    </li>
-    <li><span class="lessBig">Pontoons</span>
-        <p class="indent">
-            <img id="pontoon-image" src="<?= url("js/SwePontoon.png") ?>">
-            The Swedes had pontoons available. They were unable to use them.
-            As an optional rule allow the Swedes to deploy 2 pontoon markers within 2 hexes of any Swedish unit.
-            This has the effect of creating clear hex in that hex for the remainder of the game and nullifying any stream hex side between the two pontoons
-        </p>
-
-    </li>
 </ol>
