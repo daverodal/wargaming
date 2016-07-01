@@ -437,7 +437,7 @@
           {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"A","range":1,"nationality":"Rebel","class":"artillery","name":"sharpshooter"},
 
           {"num":4,"forceId":1,"combat":7,"movement":4,"reinforce":"C","range":1,"nationality":"Rebel","class":"infantry"},
-          {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"C","range":2,"nationality":"Rebel","class":"artillery","name":"sharpshooter"},
+          {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"C","range":1,"nationality":"Rebel","class":"artillery","name":"sharpshooter"},
 
           {"num":3,"forceId":1,"combat":7,"movement":4,"reinforce":"C","range":1,"nationality":"Rebel","class":"infantry"},
           {"num":1,"forceId":1,"combat":2,"movement":3,"reinforce":"C","range":1,"nationality":"Rebel","class":"artillery","name":"sharpshooter"},
