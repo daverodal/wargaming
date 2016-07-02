@@ -26,7 +26,7 @@
 <style>
     <?php include "playAs.css";?>
     body{
-        background:url("<?=url("js/KhalkhinGolTank.jpg")?>") #333 no-repeat;
+        background:url("<?=asset("vendor/wargame/tmcw/nomonhan/images/KhalkhinGolTank.jpg")?>") #333 no-repeat;
         background-size:100%;
     }
     h1{

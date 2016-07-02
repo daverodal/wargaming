@@ -47,7 +47,6 @@ You should have received a copy of the GNU General Public License
   src: url("/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.5.0") format("embedded-opentype"), url("/fonts/font-awesome/fontawesome-webfont.woff2?v=4.5.0") format("woff2"), url("/fonts/font-awesome/fontawesome-webfont.woff?v=4.5.0") format("woff"), url("/fonts/font-awesome/fontawesome-webfont.ttf?v=4.5.0") format("truetype"), url("/fonts/font-awesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-/* line 4, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_core.scss */
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -57,96 +56,75 @@ You should have received a copy of the GNU General Public License
   -moz-osx-font-smoothing: grayscale; }
 
 /* makes the font 33% larger relative to the icon container */
-/* line 5, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_larger.scss */
 .fa-lg {
   font-size: 1.33333em;
   line-height: 0.75em;
   vertical-align: -15%; }
 
-/* line 10, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_larger.scss */
 .fa-2x {
   font-size: 2em; }
 
-/* line 11, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_larger.scss */
 .fa-3x {
   font-size: 3em; }
 
-/* line 12, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_larger.scss */
 .fa-4x {
   font-size: 4em; }
 
-/* line 13, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_larger.scss */
 .fa-5x {
   font-size: 5em; }
 
-/* line 3, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_fixed-width.scss */
 .fa-fw {
   width: 1.28571em;
   text-align: center; }
 
-/* line 4, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_list.scss */
 .fa-ul {
   padding-left: 0;
   margin-left: 2.14286em;
   list-style-type: none; }
-  /* line 8, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_list.scss */
   .fa-ul > li {
     position: relative; }
 
-/* line 10, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_list.scss */
 .fa-li {
   position: absolute;
   left: -2.14286em;
   width: 2.14286em;
   top: 0.14286em;
   text-align: center; }
-  /* line 16, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_list.scss */
   .fa-li.fa-lg {
     left: -1.85714em; }
 
-/* line 4, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .fa-border {
   padding: .2em .25em .15em;
   border: solid 0.08em #eee;
   border-radius: .1em; }
 
-/* line 10, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .fa-pull-left {
   float: left; }
 
-/* line 11, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .fa-pull-right {
   float: right; }
 
-/* line 14, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .fa.fa-pull-left {
   margin-right: .3em; }
-/* line 15, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .fa.fa-pull-right {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
-/* line 19, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .pull-right {
   float: right; }
 
-/* line 20, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .pull-left {
   float: left; }
 
-/* line 23, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .fa.pull-left {
   margin-right: .3em; }
-/* line 24, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_bordered-pulled.scss */
 .fa.pull-right {
   margin-left: .3em; }
 
-/* line 4, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_animated.scss */
 .fa-spin {
   -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear; }
 
-/* line 9, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_animated.scss */
 .fa-pulse {
   -webkit-animation: fa-spin 1s infinite steps(8);
   animation: fa-spin 1s infinite steps(8); }
@@ -165,42 +143,36 @@ You should have received a copy of the GNU General Public License
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
-/* line 4, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_rotated-flipped.scss */
 .fa-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg); }
 
-/* line 5, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_rotated-flipped.scss */
 .fa-rotate-180 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
 
-/* line 6, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_rotated-flipped.scss */
 .fa-rotate-270 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg); }
 
-/* line 8, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_rotated-flipped.scss */
 .fa-flip-horizontal {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1); }
 
-/* line 9, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_rotated-flipped.scss */
 .fa-flip-vertical {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1); }
 
-/* line 14, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_rotated-flipped.scss */
 :root .fa-rotate-90,
 :root .fa-rotate-180,
 :root .fa-rotate-270,
@@ -208,7 +180,6 @@ You should have received a copy of the GNU General Public License
 :root .fa-flip-vertical {
   filter: none; }
 
-/* line 4, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_stacked.scss */
 .fa-stack {
   position: relative;
   display: inline-block;
@@ -217,1765 +188,1341 @@ You should have received a copy of the GNU General Public License
   line-height: 2em;
   vertical-align: middle; }
 
-/* line 12, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_stacked.scss */
 .fa-stack-1x, .fa-stack-2x {
   position: absolute;
   left: 0;
   width: 100%;
   text-align: center; }
 
-/* line 18, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_stacked.scss */
 .fa-stack-1x {
   line-height: inherit; }
 
-/* line 19, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_stacked.scss */
 .fa-stack-2x {
   font-size: 2em; }
 
-/* line 20, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_stacked.scss */
 .fa-inverse {
   color: #fff; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
-/* line 4, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-glass:before {
   content: ""; }
 
-/* line 5, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-music:before {
   content: ""; }
 
-/* line 6, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-search:before {
   content: ""; }
 
-/* line 7, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-envelope-o:before {
   content: ""; }
 
-/* line 8, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-heart:before {
   content: ""; }
 
-/* line 9, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-star:before {
   content: ""; }
 
-/* line 10, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-star-o:before {
   content: ""; }
 
-/* line 11, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-user:before {
   content: ""; }
 
-/* line 12, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-film:before {
   content: ""; }
 
-/* line 13, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-th-large:before {
   content: ""; }
 
-/* line 14, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-th:before {
   content: ""; }
 
-/* line 15, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-th-list:before {
   content: ""; }
 
-/* line 16, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-check:before {
   content: ""; }
 
-/* line 17, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-remove:before,
 .fa-close:before,
 .fa-times:before {
   content: ""; }
 
-/* line 20, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-search-plus:before {
   content: ""; }
 
-/* line 21, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-search-minus:before {
   content: ""; }
 
-/* line 22, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-power-off:before {
   content: ""; }
 
-/* line 23, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-signal:before {
   content: ""; }
 
-/* line 24, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-gear:before,
 .fa-cog:before {
   content: ""; }
 
-/* line 26, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-trash-o:before {
   content: ""; }
 
-/* line 27, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-home:before {
   content: ""; }
 
-/* line 28, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-o:before {
   content: ""; }
 
-/* line 29, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-clock-o:before {
   content: ""; }
 
-/* line 30, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-road:before {
   content: ""; }
 
-/* line 31, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-download:before {
   content: ""; }
 
-/* line 32, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-circle-o-down:before {
   content: ""; }
 
-/* line 33, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-circle-o-up:before {
   content: ""; }
 
-/* line 34, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-inbox:before {
   content: ""; }
 
-/* line 35, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-play-circle-o:before {
   content: ""; }
 
-/* line 36, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-rotate-right:before,
 .fa-repeat:before {
   content: ""; }
 
-/* line 38, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-refresh:before {
   content: ""; }
 
-/* line 39, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-list-alt:before {
   content: ""; }
 
-/* line 40, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-lock:before {
   content: ""; }
 
-/* line 41, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-flag:before {
   content: ""; }
 
-/* line 42, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-headphones:before {
   content: ""; }
 
-/* line 43, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-volume-off:before {
   content: ""; }
 
-/* line 44, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-volume-down:before {
   content: ""; }
 
-/* line 45, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-volume-up:before {
   content: ""; }
 
-/* line 46, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-qrcode:before {
   content: ""; }
 
-/* line 47, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-barcode:before {
   content: ""; }
 
-/* line 48, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tag:before {
   content: ""; }
 
-/* line 49, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tags:before {
   content: ""; }
 
-/* line 50, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-book:before {
   content: ""; }
 
-/* line 51, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bookmark:before {
   content: ""; }
 
-/* line 52, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-print:before {
   content: ""; }
 
-/* line 53, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-camera:before {
   content: ""; }
 
-/* line 54, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-font:before {
   content: ""; }
 
-/* line 55, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bold:before {
   content: ""; }
 
-/* line 56, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-italic:before {
   content: ""; }
 
-/* line 57, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-text-height:before {
   content: ""; }
 
-/* line 58, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-text-width:before {
   content: ""; }
 
-/* line 59, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-align-left:before {
   content: ""; }
 
-/* line 60, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-align-center:before {
   content: ""; }
 
-/* line 61, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-align-right:before {
   content: ""; }
 
-/* line 62, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-align-justify:before {
   content: ""; }
 
-/* line 63, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-list:before {
   content: ""; }
 
-/* line 64, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-dedent:before,
 .fa-outdent:before {
   content: ""; }
 
-/* line 66, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-indent:before {
   content: ""; }
 
-/* line 67, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-video-camera:before {
   content: ""; }
 
-/* line 68, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-photo:before,
 .fa-image:before,
 .fa-picture-o:before {
   content: ""; }
 
-/* line 71, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pencil:before {
   content: ""; }
 
-/* line 72, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-map-marker:before {
   content: ""; }
 
-/* line 73, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-adjust:before {
   content: ""; }
 
-/* line 74, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tint:before {
   content: ""; }
 
-/* line 75, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-edit:before,
 .fa-pencil-square-o:before {
   content: ""; }
 
-/* line 77, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-share-square-o:before {
   content: ""; }
 
-/* line 78, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-check-square-o:before {
   content: ""; }
 
-/* line 79, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrows:before {
   content: ""; }
 
-/* line 80, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-step-backward:before {
   content: ""; }
 
-/* line 81, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-fast-backward:before {
   content: ""; }
 
-/* line 82, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-backward:before {
   content: ""; }
 
-/* line 83, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-play:before {
   content: ""; }
 
-/* line 84, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pause:before {
   content: ""; }
 
-/* line 85, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-stop:before {
   content: ""; }
 
-/* line 86, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-forward:before {
   content: ""; }
 
-/* line 87, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-fast-forward:before {
   content: ""; }
 
-/* line 88, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-step-forward:before {
   content: ""; }
 
-/* line 89, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-eject:before {
   content: ""; }
 
-/* line 90, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chevron-left:before {
   content: ""; }
 
-/* line 91, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chevron-right:before {
   content: ""; }
 
-/* line 92, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-plus-circle:before {
   content: ""; }
 
-/* line 93, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-minus-circle:before {
   content: ""; }
 
-/* line 94, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-times-circle:before {
   content: ""; }
 
-/* line 95, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-check-circle:before {
   content: ""; }
 
-/* line 96, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-question-circle:before {
   content: ""; }
 
-/* line 97, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-info-circle:before {
   content: ""; }
 
-/* line 98, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-crosshairs:before {
   content: ""; }
 
-/* line 99, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-times-circle-o:before {
   content: ""; }
 
-/* line 100, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-check-circle-o:before {
   content: ""; }
 
-/* line 101, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ban:before {
   content: ""; }
 
-/* line 102, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-left:before {
   content: ""; }
 
-/* line 103, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-right:before {
   content: ""; }
 
-/* line 104, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-up:before {
   content: ""; }
 
-/* line 105, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-down:before {
   content: ""; }
 
-/* line 106, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mail-forward:before,
 .fa-share:before {
   content: ""; }
 
-/* line 108, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-expand:before {
   content: ""; }
 
-/* line 109, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-compress:before {
   content: ""; }
 
-/* line 110, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-plus:before {
   content: ""; }
 
-/* line 111, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-minus:before {
   content: ""; }
 
-/* line 112, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-asterisk:before {
   content: ""; }
 
-/* line 113, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-exclamation-circle:before {
   content: ""; }
 
-/* line 114, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-gift:before {
   content: ""; }
 
-/* line 115, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-leaf:before {
   content: ""; }
 
-/* line 116, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-fire:before {
   content: ""; }
 
-/* line 117, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-eye:before {
   content: ""; }
 
-/* line 118, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-eye-slash:before {
   content: ""; }
 
-/* line 119, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-warning:before,
 .fa-exclamation-triangle:before {
   content: ""; }
 
-/* line 121, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-plane:before {
   content: ""; }
 
-/* line 122, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-calendar:before {
   content: ""; }
 
-/* line 123, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-random:before {
   content: ""; }
 
-/* line 124, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-comment:before {
   content: ""; }
 
-/* line 125, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-magnet:before {
   content: ""; }
 
-/* line 126, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chevron-up:before {
   content: ""; }
 
-/* line 127, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chevron-down:before {
   content: ""; }
 
-/* line 128, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-retweet:before {
   content: ""; }
 
-/* line 129, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-shopping-cart:before {
   content: ""; }
 
-/* line 130, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-folder:before {
   content: ""; }
 
-/* line 131, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-folder-open:before {
   content: ""; }
 
-/* line 132, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrows-v:before {
   content: ""; }
 
-/* line 133, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrows-h:before {
   content: ""; }
 
-/* line 134, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bar-chart-o:before,
 .fa-bar-chart:before {
   content: ""; }
 
-/* line 136, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-twitter-square:before {
   content: ""; }
 
-/* line 137, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-facebook-square:before {
   content: ""; }
 
-/* line 138, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-camera-retro:before {
   content: ""; }
 
-/* line 139, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-key:before {
   content: ""; }
 
-/* line 140, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-gears:before,
 .fa-cogs:before {
   content: ""; }
 
-/* line 142, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-comments:before {
   content: ""; }
 
-/* line 143, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-thumbs-o-up:before {
   content: ""; }
 
-/* line 144, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-thumbs-o-down:before {
   content: ""; }
 
-/* line 145, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-star-half:before {
   content: ""; }
 
-/* line 146, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-heart-o:before {
   content: ""; }
 
-/* line 147, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sign-out:before {
   content: ""; }
 
-/* line 148, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-linkedin-square:before {
   content: ""; }
 
-/* line 149, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-thumb-tack:before {
   content: ""; }
 
-/* line 150, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-external-link:before {
   content: ""; }
 
-/* line 151, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sign-in:before {
   content: ""; }
 
-/* line 152, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-trophy:before {
   content: ""; }
 
-/* line 153, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-github-square:before {
   content: ""; }
 
-/* line 154, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-upload:before {
   content: ""; }
 
-/* line 155, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-lemon-o:before {
   content: ""; }
 
-/* line 156, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-phone:before {
   content: ""; }
 
-/* line 157, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-square-o:before {
   content: ""; }
 
-/* line 158, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bookmark-o:before {
   content: ""; }
 
-/* line 159, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-phone-square:before {
   content: ""; }
 
-/* line 160, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-twitter:before {
   content: ""; }
 
-/* line 161, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-facebook-f:before,
 .fa-facebook:before {
   content: ""; }
 
-/* line 163, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-github:before {
   content: ""; }
 
-/* line 164, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-unlock:before {
   content: ""; }
 
-/* line 165, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-credit-card:before {
   content: ""; }
 
-/* line 166, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-feed:before,
 .fa-rss:before {
   content: ""; }
 
-/* line 168, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hdd-o:before {
   content: ""; }
 
-/* line 169, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bullhorn:before {
   content: ""; }
 
-/* line 170, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bell:before {
   content: ""; }
 
-/* line 171, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-certificate:before {
   content: ""; }
 
-/* line 172, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-o-right:before {
   content: ""; }
 
-/* line 173, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-o-left:before {
   content: ""; }
 
-/* line 174, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-o-up:before {
   content: ""; }
 
-/* line 175, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-o-down:before {
   content: ""; }
 
-/* line 176, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-circle-left:before {
   content: ""; }
 
-/* line 177, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-circle-right:before {
   content: ""; }
 
-/* line 178, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-circle-up:before {
   content: ""; }
 
-/* line 179, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-circle-down:before {
   content: ""; }
 
-/* line 180, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-globe:before {
   content: ""; }
 
-/* line 181, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-wrench:before {
   content: ""; }
 
-/* line 182, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tasks:before {
   content: ""; }
 
-/* line 183, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-filter:before {
   content: ""; }
 
-/* line 184, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-briefcase:before {
   content: ""; }
 
-/* line 185, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrows-alt:before {
   content: ""; }
 
-/* line 186, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-group:before,
 .fa-users:before {
   content: ""; }
 
-/* line 188, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chain:before,
 .fa-link:before {
   content: ""; }
 
-/* line 190, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cloud:before {
   content: ""; }
 
-/* line 191, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-flask:before {
   content: ""; }
 
-/* line 192, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cut:before,
 .fa-scissors:before {
   content: ""; }
 
-/* line 194, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-copy:before,
 .fa-files-o:before {
   content: ""; }
 
-/* line 196, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-paperclip:before {
   content: ""; }
 
-/* line 197, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-save:before,
 .fa-floppy-o:before {
   content: ""; }
 
-/* line 199, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-square:before {
   content: ""; }
 
-/* line 200, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-navicon:before,
 .fa-reorder:before,
 .fa-bars:before {
   content: ""; }
 
-/* line 203, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-list-ul:before {
   content: ""; }
 
-/* line 204, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-list-ol:before {
   content: ""; }
 
-/* line 205, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-strikethrough:before {
   content: ""; }
 
-/* line 206, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-underline:before {
   content: ""; }
 
-/* line 207, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-table:before {
   content: ""; }
 
-/* line 208, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-magic:before {
   content: ""; }
 
-/* line 209, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-truck:before {
   content: ""; }
 
-/* line 210, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pinterest:before {
   content: ""; }
 
-/* line 211, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pinterest-square:before {
   content: ""; }
 
-/* line 212, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-google-plus-square:before {
   content: ""; }
 
-/* line 213, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-google-plus:before {
   content: ""; }
 
-/* line 214, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-money:before {
   content: ""; }
 
-/* line 215, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-caret-down:before {
   content: ""; }
 
-/* line 216, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-caret-up:before {
   content: ""; }
 
-/* line 217, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-caret-left:before {
   content: ""; }
 
-/* line 218, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-caret-right:before {
   content: ""; }
 
-/* line 219, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-columns:before {
   content: ""; }
 
-/* line 220, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-unsorted:before,
 .fa-sort:before {
   content: ""; }
 
-/* line 222, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sort-down:before,
 .fa-sort-desc:before {
   content: ""; }
 
-/* line 224, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sort-up:before,
 .fa-sort-asc:before {
   content: ""; }
 
-/* line 226, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-envelope:before {
   content: ""; }
 
-/* line 227, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-linkedin:before {
   content: ""; }
 
-/* line 228, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-rotate-left:before,
 .fa-undo:before {
   content: ""; }
 
-/* line 230, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-legal:before,
 .fa-gavel:before {
   content: ""; }
 
-/* line 232, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-dashboard:before,
 .fa-tachometer:before {
   content: ""; }
 
-/* line 234, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-comment-o:before {
   content: ""; }
 
-/* line 235, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-comments-o:before {
   content: ""; }
 
-/* line 236, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-flash:before,
 .fa-bolt:before {
   content: ""; }
 
-/* line 238, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sitemap:before {
   content: ""; }
 
-/* line 239, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-umbrella:before {
   content: ""; }
 
-/* line 240, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-paste:before,
 .fa-clipboard:before {
   content: ""; }
 
-/* line 242, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-lightbulb-o:before {
   content: ""; }
 
-/* line 243, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-exchange:before {
   content: ""; }
 
-/* line 244, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cloud-download:before {
   content: ""; }
 
-/* line 245, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cloud-upload:before {
   content: ""; }
 
-/* line 246, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-user-md:before {
   content: ""; }
 
-/* line 247, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-stethoscope:before {
   content: ""; }
 
-/* line 248, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-suitcase:before {
   content: ""; }
 
-/* line 249, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bell-o:before {
   content: ""; }
 
-/* line 250, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-coffee:before {
   content: ""; }
 
-/* line 251, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cutlery:before {
   content: ""; }
 
-/* line 252, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-text-o:before {
   content: ""; }
 
-/* line 253, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-building-o:before {
   content: ""; }
 
-/* line 254, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hospital-o:before {
   content: ""; }
 
-/* line 255, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ambulance:before {
   content: ""; }
 
-/* line 256, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-medkit:before {
   content: ""; }
 
-/* line 257, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-fighter-jet:before {
   content: ""; }
 
-/* line 258, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-beer:before {
   content: ""; }
 
-/* line 259, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-h-square:before {
   content: ""; }
 
-/* line 260, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-plus-square:before {
   content: ""; }
 
-/* line 261, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angle-double-left:before {
   content: ""; }
 
-/* line 262, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angle-double-right:before {
   content: ""; }
 
-/* line 263, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angle-double-up:before {
   content: ""; }
 
-/* line 264, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angle-double-down:before {
   content: ""; }
 
-/* line 265, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angle-left:before {
   content: ""; }
 
-/* line 266, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angle-right:before {
   content: ""; }
 
-/* line 267, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angle-up:before {
   content: ""; }
 
-/* line 268, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angle-down:before {
   content: ""; }
 
-/* line 269, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-desktop:before {
   content: ""; }
 
-/* line 270, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-laptop:before {
   content: ""; }
 
-/* line 271, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tablet:before {
   content: ""; }
 
-/* line 272, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mobile-phone:before,
 .fa-mobile:before {
   content: ""; }
 
-/* line 274, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-circle-o:before {
   content: ""; }
 
-/* line 275, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-quote-left:before {
   content: ""; }
 
-/* line 276, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-quote-right:before {
   content: ""; }
 
-/* line 277, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-spinner:before {
   content: ""; }
 
-/* line 278, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-circle:before {
   content: ""; }
 
-/* line 279, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mail-reply:before,
 .fa-reply:before {
   content: ""; }
 
-/* line 281, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-github-alt:before {
   content: ""; }
 
-/* line 282, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-folder-o:before {
   content: ""; }
 
-/* line 283, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-folder-open-o:before {
   content: ""; }
 
-/* line 284, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-smile-o:before {
   content: ""; }
 
-/* line 285, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-frown-o:before {
   content: ""; }
 
-/* line 286, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-meh-o:before {
   content: ""; }
 
-/* line 287, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-gamepad:before {
   content: ""; }
 
-/* line 288, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-keyboard-o:before {
   content: ""; }
 
-/* line 289, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-flag-o:before {
   content: ""; }
 
-/* line 290, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-flag-checkered:before {
   content: ""; }
 
-/* line 291, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-terminal:before {
   content: ""; }
 
-/* line 292, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-code:before {
   content: ""; }
 
-/* line 293, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mail-reply-all:before,
 .fa-reply-all:before {
   content: ""; }
 
-/* line 295, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-star-half-empty:before,
 .fa-star-half-full:before,
 .fa-star-half-o:before {
   content: ""; }
 
-/* line 298, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-location-arrow:before {
   content: ""; }
 
-/* line 299, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-crop:before {
   content: ""; }
 
-/* line 300, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-code-fork:before {
   content: ""; }
 
-/* line 301, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-unlink:before,
 .fa-chain-broken:before {
   content: ""; }
 
-/* line 303, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-question:before {
   content: ""; }
 
-/* line 304, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-info:before {
   content: ""; }
 
-/* line 305, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-exclamation:before {
   content: ""; }
 
-/* line 306, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-superscript:before {
   content: ""; }
 
-/* line 307, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-subscript:before {
   content: ""; }
 
-/* line 308, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-eraser:before {
   content: ""; }
 
-/* line 309, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-puzzle-piece:before {
   content: ""; }
 
-/* line 310, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-microphone:before {
   content: ""; }
 
-/* line 311, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-microphone-slash:before {
   content: ""; }
 
-/* line 312, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-shield:before {
   content: ""; }
 
-/* line 313, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-calendar-o:before {
   content: ""; }
 
-/* line 314, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-fire-extinguisher:before {
   content: ""; }
 
-/* line 315, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-rocket:before {
   content: ""; }
 
-/* line 316, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-maxcdn:before {
   content: ""; }
 
-/* line 317, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chevron-circle-left:before {
   content: ""; }
 
-/* line 318, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chevron-circle-right:before {
   content: ""; }
 
-/* line 319, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chevron-circle-up:before {
   content: ""; }
 
-/* line 320, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chevron-circle-down:before {
   content: ""; }
 
-/* line 321, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-html5:before {
   content: ""; }
 
-/* line 322, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-css3:before {
   content: ""; }
 
-/* line 323, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-anchor:before {
   content: ""; }
 
-/* line 324, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-unlock-alt:before {
   content: ""; }
 
-/* line 325, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bullseye:before {
   content: ""; }
 
-/* line 326, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ellipsis-h:before {
   content: ""; }
 
-/* line 327, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ellipsis-v:before {
   content: ""; }
 
-/* line 328, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-rss-square:before {
   content: ""; }
 
-/* line 329, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-play-circle:before {
   content: ""; }
 
-/* line 330, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ticket:before {
   content: ""; }
 
-/* line 331, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-minus-square:before {
   content: ""; }
 
-/* line 332, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-minus-square-o:before {
   content: ""; }
 
-/* line 333, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-level-up:before {
   content: ""; }
 
-/* line 334, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-level-down:before {
   content: ""; }
 
-/* line 335, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-check-square:before {
   content: ""; }
 
-/* line 336, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pencil-square:before {
   content: ""; }
 
-/* line 337, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-external-link-square:before {
   content: ""; }
 
-/* line 338, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-share-square:before {
   content: ""; }
 
-/* line 339, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-compass:before {
   content: ""; }
 
-/* line 340, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-toggle-down:before,
 .fa-caret-square-o-down:before {
   content: ""; }
 
-/* line 342, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-toggle-up:before,
 .fa-caret-square-o-up:before {
   content: ""; }
 
-/* line 344, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-toggle-right:before,
 .fa-caret-square-o-right:before {
   content: ""; }
 
-/* line 346, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-euro:before,
 .fa-eur:before {
   content: ""; }
 
-/* line 348, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-gbp:before {
   content: ""; }
 
-/* line 349, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-dollar:before,
 .fa-usd:before {
   content: ""; }
 
-/* line 351, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-rupee:before,
 .fa-inr:before {
   content: ""; }
 
-/* line 353, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cny:before,
 .fa-rmb:before,
 .fa-yen:before,
 .fa-jpy:before {
   content: ""; }
 
-/* line 357, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ruble:before,
 .fa-rouble:before,
 .fa-rub:before {
   content: ""; }
 
-/* line 360, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-won:before,
 .fa-krw:before {
   content: ""; }
 
-/* line 362, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bitcoin:before,
 .fa-btc:before {
   content: ""; }
 
-/* line 364, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file:before {
   content: ""; }
 
-/* line 365, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-text:before {
   content: ""; }
 
-/* line 366, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sort-alpha-asc:before {
   content: ""; }
 
-/* line 367, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sort-alpha-desc:before {
   content: ""; }
 
-/* line 368, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sort-amount-asc:before {
   content: ""; }
 
-/* line 369, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sort-amount-desc:before {
   content: ""; }
 
-/* line 370, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sort-numeric-asc:before {
   content: ""; }
 
-/* line 371, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sort-numeric-desc:before {
   content: ""; }
 
-/* line 372, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-thumbs-up:before {
   content: ""; }
 
-/* line 373, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-thumbs-down:before {
   content: ""; }
 
-/* line 374, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-youtube-square:before {
   content: ""; }
 
-/* line 375, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-youtube:before {
   content: ""; }
 
-/* line 376, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-xing:before {
   content: ""; }
 
-/* line 377, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-xing-square:before {
   content: ""; }
 
-/* line 378, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-youtube-play:before {
   content: ""; }
 
-/* line 379, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-dropbox:before {
   content: ""; }
 
-/* line 380, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-stack-overflow:before {
   content: ""; }
 
-/* line 381, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-instagram:before {
   content: ""; }
 
-/* line 382, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-flickr:before {
   content: ""; }
 
-/* line 383, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-adn:before {
   content: ""; }
 
-/* line 384, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bitbucket:before {
   content: ""; }
 
-/* line 385, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bitbucket-square:before {
   content: ""; }
 
-/* line 386, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tumblr:before {
   content: ""; }
 
-/* line 387, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tumblr-square:before {
   content: ""; }
 
-/* line 388, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-long-arrow-down:before {
   content: ""; }
 
-/* line 389, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-long-arrow-up:before {
   content: ""; }
 
-/* line 390, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-long-arrow-left:before {
   content: ""; }
 
-/* line 391, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-long-arrow-right:before {
   content: ""; }
 
-/* line 392, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-apple:before {
   content: ""; }
 
-/* line 393, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-windows:before {
   content: ""; }
 
-/* line 394, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-android:before {
   content: ""; }
 
-/* line 395, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-linux:before {
   content: ""; }
 
-/* line 396, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-dribbble:before {
   content: ""; }
 
-/* line 397, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-skype:before {
   content: ""; }
 
-/* line 398, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-foursquare:before {
   content: ""; }
 
-/* line 399, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-trello:before {
   content: ""; }
 
-/* line 400, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-female:before {
   content: ""; }
 
-/* line 401, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-male:before {
   content: ""; }
 
-/* line 402, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-gittip:before,
 .fa-gratipay:before {
   content: ""; }
 
-/* line 404, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sun-o:before {
   content: ""; }
 
-/* line 405, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-moon-o:before {
   content: ""; }
 
-/* line 406, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-archive:before {
   content: ""; }
 
-/* line 407, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bug:before {
   content: ""; }
 
-/* line 408, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-vk:before {
   content: ""; }
 
-/* line 409, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-weibo:before {
   content: ""; }
 
-/* line 410, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-renren:before {
   content: ""; }
 
-/* line 411, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pagelines:before {
   content: ""; }
 
-/* line 412, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-stack-exchange:before {
   content: ""; }
 
-/* line 413, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-circle-o-right:before {
   content: ""; }
 
-/* line 414, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-arrow-circle-o-left:before {
   content: ""; }
 
-/* line 415, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-toggle-left:before,
 .fa-caret-square-o-left:before {
   content: ""; }
 
-/* line 417, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-dot-circle-o:before {
   content: ""; }
 
-/* line 418, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-wheelchair:before {
   content: ""; }
 
-/* line 419, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-vimeo-square:before {
   content: ""; }
 
-/* line 420, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-turkish-lira:before,
 .fa-try:before {
   content: ""; }
 
-/* line 422, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-plus-square-o:before {
   content: ""; }
 
-/* line 423, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-space-shuttle:before {
   content: ""; }
 
-/* line 424, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-slack:before {
   content: ""; }
 
-/* line 425, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-envelope-square:before {
   content: ""; }
 
-/* line 426, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-wordpress:before {
   content: ""; }
 
-/* line 427, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-openid:before {
   content: ""; }
 
-/* line 428, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-institution:before,
 .fa-bank:before,
 .fa-university:before {
   content: ""; }
 
-/* line 431, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mortar-board:before,
 .fa-graduation-cap:before {
   content: ""; }
 
-/* line 433, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-yahoo:before {
   content: ""; }
 
-/* line 434, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-google:before {
   content: ""; }
 
-/* line 435, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-reddit:before {
   content: ""; }
 
-/* line 436, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-reddit-square:before {
   content: ""; }
 
-/* line 437, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-stumbleupon-circle:before {
   content: ""; }
 
-/* line 438, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-stumbleupon:before {
   content: ""; }
 
-/* line 439, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-delicious:before {
   content: ""; }
 
-/* line 440, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-digg:before {
   content: ""; }
 
-/* line 441, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pied-piper:before {
   content: ""; }
 
-/* line 442, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pied-piper-alt:before {
   content: ""; }
 
-/* line 443, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-drupal:before {
   content: ""; }
 
-/* line 444, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-joomla:before {
   content: ""; }
 
-/* line 445, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-language:before {
   content: ""; }
 
-/* line 446, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-fax:before {
   content: ""; }
 
-/* line 447, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-building:before {
   content: ""; }
 
-/* line 448, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-child:before {
   content: ""; }
 
-/* line 449, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-paw:before {
   content: ""; }
 
-/* line 450, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-spoon:before {
   content: ""; }
 
-/* line 451, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cube:before {
   content: ""; }
 
-/* line 452, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cubes:before {
   content: ""; }
 
-/* line 453, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-behance:before {
   content: ""; }
 
-/* line 454, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-behance-square:before {
   content: ""; }
 
-/* line 455, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-steam:before {
   content: ""; }
 
-/* line 456, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-steam-square:before {
   content: ""; }
 
-/* line 457, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-recycle:before {
   content: ""; }
 
-/* line 458, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-automobile:before,
 .fa-car:before {
   content: ""; }
 
-/* line 460, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cab:before,
 .fa-taxi:before {
   content: ""; }
 
-/* line 462, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tree:before {
   content: ""; }
 
-/* line 463, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-spotify:before {
   content: ""; }
 
-/* line 464, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-deviantart:before {
   content: ""; }
 
-/* line 465, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-soundcloud:before {
   content: ""; }
 
-/* line 466, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-database:before {
   content: ""; }
 
-/* line 467, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-pdf-o:before {
   content: ""; }
 
-/* line 468, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-word-o:before {
   content: ""; }
 
-/* line 469, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-excel-o:before {
   content: ""; }
 
-/* line 470, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-powerpoint-o:before {
   content: ""; }
 
-/* line 471, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-photo-o:before,
 .fa-file-picture-o:before,
 .fa-file-image-o:before {
   content: ""; }
 
-/* line 474, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-zip-o:before,
 .fa-file-archive-o:before {
   content: ""; }
 
-/* line 476, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-sound-o:before,
 .fa-file-audio-o:before {
   content: ""; }
 
-/* line 478, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-movie-o:before,
 .fa-file-video-o:before {
   content: ""; }
 
-/* line 480, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-file-code-o:before {
   content: ""; }
 
-/* line 481, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-vine:before {
   content: ""; }
 
-/* line 482, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-codepen:before {
   content: ""; }
 
-/* line 483, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-jsfiddle:before {
   content: ""; }
 
-/* line 484, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-life-bouy:before,
 .fa-life-buoy:before,
 .fa-life-saver:before,
@@ -1983,810 +1530,616 @@ You should have received a copy of the GNU General Public License
 .fa-life-ring:before {
   content: ""; }
 
-/* line 489, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-circle-o-notch:before {
   content: ""; }
 
-/* line 490, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ra:before,
 .fa-rebel:before {
   content: ""; }
 
-/* line 492, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ge:before,
 .fa-empire:before {
   content: ""; }
 
-/* line 494, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-git-square:before {
   content: ""; }
 
-/* line 495, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-git:before {
   content: ""; }
 
-/* line 496, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-y-combinator-square:before,
 .fa-yc-square:before,
 .fa-hacker-news:before {
   content: ""; }
 
-/* line 499, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tencent-weibo:before {
   content: ""; }
 
-/* line 500, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-qq:before {
   content: ""; }
 
-/* line 501, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-wechat:before,
 .fa-weixin:before {
   content: ""; }
 
-/* line 503, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-send:before,
 .fa-paper-plane:before {
   content: ""; }
 
-/* line 505, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-send-o:before,
 .fa-paper-plane-o:before {
   content: ""; }
 
-/* line 507, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-history:before {
   content: ""; }
 
-/* line 508, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-circle-thin:before {
   content: ""; }
 
-/* line 509, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-header:before {
   content: ""; }
 
-/* line 510, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-paragraph:before {
   content: ""; }
 
-/* line 511, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sliders:before {
   content: ""; }
 
-/* line 512, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-share-alt:before {
   content: ""; }
 
-/* line 513, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-share-alt-square:before {
   content: ""; }
 
-/* line 514, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bomb:before {
   content: ""; }
 
-/* line 515, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-soccer-ball-o:before,
 .fa-futbol-o:before {
   content: ""; }
 
-/* line 517, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tty:before {
   content: ""; }
 
-/* line 518, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-binoculars:before {
   content: ""; }
 
-/* line 519, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-plug:before {
   content: ""; }
 
-/* line 520, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-slideshare:before {
   content: ""; }
 
-/* line 521, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-twitch:before {
   content: ""; }
 
-/* line 522, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-yelp:before {
   content: ""; }
 
-/* line 523, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-newspaper-o:before {
   content: ""; }
 
-/* line 524, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-wifi:before {
   content: ""; }
 
-/* line 525, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-calculator:before {
   content: ""; }
 
-/* line 526, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-paypal:before {
   content: ""; }
 
-/* line 527, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-google-wallet:before {
   content: ""; }
 
-/* line 528, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc-visa:before {
   content: ""; }
 
-/* line 529, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc-mastercard:before {
   content: ""; }
 
-/* line 530, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc-discover:before {
   content: ""; }
 
-/* line 531, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc-amex:before {
   content: ""; }
 
-/* line 532, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc-paypal:before {
   content: ""; }
 
-/* line 533, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc-stripe:before {
   content: ""; }
 
-/* line 534, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bell-slash:before {
   content: ""; }
 
-/* line 535, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bell-slash-o:before {
   content: ""; }
 
-/* line 536, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-trash:before {
   content: ""; }
 
-/* line 537, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-copyright:before {
   content: ""; }
 
-/* line 538, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-at:before {
   content: ""; }
 
-/* line 539, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-eyedropper:before {
   content: ""; }
 
-/* line 540, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-paint-brush:before {
   content: ""; }
 
-/* line 541, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-birthday-cake:before {
   content: ""; }
 
-/* line 542, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-area-chart:before {
   content: ""; }
 
-/* line 543, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pie-chart:before {
   content: ""; }
 
-/* line 544, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-line-chart:before {
   content: ""; }
 
-/* line 545, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-lastfm:before {
   content: ""; }
 
-/* line 546, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-lastfm-square:before {
   content: ""; }
 
-/* line 547, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-toggle-off:before {
   content: ""; }
 
-/* line 548, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-toggle-on:before {
   content: ""; }
 
-/* line 549, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bicycle:before {
   content: ""; }
 
-/* line 550, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bus:before {
   content: ""; }
 
-/* line 551, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ioxhost:before {
   content: ""; }
 
-/* line 552, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-angellist:before {
   content: ""; }
 
-/* line 553, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc:before {
   content: ""; }
 
-/* line 554, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-shekel:before,
 .fa-sheqel:before,
 .fa-ils:before {
   content: ""; }
 
-/* line 557, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-meanpath:before {
   content: ""; }
 
-/* line 558, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-buysellads:before {
   content: ""; }
 
-/* line 559, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-connectdevelop:before {
   content: ""; }
 
-/* line 560, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-dashcube:before {
   content: ""; }
 
-/* line 561, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-forumbee:before {
   content: ""; }
 
-/* line 562, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-leanpub:before {
   content: ""; }
 
-/* line 563, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sellsy:before {
   content: ""; }
 
-/* line 564, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-shirtsinbulk:before {
   content: ""; }
 
-/* line 565, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-simplybuilt:before {
   content: ""; }
 
-/* line 566, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-skyatlas:before {
   content: ""; }
 
-/* line 567, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cart-plus:before {
   content: ""; }
 
-/* line 568, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cart-arrow-down:before {
   content: ""; }
 
-/* line 569, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-diamond:before {
   content: ""; }
 
-/* line 570, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-ship:before {
   content: ""; }
 
-/* line 571, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-user-secret:before {
   content: ""; }
 
-/* line 572, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-motorcycle:before {
   content: ""; }
 
-/* line 573, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-street-view:before {
   content: ""; }
 
-/* line 574, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-heartbeat:before {
   content: ""; }
 
-/* line 575, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-venus:before {
   content: ""; }
 
-/* line 576, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mars:before {
   content: ""; }
 
-/* line 577, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mercury:before {
   content: ""; }
 
-/* line 578, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-intersex:before,
 .fa-transgender:before {
   content: ""; }
 
-/* line 580, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-transgender-alt:before {
   content: ""; }
 
-/* line 581, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-venus-double:before {
   content: ""; }
 
-/* line 582, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mars-double:before {
   content: ""; }
 
-/* line 583, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-venus-mars:before {
   content: ""; }
 
-/* line 584, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mars-stroke:before {
   content: ""; }
 
-/* line 585, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mars-stroke-v:before {
   content: ""; }
 
-/* line 586, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mars-stroke-h:before {
   content: ""; }
 
-/* line 587, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-neuter:before {
   content: ""; }
 
-/* line 588, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-genderless:before {
   content: ""; }
 
-/* line 589, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-facebook-official:before {
   content: ""; }
 
-/* line 590, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pinterest-p:before {
   content: ""; }
 
-/* line 591, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-whatsapp:before {
   content: ""; }
 
-/* line 592, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-server:before {
   content: ""; }
 
-/* line 593, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-user-plus:before {
   content: ""; }
 
-/* line 594, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-user-times:before {
   content: ""; }
 
-/* line 595, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hotel:before,
 .fa-bed:before {
   content: ""; }
 
-/* line 597, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-viacoin:before {
   content: ""; }
 
-/* line 598, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-train:before {
   content: ""; }
 
-/* line 599, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-subway:before {
   content: ""; }
 
-/* line 600, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-medium:before {
   content: ""; }
 
-/* line 601, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-yc:before,
 .fa-y-combinator:before {
   content: ""; }
 
-/* line 603, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-optin-monster:before {
   content: ""; }
 
-/* line 604, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-opencart:before {
   content: ""; }
 
-/* line 605, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-expeditedssl:before {
   content: ""; }
 
-/* line 606, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-battery-4:before,
 .fa-battery-full:before {
   content: ""; }
 
-/* line 608, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-battery-3:before,
 .fa-battery-three-quarters:before {
   content: ""; }
 
-/* line 610, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-battery-2:before,
 .fa-battery-half:before {
   content: ""; }
 
-/* line 612, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-battery-1:before,
 .fa-battery-quarter:before {
   content: ""; }
 
-/* line 614, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-battery-0:before,
 .fa-battery-empty:before {
   content: ""; }
 
-/* line 616, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mouse-pointer:before {
   content: ""; }
 
-/* line 617, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-i-cursor:before {
   content: ""; }
 
-/* line 618, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-object-group:before {
   content: ""; }
 
-/* line 619, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-object-ungroup:before {
   content: ""; }
 
-/* line 620, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sticky-note:before {
   content: ""; }
 
-/* line 621, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-sticky-note-o:before {
   content: ""; }
 
-/* line 622, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc-jcb:before {
   content: ""; }
 
-/* line 623, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-cc-diners-club:before {
   content: ""; }
 
-/* line 624, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-clone:before {
   content: ""; }
 
-/* line 625, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-balance-scale:before {
   content: ""; }
 
-/* line 626, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hourglass-o:before {
   content: ""; }
 
-/* line 627, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hourglass-1:before,
 .fa-hourglass-start:before {
   content: ""; }
 
-/* line 629, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hourglass-2:before,
 .fa-hourglass-half:before {
   content: ""; }
 
-/* line 631, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hourglass-3:before,
 .fa-hourglass-end:before {
   content: ""; }
 
-/* line 633, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hourglass:before {
   content: ""; }
 
-/* line 634, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-grab-o:before,
 .fa-hand-rock-o:before {
   content: ""; }
 
-/* line 636, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-stop-o:before,
 .fa-hand-paper-o:before {
   content: ""; }
 
-/* line 638, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-scissors-o:before {
   content: ""; }
 
-/* line 639, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-lizard-o:before {
   content: ""; }
 
-/* line 640, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-spock-o:before {
   content: ""; }
 
-/* line 641, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-pointer-o:before {
   content: ""; }
 
-/* line 642, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hand-peace-o:before {
   content: ""; }
 
-/* line 643, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-trademark:before {
   content: ""; }
 
-/* line 644, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-registered:before {
   content: ""; }
 
-/* line 645, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-creative-commons:before {
   content: ""; }
 
-/* line 646, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-gg:before {
   content: ""; }
 
-/* line 647, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-gg-circle:before {
   content: ""; }
 
-/* line 648, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tripadvisor:before {
   content: ""; }
 
-/* line 649, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-odnoklassniki:before {
   content: ""; }
 
-/* line 650, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-odnoklassniki-square:before {
   content: ""; }
 
-/* line 651, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-get-pocket:before {
   content: ""; }
 
-/* line 652, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-wikipedia-w:before {
   content: ""; }
 
-/* line 653, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-safari:before {
   content: ""; }
 
-/* line 654, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-chrome:before {
   content: ""; }
 
-/* line 655, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-firefox:before {
   content: ""; }
 
-/* line 656, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-opera:before {
   content: ""; }
 
-/* line 657, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-internet-explorer:before {
   content: ""; }
 
-/* line 658, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-tv:before,
 .fa-television:before {
   content: ""; }
 
-/* line 660, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-contao:before {
   content: ""; }
 
-/* line 661, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-500px:before {
   content: ""; }
 
-/* line 662, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-amazon:before {
   content: ""; }
 
-/* line 663, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-calendar-plus-o:before {
   content: ""; }
 
-/* line 664, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-calendar-minus-o:before {
   content: ""; }
 
-/* line 665, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-calendar-times-o:before {
   content: ""; }
 
-/* line 666, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-calendar-check-o:before {
   content: ""; }
 
-/* line 667, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-industry:before {
   content: ""; }
 
-/* line 668, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-map-pin:before {
   content: ""; }
 
-/* line 669, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-map-signs:before {
   content: ""; }
 
-/* line 670, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-map-o:before {
   content: ""; }
 
-/* line 671, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-map:before {
   content: ""; }
 
-/* line 672, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-commenting:before {
   content: ""; }
 
-/* line 673, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-commenting-o:before {
   content: ""; }
 
-/* line 674, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-houzz:before {
   content: ""; }
 
-/* line 675, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-vimeo:before {
   content: ""; }
 
-/* line 676, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-black-tie:before {
   content: ""; }
 
-/* line 677, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-fonticons:before {
   content: ""; }
 
-/* line 678, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-reddit-alien:before {
   content: ""; }
 
-/* line 679, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-edge:before {
   content: ""; }
 
-/* line 680, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-credit-card-alt:before {
   content: ""; }
 
-/* line 681, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-codiepie:before {
   content: ""; }
 
-/* line 682, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-modx:before {
   content: ""; }
 
-/* line 683, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-fort-awesome:before {
   content: ""; }
 
-/* line 684, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-usb:before {
   content: ""; }
 
-/* line 685, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-product-hunt:before {
   content: ""; }
 
-/* line 686, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-mixcloud:before {
   content: ""; }
 
-/* line 687, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-scribd:before {
   content: ""; }
 
-/* line 688, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pause-circle:before {
   content: ""; }
 
-/* line 689, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-pause-circle-o:before {
   content: ""; }
 
-/* line 690, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-stop-circle:before {
   content: ""; }
 
-/* line 691, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-stop-circle-o:before {
   content: ""; }
 
-/* line 692, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-shopping-bag:before {
   content: ""; }
 
-/* line 693, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-shopping-basket:before {
   content: ""; }
 
-/* line 694, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-hashtag:before {
   content: ""; }
 
-/* line 695, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bluetooth:before {
   content: ""; }
 
-/* line 696, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-bluetooth-b:before {
   content: ""; }
 
-/* line 697, /Users/david_rodal/info/game-dispatcher/resources/assets/sass/font-awesome/_icons.scss */
 .fa-percent:before {
   content: ""; }
 
-/* line 24, ../../commonStyle.scss */
 body {
   min-width: 675px;
   margin: 0;
   padding: 0; }
 
-/* line 30, ../../commonStyle.scss */
 h2 #status {
   font-size: 16px; }
 
-/* line 34, ../../commonStyle.scss */
 h5 {
   margin: 0px; }
 
-/* line 38, ../../commonStyle.scss */
 .shadowy {
   background-color: rgba(0, 0, 0, 0.3) !important; }
 
-/* line 42, ../../commonStyle.scss */
 .red-shadowy {
   background-color: rgba(255, 0, 0, 0.8) !important;
   font-size: 9px;
   color: white; }
 
-/* line 47, ../../commonStyle.scss */
 .red-shadowy:hover {
   background-color: transparent !important;
   color: transparent; }
 
-/* line 52, ../../commonStyle.scss */
 #turn, #phase, #status, #victory {
   background: white;
   padding: 0 3px;
   font-family: sans-serif; }
 
-/* line 58, ../../commonStyle.scss */
 #victory {
   padding: 0; }
 
-/* line 62, ../../commonStyle.scss */
 #floatMessage {
   white-space: nowrap;
   position: absolute;
@@ -2799,17 +2152,14 @@ h5 {
   padding: 0 5px;
   cursor: move; }
 
-/* line 75, ../../commonStyle.scss */
 #floatMessage header {
   font-size: 35px; }
 
-/* line 79, ../../commonStyle.scss */
 #altTable, #mainTable, #detTable {
   position: absolute;
   right: 18px;
   cursor: pointer; }
 
-/* line 85, ../../commonStyle.scss */
 #comlinkWrapper {
   border: 1px solid black;
   border-radius: 10px;
@@ -2819,18 +2169,15 @@ h5 {
   font-size: 10px;
   float: right; }
 
-/* line 95, ../../commonStyle.scss */
 #topStatus {
   float: right; }
 
-/* line 99, ../../commonStyle.scss */
 .unit.pushed .shadow-mask {
   /*color:#f3172d !important;*/
   /*color:mediumpurple !important;*/
   /*background-color: #858585 !important;*/
   background-color: rgba(0, 0, 0, 0.5) !important; }
 
-/* line 107, ../../commonStyle.scss */
 #muteButton, #arrowButton {
   cursor: pointer;
   text-decoration: underline; }
@@ -2840,7 +2187,6 @@ h5 {
 /*-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -2px 0 rgba(0,0,0,.25), inset 0 -3px 0 rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.1);*/
 /*box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -2px 0 rgba(0,0,0,.25), inset 0 -3px 0 rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.1);*/
 /*}*/
-/* line 117, ../../commonStyle.scss */
 .specialHexes, .specialHexesVP {
   position: absolute;
   text-transform: capitalize;
@@ -2851,12 +2197,10 @@ h5 {
   font-size: 16px;
   z-index: 0; }
 
-/* line 128, ../../commonStyle.scss */
 .specialHexesVP {
   background: transparent !important;
   color: white; }
 
-/* line 133, ../../commonStyle.scss */
 #display {
   display: none;
   position: fixed;
@@ -2871,7 +2215,6 @@ h5 {
   border-radius: 30px;
   z-index: 4; }
 
-/* line 148, ../../commonStyle.scss */
 .flashMessage {
   position: fixed;
   width: 80%;
@@ -2885,54 +2228,42 @@ h5 {
   z-index: 1000;
   pointer-events: none; }
 
-/* line 162, ../../commonStyle.scss */
 #display button {
   font-size: 30px; }
 
-/* line 166, ../../commonStyle.scss */
 #header {
   position: static;
   width: 100%;
   padding-bottom: 0px;
   z-index: 2000; }
 
-/* line 173, ../../commonStyle.scss */
 #mouseMove {
   display: none; }
 
-/* line 177, ../../commonStyle.scss */
 #headerContent {
   /*min-height:110px;*/ }
 
-/* line 181, ../../commonStyle.scss */
 #nextPhaseWrapper {
   float: left; }
-  /* line 183, ../../commonStyle.scss */
   #nextPhaseWrapper .dynamicButton, #nextPhaseWrapper #nextPhaseButton, #nextPhaseWrapper #fullScreenButton, #nextPhaseWrapper #forceMarchEvent, #nextPhaseWrapper #determinedAttackEvent, #nextPhaseWrapper #clearCombatEvent, #nextPhaseWrapper #shiftKey {
     font-size: 28px;
     position: static; }
 
-/* line 189, ../../commonStyle.scss */
 #phaseClicks a {
   color: black; }
 
-/* line 193, ../../commonStyle.scss */
 #header a {
   color: #333; }
 
-/* line 197, ../../commonStyle.scss */
 #header a:hover {
   color: #999 !important; }
 
-/* line 201, ../../commonStyle.scss */
 #header h2 {
   margin: 10px 0 5px; }
 
-/* line 205, ../../commonStyle.scss */
 #content {
   margin-top: 140px; }
 
-/* line 209, ../../commonStyle.scss */
 .clear {
   clear: both !important;
   float: none !important; }
@@ -2953,83 +2284,63 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-/* line 36, ../../commonUnits.scss */
 .love {
   color: peace; }
 
-/* line 39, ../../commonUnits.scss */
 .light {
   backgroundColor: white; }
 
-/* line 42, ../../commonUnits.scss */
 .dark {
   background-color: #000; }
 
-/* line 45, ../../commonUnits.scss */
 .blueUnit {
   background-color: #84b5ff; }
 
-/* line 48, ../../commonUnits.scss */
 .darkBlueUnit {
   background-color: #6388c0; }
 
-/* line 51, ../../commonUnits.scss */
 .redUnit {
   background-color: #ef734a; }
 
-/* line 54, ../../commonUnits.scss */
 .darkRedUnit {
   background-color: #b35637; }
 
-/* line 57, ../../commonUnits.scss */
 .armyGreen {
   background-color: #94bd4a; }
 
-/* line 60, ../../commonUnits.scss */
 .gold {
   background-color: #f7ef8e; }
 
-/* line 63, ../../commonUnits.scss */
 .lightYellow {
   background-color: #ffef9c; }
 
-/* line 66, ../../commonUnits.scss */
 .gray {
   background-color: #b5b59c; }
 
-/* line 70, ../../commonUnits.scss */
 .oliveDrab {
   background-color: #739c73; }
 
-/* line 73, ../../commonUnits.scss */
 .kaki {
   background-color: #dec684; }
 
-/* line 76, ../../commonUnits.scss */
 .lightGreen {
   background-color: #b5ce73; }
 
-/* line 80, ../../commonUnits.scss */
 .lightBlue {
   background-color: #c4d8e4; }
 
-/* line 83, ../../commonUnits.scss */
 .lightGray {
   background-color: #d8dad6; }
 
-/* line 87, ../../commonUnits.scss */
 .brightGreen {
   background-color: #7bde52; }
 
-/* line 90, ../../commonUnits.scss */
 .flesh {
   background-color: #efc69c; }
 
-/* line 93, ../../commonUnits.scss */
 .brightRed {
   background-color: #df5842; }
 
-/* line 97, ../../commonUnits.scss */
 .unit-desig {
   font-size: 7px;
   position: absolute;
@@ -3040,7 +2351,6 @@ You should have received a copy of the GNU General Public License
   width: 30px;
   text-align: center; }
 
-/* line 224, ../../commonStyle.scss */
 #header, #content, #theDiv, #gameViewer {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3048,51 +2358,41 @@ You should have received a copy of the GNU General Public License
   -ms-user-select: none;
   user-select: none; }
 
-/* line 236, ../../commonStyle.scss */
 .dropDown, #zoomWrapper {
   font-size: 30px;
   float: left;
   margin-right: 10px;
   border-right: 1px solid black;
   padding-right: 10px; }
-  /* line 242, ../../commonStyle.scss */
   .dropDown.alpha, #zoomWrapper.alpha {
     padding-left: 10px; }
 
-/* line 247, ../../commonStyle.scss */
 #crtWrapper {
   border-right: 1px solid black;
   padding-right: 10px;
   margin-right: 10px; }
 
-/* line 253, ../../commonStyle.scss */
 #zoomWrapper {
   font-size: 30px; }
-  /* line 256, ../../commonStyle.scss */
   #zoomWrapper #zoom .defaultZoom {
     cursor: pointer; }
 
-/* line 262, ../../commonStyle.scss */
 .dropDownSelected {
   background: white; }
 
-/* line 266, ../../commonStyle.scss */
 .dropDown .WrapperLabel {
   margin: 0;
   border: none;
   cursor: pointer; }
 
-/* line 272, ../../commonStyle.scss */
 .dropDown .dropDownContent {
   background: white;
   position: absolute;
   z-index: 30;
   display: none; }
 
-/* line 279, ../../commonStyle.scss */
 #infoWrapper, #menuWrapper {
   -webkit-touch-callout: none; }
-  /* line 281, ../../commonStyle.scss */
   #infoWrapper .WrapperLabel, #menuWrapper .WrapperLabel {
     font-size: 30px;
     margin: 0;
@@ -3100,37 +2400,30 @@ You should have received a copy of the GNU General Public License
     -webkit-touch-callout: none;
     cursor: pointer;
     /*width:3em;*/ }
-  /* line 289, ../../commonStyle.scss */
   #infoWrapper li, #menuWrapper li {
     list-style-type: none;
     padding: 5px 10px 5px 10px;
     border: 0 solid black;
     border-width: 1px 1px 0 1px; }
-    /* line 294, ../../commonStyle.scss */
     #infoWrapper li a, #infoWrapper li a:visited, #menuWrapper li a, #menuWrapper li a:visited {
       color: #333;
       text-decoration: none; }
 
-/* line 301, ../../commonStyle.scss */
 #menu {
   background: white;
   color: #333; }
-  /* line 302, ../../commonStyle.scss */
   #menu ul {
     margin: 0;
     padding: 0; }
 
-/* line 315, ../../commonStyle.scss */
 #phaseDiv, #statusDiv, #chatsDiv, #victoryDiv {
   display: inline;
   vertical-align: top;
   /*float:left;*/ }
 
-/* line 321, ../../commonStyle.scss */
 #TimeWrapper {
   float: left;
   -webkit-touch-callout: none; }
-  /* line 324, ../../commonStyle.scss */
   #TimeWrapper .WrapperLabel {
     font-size: 30px;
     margin: 0;
@@ -3138,11 +2431,9 @@ You should have received a copy of the GNU General Public License
     -webkit-touch-callout: none;
     cursor: pointer;
     /*width:3em;*/ }
-    /* line 326, ../../commonStyle.scss */
     #TimeWrapper .WrapperLabel .small {
       font-size: 10px; }
 
-/* line 339, ../../commonStyle.scss */
 .dropDown .subMenu {
   font-size: 20px;
   position: absolute;
@@ -3150,20 +2441,16 @@ You should have received a copy of the GNU General Public License
   display: none;
   background: #ccc;
   /* .dropDowns may not exist inside a ul */ }
-  /* line 345, ../../commonStyle.scss */
   .dropDown .subMenu > ul {
     margin: 0;
     padding: 0;
     z-index: 30;
     font-size: 50px; }
-    /* line 350, ../../commonStyle.scss */
     .dropDown .subMenu > ul > li {
       background: white;
       border: 1px solid #333; }
-  /* line 355, ../../commonStyle.scss */
   .dropDown .subMenu .dropDown {
     border: none; }
-  /* line 360, ../../commonStyle.scss */
   .dropDown .subMenu .dropDown {
     float: none;
     font-size: 24px;
@@ -3172,95 +2459,73 @@ You should have received a copy of the GNU General Public License
     font-weight: bold;
     display: inline-block; }
 
-/* line 372, ../../commonStyle.scss */
 .game-rules h4:hover {
   text-decoration: none; }
 
-/* line 375, ../../commonStyle.scss */
 .game-rules p {
   font-size: 18px;
   font-weight: normal; }
 
-/* line 381, ../../commonStyle.scss */
 #GR {
   background: white;
   max-height: 500px;
   min-height: 100px;
   overflow-y: auto;
   padding: 0 20px 10px; }
-  /* line 382, ../../commonStyle.scss */
   #GR ol {
     counter-reset: item;
     padding-left: 10px; }
-  /* line 386, ../../commonStyle.scss */
   #GR li {
     margin: 3px 0;
     display: block;
     font-size: 16px !important;
     font-weight: normal !important; }
-    /* line 388, ../../commonStyle.scss */
     #GR li:before {
       content: "[" counters(item,".") "] ";
       counter-increment: item;
       font-weight: bold; }
-  /* line 399, ../../commonStyle.scss */
   #GR .topNumbers {
     counter-reset: item -1; }
-    /* line 401, ../../commonStyle.scss */
     #GR .topNumbers > li {
       border-top: silver 2px solid;
       padding-top: 10px;
       margin-top: 30px; }
-      /* line 405, ../../commonStyle.scss */
       #GR .topNumbers > li:before {
         content: "[" counters(item,".") ".0] ";
         font-size: 19px; }
-      /* line 409, ../../commonStyle.scss */
       #GR .topNumbers > li li {
         margin-top: 20px; }
-        /* line 412, ../../commonStyle.scss */
         #GR .topNumbers > li li:before {
           font-size: 18px; }
-        /* line 415, ../../commonStyle.scss */
         #GR .topNumbers > li li li {
           margin-top: 15px;
           padding-top: 0px;
           border: none; }
-          /* line 419, ../../commonStyle.scss */
           #GR .topNumbers > li li li:before {
             font-size: 16px; }
-          /* line 422, ../../commonStyle.scss */
           #GR .topNumbers > li li li li {
             margin-top: 10px; }
-            /* line 424, ../../commonStyle.scss */
             #GR .topNumbers > li li li li:before {
               font-size: 14px; }
-  /* line 433, ../../commonStyle.scss */
   #GR h4 {
     margin-bottom: 5px; }
-  /* line 436, ../../commonStyle.scss */
   #GR #credits {
     font-size: 16px;
     font-weight: normal; }
-    /* line 439, ../../commonStyle.scss */
     #GR #credits h2 {
       color: #338833;
       font-weight: bold; }
-    /* line 443, ../../commonStyle.scss */
     #GR #credits h4 {
       margin-bottom: 0px;
       font-size: 16px;
       font-weight: bold; }
 
-/* line 458, ../../commonStyle.scss */
 #statusWrapper {
   float: right; }
 
-/* line 462, ../../commonStyle.scss */
 #crtWrapper {
   float: left;
   -webkit-touch-callout: none; }
-  /* line 464, ../../commonStyle.scss */
   #crtWrapper .WrapperLabel {
     font-size: 30px;
     margin: 0;
@@ -3269,37 +2534,30 @@ You should have received a copy of the GNU General Public License
     cursor: pointer;
     /*width:3em;*/ }
 
-/* line 477, ../../commonStyle.scss */
 #crt {
   width: 308px; }
 
-/* line 481, ../../commonStyle.scss */
 #crtWrapper h4 .goLeft, #crtWrapper h4 .goRight {
   font-size: 22px;
   padding: 0 10px; }
 
-/* line 486, ../../commonStyle.scss */
 #TEC ul {
   margin: 0;
   padding: 0; }
 
-/* line 491, ../../commonStyle.scss */
 #Time ul {
   margin: 0;
   padding: 0; }
 
-/* line 496, ../../commonStyle.scss */
 #info ul {
   margin: 0;
   padding: 0; }
 
-/* line 501, ../../commonStyle.scss */
 #info {
   background: white;
   color: #333;
   width: 10em; }
 
-/* line 507, ../../commonStyle.scss */
 .close {
   position: absolute;
   border: 1px solid #ccc;
@@ -3310,25 +2568,20 @@ You should have received a copy of the GNU General Public License
   line-height: 12px;
   cursor: pointer; }
 
-/* line 518, ../../commonStyle.scss */
 #VC ul {
   margin: 0;
   padding: 0; }
 
-/* line 527, ../../commonStyle.scss */
 #OBC {
   background: white;
   width: 514px; }
 
-/* line 532, ../../commonStyle.scss */
 #OBC .unit {
   margin-top: 10px; }
 
-/* line 536, ../../commonStyle.scss */
 #OBC .unit .shadow-mask {
   /*background-color:rgba(0,0,0,.3);*/ }
 
-/* line 540, ../../commonStyle.scss */
 #Time {
   background: white;
   width: 600px;
@@ -3339,79 +2592,63 @@ You should have received a copy of the GNU General Public License
   box-shadow: 10px 10px 10px rgba(30, 30, 30, 0.85);
   padding: 0 5px; }
 
-/* line 551, ../../commonStyle.scss */
 #TEC {
   background: white;
   width: 579px; }
 
-/* line 556, ../../commonStyle.scss */
 #VC {
   background: white;
   width: 579px;
   left: -230px; }
 
-/* line 562, ../../commonStyle.scss */
 #clickCnt {
   display: inline-block;
   padding: 3px; }
 
-/* line 567, ../../commonStyle.scss */
 #OBCWrapper h4 {
   /*width:2em;*/ }
 
-/* line 571, ../../commonStyle.scss */
 #OBC, #crt, #TEC, #VC, #jump, #menu, #info, #GR, #Time {
   position: absolute;
   z-index: 30;
   display: none; }
 
-/* line 577, ../../commonStyle.scss */
 #TEC, #menu, #info {
   font-size: 20px !important; }
 
-/* line 581, ../../commonStyle.scss */
 .closer {
   height: 0px;
   padding: 0px !important; }
 
-/* line 586, ../../commonStyle.scss */
 #crt {
   z-index: 40; }
 
-/* line 590, ../../commonStyle.scss */
 body {
   background: #eee;
   color: #333; }
 
-/* line 595, ../../commonStyle.scss */
 #status {
   /*height:70px;*/
   /*overflow-y:scroll;*/
   /*text-align:right;*/ }
 
-/* line 601, ../../commonStyle.scss */
 #status legend {
   /*text-align:left;*/ }
 
-/* line 605, ../../commonStyle.scss */
 fieldset {
   background: white;
   border-radius: 9px; }
 
-/* line 610, ../../commonStyle.scss */
 #OBC fieldset {
   float: left;
   min-height: 100px; }
 
-/* line 615, ../../commonStyle.scss */
 .left {
   float: left; }
 
-/* line 619, ../../commonStyle.scss */
 .right {
   float: right; }
 
-/* line 623, ../../commonStyle.scss */
 #crt {
   border-radius: 15px;
   border-width: 10px;
@@ -3422,134 +2659,106 @@ fieldset {
   font-weight: bold;
   padding: 1px 5px 10px 15px;
   box-shadow: 10px 10px 10px rgba(30, 30, 30, 0.85); }
-  /* line 633, ../../commonStyle.scss */
   #crt .crt-table-name {
     color: #aaa;
     font-style: italic;
     margin-top: -15px;
     font-size: 13px; }
-  /* line 639, ../../commonStyle.scss */
   #crt #crt-buttons {
     cursor: pointer; }
-    /* line 641, ../../commonStyle.scss */
     #crt #crt-buttons .switch-crt {
       position: absolute;
       right: 19px;
       top: 3px; }
 
-/* line 652, ../../commonStyle.scss */
 #crt h3 {
   vertical-align: bottom; }
 
-/* line 656, ../../commonStyle.scss */
 #crt span {
   width: 32px; }
 
-/* line 660, ../../commonStyle.scss */
 .col1 {
   left: 20px; }
 
-/* line 664, ../../commonStyle.scss */
 .col2 {
   left: 60px; }
 
-/* line 668, ../../commonStyle.scss */
 .col3 {
   left: 100px; }
 
-/* line 672, ../../commonStyle.scss */
 .col4 {
   left: 140px; }
 
-/* line 676, ../../commonStyle.scss */
 .col5 {
   left: 180px; }
 
-/* line 680, ../../commonStyle.scss */
 .col6 {
   left: 220px; }
 
-/* line 684, ../../commonStyle.scss */
 .roll, #odds {
   padding-top: 3px;
   background: #84b5ff;
   margin-right: 14px; }
 
-/* line 690, ../../commonStyle.scss */
 #odds {
   background: white; }
 
-/* line 694, ../../commonStyle.scss */
 .even {
   color: black; }
 
-/* line 698, ../../commonStyle.scss */
 .odd {
   color: black; }
 
-/* line 702, ../../commonStyle.scss */
 .row1 {
   top: 80px; }
 
-/* line 707, ../../commonStyle.scss */
 .row2 {
   top: 100px;
   background: white; }
 
-/* line 712, ../../commonStyle.scss */
 .row3 {
   top: 120px; }
 
-/* line 716, ../../commonStyle.scss */
 .row4 {
   top: 140px;
   background: white; }
 
-/* line 721, ../../commonStyle.scss */
 .row5 {
   top: 160px; }
 
-/* line 725, ../../commonStyle.scss */
 .row6 {
   top: 180px;
   background: white; }
 
-/* line 730, ../../commonStyle.scss */
 .roll span, #odds span {
   margin-right: 10px;
   float: left;
   display: block;
   width: 32px; }
 
-/* line 737, ../../commonStyle.scss */
 #gameImages {
   position: relative;
   overflow: visible !important; }
 
-/* line 742, ../../commonStyle.scss */
 #gameViewer {
   position: fixed;
   background: #ccc;
   margin-bottom: 5px;
   width: 100%; }
 
-/* line 749, ../../commonStyle.scss */
 #leftcol {
   /*float:left;
   width:360px;*/ }
 
-/* line 754, ../../commonStyle.scss */
 #rightCol {
   /*float:right;*/
   overflow: hidden; }
 
-/* line 759, ../../commonStyle.scss */
 #gameturnContainer {
   height: 38px;
   position: relative;
   float: left; }
 
-/* line 765, ../../commonStyle.scss */
 #gameturnContainer div {
   float: left;
   height: 36px;
@@ -3559,15 +2768,12 @@ fieldset {
   font-size: 18px;
   text-indent: 2px; }
 
-/* line 775, ../../commonStyle.scss */
 .storm {
   font-size: 50%; }
 
-/* line 779, ../../commonStyle.scss */
 #gameturnContainer #turn1 {
   border-width: 1px; }
 
-/* line 783, ../../commonStyle.scss */
 #turnCounter {
   width: 32px;
   height: 32px;
@@ -3579,7 +2785,6 @@ fieldset {
   border: 2px solid;
   border-color: #ccc #666 #666 #ccc; }
 
-/* line 800, ../../commonStyle.scss */
 #deadpile {
   border-radius: 10px;
   border: 10px solid #555;
@@ -3590,16 +2795,13 @@ fieldset {
   margin-bottom: 5px;
   /*display:none;*/ }
 
-/* line 811, ../../commonStyle.scss */
 #deployBox {
   position: relative;
   font-family: serif; }
 
-/* line 816, ../../commonStyle.scss */
 #deployWrapper .unit {
   margin-right: 5px; }
 
-/* line 820, ../../commonStyle.scss */
 .unit {
   position: absolute;
   left: 0;
@@ -3609,7 +2811,6 @@ fieldset {
   height: 32px;
   border: solid 3px black; }
 
-/* line 830, ../../commonStyle.scss */
 .unit .shadow-mask {
   top: 0px;
   left: 0px;
@@ -3619,23 +2820,19 @@ fieldset {
   background: transparent;
   z-index: 1; }
 
-/* line 840, ../../commonStyle.scss */
 .unit .unit-numbers {
   text-align: center;
   color: black; }
 
-/* line 845, ../../commonStyle.scss */
 .unit .unitSize {
   font-size: 9px;
   text-align: center;
   color: black; }
 
-/* line 851, ../../commonStyle.scss */
 .unit .unit-numbers {
   height: 12px;
   font-size: 11px; }
 
-/* line 862, ../../commonStyle.scss */
 .arrowClone, .arrow, .heading {
   position: absolute;
   pointer-events: none;
@@ -3644,34 +2841,27 @@ fieldset {
   width: 100%;
   height: 100%; }
 
-/* line 871, ../../commonStyle.scss */
 .clone {
   /*pointer-events:none;*/ }
 
-/* line 875, ../../commonStyle.scss */
 .occupied {
   display: none; }
 
-/* line 879, ../../commonStyle.scss */
 #TEC {
   max-height: 500px;
   overflow: auto; }
 
-/* line 884, ../../commonStyle.scss */
 #crtDetailsButton {
   font-size: 20px;
   cursor: pointer; }
 
-/* line 889, ../../commonStyle.scss */
 #crtDetails {
   display: none; }
 
-/* line 893, ../../commonStyle.scss */
 svg {
   z-index: 1;
   display: none; }
 
-/* line 898, ../../commonStyle.scss */
 .unitOdds {
   position: absolute;
   background: white;
@@ -3684,46 +2874,36 @@ svg {
   font-size: 70%;
   z-index: 2;
   border: 1px solid #999; }
-  /* line 911, ../../commonStyle.scss */
   .unitOdds:hover {
     background: transparent;
     color: transparent;
     border-color: transparent; }
-  /* line 916, ../../commonStyle.scss */
   .unitOdds.altColor {
     background: #00ec00; }
-    /* line 918, ../../commonStyle.scss */
     .unitOdds.altColor:hover {
       background: transparent; }
-  /* line 922, ../../commonStyle.scss */
   .unitOdds.determinedColor {
     background: red;
     color: white; }
-    /* line 925, ../../commonStyle.scss */
     .unitOdds.determinedColor:hover {
       background: transparent;
       color: transparent; }
-  /* line 930, ../../commonStyle.scss */
   .unitOdds.pinnedColor {
     background: #ff00ff;
     color: white; }
-    /* line 933, ../../commonStyle.scss */
     .unitOdds.pinnedColor:hover {
       background: transparent;
       color: transparent; }
 
-/* line 940, ../../commonStyle.scss */
 #phaseClicks {
   display: none;
   cursor: pointer; }
-  /* line 943, ../../commonStyle.scss */
   #phaseClicks .newPhase {
     min-width: 10px;
     height: 40px;
     border-left: 1px solid red;
     display: inline-block;
     margin-bottom: 10px; }
-  /* line 950, ../../commonStyle.scss */
   #phaseClicks .newTick {
     text-align: center;
     margin-top: 10px;
@@ -3732,87 +2912,67 @@ svg {
     border-left: 1px solid black;
     display: inline-block;
     font-size: 10px; }
-    /* line 958, ../../commonStyle.scss */
     #phaseClicks .newTick.tickShim {
       width: 0px; }
-    /* line 961, ../../commonStyle.scss */
     #phaseClicks .newTick:hover {
       background: #999;
       color: #fff; }
-    /* line 965, ../../commonStyle.scss */
     #phaseClicks .newTick.activeTick {
       background-color: #666; }
-      /* line 967, ../../commonStyle.scss */
       #phaseClicks .newTick.activeTick a {
         background-color: #666;
         color: white; }
 
-/* line 976, ../../commonStyle.scss */
 #click-back, #click-surge, .time-button {
   font-size: 22px;
   letter-spacing: -3px; }
 
-/* line 984, ../../commonStyle.scss */
 svg g {
   opacity: .6;
   fill: red;
   stroke: red; }
-  /* line 988, ../../commonStyle.scss */
   svg g:hover, svg g .hover {
     opacity: 1.0; }
-/* line 992, ../../commonStyle.scss */
 svg marker#head {
   fill: red; }
 
-/* line 997, ../../commonStyle.scss */
 .ruleComment {
   font-style: italic;
   margin-left: 10px;
   color: #999; }
 
-/* line 1003, ../../commonStyle.scss */
 .big {
   font-size: 19px;
   font-weight: bold; }
 
-/* line 1013, ../../commonStyle.scss */
 .swooshy {
   background: black;
   color: #eee; }
 
 @media screen and (min-width: 1025px) {
-  /* line 1019, ../../commonStyle.scss */
   .tablet {
     display: none !important; } }
 @media screen and (max-width: 1024px) {
-  /* line 1028, ../../commonStyle.scss */
   #nextPhaseWrapper button, .dropDown, #zoomWrapper {
     height: 66px;
     line-height: 66px; }
-    /* line 1029, ../../commonStyle.scss */
     #nextPhaseWrapper button#fullScreenButton i, .dropDown#fullScreenButton i, #zoomWrapper#fullScreenButton i {
       min-width: 66px; }
-    /* line 1034, ../../commonStyle.scss */
     #nextPhaseWrapper button .game-rules, .dropDown .game-rules, #zoomWrapper .game-rules {
       line-height: normal;
       height: auto; }
 
-  /* line 1039, ../../commonStyle.scss */
   #crtWrapper {
     height: 66px; }
-    /* line 1041, ../../commonStyle.scss */
     #crtWrapper .WrapperLabel {
       line-height: 66px; }
 
-  /* line 1045, ../../commonStyle.scss */
   .desktop {
     display: none; }
 
-  /* line 1048, ../../commonStyle.scss */
   #click-back, #click-surge {
     font-size: 45px;
     width: 45px; } }
-/* line 1069, ../../commonStyle.scss */
 .mapSymbols {
   position: absolute;
   color: white;
@@ -3820,16 +2980,13 @@ svg marker#head {
   margin-top: -31px;
   margin-left: -36px; }
 
-/* line 1076, ../../commonStyle.scss */
 .row-hex {
   width: 71px; }
 
-/* line 1079, ../../commonStyle.scss */
 .armor {
   width: 30px;
   margin-botton: 5px; }
 
-/* line 1083, ../../commonStyle.scss */
 .mapFlashSymbols {
   position: absolute;
   color: white;
@@ -3862,7 +3019,6 @@ svg marker#head {
     width: 71px;
     margin-left: 0px;
     margin-top: 0px; } }
-/* line 1129, ../../commonStyle.scss */
 .unit-wrapper {
   padding: 4px 7px 4px 7px;
   text-align: left;
@@ -3893,52 +3049,40 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
-/* line 20, ../tmcw.scss */
 .playerrebel {
   background: #df5842;
   border-color: #df5842 !important; }
 
-/* line 24, ../tmcw.scss */
 .rebelFace, .playerrebelFace {
   color: #df5842; }
 
-/* line 28, ../tmcw.scss */
 .rebel {
   background-color: #df5842; }
-  /* line 30, ../tmcw.scss */
   .rebel .unit-desig {
     color: white; }
 
-/* line 20, ../tmcw.scss */
 .playerloyalist {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-/* line 24, ../tmcw.scss */
 .loyalistFace, .playerloyalistFace {
   color: #84b5ff; }
 
-/* line 28, ../tmcw.scss */
 .loyalist {
   background-color: #84b5ff; }
-  /* line 30, ../tmcw.scss */
   .loyalist .unit-desig {
     color: white; }
 
-/* line 40, ../tmcw.scss */
 .rebel div {
   color: black; }
 
-/* line 44, ../tmcw.scss */
 .sympth div {
   color: black; }
 
-/* line 48, ../tmcw.scss */
 .game-name {
   word-break: break-all;
   font-family: 'Nosifer'; }
 
-/* line 53, ../tmcw.scss */
 .reduced {
   color: white; }
 
@@ -3959,42 +3103,34 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/* line 19, ../tmcwUnits.scss */
 .unit .unitSize {
   height: 10px;
   font-size: 9px;
   text-align: center;
   color: black; }
 
-/* line 28, ../tmcwUnits.scss */
 .unit .counterWrapper {
   height: 10px; }
 
-/* line 31, ../tmcwUnits.scss */
 .unit .counter {
   width: 32px;
   margin-top: -4px; }
 
-/* line 36, ../tmcwUnits.scss */
 .unit .unit-numbers {
   font-size: 12px;
   font-weight: bold; }
 
-/* line 41, ../tmcwUnits.scss */
 .unit .unit-numbers .infoLen45 {
   font-size: 11px;
   letter-spacing: -1px; }
 
-/* line 45, ../tmcwUnits.scss */
 .unit .unit-numbers .infoLen5 {
   letter-spacing: -1px; }
 
-/* line 48, ../tmcwUnits.scss */
 .unit .unit-numbers .infoLen7 {
   font-size: 13px;
   letter-spacing: -1px; }
 
-/* line 53, ../tmcwUnits.scss */
 .unit .unit-numbers .infoLen8 {
   letter-spacing: -1px; }
 
@@ -4016,97 +3152,78 @@ svg marker#head {
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* dropdown styles */
-/* line 19, ../tmcwBoxes.scss */
 #OBC {
   background: white;
   width: 514px; }
 
-/* line 24, ../tmcwBoxes.scss */
 #crt {
   width: 308px; }
 
-/* line 28, ../tmcwBoxes.scss */
 #TEC {
   background: white;
   width: 579px; }
 
-/* line 33, ../tmcwBoxes.scss */
 #TECWrapper .closer {
   height: 0px;
   padding: 0px; }
 
-/* line 38, ../tmcwBoxes.scss */
 #TECWrapper .colOne.riverHex {
   background-image: url('<?=asset("js/river.png")?>');
   background-position: 0px -26px; }
 
-/* line 43, ../tmcwBoxes.scss */
 #TECWrapper .colOne.bridgeHex {
   background-image: url('<?=url("js/riverRoad.png")?>');
   background-position: 0px -26px; }
 
-/* line 48, ../tmcwBoxes.scss */
 #TECWrapper .colOne.blankHex {
   background-image: url('<?=url("js/blank.png")?>'); }
 
-/* line 52, ../tmcwBoxes.scss */
 #TECWrapper .colOne.forestHex {
   background-image: url('<?=url("js/forest 2.png")?>'); }
 
-/* line 56, ../tmcwBoxes.scss */
 #TECWrapper .colOne.mountainHex {
   background-image: url('<?=url("js/mountain.png")?>'); }
 
-/* line 60, ../tmcwBoxes.scss */
 #TECWrapper .colOne.roadHex {
   background-image: url('<?=url("js/road.png")?>');
   background-position: 0px -26px; }
 
-/* line 65, ../tmcwBoxes.scss */
 #TECWrapper .colOne.trailHex {
   background-image: url('<?=url("js/trail.png")?>');
   background-position: 0px -26px;
   background-size: 516px;
   /* TODO why this different from others */ }
 
-/* line 72, ../tmcwBoxes.scss */
 #TECWrapper .colOne {
   background-size: 400px;
   width: 220px;
   height: 56px;
   margin-left: 20px; }
 
-/* line 79, ../tmcwBoxes.scss */
 #TECWrapper .colTwo {
   width: 170px;
   padding-right: 10px; }
 
-/* line 84, ../tmcwBoxes.scss */
 #TECWrapper .colThree {
   width: 136px; }
 
-/* line 88, ../tmcwBoxes.scss */
 #TECWrapper .colOne span {
   margin-top: 12px;
   margin-left: 80px;
   display: inline-block; }
 
-/* line 94, ../tmcwBoxes.scss */
 #TECWrapper .colTwo, #TECWrapper .colThree {
   margin-top: 12px; }
 
-/* line 98, ../tmcwBoxes.scss */
 #TECWrapper .colOne,
 #TECWrapper .colTwo,
 #TECWrapper .colThree {
   float: left; }
 
-/* line 104, ../tmcwBoxes.scss */
 #TECWrapper li {
   list-style-type: none;
   padding: 5px 20px 5px 0px; }
 
-/* line 112, ../tmcwBoxes.scss */
 #GR {
   width: 600px; }
 
@@ -4127,15 +3244,12 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/* line 86, ../tmcwSpecialVP.scss */
 .specialHexesVP .prcVictoryPoints {
   text-shadow: 0px 0px 1px gold, 0px 0px 1px gold, 0px 0px 1px gold, 0px 0px 2px gold, 0px 0px 2px gold, 0px 0px 2px gold, 0px 0px 3px gold, 0px 0px 3px gold, 0px 0px 3px gold, 0px 0px 4px gold, 0px 0px 4px gold, 0px 0px 4px gold, 0px 0px 5px gold, 0px 0px 5px gold, 0px 0px 5px gold, 0px 0px 6px gold, 0px 0px 6px gold, 0px 0px 6px gold, 0px 0px 7px gold, 0px 0px 7px gold, 0px 0px 7px gold, 0px 0px 8px gold, 0px 0px 8px gold, 0px 0px 8px gold, 0px 0px 9px gold, 0px 0px 9px gold, 0px 0px 9px gold, 0px 0px 10px gold, 0px 0px 10px gold, 0px 0px 10px gold, 0px 0px 1px gold, 0px 0px 1px gold, 0px 0px 1px gold, 0px 0px 2px gold, 0px 0px 2px gold, 0px 0px 2px gold, 0px 0px 3px gold, 0px 0px 3px gold, 0px 0px 3px gold, 0px 0px 4px gold, 0px 0px 4px gold, 0px 0px 4px gold, 0px 0px 5px gold, 0px 0px 5px gold, 0px 0px 5px gold, 0px 0px 6px gold, 0px 0px 6px gold, 0px 0px 6px gold, 0px 0px 7px gold, 0px 0px 7px gold, 0px 0px 7px gold, 0px 0px 8px gold, 0px 0px 8px gold, 0px 0px 8px gold, 0px 0px 9px gold, 0px 0px 9px gold, 0px 0px 9px gold, 0px 0px 10px gold, 0px 0px 10px gold, 0px 0px 10px gold; }
 
-/* line 89, ../tmcwSpecialVP.scss */
 .specialHexesVP .sovietVictoryPoints, .specialHexesVP .rebelVictoryPoints {
   text-shadow: 0px 0px 1px #df5842, 0px 0px 1px #df5842, 0px 0px 1px #df5842, 0px 0px 2px #df5842, 0px 0px 2px #df5842, 0px 0px 2px #df5842, 0px 0px 3px #df5842, 0px 0px 3px #df5842, 0px 0px 3px #df5842, 0px 0px 4px #df5842, 0px 0px 4px #df5842, 0px 0px 4px #df5842, 0px 0px 5px #df5842, 0px 0px 5px #df5842, 0px 0px 5px #df5842, 0px 0px 6px #df5842, 0px 0px 6px #df5842, 0px 0px 6px #df5842, 0px 0px 7px #df5842, 0px 0px 7px #df5842, 0px 0px 7px #df5842, 0px 0px 8px #df5842, 0px 0px 8px #df5842, 0px 0px 8px #df5842, 0px 0px 9px #df5842, 0px 0px 9px #df5842, 0px 0px 9px #df5842, 0px 0px 10px #df5842, 0px 0px 10px #df5842, 0px 0px 10px #df5842, 0px 0px 1px #df5842, 0px 0px 1px #df5842, 0px 0px 1px #df5842, 0px 0px 2px #df5842, 0px 0px 2px #df5842, 0px 0px 2px #df5842, 0px 0px 3px #df5842, 0px 0px 3px #df5842, 0px 0px 3px #df5842, 0px 0px 4px #df5842, 0px 0px 4px #df5842, 0px 0px 4px #df5842, 0px 0px 5px #df5842, 0px 0px 5px #df5842, 0px 0px 5px #df5842, 0px 0px 6px #df5842, 0px 0px 6px #df5842, 0px 0px 6px #df5842, 0px 0px 7px #df5842, 0px 0px 7px #df5842, 0px 0px 7px #df5842, 0px 0px 8px #df5842, 0px 0px 8px #df5842, 0px 0px 8px #df5842, 0px 0px 9px #df5842, 0px 0px 9px #df5842, 0px 0px 9px #df5842, 0px 0px 10px #df5842, 0px 0px 10px #df5842, 0px 0px 10px #df5842; }
 
-/* line 93, ../tmcwSpecialVP.scss */
 .specialHexesVP .loyalistVictoryPoints {
   text-shadow: 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff; }
 
@@ -4159,86 +3273,66 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/* line 20, ../tmcw.scss */
 .playerlaconians {
   background: #dd4f2b;
   border-color: #dd4f2b !important; }
 
-/* line 24, ../tmcw.scss */
 .laconiansFace, .playerlaconiansFace {
   color: #dd4f2b; }
 
-/* line 28, ../tmcw.scss */
 .laconians {
   background-color: #dd4f2b; }
-  /* line 30, ../tmcw.scss */
   .laconians .unit-desig {
     color: white; }
 
-/* line 20, ../tmcw.scss */
 .playercaprolians {
   background: #e8e22c;
   border-color: #e8e22c !important; }
 
-/* line 24, ../tmcw.scss */
 .caproliansFace, .playercaproliansFace {
   color: #c8c21c; }
 
-/* line 28, ../tmcw.scss */
 .caprolians {
   background-color: #e8e22c; }
-  /* line 30, ../tmcw.scss */
   .caprolians .unit-desig {
     color: white; }
 
-/* line 73, ../tmcw.scss */
 .playerLaconians {
   background: #dd4f2b;
   border-color: #dd4f2b !important; }
 
-/* line 77, ../tmcw.scss */
 .LaconiansFace, .playerLaconiansFace {
   color: #dd4f2b; }
 
-/* line 73, ../tmcw.scss */
 .playerCaprolians {
   background: #e8e22c;
   border-color: #e8e22c !important; }
 
-/* line 77, ../tmcw.scss */
 .CaproliansFace, .playerCaproliansFace {
   color: #e8e22c; }
 
-/* line 30, retreatOne.scss */
 .unit .counter {
   margin-top: -5px; }
 
-/* line 34, retreatOne.scss */
 #crt {
   width: 308px; }
-  /* line 36, retreatOne.scss */
   #crt .crt-table-name {
     display: none; }
 
-/* line 42, retreatOne.scss */
 #TEC {
   left: -230px; }
 
-/* line 47, retreatOne.scss */
 #infoWrapper .WrapperLabel {
   width: auto; }
 
-/* line 52, retreatOne.scss */
 .game-name {
   word-break: break-all;
   font-family: 'Nosifer'; }
 
 /* RULES OVERRIDES */
-/* line 60, retreatOne.scss */
 .gameLength {
   color: transparent;
   font-size: 0px; }
-  /* line 63, retreatOne.scss */
   .gameLength::before {
     content: "15";
     color: #333333;

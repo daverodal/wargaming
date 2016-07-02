@@ -1,10 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Airborne.airborneHeader')
-<style type="text/css">
-    <?php
-    include_once "Wargame/TMCW/Airborne/all.css";
-?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/airborne/css/all.css')}}">
 </head>
 @section('inner-crt')
     @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(REBEL_FORCE)])

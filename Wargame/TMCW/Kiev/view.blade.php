@@ -1,10 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Kiev.kievHeader')
-<style type="text/css">
-    <?php
-    include_once "Wargame/TMCW/Kiev/all.css";
-?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/kiev/css/all.css')}}">
 </head>
 
 @section('inner-crt')

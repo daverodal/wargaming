@@ -1,10 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Moskow.moskowHeader')
-<style type="text/css">
-    <?php
-    include_once "Wargame/TMCW/Moskow/all.css";
-?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/moskow/css/all.css')}}">
 </head>
 
 @section('unitRules')

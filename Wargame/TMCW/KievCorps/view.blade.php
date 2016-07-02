@@ -2,11 +2,7 @@
 
 @include('wargame::global-header')
 @include('wargame::TMCW.KievCorps.kievHeader')
-<style type="text/css">
-    <?php
-    include_once "Wargame/TMCW/KievCorps/all.css";
-    ?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/kievcorps/css/all.css')}}">
 </head>
 @section('credit')
     @include('wargame::TMCW.KievCorps.credit')

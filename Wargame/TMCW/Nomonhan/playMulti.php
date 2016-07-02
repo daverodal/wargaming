@@ -24,7 +24,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("js/KhalkhinGolSoldiers.jpg")?>") #333 no-repeat;
+            background:url("<?=asset("vendor/wargame/tmcw/nomonhan/images/KhalkhinGolSoldiers.jpg")?>") #333 no-repeat;
             background-position: 0 0;
             background-size:100%;
         }

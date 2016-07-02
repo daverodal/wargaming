@@ -1,10 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.MartianCivilWar.tmcwHeader')
-<style type="text/css">
-    <?php
-    include_once "Wargame/TMCW/MartianCivilWar/all.css";
-?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/martiancivilwar/css/all.css')}}">
 </head>
 
 @section('tec')

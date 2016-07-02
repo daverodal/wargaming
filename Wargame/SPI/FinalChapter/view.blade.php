@@ -1,10 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::SPI.FinalChapter.finalChapterHeader')
-<style type="text/css">
-    <?php
-    include_once "Wargame/SPI/FinalChapter/all.css";
-    ?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/spi/finalchapter/css/all.css')}}">
 </head>
 
 @section('victoryConditions')

@@ -1,10 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::SPI.TinCans.TinCansHeader')
-<style type="text/css">
-    <?php
-         include_once "Wargame/SPI/TinCans/all.css";
-?>
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/spi/tincans/css/all.css')}}">
 </head>
 
 @section('unitRules')
