@@ -1,6 +1,6 @@
 <?php
 namespace Wargame;
-use \stdClass;
+use stdClass;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal
