@@ -19,6 +19,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 @import "airborneColors";
+.roll{
+  background:white;
+}
 
 @include player(rebel, One, $rebelColor);
 @include player(loyalist,Two,$loyalistColor);
@@ -26,10 +29,45 @@
 @include headerColor(Rebel, $rebelColor, $rebelColor);
 @include headerColor(Loyalist, $loyalistColor, $loyalistColor);
 @include unitColor(loyalGuards, $loyalistGuardColor);
-.crt-table-name{
-  display:none;
+
+@include specialColor(Rebel, $rebelColor, white);
+@include specialColor(Loyalist, $loyalistColor, white);
+
+
+#gameImages .a-unit-wrapper{
+  position:absolute;
+  z-index:1;
+
 }
-#map {
+#crtDetails{
+  display:block;
+}
+
+.selected {
+  background:rgba(255,255,0,.6);
+}
+.pinned{
+  background: rgba(255,0,255,.6)
+}
+.die-roll{
+  background: cyan;
+}
+
+.unit .unit-steps {
+  position: absolute;
+  top: 0px;
+  width: 5px;
+  word-wrap: break-word;
+  line-height: 4px;
+}
+
+#deployBox .unit {
+  border: solid 3px;
+  border-color: #cccccc #666666 #666666 #cccccc;
+}
+
+.rel-unit{
+  position:relative;
 }
 
 #crt {
@@ -43,9 +81,6 @@
     display:none;
   }
 }
-.reduced {
-  color: white;
-}
 
 #OBC{
   width:800px;
@@ -56,22 +91,7 @@
 
 .game-name {
   word-break: break-all;
-  font-family: 'Nosifer';
-}
-
-#gameTurn6 {
-}
-
-#gameTurn6 .unit {
-  float: left;
-}
-
-.specialHexesVP .rebelVictoryPoints {
-  @include victoryPoints(orange)
-}
-
-.specialHexesVP .loyalistVictoryPoints {
- @include victoryPoints(#666);
+  font-family: 'serif';
 }
 
 .unit{

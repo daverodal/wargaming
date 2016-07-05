@@ -73,7 +73,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
             $newLandings = [];
             foreach ($this->landingZones as $landingZone) {
                 if ($landingZone == $mapHexName) {
-                    $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>Beachhead Destroyed</span>";
+                    $battle->mapData->specialHexesVictory->$mapHexName = "<span class='LoyalistVictoryPoints'>Beachhead Destroyed</span>";
                     continue;
                 }
                 $newLandings[] = $landingZone;
@@ -83,7 +83,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
             $newAirdrops = [];
             foreach ($this->airdropZones as $airdropZone) {
                 if ($airdropZone == $mapHexName) {
-                    $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>Airdrop zone Destroyed</span>";
+                    $battle->mapData->specialHexesVictory->$mapHexName = "<span class='LoyalistVictoryPoints'>Airdrop zone Destroyed</span>";
                     continue;
                 }
                 $newAirdrops[] = $airdropZone;
@@ -123,12 +123,12 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='loyalistVictoryPoints'>+$vp vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='LoyalistVictoryPoints'>+$vp vp</span>";
         } else {
             $victorId = 1;
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "+$vp vp";
+            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='RebelVictoryPoints'>+$vp vp</span>";
             $this->victoryPoints[$victorId] += $vp;
         }
     }

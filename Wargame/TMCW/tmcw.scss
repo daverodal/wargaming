@@ -37,6 +37,36 @@
 @include player(loyalist, Two, rgb(132, 181, 255));
 
 
+@mixin specialColor($nationality, $background,  $foreground) {
+
+  /*
+   * these are for the +5 vps when you kill a unit
+   */
+  .specialHexesVP .#{$nationality}VictoryPoints {
+    @include victoryPoints($background);
+    color:$foreground;
+  }
+
+  /*
+   * These are for when you capture a town
+   * the vps aquired
+   */
+  .specialHexesVP .#{$nationality}{
+    color:$foreground;
+    background:$background;
+  }
+  /*
+   * These are the static state of a town
+   * and for the change message
+   */
+  .specialHexes.#{$nationality}{
+    background:$background;
+    color:$foreground;
+  }
+
+}
+
+
 .rebel div {
   color: black;
 }

@@ -3293,6 +3293,9 @@ svg marker#head {
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+.roll {
+  background: white; }
+
 .playerrebel {
   background: #5c5;
   border-color: #5c5 !important; }
@@ -3337,8 +3340,81 @@ svg marker#head {
 .loyalGuards .counterWrapper {
   background-color: #c0c0c0; }
 
-.crt-table-name {
-  display: none; }
+/*
+ * these are for the +5 vps when you kill a unit
+ */
+.specialHexesVP .RebelVictoryPoints {
+  text-shadow: 0px 0px 1px #5c5, 0px 0px 1px #5c5, 0px 0px 1px #5c5, 0px 0px 2px #5c5, 0px 0px 2px #5c5, 0px 0px 2px #5c5, 0px 0px 3px #5c5, 0px 0px 3px #5c5, 0px 0px 3px #5c5, 0px 0px 4px #5c5, 0px 0px 4px #5c5, 0px 0px 4px #5c5, 0px 0px 5px #5c5, 0px 0px 5px #5c5, 0px 0px 5px #5c5, 0px 0px 6px #5c5, 0px 0px 6px #5c5, 0px 0px 6px #5c5, 0px 0px 7px #5c5, 0px 0px 7px #5c5, 0px 0px 7px #5c5, 0px 0px 8px #5c5, 0px 0px 8px #5c5, 0px 0px 8px #5c5, 0px 0px 9px #5c5, 0px 0px 9px #5c5, 0px 0px 9px #5c5, 0px 0px 10px #5c5, 0px 0px 10px #5c5, 0px 0px 10px #5c5, 0px 0px 1px #5c5, 0px 0px 1px #5c5, 0px 0px 1px #5c5, 0px 0px 2px #5c5, 0px 0px 2px #5c5, 0px 0px 2px #5c5, 0px 0px 3px #5c5, 0px 0px 3px #5c5, 0px 0px 3px #5c5, 0px 0px 4px #5c5, 0px 0px 4px #5c5, 0px 0px 4px #5c5, 0px 0px 5px #5c5, 0px 0px 5px #5c5, 0px 0px 5px #5c5, 0px 0px 6px #5c5, 0px 0px 6px #5c5, 0px 0px 6px #5c5, 0px 0px 7px #5c5, 0px 0px 7px #5c5, 0px 0px 7px #5c5, 0px 0px 8px #5c5, 0px 0px 8px #5c5, 0px 0px 8px #5c5, 0px 0px 9px #5c5, 0px 0px 9px #5c5, 0px 0px 9px #5c5, 0px 0px 10px #5c5, 0px 0px 10px #5c5, 0px 0px 10px #5c5;
+  color: white; }
+
+/*
+ * These are for when you capture a town
+ * the vps aquired
+ */
+.specialHexesVP .Rebel {
+  color: white;
+  background: #5c5; }
+
+/*
+ * These are the static state of a town
+ * and for the change message
+ */
+.specialHexes.Rebel {
+  background: #5c5;
+  color: white; }
+
+/*
+ * these are for the +5 vps when you kill a unit
+ */
+.specialHexesVP .LoyalistVictoryPoints {
+  text-shadow: 0px 0px 1px #83aee9, 0px 0px 1px #83aee9, 0px 0px 1px #83aee9, 0px 0px 2px #83aee9, 0px 0px 2px #83aee9, 0px 0px 2px #83aee9, 0px 0px 3px #83aee9, 0px 0px 3px #83aee9, 0px 0px 3px #83aee9, 0px 0px 4px #83aee9, 0px 0px 4px #83aee9, 0px 0px 4px #83aee9, 0px 0px 5px #83aee9, 0px 0px 5px #83aee9, 0px 0px 5px #83aee9, 0px 0px 6px #83aee9, 0px 0px 6px #83aee9, 0px 0px 6px #83aee9, 0px 0px 7px #83aee9, 0px 0px 7px #83aee9, 0px 0px 7px #83aee9, 0px 0px 8px #83aee9, 0px 0px 8px #83aee9, 0px 0px 8px #83aee9, 0px 0px 9px #83aee9, 0px 0px 9px #83aee9, 0px 0px 9px #83aee9, 0px 0px 10px #83aee9, 0px 0px 10px #83aee9, 0px 0px 10px #83aee9, 0px 0px 1px #83aee9, 0px 0px 1px #83aee9, 0px 0px 1px #83aee9, 0px 0px 2px #83aee9, 0px 0px 2px #83aee9, 0px 0px 2px #83aee9, 0px 0px 3px #83aee9, 0px 0px 3px #83aee9, 0px 0px 3px #83aee9, 0px 0px 4px #83aee9, 0px 0px 4px #83aee9, 0px 0px 4px #83aee9, 0px 0px 5px #83aee9, 0px 0px 5px #83aee9, 0px 0px 5px #83aee9, 0px 0px 6px #83aee9, 0px 0px 6px #83aee9, 0px 0px 6px #83aee9, 0px 0px 7px #83aee9, 0px 0px 7px #83aee9, 0px 0px 7px #83aee9, 0px 0px 8px #83aee9, 0px 0px 8px #83aee9, 0px 0px 8px #83aee9, 0px 0px 9px #83aee9, 0px 0px 9px #83aee9, 0px 0px 9px #83aee9, 0px 0px 10px #83aee9, 0px 0px 10px #83aee9, 0px 0px 10px #83aee9;
+  color: white; }
+
+/*
+ * These are for when you capture a town
+ * the vps aquired
+ */
+.specialHexesVP .Loyalist {
+  color: white;
+  background: #83aee9; }
+
+/*
+ * These are the static state of a town
+ * and for the change message
+ */
+.specialHexes.Loyalist {
+  background: #83aee9;
+  color: white; }
+
+#gameImages .a-unit-wrapper {
+  position: absolute;
+  z-index: 1; }
+
+#crtDetails {
+  display: block; }
+
+.selected {
+  background: rgba(255, 255, 0, 0.6); }
+
+.pinned {
+  background: rgba(255, 0, 255, 0.6); }
+
+.die-roll {
+  background: cyan; }
+
+.unit .unit-steps {
+  position: absolute;
+  top: 0px;
+  width: 5px;
+  word-wrap: break-word;
+  line-height: 4px; }
+
+#deployBox .unit {
+  border: solid 3px;
+  border-color: #cccccc #666666 #666666 #cccccc; }
+
+.rel-unit {
+  position: relative; }
 
 #crt {
   width: 680px; }
@@ -3346,9 +3422,6 @@ svg marker#head {
     width: 45px; }
   #crt .crt-table-name {
     display: none; }
-
-.reduced {
-  color: white; }
 
 #OBC {
   width: 800px; }
@@ -3358,16 +3431,7 @@ svg marker#head {
 
 .game-name {
   word-break: break-all;
-  font-family: 'Nosifer'; }
-
-#gameTurn6 .unit {
-  float: left; }
-
-.specialHexesVP .rebelVictoryPoints {
-  text-shadow: 0px 0px 1px orange, 0px 0px 1px orange, 0px 0px 1px orange, 0px 0px 2px orange, 0px 0px 2px orange, 0px 0px 2px orange, 0px 0px 3px orange, 0px 0px 3px orange, 0px 0px 3px orange, 0px 0px 4px orange, 0px 0px 4px orange, 0px 0px 4px orange, 0px 0px 5px orange, 0px 0px 5px orange, 0px 0px 5px orange, 0px 0px 6px orange, 0px 0px 6px orange, 0px 0px 6px orange, 0px 0px 7px orange, 0px 0px 7px orange, 0px 0px 7px orange, 0px 0px 8px orange, 0px 0px 8px orange, 0px 0px 8px orange, 0px 0px 9px orange, 0px 0px 9px orange, 0px 0px 9px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 1px orange, 0px 0px 1px orange, 0px 0px 1px orange, 0px 0px 2px orange, 0px 0px 2px orange, 0px 0px 2px orange, 0px 0px 3px orange, 0px 0px 3px orange, 0px 0px 3px orange, 0px 0px 4px orange, 0px 0px 4px orange, 0px 0px 4px orange, 0px 0px 5px orange, 0px 0px 5px orange, 0px 0px 5px orange, 0px 0px 6px orange, 0px 0px 6px orange, 0px 0px 6px orange, 0px 0px 7px orange, 0px 0px 7px orange, 0px 0px 7px orange, 0px 0px 8px orange, 0px 0px 8px orange, 0px 0px 8px orange, 0px 0px 9px orange, 0px 0px 9px orange, 0px 0px 9px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 10px orange; }
-
-.specialHexesVP .loyalistVictoryPoints {
-  text-shadow: 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666; }
+  font-family: 'serif'; }
 
 .unit .unitSize {
   height: 9px; }
