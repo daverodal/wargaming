@@ -4,7 +4,7 @@
 </head>
 
 <script type="text/javascript">
-    @section('combat-rules-controller')
+    @section('combat-ruxles-controller')
             x.register("combatRules", function(combatRules, data){
         for(var arrowUnits in $scope.mapUnits){
             $scope.mapUnits[arrowUnits].arrows = {};
