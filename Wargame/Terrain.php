@@ -362,12 +362,12 @@ class Terrain
      * public
      * Check the hexside AND destination Hex
      */
-    function terrainIsHex($hex, $terrainName)
+    function    terrainIsHex($hex, $terrainName)
     {
         list($endX, $endY) = Hexagon::getHexPartXY($hex);
 
         $terrainCode = $this->getTerrainCodeXY($endX, $endY);
-        if($terrainCode->$terrainName){
+        if(!empty($terrainCode->$terrainName)){
             return true;
         }
         return false;

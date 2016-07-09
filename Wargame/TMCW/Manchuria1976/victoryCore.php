@@ -308,7 +308,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 $battle->moveRules->enterZoc = "stop";
                 $battle->moveRules->exitZoc = 0;
                 $battle->moveRules->noZocZoc = true;
-                if ($battle->terrain->terrainIsHex($unit->hexagon, "mountain")) {
+                if ($battle->terrain->terrainIsHex($unit->hexagon->name, "mountain")) {
                     $battle->moveRules->noZocZoc = false;
                 }
             } else {
