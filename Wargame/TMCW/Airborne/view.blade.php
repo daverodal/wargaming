@@ -345,6 +345,10 @@
 @endsection
 
 @section('unitzs')
+    {{--
+      -- First stabe at svg to replace images,
+      -- considered a fail, but important gains
+      --}}
     @foreach ($units as $unit)
         <div class="unit {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
             <div class="shadow-mask"></div>
@@ -380,6 +384,7 @@
         </div>
     @endforeach
 @endsection
+
 @section('nosec')
     <div class="unit {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
         <div class="shadow-mask"></div>
@@ -393,21 +398,34 @@
 @endsection
 
 
+
 @section('outer-deploy-box')
     <div id="deployBox">
 
-        <div class="a-unit-wrapper" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
-            <div id="@{{unit.id}}" ng-mouseUp="clickMe(unit.id, $event)"  ng-style="unit.style" class="unit rel-unit" ng-class="[unit.nationality, unit.class]" >
-                <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
-                <div class="shadow-mask" ng-class="unit.shadow"></div>
-                <div class="unitSize">{{$unit['unitSize']}}</div>
-                <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow" src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
-                <div class="counterWrapper">
-                    <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span class="unit-desig">@{{ unit.unitDesig }}</span>
-                </div>
-                <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
-                <div class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
-            </div>
+        Rebel Zone B
+        <div class="a-unit-wrapper" ng-repeat="unit in deployUnits | filter:{reinforceZone: 'B'}"  ng-style="unit.wrapperstyle">
+            <offmap-unit unit="unit"></offmap-unit>
+        </div>
+        <div class="clear"></div>
+
+        Airdrop
+        <div class="a-unit-wrapper" ng-repeat="unit in deployUnits | filter:{reinforceZone: 'A'}"  ng-style="unit.wrapperstyle">
+            <offmap-unit unit="unit"></offmap-unit>
+        </div>
+        <div class="clear"></div>
+        Loyalist Zone C
+        <div class="a-unit-wrapper" ng-repeat="unit in deployUnits | filter:{reinforceZone: 'C'}"  ng-style="unit.wrapperstyle">
+            <offmap-unit unit="unit"></offmap-unit>
+        </div>
+        <div class="clear"></div>
+        Loyalist Zone D
+        <div class="a-unit-wrapper" ng-repeat="unit in deployUnits | filter:{reinforceZone: 'D'}"  ng-style="unit.wrapperstyle">
+            <offmap-unit unit="unit"></offmap-unit>
+        </div>
+        <div class="clear"></div>
+        Loyalist Zone E
+        <div class="a-unit-wrapper" ng-repeat="unit in deployUnits | filter:{reinforceZone: 'E'}"  ng-style="unit.wrapperstyle">
+            <offmap-unit unit="unit"></offmap-unit>
         </div>
         <div class="clear"></div>
     </div>
@@ -417,29 +435,53 @@
 
 @section('units')
     <div class="a-unit-wrapper" ng-repeat="unit in mapUnits"  ng-style="unit.wrapperstyle">
-        <div id="@{{unit.id}}" ng-mouseDown="mouseDown(unit.id, $event)" ng-mouseUp="clickMe(unit.id, $event)" ng-right-click="rightClickMe(unit.id, $event)"  ng-style="unit.style" class="unit rel-unit" ng-class="[unit.nationality, unit.class]" >
-            <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
-            <div class="shadow-mask" ng-class="unit.shadow"></div>
-            <div class="unitSize">{{$unit['unitSize']}}</div>
-            <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow" src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
-            <div class="counterWrapper">
-                <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span class="unit-desig">@{{ unit.unitDesig }}</span>
-            </div>
-            <div ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
-            <div class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
-        </div>
+        <unit unit="unit"></unit>
     </div>
 
     <div ng-mouseover="hoverThis(unit)" ng-mouseleave="unHoverThis(unit)" ng-click="clickMe(unit.id, $event)" ng-style="unit.style" ng-repeat="unit in moveUnits track by $index" class="unit" ng-class="[unit.nationality, unit.class]" >
+        <ghost-unit unit="unit"></ghost-unit>
+    </div>
+@endsection
+
+@include('wargame::Medieval.angular-view',['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(REBEL_FORCE)] )
+
+<script type="text/ng-template" id="offmap-unit.html" >
+
+    <div id="@{{unit.id}}" ng-mouseUp="clickMe(unit.id, $event)"  ng-style="unit.style" class="unit rel-unit" ng-class="[unit.nationality, unit.class]" >
+        <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
+        <div class="shadow-mask" ng-class="unit.shadow"></div>
         <div class="unitSize">{{$unit['unitSize']}}</div>
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow" src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
             <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
-        <div class="range">@{{ unit.armorClass }}</div>
-        <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.pointsLeft }}</div>
+        <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
         <div class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
-
     </div>
-@endsection
-@include('wargame::Medieval.angular-view',['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(REBEL_FORCE)] )
+</script>
+
+
+<script type="text/ng-template" id="unit.html" >
+    <div id="@{{unit.id}}" ng-mouseDown="mouseDown(unit.id, $event)" ng-mouseUp="clickMe(unit.id, $event)" ng-right-click="rightClickMe(unit.id, $event)"  ng-style="unit.style" class="unit rel-unit" ng-class="[unit.nationality, unit.class]" >
+        <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
+        <div class="shadow-mask" ng-class="unit.shadow"></div>
+        <div class="unitSize">{{$unit['unitSize']}}</div>
+        <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow" src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+        <div class="counterWrapper">
+            <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span class="unit-desig">@{{ unit.unitDesig }}</span>
+        </div>
+        <div ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
+        <div class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="ghost-unit.html" >
+    <div class="unitSize">{{$unit['unitSize']}}</div>
+    <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow" src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+    <div class="counterWrapper">
+        <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span class="unit-desig">@{{ unit.unitDesig }}</span>
+    </div>
+    <div class="range">@{{ unit.armorClass }}</div>
+    <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.pointsLeft }}</div>
+    <div class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
+</script>

@@ -3442,6 +3442,9 @@ svg marker#head {
     margin-left: 7px;
     display: block; }
 
+#angCrtDetailsButton {
+  cursor: pointer; }
+
 .unit.loyalGuards .couterWrapper .couter-symbol {
   stroke: white; }
 

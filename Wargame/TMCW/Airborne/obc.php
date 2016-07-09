@@ -31,11 +31,14 @@
         <fieldset>
             <legend>turn 2</legend>
             <div id="gameTurn2"></div>
-            C: <div id="gameTurn2C">
+            C: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2C"  ng-style="unit.wrapperstyle">
+                 <offmap-unit unit="unit"></offmap-unit>
+                </div>
+            D:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2D"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
             </div>
-            D:<div id="gameTurn2D">
-            </div>
-            E:<div id="gameTurn2E">
+            E:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2E"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
             </div>
         </fieldset>
         <fieldset>
