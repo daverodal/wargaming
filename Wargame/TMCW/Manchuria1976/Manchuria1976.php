@@ -141,5 +141,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
         }
         $crt = new \Wargame\TMCW\CombatResultsTable();
         $this->combatRules->injectCrt($crt);
+        $this->moveRules->noZocZocOneHex = false;
+
     }
 }
