@@ -14,7 +14,11 @@ class WargameServiceProvider extends ServiceProvider
         \App\Services\WargameService::$viewBase = "Wargame";
         $this->loadViewsFrom(__DIR__, 'wargame');
 
-
+        $this->publishes([
+            __DIR__.'/Area/AreaOne/all.css' => public_path('vendor/wargame/area/areaone/css/all.css'),
+            __DIR__.'/Area/Maps' => public_path('battle-maps'),
+        ], 'area');
+        
         $this->publishes([
             __DIR__.'/TMCW/Manchuria1976/Images/' => public_path('vendor/wargame/tmcw/manchuria1976/images'),
             __DIR__.'/TMCW/Airborne/Images' => public_path('vendor/wargame/tmcw/airborne/images'),

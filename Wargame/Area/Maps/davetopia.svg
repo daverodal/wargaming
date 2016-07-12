@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="600px" width="1000px" viewBox="-18 -18 1036 636" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 0 200 L 200 200 L 200 400   L 0 400  Z" stroke-width="10" stroke="#F00" fill="powderblue"></path>
+    <path d="M 0 100 L 300 100 L 300 300 L 200 300 L 200 200 L 0 200 Z" stroke-width="10" stroke="#F00" fill="pink"></path>
+    <path d="M 0 0 L 300 0 L 300 100 L 0 100 Z" stroke-width="10" stroke="#F00" fill="orange"></path>
+    <path d="M 0 500 L 300 500 L 300 600 L 0 600 Z" stroke-width="10" stroke="#F00" fill="purple"></path>
+    <path d="M 0 500 L 300 500 L 300 300 L 200 300 L 200 400 L 0 400 Z" stroke-width="10" stroke="#F00" fill="gray"></path>
+</svg>
