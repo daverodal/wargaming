@@ -115,6 +115,28 @@
     stroke:white;
   }
 }
+.mapSymbols {
+  margin-top:-7px;
+  margin-left:5px;
+  .supply-hex {
+    font-size: 25px;
+    background: transparent;
+    &.rebel {
+      color: #66ff66;
+    }
+    &.loyalist {
+      color: #6666ff;
+    }
+  }
+}
+#deployBox{
+  .deploy-zone-wrapper{
+    width:19%;
+    float:left;
+    margin-right:5px;
+    margin-left:5px;
+  }
+}
 #TECWrapper #TEC {
   padding-bottom:15px;
   width:700px;

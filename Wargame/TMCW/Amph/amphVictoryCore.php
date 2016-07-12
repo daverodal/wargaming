@@ -47,7 +47,6 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         } else {
             $this->landingZones = [];
             $this->airdropZones = [];
-            $this->victoryPoints[LOYALIST_FORCE] = 25;
         }
     }
 
@@ -102,23 +101,23 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             $this->airdropZones = $newAirdrops;
         }
 
-        if(in_array($mapHexName,$battle->specialHexA)){
-            $vp = 25;
-
-            $prevForceId = $battle->mapData->specialHexes->$mapHexName;
-            if ($forceId == REBEL_FORCE) {
-                $this->victoryPoints[REBEL_FORCE]  += $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+$vp Rebel vp</span>";
-                $this->victoryPoints[LOYALIST_FORCE] -= $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='rebel'> -$vp Loyalist vp</span>";
-            }
-            if ($forceId == LOYALIST_FORCE) {
-                $this->victoryPoints[LOYALIST_FORCE]  += $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+$vp Loyalist vp</span>";
-                $this->victoryPoints[REBEL_FORCE] -= $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='loyalist'> -$vp Rebel vp</span>";
-            }
-        }
+//        if(in_array($mapHexName,$battle->specialHexA)){
+//            $vp = 25;
+//
+//            $prevForceId = $battle->mapData->specialHexes->$mapHexName;
+//            if ($forceId == REBEL_FORCE) {
+//                $this->victoryPoints[REBEL_FORCE]  += $vp;
+//                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+$vp Rebel vp</span>";
+//                $this->victoryPoints[LOYALIST_FORCE] -= $vp;
+//                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='rebel'> -$vp Loyalist vp</span>";
+//            }
+//            if ($forceId == LOYALIST_FORCE) {
+//                $this->victoryPoints[LOYALIST_FORCE]  += $vp;
+//                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+$vp Loyalist vp</span>";
+//                $this->victoryPoints[REBEL_FORCE] -= $vp;
+//                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='loyalist'> -$vp Rebel vp</span>";
+//            }
+//        }
 
     }
 
@@ -181,6 +180,37 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
     public function gameEnded()
     {
         $battle = Battle::getBattle();
+
+        $rebelOption = (int)$battle->gameRules->option;
+
+        if($rebelOption === 0){
+            if($battle->mapData->getSpecialHex($battle->specialHexA[0]) === REBEL_FORCE){
+                $this->victoryPoints[REBEL_FORCE] += 25;
+                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
+            }else{
+                $battle->mapData->getSpecialHex($battle->specialHexA[0]);
+                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
+
+            }
+        }
+        if($rebelOption === 1){
+            if($battle->mapData->getSpecialHex($battle->specialHexB[0]) === REBEL_FORCE){
+                $this->victoryPoints[REBEL_FORCE] += 25;
+                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
+            }else{
+                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
+
+            }
+        }
+        if($rebelOption === 2){
+            if($battle->mapData->getSpecialHex($battle->specialHexC[0]) === REBEL_FORCE){
+                $this->victoryPoints[REBEL_FORCE] += 25;
+                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
+            }else{
+                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
+
+            }
+        }
         if ($this->victoryPoints[LOYALIST_FORCE] > $this->victoryPoints[REBEL_FORCE]) {
             $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
             $this->winner = LOYALIST_FORCE;
@@ -303,10 +333,10 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             if ($unit->class != 'mech') {
                 $battle->moveRules->enterZoc = "stop";
                 $battle->moveRules->exitZoc = 0;
-                $battle->moveRules->noZocZoc = true;
+                $battle->moveRules->noZocZoc = false;
             } else {
-                $battle->moveRules->enterZoc = "stop";
-                $battle->moveRules->exitZoc = 0;
+                $battle->moveRules->enterZoc = 2;
+                $battle->moveRules->exitZoc = 1;
                 $battle->moveRules->noZocZoc = false;
 
             }

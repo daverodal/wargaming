@@ -32,14 +32,17 @@ use \Wargame\Battle;
 class victoryCore extends \Wargame\TMCW\victoryCore
 {
     public $sovietGoal;
+    public $supplyUnits;
 
     function __construct($data)
     {
         parent::__construct($data);
         if ($data) {
             $this->sovietGoal = $data->victory->sovietGoal;
+            $this->supplyUnits = $data->victory->supplyUnits;
         } else {
             $this->sovietGoal = [];
+            $this->supplyUnits = [];
         }
     }
 
@@ -47,6 +50,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
     {
         $ret = parent::save();
         $ret->sovietGoal = $this->sovietGoal;
+        $ret->supplyUnits = $this->supplyUnits;
         return $ret;
     }
 
@@ -201,7 +205,14 @@ class victoryCore extends \Wargame\TMCW\victoryCore
             $goal = array_merge($goal, $b->moveRules->calcRoadSupply(SOVIET_FORCE, 3233, $bias));
             $goal = array_merge($goal, array(3910, 3911, 3912, 3913, 3914, 3915, 3916, 3917, 3918, 3919));
             $this->sovietGoal = $goal;
-
+            $units = $b->force->units;
+            $supplyUnits = [];
+            foreach($units as $unit){
+                if($unit->class === 'supply'){
+                    $supplyUnits[] = $unit->hexagon->name;
+                }
+            }
+            $this->supplyUnits = $supplyUnits;
         }
 
     }
@@ -229,7 +240,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
             }
             if ($b->gameRules->mode == REPLACING_MODE) {
                 if ($unit->status == STATUS_CAN_UPGRADE) {
-                    $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
+                    $unit->supplied = $this->calcSupply($unit->id, $goal, $bias, $supplyLen);
                     if (!$unit->supplied) {
                         /* TODO: make this not cry  (call a method) */
                         $unit->status = STATUS_STOPPED;
@@ -239,7 +250,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
             }
             if ($b->gameRules->mode == MOVING_MODE) {
                 if ($unit->status == STATUS_READY || $unit->status == STATUS_UNAVAIL_THIS_PHASE) {
-                    $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
+                    $unit->supplied = $this->calcSupply($unit->id, $goal, $bias, $supplyLen);
                 } else {
                     return;
                 }
@@ -254,7 +265,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
             }
             if ($b->gameRules->mode == COMBAT_SETUP_MODE) {
                 if ($unit->status == STATUS_READY || $unit->status == STATUS_DEFENDING || $unit->status == STATUS_UNAVAIL_THIS_PHASE) {
-                    $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
+                    $unit->supplied = $this->calcSupply($unit->id, $goal, $bias, $supplyLen);
                 } else {
                     return;
                 }
@@ -276,6 +287,18 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
+    public function calcSupply($id, $goal, $bias, $supplyLen){
+        $b = Battle::getBattle();
+        $supplied = $b->moveRules->calcSupply($id, $goal, $bias, $supplyLen);
+        if (!$supplied) {
+            $supplied = $b->moveRules->calcSupply($id, $this->supplyUnits, $bias, 5);
+            if(!$supplied){
+                return false;
+            }
+            /* TODO: make this not cry  (call a method) */
+        }
+        return true;
+    }
     public function preCombatResults($args)
     {
         return $args;

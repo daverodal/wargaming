@@ -37,7 +37,7 @@ class Amph extends ModernLandBattle
 {
     /* a comment */
 
-    public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>1];
+    public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>2];
 
     public static function buildUnit($data = false){
         return UnitFactory::build($data);
@@ -58,6 +58,11 @@ class Amph extends ModernLandBattle
     {
         $data = parent::save();
         $data->specialHexA = $this->specialHexA;
+        $data->specialHexB = $this->specialHexB;
+        $data->specialHexC = $this->specialHexC;
+
+        $data->options = $this->gameRules->options;
+        $data->option = $this->gameRules->option;
         return $data;
     }
 
@@ -80,7 +85,9 @@ class Amph extends ModernLandBattle
 
         UnitFactory::create("lll", LOYALIST_FORCE, 305, "multiGor.png", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", LOYALIST_FORCE, 803, "multiGor.png", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("x", LOYALIST_FORCE, 208, "multiHeavy.png", 10, 5, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'inf');
         UnitFactory::create("x", LOYALIST_FORCE, 907, "multiHeavy.png", 10, 5, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'inf');
+        UnitFactory::create("x", LOYALIST_FORCE, 1807, "multiHeavy.png", 10, 5, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'inf');
         UnitFactory::create("lll", LOYALIST_FORCE, 1205, "multiGor.png", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", LOYALIST_FORCE, 1405, "multiGor.png", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
 
@@ -163,6 +170,11 @@ class Amph extends ModernLandBattle
 
         if ($data) {
             $this->specialHexA = $data->specialHexA;
+            $this->specialHexB = $data->specialHexB;
+            $this->specialHexC = $data->specialHexC;
+            $this->gameRules->options = $data->options;
+            $this->gameRules->option = $data->option;
+
 
         } else {
 
@@ -182,11 +194,15 @@ class Amph extends ModernLandBattle
             }
             // game data
             $this->gameRules->setMaxTurn(7);
-            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
-            $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
-            $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
+            $this->gameRules->options = ['Nuclear Facility','Chateau sur mer', 'Marine Science Facility'];
+
+            $this->gameRules->setInitialPhaseMode(BLUE_OPTION_PHASE, OPTION_MODE);
+//            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
+            $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
+            $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
             $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
 
+            $this->gameRules->addPhaseChange(BLUE_OPTION_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, RED_FORCE, BLUE_FORCE, false);
             $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);

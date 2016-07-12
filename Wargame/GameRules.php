@@ -74,6 +74,8 @@ class GameRules
     public $phaseClickNames;
     public $playTurnClicks;
     public $legacyExchangeRule;
+    public $options = false;
+    public $option;
 
     function save()
     {
@@ -121,6 +123,7 @@ class GameRules
             $this->interactions = array();
             $this->phaseClicks = array();
             $this->playTurnClicks = array();
+            $this->options = false;
 
             $this->force->setAttackingForceId($this->attackingForceId);
         }
@@ -190,6 +193,35 @@ class GameRules
         }
 
         switch ($this->mode) {
+
+
+
+            case OPTION_MODE:
+
+                switch ($event) {
+
+                    case SELECT_BUTTON_EVENT:
+
+                        $this->option = $id;
+                        $this->options = false;
+                        return $this->selectNextPhase($click);
+                        break;
+                }
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             case REPLACING_MODE:
                 switch ($event) {
@@ -838,7 +870,7 @@ class GameRules
                             }
                         }
                         break;
-                    
+
                     case SELECT_MAP_EVENT:
                     case SELECT_COUNTER_EVENT:
                         $this->moveRules->advanceUnit($event, $id, $location);

@@ -3448,6 +3448,23 @@ svg marker#head {
 .unit.loyalGuards .couterWrapper .couter-symbol {
   stroke: white; }
 
+.mapSymbols {
+  margin-top: -7px;
+  margin-left: 5px; }
+  .mapSymbols .supply-hex {
+    font-size: 25px;
+    background: transparent; }
+    .mapSymbols .supply-hex.rebel {
+      color: #66ff66; }
+    .mapSymbols .supply-hex.loyalist {
+      color: #6666ff; }
+
+#deployBox .deploy-zone-wrapper {
+  width: 19%;
+  float: left;
+  margin-right: 5px;
+  margin-left: 5px; }
+
 #TECWrapper #TEC {
   padding-bottom: 15px;
   width: 700px; }

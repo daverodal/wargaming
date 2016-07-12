@@ -81,34 +81,8 @@ define("BLUE_SUPPLY_PHASE", 41);
 define("RED_SUPPLY_PHASE", 42);
 define("BLUE_TRANSPORT_PHASE", 43);
 define("RED_TRANSPORT_PHASE", 44);
-
-$phase_name = array();
-$phase_name[1] = "Rebel Move";
-$phase_name[2] = "Rebel Combat";
-$phase_name[3] = "Blue Fire Combat";
-$phase_name[4] = "Loyalist Move";
-$phase_name[5] = "Loyalist Combat";
-$phase_name[6] = "Red Fire Combat";
-$phase_name[7] = "Victory";
-$phase_name[8] = "Rebel Deploy";
-$phase_name[9] = "Rebel Mech";
-$phase_name[10] = "Rebel Replacement";
-$phase_name[11] = "Loyalist Mech";
-$phase_name[12] = "Loyalist Replacement";
-$phase_name[13] = "";
-$phase_name[14] = "";
-$phase_name[15] = "red deploy phase";
-$phase_name[16] = "blue suprise move phase";
-$phase_name[17] = "Blue Combat Res phase ";
-$phase_name[18] = "Red Combat Res Phase ";
-$phase_name[19] = "Red First Combat Phase";
-$phase_name[20] = "Blue First Combat Phase";
-$phase_name[21] = "Red Second Combat Phase";
-$phase_name[22] = "Blue Second Combat Phase";
-$phase_name[23] = "Teal Replacement Phase";
-$phase_name[24] = "Teal Movement Phase";
-$phase_name[25] = "Teal Combat Phase";
-
+define("BLUE_OPTION_PHASE", 45);
+define("RED_OPTION_PHASE", 46);
 
 $phase_name = array();
 $phase_name[1] = "<span class='playerOneFace'>fNameOne</span> Move";
@@ -156,6 +130,9 @@ $phase_name[41] = "<span class='playerOneFace'>fNameOne</span> Supply ";
 $phase_name[42] = "<span class='playerTwoFace'>fNameTwo</span> Supply ";
 $phase_name[43] = "<span class='playerOneFace'>fNameOne</span> Air Transport ";
 $phase_name[44] = "<span class='playerTwoFace'>fNameTwo</span> Air Transport ";
+$phase_name[45] = "<span class='playerOneFace'>fNameOne</span> Option ";
+$phase_name[46] = "<span class='playerTwoFace'>fNameTwo</span> Option ";
+
 // game modes
 define("SELECT_TO_MOVE_MODE",1);
 define("MOVING_MODE",2);
@@ -183,6 +160,7 @@ define("COMBINING_MODE", 23);
 define("REBASE_MODE", 24);
 define("SUPPLY_MODE", 25);
 define("DEFENDER_LOSING_MODE",26);
+define("OPTION_MODE",27);
 
 
 
@@ -215,6 +193,7 @@ $mode_name[23] = "combining mode";
 $mode_name[24] = "rebase mode";
 $mode_name[25] = "supply mode";
 $mode_name[26] = "defender loss mode";
+$mode_name[27] = "option mode";
 
 // form event constants
 define("OVER_MAP_EVENT",1);

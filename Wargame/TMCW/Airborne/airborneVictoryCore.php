@@ -214,12 +214,15 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
         $this->rebelGoal = $goal;
 
         $goal = array();
-        for($row = 1;$row <= 20;$row++){
-            $goal[] = 2000+$row;
+        for($row = 1;$row <= 22;$row++){
+            $goal[] = 2200+$row;
         }
         /* Don't put lower right corner in twice! */
-        for($col = 1;$col <= 19;$col++){
-            $goal[] = ($col*100)+20;
+        for($col = 1;$col <= 21;$col++){
+            if($col === 13){
+                continue;
+            }
+            $goal[] = ($col*100)+22;
         }
         $this->loyalistGoal = $goal;
     }

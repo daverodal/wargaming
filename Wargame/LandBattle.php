@@ -62,6 +62,7 @@ class LandBattle extends \Wargame\Battle{
         $wargame = $doc->wargame;
         $gameName = $doc->gameName;
         $gameRules = $wargame->gameRules;
+        $gameRules->option = false;
         $fogDeploy = false;
         if(!empty($wargame->scenario->fogDeploy) && $doc->playerStatus == "multi"){
             $fogDeploy = true;
@@ -381,7 +382,7 @@ class LandBattle extends \Wargame\Battle{
                 break;
 
             case SELECT_BUTTON_EVENT:
-                return $this->gameRules->processEvent(SELECT_BUTTON_EVENT, "next_phase", 0, $click);
+                return $this->gameRules->processEvent(SELECT_BUTTON_EVENT, $id, 0, $click);
                 break;
 
             case KEYPRESS_EVENT:

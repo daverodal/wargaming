@@ -570,6 +570,49 @@ function doitMap(x, y) {
     });
     return true;
 }
+
+function doitOption() {
+
+    var checked = $("#options-box input[type='radio']:checked").val();
+    if(checked === undefined){
+        playAudioBuzz();
+        return;
+    }
+    playAudio();
+
+    $.ajax({
+        url: "<?=url("wargame/poke");?>",
+        type: "POST",
+        data: {
+            id: checked,
+            event: <?=SELECT_BUTTON_EVENT?>},
+        success: function (data, textstatus) {
+            try {
+                var success = +$.parseJSON(data).success;
+            } catch (e) {
+//                alert(data);
+            }
+            playAudioLow();
+
+        }, error: function (data, text) {
+            try {
+                alert(data.responseText);
+                var success = +$.parseJSON(data).success;
+            } catch (e) {
+//                alert(data);
+            }
+            playAudioBuzz();
+            $('body').css({cursor: "auto"});
+            $(this).css({cursor: "auto"});
+        }
+    });
+
+}
+
+
+
+
+
 function doitNext() {
     playAudio();
 
@@ -823,6 +866,7 @@ function initialize() {
     })
     $("#gameImages").on("click", ".specialHexes", mapClick);
     $("#gameImages").on("click", "svg", mapClick);
+    $("#choose-option-button").on("click", doitOption);
 
     $("#nextPhaseButton").on('click', nextPhaseMouseDown);
 //    $("#gameImages" ).draggable({stop:mapStop, distance:15});

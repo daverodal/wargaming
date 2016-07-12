@@ -98,6 +98,9 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
         for($i = 0;$i < 4;$i++){
             UnitFactory::create("xxx", SOVIET_FORCE, "deployBox", "multiArt.png", 3, 1, 6, false, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "mech");
         }
+        for($i = 0;$i < 2;$i++){
+            UnitFactory::create("xxx", SOVIET_FORCE, "deployBox", "multiMotMt.png", 1, 1, 3, true, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "supply");
+        }
     }
     function __construct($data = null, $arg = false, $scenario = false)
     {

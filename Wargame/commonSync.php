@@ -584,6 +584,17 @@ x.register("users", function(users) {
     }
 });
 x.register("gameRules", function(gameRules,data) {
+
+    if(gameRules.options && gameRules.options.length > 0){
+        var inputs = "";
+        for(var i in gameRules.options) {
+            inputs += "<input type='radio' name='options' value='" + i + "'>" + gameRules.options[i] + "<br>"
+        }
+        $("#options-box").html(inputs);
+        $("#options-pane").show();
+    }else{
+        $("#options-pane").hide();
+    }
     $(".dynamicButton").hide();
     if(gameRules.mode === <?= MOVING_MODE?>){
         $(".movementButton").show();
@@ -796,7 +807,10 @@ function flashMessage(playerStatus){
 
                 var c = mapSymbols[i][symbolName].class
                 $("#mapSymbol" + hexPos + " "+ c).remove();
-                newHtml = '<img src="<?php echo asset('js'); ?>/'+mapSymbols[i][symbolName].image+'" class="'+c+'">';
+                newHtml = '<i class="'+c+'"></i>';
+                if(mapSymbols[i][symbolName].image){
+                    newHtml = '<img src="<?php echo asset('js'); ?>/'+mapSymbols[i][symbolName].image+'" class="'+c+'">';
+                }
                 $("#gameImages").append('<div id="mapSymbol' + i + '" class="mapSymbols">' + newHtml + '</div>');
                 $("#mapSymbol" + i).css({top: y + "px", left: x + "px"});
 

@@ -38,6 +38,19 @@
     display:none;
   }
 }
+#options-pane {
+  position: absolute;
+  background: white;
+  left: 25%;
+  width: 50%;
+  z-index:30;
+  padding:25px;
+  box-shadow: 15px 15px 15px #333;
+  #options-box {
+    margin-top:15px;
+
+  }
+}
 
 .reduced {
   color: white;

@@ -188,6 +188,39 @@ class Airborne extends \Wargame\ModernLandBattle
 
         UnitFactory::create("lll", BLUE_FORCE, "gameTurn4", "multiPara.png", 9,  5,  STATUS_CAN_REINFORCE, "A", 4,  "rebel",  "para", $i++);
 
+
+        $symbol = new \stdClass();
+        $symbol->type = 'RebelSupply';
+        $symbol->image = '';
+        $symbol->class = 'supply-hex  rebel fa fa-adjust';
+        $symbols = new \stdClass();
+        foreach([101] as $id){
+            $symbols->$id = $symbol;
+        }
+        $this->mapData->setMapSymbols($symbols, "rebelsupply");
+
+        $symbols = new \stdClass();
+
+        $symbol = new \stdClass();
+        $symbol->type = 'LoyalistSupply';
+        $symbol->image = '';
+        $symbol->class = 'supply-hex loyalist fa fa-adjust';
+
+        $goal = array();
+        for($row = 1;$row <= 22;$row++){
+            $id = 2200+$row;
+            $symbols->$id = $symbol;
+        }
+        /* Don't put lower right corner in twice! */
+        for($col = 1;$col <= 21;$col++){
+            if($col === 13){
+                continue;
+            }
+            $id = ($col*100)+22;
+            $symbols->$id = $symbol;
+        }
+        $this->mapData->setMapSymbols($symbols, "loyalistsupply");
+
     }
 
     function __construct($data = null, $arg = false, $scenario = false)
