@@ -1,5 +1,29 @@
 {
-    "Troops": {
+
+
+  "ModernTactics": {
+    "name": "Modern Tactical Warfare",
+    "path": "Troops",
+    "genre": "Mid 20'th century to present tactical",
+    "fileName": "\\Wargame\\Troops\\ModernTactics\\ModernTactics",
+    "description": "1940s - present",
+    "scenarios": {
+      "one": {
+        "one": true,
+        "description": "Scenario One",
+        "longDescription": "Tanks vs Tanks",
+        "playerOne": "American",
+        "playerTwo": "German"
+      }
+    }
+  },
+
+
+
+
+
+
+      "Troops": {
       "name": "Troops Fighting!",
       "path": "Troops",
       "genre": "early 20'th century tactical",

@@ -21,8 +21,8 @@ You should have received a copy of the GNU General Public License
    */
 
 
-
-class AreaData implements JsonSerializable
+use stdClass;
+class AreaData implements \JsonSerializable
 {
 
     public $areas;

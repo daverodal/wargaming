@@ -1,14 +1,12 @@
 <?php
-namespace Wargame\Troops;
-use \Wargame\Battle;
-use \Wargame\Hexagon;
-use \stdClass;
-use \Wargame\MapData;
 /**
- * Copyright 2015 David Rodal
+ * Created by PhpStorm.
+ * User: david
+ * Date: 7/15/16
+ * Time: 9:18 PM
+ * 
+ *  * Copyright 2016 David Rodal
  * User: David Markarian Rodal
- * Date: 6/14/15
- * Time: 5:37 PM
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,7 +21,16 @@ use \Wargame\MapData;
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class TacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
+
+namespace Wargame\Troops\ModernTactics;
+use Wargame\Battle;
+use Wargame\Hexagon;
+use stdClass;
+use Wargame\MapData;
+/**
+
+ */
+class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
 {
 
 //    public $strength;
@@ -86,7 +93,7 @@ class TacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
             $this->disruptLen = 2;
         }
     }
-    
+
     public function enterImproved($force = false){
         if($force !== true && $this->moveAmountUsed > 0){
             return false;
@@ -246,29 +253,11 @@ class TacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         $mapUnit->range = $this->range;
         $mapUnit->class = $this->class;
         $mapUnit->status = $this->status;
+        $mapUnit->target = 'hard';
         return $mapUnit;
     }
 
     public function getRange(){
         return $this->range;
     }
-}
-
-class UnitFactory {
-    public static $id = 0;
-    public static $injector;
-    public static function build($data = false){
-
-        $sU =  new TacticalUnit($data);
-        if($data === false){
-            $sU->id = self::$id++;
-        }
-        return $sU;
-    }
-    public static function create(  $unitForceId, $unitHexagon,  $attackStrength, $range,   $unitMaxMove,  $unitStatus, $unitReinforceZone, $unitReinforceTurn, $nationality = "neutral", $class, $unitDesig = ""){
-        $unit = self::build();
-        $unit->set($unitForceId, $unitHexagon,  $attackStrength,$range,  $unitMaxMove,  $unitStatus, $unitReinforceZone, $unitReinforceTurn,  $nationality, $class, $unitDesig);
-        self::$injector->injectUnit($unit);
-    }
-
 }

@@ -52,7 +52,9 @@ class WargameServiceProvider extends ServiceProvider
 
 
         $this->publishes([
-            __DIR__.'/Troops/Images' => public_path('vendor/wargame/troops/images')
+            __DIR__.'/Troops/Images' => public_path('vendor/wargame/troops/images'),
+            __DIR__.'/Troops/Images' => public_path('js')
+
         ], 'troops');
         
         $this->publishes([

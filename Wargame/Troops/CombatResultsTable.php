@@ -48,7 +48,9 @@ class CombatResultsTable
     function __construct()
     {
         $this->combatResultsHeader = array("1:4", "1:3", "1:2", "1:1", "2:1", "3:1", "4:1", "5:1", "6:1", "7:1");
-        $this->combatResultsTable = array(
+        $this->crts = new stdClass();
+
+        $this->crts->normal = array(
             array(DD, DD, DD, DD, DE, DE, DE, DE, DE, DE),
             array(NE, DD, DD, DD, DD, DE, DE, DE, DE, DE),
             array(NE, NE, DD, DD, DD, DD, DE, DE, DE, DE),
@@ -76,12 +78,12 @@ class CombatResultsTable
     function getCombatResults($Die, $index, $combat)
     {
         if ($combat->useAlt) {
-            return $this->combatResultsTableCav[$Die][$index];
+            return $this->crts->normal[$Die][$index];
         } else {
             if($combat->useDetermined){
                 return $this->combatResultsTableDetermined[$Die][$index];
             }
-            return $this->combatResultsTable[$Die][$index];
+            return $this->crts->normal[$Die][$index];
         }
     }
 
@@ -194,6 +196,7 @@ class CombatResultsTable
 
         foreach ($defenders as $defId => $defender) {
             $unitStrength = 2;
+            $terrain = '';
 
             $unit = $battle->force->units[$defId];
             $class = $unit->class;

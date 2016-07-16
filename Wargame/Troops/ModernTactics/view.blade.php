@@ -1,9 +1,9 @@
 @include('wargame::global-header')
 @include('wargame::Troops.header')
-@include('wargame::Troops.Troops.TroopsHeader')
+@include('wargame::Troops.ModernTactics.ModernTacticsHeader')
 <style type="text/css">
     <?php
-    include_once "Wargame/Troops/Troops/all.css";
+    include_once "Wargame/Troops/ModernTactics/all.css";
 ?>
 </style>
 </head>
@@ -59,7 +59,7 @@
                     </svg>
                 </div>
                 <div class="type-wrapper infantry-svg">
-                    <svg width="18" height="18" viewBox="0 0 20 20">
+                    <svg width="12" height="12" viewBox="0 0 20 20">
                         <line x1="1" x2="1" y1="0" y2="20" stroke-width="2"></line>
                         <line x1="0" x2="20" y1="19" y2="19" stroke-width="2"></line>
                         <line x1="19" x2="19" y1="0" y2="20" stroke-width="2"></line>
@@ -69,7 +69,7 @@
                     </svg>
                 </div>
                 <div class="type-wrapper cavalry-svg">
-                    <svg width="18" height="18" viewBox="0 0 20 20">
+                    <svg width="12" height="12" viewBox="0 0 20 20">
                         <line x1="1" x2="1" y1="0" y2="20" stroke-width="2"></line>
                         <line x1="0" x2="20" y1="19" y2="19" stroke-width="2"></line>
                         <line x1="19" x2="19" y1="0" y2="20" stroke-width="2"></line>
@@ -77,9 +77,13 @@
                         <line x1="1" x2="19" y1="19" y2="1" stroke-width="2"></line>
                     </svg>
                 </div>
+                <div class="unitNumbers defense">
+                    [13]
+                </div>
                 <div class="unitNumbers movement">
                     3
-                </div></div>
+                </div>
+            </div>
         </div>
     @endforeach
 @endsection
@@ -88,7 +92,7 @@
 
 
 @section('victoryConditions')
-    @include('wargame::Troops.Troops.victoryConditions')
+    @include('wargame::Troops.ModernTactics.victoryConditions')
 @endsection
 
 @section('commonRules')

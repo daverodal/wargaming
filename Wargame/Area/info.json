@@ -1,0 +1,15 @@
+{
+  "AreaOne": {
+    "name": "First hack at area games",
+    "path": "Area",
+    "genre": "Area Games",
+    "fileName": "\\Wargame\\Area\\AreaOne\\AreaOne",
+    "description": "Whenever",
+    "scenarios": {
+      "main": {
+        "description": "Standard Scenario",
+        "longDescription": "Whenever"
+      }
+    }
+  }
+}

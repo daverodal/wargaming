@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\Troops\Troops;
+namespace Wargame\Troops\ModernTactics;
 use stdClass;
 use Wargame\Battle;
 use Wargame\Hexpart;
@@ -29,7 +29,7 @@ use Wargame\Hexpart;
  */
 
 
-class troopsVictoryCore extends \Wargame\Troops\troopersVictoryCore
+class modernTacticsVictoryCore extends \Wargame\Troops\troopersVictoryCore
 {
 
     function __construct($data)
