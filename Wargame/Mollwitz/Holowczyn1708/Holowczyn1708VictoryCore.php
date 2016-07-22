@@ -172,9 +172,9 @@ class Holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->divisionReleased = true;
             }
             if($this->divisionReleased === false){
-                $battle->gameRules->flashMessages[] = "Russian Division Not Released $dieRoll";
+                $battle->gameRules->flashMessages[] = "Sheremetiev’s Division Not Released $dieRoll";
             }else{
-                $battle->gameRules->flashMessages[] = "Russian Division Released!!!!!!! $dieRoll";
+                $battle->gameRules->flashMessages[] = "Sheremetiev’s Division Released!!!!!!! $dieRoll";
             }
 
         }
