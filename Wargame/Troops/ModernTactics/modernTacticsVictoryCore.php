@@ -67,7 +67,6 @@ class modernTacticsVictoryCore extends \Wargame\Troops\troopersVictoryCore
         $playerOne = strtolower($battle->scenario->playerOne);
         $playerTwo = strtolower($battle->scenario->playerTwo);
 
-
         if ($unit->forceId == 1) {
             $victorId = 2;
             $this->victoryPoints[$victorId] += $unit->strength;
@@ -102,7 +101,7 @@ class modernTacticsVictoryCore extends \Wargame\Troops\troopersVictoryCore
         $playerOne = strtolower($battle->scenario->playerOne);
         $playerTwo = strtolower($battle->scenario->playerTwo);
 
-        if (isset($hex->name)) {
+        if ($hex->name) {
             if ($unit->forceId == 1) {
                 if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
                     $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerTwo'>D$disruptLevel </span>";
@@ -127,20 +126,19 @@ class modernTacticsVictoryCore extends \Wargame\Troops\troopersVictoryCore
         $playerOne = strtolower($battle->scenario->playerOne);
         $playerTwo = strtolower($battle->scenario->playerTwo);
 
-        if ($unit->forceId == 1) {
-            $victorId = 2;
-            if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
-                $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerTwo'>NE</span>";
+        if ($hex->name) {
+            if ($unit->forceId == 1) {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerTwo'>NE</span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerTwo'>NE</span>";
+                }
             } else {
-                $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerTwo'>NE</span>";
-            }
-        } else {
-            $victorId = 1;
-            if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
-
-                $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerOne'>NE</span>";
-            } else {
-                $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerOne'>NE</span>";
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerOne'>NE</span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerOne'>NE</span>";
+                }
             }
         }
     }

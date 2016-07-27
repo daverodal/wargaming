@@ -114,6 +114,14 @@ p.forceMarch,  p.range {
 }
 #crt{
   width:575px;
+  #crtOddsExp{
+    text-align:right;
+    padding-right:20px;
+    float:left;
+  }
+}
+.fixed-width{
+  width:200px;
 }
 .armor {
   .unitNumbers {

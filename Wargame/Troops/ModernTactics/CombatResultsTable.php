@@ -139,7 +139,7 @@ class CombatResultsTable
         $attackersCav = false;
         $combinedArms = array();
 
-        $combatLog .= "Attackers<br>";
+        $combatLog .= "<br>";
         foreach ($attackers as $attackerId => $attacker) {
             $terrainReason = "";
             $unit = $battle->force->units[$attackerId];
@@ -154,7 +154,7 @@ class CombatResultsTable
             $los->setOrigin($battle->force->getUnitHexagon($attackerId));
             $los->setEndPoint($battle->force->getUnitHexagon($defenderId));
             $range = $los->getRange();
-            $combatLog .= $unit->strength ." ".$unit->class." ";
+            $combatLog .= $unit->strength ." ".$unit->class." = ".$unit->strength."<br>";
             
             if($range == 1){
 
@@ -170,10 +170,10 @@ class CombatResultsTable
                     }
                 }
                 if(!$isCloseAssault){
-                    $combatLog .= "range 1, doubled ";
                     $unitStrength *= 2;
+                    $combatLog .= "range 1, doubled = $unitStrength<br>";
                 }else{
-                    $combatLog .= "close assult no range attenuation ";
+                    $combatLog .= "close assult no range attenuation = $unitStrength<br>";
 
                 }
 
@@ -181,21 +181,20 @@ class CombatResultsTable
             
             if($range >= 4 && $range <= 5){
                 $unitStrength -= 1;
-                $combatLog .= "range attentuation -1 ";
-
+                $combatLog .= " -1 range attentuation = $unitStrength<br>";
             }
             if($range >= 6 && $range <= 8){
-                $combatLog .= "range attentuation -2 ";
 
                 $unitStrength -= 2;
+                $combatLog .= " -2 range attentuation = $unitStrength<br>";
             }
             if($range >= 9 && $range <= 10){
-                $combatLog .= "range attentuation -3 ";
+                $combatLog .= " -3 range attentuation = $unitStrength<br>";
 
                 $unitStrength -= 3;
             }
             if($range >= 11){
-                $combatLog .= "range attentuation -6 ";
+                $combatLog .= "-6 range attentuation = $unitStrength<br>";
 
                 $unitStrength -= 6;
             }
@@ -209,82 +208,19 @@ class CombatResultsTable
              $attackerIsElevated = 2;
             }
 
-
-            $combatLog .= "<br> - $defenseStrength";
             $unitStrength -= $defenseStrength;
+            $combatLog .= " - $defenseStrength defender = $unitStrength<br>";
+            if($isForest){
+                $unitStrength--;
+                $combatLog .= " in forest - 1 = <span class='fixed-width' >$unitStrength</span><br>";
+            }
+            if($isTown){
+                $unitStrength -= 2;
+                $combatLog .= " in town - 2 = <span class='fixed-width' >$unitStrength</span><br>";
+            }
+            $combatLog .= "final = $unitStrength<br><br>";
             $combats->index[] = $unitStrength;
         }
-
-        $combatLog .= " = $attackStrength<br>Defenders<br>";
-        $defenseStrength = 0;
-
-//        foreach ($defenders as $defId => $defender) {
-//            $unitStrength = 2;
-//            $terrain = '';
-//
-//            $unit = $battle->force->units[$defId];
-//            $unitStrength = $unit->defenseStrength;
-//            $class = $unit->class;
-//            $clearHex = false;
-//            $notClearHex = false;
-//            $hexagon = $unit->hexagon;
-//            $hexpart = new Hexpart();
-//            $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
-//            $isTown = $battle->terrain->terrainIs($hexpart, 'town');
-////            $isHill = $battle->terrain->terrainIs($hexpart, 'hill');
-//            $isForest = $battle->terrain->terrainIs($hexpart, 'forest');
-//            $isSwamp = $battle->terrain->terrainIs($hexpart, 'swamp');
-//            $terran = "";
-//            if($attackerIsElevated < $isElevated){
-//                $unitStrength = 4;
-//                $terrain = "uphill ";
-//            }
-//            if($isTown){
-//                $terrain = "in town ";
-//                $unitStrength = 8;
-//            }
-//            if($isForest){
-//                $terrain = "in forest ";
-//                $unitStrength = 5;
-//            }
-//            if($unit->isImproved){
-//                $unitStrength *= 2;
-//                $terrain .= "Improved ";
-//            }
-//            $combatLog .= "$unitStrength ".$unit->class." $terrain";
-//
-//
-//            $defenseStrength += $unitStrength;
-//            $combatLog .= "<br>";
-//        }
-
-//        $combatLog .= " = $defenseStrength";
-
-        $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
-        /* Do this before terrain effects */
-
-        if ($combatIndex >= $this->maxCombatIndex) {
-            $combatIndex = $this->maxCombatIndex;
-        }
-
-//        $terrainCombatEffect = $battle->combatRules->getDefenderTerrainCombatEffect($defenderId);
-
-//        $combatIndex -= $terrainCombatEffect;
-
-        $combats->attackStrength = $attackStrength;
-        $combats->defenseStrength = $defenseStrength;
-        $combats->terrainCombatEffect = 0;
-//
-//        if($combats->pinCRT !== false){
-//            $pinIndex = $combats->pinCRT;
-//            if($combatIndex > $pinIndex){
-//                $combatLog .= "<br>Pinned to {$this->combatResultsHeader[$pinIndex]} ";
-//            }else{
-//                $combats->pinCRT = false;
-//            }
-//        }
-//        $combats->index = $combatIndex;
-        $combats->useAlt = false;
         $combats->combatLog = $combatLog;
     }
 

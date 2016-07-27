@@ -39,7 +39,7 @@ class TacticalCombatRules extends CombatRules
         $battle->mapData->setMapSymbols($symbols, "spotted");
     }
 
-    protected function isSighted($hexName)
+    protected function isSighted($hexName, $defender)
     {
 
         $battle = Battle::getBattle();
@@ -62,7 +62,7 @@ class TacticalCombatRules extends CombatRules
             $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
             $isHidden |= $battle->terrain->terrainIs($hexpart, 'town');
             $isHidden |= $battle->terrain->terrainIs($hexpart, 'forest');
-            if ($isHidden && !$battle->force->unitIsAdjacent($id) && !$this->isSighted($hexagon->name)) {
+            if ($isHidden && !$battle->force->unitIsAdjacent($id) && !$this->isSighted($hexagon->name, $id)) {
                 return false;
             }
 
@@ -198,7 +198,7 @@ class TacticalCombatRules extends CombatRules
                                 $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
                                 $isHidden |= $battle->terrain->terrainIs($hexpart, 'town');
                                 $isHidden |= $battle->terrain->terrainIs($hexpart, 'forest');
-                                if ($isHidden && !$this->isSighted($hexagon->name)) {
+                                if ($isHidden && !$this->isSighted($hexagon->name, $cd)) {
                                     /* confirm observer is in los too */
                                     $bad = true;
                                     $adjacentUnits = $this->force->getAdjacentUnits($defenderId);

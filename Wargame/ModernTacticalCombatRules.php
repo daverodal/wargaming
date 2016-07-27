@@ -31,6 +31,16 @@ class ModernTacticalCombatRules extends TacticalCombatRules
          */
     }
 
+    protected function isSighted($hexName, $defender)
+    {
+
+        $battle = Battle::getBattle();
+        if($battle->mapData->getMapSymbols($hexName) !== false){
+            return true;
+        }
+        $battle = Battle::getBattle();
+        return $battle->force->unitIsInRange($defender, 3);
+    }
 
     function resolveCombat($id)
     {
@@ -179,6 +189,46 @@ class ModernTacticalCombatRules extends TacticalCombatRules
 //                }
             }
         }
+    }
+    function checkBlocked($los, $id)
+    {
+        $mapData = MapData::getInstance();
+
+        $good = true;
+        $hexParts = $los->getlosList();
+        // remove first and last hexPart
+
+        $src = array_shift($hexParts);
+        $target = array_pop($hexParts);
+        $srcHexSide = $hexParts[0];
+        $targetHexSide = $hexParts[count($hexParts) - 1];
+
+        $localLos = new Los();
+        $localLos->originX = $los->originX;
+        $localLos->originY = $los->originY;
+        $range = $los->getRange();
+        $hasElevated1 = $hasElevated2 = false;
+        foreach ($hexParts as $hexPart) {
+
+            if ($this->terrain->terrainIs($hexPart, "blocksRanged") ) {
+                if($this->terrain->terrainIs($hexPart, "crest")){
+                    if($hexPart === $targetHexSide || $hexPart === $srcHexSide){
+                        continue;
+                    }
+                }
+                return false;
+
+            }
+
+
+        }
+
+
+
+        if ($good === false) {
+            return false;
+        }
+        return $good;
     }
 
 }

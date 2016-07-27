@@ -191,11 +191,14 @@ abstract class SimpleForce{
         return $isFriendly;
     }
 
-    function unitIsInRange($id)
+    function unitIsInRange($id, $argRange = false)
     {
         $b = Battle::getBattle();
         $isInRange = false;
         $range = $this->units[$id]->range;
+        if($argRange !== false){
+            $range = $argRange;
+        }
         if ($range <= 1) {
             return false;
         }

@@ -173,6 +173,8 @@ class TroopersCore extends \Wargame\LandBattle{
         $this->terrain->addTerrainFeature("slope","slope", "s", 0, 1, 0, false);
         $this->terrain->addTerrainFeature("elevation","elevation", "e", 0, 0, 0, false);
         $this->terrain->addTerrainFeature("elevation2","elevation2", "e", 0, 0, 0, false);
+        $this->terrain->addTerrainFeature("crest","crest", "c", 0, 1, 0, false, true);
+
 
 
 
