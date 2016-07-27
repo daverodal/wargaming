@@ -204,14 +204,12 @@ class CombatResultsTable
                 $combatLog .= " -2 range attentuation = $unitStrength<br>";
             }
             if($range >= 9 && $range <= 10){
-                $combatLog .= " -3 range attentuation = $unitStrength<br>";
-
                 $unitStrength -= 3;
+                $combatLog .= " -3 range attentuation = $unitStrength<br>";
             }
             if($range >= 11){
-                $combatLog .= "-6 range attentuation = $unitStrength<br>";
-
                 $unitStrength -= 6;
+                $combatLog .= "-6 range attentuation = $unitStrength<br>";
             }
 
             $attackerIsElevated = false;

@@ -1067,7 +1067,7 @@ x.register("moveRules", function(moveRules,data) {
                                 return val+4;
                             });
                         }else{
-                            combatCols[0] = combatRules.combats[cD].index + 1;
+                            combatCols = [combatRules.combats[cD].index + 1];
                         }
                         for(var index in combatCols) {
                             combatCol = combatCols[index];
