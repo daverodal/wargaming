@@ -3458,6 +3458,11 @@ p.forceMarch {
   background: transparent;
   text-shadow: 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666; }
 
+.specialHexesVP .soviet {
+  color: white;
+  background: transparent;
+  text-shadow: 0px 0px 1px #c68100, 0px 0px 1px #c68100, 0px 0px 1px #c68100, 0px 0px 2px #c68100, 0px 0px 2px #c68100, 0px 0px 2px #c68100, 0px 0px 3px #c68100, 0px 0px 3px #c68100, 0px 0px 3px #c68100, 0px 0px 4px #c68100, 0px 0px 4px #c68100, 0px 0px 4px #c68100, 0px 0px 5px #c68100, 0px 0px 5px #c68100, 0px 0px 5px #c68100, 0px 0px 6px #c68100, 0px 0px 6px #c68100, 0px 0px 6px #c68100, 0px 0px 7px #c68100, 0px 0px 7px #c68100, 0px 0px 7px #c68100, 0px 0px 8px #c68100, 0px 0px 8px #c68100, 0px 0px 8px #c68100, 0px 0px 9px #c68100, 0px 0px 9px #c68100, 0px 0px 9px #c68100, 0px 0px 10px #c68100, 0px 0px 10px #c68100, 0px 0px 10px #c68100, 0px 0px 1px #c68100, 0px 0px 1px #c68100, 0px 0px 1px #c68100, 0px 0px 2px #c68100, 0px 0px 2px #c68100, 0px 0px 2px #c68100, 0px 0px 3px #c68100, 0px 0px 3px #c68100, 0px 0px 3px #c68100, 0px 0px 4px #c68100, 0px 0px 4px #c68100, 0px 0px 4px #c68100, 0px 0px 5px #c68100, 0px 0px 5px #c68100, 0px 0px 5px #c68100, 0px 0px 6px #c68100, 0px 0px 6px #c68100, 0px 0px 6px #c68100, 0px 0px 7px #c68100, 0px 0px 7px #c68100, 0px 0px 7px #c68100, 0px 0px 8px #c68100, 0px 0px 8px #c68100, 0px 0px 8px #c68100, 0px 0px 9px #c68100, 0px 0px 9px #c68100, 0px 0px 9px #c68100, 0px 0px 10px #c68100, 0px 0px 10px #c68100, 0px 0px 10px #c68100; }
+
 .specialHexesVP .russian {
   color: white;
   background: transparent;
@@ -3585,6 +3590,14 @@ p.forceMarch {
   bottom: 2px;
   left: 9px; }
 
+.anti-tank .unitNumbers {
+  letter-spacing: -1px; }
+.anti-tank .anti-tank-svg {
+  display: block;
+  position: absolute;
+  bottom: 2px;
+  left: 9px; }
+
 .infantry .unitNumbers {
   font-size: 15px; }
 .infantry .infantry-svg {
@@ -3596,6 +3609,14 @@ p.forceMarch {
 .cavalry .unitNumbers {
   font-size: 15px; }
 .cavalry .cavalry-svg {
+  display: block;
+  position: absolute;
+  left: 2px;
+  bottom: 2px; }
+
+.armor .unitNumbers {
+  font-size: 15px; }
+.armor .armor-svg {
   display: block;
   position: absolute;
   left: 2px;
@@ -3803,6 +3824,46 @@ svg#arrow-svg {
   #arrow-svg path.Austro-Hungarian.short.hover {
     stroke: black; }
 
+.unit.American {
+  background: olive;
+  color: white; }
+
+.playerAmerican {
+  background: olive;
+  border-color: olive !important; }
+
+.AmericanFace, .playerAmericanFace {
+  color: #333; }
+
+.American .counterWrapper {
+  background-color: olive; }
+
+#header.American {
+  background: olive; }
+
+.unit.American svg {
+  stroke: white; }
+
+#crt.American {
+  border-color: olive; }
+
+#crt .roll.odd.American {
+  background-color: olive; }
+
+#arrow-svg path.American {
+  stroke: olive;
+  stroke-opacity: 0.0; }
+
+#arrow-svg path.American.hovered {
+  stroke: olive;
+  stroke-opacity: 1.0;
+  fill-opacity: .1; }
+
+#arrow-svg path.American.short {
+  stroke: transparent; }
+  #arrow-svg path.American.short.hover {
+    stroke: olive; }
+
 .unit.French {
   background: #9ea837;
   color: black; }
@@ -3844,44 +3905,90 @@ svg#arrow-svg {
     stroke: #9ea837; }
 
 .unit.Russian {
-  background: #F0F4CF;
+  background: #B98700;
   color: black; }
 
 .playerRussian {
-  background: #F0F4CF;
-  border-color: #F0F4CF !important; }
+  background: #B98700;
+  border-color: #B98700 !important; }
 
 .RussianFace, .playerRussianFace {
-  color: #c9d753; }
+  color: #201700; }
 
 .Russian .counterWrapper {
-  background-color: #F0F4CF; }
+  background-color: #B98700; }
 
 #header.Russian {
-  background: #F0F4CF; }
+  background: #B98700; }
 
 .unit.Russian svg {
   stroke: black; }
 
 #crt.Russian {
-  border-color: #F0F4CF; }
+  border-color: #B98700; }
 
 #crt .roll.odd.Russian {
-  background-color: #F0F4CF; }
+  background-color: #B98700; }
 
 #arrow-svg path.Russian {
-  stroke: #F0F4CF;
+  stroke: #B98700;
   stroke-opacity: 0.0; }
 
 #arrow-svg path.Russian.hovered {
-  stroke: #F0F4CF;
+  stroke: #B98700;
   stroke-opacity: 1.0;
   fill-opacity: .1; }
 
 #arrow-svg path.Russian.short {
   stroke: transparent; }
   #arrow-svg path.Russian.short.hover {
-    stroke: #F0F4CF; }
+    stroke: #B98700; }
+
+.unit.Soviet {
+  background: #B98700;
+  color: black; }
+
+.playerSoviet {
+  background: #B98700;
+  border-color: #B98700 !important; }
+
+.SovietFace, .playerSovietFace {
+  color: #201700; }
+
+.Soviet .counterWrapper {
+  background-color: #B98700; }
+
+#header.Soviet {
+  background: #B98700; }
+
+.unit.Soviet svg {
+  stroke: black; }
+
+#crt.Soviet {
+  border-color: #B98700; }
+
+#crt .roll.odd.Soviet {
+  background-color: #B98700; }
+
+#arrow-svg path.Soviet {
+  stroke: #B98700;
+  stroke-opacity: 0.0; }
+
+#arrow-svg path.Soviet.hovered {
+  stroke: #B98700;
+  stroke-opacity: 1.0;
+  fill-opacity: .1; }
+
+#arrow-svg path.Soviet.short {
+  stroke: transparent; }
+  #arrow-svg path.Soviet.short.hover {
+    stroke: #B98700; }
+
+.unit-desig {
+  bottom: 0px;
+  left: 3px;
+  transform: none;
+  top: initial; }
 
 .unit.Native .counterWrapper {
   background-color: #f00; }
@@ -3908,16 +4015,37 @@ p.forceMarch, p.range {
 .col-hex {
   width: 65px; }
 
-.unitNumbers.movement.infoLen3 {
-  font-size: 12px;
-  letter-spacing: -1.8px; }
+.unit.unitNumbers {
+  font-size: 11px; }
 
 .unitNumbers.defense {
   bottom: 0px;
   left: 0px; }
 
+.infantry .unitNumbers {
+  font-size: 11px; }
 .infantry .infantry-svg {
-  left: 9px;
-  bottom: 16px; }
+  display: block;
+  position: absolute;
+  left: 5px;
+  bottom: 12px; }
+
+.disrupted {
+  padding-left: 5px; }
+
+#crt {
+  width: 575px; }
+
+.armor .unitNumbers {
+  font-size: 11px; }
+.armor .armor-svg {
+  display: block;
+  position: absolute;
+  left: 5px;
+  bottom: 12px; }
+
+.unitNumbers.weapons {
+  left: 12px;
+  top: -3px; }
 
 /*# sourceMappingURL=all.css.map */

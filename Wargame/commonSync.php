@@ -480,15 +480,22 @@ x.register("force", function(force,data) {
         }else{
             $("#"+i+" .shadow-mask").removeClass("shadowy");
         }
-        if(units[i].isDisrupted){
-            var disp = 'D';
+        if(units[i].isDisrupted || units[i].pinned){
+            var disp = '';
+            if(units[i].pinned){
+                disp = 'P'
+            }
+            if(units[i].isDisrupted){
+                disp = 'D';
+            }
             if(units[i].disruptLen > 1){
                 disp = 'DD';
             }
-            if(units[i].isDisrupted == 17){
-                $("#"+i+" .shadow-mask").addClass("red-shadowy").html(DR.playerOne+"<br><span class='disrupted'>"+disp+"</span>");
-            }else{
-                $("#"+i+" .shadow-mask").addClass("red-shadowy").html(DR.playerTwo+"<br><span class='disrupted'>"+disp+"</span>");
+            if(units[i].disruptLevel){
+                disp = 'D'+units[i].disruptLevel;
+            }
+            if(units[i].isDisrupted === true || units[i].pinned === true){
+                $("#"+i+" .shadow-mask").addClass("red-shadowy").html("<span class='disrupted'>"+disp+"</span>");
             }
         }else{
             $("#"+i+" .shadow-mask").removeClass("red-shadowy").html('');
@@ -1055,22 +1062,31 @@ x.register("moveRules", function(moveRules,data) {
                                 }
                             }
                         }
-                        combatCol = combatRules.combats[cD].index + 1;
-                        if(combatCol >= 1){
-                            $(".col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
-                            if(combatRules.combats[cD].Die !== false){
-                                $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('font-size', "110%");
-                                $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('background', "#eee");
-                            }
-                            $(".torpedoHitOneTable .col" + combatCol).css({background: "transparent"});
-                            $(".torpedoHitTwoTable .col" + combatCol).css({background: "transparent"});
+                        if(typeof combatRules.combats[cD].index === 'object'){
+                            combatCols = combatRules.combats[cD].index.map(function(val){
+                                return val+4;
+                            });
+                        }else{
+                            combatCols[0] = combatRules.combats[cD].index + 1;
+                        }
+                        for(var index in combatCols) {
+                            combatCol = combatCols[index];
+                            if (combatCol >= 1) {
+                                $(".col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
+                                if (combatRules.combats[cD].Die !== false) {
+                                    $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('font-size', "110%");
+                                    $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('background', "#eee");
+                                }
+                                $(".torpedoHitOneTable .col" + combatCol).css({background: "transparent"});
+                                $(".torpedoHitTwoTable .col" + combatCol).css({background: "transparent"});
 
-                            if(data.gameRules.phase == <?= BLUE_TORP_COMBAT_PHASE?> || data.gameRules.phase == <?= RED_TORP_COMBAT_PHASE?>){
-                                var oneHitCol = combatRules.combats[cD].oneHitCol + 1;
-                                var twoHitCol = combatRules.combats[cD].twoHitCol + 1;
+                                if (data.gameRules.phase == <?= BLUE_TORP_COMBAT_PHASE?> || data.gameRules.phase == <?= RED_TORP_COMBAT_PHASE?>) {
+                                    var oneHitCol = combatRules.combats[cD].oneHitCol + 1;
+                                    var twoHitCol = combatRules.combats[cD].twoHitCol + 1;
 
-                                $(".torpedoHitOneTable .col" + oneHitCol).css('background-color', "rgba(255,255,1,.6)");
-                                $(".torpedoHitTwoTable .col" + twoHitCol).css('background-color', "rgba(255,255,1,.6)");
+                                    $(".torpedoHitOneTable .col" + oneHitCol).css('background-color', "rgba(255,255,1,.6)");
+                                    $(".torpedoHitTwoTable .col" + twoHitCol).css('background-color', "rgba(255,255,1,.6)");
+                                }
                             }
                         }
                     }
@@ -1115,13 +1131,23 @@ x.register("moveRules", function(moveRules,data) {
                             useAltColor = " determinedColor";
                         }
                         var odds = Math.floor(atk / def);
-                        var oddsDisp = $(".col" + combatCol).html();
-                        var currentCombatCol = combatRules.combats[i].index + 1;
+                        var oddsDisp;
+                        var currentCombatCol;
+                        var currentOddsDisp;
+
+                        if(typeof combatRules.combats[i].index === "object"){
+                            currentCombatCol = combatRules.combats[i].index+'';
+                            currentOddsDisp = currentCombatCol;
+                            oddsDisp = currentCombatCol;
+                        }else {
+                            currentCombatCol = combatRules.combats[i].index + 1;
+                            currentOddsDisp = $(".col" + currentCombatCol).html();
+                            oddsDisp = $(".col" + combatCol).html();
+                        }
                         if(combatRules.combats[i].pinCRT !== false){
                             currentCombatCol = combatRules.combats[i].pinCRT + 1;
                             useAltColor = " pinnedColor";
                         }
-                        var currentOddsDisp = $(".col" + currentCombatCol).html();
                         $("#"+i).attr('title',currentOddsDisp).prepend('<div class="unitOdds'+useAltColor+'">'+currentOddsDisp+'</div>');;
 
                         var details = renderCrtDetails(combatRules.combats[i]);

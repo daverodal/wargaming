@@ -70,7 +70,7 @@
     if(mapUnits[i].parent == "gameImages"){
 
     $("#"+i).css({left:mapUnits[i].x-width/2-fudge+"px",top:mapUnits[i].y-height/2-fudge+"px", zIndex: zIndex});
-    var hexSideLen = 35.2;
+    var hexSideLen = 32.0;
     var b = hexSideLen * .866;
     var unit = mapUnits[i];
     unit.id = i;
@@ -107,15 +107,19 @@
     move = move.replace(/\.00$/,'');
     move = move.replace(/(\.[1-9])0$/,'$1');
     var str = mapUnits[i].strength;
+        var dStr = mapUnits[i].defenseStrength;
     var reduced = mapUnits[i].isReduced;
     var reduceDisp = "<span>";
     if(reduced){
         reduceDisp = "<span class='reduced'>";
     }
     var symb = mapUnits[i].supplied !== false ? " - " : " <span class='reduced'>u</span> ";
-    var html = reduceDisp + str + symb + move + "</span>"
+    var html = reduceDisp + str + symb + move + "</span>";
     $("#"+i+" .unitNumbers.attack").html(str);
-    $("#"+i+" .unitNumbers.defense").html('[' + str + ']');
+        if(mapUnits[i].target === <?=\Wargame\Troops\ModernTactics\ModernTacticalUnit::HARD_TARGET?>){
+            dStr = '[' + dStr + ']';
+        }
+    $("#"+i+" .unitNumbers.defense").html(dStr);
 
         var len  = $("#"+i+" .unitNumbers.attack").text().length;
     $("#"+i+" unitNumbers.attack").addClass("infoLen"+len);
@@ -137,5 +141,18 @@
     }
 
     });
+
+
+    function renderCrtDetails(combat){
+        var atk = combat.attackStrength;
+        var def = combat.defenseStrength;
+        var div = combat.index+'';
+        var combatCol = combat.index + 1;
+
+        var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div>"+ div +  "</div>";
+        /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
+        return html;
+    }
+
 
 </script>

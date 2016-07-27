@@ -34,7 +34,7 @@ $britishColor: #9ea837;
 $belgianColor: #ffffe3;
 $frenchColor: #9ea837;
 $belgianNumberColor: #a9b14a;
-$russianColor: #F0F4CF;
+$russianColor: #B98700;
 
 
 
@@ -42,10 +42,17 @@ $russianColor: #F0F4CF;
 @include player(German, German, $germanColor, $germanColor, $germanColor, black);
 @include player(Belgian, Belgian, $belgianColor, $belgianColor, $belgianNumberColor, $belgianNumberColor);
 @include player(Austro-Hungarian, Austro-Hungarian, $germanColor, black, #333, white);
+@include player(American, American, olive, olive, #333, white);
 
 @include player(French, French, $frenchColor, $frenchColor, $frenchColor, black);
 @include player(Russian, Russian, $russianColor, $russianColor, darken($russianColor,30%), black);
-
+@include player(Soviet, Soviet, $russianColor, $russianColor, darken($russianColor,30%), black);
+.unit-desig{
+  bottom:0px;
+  left:3px;
+  transform:none;
+  top:initial;
+}
 .unit.Native .counterWrapper {
   background-color: $angloAlliedWrapperColor;
 }
@@ -74,16 +81,53 @@ p.forceMarch,  p.range {
   width:65px;
 }
 
-.unitNumbers.movement.infoLen3{
-  font-size:12px;
-  letter-spacing: -1.8px;
-}
+//.unitNumbers.movement.infoLen3{
+//  font-size:12px;
+//  letter-spacing: -1.8px;
+//}
 
+.unit.unitNumbers{
+  font-size:11px;
+}
 .unitNumbers.defense{
   bottom:0px;
   left:0px;
 }
 .infantry .infantry-svg {
-  left: 9px;
-  bottom: 16px;
+
+}
+
+.infantry {
+  .unitNumbers {
+    font-size: 11px;
+  }
+  .infantry-svg {
+    display: block;
+    position: absolute;
+    left: 5px;
+    bottom: 12px;
+  }
+}
+
+.disrupted{
+  padding-left:5px;
+}
+#crt{
+  width:575px;
+}
+.armor {
+  .unitNumbers {
+    font-size: 11px;
+  }
+  .armor-svg {
+    display: block;
+    position: absolute;
+    left: 5px;
+    bottom: 12px;
+  }
+}
+
+.unitNumbers.weapons{
+  left:12px;
+  top:-3px;
 }

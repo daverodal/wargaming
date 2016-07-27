@@ -345,7 +345,11 @@ p.forceMarch {
   background: transparent;
   @include victoryPoints(#666);
 }
-
+.specialHexesVP .soviet {
+  color: white;
+  background: transparent;
+  @include victoryPoints(#c68100);
+}
 .specialHexesVP .russian {
   color: white;
   background: transparent;
@@ -513,6 +517,17 @@ p.forceMarch {
     left: 9px;
   }
 }
+.anti-tank{
+  .unitNumbers{
+    letter-spacing: -1px;
+  }
+  .anti-tank-svg {
+    display: block;
+    position: absolute;
+    bottom: 2px;
+    left: 9px;
+  }
+}
 .infantry {
   .unitNumbers {
     font-size: 15px;
@@ -524,6 +539,7 @@ p.forceMarch {
     bottom: 2px;
   }
 }
+
 .cavalry {
   .unitNumbers {
     font-size: 15px;
@@ -535,6 +551,19 @@ p.forceMarch {
     bottom: 2px;
   }
 }
+
+.armor {
+  .unitNumbers {
+    font-size: 15px;
+  }
+  .armor-svg {
+    display: block;
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+  }
+}
+
 .topDiv.smallUnit{
   width:32px;
   height:32px;

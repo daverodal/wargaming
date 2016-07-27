@@ -3458,6 +3458,11 @@ p.forceMarch {
   background: transparent;
   text-shadow: 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 1px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 2px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 3px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 4px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 5px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 6px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 7px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 8px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 9px #666, 0px 0px 10px #666, 0px 0px 10px #666, 0px 0px 10px #666; }
 
+.specialHexesVP .soviet {
+  color: white;
+  background: transparent;
+  text-shadow: 0px 0px 1px #c68100, 0px 0px 1px #c68100, 0px 0px 1px #c68100, 0px 0px 2px #c68100, 0px 0px 2px #c68100, 0px 0px 2px #c68100, 0px 0px 3px #c68100, 0px 0px 3px #c68100, 0px 0px 3px #c68100, 0px 0px 4px #c68100, 0px 0px 4px #c68100, 0px 0px 4px #c68100, 0px 0px 5px #c68100, 0px 0px 5px #c68100, 0px 0px 5px #c68100, 0px 0px 6px #c68100, 0px 0px 6px #c68100, 0px 0px 6px #c68100, 0px 0px 7px #c68100, 0px 0px 7px #c68100, 0px 0px 7px #c68100, 0px 0px 8px #c68100, 0px 0px 8px #c68100, 0px 0px 8px #c68100, 0px 0px 9px #c68100, 0px 0px 9px #c68100, 0px 0px 9px #c68100, 0px 0px 10px #c68100, 0px 0px 10px #c68100, 0px 0px 10px #c68100, 0px 0px 1px #c68100, 0px 0px 1px #c68100, 0px 0px 1px #c68100, 0px 0px 2px #c68100, 0px 0px 2px #c68100, 0px 0px 2px #c68100, 0px 0px 3px #c68100, 0px 0px 3px #c68100, 0px 0px 3px #c68100, 0px 0px 4px #c68100, 0px 0px 4px #c68100, 0px 0px 4px #c68100, 0px 0px 5px #c68100, 0px 0px 5px #c68100, 0px 0px 5px #c68100, 0px 0px 6px #c68100, 0px 0px 6px #c68100, 0px 0px 6px #c68100, 0px 0px 7px #c68100, 0px 0px 7px #c68100, 0px 0px 7px #c68100, 0px 0px 8px #c68100, 0px 0px 8px #c68100, 0px 0px 8px #c68100, 0px 0px 9px #c68100, 0px 0px 9px #c68100, 0px 0px 9px #c68100, 0px 0px 10px #c68100, 0px 0px 10px #c68100, 0px 0px 10px #c68100; }
+
 .specialHexesVP .russian {
   color: white;
   background: transparent;
@@ -3585,6 +3590,14 @@ p.forceMarch {
   bottom: 2px;
   left: 9px; }
 
+.anti-tank .unitNumbers {
+  letter-spacing: -1px; }
+.anti-tank .anti-tank-svg {
+  display: block;
+  position: absolute;
+  bottom: 2px;
+  left: 9px; }
+
 .infantry .unitNumbers {
   font-size: 15px; }
 .infantry .infantry-svg {
@@ -3596,6 +3609,14 @@ p.forceMarch {
 .cavalry .unitNumbers {
   font-size: 15px; }
 .cavalry .cavalry-svg {
+  display: block;
+  position: absolute;
+  left: 2px;
+  bottom: 2px; }
+
+.armor .unitNumbers {
+  font-size: 15px; }
+.armor .armor-svg {
   display: block;
   position: absolute;
   left: 2px;

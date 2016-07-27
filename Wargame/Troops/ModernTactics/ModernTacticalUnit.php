@@ -33,17 +33,26 @@ use Wargame\MapData;
 class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
 {
 
+    const HARD_TARGET = 0;
+    const SOFT_TARGET = 1;
+    const AP_WEAPONS = 'A';
+    const SM_WEAPONS = 'S';
+    const IN_WEAPONE = 'I';
+
 //    public $strength;
     public $attackStrength;
     public $range;
     public $isImproved = false;
     public $normalMoveAmount;
     public $forceMarch = true;
+    public $target;
+    public $pinned = false;
+    public $weapons;
 
 
 
     public $isDisrupted = false;
-    public $disruptLen = 0;
+    public $disruptLevel = 0;
     public $supplied = true;
 
 
@@ -85,13 +94,43 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         return $strength;
     }
 
+    public function pinUnit()
+    {
+        $this->pinned = true;
+    }
 
-    public function disruptUnit($phase){
-        $this->isDisrupted = $phase;
-        $this->disruptLen = 1;
-        if($this->nationality === "Russian"){
-            $this->disruptLen = 2;
+    public function disruptionLevel($result){
+        switch($result){
+            case D1:
+                return 1;
+            case D2:
+                return 2;
+            case D3:
+                return 3;
         }
+    }
+
+    public function disruptUnit($phase, $level){
+
+        $dLevel = $this->disruptionLevel($level);
+
+        $this->disruptLevel += $dLevel;
+        if($this->disruptLevel >= 4){
+            $this->damageUnit(true);
+        }
+        $this->isDisrupted = true;
+    }
+
+    public function attemptUnDisrupt(){
+        /*
+         * D1 3 or less D2 2 or less you get the picture
+         */
+        $dieNeeded = 4 - $this->disruptLevel;
+        if(rand(1,6) <= $dieNeeded){
+            $this->isDisrupted = false;
+            $this->disruptLevel = 0;
+        }
+        $this->pinned = false;
     }
 
     public function enterImproved($force = false){
@@ -169,7 +208,7 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         return true;
     }
 
-    function set($unitForceId, $unitHexagon,  $attackStrength, $range, $unitMaxMove,  $unitStatus, $unitReinforceZone, $unitReinforceTurn, $nationality = "neutral",  $class, $unitDesig)
+    function set($unitForceId, $unitHexagon,  $attackStrength, $range, $defenseStrength, $unitMaxMove, $weapons, $target, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $nationality = "neutral",  $class, $unitDesig)
     {
         $this->dirty = true;
         $this->forceId = $unitForceId;
@@ -186,8 +225,11 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         $this->maxMove = $unitMaxMove;
         $this->normalMoveAmount = $this->moveAmountUnused = $unitMaxMove;
         $this->attackStrength = $attackStrength;
+        $this->defenseStrength = $defenseStrength;
+        $this->target = $target;
         $this->status = $unitStatus;
         $this->moveAmountUsed = 0;
+        $this->weapons = $weapons;
         $this->reinforceZone = $unitReinforceZone;
         $this->reinforceTurn = $unitReinforceTurn;
         $this->combatNumber = 0;
@@ -199,6 +241,21 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         $this->nationality = $nationality;
         $this->forceMarch = true;
         $this->unitDesig = $unitDesig;
+    }
+
+    public function checkLos(\Wargame\Los $los, $defenderId = false){
+        $b = Battle::getBattle();
+        if($this->weapons === ModernTacticalUnit::SM_WEAPONS){
+            if($defenderId !== false){
+                $defUnit = $b->force->units[$defenderId];
+                if($defUnit->target === ModernTacticalUnit::HARD_TARGET){
+                    if($los->getRange() > 1){
+                       return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     function damageUnit($kill = false)
@@ -249,11 +306,13 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         $mapUnit->forceId = $this->forceId;
         $mapUnit->isImproved = $this->isImproved;
         $mapUnit->isDisrupted = $this->isDisrupted;
-        $mapUnit->disruptLen = $this->disruptLen;
+        $mapUnit->disruptLevel = $this->disruptLevel;
         $mapUnit->range = $this->range;
         $mapUnit->class = $this->class;
         $mapUnit->status = $this->status;
-        $mapUnit->target = 'hard';
+        $mapUnit->target = $this->target;
+        $mapUnit->defenseStrength = $this->defenseStrength;
+        $mapUnit->pinned = $this->pinned;
         return $mapUnit;
     }
 

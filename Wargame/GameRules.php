@@ -559,6 +559,11 @@ class GameRules
                                 return $unit->exitImproved();
                             }
 
+                            if($c == 'l' || $c == 'L'){
+                                return $this->moveRules->loadUnit();
+                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+                            }
+
                             if($id == 37){
                                 if(method_exists($this->moveRules, 'turnLeft')){
                                     $ret = $this->moveRules->turnLeft();

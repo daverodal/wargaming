@@ -14,6 +14,13 @@
         "longDescription": "Tanks vs Tanks",
         "playerOne": "American",
         "playerTwo": "German"
+      },
+      "two": {
+        "two": true,
+        "description": "Soviet Front",
+        "longDescription": "T34's  vs Panzer IV's",
+        "playerOne": "Soviet",
+        "playerTwo": "German"
       }
     }
   },

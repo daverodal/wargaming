@@ -1,0 +1,305 @@
+<?php
+namespace Wargame\Troops\ModernTactics;
+use stdClass;
+use Wargame\Battle;
+use Wargame\Hexpart;
+use Wargame\Los;
+// crt.js
+
+// Copyright (c) 2009-2011 Mark Butler
+// This program is free software; you can redistribute it 
+// and/or modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation;
+// either version 2 of the License, or (at your option) any later version. 
+
+/**
+ *
+ * Copyright 2012-2015 David Rodal
+ *
+ *  This program is free software; you can redistribute it
+ *  and/or modify it under the terms of the GNU General Public License
+ *  as published by the Free Software Foundation;
+ *  either version 2 of the License, or (at your option) any later version
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+class CombatResultsTable
+{
+    use CRTResults;
+    public $combatIndexCount;
+    public $maxCombatIndex;
+    public $dieSideCount;
+    public $dieMaxValue;
+    public $combatResultCount;
+
+    public $combatResultsTable;
+    public $combatResultsHeader;
+    public $combatOddsTable;
+
+    //     combatIndexeCount is 6; maxCombatIndex = 5
+    //     index is 0 to 5;  dieSidesCount = 6
+
+    function __construct()
+    {
+
+        global $results_name;
+        $results_name[DE] = "D-4";
+        $this->combatResultsHeader = array("-3", "-2", "-1", "0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8");
+        $this->crts = new stdClass();
+
+        $this->crts->normal = array(
+            array(NE,   NE,   PIN,    PIN,   PANIC, PANIC, PIN, D1, D1, D2, D2, D3),
+            array(NE,  PIN,   PIN,    PANIC, PANIC, PANIC, D1,    D1, D2, D2, D3, DE),
+            array(PIN, PIN,   PANIC,  PANIC, PANIC, D1,    D1,    D2, D2, D3, D3, DE),
+            array(PIN, PANIC, PANIC,  PANIC, D1,    D1,    D2,    D2, D3, D3, DE, DE),
+            array(PANIC, D1,  D1,     D1,    D2,    D2,    D2,    D3, D3, DE, DE, DE),
+            array(D1,  D1,    D1,     D2,    D2,    D3,    D3,    D3, DE, DE, DE, DE),
+        );
+
+        $this->combatIndexCount = 12;
+        $this->maxCombatIndex = $this->combatIndexCount - 1;
+        $this->dieSideCount = 6;
+
+    }
+
+    function getCombatResults($Die, $index, $combat)
+    {
+        $index += 3;
+        if($index > $this->maxCombatIndex){
+            $index = $this->maxCombatIndex;
+        }
+        if ($combat->useAlt) {
+            return $this->crts->normal[$Die][$index];
+        } else {
+            if($combat->useDetermined){
+                return $this->combatResultsTableDetermined[$Die][$index];
+            }
+            var_dump($index);
+            return $this->crts->normal[$Die][$index];
+        }
+    }
+
+    function getCombatDisplay()
+    {
+        return $this->combatResultsHeader;
+    }
+
+    public function setCombatIndex($defenderId)
+    {
+
+        $combatLog = "";
+        $battle = Battle::getBattle();
+        $scenario = $battle->scenario;
+        $combats = $battle->combatRules->combats->$defenderId;
+
+        if (count((array)$combats->attackers) == 0) {
+            $combats->index = null;
+            $combats->attackStrength = null;
+            $combats->defenseStrength = null;
+            $combats->terrainCombatEffect = null;
+            return;
+        }
+
+        $defenders = $combats->defenders;
+        $isCavalry = $isTown = $isHill = $isForest = $isSwamp = $attackerIsSunkenRoad = $isRedoubt = $isElevated = false;
+
+        $combats->index = [];
+
+        foreach ($defenders as $defId => $defender) {
+            $defUnit = $battle->force->units[$defId];
+            $hexagon = $defUnit->hexagon;
+            if($defUnit->class === 'cavalry'){
+                $isCavalry = true;
+            }
+            $hexpart = new Hexpart();
+            $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
+            $isTown |= $battle->terrain->terrainIs($hexpart, 'town');
+            $isForest |= $battle->terrain->terrainIs($hexpart, 'forest');
+            if($battle->terrain->terrainIs($hexpart, 'elevation')){
+                $isElevated = 1;
+            }
+            if($battle->terrain->terrainIs($hexpart, 'elevation2')){
+                $isElevated = 2;
+            }
+            $defenseStrength = $defUnit->defenseStrength;
+        }
+        $isClear = true;
+        if ($isTown || $isForest || $isHill || $isSwamp) {
+            $isClear = false;
+        }
+
+        $attackers = $combats->attackers;
+        $attackStrength = 0;
+        $attackersCav = false;
+        $combinedArms = array();
+
+        $combatLog .= "Attackers<br>";
+        foreach ($attackers as $attackerId => $attacker) {
+            $terrainReason = "";
+            $unit = $battle->force->units[$attackerId];
+            $unitStrength = $unit->strength;
+
+            $hexagon = $unit->hexagon;
+            $hexpart = new Hexpart();
+            $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
+
+            $los = new Los();
+
+            $los->setOrigin($battle->force->getUnitHexagon($attackerId));
+            $los->setEndPoint($battle->force->getUnitHexagon($defenderId));
+            $range = $los->getRange();
+            $combatLog .= $unit->strength ." ".$unit->class." ";
+            
+            if($range == 1){
+
+                $isCloseAssault = false;
+
+
+                if($unit->weapons === ModernTacticalUnit::SM_WEAPONS){
+                    if($defenderId !== false){
+                        $defUnit = $battle->force->units[$defenderId];
+                        if($defUnit->target === ModernTacticalUnit::HARD_TARGET){
+                            $isCloseAssault = true;
+                        }
+                    }
+                }
+                if(!$isCloseAssault){
+                    $combatLog .= "range 1, doubled ";
+                    $unitStrength *= 2;
+                }else{
+                    $combatLog .= "close assult no range attenuation ";
+
+                }
+
+            }
+            
+            if($range >= 4 && $range <= 5){
+                $unitStrength -= 1;
+                $combatLog .= "range attentuation -1 ";
+
+            }
+            if($range >= 6 && $range <= 8){
+                $combatLog .= "range attentuation -2 ";
+
+                $unitStrength -= 2;
+            }
+            if($range >= 9 && $range <= 10){
+                $combatLog .= "range attentuation -3 ";
+
+                $unitStrength -= 3;
+            }
+            if($range >= 11){
+                $combatLog .= "range attentuation -6 ";
+
+                $unitStrength -= 6;
+            }
+
+            $attackerIsElevated = false;
+            if($battle->terrain->terrainIs($hexpart, 'elevation')){
+                $attackerIsElevated = 1;
+            }
+
+            if($battle->terrain->terrainIs($hexpart, 'elevation2')){
+             $attackerIsElevated = 2;
+            }
+
+
+            $combatLog .= "<br> - $defenseStrength";
+            $unitStrength -= $defenseStrength;
+            $combats->index[] = $unitStrength;
+        }
+
+        $combatLog .= " = $attackStrength<br>Defenders<br>";
+        $defenseStrength = 0;
+
+//        foreach ($defenders as $defId => $defender) {
+//            $unitStrength = 2;
+//            $terrain = '';
+//
+//            $unit = $battle->force->units[$defId];
+//            $unitStrength = $unit->defenseStrength;
+//            $class = $unit->class;
+//            $clearHex = false;
+//            $notClearHex = false;
+//            $hexagon = $unit->hexagon;
+//            $hexpart = new Hexpart();
+//            $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
+//            $isTown = $battle->terrain->terrainIs($hexpart, 'town');
+////            $isHill = $battle->terrain->terrainIs($hexpart, 'hill');
+//            $isForest = $battle->terrain->terrainIs($hexpart, 'forest');
+//            $isSwamp = $battle->terrain->terrainIs($hexpart, 'swamp');
+//            $terran = "";
+//            if($attackerIsElevated < $isElevated){
+//                $unitStrength = 4;
+//                $terrain = "uphill ";
+//            }
+//            if($isTown){
+//                $terrain = "in town ";
+//                $unitStrength = 8;
+//            }
+//            if($isForest){
+//                $terrain = "in forest ";
+//                $unitStrength = 5;
+//            }
+//            if($unit->isImproved){
+//                $unitStrength *= 2;
+//                $terrain .= "Improved ";
+//            }
+//            $combatLog .= "$unitStrength ".$unit->class." $terrain";
+//
+//
+//            $defenseStrength += $unitStrength;
+//            $combatLog .= "<br>";
+//        }
+
+//        $combatLog .= " = $defenseStrength";
+
+        $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
+        /* Do this before terrain effects */
+
+        if ($combatIndex >= $this->maxCombatIndex) {
+            $combatIndex = $this->maxCombatIndex;
+        }
+
+//        $terrainCombatEffect = $battle->combatRules->getDefenderTerrainCombatEffect($defenderId);
+
+//        $combatIndex -= $terrainCombatEffect;
+
+        $combats->attackStrength = $attackStrength;
+        $combats->defenseStrength = $defenseStrength;
+        $combats->terrainCombatEffect = 0;
+//
+//        if($combats->pinCRT !== false){
+//            $pinIndex = $combats->pinCRT;
+//            if($combatIndex > $pinIndex){
+//                $combatLog .= "<br>Pinned to {$this->combatResultsHeader[$pinIndex]} ";
+//            }else{
+//                $combats->pinCRT = false;
+//            }
+//        }
+//        $combats->index = $combatIndex;
+        $combats->useAlt = false;
+        $combats->combatLog = $combatLog;
+    }
+
+    function getCombatIndex($attackStrength, $defenseStrength)
+    {
+        $difference = $attackStrength - $defenseStrength;
+        if ($attackStrength >= $defenseStrength) {
+            $combatIndex = $difference + 3;;
+        } else {
+            $combatIndex = $difference + 3;
+        }
+        return $combatIndex;
+    }
+
+
+
+}

@@ -253,6 +253,19 @@ class MoveRules
         return false;
 
     }
+    public function loadUnit(){
+        if ($this->anyUnitIsMoving) {
+
+            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+            if($unit->canBeTransported()){
+                $unit->status = STATUS_LOADING;
+            }
+
+        }
+    }
+
+
+
 // id will be map if map event, id will be unit id if counter event
     function moveUnit($eventType, $id, $hexagon, $turn)
     {

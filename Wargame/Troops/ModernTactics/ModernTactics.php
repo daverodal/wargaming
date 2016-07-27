@@ -1,6 +1,20 @@
 <?php
 namespace Wargame\Troops\ModernTactics;
 use Wargame\Troops\ModernTactics\UnitFactory;
+
+use stdClass;
+
+use Wargame\Battle;
+use Wargame\MapData;
+use Wargame\Display;
+use Wargame\Force;
+use Wargame\MapViewer;
+use Wargame\Hexagon;
+use Wargame\ModernTacticalCombatRules;
+use Wargame\Terrain;
+use Wargame\MoveRules;
+use Wargame\GameRules;
+use Wargame\Victory;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -18,7 +32,7 @@ use Wargame\Troops\ModernTactics\UnitFactory;
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-define("AMERICAN_FORCE", 2);
+define("BRITISH_FORCE", 2);
 define("GERMAN_FORCE", 1);
 
 global $force_name;
@@ -105,133 +119,112 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
 
         /* German */
         $scenario = $this->scenario;
+        if(!empty($scenario->one)){
 
-        if(!empty($scenario->seven)){
-            for ($i = 0; $i < 24; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'infantry');
+            /* German */
+            for ($i = 0; $i < 6; $i++) {
+                UnitFactory::create(2, "deployBox", 10, 10, 10, 6, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'armor');
             }
-            for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 17, 10, 3,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'mg');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 10, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'artillery');
-            }
-            for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 9, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'howitzer');
-            }
-            for ($i = 0; $i < 0; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 50, 15, 8,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'armor');
+            for ($i = 0; $i < 6; $i++) {
+                UnitFactory::create(2, "deployBox", 6, 3, 5, 1, ModernTacticalUnit::SM_WEAPONS, ModernTacticalUnit::SOFT_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'infantry');
             }
 
-            /* Belgian */
+            /* Yanks */
 
-            for ($i = 0; $i < 11; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'infantry');
+            for ($i = 0; $i < 6; $i++) {
+                UnitFactory::create(1, "deployBox", 7, 10, 7, 5, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "American", 'armor');
             }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 5, 10, 6,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'mg');
-            }
+
             for ($i = 0; $i < 3; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 11, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'artillery');
+                UnitFactory::create(1, "deployBox", 9, 10, 7, 5, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "American", 'armor');
             }
 
-        }elseif(!empty($scenario->one)){
+
+            for ($i = 0; $i < 3; $i++) {
+                UnitFactory::create(1, "deployBox", 5, 5, 5, 7, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "American", 'armor');
+            }
+
+            for ($i = 0; $i < 9; $i++) {
+                UnitFactory::create(1, "deployBox", 6, 3, 6, 1, ModernTacticalUnit::SM_WEAPONS, ModernTacticalUnit::SOFT_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "American", 'infantry');
+            }
+            for ($i = 0; $i < 1; $i++) {
+                UnitFactory::create(1, "deployBox", 5, 8, 3, 1, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::SOFT_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "American", 'anti-tank');
+            }
+
+            for ($i = 0; $i < 1; $i++) {
+                UnitFactory::create(1, "deployBox", 1, 10, 3, 6, ModernTacticalUnit::IN_WEAPONE, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "American", 'howitzer');
+            }
+        }
+
+        if(!empty($scenario->two)){
             
             /* German */
             for ($i = 0; $i < 12; $i++) {
-                UnitFactory::create(2, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "B", 1,  "German", 'infantry');
-            }
-            for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create(2, "deployBox", 17, 10, 3,  STATUS_CAN_DEPLOY, "B", 1,  "German", 'mg');
-            }
-            for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create(2, "deployBox", 10, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "German", 'artillery');
-            }
-            for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create(2, "deployBox", 9, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "German", 'artillery');
+                UnitFactory::create(2, "deployBox", 9, 10, 7, 5, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'armor', 'P-IV');
             }
 
+            /* Soviets */
 
-            /* French */
-
-            for ($i = 0; $i < 24; $i++) {
-                UnitFactory::create(1, "deployBox", 3, 3, 5,  STATUS_CAN_DEPLOY, "A", 1,  "French", 'infantry');
-            }
-            for ($i = 0; $i < 6; $i++) {
-                UnitFactory::create(1, "deployBox", 4, 9, 5,  STATUS_CAN_DEPLOY, "A", 1,  "French", 'mg');
-            }
-            for ($i = 0; $i < 3; $i++) {
-                UnitFactory::create(1, "deployBox", 6, 26, 6,  STATUS_CAN_DEPLOY, "A", 1,  "French", 'artillery');
-            }
-
-        }elseif(!empty($scenario->six)){
-
-            /* Austro-Hungarian */
             for ($i = 0; $i < 16; $i++) {
-                UnitFactory::create(1, "deployBox", 5, 4, 4,  STATUS_CAN_DEPLOY, "B", 1,  "Austro-Hungarian", 'infantry');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(1, "deployBox", 4, 9, 5,  STATUS_CAN_DEPLOY, "B", 1,  "Austro-Hungarian", 'mg');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(1, "deployBox", 4, 1, 8,  STATUS_CAN_DEPLOY, "B", 1,  "Austro-Hungarian", 'cavalry');
-            }
-            for ($i = 0; $i < 3; $i++) {
-                UnitFactory::create(1, "deployBox", 10, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "Austro-Hungarian", 'artillery');
-            }
-
-
-
-            /* Russian */
-
-            for ($i = 0; $i < 12; $i++) {
-                UnitFactory::create(2, "deployBox", 4, 4, 4,  STATUS_CAN_DEPLOY, "A", 1,  "Russian", 'infantry');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(2, "deployBox", 4, 10, 5,  STATUS_CAN_DEPLOY, "A", 1,  "Russian", 'mg');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(2, "deployBox", 3, 1, 8,  STATUS_CAN_DEPLOY, "A", 1,  "Russian", 'cavalry');
-            }
-            for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create(2, "deployBox", 2, 1, 8,  STATUS_CAN_DEPLOY, "A", 1,  "Russian", 'cavalry');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(2, "deployBox", 11, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "Russian", 'artillery');
-            }
-        }else {
-            /* German */
-
-            for ($i = 0; $i < 36; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'infantry');
-            }
-            for ($i = 0; $i < 3; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 17, 10, 3,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'mg');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 10, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'artillery');
-            }
-
-            /* British */
-
-            for ($i = 0; $i < 20; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 11, 6, 5,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'infantry');
-            }
-            for ($i = 0; $i < 5; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 6, 10, 5,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'mg');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 11, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'artillery');
+                UnitFactory::create(1, "deployBox", 8, 7, 8, 8, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "Soviet", 'armor','T-34');
             }
         }
+
 
     }
 
 
     function __construct($data = null, $arg = false, $scenario = false, $game = false)
     {
-        parent::__construct($data, $arg, $scenario, $game);
-        $crt = new \Wargame\Troops\CombatResultsTable();
+        /*
+         * do not call parent constructor :(
+        */
+        $this->mapData = MapData::getInstance();
+        if ($data) {
+            $this->arg = $data->arg;
+            $this->scenario = $data->scenario;
+            $this->terrainName = $data->terrainName;
+            $this->game = $data->game;
+
+            $this->mapData->init($data->mapData);
+            $this->mapViewer = array(new MapViewer($data->mapViewer[0]), new MapViewer($data->mapViewer[1]), new MapViewer($data->mapViewer[2]));
+
+
+
+            $units = $data->force->units;
+            unset($data->force->units);
+            $this->force = new Force($data->force);
+            foreach($units as $unit){
+                $this->force->injectUnit(static::buildUnit($unit));
+            }
+
+            if(isset($data->terrain)){
+                $this->terrain = new Terrain($data->terrain);
+
+            }else{
+                $this->terrain = new \stdClass();
+            }
+            $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
+            $this->combatRules = new ModernTacticalCombatRules($this->force, $this->terrain, $data->combatRules);
+            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force,  $data->gameRules);
+            $this->victory = new Victory($data);
+
+            $this->players = $data->players;
+        } else {
+            $this->arg = $arg;
+            $this->scenario = $scenario;
+            $this->game = $game;
+
+            $this->mapViewer = array(new MapViewer(), new MapViewer(), new MapViewer());
+            $this->force = new Force();
+            $this->terrain = new Terrain();
+
+            $this->moveRules = new MoveRules($this->force, $this->terrain);
+            $this->combatRules = new ModernTacticalCombatRules($this->force, $this->terrain);
+            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
+        }
+
+        $crt = new \Wargame\Troops\ModernTactics\CombatResultsTable();
         $this->combatRules->injectCrt($crt);
         if ($data) {
 
@@ -258,7 +251,6 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
                 $this->gameRules->setMaxTurn(15);
             }
 
-            if(!empty($scenario->one)) {
 
                 $this->gameRules->setInitialPhaseMode(BLUE_DEPLOY_PHASE, DEPLOY_MODE);
                 $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
@@ -267,29 +259,16 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
 
 
                 $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, RED_FORCE, BLUE_FORCE, false);
-                $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
-            }else{
-                $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
-                $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
-                $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
-                $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
+                $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_FIRST_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);
 
-
-                $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
-                $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
-            }
-
-            $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_FIRST_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_FIRST_COMBAT_PHASE, RED_FIRST_COMBAT_PHASE, COMBAT_SETUP_MODE, RED_FORCE, BLUE_FORCE, false);
             $this->gameRules->addPhaseChange(RED_FIRST_COMBAT_PHASE, BLUE_COMBAT_RES_PHASE, COMBAT_RESOLUTION_MODE, BLUE_FORCE, RED_FORCE, false);
 
-            $this->gameRules->addPhaseChange(BLUE_COMBAT_RES_PHASE, RED_MOVE_PHASE, MOVING_MODE, RED_FORCE,BLUE_FORCE , false);
+            $this->gameRules->addPhaseChange(BLUE_COMBAT_RES_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE,RED_FORCE , false);
+            $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, RED_MOVE_PHASE, MOVING_MODE, RED_FORCE, BLUE_FORCE, false);
 
-            $this->gameRules->addPhaseChange(RED_MOVE_PHASE, RED_SECOND_COMBAT_PHASE, COMBAT_SETUP_MODE, RED_FORCE, BLUE_FORCE, false);
-            $this->gameRules->addPhaseChange(RED_SECOND_COMBAT_PHASE, BLUE_SECOND_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);
-            $this->gameRules->addPhaseChange(BLUE_SECOND_COMBAT_PHASE, RED_COMBAT_RES_PHASE, COMBAT_RESOLUTION_MODE, RED_FORCE, BLUE_FORCE, false);
+            $this->gameRules->addPhaseChange(RED_MOVE_PHASE, BLUE_FIRST_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, true);
 
-            $this->gameRules->addPhaseChange(RED_COMBAT_RES_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, true);
 
         }
     }

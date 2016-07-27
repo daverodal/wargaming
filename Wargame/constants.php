@@ -340,6 +340,11 @@ define("AL2F", 40);
 define("AL2R", 41);
 define("L", 42);
 define("L2", 43);
+define("PIN", 44);
+define("PANIC", 45);
+define("D1", 46);
+define("D2", 47);
+define("D3", 48);
 
 $results_name = array();
 //results_name[DE] = "Defender eliminated";
@@ -390,7 +395,11 @@ $results_name[AL2F] = "AL2F";
 $results_name[AL2R] = "AL2R";
 $results_name[L] = "L";
 $results_name[L2] = "L2";
-
+$results_name[PIN] = "Pin";
+$results_name[PANIC] = "(P)";
+$results_name[D1] = "D-1";
+$results_name[D2] = "D-2";
+$results_name[D3] = "D-3";
 
 // combat ratio
 $combatRatio_name = array();

@@ -1,8 +1,10 @@
 <?php
 namespace Wargame\Troops\ModernTactics;
+
 use stdClass;
 use Wargame\Battle;
 use Wargame\Hexpart;
+
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -20,6 +22,7 @@ use Wargame\Hexpart;
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 /**
  * Created by JetBrains PhpStorm.
  * User: markarianr
@@ -27,14 +30,33 @@ use Wargame\Hexpart;
  * Time: 7:06 PM
  * To change this template use File | Settings | File Templates.
  */
-
-
 class modernTacticsVictoryCore extends \Wargame\Troops\troopersVictoryCore
 {
+
+    public $attacked;
 
     function __construct($data)
     {
         parent::__construct($data);
+        if ($data) {
+            if (isset($data->victory->attacked)) {
+                $this->attacked = $data->victory->attacked;
+
+            } else {
+                $this->attacked = new stdClass();
+
+            }
+        } else {
+            $this->attacked = new stdClass();
+        }
+
+    }
+
+    public function save()
+    {
+        $ret = parent::save();
+        $ret->attacked = $this->attacked;
+        return $ret;
     }
 
     public function reduceUnit($args)
@@ -49,26 +71,51 @@ class modernTacticsVictoryCore extends \Wargame\Troops\troopersVictoryCore
         if ($unit->forceId == 1) {
             $victorId = 2;
             $this->victoryPoints[$victorId] += $unit->strength;
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerTwo'>DE</span>";
+            if($hex->name) {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerTwo'>DE</span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerTwo'>DE</span>";
+
+                }
+            }
         } else {
             $victorId = 1;
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerOne'>DE</span>";
-            $this->victoryPoints[$victorId] += $unit->strength;
+            if($hex->name) {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerOne'>DE</span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerOne'>DE</span>";
+                }
+                $this->victoryPoints[$victorId] += $unit->strength;
+            }
         }
     }
 
     public function disruptUnit($args)
     {
-        list($unit) = $args;
+        list($unit, $combatResult) = $args;
+        $disruptLevel = $unit->disruptionLevel($combatResult);
         $hex = $unit->hexagon;
         $battle = Battle::getBattle();
         $playerOne = strtolower($battle->scenario->playerOne);
         $playerTwo = strtolower($battle->scenario->playerTwo);
 
-        if ($unit->forceId == 1) {
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerTwo'>DD</span>";
-        } else {
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerOne'>DD</span>";
+        if (isset($hex->name)) {
+            if ($unit->forceId == 1) {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerTwo'>D$disruptLevel </span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerTwo'>D$disruptLevel </span>";
+                }
+            } else {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerOne'>D$disruptLevel </span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerOne'>D$disruptLevel </span>";
+                }
+            }
         }
     }
 
@@ -82,10 +129,19 @@ class modernTacticsVictoryCore extends \Wargame\Troops\troopersVictoryCore
 
         if ($unit->forceId == 1) {
             $victorId = 2;
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerTwo'>NE</span>";
+            if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerTwo'>NE</span>";
+            } else {
+                $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerTwo'>NE</span>";
+            }
         } else {
             $victorId = 1;
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerOne'>NE</span>";
+            if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+
+                $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='$playerOne'>NE</span>";
+            } else {
+                $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$playerOne'>NE</span>";
+            }
         }
     }
 
@@ -123,43 +179,45 @@ class modernTacticsVictoryCore extends \Wargame\Troops\troopersVictoryCore
         }
     }
 
+    public function preRecoverUnit($arg)
+    {
+        list($unit) = $arg;
+        if ($unit->status === STATUS_ATTACKED) {
+            $this->attacked->{$unit->id} = true;
+        }
+    }
+
     public function postRecoverUnit($args)
     {
         $unit = $args[0];
         $b = Battle::getBattle();
 
-        /* Deal with Forced March */
         if ($b->gameRules->mode == COMBAT_SETUP_MODE) {
             if ($unit->isImproved !== true) {
-                if ($unit->class === 'infantry') {
-                    if ($unit->moveAmountUnused < 2) {
-                        $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-                    }
-                } elseif ($unit->class === 'artillery' && $unit->nationality === 'French') {
-                    if ($unit->moveAmountUnused < 4) {
-                        $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-                    }
-                } else {
-                    if ($unit->moveAmountUnused !== $unit->maxMove) {
-                        $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-                    }
-                }
             }
         }
-        if ($b->gameRules->phase == BLUE_FIRST_COMBAT_PHASE && $unit->isDisrupted === BLUE_COMBAT_RES_PHASE) {
-            $unit->disruptLen--;
-            if ($unit->disruptLen === 0) {
-                $unit->isDisrupted = false;
-            }
-        }
-        if ($b->gameRules->phase == RED_SECOND_COMBAT_PHASE && $unit->isDisrupted === RED_COMBAT_RES_PHASE) {
-            $unit->disruptLen--;
-            if ($unit->disruptLen === 0) {
-                $unit->isDisrupted = false;
-            }
+        if ($b->gameRules->phase == BLUE_FIRST_COMBAT_PHASE && ($unit->isDisrupted === true || $unit->pinned)) {
+            $unit->attemptUnDisrupt();
         }
         if ($unit->isDisrupted !== false) {
             $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+        }
+        if (($b->gameRules->phase == BLUE_MOVE_PHASE || $b->gameRules->phase == RED_MOVE_PHASE)) {
+            if (isset($this->attacked->{$unit->id})) {
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
+            if ($unit->pinned === true) {
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
+        }
+    }
+
+    public function postRecoverUnits()
+    {
+        $b = Battle::getBattle();
+
+        if ($b->gameRules->phase == BLUE_FIRST_COMBAT_PHASE) {
+            $this->attacked = new stdClass();
         }
     }
 }

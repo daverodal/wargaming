@@ -51,6 +51,13 @@ class MovableUnit{
         return $canMove;
     }
 
+    public function __call($name, $args){
+        if(strpos($name, 'can') === 0){
+            return false;
+        }
+        throw new Exception("Bad Call to Movable Unit ");
+    }
+
     public function getMaxMove(){
         $maxMove = $this->maxMove;
         $maxMove = $this->getMovementAdjustments($maxMove);
