@@ -55,11 +55,11 @@ class CombatResultsTable
         $this->crts = new stdClass();
 
         $this->crts->normal = array(
-            array(NE,   NE,   PIN,    PIN,   PANIC, PANIC, PIN, D1, D1, D2, D2, D3),
-            array(NE,  PIN,   PIN,    PANIC, PANIC, PANIC, D1,    D1, D2, D2, D3, DE),
-            array(PIN, PIN,   PANIC,  PANIC, PANIC, D1,    D1,    D2, D2, D3, D3, DE),
-            array(PIN, PANIC, PANIC,  PANIC, D1,    D1,    D2,    D2, D3, D3, DE, DE),
-            array(PANIC, D1,  D1,     D1,    D2,    D2,    D2,    D3, D3, DE, DE, DE),
+            array(NE,   NE,   PIN,    PIN,   D1, D1, PIN, D1, D1, D2, D2, D3),
+            array(NE,  PIN,   PIN,    D1, D1, D1, D1,    D1, D2, D2, D3, DE),
+            array(PIN, PIN,   D1,  D1, D1, D1,    D1,    D2, D2, D3, D3, DE),
+            array(PIN, D1, D1,  D1, D1,    D1,    D2,    D2, D3, D3, DE, DE),
+            array(D1, D1,  D1,     D1,    D2,    D2,    D2,    D3, D3, DE, DE, DE),
             array(D1,  D1,    D1,     D2,    D2,    D3,    D3,    D3, DE, DE, DE, DE),
         );
 
