@@ -107,7 +107,7 @@ class CombatResultsTable
         }
 
         $defenders = $combats->defenders;
-        $isCavalry = $isTown = $isHill = $isForest = $isSwamp = $attackerIsSunkenRoad = $isRedoubt = $isElevated = false;
+        $isCrest = $isCavalry = $isTown = $isHill = $isForest = $isSwamp = $attackerIsSunkenRoad = $isRedoubt = $isElevated = false;
 
         $combats->index = [];
 
@@ -154,7 +154,22 @@ class CombatResultsTable
             $los->setOrigin($battle->force->getUnitHexagon($attackerId));
             $los->setEndPoint($battle->force->getUnitHexagon($defenderId));
             $range = $los->getRange();
-            $combatLog .= $unit->strength ." ".$unit->class." = ".$unit->strength."<br>";
+
+            $hexParts = $los->getlosList();
+
+            $targetHex = array_pop($hexParts);
+            $targetHexSide = array_pop($hexParts);
+
+            if ($battle->terrain->terrainIs($targetHexSide, "crest")) {
+                $isCrest = true;
+            }
+
+
+
+
+
+
+                $combatLog .= $unit->strength ." ".$unit->class." = ".$unit->strength."<br>";
             
             if($range == 1){
 
@@ -218,6 +233,12 @@ class CombatResultsTable
                 $unitStrength -= 2;
                 $combatLog .= " in town - 2 = <span class='fixed-width' >$unitStrength</span><br>";
             }
+
+            if($isCrest){
+                $unitStrength -= 1;
+                $combatLog .= " in crest - 1 = <span class='fixed-width' >$unitStrength</span><br>";
+            }
+
             $combatLog .= "final = $unitStrength<br><br>";
             $combats->index[] = $unitStrength;
         }
