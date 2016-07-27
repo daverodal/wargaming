@@ -81,7 +81,6 @@ class CombatResultsTable
             if($combat->useDetermined){
                 return $this->combatResultsTableDetermined[$Die][$index];
             }
-            var_dump($index);
             return $this->crts->normal[$Die][$index];
         }
     }
