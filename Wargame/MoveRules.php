@@ -745,7 +745,15 @@ class MoveRules
             $behind = false;
             if(isset($hexPath->facing)){
                 $newFacing = $hexPath->facing;
-                $neighbors = array_slice(array_merge($mapHex->neighbors,$mapHex->neighbors), ($hexPath->facing + 6 - 1)%6, 3);
+                /*
+                 * Front 3 hexes kept just in case game designer chnages his mind.
+                 * $neighbors = array_slice(array_merge($mapHex->neighbors,$mapHex->neighbors), ($hexPath->facing + 6 - 1)%6, 3);
+                 */
+
+                /*
+                 * Just the front facing hex
+                 */
+                $neighbors = array_slice($mapHex->neighbors, $hexPath->facing, 1);
                 /* first hex can do backup move */
                 if($hexPath->firstHex === true){
                     $behind = $hexPath->facing + 3;

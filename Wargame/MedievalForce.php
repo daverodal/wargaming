@@ -717,8 +717,9 @@ class MedievalForce extends Force
                             if ($this->units[$id]->forceId == $this->attackingForceId && ($isZoc || $isAdjacent || $this->unitIsInRange($id))) {
                                 $status = STATUS_READY;
                             }
-                            if($this->units[$id]->status === STATUS_ATTACKED){
+                            if($this->units[$id]->usedFireCombat()){
                                 $status = STATUS_UNAVAIL_THIS_PHASE;
+                                $this->units[$id]->clearFireCombat();
                             }
                         }
                         if ($mode == COMBAT_RESOLUTION_MODE || $mode == FIRE_COMBAT_RESOLUTION_MODE) {
