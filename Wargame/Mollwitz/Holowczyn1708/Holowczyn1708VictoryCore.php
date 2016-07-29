@@ -166,11 +166,21 @@ class Holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
             $battle->mapData->setSpecialHexes($supply);
 
         }
-        if ($turn >= 2 && $gameRules->phase == RED_MOVE_PHASE && $this->divisionReleased === false){
-            $dieRoll = rand(1,6);
-            if($dieRoll === 6){
-                $this->divisionReleased = true;
+        $autoRelease = !empty($battle->scenario->autoRelease);
+        $neverReleased = !empty($battle->secnario->neverReleased);
+        if (!$neverReleased && $turn >= 2 && $gameRules->phase == RED_MOVE_PHASE && $this->divisionReleased === false){
+            if($autoRelease){
+                $dieRoll = '';
+                if($turn >= 3){
+                    $this->divisionReleased = true;
+                }
+            }else{
+                $dieRoll = rand(1,6);
+                if($dieRoll === 6 || $autoRelease === true){
+                    $this->divisionReleased = true;
+                }
             }
+
             if($this->divisionReleased === false){
                 $battle->gameRules->flashMessages[] = "Sheremetiev’s Division Not Released $dieRoll";
             }else{

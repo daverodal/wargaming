@@ -83,6 +83,8 @@ define("BLUE_TRANSPORT_PHASE", 43);
 define("RED_TRANSPORT_PHASE", 44);
 define("BLUE_OPTION_PHASE", 45);
 define("RED_OPTION_PHASE", 46);
+define("RED_FIRE_COMBAT_PHASE_TWO", 47);
+define("BLUE_FIRE_COMBAT_PHASE_TWO", 48);
 
 $phase_name = array();
 $phase_name[1] = "<span class='playerOneFace'>fNameOne</span> Move";
@@ -132,6 +134,8 @@ $phase_name[43] = "<span class='playerOneFace'>fNameOne</span> Air Transport ";
 $phase_name[44] = "<span class='playerTwoFace'>fNameTwo</span> Air Transport ";
 $phase_name[45] = "<span class='playerOneFace'>fNameOne</span> Option ";
 $phase_name[46] = "<span class='playerTwoFace'>fNameTwo</span> Option ";
+$phase_name[47] = "<span class='playerTwoFace'>fNameTwo</span> Second ";
+$phase_name[48] = "<span class='playerOneFace'>fNameOne</span> Second ";
 
 // game modes
 define("SELECT_TO_MOVE_MODE",1);

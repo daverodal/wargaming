@@ -384,7 +384,31 @@
     "fileName": "\\Wargame\\Mollwitz\\Holowczyn1708\\Holowczyn1708",
     "description":"Holowczyn 1708",
     "params":{
-      "wimpySwamps": true
+      "units":[
+        {"num":1,"forceId":1,"combat":8,"reduced":4,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+        {"num":5,"forceId":1,"combat":6,"reduced":3,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
+        {"num":1,"forceId":1,"combat":8,"reduced":4,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+        {"num":5,"forceId":1,"combat":6,"reduced":3,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
+        {"num":1,"forceId":1,"combat":2,"movement":2,"reinforce":"A","range":3,"nationality":"Swedish","class":"artillery"},
+        {"num":2,"forceId":1,"combat":0,"movement":0,"reinforce":"C","range":1,"nationality":"Swedish","class":"pontoon"},
+
+
+        {"num":2,"forceId":2,"combat":2,"movement":3,"reinforce":"D","range":1,"nationality":"Russian","class":"infantry"},
+        {"num":2,"forceId":2,"combat":3,"movement":3,"reinforce":"D","range":1,"nationality":"Russian","class":"infantry"},
+        {"num":1,"forceId":2,"combat":4,"movement":3,"reinforce":"D","range":1,"nationality":"Russian","class":"infantry"},
+        {"num":1,"forceId":2,"combat":2,"movement":6,"reinforce":"D","range":1,"nationality":"Russian","class":"cavalry"},
+        {"num":1,"forceId":2,"combat":3,"movement":5,"reinforce":"D","range":1,"nationality":"Russian","class":"cavalry"},
+
+        {"num":5,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+        {"num":5,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+        {"num":6,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
+
+        {"num":3,"forceId":2,"combat":2,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+        {"num":3,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+        {"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
+        {"num":3,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Russian","class":"artillery"}
+
+      ]
     },
     "options":[
       {
@@ -395,32 +419,17 @@
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
-        "longDescription":"Historical Scenario. Hard for Sweden to win.",
-        "units":[
-          {"num":1,"forceId":1,"combat":8,"reduced":4,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
-          {"num":5,"forceId":1,"combat":6,"reduced":3,"movement":3,"reinforce":"A","range":1,"nationality":"Swedish","class":"infantry"},
-          {"num":1,"forceId":1,"combat":8,"reduced":4,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
-          {"num":5,"forceId":1,"combat":6,"reduced":3,"movement":5,"reinforce":"A","range":1,"nationality":"Swedish","class":"cavalry"},
-          {"num":1,"forceId":1,"combat":2,"movement":2,"reinforce":"A","range":3,"nationality":"Swedish","class":"artillery"},
-          {"num":2,"forceId":1,"combat":0,"movement":0,"reinforce":"C","range":1,"nationality":"Swedish","class":"pontoon"},
-
-
-          {"num":2,"forceId":2,"combat":2,"movement":3,"reinforce":"D","range":1,"nationality":"Russian","class":"infantry"},
-          {"num":2,"forceId":2,"combat":3,"movement":3,"reinforce":"D","range":1,"nationality":"Russian","class":"infantry"},
-          {"num":1,"forceId":2,"combat":4,"movement":3,"reinforce":"D","range":1,"nationality":"Russian","class":"infantry"},
-          {"num":1,"forceId":2,"combat":2,"movement":6,"reinforce":"D","range":1,"nationality":"Russian","class":"cavalry"},
-          {"num":1,"forceId":2,"combat":3,"movement":5,"reinforce":"D","range":1,"nationality":"Russian","class":"cavalry"},
-
-          {"num":5,"forceId":2,"combat":2,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
-          {"num":5,"forceId":2,"combat":3,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
-          {"num":6,"forceId":2,"combat":4,"movement":3,"reinforce":"B","range":1,"nationality":"Russian","class":"infantry"},
-
-          {"num":3,"forceId":2,"combat":2,"movement":6,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
-          {"num":3,"forceId":2,"combat":3,"movement":5,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
-          {"num":4,"forceId":2,"combat":4,"movement":5,"reinforce":"B","range":1,"nationality":"Russian","class":"cavalry"},
-          {"num":3,"forceId":2,"combat":2,"movement":2,"reinforce":"B","range":3,"nationality":"Russian","class":"artillery"}
-
-        ]
+        "longDescription":"Standard Scenario. Sheremetiev's division may be released."
+      },
+      "historical": {
+        "description": "Historical Scenario.",
+        "longDescription":"Sheremetiev's Division is never released.",
+        "neverReleased": true
+      },
+      "released": {
+        "description": "Sheremetiev's division Auto released.",
+        "longDescription":"Sheremetiev's Division released on turn 3.",
+        "autoRelease": true
       }
     }
 
@@ -432,7 +441,6 @@
     "fileName": "\\Wargame\\Mollwitz\\Germantown1777\\Germantown1777",
     "description":"Germantown 1777",
     "params":{
-      "wimpySwamps": true
     },
     "options":[],
     "scenarios": {
