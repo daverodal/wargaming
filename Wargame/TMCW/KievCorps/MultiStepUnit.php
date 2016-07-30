@@ -43,7 +43,6 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
         if (is_object($this->hexagon)) {
             if ($this->hexagon->name) {
                 $this->hexagon = $this->hexagon->getName();
-
             } else {
                 $this->hexagon = $this->hexagon->parent;
             }
@@ -51,6 +50,13 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
         return $this;
     }
 
+
+    public function resetUnit(){
+        parent::resetUnit();
+        $this->steps = 1;
+        $this->supplied = true;
+        $this->forceMarch = true;
+    }
 
     public function getUnmodifiedStrength(){
 
@@ -89,6 +95,9 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
         }
         $strength = $this->getUnmodifiedStrength();
         $strength = $this->getCombatAdjustments($strength);
+        if($strength < 0.1){
+            $strength = .1;
+        }
 
         return $strength;
     }

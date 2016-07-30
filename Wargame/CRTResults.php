@@ -137,21 +137,7 @@ trait CRTResults
                     $defUnit->retreatCountRequired = 0;
                 }
                 break;
-            case P:
-            case W:
-            case PW:
-            case P2:
-            case S:
-                $eliminated = $defUnit->damageUnit($combatResults);
-                if ($eliminated) {
-                    $vacated = true;
-                    $defUnit->retreatCountRequired = 0;
-                    $defUnit->moveCount = 0;
-                } else {
-                    $defUnit->status = STATUS_DEFENDED;
-                    $defUnit->retreatCountRequired = 0;
-                }
-                break;
+
             default:
                 break;
         }
@@ -171,14 +157,6 @@ trait CRTResults
                 $attackingUnit->dieRoll = $dieRoll;
                 $attackingUnit->combatNumber = 0;
                 $attackingUnit->moveCount = 0;
-            }
-
-            if($battle->gameRules->phase == BLUE_TORP_COMBAT_PHASE || $battle->gameRules->phase == RED_TORP_COMBAT_PHASE){
-                $attackingUnit->torpFired();
-            }else{
-                if(is_callable([$attackingUnit,'firedGun'])){
-                    $attackingUnit->firedGun();
-                }
             }
 
             if ($attackingUnit->status == STATUS_ATTACKING) {

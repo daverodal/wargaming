@@ -42,6 +42,11 @@ use \stdClass;
         public $unitDefStrength;
         public $secondUnitDefStrength;
 
+        public function resetUnit(){
+            parent::resetUnit();
+            $this->supplied = true;
+        }
+
         function __construct($data = null)
         {
             if ($data) {

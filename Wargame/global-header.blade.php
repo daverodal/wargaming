@@ -932,11 +932,11 @@ function initialize() {
         if (!DR.showArrows) {
             $("#arrowButton").html("hide arrows");
             DR.showArrows = true;
-            $('#arrow-svg').show();
+            $('#arrow-svg .unit-path').show();
         } else {
             $("#arrowButton").html("show arrows");
             DR.showArrows = false;
-            $('#arrow-svg').hide();
+            $('#arrow-svg .unit-path').hide();
         }
     });
     $('.unit:not(.clone)').hover(function (event) {

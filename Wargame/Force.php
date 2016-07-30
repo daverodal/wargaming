@@ -401,21 +401,6 @@ class Force extends SimpleForce
                     $defUnit->retreatCountRequired = 0;
                 }
                 break;
-            case P:
-            case W:
-            case PW:
-            case P2:
-            case S:
-                $eliminated = $defUnit->damageUnit($combatResults);
-                if ($eliminated) {
-                    $vacated = true;
-                    $defUnit->retreatCountRequired = 0;
-                    $defUnit->moveCount = 0;
-                } else {
-                    $defUnit->status = STATUS_DEFENDED;
-                    $defUnit->retreatCountRequired = 0;
-                }
-                break;
             default:
                 break;
         }
@@ -434,14 +419,6 @@ class Force extends SimpleForce
                 $this->units[$attacker]->dieRoll = $dieRoll;
                 $this->units[$attacker]->combatNumber = 0;
                 $this->units[$attacker]->moveCount = 0;
-            }
-
-            if($battle->gameRules->phase == BLUE_TORP_COMBAT_PHASE || $battle->gameRules->phase == RED_TORP_COMBAT_PHASE){
-                $this->units[$attacker]->torpFired();
-            }else{
-                if(is_callable([$this->units[$attacker],'firedGun'])){
-                    $this->units[$attacker]->firedGun();
-                }
             }
 
             if ($this->units[$attacker]->status == STATUS_ATTACKING) {

@@ -3311,6 +3311,16 @@ svg marker#head {
 .CaproliansFace, .playerCaproliansFace {
   color: #e8e22c; }
 
+#arrow-svg path.Caprolians.hovered {
+  stroke: #e8e22c;
+  stroke-opacity: 1.0;
+  fill-opacity: .1; }
+
+svg#arrow-svg {
+  display: inline; }
+  svg#arrow-svg .unit-path {
+    display: none; }
+
 .unit .counter {
   margin-top: -5px; }
 

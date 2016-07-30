@@ -29,6 +29,10 @@ trait UnitAdjustment
         unset($this->adjustments->$name);
     }
 
+    public function removeAllAdjustments(){
+        $this->adjustments = new \stdClass();
+    }
+
     public function getCombatAdjustments($value)
     {
         if(empty($this->adjustments)){
@@ -40,7 +44,7 @@ trait UnitAdjustment
                     $value = floor($value / 2);
                     break;
                 case 'half':
-                    $value = floor($value / 2);
+                    $value = $value / 2;
                     break;
                 case 'double':
                     $value = $value * 2;

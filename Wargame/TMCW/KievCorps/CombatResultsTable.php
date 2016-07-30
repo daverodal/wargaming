@@ -37,11 +37,11 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 
         $this->crts = new stdClass();
         $this->crts->normal = new stdClass();
-        $this->crts->normal->header = array("1:1","2:1","3:1","4:1","5:1","6:1", "7:1", "8:1", "9:1", "10:1", "11:1");
+        $this->combatResultsHeader = array("1:1","2:1","3:1","4:1","5:1","6:1", "7:1", "8:1", "9:1", "10:1", "11:1");
         $this->crts->normal->next = '';
         $this->crts->normal->maxCombatIndex = 10;
 
-        $this->crts->normal->table = array(
+        $this->crts->normal = array(
             array(AL, AL, NE,  BL,  DRL,  DRL,  DRL,   DRL,  DL2R, DL2R, DL2R),
             array(AL, AL, BL,  DR,  DRL,  DRL,  DRL,  DL2R, DL2R, DL2R, DL2R),
             array(AL, AR, DR,  DRL, DRL,  DRL,  DL2R, DL2R, DL2R, DL2R, DE),
@@ -58,7 +58,7 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 
     function getCombatResults($Die, $index, $combat)
     {
-        return $this->crts->normal->table[$Die][$index];
+        return $this->crts->normal[$Die][$index];
     }
 
 }

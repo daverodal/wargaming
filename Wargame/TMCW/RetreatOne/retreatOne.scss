@@ -26,7 +26,18 @@ $laconians: #dd4f2b;
 @include headerColor(Laconians, $laconians,$laconians);
 @include headerColor(Caprolians, $caprolians,$caprolians);
 
+#arrow-svg path.Caprolians.hovered{
+  stroke: $caprolians;
+  stroke-opacity:1.0;
+  fill-opacity:.1;
+}
 
+svg#arrow-svg{
+  display:inline;
+  .unit-path{
+    display:none;
+  }
+}
 .unit .counter {
   margin-top: -5px;
 }

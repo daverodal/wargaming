@@ -41,6 +41,16 @@ class MovableUnit{
 
     use UnitAdjustment;
 
+    /*
+     * called when unit is eliminated
+     */
+    function resetUnit(){
+        $this->forceMarch = false;
+        $this->moveAmountUsed = 0;
+        $this->removeAllAdjustments();
+        $this->moveAmountUnused = $this->getMaxMove();
+    }
+
     function unitHasMoveAmountAvailable($moveAmount)
     {
         if ($this->moveAmountUsed + $moveAmount <= $this->getMaxMove()) {
@@ -52,10 +62,11 @@ class MovableUnit{
     }
 
     public function __call($name, $args){
+        echo $name;
         if(strpos($name, 'can') === 0){
             return false;
         }
-        throw new Exception("Bad Call to Movable Unit ");
+        throw new Exception("Bad Call to Movable Unit $name ");
     }
 
     public function getMaxMove(){

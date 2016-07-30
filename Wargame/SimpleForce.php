@@ -105,6 +105,7 @@ abstract class SimpleForce{
         $unit->hexagon = new Hexagon($col + $id % 10);
 
         $unit->hexagon->parent = "deadpile";
+        $unit->resetUnit();
         $battle->victory->postEliminated($unit);
     }
 

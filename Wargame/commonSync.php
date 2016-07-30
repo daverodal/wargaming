@@ -63,7 +63,7 @@ x.register("sentBreadcrumbs", function(breadcrumbs,data) {
     var lastMoves = '';
     var combatBreadcrumbs = [];
     for(var unitId in breadcrumbs){
-        var g = $('svg').append('<g class="unitPath'+unitId+'">');
+        var g = $('svg').append('<g class="unit-path unitPath'+unitId+'">');
         for(var moves in breadcrumbs[unitId]){
             if(breadcrumbs[unitId][moves].type == "move" || breadcrumbs[unitId].fromHex){
                 var path = "";

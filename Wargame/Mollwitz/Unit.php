@@ -46,6 +46,11 @@ class Unit extends BaseUnit implements \JsonSerializable
         return $this;
     }
 
+    public function resetUnit(){
+        parent::resetUnit();
+        $this->isReduced = false;
+    }
+
     public function getUnmodifiedStrength(){
         if ($this->isReduced) {
             $strength = $this->minStrength;
