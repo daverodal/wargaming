@@ -45,16 +45,6 @@
   @include badge($nationality, $shortName);
 }
 
-@mixin headerColor($nationality, $color, $faceColor: $color){
-  .player#{$nationality}{
-    background:$color;
-    border-color:$color !important;
-  }
-  .#{$nationality}Face, .player#{$nationality}Face{
-    color:$faceColor;
-  }
-}
-
 @include player(rebel, One, rgb(223, 88, 66));
 @include player(loyalist, Two, rgb(132, 181, 255));
 
@@ -65,11 +55,6 @@
 
 .sympth div {
   color: black;
-}
-
-.game-name {
-  word-break: break-all;
-  font-family: 'Nosifer';
 }
 
 .reduced {

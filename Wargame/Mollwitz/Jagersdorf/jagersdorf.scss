@@ -14,13 +14,9 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-body {
-}
 
 @include player(Prussian, One, $prussianColor, $prussianWrapperColor, $prussianWrapperColor);
 @include player(Russian, Two, $russianColor, $russianWrapperColor);
-#map {
-}
 
 img.counter {
   width: 32px;
@@ -193,10 +189,6 @@ p.range{
 
 #GR {
   width: 600px;
-}
-
-.game-name {
-  font-family: 'Berkshire Swash';
 }
 
 #altTable, #mainTable {

@@ -32,7 +32,7 @@
 @endsection
 
 @section('obc')
-    @include('wargame::TMCW.obc')
+    @include('wargame::TMCW.Manchuria1976.obc')
 @endsection
 
 @include('wargame::stdIncludes.view' )

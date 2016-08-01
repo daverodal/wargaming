@@ -496,6 +496,7 @@ class MoveRules
         $this->moveQueue = array();
         return $ret;
     }
+
     function calcRoadSupply($forceId, $goal, $bias = array())
     {
         $attackingForceId = $forceId;

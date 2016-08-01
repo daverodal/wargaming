@@ -14,18 +14,11 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
-
-$prussianNapColor: #003AF3;
-$bavarianWrapperColor: #4287FA;
-$bavarianColor: #FD0013;
 
 @include player(Anglo ,One , $angloAlliedColor, $angloAlliedWrapperColor);
 @include player(French, Two, $frenchColor, $frenchWrapperColor);
 @include player(Austrian, Three, $austrianColor, $austrianWrapperColor, $austrianWrapperColor);
 @include player(Dutch, Four, $prussianColor, $prussianWrapperColor);
-
 
 @include headerColor(French,$frenchColor, $frenchColor );
 @include headerColor(Allies,$angloAlliedColor, $angloAlliedWrapperColor );
@@ -33,7 +26,6 @@ $bavarianColor: #FD0013;
 .french.specialHexes{
   background-color: $frenchColor;
 }
-
 
 .allies.specialHexes {
   background-color: $angloAlliedColor;
@@ -49,5 +41,4 @@ $bavarianColor: #FD0013;
 
 @include badge(Dutch, Pru);
 @include badge(French, French);
-@include badge(Guard, FrenchNap);
-@include badge(Prussian, PruNap);
+

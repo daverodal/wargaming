@@ -18,8 +18,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#map{
-}
+
 @include player(French, French, $frenchColor, $frenchWrapperColor);
 @include player(AngloAllied, Anglo-Allied, $angloAlliedColor, $angloAlliedWrapperColor);
 @include headerColor(Anglo-Allied, $angloAlliedColor);
@@ -31,7 +30,4 @@
 .french.specialHexes{
   background-color: $frenchColor;
   color:white;
-}
-#GR h1.victory {
-  font-size:30px
 }

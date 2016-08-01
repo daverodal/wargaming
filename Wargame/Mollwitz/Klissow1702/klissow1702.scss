@@ -14,22 +14,11 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
 
 @include player(Swedish, Swedish , $swedishColor, $swedishWrapperColor, $swedishWrapperColor);
 @include player(SaxonPolish, Saxon-Polish, $saxonColor, $saxonColor);
 @include headerColor(Saxon-Polish, $saxonColor,$saxonColor);
-.french.specialHexes{
-  background-color: $frenchColor;
-}
 
-.anglo {
-  background-color: $angloAlliedColor;
-}
-.french.specialHexes, .anglo.specialHexes{
-  color:white;
-}
 @include badge(SaxonPolish, Saxon);
 
 .Swedish, .SaxonPolish {
@@ -37,8 +26,6 @@ You should have received a copy of the GNU General Public License
     color:white;
   }
 }
-
-
 
 .pontoon.swedish.specialHexes{
   color:transparent;

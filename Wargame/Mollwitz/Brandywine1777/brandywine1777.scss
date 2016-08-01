@@ -14,11 +14,7 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
 
-$danishColor: #ff3f1f;
-$danishWrapperColor: #bfbfbf;
 @include player(Loyalist ,One , $angloAlliedColor, $angloAlliedWrapperColor);
 @include player(Rebel, Two, $rebelColor,  $rebelWrapperColor, $rebelWrapperColor);
 @include player(Militia, Three, $prussianColor, $prussianWrapperColor);

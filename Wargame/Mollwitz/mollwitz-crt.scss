@@ -1,0 +1,25 @@
+#crt {
+  width: 476px;
+}
+
+.tableWrapper.alt {
+  display: none;
+}
+
+.alt {
+  display: none;
+  width: 476px;
+}
+#altTable, #mainTable {
+  position: absolute;
+  right: 18px;
+}
+
+#crtDetailsButton {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#crtDetails {
+  display: none;
+}

@@ -1,0 +1,119 @@
+
+.game-rules {
+  font-family: sans-serif;
+}
+
+.game-rules table, .game-rules th, .game-rules td {
+  border: 1px solid black;
+}
+
+.game-rules h1 {
+  color: #338833;
+  font-size: 60px;
+
+}
+#header #GR a {
+  color: black;
+}
+
+#GR {
+  width: 600px;
+}
+
+#GR #credits h2 {
+  color: #338833;
+}
+
+#GR li {
+  margin: 15px 0;
+}
+
+#GR h4 {
+  margin-bottom: 5px;
+}
+
+#GR #credits h4 {
+  margin-bottom: 0px;
+}
+
+.game-rules h4:hover {
+  text-decoration: none;
+}
+
+.exclusive {
+  color: green;
+}
+
+#GR {
+  left: -200px;
+}
+
+#GR OL {
+  counter-reset: item;
+  padding-left: 10px;
+}
+
+#GR LI {
+  display: block;
+}
+
+#GR LI:before {
+  content: "[" counters(item, ".") "] ";
+  counter-increment: item;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.big {
+  font-size: 19px;
+  font-weight: bold;
+
+}
+
+.lessBig {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#GR OL.topNumbers {
+  counter-reset: item -1;
+}
+
+.game-rules .unit .p.range{
+  font-size: 15px;
+}
+
+
+
+.ruleComment {
+  font-style: italic;
+  margin-left: 10px;
+  color: #999;
+}
+
+#GR ol.ExclusiveRules {
+  counter-reset: item 6;
+}
+
+
+
+#TEC {
+  width: 780px;
+  margin-left:-400px;
+}
+
+
+
+#tecImage {
+  width: 760px;
+}
+
+#TECWrapper .closer {
+  height: 0px;
+  padding: 0px;
+}
+
+#VCWrapper .closer {
+  height: 0px;
+  padding: 0px;
+}

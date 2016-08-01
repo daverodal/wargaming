@@ -35,6 +35,13 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/TMCW/Nomonhan/Images/' => public_path('vendor/wargame/tmcw/nomonhan/images'),
 
         ], 'tmcw');
+
+
+
+        $this->publishes([
+            __DIR__.'/universal.scss' => base_path('resources/assets/sass/vendor/wargame/universal.scss')
+        ], 'common-sass');
+
         
         $this->publishes([
             __DIR__.'/Genre/Images' => public_path('vendor/wargame/genre/images'),

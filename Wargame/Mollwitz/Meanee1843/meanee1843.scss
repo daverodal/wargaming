@@ -14,11 +14,8 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
-#tecImage{
-  width:750px;
-}
+
+
 @include player(British, One, $angloAlliedColor, $angloAlliedWrapperColor);
 @include player(Beluchi, Two, $beluchiColor, $beluchiWrapperColor, $beluchiWrapperColor);
 

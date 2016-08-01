@@ -56,6 +56,7 @@ You should have received a copy of the GNU General Public License
     DR.playerThree = "{{$forceName[3] or ''}}";
     DR.playerFour = "{{$forceName[4] or ''}}";
     DR.players = ["observer", DR.playerOne,DR.playerTwo,DR.playerThree,DR.playerFour];
+    debugger;
 
     function rotateUnits(e, that){
         if (e.ctrlKey) {

@@ -14,15 +14,11 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
 
 $prussianNapColor: #003AF3;
 $bavarianWrapperColor: #4287FA;
 $bavarianColor: #FD0013;
 $alliedColor: #df5842;
-
-
 
 @include headerColor(Allied, $alliedColor,$alliedColor);
 @include headerColor(French, $frenchColor,$frenchColor);
@@ -32,7 +28,6 @@ $alliedColor: #df5842;
 @include unitColor(Guard, #0003b4, FrenchNap);
 @include unitColor(Russian, $russianWrapperColor, Rus);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
-
 
 .french.specialHexes{
   background-color: $frenchColor;
@@ -49,8 +44,6 @@ $alliedColor: #df5842;
     color:white;
   }
 }
-
-
 
 .French.unit .unit-numbers, .Guard.unit .unit-numbers{
   color:red;

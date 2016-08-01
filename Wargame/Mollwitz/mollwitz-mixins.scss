@@ -1,0 +1,129 @@
+
+$badge-size: 14px;
+$vintage-badge-size:19px;
+$unit-numbers-size:16px;
+$vintage-unit-numbers-size:10px;
+
+@mixin unitColor($nationality, $color, $shortName) {
+  .#{$nationality} .counterWrapper {
+    background-color: $color;
+  }
+  @include badge($nationality, $shortName);
+}
+
+@mixin headerColor($nationality, $color, $faceColor: $color){
+  .player#{$nationality}{
+    background:$color;
+    border-color:$color !important;
+  }
+  .#{$nationality}Face, .player#{$nationality}Face{
+    color:$faceColor;
+  }
+}
+
+@mixin player($nationality, $player, $color, $counterColor: $color, $faceColor: $color) {
+  .player#{$nationality} {
+    background: $color;
+    border-color: $color !important;
+  }
+  .#{$nationality}Face, .player#{$nationality}Face {
+    color: $faceColor;
+  }
+  .#{$nationality} .counterWrapper {
+    background-color: $counterColor;
+  }
+}
+
+@mixin badge($nationality, $shortName) {
+  .vintage{
+
+    &.#{$nationality}.infantry .counterWrapper .counter {
+      background-image: url('/js/#{$shortName}InfBadge.png');
+      background-size: $vintage-badge-size;
+    }
+    &.#{$nationality}.cavalry .counterWrapper .counter {
+      background-image: url('/js/#{$shortName}CavBadge.png');
+      background-size: $vintage-badge-size;
+    }
+
+    &.#{$nationality}.artillery .counterWrapper .counter {
+      background-image: url('/js/#{$shortName}ArtBadge.png');
+      background-size: $vintage-badge-size;
+    }
+    &.#{$nationality}.horseartillery .counterWrapper .counter {
+      background-image: url('/js/#{$shortName}HorArtBadge.png');
+      background-size: $vintage-badge-size;
+    }
+    &.#{$nationality}.hq .counterWrapper .counter {
+      background-color:lightgreen;
+      background-image: url('/js/HQBadge.png');
+      background-size: $vintage-badge-size;
+    }
+    &.#{$nationality}.pontoon {
+      .counterWrapper {
+        border:none;
+        .counter {
+
+          background-color: lightgreen;
+          background-image: url('/js/#{$shortName}Pontoon.png');
+          background-size: 32px;
+          width: 32px;
+          height: 32px;
+          border:none;
+        }
+      }
+      .unit-numbers {
+        display:none;
+      }
+    }
+  }
+  .#{$nationality}.infantry .counterWrapper .counter {
+    background-image: url('/js/#{$shortName}InfBadge.png');
+    background-size: $badge-size;
+  }
+  .#{$nationality}.cavalry .counterWrapper .counter {
+    background-image: url('/js/#{$shortName}CavBadge.png');
+    background-size: $badge-size;
+  }
+
+  .#{$nationality}.artillery .counterWrapper .counter {
+    background-image: url('/js/#{$shortName}ArtBadge.png');
+    background-size: $badge-size;
+  }
+  .#{$nationality}.horseartillery .counterWrapper .counter {
+    background-image: url('/js/#{$shortName}HorArtBadge.png');
+    background-size: $badge-size;
+  }
+  .#{$nationality}.hq .counterWrapper .counter {
+    background-color:lightgreen;
+    background-image: url('/js/HQBadge.png');
+    background-size: $badge-size;
+  }
+
+  .#{$nationality}.wagon .counterWrapper .counter {
+    background-image: url('/js/Wagon.png');
+    background-size: $badge-size;
+  }
+
+  .#{$nationality}.pontoon {
+    .counterWrapper {
+      border:none;
+      .counter {
+
+        background-color: lightgreen;
+        background-image: url('/js/#{$shortName}Pontoon.png');
+        background-size: 32px;
+        width: 32px;
+        height: 32px;
+        border:none;
+      }
+    }
+    .unit-numbers {
+      display:none;
+    }
+  }
+}
+
+@mixin victoryPoints($color) {
+  text-shadow: 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 10px $color;
+}

@@ -14,8 +14,6 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
 
 @include player(Loyalist ,One , $angloAlliedColor, $angloAlliedWrapperColor);
 @include player(Rebel, Two, $rebelColor,  $rebelWrapperColor, $rebelWrapperColor);
@@ -25,7 +23,6 @@ You should have received a copy of the GNU General Public License
 @include player(Hessian, Three, $russianColor, $russianWrapperColor);
 @include badge(Loyalist, Ang);
 @include badge(Hessian, Rus);
-
 
 .Rebel {
   p.forceMarch, p.range{

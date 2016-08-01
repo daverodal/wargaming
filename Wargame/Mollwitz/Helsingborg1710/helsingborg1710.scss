@@ -14,8 +14,6 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-#map{
-}
 
 $danishColor: #ff3f1f;
 $danishWrapperColor: #bfbfbf;
@@ -28,12 +26,10 @@ $danishWrapperColor: #bfbfbf;
   color:white;
 }
 
-
 .danish.specialHexes {
   background-color: $danishColor;
   color:white;
 }
-
 
 .Swedish {
   p.forceMarch, p.range{

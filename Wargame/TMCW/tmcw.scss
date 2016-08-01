@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* Unit Styles */
+
 @mixin player($nationality, $player, $color, $faceColor: $color, $desigColor: white){
   .player#{$nationality}{
     background:$color;
@@ -66,24 +67,6 @@
 
 }
 
-
-.rebel div {
-  color: black;
-}
-
-.sympth div {
-  color: black;
-}
-
-.game-name {
-  word-break: break-all;
-  font-family: 'Nosifer';
-}
-
-.reduced {
-  color: white;
-}
-
 @import "tmcwUnits";
 @import "tmcwBoxes";
 @import "tmcwSpecialVP";
@@ -99,12 +82,4 @@
   }
 }
 
-@mixin headerColor($nationality, $color, $faceColor: $color){
-  .player#{$nationality}{
-    background:$color;
-    border-color:$color !important;
-  }
-  .#{$nationality}Face, .player#{$nationality}Face{
-    color:$faceColor;
-  }
-}
+

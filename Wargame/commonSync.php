@@ -27,6 +27,7 @@
         var y = unit.y;
         var id = unit.id+decoration;
         var nat = DR.players[unit.forceId];
+        debugger;
         var type= nat+'-'+unit.class;
         var cls = unit.class;
         var width = 2;
@@ -1639,6 +1640,7 @@ x.register("combatRulez", function(combatRules,data) {
         var y = unit.y;
         var id = unit.id+decoration;
         var nat = DR.players[unit.forceId];
+        debugger;
         var type= nat+'-'+unit.class;
         var cls = unit.class;
         var width = 2;

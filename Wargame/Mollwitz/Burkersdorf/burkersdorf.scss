@@ -20,9 +20,6 @@ $prussian: rgb(255, 253, 127);
 @include player(Austrian, One, $austrianColor,  $austrianWrapperColor);
 @include player(Prussian, Two, $prussianColor,  $prussianWrapperColor, $prussianWrapperColor);
 
-#map{
-}
-
 .austrian.specialHexes{
   color:white;
 }
