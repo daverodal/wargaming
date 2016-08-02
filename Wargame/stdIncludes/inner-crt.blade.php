@@ -22,6 +22,9 @@ $crts = $topCrt->crts;
             <span class="col0">&nbsp;</span>
             <?php  $i = 1;
             $header = $topCrt->combatResultsHeader;
+            if($header === null){
+                $header = $topCrt->crts->normal->header;
+            }
             $headerName = $crtName."ResultsHeader";
             if(isset($topCrt->$headerName)){
                 $header = $topCrt->$headerName;
@@ -36,8 +39,12 @@ $crts = $topCrt->crts;
         if(isset($topCrt->rowNum)){
             $rowNum = $topCrt->rowNum;
         }
-        $odd = ($rowNum & 1) ? "odd" : "even";?>
-        @foreach ($crt as $row)
+        $odd = ($rowNum & 1) ? "odd" : "even";
+        $crtRows = $crt;
+        if(!is_array($crtRows)){
+            $crtRows = $crt->table;
+        }?>
+        @foreach ($crtRows as $row)
             <div class="roll {{"row$rowNum $odd"}}">
                 <span class="col0">{{$rowNum++}}</span>
                 <?php $col = 1;?>

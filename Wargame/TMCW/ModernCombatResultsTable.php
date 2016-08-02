@@ -41,7 +41,6 @@ class ModernCombatResultsTable
 
     public $combatResultsTable;
     public $combatResultsHeader;
-    public $combatOddsTable;
     public $aggressorId = false;
     //     combatIndexeCount is 6; maxCombatIndex = 5
     //     index is 0 to 5;  dieSidesCount = 6
@@ -58,21 +57,11 @@ class ModernCombatResultsTable
             array(AL, AL, DR2, DR2, EX, DE),
         );
 
-        $this->combatOddsTable = array(
-            array(),
-            array(),
-            array(),
-            array(),
-            array(),
-            array()
-        );
-
         $this->combatIndexCount = 6;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
         $this->combatResultCount = 5;
 
-        $this->setCombatOddsTable();
     }
 
     function getCombatResults($Die, $index, $combat)
@@ -85,71 +74,4 @@ class ModernCombatResultsTable
 
         return $combatIndex;
     }
-    function setCombatOddsTable()
-    {
-        $odds = array();
-
-        //    var Die;
-        //    var combatIndex;
-        //    var combatResultIndex;
-        //    var numerator;
-        //    var denominator;
-        //    var percent;
-        //    var intPercent;
-
-        for ($combatIndex = 0; $combatIndex < $this->combatIndexCount; $combatIndex++)
-        {
-
-//            $odds[0] = 0;
-//            $odds[1] = 0;
-//            $odds[2] = 0;
-//            $odds[3] = 0;
-//            $odds[4] = 0;
-//            $odds[5] = 0;
-
-
-//            for( $Die = 0; $Die < $this->dieSideCount; $Die++ )
-//            {
-//                $combatResultIndex = $this->crts->normal[$Die][$combatIndex];
-////                $odds[$combatResultIndex] = $odds[$combatResultIndex] + 1;
-//            }
-
-//            $list = "";
-//
-//            $list += $odds[0] + ", ";
-//            $list += $odds[1] + ", ";
-//            $list += $odds[2] + ", ";
-//            $list += $odds[3] + ", ";
-//            $list += $odds[4];
-//
-//            for( $combatResultIndex = 0; $combatResultIndex < $this->combatResultCount; $combatResultIndex++ )
-//            {
-//                $numerator = $odds[$combatResultIndex];
-//                $denominator = $this->dieSideCount;
-//                $percent = 100 * ($numerator/$denominator);
-//                $intPercent = (int)floor($percent);
-//                $this->combatOddsTable[$combatResultIndex][$combatIndex] = $intPercent;
-//            }
-        }
-    }
-
-    function getCombatOddsList($combatIndex)
-    {
-        global $results_name;
-        $combatOddsList = "";
-        //  combatOddsList  += "combat differential: " + combatIndex;
-
-        //    var i;
-        for ( $i = 0; $i < $this->combatResultCount; $i++ )
-        {
-            //combatOddsList += "<br />";
-            $combatOddsList .= $results_name[$i];
-            $combatOddsList .= ":";
-            $combatOddsList .= $this->combatOddsTable[$i][$combatIndex];
-            $combatOddsList .= "% ";
-        }
-
-        return $combatOddsList;
-    }
-
 }
