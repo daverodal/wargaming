@@ -4334,75 +4334,10 @@ You should have received a copy of the GNU General Public License
 .anglo {
   background-color: #df5842; }
 
-.french.specialHexes, .anglo.specialHexes {
+.prussian.specialHexes, .anglo.specialHexes {
+  color: black; }
+
+.Prussian p.forceMarch, .Prussian p.range, .AngloAllied p.forceMarch, .AngloAllied p.range {
   color: white; }
-
-.French p.forceMarch, .French p.range, .AngloAllied p.forceMarch, .AngloAllied p.range {
-  color: white; }
-
-.vintage.French.infantry .counterWrapper .counter {
-  background-image: url("/js/FreInfBadge.png");
-  background-size: 19px; }
-.vintage.French.cavalry .counterWrapper .counter {
-  background-image: url("/js/FreCavBadge.png");
-  background-size: 19px; }
-.vintage.French.artillery .counterWrapper .counter {
-  background-image: url("/js/FreArtBadge.png");
-  background-size: 19px; }
-.vintage.French.horseartillery .counterWrapper .counter {
-  background-image: url("/js/FreHorArtBadge.png");
-  background-size: 19px; }
-.vintage.French.hq .counterWrapper .counter {
-  background-color: lightgreen;
-  background-image: url("/js/HQBadge.png");
-  background-size: 19px; }
-.vintage.French.pontoon .counterWrapper {
-  border: none; }
-  .vintage.French.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/FrePontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.French.pontoon .unit-numbers {
-  display: none; }
-
-.French.infantry .counterWrapper .counter {
-  background-image: url("/js/FreInfBadge.png");
-  background-size: 14px; }
-
-.French.cavalry .counterWrapper .counter {
-  background-image: url("/js/FreCavBadge.png");
-  background-size: 14px; }
-
-.French.artillery .counterWrapper .counter {
-  background-image: url("/js/FreArtBadge.png");
-  background-size: 14px; }
-
-.French.horseartillery .counterWrapper .counter {
-  background-image: url("/js/FreHorArtBadge.png");
-  background-size: 14px; }
-
-.French.hq .counterWrapper .counter {
-  background-color: lightgreen;
-  background-image: url("/js/HQBadge.png");
-  background-size: 14px; }
-
-.French.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.French.pontoon .counterWrapper {
-  border: none; }
-  .French.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/FrePontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.French.pontoon .unit-numbers {
-  display: none; }
 
 /*# sourceMappingURL=all.css.map */
