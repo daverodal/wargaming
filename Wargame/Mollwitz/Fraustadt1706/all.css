@@ -4211,7 +4211,7 @@ You should have received a copy of the GNU General Public License
 .specialHexesVP .prussian {
   color: black;
   background: transparent;
-  text-shadow: 0px 0px 1px #fffd7f, 0px 0px 1px #fffd7f, 0px 0px 1px #fffd7f, 0px 0px 2px #fffd7f, 0px 0px 2px #fffd7f, 0px 0px 2px #fffd7f, 0px 0px 3px #fffd7f, 0px 0px 3px #fffd7f, 0px 0px 3px #fffd7f, 0px 0px 4px #fffd7f, 0px 0px 4px #fffd7f, 0px 0px 4px #fffd7f, 0px 0px 5px #fffd7f, 0px 0px 5px #fffd7f, 0px 0px 5px #fffd7f, 0px 0px 6px #fffd7f, 0px 0px 6px #fffd7f, 0px 0px 6px #fffd7f, 0px 0px 7px #fffd7f, 0px 0px 7px #fffd7f, 0px 0px 7px #fffd7f, 0px 0px 8px #fffd7f, 0px 0px 8px #fffd7f, 0px 0px 8px #fffd7f, 0px 0px 9px #fffd7f, 0px 0px 9px #fffd7f, 0px 0px 9px #fffd7f, 0px 0px 10px #fffd7f, 0px 0px 10px #fffd7f, 0px 0px 10px #fffd7f, 0px 0px 1px #fffd7f, 0px 0px 1px #fffd7f, 0px 0px 1px #fffd7f, 0px 0px 2px #fffd7f, 0px 0px 2px #fffd7f, 0px 0px 2px #fffd7f, 0px 0px 3px #fffd7f, 0px 0px 3px #fffd7f, 0px 0px 3px #fffd7f, 0px 0px 4px #fffd7f, 0px 0px 4px #fffd7f, 0px 0px 4px #fffd7f, 0px 0px 5px #fffd7f, 0px 0px 5px #fffd7f, 0px 0px 5px #fffd7f, 0px 0px 6px #fffd7f, 0px 0px 6px #fffd7f, 0px 0px 6px #fffd7f, 0px 0px 7px #fffd7f, 0px 0px 7px #fffd7f, 0px 0px 7px #fffd7f, 0px 0px 8px #fffd7f, 0px 0px 8px #fffd7f, 0px 0px 8px #fffd7f, 0px 0px 9px #fffd7f, 0px 0px 9px #fffd7f, 0px 0px 9px #fffd7f, 0px 0px 10px #fffd7f, 0px 0px 10px #fffd7f, 0px 0px 10px #fffd7f; }
+  text-shadow: 0px 0px 1px #f2f053, 0px 0px 1px #f2f053, 0px 0px 1px #f2f053, 0px 0px 2px #f2f053, 0px 0px 2px #f2f053, 0px 0px 2px #f2f053, 0px 0px 3px #f2f053, 0px 0px 3px #f2f053, 0px 0px 3px #f2f053, 0px 0px 4px #f2f053, 0px 0px 4px #f2f053, 0px 0px 4px #f2f053, 0px 0px 5px #f2f053, 0px 0px 5px #f2f053, 0px 0px 5px #f2f053, 0px 0px 6px #f2f053, 0px 0px 6px #f2f053, 0px 0px 6px #f2f053, 0px 0px 7px #f2f053, 0px 0px 7px #f2f053, 0px 0px 7px #f2f053, 0px 0px 8px #f2f053, 0px 0px 8px #f2f053, 0px 0px 8px #f2f053, 0px 0px 9px #f2f053, 0px 0px 9px #f2f053, 0px 0px 9px #f2f053, 0px 0px 10px #f2f053, 0px 0px 10px #f2f053, 0px 0px 10px #f2f053, 0px 0px 1px #f2f053, 0px 0px 1px #f2f053, 0px 0px 1px #f2f053, 0px 0px 2px #f2f053, 0px 0px 2px #f2f053, 0px 0px 2px #f2f053, 0px 0px 3px #f2f053, 0px 0px 3px #f2f053, 0px 0px 3px #f2f053, 0px 0px 4px #f2f053, 0px 0px 4px #f2f053, 0px 0px 4px #f2f053, 0px 0px 5px #f2f053, 0px 0px 5px #f2f053, 0px 0px 5px #f2f053, 0px 0px 6px #f2f053, 0px 0px 6px #f2f053, 0px 0px 6px #f2f053, 0px 0px 7px #f2f053, 0px 0px 7px #f2f053, 0px 0px 7px #f2f053, 0px 0px 8px #f2f053, 0px 0px 8px #f2f053, 0px 0px 8px #f2f053, 0px 0px 9px #f2f053, 0px 0px 9px #f2f053, 0px 0px 9px #f2f053, 0px 0px 10px #f2f053, 0px 0px 10px #f2f053, 0px 0px 10px #f2f053; }
 
 .specialHexesVP .british {
   color: black;
@@ -4238,7 +4238,7 @@ You should have received a copy of the GNU General Public License
   color: white; }
 
 .prussian.specialHexes, .swedish.specialHexes {
-  background-color: #fffd7f;
+  background-color: #f2f053;
   color: black; }
 
 .specialHexesVP .Swedish.victory-points {
