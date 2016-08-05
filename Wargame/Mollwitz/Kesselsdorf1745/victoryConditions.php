@@ -28,14 +28,15 @@ You should have received a copy of the GNU General Public License
             </p>
             </li>
 
-        <li>Prussian wins: At the end of any turn prior to turn 5 that they have scored 30 or more
+        <li>Prussian wins: At the end of any turn prior to turn 7 that they have scored 30 or more
 
         points.</li>
 
-        <li>Austrian Wins: At the end of any turn prior to turn 8 that they have scored 30 or
+        <li>Austrian Wins: At the end of any turn prior to turn 7 that they have scored 30 or
 
         more points.</li>
 
-        <li>A Draw Occurs: If neither side has won by the end of turn 8.</li>
+        <li>A Draw Occurs: If both side win on the same turn. If the prussians do not win by the end of the game.
+            The Austrians win.</li>
     </ol>
 </li>
