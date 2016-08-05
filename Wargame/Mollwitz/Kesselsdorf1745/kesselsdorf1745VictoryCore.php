@@ -65,9 +65,7 @@ class kesselsdorf1745VictoryCore extends \Wargame\Mollwitz\victoryCore
             $specialHexes = $battle->mapData->specialHexes;
             $winScore = 30;
             if ($this->victoryPoints[PRUSSIAN_FORCE] >= $winScore) {
-                if ($turn <= 5) {
                     $prussianWin = true;
-                }
             }
             if ($this->victoryPoints[AUSTRIAN_FORCE] >= $winScore) {
                 $austrianWin = true;
@@ -82,8 +80,9 @@ class kesselsdorf1745VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $msg = "Austrian Win";
             }
             if ($prussianWin || $austrianWin ||  $turn == ($gameRules->maxTurn + 1)) {
-                if(!$prussianWin && !$austrianWin){
-                    $msg = "Tie Game";
+                if(!$prussianWin){
+                    $this->winner = AUSTRIAN_FORCE;
+                    $msg = "Austrian Win";
                 }
                 if($prussianWin && $austrianWin){
                     $msg = "Tie Game";
