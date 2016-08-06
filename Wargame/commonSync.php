@@ -27,7 +27,6 @@
         var y = unit.y;
         var id = unit.id+decoration;
         var nat = DR.players[unit.forceId];
-        debugger;
         var type= nat+'-'+unit.class;
         var cls = unit.class;
         var width = 2;
@@ -55,6 +54,7 @@
     function clearHexes(){
         $('#arrow-svg path').remove();
     }
+    var x
     x = new Sync("<?=url("wargame/fetch/");?>");
 x.register("sentBreadcrumbs", function(breadcrumbs,data) {
 //    return;
@@ -1640,7 +1640,6 @@ x.register("combatRulez", function(combatRules,data) {
         var y = unit.y;
         var id = unit.id+decoration;
         var nat = DR.players[unit.forceId];
-        debugger;
         var type= nat+'-'+unit.class;
         var cls = unit.class;
         var width = 2;
@@ -1668,10 +1667,5 @@ x.register("combatRulez", function(combatRules,data) {
     function clearHexes(){
         $('#arrow-svg path').remove();
     }
-var globInit = true;
-
-
-x.fetch(0);
-
 
 </script>
