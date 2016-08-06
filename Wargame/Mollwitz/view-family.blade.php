@@ -1,7 +1,7 @@
 @include('wargame::global-header')
 @include('wargame::Mollwitz.header')
 @include("$curPath.$clsName"."Header")
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/mollwitz/'.$clsName.'/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/mollwitz/css/'.$clsName.'.css')}}">
 </head>
 @extends('wargame::stdIncludes.view' )
 @extends('wargame::Mollwitz.view')
