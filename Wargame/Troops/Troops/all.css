@@ -2185,7 +2185,8 @@ h5 {
 
 .specialHexesVP {
   background: transparent !important;
-  color: white; }
+  color: white;
+  font-size: 60px; }
 
 #display {
   display: none;
