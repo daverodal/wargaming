@@ -3137,6 +3137,11 @@ You should have received a copy of the GNU General Public License
     font-size: 9px;
     letter-spacing: 0px; }
 
+.Prussian.unit .range {
+  color: white; }
+.Prussian.unit .forceMarch {
+  color: white; }
+
 .game-rules {
   font-family: sans-serif; }
 
