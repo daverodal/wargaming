@@ -3349,7 +3349,8 @@ You should have received a copy of the GNU General Public License
   top: 0px;
   width: 5px;
   word-wrap: break-word;
-  line-height: 4px; }
+  line-height: 4px;
+  color: black; }
 
 #deployBox .unit {
   border: solid 3px;
