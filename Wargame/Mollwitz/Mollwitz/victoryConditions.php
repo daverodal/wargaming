@@ -29,7 +29,7 @@
             Victory Points are display in the Victory: box at the top of the page.
         </li>
 
-        <li>If at the end of any Austrian player turn there are Prussian units in any hex of Mollwitz victory hexes (marked in red). The Prussians win.
+        <li>If at the end of any Austrian player turn there are Prussian units in any of the Mollwitz victory hexes (marked in red). The Prussians win.
         </li>
 
         <li>If at the end of any Prussian player turn there is an Austrian unit in Neudorf, the Austrians Win</li>
