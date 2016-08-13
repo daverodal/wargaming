@@ -913,7 +913,7 @@ class GameRules
                             }
                             $outOfMen = false;
 
-                            if($this->mode === ATTACKER_LOSING_MODE && $this->mode === EXCHANGING_MODE && $this->combatRules->noMoreAttackers()){
+                            if(($this->mode === ATTACKER_LOSING_MODE || $this->mode === EXCHANGING_MODE) && $this->combatRules->noMoreAttackers()){
                                 $outOfMen = true;
                             }
                             if($this->legacyExchangeRule || $this->force->getExchangeAmount() <= 0 || $outOfMen === true) {
