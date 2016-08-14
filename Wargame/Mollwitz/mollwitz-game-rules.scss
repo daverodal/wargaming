@@ -91,6 +91,11 @@
   color: #999;
 }
 
+.crtDetailComment{
+  @extend .ruleComment;
+  font-size:13px;
+}
+
 #GR ol.ExclusiveRules {
   counter-reset: item 6;
 }

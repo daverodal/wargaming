@@ -2579,6 +2579,11 @@ fieldset {
       position: absolute;
       right: 19px;
       top: 3px; }
+  #crt .crt-odds {
+    font-size: 16px; }
+  #crt #crtDetails {
+    text-align: right;
+    float: left; }
 
 #crt h3 {
   vertical-align: bottom; }
@@ -2816,7 +2821,7 @@ svg {
   svg marker#head {
     fill: red; }
 
-.ruleComment {
+.ruleComment, .crtDetailComment {
   font-style: italic;
   margin-left: 10px;
   color: #999; }
@@ -3199,10 +3204,13 @@ You should have received a copy of the GNU General Public License
 .game-rules .unit .p.range {
   font-size: 15px; }
 
-.ruleComment {
+.ruleComment, .crtDetailComment {
   font-style: italic;
   margin-left: 10px;
   color: #999; }
+
+.crtDetailComment {
+  font-size: 13px; }
 
 #GR ol.ExclusiveRules {
   counter-reset: item 6; }
@@ -4321,6 +4329,10 @@ You should have received a copy of the GNU General Public License
 .Anglo .counterWrapper {
   background-color: #f00; }
 
+.Anglo.combatants {
+  color: #df5842;
+  font-style: italic; }
+
 .playerFrench {
   background: #84b5ff;
   border-color: #84b5ff !important; }
@@ -4330,6 +4342,10 @@ You should have received a copy of the GNU General Public License
 
 .French .counterWrapper {
   background-color: white; }
+
+.French.combatants {
+  color: #84b5ff;
+  font-style: italic; }
 
 .playerAustrian {
   background: #df5842;
@@ -4341,6 +4357,10 @@ You should have received a copy of the GNU General Public License
 .Austrian .counterWrapper {
   background-color: white; }
 
+.Austrian.combatants {
+  color: white;
+  font-style: italic; }
+
 .playerDutch {
   background: #f2f053;
   border-color: #f2f053 !important; }
@@ -4351,6 +4371,10 @@ You should have received a copy of the GNU General Public License
 .Dutch .counterWrapper {
   background-color: #0117de; }
 
+.Dutch.combatants {
+  color: #f2f053;
+  font-style: italic; }
+
 .playerFrench {
   background: #84b5ff;
   border-color: #84b5ff !important; }
@@ -4358,12 +4382,20 @@ You should have received a copy of the GNU General Public License
 .FrenchFace, .playerFrenchFace {
   color: #84b5ff; }
 
+.French.combatants {
+  color: #84b5ff;
+  font-style: italic; }
+
 .playerAllies {
   background: #df5842;
   border-color: #df5842 !important; }
 
 .AlliesFace, .playerAlliesFace {
   color: #f00; }
+
+.Allies.combatants {
+  color: #f00;
+  font-style: italic; }
 
 .french.specialHexes {
   background-color: #84b5ff; }

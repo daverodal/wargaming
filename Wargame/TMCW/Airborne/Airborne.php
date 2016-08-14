@@ -80,7 +80,7 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", LOYALIST_FORCE, "902", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 //        UnitFactory::create("lll", LOYALIST_FORCE, "deployBox", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 
-        UnitFactory::create("x", LOYALIST_FORCE, "1210", "multiHeavy.png", 10,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'heavy', $i++);
+        UnitFactory::create("x", LOYALIST_FORCE, "802", "multiHeavy.png", 10,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'heavy', $i++);
 
         UnitFactory::create("lll", LOYALIST_FORCE, "1001", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
         UnitFactory::create("lll", LOYALIST_FORCE, "604", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);

@@ -193,7 +193,7 @@
         var ter = combat.terrainCombatEffect;
         var combatCol = combat.index + 1;
 
-        var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  "  + $(".col" + combatCol).html() + "</div>"
+        var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  "  + $(".col" + combatCol).html() + "</div>"
         return html;
     }
     $(document).ready( function() {

@@ -67,13 +67,12 @@ trait DivCombatHalfDoubleTerrain
 
         foreach ($combats->attackers as $attackerId => $v) {
             $unit = $force->units[$attackerId];
-            $combatLog .= $unit->strength." ".$unit->class;
+            $combatLog .= $unit->class ." ".$unit->strength."<br>";
 
 
             $acrossRiver = false;
             foreach ($defenders as $defId => $defender) {
                 if ($battle->combatRules->thisAttackAcrossRiver($defId, $attackerId)) {
-                    $combatLog  .= " attack across river or wadi ";
                     $acrossRiver = true;
                 }
             }
@@ -81,38 +80,32 @@ trait DivCombatHalfDoubleTerrain
             $strength = $unit->strength;
             if($acrossRiver){
                 $strength /= 2;
+                $combatLog  .= " halved across river or wadi $strength<br>";
             }
             $attackStrength += $strength;
         }
         $defenseStrength = 0;
-        $combatLog .= " = $attackStrength<br>Defenders<br> ";
+        $combatLog .= " total $attackStrength<br>";
+        $combatLog .= "<br>Defenders<br>";
 
         foreach ($defenders as $defId => $defender) {
             $unit = $battle->force->units[$defId];
-            $combatLog .= $unit->strength. " " .$unit->class." ";
-
+            $combatLog .=  $unit->class." " .$unit->defStrength."<br>";
             $defenseStrength += $unit->defStrength;
-            $combatLog .= "<br>";
         }
         if($isTown){
             $defenseStrength *= 2;
+            $combatLog .= "In Town doubled $defenseStrength<br>";
         }
-        $combatLog .= " = $defenseStrength";
+        $combatLog .= " Total $defenseStrength<br>";
         $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
-        /* Do this before terrain effects */
+
         if ($combatIndex >= $this->maxCombatIndex) {
             $combatIndex = $this->maxCombatIndex;
         }
 
-
-        /* @var $combatRules CombatRules */
-//        $terrainCombatEffect = $combatRules->getDefenderTerrainCombatEffect($defenderId);
-
-//        $combatIndex -= $terrainCombatEffect;
-
         $combats->attackStrength = $attackStrength;
         $combats->defenseStrength = $defenseStrength;
-//        $combats->terrainCombatEffect = $terrainCombatEffect;
         $combats->index = $combatIndex;
         $combats->combatLog = $combatLog;
     }

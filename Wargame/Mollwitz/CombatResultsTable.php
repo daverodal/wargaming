@@ -121,6 +121,11 @@ class CombatResultsTable
         $scenario = $battle->scenario;
         $combats = $battle->combatRules->combats->$defenderId;
         $combats->dieShift = 0;
+        $attackingForceId = $battle->force->attackingForceId;
+        $attackingForceName = Battle::$forceName[$attackingForceId];
+
+        $defendingForceId = $battle->force->defendingForceId;
+        $defendingForceName = Battle::$forceName[$defendingForceId];
 
         if (count((array)$combats->attackers) == 0) {
             $combats->index = null;
@@ -166,7 +171,9 @@ class CombatResultsTable
         $combinedArms = ['infantry'=>0, 'artillery'=>0, 'cavalry'=>0];
         $arnold = $morgan = false;
 
-        $combatLog .= "Attackers<br>";
+
+        $combatLog .= "<br><span class='$attackingForceName combatants'>Attackers</span><br>";
+        $attackStrengths = "";
         foreach ($attackers as $attackerId => $attacker) {
             $terrainReason = "";
             $unit = $battle->force->units[$attackerId];
@@ -175,13 +182,13 @@ class CombatResultsTable
                 $unitStrength = 0;
             }
 
-            if($unit->class === "hq"){
-                $combatLog .= " Arnold was here ";
+            if(!empty($scenario->americanRevolution) && $unit->class === "hq"){
+                $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>Arnold was here</span>&nbsp;&nbsp;<br>";
                 $arnold = true;
             }
 
             if($unit->name === "morgan"){
-                $combatLog .= " Morgan was here ";
+                $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>Morgan was here</span>&nbsp;&nbsp;<br>";
                 $morgan = true;
             }
 
@@ -251,36 +258,36 @@ class CombatResultsTable
 
                 if ($isRedoubt && $battle->combatRules->thisAttackAcrossType($defId, $attackerId, "redoubt")) {
                     $acrossRedoubt = true;
-                    $terrainReason .= "attack across redoubt ";
+                    $terrainReason .= "across redoubt ";
                 }
             }
             if ($unit->class == "hq") {
-                $combatLog .= "$unitStrength HQ Leardership ";
+                $combatLog .= "$unitStrength HQ Leardership";
             }
             if ($unit->class == "infantry") {
                 $combinedArms[$battle->force->units[$attackerId]->class]++;
-                $combatLog .= "$unitStrength Infantry ";
+                $combatLog .= "$unitStrength Infantry";
                 if(!empty($scenario->jagersdorfCombat)){
                     if ($unit->nationality == "Prussian" && $isClear && !$acrossRiver) {
                         $unitStrength++;
-                        $combatLog .= "+1 for attack into clear ";
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for attack into clear</span>&nbsp;&nbsp;<br>";
                     }
                     if ($unit->nationality == "Russian" && ($isTown || $isForest) && !$acrossRiver) {
                         $unitStrength++;
-                        $combatLog .= "+1 for attack into town or forest ";
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for attack into town or forest</span>&nbsp;&nbsp;<br>";
                     }
                 }
                 if(!empty($scenario->americanRevolution)){
                     if ($unit->forceId == LOYALIST_FORCE && $isClear && !$acrossRiver) {
                         if($unit->name !== "sharpshooter") {
                             $unitStrength++;
-                            $combatLog .= "+1 for attack into clear ";
+                            $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for attack into clear</span>&nbsp;&nbsp;<br>";
                         }
                     }
                 }
                 if (($unit->nationality == "Beluchi" || $unit->nationality == "Sikh") && ($isTown || $isForest) && !$acrossRiver) {
                     $unitStrength++;
-                    $combatLog .= "+1 for attack into town or forest ";
+                    $combatLog .= "+1 for attack into town or forest<br>";
                 }
                 if ($isSwamp || $isFrozenSwamp || $attackerIsFrozenSwamp ||  $attackerIsSwamp || $acrossRiver || $attackerIsSunkenRoad || $acrossRedoubt || $attackUpHill) {
                     if(!$terrainReason){
@@ -290,18 +297,20 @@ class CombatResultsTable
 //                        $unitStrength *= .75;
 //                        $combats->dieShift = -1;
                           $unitStrength -= 1;
-                        $combatLog .= "unit strength -1  for $terrainReason ";
+                        $combatLog .= "<span class='crtDetailComment'>unit strength -1  for $terrainReason</span>&nbsp;&nbsp;<br>";
                     }else{
                         if(empty($scenario->weakRedoubts)){
                             $unitStrength /= 2;
-                            $combatLog .= "attacker halved for $terrainReason ";
+                            $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>attack halved&nbsp;&nbsp;<br>$terrainReason</span>&nbsp;&nbsp;<br>";
                         }
                     }
                 }
+                $combatLog .= " $unitStrength<br>";
+
             }
 
             if ($unit->class == "cavalry") {
-                $combatLog .= "$unitStrength Cavalry ";
+                $combatLog .= "$unitStrength Cavalry";
                 $attackersCav = true;
 
                 if ($attackerIsSwamp || $acrossRiver || !$isClear || $attackerIsSunkenRoad || $acrossRedoubt) {
@@ -309,10 +318,10 @@ class CombatResultsTable
                     if(!$terrainReason){
                         $terrainReason = " terrain ";
                     }
-                    $combatLog .= " , loses combined arms bonus ";
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>loses combined arms bonus&nbsp;&nbsp;<br>";
 
                     $unitStrength /= 2;
-                    $combatLog .= "attacker halved for $terrainReason ";
+                    $combatLog .= "attack halved&nbsp;&nbsp;<br>$terrainReason</span>&nbsp;&nbsp;<br>";
 
 
                 }elseif ( $attackUpHill || $attackerIsFrozenSwamp ) {
@@ -320,35 +329,36 @@ class CombatResultsTable
 //                    $unitStrength *= .75;
 //                    $combats->dieShift = -1;
                     $unitStrength -= 1;
-                    $combatLog .= "unit strength -1 for $terrainReason ";
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>unit strength -1 for $terrainReason</span>&nbsp;&nbsp;<br>";
                     if($unit->nationality != "Beluchi" && $unit->nationality != "Sikh"){
                         $combinedArms[$battle->force->units[$attackerId]->class]++;
                     }else{
-                        $combatLog .= "no combined arms bonus for ".$unit->nationality." cavalry";
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>no combined arms bonus for ".$unit->nationality." cavalry</span>&nbsp;&nbsp;<br>";
                     }
                 }else{
                     if(!empty($scenario->angloCavBonus) && $unit->nationality == "AngloAllied"){
                         $unitStrength++;
-                        $combatLog .= "+1 for attack into clear ";
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for attack into clear</span>&nbsp;&nbsp;<br>";
                     }
                     if($unit->nationality != "Beluchi" && $unit->nationality != "Sikh"){
                         $combinedArms[$battle->force->units[$attackerId]->class]++;
                     }else{
-                        $combatLog .= "no combined arms bonus for ".$unit->nationality." cavalry";
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>no combined arms bonus for ".$unit->nationality." cavalry</span>&nbsp;&nbsp;<br>";
                     }
                 }
+                $combatLog .= " $unitStrength<br>";
             }
             if ($unit->class == "artillery" || $unit->class == "horseartillery") {
-                $combatLog .= "$unitStrength ".ucfirst($unit->class)." ";
+                $combatLog .= "$unitStrength ".ucfirst($unit->class);
                 if($isSwamp || $acrossRedoubt || $attackUpHill || $isFrozenSwamp || $attackerIsFrozenSwamp){
                     if($attackUpHill || $isFrozenSwamp || $attackerIsFrozenSwamp){
 //                        $unitStrength *= .75;
 //                        $combats->dieShift = -1;
                         $unitStrength -= 1;
-                        $combatLog .= "unit strength -1 for $terrainReason ";
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>unit strength -1 for $terrainReason</span>&nbsp&nbsp;<br>";
                     }else{
                         $unitStrength /= 2;
-                        $combatLog .= "attacker halved for $terrainReason ";
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>attacker halved for $terrainReason</span>&nbsp;&nbsp;<br>";
                     }
                     if(!$terrainReason){
                         $terrainReason = " terrain ";
@@ -361,23 +371,29 @@ class CombatResultsTable
                 if($unit->nationality != "Beluchi"){
                     $combinedArms[$class]++;
                 }else{
-                    $combatLog .= "no combined arms bonus for Beluchi";
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>no combined arms bonus for Beluchi</span>&nbsp&nbsp;<br>";
                 }
+                $combatLog .= " $unitStrength<br>";
             }
-            $combatLog .= "<br>";
+            if($attackStrengths){
+                $attackStrengths .= " + $unitStrength";
+            }else{
+                $attackStrengths = $unitStrength;
+            }
             $attackStrength += $unitStrength;
         }
-//        $combatLog .= "<br>";
+        $combatLog .= "$attackStrengths = $attackStrength<br>";
 
         $defenseStrength = 0;
+        $defenseStrengths = '';
         $defendersAllCav = true;
-        $combatLog .= " = $attackStrength<br>Defenders<br>";
+        $combatLog .= "<br><span class='$defendingForceName combatants'>Defenders</span><br>";
         foreach ($defenders as $defId => $defender) {
 
             $unit = $battle->force->units[$defId];
             $class = $unit->class;
             $unitDefense = $unit->defStrength;
-            $combatLog .= "$unitDefense ".$unit->class." ";
+            $combatLog .= " $unitDefense ".$unit->class;
             /* set to true to disable for not scenario->doubleArt */
             $clearHex = false;
             $artInNonTown = false;
@@ -397,7 +413,7 @@ class CombatResultsTable
 
             $clearHex = !$notClearHex;
             if(($unit->class == 'artillery' || $unit->class == 'horseartillery') && !$isTown){
-                $combatLog .= "doubled for defending in non town ";
+                $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>doubled for defending in non town</span>&nbsp;&nbsp;<br>";
                 $artInNonTown = true;
             }
 
@@ -408,28 +424,28 @@ class CombatResultsTable
             if(!empty($scenario->jagersdorfCombat)){
                 if ($unit->forceId == PRUSSIAN_FORCE && $class == "infantry" && $isClear) {
                     $unitDefense += 1;
-                    $combatLog .= "+1 for defending in clear ";
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in clear 1</span><br>";
                 }
                 if ($unit->forceId == RUSSIAN_FORCE && $class == "infantry" && ($isTown || $isForest)) {
                     $unitDefense += 1;
-                    $combatLog .= "+1 for defending in town or forest ";
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in town or forest</span><br>";
                 }
             }
             if(!empty($scenario->americanRevolution)){
                 if ($unit->forceId == LOYALIST_FORCE && $class == "infantry" && $isClear) {
                     if($unit->name !== "sharpshooter"){
                         $unitDefense += 1;
-                        $combatLog .= "+1 for defending in clear ";
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in clear</span><br>";
                     }
                 }
                 if ($unit->forceId == REBEL_FORCE && $class == "infantry" && (!$isClear || $battle->combatRules->allAreAttackingThisAcrossRiver($defId))) {
                     $unitDefense += 1;
-                    $combatLog .= "+1 for defending in town or forest ";
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in town or forest</span><br>";
                 }
             }
             if (($unit->nationality == "Beluchi" || $unit->nationality == "Sikh") && $class == "infantry" && ($isTown || $isForest)) {
                 $unitDefense++;
-                $combatLog .= "+1 for defending into town or forest ";
+                $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 in town or forest</span><br>";
             }
 
             $defMultiplier = 1;
@@ -437,22 +453,36 @@ class CombatResultsTable
                 $defMultiplier = 2.0;
                 if(($isTown && $class !== 'cavalry') || $isHill){
                     $defMultiplier = 2;
-                    $combatLog .= "defender doubled for terrain ";
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>2x for terrain</span><br>";
                 }
             }
+            $combatLog .= " ".$unitDefense * $defMultiplier."<br>";
+            if($defenseStrengths){
+                $defenseStrengths .= " + ".$unitDefense * $defMultiplier;
+            }else{
+                $defenseStrengths = $unitDefense * $defMultiplier;
+            }
             $defenseStrength += $unitDefense * $defMultiplier;
-            $combatLog .= "<br>";
         }
 
-        $combatLog .= " = $defenseStrength";
+        $combatLog .= "$defenseStrengths = $defenseStrength<br><br>";
         $armsShift = 0;
+        $combinedLog = '';
         if ($attackStrength >= $defenseStrength) {
-            foreach($combinedArms as $arms){
+            foreach($combinedArms as $key => $arms){
                 if($arms > 0){
+                    if($combinedLog){
+                        $combinedLog .= " + $key";
+                    }else{
+                        $combinedLog .= "$key";
+                    }
                     $armsShift++;
                 }
             }
             $armsShift--;
+        }
+        if($armsShift){
+            $combatLog .= "Combined Arms Bonus<br> $combinedLog<br>Column Shift +$armsShift<br><br>";
         }
 
         if ($armsShift < 0) {

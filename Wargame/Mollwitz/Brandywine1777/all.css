@@ -2579,6 +2579,11 @@ fieldset {
       position: absolute;
       right: 19px;
       top: 3px; }
+  #crt .crt-odds {
+    font-size: 16px; }
+  #crt #crtDetails {
+    text-align: right;
+    float: left; }
 
 #crt h3 {
   vertical-align: bottom; }
@@ -2816,7 +2821,7 @@ svg {
   svg marker#head {
     fill: red; }
 
-.ruleComment {
+.ruleComment, .crtDetailComment {
   font-style: italic;
   margin-left: 10px;
   color: #999; }
@@ -3199,10 +3204,13 @@ You should have received a copy of the GNU General Public License
 .game-rules .unit .p.range {
   font-size: 15px; }
 
-.ruleComment {
+.ruleComment, .crtDetailComment {
   font-style: italic;
   margin-left: 10px;
   color: #999; }
+
+.crtDetailComment {
+  font-size: 13px; }
 
 #GR ol.ExclusiveRules {
   counter-reset: item 6; }
@@ -4321,6 +4329,10 @@ You should have received a copy of the GNU General Public License
 .Loyalist .counterWrapper {
   background-color: #f00; }
 
+.Loyalist.combatants {
+  color: #df5842;
+  font-style: italic; }
+
 .playerRebel {
   background: #d4d300;
   border-color: #d4d300 !important; }
@@ -4331,6 +4343,10 @@ You should have received a copy of the GNU General Public License
 .Rebel .counterWrapper {
   background-color: #0117de; }
 
+.Rebel.combatants {
+  color: #0117de;
+  font-style: italic; }
+
 .playerMilitia {
   background: #f2f053;
   border-color: #f2f053 !important; }
@@ -4340,6 +4356,10 @@ You should have received a copy of the GNU General Public License
 
 .Militia .counterWrapper {
   background-color: #0117de; }
+
+.Militia.combatants {
+  color: #f2f053;
+  font-style: italic; }
 
 .vintage.Rebel.infantry .counterWrapper .counter {
   background-image: url("/js/RebelInfBadge.png");
@@ -4480,6 +4500,10 @@ You should have received a copy of the GNU General Public License
 
 .Hessian .counterWrapper {
   background-color: #006114; }
+
+.Hessian.combatants {
+  color: #4cb800;
+  font-style: italic; }
 
 .vintage.Loyalist.infantry .counterWrapper .counter {
   background-image: url("/js/AngInfBadge.png");

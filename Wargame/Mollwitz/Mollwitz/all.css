@@ -2583,6 +2583,11 @@ fieldset {
       position: absolute;
       right: 19px;
       top: 3px; }
+  #crt .crt-odds {
+    font-size: 16px; }
+  #crt #crtDetails {
+    text-align: right;
+    float: left; }
 
 #crt h3 {
   vertical-align: bottom; }
@@ -2820,7 +2825,7 @@ svg {
   svg marker#head {
     fill: red; }
 
-.ruleComment {
+.ruleComment, .crtDetailComment {
   font-style: italic;
   margin-left: 10px;
   color: #999; }
@@ -3203,10 +3208,13 @@ You should have received a copy of the GNU General Public License
 .game-rules .unit .p.range {
   font-size: 15px; }
 
-.ruleComment {
+.ruleComment, .crtDetailComment {
   font-style: italic;
   margin-left: 10px;
   color: #999; }
+
+.crtDetailComment {
+  font-size: 13px; }
 
 #GR ol.ExclusiveRules {
   counter-reset: item 6; }
@@ -4329,6 +4337,10 @@ You should have received a copy of the GNU General Public License
 .Prussian .counterWrapper {
   background-color: #0117de; }
 
+.Prussian.combatants {
+  color: #0117de;
+  font-style: italic; }
+
 .playerAustrian {
   background: #df5842;
   border-color: #df5842 !important; }
@@ -4338,5 +4350,9 @@ You should have received a copy of the GNU General Public License
 
 .Austrian .counterWrapper {
   background-color: white; }
+
+.Austrian.combatants {
+  color: #df5842;
+  font-style: italic; }
 
 /*# sourceMappingURL=all.css.map */

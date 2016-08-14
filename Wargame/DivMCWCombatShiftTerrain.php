@@ -75,33 +75,33 @@ trait DivMCWCombatShiftTerrain
 
         foreach ($combats->attackers as $id => $v) {
             $unit = $force->units[$id];
-            $combatLog .= $unit->strength." ".$unit->class;
+            $combatLog .= $unit->class." ".$unit->strength."<br>";
 
             if($unit->class == "mountain"){
-                $combatLog .= "+1 shift Mountain Inf in Mountain";
+                $combatLog .= "+1 shift Mountain Inf in Mountain<br>";
                 $isMountainInf = true;
             }
             if($unit->class == "shock"){
-                $combatLog .= "+1 shift Attacking with Shock Troops";
+                $combatLog .= "+1 shift Attacking with Shock Troops<br>";
                 $isShock = true;
             }
             $attackStrength += $unit->strength;
-            $combatLog .= "<br>";
         }
-        $combatLog .= "= $attackStrength<br>Defenders<br> ";
+        $combatLog .= "total $attackStrength<br>";
+
+        $combatLog .= "<br>Defenders<br> ";
 
         $defenseStrength = 0;
         foreach ($defenders as $defId => $defender) {
             $unit = $battle->force->units[$defId];
-            $combatLog .= $unit->defStrength. " " .$unit->class." ";
-            $combatLog .= "<br>";
+            $combatLog .= $unit->class. " " .$unit->defStrength."<br>";
             $defenseStrength += $unit->defStrength;
         }
         if($isHeavy){
-            $combatLog .= "+1 Strength for Heavy Inf in Fortified";
             $defenseStrength++;
+            $combatLog .= "+1 Strength for Heavy Inf in Fortified 1<br>";
         }
-        $combatLog .= " = $defenseStrength";
+        $combatLog .= " total $defenseStrength<br><br>";
 
         $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
         /* Do this before terrain effects */
@@ -125,14 +125,15 @@ trait DivMCWCombatShiftTerrain
             $forceName = Battle::$forceName;
             $player = $forceName[$attackingForceId];
             if($isFortB){
-                $combatLog .= "<br>Shift 2 left for $player attacking into Fortified B";
+                $combatLog .= "Shift 2 left for $player attacking into Fortified B<br>";
                 $terrainCombatEffect += 2;
             }else if($isFortA){
-                $combatLog .= "<br>Shift 1 left for $player attacking into Fortified A";
+                $combatLog .= "Shift 1 left for $player attacking into Fortified A<br>";
                 $terrainCombatEffect += 1;
             }
         }
 
+        $combatLog .= "Total Shift $terrainCombatEffect<br>";
         $combatIndex -= $terrainCombatEffect;
 
         if($isShock && $combatIndex >= 0){

@@ -167,7 +167,7 @@ class Holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         }
         $autoRelease = !empty($battle->scenario->autoRelease);
-        $neverReleased = !empty($battle->secnario->neverReleased);
+        $neverReleased = isset($battle->scenario->neverReleased) && $battle->scenario->neverReleased === true;
         if (!$neverReleased && $turn >= 2 && $gameRules->phase == RED_MOVE_PHASE && $this->divisionReleased === false){
             if($autoRelease){
                 $dieRoll = '';

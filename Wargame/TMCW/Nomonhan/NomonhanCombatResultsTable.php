@@ -1,5 +1,8 @@
 <?php
 namespace Wargame\TMCW\Nomonhan;
+use Wargame\Battle;
+use Wargame\Hexpart;
+use Wargame\Hexagon;
 // crt.js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -61,12 +64,12 @@ class NomonhanCombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
         $defenseStrength = 0;
         $defMarsh = false;
         $defArt = false;
-        $combatLog .= "Defenders<br> ";
+        $combatLog .= "<br>Defenders<br> ";
 
         foreach ($defenders as $defId => $defender) {
             $unit = $battle->force->units[$defId];
             $unitStr = $unit->defStrength;
-            $combatLog .= $unitStr. " " .$unit->class." ";
+            $combatLog .= $unit->class." $unitStr";
             $unit = $force->units[$defId];
             $unitHex = $unit->hexagon;
             if($unit->class == "artillery"){
@@ -74,24 +77,29 @@ class NomonhanCombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
             }
             if($terrain->terrainIsHex($unitHex->name, "rough") || $terrain->terrainIsHex($unitHex->name, "hills")){
                 $unitStr *= 2;
+                $combatLog .= " 2x rough $unitStr";
             }
             if($terrain->terrainIsHex($unitHex->name, "marsh")){
                 $defMarsh = true;
                 if($unit->class == "inf" || $unit->class == "cavalry"){
                     $unitStr *= 2;
+                    $combatLog .= " 2x marsh $unitStr";
+
                 }
             }
+            $combatLog .= "<br>";
             $defenseStrength += $unitStr;
         }
 
         $defHex = $unitHex;
+        $combatLog .= "Total $defenseStrength<br>";
         $combatLog .= "<br>Attackers<br>";
 
         foreach ($combats->attackers as $id => $v) {
 
             $unit = $force->units[$id];
             $unitStr = $unit->strength;
-            $combatLog .= $unit->strength." ".$unit->class;
+            $combatLog .= $unit->class." ".$unit->strength;
 
             if($unit->class != 'artillery' && $terrain->terrainIsHexSide($defHex->name,$unit->hexagon->name, "blocked")){
                 $unitStr = 0;
@@ -101,12 +109,15 @@ class NomonhanCombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
             }
             if($defMarsh && $force->units[$id]->class == 'mech'){
                 $unitStr /= 2;
+                $combatLog .= " mech into marsh halved $unitStr";
             }
             if($defArt && $force->units[$id]->class != 'artillery'){
                 $unitStr *= 2;
             }
+            $combatLog .= "<br>";
             $attackStrength += $unitStr;
         }
+        $combatLog .= "Total $attackStrength<br><br>";
 
         $terrainCombatEffect = 0;
 

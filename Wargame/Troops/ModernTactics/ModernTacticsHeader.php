@@ -149,7 +149,7 @@
         var div = combat.index+'';
         var combatCol = combat.index + 1;
 
-        var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div>"+ div +  "</div>";
+        var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div class='clear'>"+ div +  "</div>";
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
         return html;
     }

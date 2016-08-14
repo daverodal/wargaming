@@ -21,6 +21,6 @@ $crts = $topCrt->crts;
             <span ng-repeat="(cellId, cell) in row track by $index" ng-class="{pinned:cellId == crt.pinned, selected:cellId == crt.selected, 'die-roll':cellId == crt.selected && rowId == crt.combatRoll }" >@{{ resultsNames[cell] }}</span>
             <div class="clear"></div>
         </div>
-    <h5>@{{ crtOdds }}</h5>
+    <h5 class="crt-odds">@{{ crtOdds }}</h5>
     <div ng-show="showDetails" ng-bind-html="crt.crtOddsExp"></div>
 </div>

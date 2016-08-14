@@ -2580,6 +2580,11 @@ fieldset {
       position: absolute;
       right: 19px;
       top: 3px; }
+  #crt .crt-odds {
+    font-size: 16px; }
+  #crt #crtDetails {
+    text-align: right;
+    float: left; }
 
 #crt h3 {
   vertical-align: bottom; }

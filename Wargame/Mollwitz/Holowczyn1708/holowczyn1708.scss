@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
    */
 
 @include headerColor(Russian, $russianColor,$russianColor);
-@include headerColor(Swedish, $swedishColor,$swedishWrapperColor);
+@include headerColor(Swedish, $swedishColor,$swedishTextColor);
 
 .french.specialHexes{
   background-color: $frenchColor;

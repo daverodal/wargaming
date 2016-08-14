@@ -2583,6 +2583,11 @@ fieldset {
       position: absolute;
       right: 19px;
       top: 3px; }
+  #crt .crt-odds {
+    font-size: 16px; }
+  #crt #crtDetails {
+    text-align: right;
+    float: left; }
 
 #crt h3 {
   vertical-align: bottom; }
@@ -3310,6 +3315,7 @@ You should have received a copy of the GNU General Public License
     display: none; }
 
 #options-pane {
+  display: none;
   position: absolute;
   background: white;
   left: 25%;

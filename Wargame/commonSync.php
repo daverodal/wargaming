@@ -254,7 +254,8 @@
         var ter = combat.terrainCombatEffect;
         var combatCol = combat.index + 1;
 
-        var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Combined Arms Shift  " + ter + " = " + $(".col" + combatCol).html() + "</div>"
+        div = div.toFixed(2);
+        var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Finfal Column  = " + $(".col" + combatCol).html() + "</div>"
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
         return html;
     }

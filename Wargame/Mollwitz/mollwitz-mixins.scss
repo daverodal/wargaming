@@ -19,6 +19,12 @@ $vintage-unit-numbers-size:10px;
   .#{$nationality}Face, .player#{$nationality}Face{
     color:$faceColor;
   }
+
+
+  .#{$nationality}.combatants{
+    color: $faceColor;
+    font-style:italic;
+  }
 }
 
 @mixin player($nationality, $player, $color, $counterColor: $color, $faceColor: $color) {
@@ -32,6 +38,12 @@ $vintage-unit-numbers-size:10px;
   .#{$nationality} .counterWrapper {
     background-color: $counterColor;
   }
+
+  .#{$nationality}.combatants{
+    color: $faceColor;
+    font-style:italic;
+  }
+
 }
 
 @mixin badge($nationality, $shortName) {

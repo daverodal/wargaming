@@ -73,7 +73,7 @@ function renderCrtDetails(combat){
         var ter = combat.terrainCombatEffect;
         var combatCol = combat.index + 1;
 
-        var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Terrain Effects Shift  " + ter + " = " + $(".col" + combatCol).html() + "</div>"
+        var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Terrain Effects Shift  " + ter + " = " + $(".col" + combatCol).html() + "</div>"
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
         return html;
 }

@@ -167,7 +167,8 @@ class nomonhanVictoryCore{
         if($gameRules->phase == BLUE_REPLACEMENT_PHASE || $gameRules->phase ==  RED_REPLACEMENT_PHASE){
             $gameRules->flashMessages[] = "@show deadpile";
             $forceId = $gameRules->attackingForceId;
-            if($battle->force->reinforceTurns->$turn->$forceId){
+            $reinforceTurns = $battle->force->reinforceTurns;
+            if(isset($reinforceTurns) && isset($reinforceTurns->$turn) && isset($reinforceTurns->$turn->$forceId)){
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the dead pile";
             }
         }
