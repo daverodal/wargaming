@@ -81,7 +81,7 @@ class WargameServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/Mollwitz/Aliwal1845/all.css' => public_path('vendor/wargame/mollwitz/css/Aliwal1845.css'),
-            __DIR__.'/Mollwitz/Brandywine1777/all.css' => public_path('vendor/wargame/mollwitz/css/Brandywine.css'),
+            __DIR__.'/Mollwitz/Brandywine1777/all.css' => public_path('vendor/wargame/mollwitz/css/Brandywine1777.css'),
             __DIR__.'/Mollwitz/Burkersdorf/all.css' => public_path('vendor/wargame/mollwitz/css/Burkersdorf.css'),
             __DIR__.'/Mollwitz/Chillianwallah1849/all.css' => public_path('vendor/wargame/mollwitz/css/Chillianwallah1849.css'),
             __DIR__.'/Mollwitz/Dubba1843/all.css' => public_path('vendor/wargame/mollwitz/css/Dubba1843.css'),

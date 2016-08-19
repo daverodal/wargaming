@@ -4323,7 +4323,11 @@ You should have received a copy of the GNU General Public License
   background: #FECC00;
   border-color: #FECC00 !important; }
 
-.SwedishFace, .playerSwedishFace {
+.playerSwedish {
+  background: #FECC00;
+  border-color: #FECC00 !important; }
+
+.SwedishFace, .playerSwedishFace, .SwedishFace, .playerSwedishFace {
   color: #006AA7; }
 
 .Swedish .counterWrapper {
@@ -4333,15 +4337,27 @@ You should have received a copy of the GNU General Public License
   color: #006AA7;
   font-style: italic; }
 
+.Swedish.combatants {
+  color: #006AA7;
+  font-style: italic; }
+
 .playerRussian {
   background: #4cb800;
   border-color: #4cb800 !important; }
 
-.RussianFace, .playerRussianFace {
+.playerRussian {
+  background: #4cb800;
+  border-color: #4cb800 !important; }
+
+.RussianFace, .playerRussianFace, .RussianFace, .playerRussianFace {
   color: #4cb800; }
 
 .Russian .counterWrapper {
   background-color: #006114; }
+
+.Russian.combatants {
+  color: #4cb800;
+  font-style: italic; }
 
 .Russian.combatants {
   color: #4cb800;

@@ -122,10 +122,10 @@ class CombatResultsTable
         $combats = $battle->combatRules->combats->$defenderId;
         $combats->dieShift = 0;
         $attackingForceId = $battle->force->attackingForceId;
-        $attackingForceName = Battle::$forceName[$attackingForceId];
+        $attackingForceName = preg_replace("/ /", "-", Battle::$forceName[$attackingForceId]);
 
         $defendingForceId = $battle->force->defendingForceId;
-        $defendingForceName = Battle::$forceName[$defendingForceId];
+        $defendingForceName = preg_replace("/ /", "-", Battle::$forceName[$defendingForceId]);
 
         if (count((array)$combats->attackers) == 0) {
             $combats->index = null;

@@ -18,19 +18,7 @@ You should have received a copy of the GNU General Public License
 @include headerColor(Russian, $russianColor,$russianColor);
 @include headerColor(Swedish, $swedishColor,$swedishTextColor);
 
-.french.specialHexes{
-  background-color: $frenchColor;
-}
-
-.anglo {
-  background-color: $angloAlliedColor;
-}
-.french.specialHexes, .anglo.specialHexes{
-  color:white;
-}
-@include badge(SaxonPolish, Saxon);
-
-.Swedish, .SaxonPolish {
+.Swedish, .Russian {
   p.forceMarch, p.range{
     color:white;
   }
@@ -39,16 +27,6 @@ You should have received a copy of the GNU General Public License
 .pontoon.swedish.specialHexes{
   color:transparent;
   background-image:url("/js/SwePontoon.png");
-  background-size:32px;
-  width:32px;
-  height:32px;
-  margin-top:-14px;
-  margin-left:-14px;
-}
-
-.pontoon.saxon.specialHexes{
-  color:transparent;
-  background-image:url("/js/SaxonPontoon.png");
   background-size:32px;
   width:32px;
   height:32px;

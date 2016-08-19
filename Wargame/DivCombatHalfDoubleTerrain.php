@@ -35,6 +35,13 @@ trait DivCombatHalfDoubleTerrain
         $hexpart = new Hexpart();
         $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
 
+        $attackingForceId = $battle->force->attackingForceId;
+        $attackingForceName = preg_replace("/ /", "-", Battle::$forceName[$attackingForceId]);
+
+        $defendingForceId = $battle->force->defendingForceId;
+        $defendingForceName = preg_replace("/ /", "-", Battle::$forceName[$defendingForceId]);
+
+
         if (count((array)$combats->attackers) == 0) {
             $combats->index = null;
             $combats->attackStrength = null;
@@ -63,7 +70,7 @@ trait DivCombatHalfDoubleTerrain
         }
 
         $attackStrength = 0;
-        $combatLog .= "Attackers<br>";
+        $combatLog .= "<span class='combatants $attackingForceName'>Attackers</span><br>";
 
         foreach ($combats->attackers as $attackerId => $v) {
             $unit = $force->units[$attackerId];
@@ -86,7 +93,7 @@ trait DivCombatHalfDoubleTerrain
         }
         $defenseStrength = 0;
         $combatLog .= " total $attackStrength<br>";
-        $combatLog .= "<br>Defenders<br>";
+        $combatLog .= "<br><span class='combatants $defendingForceName'>Defenders</span><br>";
 
         foreach ($defenders as $defId => $defender) {
             $unit = $battle->force->units[$defId];

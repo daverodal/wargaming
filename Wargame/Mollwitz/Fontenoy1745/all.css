@@ -4323,7 +4323,11 @@ You should have received a copy of the GNU General Public License
   background: #df5842;
   border-color: #df5842 !important; }
 
-.AngloFace, .playerAngloFace {
+.playerOne {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
+.AngloFace, .playerAngloFace, .OneFace, .playerOneFace {
   color: #df5842; }
 
 .Anglo .counterWrapper {
@@ -4333,11 +4337,19 @@ You should have received a copy of the GNU General Public License
   color: #df5842;
   font-style: italic; }
 
+.One.combatants {
+  color: #df5842;
+  font-style: italic; }
+
 .playerFrench {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.FrenchFace, .playerFrenchFace {
+.playerTwo {
+  background: #84b5ff;
+  border-color: #84b5ff !important; }
+
+.FrenchFace, .playerFrenchFace, .TwoFace, .playerTwoFace {
   color: #84b5ff; }
 
 .French .counterWrapper {
@@ -4347,11 +4359,19 @@ You should have received a copy of the GNU General Public License
   color: #84b5ff;
   font-style: italic; }
 
+.Two.combatants {
+  color: #84b5ff;
+  font-style: italic; }
+
 .playerAustrian {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.AustrianFace, .playerAustrianFace {
+.playerThree {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
+.AustrianFace, .playerAustrianFace, .ThreeFace, .playerThreeFace {
   color: white; }
 
 .Austrian .counterWrapper {
@@ -4361,17 +4381,29 @@ You should have received a copy of the GNU General Public License
   color: white;
   font-style: italic; }
 
+.Three.combatants {
+  color: white;
+  font-style: italic; }
+
 .playerDutch {
   background: #f2f053;
   border-color: #f2f053 !important; }
 
-.DutchFace, .playerDutchFace {
+.playerFour {
+  background: #f2f053;
+  border-color: #f2f053 !important; }
+
+.DutchFace, .playerDutchFace, .FourFace, .playerFourFace {
   color: #f2f053; }
 
 .Dutch .counterWrapper {
   background-color: #0117de; }
 
 .Dutch.combatants {
+  color: #f2f053;
+  font-style: italic; }
+
+.Four.combatants {
   color: #f2f053;
   font-style: italic; }
 

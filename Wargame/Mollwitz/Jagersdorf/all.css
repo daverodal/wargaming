@@ -4323,7 +4323,11 @@ You should have received a copy of the GNU General Public License
   background: #f2f053;
   border-color: #f2f053 !important; }
 
-.PrussianFace, .playerPrussianFace {
+.playerOne {
+  background: #f2f053;
+  border-color: #f2f053 !important; }
+
+.PrussianFace, .playerPrussianFace, .OneFace, .playerOneFace {
   color: #0117de; }
 
 .Prussian .counterWrapper {
@@ -4333,17 +4337,29 @@ You should have received a copy of the GNU General Public License
   color: #0117de;
   font-style: italic; }
 
+.One.combatants {
+  color: #0117de;
+  font-style: italic; }
+
 .playerRussian {
   background: #4cb800;
   border-color: #4cb800 !important; }
 
-.RussianFace, .playerRussianFace {
+.playerTwo {
+  background: #4cb800;
+  border-color: #4cb800 !important; }
+
+.RussianFace, .playerRussianFace, .TwoFace, .playerTwoFace {
   color: #4cb800; }
 
 .Russian .counterWrapper {
   background-color: #006114; }
 
 .Russian.combatants {
+  color: #4cb800;
+  font-style: italic; }
+
+.Two.combatants {
   color: #4cb800;
   font-style: italic; }
 

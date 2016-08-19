@@ -4323,7 +4323,11 @@ You should have received a copy of the GNU General Public License
   background: #df5842;
   border-color: #df5842 !important; }
 
-.LoyalistFace, .playerLoyalistFace {
+.playerOne {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
+.LoyalistFace, .playerLoyalistFace, .OneFace, .playerOneFace {
   color: #df5842; }
 
 .Loyalist .counterWrapper {
@@ -4333,11 +4337,19 @@ You should have received a copy of the GNU General Public License
   color: #df5842;
   font-style: italic; }
 
+.One.combatants {
+  color: #df5842;
+  font-style: italic; }
+
 .playerRebel {
   background: #d4d300;
   border-color: #d4d300 !important; }
 
-.RebelFace, .playerRebelFace {
+.playerTwo {
+  background: #d4d300;
+  border-color: #d4d300 !important; }
+
+.RebelFace, .playerRebelFace, .TwoFace, .playerTwoFace {
   color: #0117de; }
 
 .Rebel .counterWrapper {
@@ -4347,17 +4359,29 @@ You should have received a copy of the GNU General Public License
   color: #0117de;
   font-style: italic; }
 
+.Two.combatants {
+  color: #0117de;
+  font-style: italic; }
+
 .playerMilitia {
   background: #f2f053;
   border-color: #f2f053 !important; }
 
-.MilitiaFace, .playerMilitiaFace {
+.playerThree {
+  background: #f2f053;
+  border-color: #f2f053 !important; }
+
+.MilitiaFace, .playerMilitiaFace, .ThreeFace, .playerThreeFace {
   color: #f2f053; }
 
 .Militia .counterWrapper {
   background-color: #0117de; }
 
 .Militia.combatants {
+  color: #f2f053;
+  font-style: italic; }
+
+.Three.combatants {
   color: #f2f053;
   font-style: italic; }
 
@@ -4495,13 +4519,21 @@ You should have received a copy of the GNU General Public License
   background: #4cb800;
   border-color: #4cb800 !important; }
 
-.HessianFace, .playerHessianFace {
+.playerThree {
+  background: #4cb800;
+  border-color: #4cb800 !important; }
+
+.HessianFace, .playerHessianFace, .ThreeFace, .playerThreeFace {
   color: #4cb800; }
 
 .Hessian .counterWrapper {
   background-color: #006114; }
 
 .Hessian.combatants {
+  color: #4cb800;
+  font-style: italic; }
+
+.Three.combatants {
   color: #4cb800;
   font-style: italic; }
 
@@ -4636,7 +4668,7 @@ You should have received a copy of the GNU General Public License
   display: none; }
 
 .Rebel p.forceMarch, .Rebel p.range {
-  color: white; }
+  color: grey; }
 
 .specialHexes.loyalist {
   background-color: #f00;

@@ -4323,7 +4323,11 @@ You should have received a copy of the GNU General Public License
   background: #df5842;
   border-color: #df5842 !important; }
 
-.BritishFace, .playerBritishFace {
+.playerOne {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
+.BritishFace, .playerBritishFace, .OneFace, .playerOneFace {
   color: #df5842; }
 
 .British .counterWrapper {
@@ -4333,17 +4337,29 @@ You should have received a copy of the GNU General Public License
   color: #df5842;
   font-style: italic; }
 
+.One.combatants {
+  color: #df5842;
+  font-style: italic; }
+
 .playerSikh {
   background: #c68100;
   border-color: #c68100 !important; }
 
-.SikhFace, .playerSikhFace {
+.playerTwo {
+  background: #c68100;
+  border-color: #c68100 !important; }
+
+.SikhFace, .playerSikhFace, .TwoFace, .playerTwoFace {
   color: #c6c102; }
 
 .Sikh .counterWrapper {
   background-color: #c6c102; }
 
 .Sikh.combatants {
+  color: #c6c102;
+  font-style: italic; }
+
+.Two.combatants {
   color: #c6c102;
   font-style: italic; }
 

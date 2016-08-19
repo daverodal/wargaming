@@ -3022,7 +3022,14 @@ You should have received a copy of the GNU General Public License
   background: #df5842;
   border-color: #df5842 !important; }
 
+.playerOne {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
 .rebelFace, .playerrebelFace {
+  color: #df5842; }
+
+.One.combatants {
   color: #df5842; }
 
 .rebel {
@@ -3034,7 +3041,14 @@ You should have received a copy of the GNU General Public License
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
+.playerTwo {
+  background: #84b5ff;
+  border-color: #84b5ff !important; }
+
 .loyalistFace, .playerloyalistFace {
+  color: #84b5ff; }
+
+.Two.combatants {
   color: #84b5ff; }
 
 .loyalist {
@@ -3241,7 +3255,14 @@ You should have received a copy of the GNU General Public License
   background: #58c3ff;
   border-color: #58c3ff !important; }
 
+.playerOne {
+  background: #58c3ff;
+  border-color: #58c3ff !important; }
+
 .germanFace, .playergermanFace {
+  color: #58c3ff; }
+
+.One.combatants {
   color: #58c3ff; }
 
 .german {
@@ -3253,7 +3274,14 @@ You should have received a copy of the GNU General Public License
   background: #5d6cff;
   border-color: #5d6cff !important; }
 
+.playerFour {
+  background: #5d6cff;
+  border-color: #5d6cff !important; }
+
 .secondArmyFace, .playersecondArmyFace {
+  color: #5d6cff; }
+
+.Four.combatants {
   color: #5d6cff; }
 
 .secondArmy {
@@ -3265,7 +3293,14 @@ You should have received a copy of the GNU General Public License
   background: #ff3f3c;
   border-color: #ff3f3c !important; }
 
+.playerFive {
+  background: #ff3f3c;
+  border-color: #ff3f3c !important; }
+
 .firstPanzerArmyFace, .playerfirstPanzerArmyFace {
+  color: #ff3f3c; }
+
+.Five.combatants {
   color: #ff3f3c; }
 
 .firstPanzerArmy {
@@ -3277,7 +3312,14 @@ You should have received a copy of the GNU General Public License
   background: #ff8f47;
   border-color: #ff8f47 !important; }
 
+.playerFive {
+  background: #ff8f47;
+  border-color: #ff8f47 !important; }
+
 .sixthArmyFace, .playersixthArmyFace {
+  color: #ff8f47; }
+
+.Five.combatants {
   color: #ff8f47; }
 
 .sixthArmy {
@@ -3289,7 +3331,14 @@ You should have received a copy of the GNU General Public License
   background: #ff8fd6;
   border-color: #ff8fd6 !important; }
 
+.playerFive {
+  background: #ff8fd6;
+  border-color: #ff8fd6 !important; }
+
 .seventeenthArmyFace, .playerseventeenthArmyFace {
+  color: #58c3ff; }
+
+.Five.combatants {
   color: #58c3ff; }
 
 .seventeenthArmy {
@@ -3315,7 +3364,14 @@ You should have received a copy of the GNU General Public License
   background: #ba9f34;
   border-color: #ba9f34 !important; }
 
+.playerTwo {
+  background: #ba9f34;
+  border-color: #ba9f34 !important; }
+
 .sovietFace, .playersovietFace {
+  color: #ba9f34; }
+
+.Two.combatants {
   color: #ba9f34; }
 
 .soviet {

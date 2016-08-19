@@ -4323,7 +4323,11 @@ You should have received a copy of the GNU General Public License
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.FrenchFace, .playerFrenchFace {
+.playerOne {
+  background: #84b5ff;
+  border-color: #84b5ff !important; }
+
+.FrenchFace, .playerFrenchFace, .OneFace, .playerOneFace {
   color: #84b5ff; }
 
 .French .counterWrapper {
@@ -4333,11 +4337,19 @@ You should have received a copy of the GNU General Public License
   color: #84b5ff;
   font-style: italic; }
 
+.One.combatants {
+  color: #84b5ff;
+  font-style: italic; }
+
 .playerPrussian-Russian-Allies {
   background: #4cb800;
   border-color: #4cb800 !important; }
 
-.Prussian-Russian-AlliesFace, .playerPrussian-Russian-AlliesFace {
+.playerTwo {
+  background: #4cb800;
+  border-color: #4cb800 !important; }
+
+.Prussian-Russian-AlliesFace, .playerPrussian-Russian-AlliesFace, .TwoFace, .playerTwoFace {
   color: #4cb800; }
 
 .Prussian-Russian-Allies .counterWrapper {
@@ -4347,11 +4359,19 @@ You should have received a copy of the GNU General Public License
   color: #4cb800;
   font-style: italic; }
 
+.Two.combatants {
+  color: #4cb800;
+  font-style: italic; }
+
 .playerPrussian {
   background: #f2f053;
   border-color: #f2f053 !important; }
 
-.PrussianFace, .playerPrussianFace {
+.playerTwo {
+  background: #f2f053;
+  border-color: #f2f053 !important; }
+
+.PrussianFace, .playerPrussianFace, .TwoFace, .playerTwoFace {
   color: #006114; }
 
 .Prussian .counterWrapper {
@@ -4361,11 +4381,19 @@ You should have received a copy of the GNU General Public License
   color: #006114;
   font-style: italic; }
 
+.Two.combatants {
+  color: #006114;
+  font-style: italic; }
+
 .playerRussian {
   background: #4cb800;
   border-color: #4cb800 !important; }
 
-.RussianFace, .playerRussianFace {
+.playerThree {
+  background: #4cb800;
+  border-color: #4cb800 !important; }
+
+.RussianFace, .playerRussianFace, .ThreeFace, .playerThreeFace {
   color: #4cb800; }
 
 .Russian .counterWrapper {
@@ -4375,17 +4403,29 @@ You should have received a copy of the GNU General Public License
   color: #4cb800;
   font-style: italic; }
 
+.Three.combatants {
+  color: #4cb800;
+  font-style: italic; }
+
 .playerGuard {
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.GuardFace, .playerGuardFace {
+.playerFour {
+  background: #84b5ff;
+  border-color: #84b5ff !important; }
+
+.GuardFace, .playerGuardFace, .FourFace, .playerFourFace {
   color: white; }
 
 .Guard .counterWrapper {
   background-color: #0003b4; }
 
 .Guard.combatants {
+  color: white;
+  font-style: italic; }
+
+.Four.combatants {
   color: white;
   font-style: italic; }
 

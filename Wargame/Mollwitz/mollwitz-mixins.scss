@@ -20,7 +20,6 @@ $vintage-unit-numbers-size:10px;
     color:$faceColor;
   }
 
-
   .#{$nationality}.combatants{
     color: $faceColor;
     font-style:italic;
@@ -32,7 +31,13 @@ $vintage-unit-numbers-size:10px;
     background: $color;
     border-color: $color !important;
   }
-  .#{$nationality}Face, .player#{$nationality}Face {
+
+  .player#{$player} {
+    background: $color;
+    border-color: $color !important;
+  }
+
+  .#{$nationality}Face, .player#{$nationality}Face,.#{$player}Face, .player#{$player}Face {
     color: $faceColor;
   }
   .#{$nationality} .counterWrapper {
@@ -44,6 +49,10 @@ $vintage-unit-numbers-size:10px;
     font-style:italic;
   }
 
+  .#{$player}.combatants{
+    color: $faceColor;
+    font-style:italic;
+  }
 }
 
 @mixin badge($nationality, $shortName) {

@@ -20,8 +20,8 @@
  */
 @import "chawinda1965Colors";
 
-@include player(indian, One, $indianColor);
-@include player(pakistani, Two, $pakistaniColor);
+@include player(indian, Indian, $indianColor);
+@include player(pakistani, Pakistani, $pakistaniColor);
 @include headerColor(Indian, $indianColor, $indianColor);
 @include headerColor(Pakistani, $pakistaniColor, $pakistaniColor);
 

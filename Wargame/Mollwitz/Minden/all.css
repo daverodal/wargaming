@@ -4331,7 +4331,11 @@ You should have received a copy of the GNU General Public License
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
-.FrenchFace, .playerFrenchFace {
+.playerFrench {
+  background: #84b5ff;
+  border-color: #84b5ff !important; }
+
+.FrenchFace, .playerFrenchFace, .FrenchFace, .playerFrenchFace {
   color: #84b5ff; }
 
 .French .counterWrapper {
@@ -4341,17 +4345,29 @@ You should have received a copy of the GNU General Public License
   color: #84b5ff;
   font-style: italic; }
 
+.French.combatants {
+  color: #84b5ff;
+  font-style: italic; }
+
 .playerAngloAllied {
   background: #df5842;
   border-color: #df5842 !important; }
 
-.AngloAlliedFace, .playerAngloAlliedFace {
+.playerAnglo-Allied {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
+.AngloAlliedFace, .playerAngloAlliedFace, .Anglo-AlliedFace, .playerAnglo-AlliedFace {
   color: #df5842; }
 
 .AngloAllied .counterWrapper {
   background-color: #f00; }
 
 .AngloAllied.combatants {
+  color: #df5842;
+  font-style: italic; }
+
+.Anglo-Allied.combatants {
   color: #df5842;
   font-style: italic; }
 

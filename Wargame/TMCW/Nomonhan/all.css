@@ -3022,7 +3022,14 @@ You should have received a copy of the GNU General Public License
   background: #df5842;
   border-color: #df5842 !important; }
 
+.playerOne {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
 .rebelFace, .playerrebelFace {
+  color: #df5842; }
+
+.One.combatants {
   color: #df5842; }
 
 .rebel {
@@ -3034,7 +3041,14 @@ You should have received a copy of the GNU General Public License
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
+.playerTwo {
+  background: #84b5ff;
+  border-color: #84b5ff !important; }
+
 .loyalistFace, .playerloyalistFace {
+  color: #84b5ff; }
+
+.Two.combatants {
   color: #84b5ff; }
 
 .loyalist {
@@ -3221,7 +3235,14 @@ You should have received a copy of the GNU General Public License
   background: orange;
   border-color: orange !important; }
 
+.playerOne {
+  background: orange;
+  border-color: orange !important; }
+
 .japaneseFace, .playerjapaneseFace {
+  color: orange; }
+
+.One.combatants {
   color: orange; }
 
 .japanese {
@@ -3233,7 +3254,14 @@ You should have received a copy of the GNU General Public License
   background: #df5842;
   border-color: #df5842 !important; }
 
+.playerTwo {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
 .sovietFace, .playersovietFace {
+  color: #df5842; }
+
+.Two.combatants {
   color: #df5842; }
 
 .soviet {

@@ -58,22 +58,22 @@ trait DivCombatDoubleMultipleTerrain
             $hexName = $hexagon->name;
             if($battle->mapData->getMapSymbol($hexagon->name,'westwall')){
                 $thisHex['forta'] = 2;
-                $thisLog .= "2x defend in westwall ";
+                $thisLog .= "2x defend in westwall<br>";
             }
             if($terrain->terrainIs($hexpart, 'roughone'))
             {
                 $thisHex['roughone'] = 2;
-                $thisLog .= "2x defend in rough ";
+                $thisLog .= "2x defend in rough<br>";
             }
             if($terrain->terrainIs($hexpart, 'roughtwo'))
             {
                 $thisHex['roughtwo'] = 3;
-                $thisLog .= "3x defend in mountain ";
+                $thisLog .= "3x defend in mountain<br>";
             }
             if($battle->combatRules->allAreAttackingAcrossRiver($defId))
             {
                 $thisHex['river'] = 2;
-                $thisLog .= "2x defend behind river ";
+                $thisLog .= "2x defend behind river<br>";
             }
             $multiple = count($thisHex);
             $defense = array_sum($thisHex);
@@ -82,7 +82,7 @@ trait DivCombatDoubleMultipleTerrain
             }
             if($defense > $totalDefense){
                 $totalDefense = $defense;
-                $defCombatLog = $thisLog."<br>total def ${defense}x";
+                $defCombatLog = $thisLog."total def ${defense}x<br>";
             }
         }
 
@@ -96,7 +96,7 @@ trait DivCombatDoubleMultipleTerrain
             $attackStrength += $strength;
         }
         $defenseStrength = 0;
-        $combatLog .= " = $attackStrength<br>Defenders<br> ";
+        $combatLog .= " = $attackStrength<br><br>Defenders<br> ";
 
         $unitDefenseStrength = 0;
         foreach ($defenders as $defId => $defender) {
@@ -110,7 +110,7 @@ trait DivCombatDoubleMultipleTerrain
         $combatLog .= "= $unitDefenseStrength<br>";
         $combatLog .= $defCombatLog;
 
-        $combatLog .= " = $defenseStrength";
+        $combatLog .= " = $defenseStrength<br><br>";
         $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
         /* Do this before terrain effects */
         if ($combatIndex >= $this->maxCombatIndex) {

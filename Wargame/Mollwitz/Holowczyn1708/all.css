@@ -4341,95 +4341,12 @@ You should have received a copy of the GNU General Public License
   color: #0494e7;
   font-style: italic; }
 
-.french.specialHexes {
-  background-color: #84b5ff; }
-
-.anglo {
-  background-color: #df5842; }
-
-.french.specialHexes, .anglo.specialHexes {
-  color: white; }
-
-.vintage.SaxonPolish.infantry .counterWrapper .counter {
-  background-image: url("/js/SaxonInfBadge.png");
-  background-size: 19px; }
-.vintage.SaxonPolish.cavalry .counterWrapper .counter {
-  background-image: url("/js/SaxonCavBadge.png");
-  background-size: 19px; }
-.vintage.SaxonPolish.artillery .counterWrapper .counter {
-  background-image: url("/js/SaxonArtBadge.png");
-  background-size: 19px; }
-.vintage.SaxonPolish.horseartillery .counterWrapper .counter {
-  background-image: url("/js/SaxonHorArtBadge.png");
-  background-size: 19px; }
-.vintage.SaxonPolish.hq .counterWrapper .counter {
-  background-color: lightgreen;
-  background-image: url("/js/HQBadge.png");
-  background-size: 19px; }
-.vintage.SaxonPolish.pontoon .counterWrapper {
-  border: none; }
-  .vintage.SaxonPolish.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/SaxonPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.SaxonPolish.pontoon .unit-numbers {
-  display: none; }
-
-.SaxonPolish.infantry .counterWrapper .counter {
-  background-image: url("/js/SaxonInfBadge.png");
-  background-size: 14px; }
-
-.SaxonPolish.cavalry .counterWrapper .counter {
-  background-image: url("/js/SaxonCavBadge.png");
-  background-size: 14px; }
-
-.SaxonPolish.artillery .counterWrapper .counter {
-  background-image: url("/js/SaxonArtBadge.png");
-  background-size: 14px; }
-
-.SaxonPolish.horseartillery .counterWrapper .counter {
-  background-image: url("/js/SaxonHorArtBadge.png");
-  background-size: 14px; }
-
-.SaxonPolish.hq .counterWrapper .counter {
-  background-color: lightgreen;
-  background-image: url("/js/HQBadge.png");
-  background-size: 14px; }
-
-.SaxonPolish.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.SaxonPolish.pontoon .counterWrapper {
-  border: none; }
-  .SaxonPolish.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/SaxonPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.SaxonPolish.pontoon .unit-numbers {
-  display: none; }
-
-.Swedish p.forceMarch, .Swedish p.range, .SaxonPolish p.forceMarch, .SaxonPolish p.range {
+.Swedish p.forceMarch, .Swedish p.range, .Russian p.forceMarch, .Russian p.range {
   color: white; }
 
 .pontoon.swedish.specialHexes {
   color: transparent;
   background-image: url("/js/SwePontoon.png");
-  background-size: 32px;
-  width: 32px;
-  height: 32px;
-  margin-top: -14px;
-  margin-left: -14px; }
-
-.pontoon.saxon.specialHexes {
-  color: transparent;
-  background-image: url("/js/SaxonPontoon.png");
   background-size: 32px;
   width: 32px;
   height: 32px;

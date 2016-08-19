@@ -3022,7 +3022,14 @@ You should have received a copy of the GNU General Public License
   background: #df5842;
   border-color: #df5842 !important; }
 
+.playerOne {
+  background: #df5842;
+  border-color: #df5842 !important; }
+
 .rebelFace, .playerrebelFace {
+  color: #df5842; }
+
+.One.combatants {
   color: #df5842; }
 
 .rebel {
@@ -3034,7 +3041,14 @@ You should have received a copy of the GNU General Public License
   background: #84b5ff;
   border-color: #84b5ff !important; }
 
+.playerTwo {
+  background: #84b5ff;
+  border-color: #84b5ff !important; }
+
 .loyalistFace, .playerloyalistFace {
+  color: #84b5ff; }
+
+.Two.combatants {
   color: #84b5ff; }
 
 .loyalist {
@@ -3241,7 +3255,14 @@ You should have received a copy of the GNU General Public License
   background: #9ee0ff;
   border-color: #9ee0ff !important; }
 
+.playerOne {
+  background: #9ee0ff;
+  border-color: #9ee0ff !important; }
+
 .germanFace, .playergermanFace {
+  color: #9ee0ff; }
+
+.One.combatants {
   color: #9ee0ff; }
 
 .german {
@@ -3253,7 +3274,14 @@ You should have received a copy of the GNU General Public License
   background: #ba9f34;
   border-color: #ba9f34 !important; }
 
+.playerTwo {
+  background: #ba9f34;
+  border-color: #ba9f34 !important; }
+
 .sovietFace, .playersovietFace {
+  color: #ba9f34; }
+
+.Two.combatants {
   color: #ba9f34; }
 
 .soviet {
@@ -3265,7 +3293,14 @@ You should have received a copy of the GNU General Public License
   background: #aaa;
   border-color: #aaa !important; }
 
+.playerThree {
+  background: #aaa;
+  border-color: #aaa !important; }
+
 .loyalGuardsFace, .playerloyalGuardsFace {
+  color: #aaa; }
+
+.Three.combatants {
   color: #aaa; }
 
 .loyalGuards {
@@ -3277,7 +3312,14 @@ You should have received a copy of the GNU General Public License
   background: red;
   border-color: red !important; }
 
+.playerFour {
+  background: red;
+  border-color: red !important; }
+
 .sovietguardFace, .playersovietguardFace {
+  color: red; }
+
+.Four.combatants {
   color: red; }
 
 .sovietguard {

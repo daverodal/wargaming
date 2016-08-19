@@ -22,7 +22,17 @@
     background:$color;
     border-color:$color !important;
   }
+
+  .player#{$player}{
+    background:$color;
+    border-color:$color !important;
+  }
+
   .#{$nationality}Face, .player#{$nationality}Face{
+    color:$faceColor;
+  }
+
+  .#{$player}.combatants{
     color:$faceColor;
   }
 
