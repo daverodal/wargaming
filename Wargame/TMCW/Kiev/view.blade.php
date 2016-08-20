@@ -4,7 +4,7 @@
 </head>
 
 @section('inner-crt')
-    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\TMCW\Kiev\CombatResultsTable()])
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\Kiev\CombatResultsTable()])
 @endsection
 
 @section('unitRules')

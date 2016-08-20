@@ -78,7 +78,9 @@
                 <?php //include "commonSequenceOfPlay.php" ?>
                 </li>
                 <li id="stackingRules">
+                    @section('commonStacking')
                     @include('wargame::TMCW.commonStacking')
+                    @show
                 <?php //include "commonStacking.php" ?>
                 </li>
                 <li id="moveRules">
@@ -93,7 +95,7 @@
 
                 </li>
                 <li id="combatRules">
-                    {{--@include('wargame::TMCW.commonCombatRules')--}}
+                    @include('wargame::TMCW.commonCombatRules')
                 </li>
 
                 <li id="exclusiveRules" class="exclusive">

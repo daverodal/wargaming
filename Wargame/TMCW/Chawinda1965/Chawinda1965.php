@@ -226,8 +226,8 @@ class Chawinda1965 extends \Wargame\ModernLandBattle
         }
 
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){
+
             $limit = 0;
-            $armyGroup = false;
             if($unit->isReduced !== true){
                 $limit++;
             }

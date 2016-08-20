@@ -2,6 +2,11 @@
 @include('wargame::TMCW.Amph.amph-header')
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/amph/css/all.css')}}">
 </head>
+@extends('wargame::stdIncludes.view')
+
+@section('inner-crt')
+    @include('wargame::stdIncludes.inner-crt',['topCrt'=> $top_crt = new \Wargame\TMCW\CombatResultsTable()])
+@endsection
 @section('tec')
     @include("wargame::TMCW.Amph.tec")
 @endsection
@@ -39,4 +44,3 @@
 </div>
 <button id="choose-option-button">Choose Your Option</button>
 </div>
-@include('wargame::stdIncludes.view' )

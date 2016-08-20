@@ -27,18 +27,21 @@
  */?>
 <span class="big">Stacking</span>
 <p>
-    Units may stack up to 3 units in a hex.
+    Units may stack up to 3  full strength units in a hex. Units reduced via combat OR because of voluntary break down of units, count as 1/2 unit
+    for stacking purposes. So you can stack 6 broken down units or 3 full strength or any combination that adds up to 3 full strength units.
 </p><p class="ruleComment">
     If a user right clicks on a stack of units they can cycle through all the units in the stack.
 </p>
 <ol>
-    <li>Units may stack up to 3 units in a hex at end of their movement. They pass through other friendly units in excess of that limit, provided
-        they end the turn no more that 3 unit in a hex.</li>
-    <li>If units are forced to retreat during combat, they must must not violate the 3 units per hex rule at any point in their retreat. Units unable to do so will take a
+    <li>The stacking limit onnly applies at the end of their movement. Units may pass through other friendly units in excess of that limit, provided
+        they do not end in a hex in violation of the limit.</li>
+    <li>If units are forced to retreat during combat, they must must not violate the 3 units per hex rule at any point in their retreat.
+        Units unable to do so will take a
         one step reduction instead.</li>
     <li>Units may ignore zoc's of enemy units while retreating provided
         they are entering a hex already containing friendly units, and not in excess of the 3 units per hex rule.</li>
-
-    <li>During combat, units stacked together may attack the same or different enemy hexes.</li>
+    <li>During combat, units stacked together may attack the same or different enemy hexes, or none at all.</li>
+    <li>When stacked units are defending as in a hex, the must all be attacked in one lump sum, in one combat. Attackers may not choose to only attack
+    some units in the hex.</li>
 
 </ol>

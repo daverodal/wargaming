@@ -42,6 +42,8 @@ class ModernCombatResultsTable
     public $combatResultsTable;
     public $combatResultsHeader;
     public $aggressorId = false;
+
+
     //     combatIndexeCount is 6; maxCombatIndex = 5
     //     index is 0 to 5;  dieSidesCount = 6
 
@@ -61,6 +63,9 @@ class ModernCombatResultsTable
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
         $this->combatResultCount = 5;
+        /* TODO: object oriented :( */
+        global $results_name;
+        $results_name[DRL2] = "DRL";
 
     }
 

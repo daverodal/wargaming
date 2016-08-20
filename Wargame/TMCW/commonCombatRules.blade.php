@@ -77,6 +77,7 @@
             </li>
             <li>
                 Then click on one of your adjacent units or an artillery unit within range.
+                <p class="ruleComment">Not all games have artillery.</p>
 
                 <p>If the attack was valid a red arrow will appear. At the same time the combat
                     results
@@ -197,45 +198,27 @@
     </li>
 
     <li>Combat Results Table<br><br>
-        <?php                 $crt = new \Wargame\TMCW\CombatResultsTable();
-        foreach($crt->crts as $crtName => $crtValue){
-            echo "<br><br>$crtName";
+        Some games have one combat results table, some have more than one.
+        <?php
+            if(!isset($top_crt)){
+                $top_crt = new \Wargame\TMCW\CombatResultsTable();
+            }
+            $crt = $top_crt;
+            echo "<br> This game has ".count((array)$crt->crts). " crt's name(s)";
+            foreach($crt->crts as $crtName => $crtValue){
+                echo "<br><br>$crtName";
+            }
             ?>
         <div class="clear">&nbsp;</div>
 
         <div class="left">
-            <div id="odds">
-                <span class="col0">&nbsp;</span>
-                <?php
-
-                $i = 1;
-                foreach ($crt->combatResultsHeader as $odds) {
-                    ?>
-                    <span class="col<?= $i++ ?>"><?= $odds ?></span>
-                <?php } ?>
-            </div>
-            <?php
-            $rowNum = 1;
-            $odd = ($rowNum & 1) ? "odd" : "even";
-            foreach ($crt->crts->normal as $row) {
-                ?>
-                <div class="roll <?= "row$rowNum $odd" ?>">
-                    <span class="col0"><?= $rowNum++ ?></span>
-                    <?php $col = 1;
-                    foreach ($row as $cell) {
-                        ?>
-                        <span class="col<?= $col++ ?>"><?= $results_name[$cell] ?></span>
-
-                    <?php } ?>
-                </div>
-            <?php } ?>
+            @yield('inner-crt')
         </div>
 
 
 
 
         <div class="clear"></div>
-        <?php }?>
     </li>
 
 

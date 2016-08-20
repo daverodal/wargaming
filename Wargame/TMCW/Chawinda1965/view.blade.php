@@ -33,9 +33,11 @@
         <div style="clear:both;"></div>
     </div>
 @endsection
-
+@section('commonStacking')
+    @include('wargame::TMCW.Chawinda1965.commonStacking')
+@endsection
 @section('inner-crt')
-    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\TMCW\Chawinda1965\CombatResultsTable()])
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\Chawinda1965\CombatResultsTable()])
 @endsection
 
 @section('commonRules')

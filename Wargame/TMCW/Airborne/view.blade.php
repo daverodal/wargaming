@@ -318,7 +318,7 @@
 </script>
 
 @section('inner-crt')
-    @include('wargame::TMCW.Airborne.airborne-inner-crt', ['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(REBEL_FORCE)])
+    @include('wargame::TMCW.Airborne.airborne-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(REBEL_FORCE)])
 @endsection
 
 @section('unitRules')

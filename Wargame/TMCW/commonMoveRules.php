@@ -41,8 +41,12 @@
 <p>        When a unit moves from a hex containing a road, to another hex containing a road, and a road
             traverses the hexside
             be traversed, the unit may be eligible for road movement. Road movement often requires less
-            <abbr title="Movement Points">MP</abbr>'s than the other terrain in the hex.</p>
+            <abbr title="Movement Points">MP</abbr>'s than the other terrain in the hex. See the TEC for more info.</p>
 
+    </li>
+    <li>
+        Units may alwasy move at least one hex, regardless of movement point cost, unless they are moving
+        directly from one zoc to another. See ZOC's below.
     </li>
     <?php @include "exclusiveMoveRules.php";?>
 </ol>

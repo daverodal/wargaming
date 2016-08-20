@@ -57,7 +57,5 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
         $this->combatResultCount = 10;
-
-        $this->setCombatOddsTable();
     }
 }

@@ -72,7 +72,7 @@
                     <h3>Combat Odds</h3>
 
                     @section('inner-crt')
-                        @include('wargame::stdIncludes.inner-crt',['topCrt'=> new \Wargame\TMCW\CombatResultsTable()])
+                        @include('wargame::stdIncludes.inner-crt',['topCrt'=> $top_crt = new \Wargame\TMCW\CombatResultsTable()])
                     @show
 
                     <div id="crtDetailsButton">details</div>
