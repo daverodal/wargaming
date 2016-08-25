@@ -71,7 +71,9 @@
   @include victoryPoints(brown);
 }
 /* RULES OVERRIDES */
-
+.a-unit-wrapper{
+  position: absolute;
+}
 .gameLength{
   color:transparent;
   font-size:0px;
@@ -120,4 +122,17 @@
       border-color:white;
     }
   }
+}
+.white-color{
+  color:white;
+}
+.unit{
+  .unit-numbers{
+    &.infoLen7{
+      letter-spacing:-1px;
+    }
+  }
+}
+#deployWrapper{
+  display:none;
 }

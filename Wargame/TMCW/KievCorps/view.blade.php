@@ -1,4 +1,4 @@
-@extends('wargame::stdIncludes.view' )
+@extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(GERMAN_FORCE)] )
 
 @include('wargame::global-header')
 @include('wargame::TMCW.KievCorps.kievHeader')
@@ -7,6 +7,66 @@
 @section('credit')
     @include('wargame::TMCW.KievCorps.credit')
 @endsection
+
+
+
+@section('ng-unit-template')
+    <div id="@{{unit.id}}"
+         ng-right-click="rightClickMe({id:unit.id})"   ng-style="unit.style" class="unit rel-unit"
+         ng-class="[unit.nationality, unit.class]">
+        <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
+        <div class="steps">
+            <div ng-repeat="i in [0,0,0].slice(3 - unit.steps) track by $index " class="step"></div>
+        </div>
+        <div class="shadow-mask" ng-class="unit.shadow"></div>
+        <div class="unitSize">@{{ unit.unitSize }}</div>
+
+        <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
+             src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+        <div class="counterWrapper">
+            <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
+                    class="unit-desig">@{{ unit.unitDesig }}</span>
+        </div>
+        <div ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }}
+            <span ng-class="{'white-color':!unit.supplied}">@{{ unit.supplied ? '-':'u' }}</span> @{{ unit.maxMove - unit.moveAmountUsed }}</div>
+    </div>
+@endsection
+
+@section('ng-offmap-unit-template')
+    <div id="@{{unit.id}}"  ng-style="unit.style" class="unit rel-unit"
+         ng-class="[unit.nationality, unit.class]">
+        <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
+        <div class="steps">
+            <div ng-repeat="i in [0,0,0].slice(3 - unit.steps) track by $index " class="step"></div>
+        </div>
+        <div class="shadow-mask" ng-class="unit.shadow"></div>
+        <div class="unitSize">@{{ unit.unitSize }}</div>
+        <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
+             src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+        <div class="counterWrapper">
+            <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
+                    class="unit-desig">@{{ unit.unitDesig }}</span>
+        </div>
+        <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
+    </div>
+@endsection
+
+@section('ng-ghost-unit-template')
+    <div class="steps">
+        <div ng-repeat="i in [0,0,0].slice(3 - unit.steps) track by $index " class="step"></div>
+    </div>
+    <div class="unitSize">@{{ unit.unitSize }}</div>
+    <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
+         src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+    <div class="counterWrapper">
+        <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
+                class="unit-desig">@{{ unit.unitDesig }}</span>
+    </div>
+    <div class="range">@{{ unit.armorClass }}</div>
+    <div class="unit-numbers">@{{ unit.strength }} <span ng-class="{'white-color':!unit.supplied}">@{{ unit.supplied ? '-':'u' }}</span> @{{ unit.pointsLeft }}</div>
+@endsection
+
+
 @section('unitRules.reducedUnits')
     <li>
         The total number of steps a unit has is designated by the number of dots along the left side.
@@ -69,7 +129,7 @@
 @endsection
 
 @section('inner-crt')
-    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(GERMAN_FORCE)])
+    @include('wargame::TMCW.KievCorps.kievCorps-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(GERMAN_FORCE)])
 @endsection
 @section('unitRules.unitColors')
     @include('wargame::TMCW.KievCorps.unitColors')
@@ -88,7 +148,20 @@
 @section('obc')
     @include('wargame::TMCW.obc')
 @endsection
+
 @section('units')
+    <div ng-mouseDown="mouseDown(unit.id, $event)"ng-mouseUp="clickMe(unit.id, $event)"  class="a-unit-wrapper" ng-repeat="unit in mapUnits" ng-style="unit.wrapperstyle">
+        <unit right-click-me="rightClickMe(id)" unit="unit"></unit>
+    </div>
+
+    <div ng-mouseover="hoverThis(unit)" ng-mouseleave="unHoverThis(unit)" ng-click="clickMe(unit.id, $event)"
+         ng-style="unit.style" ng-repeat="unit in moveUnits track by $index" class="unit"
+         ng-class="[unit.nationality, unit.class]">
+        <ghost-unit unit="unit"></ghost-unit>
+    </div>
+@endsection
+
+@section('unitsz')
     @foreach ($units as $unit)
         <div class="unit {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
             <div class="steps">

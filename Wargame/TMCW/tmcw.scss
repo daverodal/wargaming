@@ -92,4 +92,14 @@
   }
 }
 
-
+#crt {
+  .selected {
+    background: rgba(255, 255, 0, .6);
+  }
+  .pinned {
+    background: rgba(255, 0, 255, .6)
+  }
+  .die-roll {
+    background: cyan;
+  }
+}
