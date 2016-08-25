@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Airborne.airborneHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/airborne/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/airborne.css')}}">
 </head>
 
 @section('ng-unit-template')

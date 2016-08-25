@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::SPI.ClashOverCrude.ClashOverCrudeHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/spi/clashovercrude/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/spi/css/clashovercrude.css')}}">
 </head>
 @section('units')
     @foreach($units as $unit)

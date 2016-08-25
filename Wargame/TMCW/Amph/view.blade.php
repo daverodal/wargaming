@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Amph.amph-header')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/amph/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/amph.css')}}">
 </head>
 @extends('wargame::stdIncludes.view')
 

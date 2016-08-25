@@ -24,9 +24,9 @@
 <script type="text/javascript">
     function renderOuterUnit(id, unit){
         if(unit.isReduced){
-            $("#"+id+" .unitSize").html('x');
+            $("#"+id+" .unitSize").html('ll');
         }else{
-            $("#"+id+" .unitSize").html('xx');
+            $("#"+id+" .unitSize").html('lll');
         }
         if(unit.supplied){
             $("#"+id+" .unsupplied").removeClass('show');

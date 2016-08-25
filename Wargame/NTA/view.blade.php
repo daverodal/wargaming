@@ -1,7 +1,7 @@
 @include('wargame::global-header')
 @include('wargame::Mollwitz.header')
 @include('wargame::NTA.header')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/nta/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/css/nta.css')}}">
 </head>
 
 @section('exclusiveRules')

@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::SPI.FinalChapter.finalChapterHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/spi/finalchapter/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/spi/css/finalchapter.css')}}">
 </head>
 
 @section('victoryConditions')

@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::SPI.TinCans.TinCansHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/spi/tincans/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/spi/css/tincans.css')}}">
 </head>
 
 @section('unitRules')

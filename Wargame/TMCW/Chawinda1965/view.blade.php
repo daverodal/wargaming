@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Chawinda1965.chawinda1965Header')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/chawinda1965/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/chawinda1965.css')}}">
 
 
 <style type="text/css">

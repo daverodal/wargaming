@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Kiev.kievHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/kiev/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/kiev.css')}}">
 </head>
 
 @section('inner-crt')

@@ -2,7 +2,7 @@
 
 @include('wargame::global-header')
 @include('wargame::TMCW.KievCorps.kievHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/kievcorps/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/kievcorps.css')}}">
 </head>
 @section('credit')
     @include('wargame::TMCW.KievCorps.credit')

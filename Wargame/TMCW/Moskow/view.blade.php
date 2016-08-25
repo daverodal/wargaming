@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Moskow.moskowHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/moskow/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/moskow.css')}}">
 </head>
 
 @section('unitRules')

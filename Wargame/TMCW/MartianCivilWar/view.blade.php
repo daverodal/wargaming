@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.MartianCivilWar.tmcwHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/martiancivilwar/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/martiancivilwar.css')}}">
 </head>
 
 @section('tec')

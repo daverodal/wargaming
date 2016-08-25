@@ -65,19 +65,19 @@ class WargameServiceProvider extends ServiceProvider
         ], 'troops');
         
         $this->publishes([
-            __DIR__.'/TMCW/Manchuria1976/all.css' => public_path('vendor/wargame/tmcw/manchuria1976/css/all.css'),
-            __DIR__.'/TMCW/Moskow/all.css' => public_path('vendor/wargame/tmcw/moskow/css/all.css'),
-            __DIR__.'/TMCW/RetreatOne/all.css' => public_path('vendor/wargame/tmcw/retreatone/css/all.css'),
-            __DIR__.'/TMCW/MartianCivilWar/all.css' => public_path('vendor/wargame/tmcw/martiancivilwar/css/all.css'),
-            __DIR__.'/TMCW/Chawinda1965/all.css' => public_path('vendor/wargame/tmcw/chawinda1965/css/all.css'),
-            __DIR__.'/TMCW/Amph/all.css' => public_path('vendor/wargame/tmcw/amph/css/all.css'),
-            __DIR__.'/TMCW/Airborne/all.css' => public_path('vendor/wargame/tmcw/airborne/css/all.css'),
-            __DIR__.'/TMCW/Kiev/all.css' => public_path('vendor/wargame/tmcw/kiev/css/all.css'),
-            __DIR__.'/TMCW/KievCorps/all.css' => public_path('vendor/wargame/tmcw/kievcorps/css/all.css'),
-            __DIR__.'/NTA/all.css' => public_path('vendor/wargame/nta/css/all.css'),
-            __DIR__.'/SPI/ClashOverCrude/all.css' => public_path('vendor/wargame/spi/clashovercrude/css/all.css'),
-            __DIR__.'/SPI/FinalChapter/all.css' => public_path('vendor/wargame/spi/finalchapter/css/all.css'),
-            __DIR__.'/SPI/TinCans/all.css' => public_path('vendor/wargame/spi/tincans/css/all.css'),
+            __DIR__.'/TMCW/Manchuria1976/all.css' => public_path('vendor/wargame/tmcw/css/manchuria1976.css'),
+            __DIR__.'/TMCW/Moskow/all.css' => public_path('vendor/wargame/tmcw/css/moskow.css'),
+            __DIR__.'/TMCW/RetreatOne/all.css' => public_path('vendor/wargame/tmcw/css/retreatone.css'),
+            __DIR__.'/TMCW/MartianCivilWar/all.css' => public_path('vendor/wargame/tmcw/css/martiancivilwar.css'),
+            __DIR__.'/TMCW/Chawinda1965/all.css' => public_path('vendor/wargame/tmcw/css/chawinda1965.css'),
+            __DIR__.'/TMCW/Amph/all.css' => public_path('vendor/wargame/tmcw/css/amph.css'),
+            __DIR__.'/TMCW/Airborne/all.css' => public_path('vendor/wargame/tmcw/css/airborne.css'),
+            __DIR__.'/TMCW/Kiev/all.css' => public_path('vendor/wargame/tmcw/css/kiev.css'),
+            __DIR__.'/TMCW/KievCorps/all.css' => public_path('vendor/wargame/tmcw/css/kievcorps.css'),
+            __DIR__.'/NTA/all.css' => public_path('vendor/wargame/css/nta.css'),
+            __DIR__.'/SPI/ClashOverCrude/all.css' => public_path('vendor/wargame/spi/css/clashovercrude.css'),
+            __DIR__.'/SPI/FinalChapter/all.css' => public_path('vendor/wargame/spi/css/finalchapter.css'),
+            __DIR__.'/SPI/TinCans/all.css' => public_path('vendor/wargame/spi/css/tincans.css'),
 
         ], "tmcw-css");
 

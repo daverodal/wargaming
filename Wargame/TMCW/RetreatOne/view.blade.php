@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.RetreatOne.retreatOneHeader')
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/wargame/tmcw/retreatone/css/all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/retreatone.css')}}">
 <style type="text/css">
     <?php
     include_once "Wargame/TMCW/RetreatOne/all.css";
