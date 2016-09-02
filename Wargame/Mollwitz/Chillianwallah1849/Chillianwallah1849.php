@@ -159,7 +159,7 @@ class Chillianwallah1849 extends \Wargame\Mollwitz\IndiaCore
 
             // game data
 
-            $this->gameRules->setMaxTurn(12);
+            $this->gameRules->setMaxTurn(9);
             $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
             $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
             $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */

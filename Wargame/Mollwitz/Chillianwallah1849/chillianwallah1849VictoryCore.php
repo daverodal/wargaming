@@ -71,7 +71,7 @@ class chillianwallah1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
             if (($this->victoryPoints[BRITISH_FORCE] >= $britVic && ($this->victoryPoints[BRITISH_FORCE] - ($this->victoryPoints[SIKH_FORCE]) >= 15))) {
                 $britishWin = true;
             }
-            if (($this->victoryPoints[SIKH_FORCE] >= 50)) {
+            if (($this->victoryPoints[SIKH_FORCE] >= 30)) {
                 $sikhWin = true;
             }
             if ($turn == $gameRules->maxTurn + 1) {

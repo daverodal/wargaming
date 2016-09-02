@@ -255,7 +255,7 @@
         var combatCol = combat.index + 1;
 
         div = div.toFixed(2);
-        var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Finfal Column  = " + $(".col" + combatCol).html() + "</div>"
+        var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + $(".col" + combatCol).html() + "</div>"
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
         return html;
     }
