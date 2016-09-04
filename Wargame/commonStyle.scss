@@ -19,3 +19,13 @@ $fa-font-path:   "/fonts/font-awesome";
 @import "font-awesome";
 @import "universal";
 @import "commonUnits";
+
+#arrow-svg path.range-hex.hovered{
+  stroke: orange;
+  stroke: orange;
+  stroke-opacity:1.0;
+  fill-opacity:.1;
+  &.British{
+    stroke:red;
+  }
+}

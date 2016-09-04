@@ -310,8 +310,9 @@ class LandBattle extends \Wargame\Battle{
         $gameRules->playerStatus = $doc->playerStatus;
         $mapViewer = $playerData;
         $clock = 'love';
+        $wargameId = $doc->_id;
 //        $clock = "The turn is " . $gameRules->turn . ". The Phase is " . $phase_name[$gameRules->phase] . ". The mode is " . $mode_name[$gameRules->mode];
-        $transform =  compact("mapSymbols", "mapViewer", "sentBreadcrumbs", "phaseClicks", "click", "revs", "vp", "flashMessages", "specialHexesVictory", "specialHexes", "specialHexesChanges", "combatRules", 'force', 'seq', 'chats', 'chatsIndex', 'last_seq', 'users', 'games', 'clock', 'mapUnits', 'moveRules', 'gameRules', "victory");
+        $transform =  compact( "wargameId", "mapSymbols", "mapViewer", "sentBreadcrumbs", "phaseClicks", "click", "revs", "vp", "flashMessages", "specialHexesVictory", "specialHexes", "specialHexesChanges", "combatRules", 'force', 'seq', 'chats', 'chatsIndex', 'last_seq', 'users', 'games', 'clock', 'mapUnits', 'moveRules', 'gameRules', "victory");
         $transform = $battle->postTransform($battle, $transform);
         return $transform;
 

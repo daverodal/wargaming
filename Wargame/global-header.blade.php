@@ -950,12 +950,9 @@ You should have received a copy of the GNU General Public License
                 }
             });
             $('.unit:not(.clone)').hover(function (event) {
-
-                $(".unitPath" + this.id).css({opacity: 1.0});
-
+                $(".unitPath" + this.id).addClass('hover');
             }, function (event) {
-                $(".unitPath" + this.id).css({opacity: ''});
-
+                $(".unitPath" + this.id).removeClass('hover');
             });
 
 

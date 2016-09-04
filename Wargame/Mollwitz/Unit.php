@@ -169,6 +169,14 @@ class Unit extends BaseUnit implements \JsonSerializable
         $mapUnit->status = $this->status;
         $mapUnit->range = $this->range;
         $mapUnit->name = $this->name;
+        $mapUnit->nationality = $this->nationality;
+        if($this->class === "hq") {
+            $cmdRange = 4;
+            if ($this->nationality == "Beluchi" || $this->nationality == "Sikh") {
+                $cmdRange = 3;
+            }
+            $mapUnit->cmdRange = $cmdRange;
+        }
         return $mapUnit;
     }
 

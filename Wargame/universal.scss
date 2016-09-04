@@ -958,12 +958,13 @@ fieldset {
 
 svg {
   z-index: 1;
-  display: none;
-  g {
+  g.unit-path {
     opacity: .6;
     fill: $arrowColor;
     stroke: $arrowColor;
-    &:hover, .hover {
+    &:hover, &.hover {
+      fill: #26d5ff;
+      stroke: #26d5ff;
       opacity: 1.0;
     }
   }

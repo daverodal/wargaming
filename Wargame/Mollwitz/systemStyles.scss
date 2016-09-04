@@ -163,3 +163,6 @@
 .specialHexesVP .Anglo.Allied.victory-points{
   @include victoryPoints($angloAlliedWrapperColor);
 }
+#arrow-svg{
+  display:block;
+}

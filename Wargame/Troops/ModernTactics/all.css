@@ -2922,13 +2922,14 @@ fieldset {
       color: transparent; }
 
 svg {
-  z-index: 1;
-  display: none; }
-  svg g {
+  z-index: 1; }
+  svg g.unit-path {
     opacity: .6;
     fill: red;
     stroke: red; }
-    svg g:hover, svg g .hover {
+    svg g.unit-path:hover, svg g.unit-path.hover {
+      fill: #26d5ff;
+      stroke: #26d5ff;
       opacity: 1.0; }
   svg marker#head {
     fill: red; }
@@ -3107,6 +3108,14 @@ You should have received a copy of the GNU General Public License
   -webkit-transform-origin: center;
   width: 30px;
   text-align: center; }
+
+#arrow-svg path.range-hex.hovered {
+  stroke: orange;
+  stroke: orange;
+  stroke-opacity: 1.0;
+  fill-opacity: .1; }
+  #arrow-svg path.range-hex.hovered.British {
+    stroke: red; }
 
 /**
  *

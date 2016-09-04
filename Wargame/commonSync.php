@@ -48,68 +48,21 @@
         path += ' L ' + (2 * b + x) + ' ' + (a + y) + ' L ' + (2 * b + x) + ' ' + (ac + y) + ' L ' + (b + x) + ' ' + (2 * c + y) + ' Z"></path>';
 
         $('#arrow-svg').append(path);
-        $('#arrow-svg').html($('#arrow-svg').html());
+//        $('#arrow-svg').html($('#arrow-svg').html());
     }
 
     function clearHexes() {
-        $('#arrow-svg path').remove();
+        $('#arrow-svg path.range-hex').remove();
     }
 
     var x;
     x = new Sync("<?=url("wargame/fetch/");?>");
 
-    x.register("sentBreadcrumbs", function (breadcrumbs, data) {
 
-        $('svg g').remove();
-        var lastUnit = '';
-        var lastMoves = '';
-        var combatBreadcrumbs = [];
-        for (var unitId in breadcrumbs) {
-            var g = $('svg').append('<g class="unit-path unitPath' + unitId + '">');
-            for (var moves in breadcrumbs[unitId]) {
-                if (breadcrumbs[unitId][moves].type == "move" || breadcrumbs[unitId].fromHex) {
-                    var path = "";
-                    if (breadcrumbs[unitId][moves - 0 + 1]) {
-                        path += "<path stroke-width='15'";
-                    } else {
-                        path += "<path marker-end='url(#head)' stroke-width='15'";
-                    }
-                    if (typeof breadcrumbs[unitId][moves].fromX == "undefined") {
-                        continue;
-                    }
-                    var d = 'M' + breadcrumbs[unitId][moves].fromX + ',' + breadcrumbs[unitId][moves].fromY;
-                    d += ' L' + breadcrumbs[unitId][moves].toX + ',' + breadcrumbs[unitId][moves].toY;
-                    path += ' d="' + d + '"/>';
-                    var circle = '<circle cx="' + breadcrumbs[unitId][moves].toX + '" cy="' + breadcrumbs[unitId][moves].toY + '" r="7"/>';
-                    $('g.unitPath' + unitId).append(path);
-                    $('g.unitPath' + unitId).append(circle);
-                    lastMoves = moves;
-                }
-                if (breadcrumbs[unitId][moves].type == "combatResult") {
-                    var x = breadcrumbs[unitId][moves].hexX - 0;
-                    x -= 8;
-                    var y = breadcrumbs[unitId][moves].hexY - 0;
-                    var circle = '<circle cx="' + breadcrumbs[unitId][moves].hexX + '" cy="' + breadcrumbs[unitId][moves].hexY + '" r="20" stroke-width="5" fill="white"/>';
-                    var text = '<text x="' + x + '" y="' + y + '" font-family="sans-serif" font-size="12px" stroke="black" fill="black">' + breadcrumbs[unitId][moves].result + '</text>';
-                    y += 10;
-                    x += 4;
-                    text += '<text x="' + x + '" y="' + y + '" font-family="sans-serif" font-size="12px" stroke="black" fill="black">' + breadcrumbs[unitId][moves].dieRoll + '</text>';
-                    combatBreadcrumbs.push(circle);
-                    combatBreadcrumbs.push(text);
-                }
-
-
-            }
-
-        }
-        for (var i in combatBreadcrumbs) {
-            $('g.unitPath' + unitId).append(combatBreadcrumbs[i]);
-        }
-
+    function svgRefresh(){
         var svgHtml = $('#svgWrapper').html();
         $('#svgWrapper').html(svgHtml);
-    });
-
+    }
     x.register("mapUnits", function (mapUnits, data) {
         var str;
         var fudge;
@@ -117,6 +70,8 @@
         var beforeDeploy = $("#deployBox").children().size();
         DR.stackModel = {};
         DR.stackModel.ids = {};
+        clearHexes();
+
 
         var phasingForceId = data.gameRules.attackingForceId;
 
@@ -177,6 +132,26 @@
                     zIndex: zIndex
                 });
 
+                if(mapUnits[i].class === "hq") {
+                    var hexSideLen = 32;
+                    var b = hexSideLen * .866;
+                    var unit = mapUnits[i];
+                    var range = mapUnits[i].cmdRange;
+                    unit.id = i;
+                    drawHex(hexSideLen, unit, 'short');
+                    drawHex(b * (range * 2 + 1), unit);
+                    $("#" + i).hover(function () {
+                        var id = $(this).attr('id');
+                        $('#arrow-svg #rangeHex' + id).addClass('hovered');
+                        $('#arrow-svg #rangeHex' + id + 'short').attr('style', 'stroke:red;stroke-opacity:1;');
+                    }, function () {
+                        var id = $(this).attr('id');
+                        $('#arrow-svg #rangeHex' + id).removeClass('hovered');
+                        $('#arrow-svg #rangeHex' + id + 'short').attr('style', '');
+                    });
+                }
+
+
             }
             var img = $("#" + i + " img").attr("src");
 
@@ -220,7 +195,64 @@
             $("#deployWrapper").hide({effect: "blind", direction: "up", complete: fixHeader});
         }
 
+
+        svgRefresh();
     });
+    x.register("sentBreadcrumbs", function (breadcrumbs, data) {
+
+        $('svg g').remove();
+        var lastUnit = '';
+        var lastMoves = '';
+        var combatBreadcrumbs = [];
+        var disp = "none";
+        if(DR.showArrows){
+            disp = "inline";
+        }
+        for (var unitId in breadcrumbs) {
+            var g = $('svg').append('<g style="display:' +disp+ '" class="unit-path unitPath' + unitId + '">');
+            for (var moves in breadcrumbs[unitId]) {
+                if (breadcrumbs[unitId][moves].type == "move" || breadcrumbs[unitId].fromHex) {
+                    var path = "";
+                    if (breadcrumbs[unitId][moves - 0 + 1]) {
+                        path += "<path stroke-width='15'";
+                    } else {
+                        path += "<path marker-end='url(#head)' stroke-width='15'";
+                    }
+                    if (typeof breadcrumbs[unitId][moves].fromX == "undefined") {
+                        continue;
+                    }
+                    var d = 'M' + breadcrumbs[unitId][moves].fromX + ',' + breadcrumbs[unitId][moves].fromY;
+                    d += ' L' + breadcrumbs[unitId][moves].toX + ',' + breadcrumbs[unitId][moves].toY;
+                    path += ' d="' + d + '"/>';
+                    var circle = '<circle cx="' + breadcrumbs[unitId][moves].toX + '" cy="' + breadcrumbs[unitId][moves].toY + '" r="7"/>';
+                    $('g.unitPath' + unitId).append(path);
+                    $('g.unitPath' + unitId).append(circle);
+                    lastMoves = moves;
+                }
+                if (breadcrumbs[unitId][moves].type == "combatResult") {
+                    var x = breadcrumbs[unitId][moves].hexX - 0;
+                    x -= 8;
+                    var y = breadcrumbs[unitId][moves].hexY - 0;
+                    var circle = '<circle cx="' + breadcrumbs[unitId][moves].hexX + '" cy="' + breadcrumbs[unitId][moves].hexY + '" r="20" stroke-width="5" fill="white"/>';
+                    var text = '<text x="' + x + '" y="' + y + '" font-family="sans-serif" font-size="12px" stroke="black" fill="black">' + breadcrumbs[unitId][moves].result + '</text>';
+                    y += 10;
+                    x += 4;
+                    text += '<text x="' + x + '" y="' + y + '" font-family="sans-serif" font-size="12px" stroke="black" fill="black">' + breadcrumbs[unitId][moves].dieRoll + '</text>';
+                    combatBreadcrumbs.push(circle);
+                    combatBreadcrumbs.push(text);
+                }
+
+
+            }
+
+        }
+        for (var i in combatBreadcrumbs) {
+            $('g.unitPath' + unitId).append(combatBreadcrumbs[i]);
+        }
+        svgRefresh();
+
+    });
+
     function renderOuterUnit(id, unit) {
 
     }
@@ -1676,43 +1708,5 @@
 
 
     });
-    function drawHex(hexside, unit, isShort) {
-
-        var decoration = isShort || "";
-        var c = hexside - 0;
-        var a = (c / 2);
-        var b = .866 * c;
-        var ac = a + c;
-        var x = unit.x;
-        var y = unit.y;
-        var id = unit.id + decoration;
-        var nat = DR.players[unit.forceId];
-        var type = nat + '-' + unit.class;
-        var cls = unit.class;
-        var width = 2;
-        var strokeDash = "1,0";
-
-        if (unit.range > 7) {
-            width = 4;
-            strokeDash = "5,5";
-        }
-        if (unit.range > 11) {
-            width = 6;
-            strokeDash = "1,10";
-        }
-
-        x = x - b;
-        y = y - c;
-
-        var path = '<path stroke-dasharray="' + strokeDash + '" class="range-hex ' + nat + ' ' + decoration + ' ' + cls + '" stroke="transparent" id="rangeHex' + id + '" fill="#000" fill-opacity="0" stroke-width="' + width + '" d="M ' + x + ' ' + (ac + y) + ' L ' + x + ' ' + (a + y) + ' L ' + (b + x) + ' ' + y;
-        path += ' L ' + (2 * b + x) + ' ' + (a + y) + ' L ' + (2 * b + x) + ' ' + (ac + y) + ' L ' + (b + x) + ' ' + (2 * c + y) + ' Z"></path>';
-
-        $('#arrow-svg').append(path);
-        $('#arrow-svg').html($('#arrow-svg').html());
-    }
-
-    function clearHexes() {
-        $('#arrow-svg path').remove();
-    }
 
 </script>
