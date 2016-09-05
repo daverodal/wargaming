@@ -134,7 +134,7 @@
 
                 if(mapUnits[i].class === "hq") {
                     DR.hasHq = true;
-                    var hexSideLen = 32.5;
+                    var hexSideLen = 32;
                     var b = hexSideLen * .866;
                     var unit = mapUnits[i];
                     var range = mapUnits[i].cmdRange;
