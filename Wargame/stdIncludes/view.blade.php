@@ -139,6 +139,7 @@
                     <button class="dynamicButton movementButton" id="forceMarchEvent">m</button>
                     <button class="dynamicButton combatButton" id="clearCombatEvent">c</button>
                     <button class="dynamicButton combatButton" id="shiftKey">+</button>
+                    <button class="dynamicButton hexButton" id="showHexes">H</button>
                 @show
 
             </div>

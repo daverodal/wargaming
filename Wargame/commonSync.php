@@ -133,7 +133,8 @@
                 });
 
                 if(mapUnits[i].class === "hq") {
-                    var hexSideLen = 32;
+                    DR.hasHq = true;
+                    var hexSideLen = 32.5;
                     var b = hexSideLen * .866;
                     var unit = mapUnits[i];
                     var range = mapUnits[i].cmdRange;
@@ -197,6 +198,16 @@
 
 
         svgRefresh();
+        if(DR.showHexes){
+            $("#showHexes").addClass('negative');
+        }else{
+            $("#showHexes").removeClass('negative');
+        }
+        if(DR.showHexes){
+            $('.range-hex').addClass('hovering');
+        }else{
+            $('.range-hex').removeClass('hovering');
+        }
     });
     x.register("sentBreadcrumbs", function (breadcrumbs, data) {
 
@@ -647,6 +658,10 @@
         $(".dynamicButton").hide();
         if (gameRules.mode === <?= MOVING_MODE?>) {
             $(".movementButton").show();
+        }
+
+        if(DR.hasHq){
+           $('#showHexes').show();
         }
         if (gameRules.mode === <?= COMBAT_SETUP_MODE?>) {
             $(".combatButton").show();

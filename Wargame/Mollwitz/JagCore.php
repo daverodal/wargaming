@@ -95,18 +95,30 @@ class JagCore extends \Wargame\LandBattle{
         }
         
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){
-            $armyGroup = false;
+            /*
+             * Return false if can stack, true if stacking forbidden.
+             */
+            /*
+             * If entering unit is hq, can stack with one other unit, but no more.
+             */
             if($unit->class == "hq"){
-                return false;
+                return count((array)$mapHex->forces[$forceId]) > 1;
             }
 
+            /*
+             * entering unit not hq, cannot stack with no hq unit.
+             */
             foreach($mapHex->forces[$forceId] as $mKey => $mVal){
                 if($this->force->units[$mKey]->class !== "hq"){
                     return true;
                 }
             }
-            return count((array)$mapHex->forces[$forceId]) >= 1;
+            /*
+             * can stack if hex empty or has just one hq in it.
+             */
+            return count((array)$mapHex->forces[$forceId]) > 1;
         };
+
         static::getPlayerData($this->scenario);
         $crt = new \Wargame\Mollwitz\CombatResultsTable();
         $this->combatRules->injectCrt($crt);

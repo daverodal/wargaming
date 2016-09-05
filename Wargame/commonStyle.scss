@@ -20,12 +20,18 @@ $fa-font-path:   "/fonts/font-awesome";
 @import "universal";
 @import "commonUnits";
 
-#arrow-svg path.range-hex.hovered{
-  stroke: orange;
-  stroke: orange;
-  stroke-opacity:1.0;
-  fill-opacity:.1;
-  &.British{
-    stroke:red;
+#arrow-svg path.range-hex{
+  &.hovered, &.hovering{
+    stroke: orange;
+    stroke: orange;
+    stroke-opacity:1.0;
+    fill-opacity:.15;
+    &.British{
+      stroke:red;
+    }
+    &.hovered.hovering{
+      stroke-width:4;
+      fill-opacity:.3;
+    }
   }
 }

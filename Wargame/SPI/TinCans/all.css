@@ -2931,11 +2931,16 @@ svg {
     fill: red;
     stroke: red; }
     svg g.unit-path:hover, svg g.unit-path.hover {
+      z-index: 3000;
       fill: #26d5ff;
       stroke: #26d5ff;
       opacity: 1.0; }
   svg marker#head {
     fill: red; }
+
+.negative {
+  color: #ECECEC;
+  background: black; }
 
 .ruleComment {
   font-style: italic;
@@ -3112,13 +3117,16 @@ You should have received a copy of the GNU General Public License
   width: 30px;
   text-align: center; }
 
-#arrow-svg path.range-hex.hovered {
+#arrow-svg path.range-hex.hovered, #arrow-svg path.range-hex.hovering {
   stroke: orange;
   stroke: orange;
   stroke-opacity: 1.0;
-  fill-opacity: .1; }
-  #arrow-svg path.range-hex.hovered.British {
+  fill-opacity: .15; }
+  #arrow-svg path.range-hex.hovered.British, #arrow-svg path.range-hex.hovering.British {
     stroke: red; }
+  #arrow-svg path.range-hex.hovered.hovered.hovering, #arrow-svg path.range-hex.hovering.hovered.hovering {
+    stroke-width: 4;
+    fill-opacity: .3; }
 
 /**
  *

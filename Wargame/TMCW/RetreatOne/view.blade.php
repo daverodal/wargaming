@@ -98,6 +98,7 @@
                 });
 
                 if(mapUnits[i].class === "hq") {
+                    DR.showHexes = true;
                     var hexSideLen = 35.2;
                     var b = hexSideLen * .866;
                     var unit = mapUnits[i];

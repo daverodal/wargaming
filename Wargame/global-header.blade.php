@@ -1135,6 +1135,20 @@ You should have received a copy of the GNU General Public License
                 doitKeypress(99);
             });
 
+            $("#showHexes").on('click', function () {
+                DR.showHexes = !DR.showHexes;
+                if(DR.showHexes){
+                    $("#showHexes").addClass('negative');
+                }else{
+                    $("#showHexes").removeClass('negative');
+                }
+                if(DR.showHexes){
+                    $('.range-hex').addClass('hovering');
+                }else{
+                    $('.range-hex').removeClass('hovering');
+                }
+            });
+
             $("#shiftKey").on('click', function () {
                 DR.shiftKey = !DR.shiftKey;
                 $("#shiftKey").toggleClass('swooshy', DR.shiftKey);
