@@ -4434,6 +4434,10 @@ You should have received a copy of the GNU General Public License
 #arrow-svg {
   display: block; }
 
+.cas-row {
+  display: inline-block;
+  width: 150px; }
+
 /*
 Copyright 2012-2015 David Rodal
 

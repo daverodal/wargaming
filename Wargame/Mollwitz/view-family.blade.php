@@ -20,6 +20,16 @@
     @endsection
 @endif
 
+@section('casualty')
+    <div class="dropDown"  id="CASWrapper">
+        <h4 class="WrapperLabel" title='Casualities'>Cas</h4>
+        <div id="TEC" style="display:none;">
+            <div class="close">X</div>
+
+            <div class="cas-container"></div>
+        </div>
+    </div>
+@endsection
 @if(view()->exists("$curPath.tec"))
 @section('tec')
     @include("$curPath.tec")

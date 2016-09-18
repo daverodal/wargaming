@@ -777,6 +777,22 @@
         }
     });
 
+    x.register("victory", function(victory){
+        if(victory.histogram) {
+            $('.cas-container').empty();
+            $('.cas-container').append('<div><div class="cas-row">Turn</div><div class="cas-row">Player 1</div><div class="cas-row">Player 2</div></div>');
+
+            for (var i in victory.histogram) {
+                if (i == 0) {
+                    continue;
+                }
+                var iVal = i - 0;
+                var disp = '<div><div class="cas-row"> ' + iVal + '</div><div class="cas-row">' + victory.histogram[i][1] + '</div><div class="cas-row">' + victory.histogram[i][2] + '</div></div>';
+                $('.cas-container').append(disp);
+            }
+        }
+    });
+
     x.register("vp", function (vp, data) {
 
 

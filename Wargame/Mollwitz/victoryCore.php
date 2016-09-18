@@ -33,6 +33,7 @@ class victoryCore extends \Wargame\VictoryCore
     public $victoryPoints;
     public $movementCache;
     public $headQuarters;
+    public $histogram;
 
     function __construct($data)
     {
@@ -41,10 +42,20 @@ class victoryCore extends \Wargame\VictoryCore
             $this->movementCache = $data->victory->movementCache;
             $this->victoryPoints = $data->victory->victoryPoints;
             $this->headQuarters = $data->victory->headQuarters;
+
+            if(isset($data->victory->histogram)) {
+                $this->histogram = $data->victory->histogram;
+                $turn = $data->gameRules->turn;
+                if (!isset($this->histogram[$turn])) {
+                    $this->histogram[$turn] = [0, 0, 0];
+                }
+            }
         } else {
             $this->victoryPoints = array(0, 0, 0);
             $this->movementCache = new \stdClass();
             $this->headQuarters = [];
+            $this->histogram = [];
+            $this->histogram[0] = [0,0,0];
         }
     }
 
@@ -54,6 +65,7 @@ class victoryCore extends \Wargame\VictoryCore
         $ret->victoryPoints = $this->victoryPoints;
         $ret->movementCache = $this->movementCache;
         $ret->headQuarters = $this->headQuarters;
+        $ret->histogram = $this->histogram;
         return $ret;
     }
 
@@ -66,14 +78,20 @@ class victoryCore extends \Wargame\VictoryCore
     public function scoreKills($unit, $mult = 1){
 
         $force_name = \Wargame\Battle::$forceName;
+        $b = \Wargame\Battle::getBattle();
+        $turn = $b->gameRules->turn;
+
+
 
         if ($unit->forceId == 1) {
             $victorId = 2;
         } else {
             $victorId = 1;
         }
+
         $victorName = $force_name[$victorId];
         $vp = $unit->damage * $mult;
+        $this->histogram[$turn][$victorId] += $vp;
         $this->victoryPoints[$victorId] += $vp;
         $hex = $unit->hexagon;
         $battle = Battle::getBattle();

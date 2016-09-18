@@ -114,6 +114,9 @@
                 @include("wargame::Mollwitz.tec")
             @show
 
+            @section('casualty')
+            @show
+
             @section('outer-units-menu')
             <div class="dropDown" id="unitsWrapper">
                 <h4 class="WrapperLabel" title="Offmap Units">Units</h4>

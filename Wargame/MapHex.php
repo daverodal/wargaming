@@ -85,11 +85,22 @@ class MapHex
         }
     }
 
+    public function getZocNeighbors($unit){
+        $neighbors = $this->neighbors;
+        if(isset($unit->facing)){
+            $neighbors = array_slice(array_merge($neighbors,$neighbors), ($unit->facing + 6 - 1)%6, 3);
+        }
+        return $neighbors;
+    }
+
     public function setUnit($forceId, $unit)
     {
         $id = $unit->id;
         $battle = \Wargame\Battle::getBattle();
         if (!$this->forces) {
+            /*
+             * 5, 0 is observer and up to 4 players :(
+             */
             $this->forces = array(new stdClass(), new stdClass(), new stdClass(), new stdClass(), new stdClass());
         }
         if (!$this->forces[$forceId]) {
@@ -102,10 +113,7 @@ class MapHex
         $unitHex = $unit->hexagon;
 
         if($unit->noZoc !== true) {
-            if(isset($unit->facing)){
-                $neighbors = array_slice(array_merge($neighbors,$neighbors), ($unit->facing + 6 - 1)%6, 3);
-
-            }
+            $neighbors = $this->getZocNeighbors($unit);
 
             foreach ($neighbors as $neighbor) {
                 $hex = $mapData->getHex($neighbor);
