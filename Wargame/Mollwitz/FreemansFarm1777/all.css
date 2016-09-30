@@ -4802,7 +4802,7 @@ You should have received a copy of the GNU General Public License
 .Hessian.pontoon .unit-numbers {
   display: none; }
 
-.Rebel p.forceMarch, .Rebel p.range {
+.Rebel p.forceMarch, .Rebel p.range, .Hessian p.forceMarch, .Hessian p.range {
   color: white; }
 
 .specialHexes.loyalist {

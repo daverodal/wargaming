@@ -24,7 +24,7 @@ You should have received a copy of the GNU General Public License
 @include badge(Loyalist, Ang);
 @include badge(Hessian, Rus);
 
-.Rebel {
+.Rebel, .Hessian {
   p.forceMarch, p.range{
     color:white;
   }
