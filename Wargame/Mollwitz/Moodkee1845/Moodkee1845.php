@@ -31,7 +31,7 @@ $force_name[BRITISH_FORCE] = "British";
 
 class Moodkee1845 extends \Wargame\Mollwitz\IndiaCore
 {
-    public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
+    public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>2, 'SpecialHexD'=>2];
 
     static function playMulti($name, $wargame, $arg = false)
     {
@@ -52,6 +52,8 @@ class Moodkee1845 extends \Wargame\Mollwitz\IndiaCore
         $data->game = $this->game;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
+        $data->specialHexC = $this->specialHexC;
+        $data->specialHexD = $this->specialHexD;
 
         return $data;
     }
@@ -117,6 +119,8 @@ class Moodkee1845 extends \Wargame\Mollwitz\IndiaCore
         if ($data) {
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
+            $this->specialHexC = $data->specialHexC;
+            $this->specialHexD = $data->specialHexD;
         } else {
 
             $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Moodkee1845\\moodkee1845VictoryCore");

@@ -56,9 +56,15 @@ class moodkee1845VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>-20 Sikh vp</span>";
             }
         }
-        if(in_array($mapHexName,$battle->specialHexB)){
-            $vp = 10;
+        if(in_array($mapHexName,$battle->specialHexB) || in_array($mapHexName,$battle->specialHexC) || in_array($mapHexName,$battle->specialHexD)){
+            $vp = 20;
 
+            if(in_array($mapHexName,$battle->specialHexC)){
+                $vp = 10;
+            }
+            if(in_array($mapHexName,$battle->specialHexD)){
+                $vp = 5;
+            }
             if ($forceId == BRITISH_FORCE) {
                 $this->victoryPoints[BRITISH_FORCE]  += $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>+$vp British vp</span>";
