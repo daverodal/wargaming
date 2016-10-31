@@ -33,6 +33,7 @@ class Moodkee1845 extends \Wargame\Mollwitz\IndiaCore
 {
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>2, 'SpecialHexD'=>2];
 
+    public $specialHexD;
     static function playMulti($name, $wargame, $arg = false)
     {
         $deployTwo = $playerOne = "British";
