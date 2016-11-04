@@ -171,7 +171,7 @@ class Unit extends BaseUnit implements \JsonSerializable
         $mapUnit->name = $this->name;
         $mapUnit->nationality = $this->nationality;
         if($this->class === "hq") {
-            $cmdRange = 4;
+            $cmdRange = 3;
             if ($this->nationality == "Beluchi" || $this->nationality == "Sikh") {
                 $cmdRange = 3;
             }

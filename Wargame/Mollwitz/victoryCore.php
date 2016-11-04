@@ -224,7 +224,7 @@ class victoryCore extends \Wargame\VictoryCore
     public function checkCommand($unit){
         $id = $unit->id;
         $b = Battle::getBattle();
-        $cmdRange = 4;
+        $cmdRange = 3;
         if($unit->nationality == "Beluchi" || $unit->nationality == "Sikh"){
             $cmdRange = 3;
         }
