@@ -96,13 +96,16 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
                 }
             } else {
                 $previousOwner = $battle->mapData->specialHexes->$mapHexName;
-                $this->victoryPoints[$previousOwner] -= $vp;
-                if($forceId == EASTERN_FORCE){
-                    $name = 'Eastern';
-                }else{
-                    $name = 'Western';
+                if($previousOwner !== EASTERN_EMPIRE_FORCE && $previousOwner !== WESTERN_EMPIRE_FORCE){
+                    $this->victoryPoints[$previousOwner] -= $vp;
+                    if($forceId == EASTERN_FORCE){
+                        $name = 'Eastern';
+                    }else{
+                        $name = 'Western';
+                    }
+                    $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>-$vp $name</span>";
                 }
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>-$vp $name</span>";
+
             }
         }
     }
