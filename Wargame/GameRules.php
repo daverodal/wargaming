@@ -1007,6 +1007,36 @@ class GameRules
 
     }
 
+    function currentPhase($phase = false){
+        if($phase === false){
+            $phase = $this->phase;
+        }
+        foreach($this->phaseChanges as $phaseChange){
+            if($phaseChange->currentPhase === $phase){
+                return $phaseChange;
+            }
+        }
+        return false;
+    }
+
+    function phaseJump($attackingId, $defendingId, $phase = false, $incTurn = false, $mode= false){
+
+        if($phase){
+            $this->phase = $phase;
+            if($mode){
+                $this->mode = $mode;
+            }else{
+                $this->mode = REPLACING_MODE;
+            }
+        }
+        if($incTurn){
+            $this->incrementTurn();
+        }
+        $this->attackingForceId = $attackingId;
+        $this->defendingForceId = $defendingId;
+        $this->force->setAttackingForceId($attackingId, $defendingId);
+    }
+
     function selectNextPhase($click)
     {
         global $phase_name;
@@ -1022,50 +1052,50 @@ class GameRules
             $battle = Battle::getBattle();
             $victory = $battle->victory;
 
-            for ($i = 0; $i < count($this->phaseChanges); $i++) {
-                if ($this->phaseChanges[$i]->currentPhase == $this->phase) {
-                    $this->phase = $this->phaseChanges[$i]->nextPhase;
+            $currentPhase = $this->currentPhase();
+            if ($currentPhase) {
+                $this->phase = $currentPhase->nextPhase;
 //                    $prevMode = $this->mode;
-                    $this->mode = $this->phaseChanges[$i]->nextMode;
+                $this->mode = $currentPhase->nextMode;
 //                    if($this->gameHasCombatResolutionMode === false && $this->mode == COMBAT_RESOLUTION_MODE && $prevMode == COMBAT_SETUP_MODE){
 //                        $this->combatRules->combatsToResolve = $this->combatRules->combats;
 //                    }
 
-                    $this->replacementsAvail = false;
-                    $this->phaseClicks[] = $click + 1;
-                    $this->phaseClickNames[] = $phase_name[$this->phase];
+                $this->replacementsAvail = false;
+                $this->phaseClicks[] = $click + 1;
+                $this->phaseClickNames[] = $phase_name[$this->phase];
 
-                    if ($this->phaseChanges[$i]->phaseWillIncrementTurn == true) {
-                        $this->incrementTurn();
-                    }
-
-                    if ($this->attackingForceId != $this->phaseChanges[$i]->nextAttackerId) {
-                        $battle = Battle::getBattle();
-                        $players = $battle->players;
-                        $this->playTurnClicks[] = $click + 1;
-                        if ($players[1] != $players[2]) {
-                            Battle::pokePlayer($players[$this->phaseChanges[$i]->nextAttackerId]);
-                        }
-                        $victory->playerTurnChange($this->phaseChanges[$i]->nextAttackerId);
-                    }
-
-                    $this->attackingForceId = $this->phaseChanges[$i]->nextAttackerId;
-                    $this->defendingForceId = $this->phaseChanges[$i]->nextDefenderId;
-
-                    $this->force->setAttackingForceId($this->attackingForceId, $this->defendingForceId);
-
-                    $victory->phaseChange();
-                    $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
-
-                    if ($this->turn > $this->maxTurn) {
-                        $victory->gameEnded();
-                        $this->flashMessages[] = "@gameover";
-                    }
-
-
-                    return true;
+                if ($currentPhase->phaseWillIncrementTurn == true) {
+                    $this->incrementTurn();
                 }
+
+                if ($this->attackingForceId != $currentPhase->nextAttackerId) {
+                    $battle = Battle::getBattle();
+                    $players = $battle->players;
+                    $this->playTurnClicks[] = $click + 1;
+                    if ($players[1] != $players[2]) {
+                        Battle::pokePlayer($players[$currentPhase->nextAttackerId]);
+                    }
+                    $victory->playerTurnChange($currentPhase->nextAttackerId);
+                }
+
+                $this->attackingForceId = $currentPhase->nextAttackerId;
+                $this->defendingForceId = $currentPhase->nextDefenderId;
+
+                $this->force->setAttackingForceId($this->attackingForceId, $this->defendingForceId);
+
+                $victory->phaseChange();
+                $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
+
+                if ($this->turn > $this->maxTurn) {
+                    $victory->gameEnded();
+                    $this->flashMessages[] = "@gameover";
+                }
+
+
+                return true;
             }
+
         }
         return false;
     }

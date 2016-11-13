@@ -32,6 +32,7 @@ class Unit extends BaseUnit implements \JsonSerializable
     public $minStrength;
     public $isReduced;
     public $range;
+    public $cmdRange = false;
 
     public function jsonSerialize()
     {
@@ -118,6 +119,13 @@ class Unit extends BaseUnit implements \JsonSerializable
         $this->nationality = $nationality;
         $this->forceMarch = $forceMarch;
         $this->unitDesig = $unitDesig;
+        if($this->class === "hq") {
+            $cmdRange = 3;
+            if ($this->nationality == "Beluchi" || $this->nationality == "Sikh") {
+                $cmdRange = 3;
+            }
+            $this->cmdRange = $cmdRange;
+        }
     }
 
     function damageUnit($kill = false)
@@ -171,11 +179,7 @@ class Unit extends BaseUnit implements \JsonSerializable
         $mapUnit->name = $this->name;
         $mapUnit->nationality = $this->nationality;
         if($this->class === "hq") {
-            $cmdRange = 3;
-            if ($this->nationality == "Beluchi" || $this->nationality == "Sikh") {
-                $cmdRange = 3;
-            }
-            $mapUnit->cmdRange = $cmdRange;
+            $mapUnit->cmdRange = $this->cmdRange;
         }
         return $mapUnit;
     }
