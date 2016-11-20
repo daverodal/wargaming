@@ -211,7 +211,7 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
                     $attackingForceId = WESTERN_FORCE;
                     $defendingForceId = EASTERN_FORCE;
 
-                    $gameRules->phaseJump($attackingForceId, $defendingForceId, RED_REPLACEMENT_PHASE, true);
+                    $gameRules->phaseJump($attackingForceId, $defendingForceId, RED_REPLACEMENT_PHASE);
                 }else{
                     $attackingForceId = EASTERN_FORCE;
                     $defendingForceId = WESTERN_FORCE;
