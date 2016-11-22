@@ -736,6 +736,100 @@
       }
     }
   },
+  "Gemauerthof1705": {
+    "name": "The battle of Gemauerthof 1705",
+    "path": "Mollwitz",
+    "production": true,
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\Gemauerthof1705\\Gemauerthof1705",
+    "description": "Battle of Fraustadt, 13 February 1706. Swedish vs Saxon and Russian. Great Northern War",
+    "params": {
+      "weakRedoubts": true
+    },
+    "options": [
+      {
+        "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
+        "keyName": "stepReduction",
+        "value": true
+      },
+      {
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
+      }
+    ],
+    "scenarios": {
+      "main": {
+        "description": "Standard Scenario.",
+        "longDescription": "Original",
+        "units": [
+          {
+            "num": 5,
+            "forceId": 1,
+            "combat": 6,
+            "reduced": 3,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Swedish",
+            "class": "infantry"
+          },
+          {
+            "num": 5,
+            "forceId": 1,
+            "combat": 6,
+            "reduced": 3,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Swedish",
+            "class": "cavalry"
+          },
+          {
+            "num": 4,
+            "forceId": 1,
+            "combat": 2,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 2,
+            "nationality": "Swedish",
+            "class": "artillery"
+          },
+          {
+            "num": 2,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 2,
+            "reinforce": "B",
+            "range": 3,
+            "nationality": "Russian",
+            "class": "artillery"
+          },
+          {
+            "num": 4,
+            "forceId": 2,
+            "combat": 3,
+            "movement": 3,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Russian",
+            "class": "infantry"
+          },
+          {
+            "num": 16,
+            "forceId": 2,
+            "combat": 3,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Russian",
+            "class": "cavalry"
+          }
+        ]
+      }
+    }
+  },
+
   "Lesnaya1708": {
     "name": "The battle of Lesnaya 1708",
     "path": "Mollwitz",

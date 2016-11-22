@@ -55,14 +55,14 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
         $battle = Battle::getBattle();
         list($mapHexName, $forceId) = $args;
         $vp = 0;
-        if(in_array($mapHexName, $battle->specialHexA)){
+        if (in_array($mapHexName, $battle->specialHexA)) {
             $vp = 1;
         }
-        if(in_array($mapHexName, $battle->specialHexB)){
+        if (in_array($mapHexName, $battle->specialHexB)) {
             $vp = 2;
         }
-        if(in_array($mapHexName, $battle->specialHexC)){
-            if($forceId === EASTERN_FORCE || $forceId === WESTERN_FORCE) {
+        if (in_array($mapHexName, $battle->specialHexC)) {
+            if ($forceId === EASTERN_FORCE || $forceId === WESTERN_FORCE) {
                 $vp = 10;
                 $units = $battle->force->units;
                 $this->germanySurrenders = true;
@@ -76,33 +76,36 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
             }
         }
 
-        if($vp) {
+        if ($vp) {
             if ($forceId == WESTERN_FORCE || $forceId == EASTERN_FORCE) {
                 $this->victoryPoints[$forceId] += $vp;
-                if($forceId == EASTERN_FORCE){
+                if ($forceId == EASTERN_FORCE) {
                     $class = 'easternVictoryPoints';
                     $name = 'Eastern';
-                }else{
+                } else {
                     $class = 'westernVictoryPoints';
                     $name = "Western";
                 }
-                if($vp < 10){
+                if ($vp < 10) {
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='$class'>+$vp $name</span>";
 
-                }else{
+                } else {
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='$class'>Berlin Falls! +10 vp</span>";
                     $battle->gameRules->flashMessages[] = "Germany Surrenders! Victory in Europe!";
 
                 }
             } else {
                 $previousOwner = $battle->mapData->specialHexes->$mapHexName;
-                $this->victoryPoints[$previousOwner] -= $vp;
-                if($forceId == EASTERN_FORCE){
-                    $name = 'Eastern';
-                }else{
-                    $name = 'Western';
+                if ($previousOwner !== EASTERN_EMPIRE_FORCE && $previousOwner !== WESTERN_EMPIRE_FORCE) {
+                    $this->victoryPoints[$previousOwner] -= $vp;
+                    if ($forceId == EASTERN_FORCE) {
+                        $name = 'Eastern';
+                    } else {
+                        $name = 'Western';
+                    }
+                    $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>-$vp $name</span>";
                 }
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>-$vp $name</span>";
+
             }
         }
     }
@@ -117,18 +120,12 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
         list($mapHexName, $unit) = $args;
 
         if ($unit->forceId == WESTERN_FORCE) {
-                    $mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>West Wall Destroyed</span>";
-                    $mapData->removeMapSymbol($mapHexName, "westwall");
-            }
-
+            $mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>West Wall Destroyed</span>";
+            $mapData->removeMapSymbol($mapHexName, "westwall");
+        }
 
 
     }
-
-
-
-
-
 
 
     public function incrementTurn()
@@ -148,11 +145,23 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
     public function gameEnded()
     {
         $battle = Battle::getBattle();
-        $city = $battle->specialHexA[0];
-        if ($battle->mapData->getSpecialHex($city) === WESTERN_EMPIRE_FORCE) {
-            $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
-        }else{
-            $battle->gameRules->flashMessages[] = "Rebel Player Wins";
+        $berlin = $battle->specialHexC[0];
+        if ($battle->mapData->getSpecialHex($berlin) === WESTERN_EMPIRE_FORCE || $battle->mapData->getSpecialHex($berlin) === EASTERN_EMPIRE_FORCE) {
+            $battle->gameRules->flashMessages[] = "German Player Wins";
+            $this->winner = 0;
+        } else {
+            if($this->victoryPoints[EASTERN_FORCE] > $this->victoryPoints[WESTERN_FORCE]){
+                $battle->gameRules->flashMessages[] = "Soviet Player Wins";
+                $this->winner = EASTERN_FORCE;
+            }
+            if($this->victoryPoints[EASTERN_FORCE] < $this->victoryPoints[WESTERN_FORCE]){
+                $battle->gameRules->flashMessages[] = "Western Allies Player Wins";
+                $this->winner = WESTERN_FORCE;
+            }
+            if($this->victoryPoints[EASTERN_FORCE] == $this->victoryPoints[WESTERN_FORCE]){
+                $battle->gameRules->flashMessages[] = "Tie Game";
+                $this->winner = 0;
+            }
         }
         $this->gameOver = true;
         return true;
@@ -161,7 +170,6 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
     public function phaseChange()
     {
 
-        /* @var $battle MartianCivilWar */
         $battle = Battle::getBattle();
         /* @var $gameRules GameRules */
         $gameRules = $battle->gameRules;
@@ -170,38 +178,48 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
         $force = $battle->force;
 
         if ($gameRules->phase == RED_COMBAT_PHASE || $gameRules->phase == BLUE_COMBAT_PHASE) {
-            $gameRules->flashMessages[] = "@hide deployWrapper";
         } else {
             $gameRules->flashMessages[] = "@hide crt";
-
             /* Restore all un-supplied strengths */
-            $force = $battle->force;
             $this->restoreAllCombatEffects($force);
         }
-        if ($gameRules->mode === REPLACING_MODE) {
-            $gameRules->flashMessages[] = "@show deadpile";
-            $forceId = $gameRules->attackingForceId;
-        }
-        if ($gameRules->mode === MOVING_MODE) {
-            $gameRules->flashMessages[] = "@hide deadpile";
-            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
-                $gameRules->flashMessages[] = "@show deployWrapper";
-                $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
+
+        if ($this->germanySurrenders) {
+            $gameRules = $battle->gameRules;
+            if ($forceId == WESTERN_EMPIRE_FORCE) {
+                $attackingForceId = WESTERN_FORCE;
+                $defendingForceId = EASTERN_FORCE;
+                $gameRules->phaseJump($attackingForceId, $defendingForceId, RED_REPLACEMENT_PHASE);
             }
-        }
-        if($this->germanySurrenders){
-            if($forceId == WESTERN_FORCE){
-                $defenderId = EASTERN_FORCE;
+            elseif ($forceId == EASTERN_EMPIRE_FORCE) {
+                $attackingForceId = EASTERN_FORCE;
+                $defendingForceId = WESTERN_FORCE;
+                $gameRules->phaseJump($attackingForceId, $defendingForceId, BLUE_REPLACEMENT_PHASE, true);
             }
-            if($forceId == EASTERN_FORCE){
-                $defenderId = WESTERN_FORCE;
+            elseif ($forceId == WESTERN_FORCE) {
+                if ($gameRules->mode == COMBAT_SETUP_MODE) {
+                    $attackingForceId = EASTERN_FORCE;
+                    $defendingForceId = WESTERN_FORCE;
+                    $gameRules->phaseJump($attackingForceId, $defendingForceId, BLUE_REPLACEMENT_PHASE, true);
+                }else{
+                    $attackingForceId = WESTERN_FORCE;
+                    $defendingForceId = EASTERN_FORCE;
+                    $gameRules->phaseJump($attackingForceId, $defendingForceId);
+                }
+            } elseif ($forceId == EASTERN_FORCE) {
+                if ($gameRules->mode == COMBAT_SETUP_MODE) {
+                    $attackingForceId = WESTERN_FORCE;
+                    $defendingForceId = EASTERN_FORCE;
+
+                    $gameRules->phaseJump($attackingForceId, $defendingForceId, RED_REPLACEMENT_PHASE);
+                }else{
+                    $attackingForceId = EASTERN_FORCE;
+                    $defendingForceId = WESTERN_FORCE;
+                    $gameRules->phaseJump($attackingForceId, $defendingForceId);
+                }
             }
-            $battle->force->setAttackingForceId($forceId, $defenderId);
-            $gameRules->defendingForceId = $defenderId;
         }
     }
-
-
 
     public function postRecoverUnit($args)
     {
@@ -209,9 +227,9 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
         $unit = $args[0];
 
         $b = Battle::getBattle();
-        if($this->germanySurrenders){
-            if($b->gameRules->mode == COMBAT_SETUP_MODE){
-                if($unit->status === STATUS_READY){
+        if ($this->germanySurrenders) {
+            if ($b->gameRules->mode == COMBAT_SETUP_MODE) {
+                if ($unit->status === STATUS_READY) {
                     $unit->status = STATUS_UNAVAIL_THIS_PHASE;
                 }
             }
@@ -222,46 +240,57 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
     {
         $battle = Battle::getBattle();
         $mode = $battle->gameRules->mode;
-        if($mode === REPLACING_MODE){
+        if ($mode === REPLACING_MODE) {
 
-        $westernReplacements = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2];
-        $sovietReplacements =  [0, 2, 2, 2, 2, 1, 1, 1, 1, 1];
-        $eastGermanReplacements = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-        $westGermanReplacements = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0];
-        $mapData = $battle->mapData;
-        $attackingId = $battle->force->attackingForceId;
-        $specialHexes = $mapData->specialHexes;
-        $gameRules = $battle->gameRules;
-        $turn = $gameRules->turn - 1;
+            $westernReplacements = [0, 2, 2, 2, 2, 2, 2, 2, 2, 2];
+            $sovietReplacements = [0, 2, 2, 2, 2, 1, 1, 1, 1, 1];
+            $eastGermanReplacements = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+            $westGermanReplacements = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0];
+            $mapData = $battle->mapData;
+            $attackingId = $battle->force->attackingForceId;
+            $specialHexes = $mapData->specialHexes;
+            $gameRules = $battle->gameRules;
+            $turn = $gameRules->turn - 1;
 
-        $gameRules->replacementsAvail = 0;
-        if ($attackingId == EASTERN_FORCE) {
-            /* turn changes before soviet turn but after this check here */
-            $gameRules->replacementsAvail = $sovietReplacements[$turn];
-            $units = $this->getSovietReplacements($gameRules->replacementsAvail);
-        }
-        if ($attackingId == WESTERN_EMPIRE_FORCE && !$this->germanySurrenders) {
-            $units = $this->getLowest(WESTERN_EMPIRE_FORCE);
-            $gameRules->replacementsAvail = $westGermanReplacements[$turn];
-        }
+            $gameRules->replacementsAvail = 0;
+            if ($gameRules->turn <= $gameRules->maxTurn) {
+                if ($attackingId == EASTERN_FORCE) {
+                    /* turn changes before soviet turn but after this check here */
+                    $gameRules->replacementsAvail = $sovietReplacements[$turn];
+                    $units = $this->getSovietReplacements($gameRules->replacementsAvail);
+                }
+                if ($attackingId == WESTERN_EMPIRE_FORCE && !$this->germanySurrenders) {
+                    $units = $this->getLowest(WESTERN_EMPIRE_FORCE);
+                    $gameRules->replacementsAvail = $westGermanReplacements[$turn];
+                }
 
-        if($attackingId == WESTERN_FORCE){
-            $gameRules->replacementsAvail = $westernReplacements[$turn];
-        }
+                if ($attackingId == WESTERN_FORCE) {
+                    $gameRules->replacementsAvail = $westernReplacements[$turn];
+                }
 
-        if ($attackingId == EASTERN_EMPIRE_FORCE  && !$this->germanySurrenders) {
-            $units = $this->getLowest(EASTERN_EMPIRE_FORCE);
-            $gameRules->replacementsAvail = $eastGermanReplacements[$turn];
-        }
-
+                if ($attackingId == EASTERN_EMPIRE_FORCE && !$this->germanySurrenders) {
+                    $units = $this->getLowest(EASTERN_EMPIRE_FORCE);
+                    $gameRules->replacementsAvail = $eastGermanReplacements[$turn];
+                }
+            }
+            if($gameRules->replacementsAvail == 0){
+                $gameRules->flashMessages[] = "No replacements available, Skipping to move phase.";
+                $currentPhase = $gameRules->currentPhase();
+                $newPhase = $currentPhase->nextPhase;
+                $newMode = $currentPhase->nextMode;
+                $gameRules->phaseJump($gameRules->attackingForceId, $gameRules->defendingForceId, $newPhase, $currentPhase->phaseWillIncrementTurn, $newMode);
+            }else{
+                $gameRules->flashMessages[] = "@show deadpile";
+            }
 
         }
     }
 
 
-    public function postEliminated($arg){
+    public function postEliminated($arg)
+    {
         $unit = $arg[0];
-        switch($unit->forceId){
+        switch ($unit->forceId) {
             case WESTERN_FORCE:
                 $unit->hexagon->parent .= " #western";
                 break;
@@ -287,40 +316,42 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
 
     public function playerTurnChange($arg)
     {
+        parent::playerTurnChange($arg);
         $battle = Battle::getBattle();
         $force_name = Battle::$forceName;
         $attackingId = $arg[0];
         $gameRules = $battle->gameRules;
-        $gameRules->flashMessages[] = $force_name[$attackingId]." Player Turn";
+        $gameRules->flashMessages[] = $force_name[$attackingId] . " Player Turn";
     }
 
-    private function getLowest($forceId){
+    private function getLowest($forceId)
+    {
         $battle = Battle::getBattle();
         $units = $battle->force->units;
         $lowest = 10;/* bigger than biggest */
         $lowestUnits = [];
         $rejects = [];
-        foreach($units as $unitId => $unit){
-            if($unit->forceId !== $forceId){
+        foreach ($units as $unitId => $unit) {
+            if ($unit->forceId !== $forceId) {
                 continue;
             }
-            if($unit->status === STATUS_CAN_REPLACE){
+            if ($unit->status === STATUS_CAN_REPLACE) {
                 $str = $unit->strength;
-                if($str < $lowest){
+                if ($str < $lowest) {
                     $rejects = array_merge($rejects, $lowestUnits);
                     $lowestUnits = [];
                     $lowestUnits[] = $unitId;
                     $lowest = $str;
                     continue;
                 }
-                if($str === $lowest){
+                if ($str === $lowest) {
                     $lowestUnits[] = $unitId;
                     continue;
                 }
                 $rejects[] = $unitId;
             }
         }
-        foreach($rejects as $unitId){
+        foreach ($rejects as $unitId) {
             $units[$unitId]->status = STATUS_ELIMINATED;
         }
         return $lowestUnits;
@@ -334,20 +365,20 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
         $rejects = [];
         $secondLowest = 10;/* bigger than biggest */
         $secondLowestUnits = [];
-        foreach($units as $unitId => $unit){
-            if($unit->forceId !== EASTERN_FORCE){
+        foreach ($units as $unitId => $unit) {
+            if ($unit->forceId !== EASTERN_FORCE) {
                 continue;
             }
-            if($unit->status === STATUS_CAN_REPLACE){
-                if($unit->nationality === "yugoslavian"){
+            if ($unit->status === STATUS_CAN_REPLACE) {
+                if ($unit->nationality === "yugoslavian") {
                     $rejects[] = $unitId;
                     continue;
                 }
-                if($unit->nationality === "bulgarian" || $unit->nationality === "polish"){
+                if ($unit->nationality === "bulgarian" || $unit->nationality === "polish") {
                     continue;
                 }
                 $str = $unit->strength;
-                if($str < $lowest){
+                if ($str < $lowest) {
                     $rejects = array_merge($rejects, $secondLowestUnits);
                     $secondLowest = $lowest;
                     $secondLowestUnits = $lowestUnits;
@@ -356,11 +387,11 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
                     $lowest = $str;
                     continue;
                 }
-                if($str === $lowest){
+                if ($str === $lowest) {
                     $lowestUnits[] = $unitId;
                     continue;
                 }
-                if($str < $secondLowest){
+                if ($str < $secondLowest) {
                     $rejects = array_merge($rejects, $secondLowestUnits);
                     $secondLowestUnits = [];
                     $secondLowestUnits[] = $unitId;
@@ -370,15 +401,15 @@ class finalChapterVictoryCore extends \Wargame\SPI\victoryCore
                 $rejects[] = $unitId;
             }
         }
-        if(count($lowestUnits) < $numReplacements){
-            if(count($secondLowestUnits) > 0){
+        if (count($lowestUnits) < $numReplacements) {
+            if (count($secondLowestUnits) > 0) {
                 $lowestUnits[] = array_shift($secondLowestUnits);
                 $rejects = array_merge($rejects, $secondLowestUnits);
             }
-        }else{
+        } else {
             $rejects = array_merge($rejects, $secondLowestUnits);
         }
-        foreach($rejects as $unitId){
+        foreach ($rejects as $unitId) {
             $units[$unitId]->status = STATUS_ELIMINATED;
         }
         return $lowestUnits;
