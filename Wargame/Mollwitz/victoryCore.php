@@ -224,29 +224,28 @@ class victoryCore extends \Wargame\VictoryCore
     public function checkCommand($unit){
         $id = $unit->id;
         $b = Battle::getBattle();
+        $unit->removeAdjustment('movement');
 
-        if(($b->gameRules->phase == RED_MOVE_PHASE || $b->gameRules->phase == BLUE_MOVE_PHASE)){
-            foreach($this->headQuarters as $hq){
+        if(($b->gameRules->phase == RED_MOVE_PHASE || $b->gameRules->phase == BLUE_MOVE_PHASE)) {
+            if ($unit->forceId === $b->gameRules->attackingForceId) {
+                foreach ($this->headQuarters as $hq) {
 
-                $cmdRange = $b->force->units[$hq]->cmdRange;
-                if($id == $hq){
-                    return;
+                    $cmdRange = $b->force->units[$hq]->cmdRange;
+                    if ($id == $hq) {
+                        return;
+                    }
+                    $los = new \Wargame\Los();
+
+                    $los->setOrigin($b->force->getUnitHexagon($id));
+                    $los->setEndPoint($b->force->getUnitHexagon($hq));
+                    $range = $los->getRange();
+                    if ($range <= $cmdRange) {
+                        return;
+                    }
                 }
-                $los = new \Wargame\Los();
-
-                $los->setOrigin($b->force->getUnitHexagon($id));
-                $los->setEndPoint($b->force->getUnitHexagon($hq));
-                $range = $los->getRange();
-                echo "id $id hq $hq ra $range cR $cmdRange\n";
-                if($range <= $cmdRange){
-                    $unit->removeAdjustment('movement');
-                    echo " Found it ";
-                    return;
-                }
+                $unit->addAdjustment('movement', 'halfMovement');
+                return;
             }
-            $unit->addAdjustment('movement', 'halfMovement');
-//            $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-            return;
         }
 
     }

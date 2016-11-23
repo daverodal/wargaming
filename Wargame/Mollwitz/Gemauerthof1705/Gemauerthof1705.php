@@ -54,6 +54,7 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
         parent::terrainGen($mapDoc, $terrainDoc);
         $this->terrain->addTerrainFeature("redoubtfront", "redoubtfront", "d", 0, 0, 0, false);
         $this->terrain->addAltTraverseCost('redoubtfront','cavalry',1);
+        $this->terrain->addTerrainFeature("trail", "trail", "r", .68, 0, 0, false);
     }
 
     function save()
@@ -132,14 +133,14 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
             // game data
 
             $this->gameRules->setMaxTurn(10);
-            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
-            $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
-            $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
+            $this->gameRules->setInitialPhaseMode(BLUE_DEPLOY_PHASE, DEPLOY_MODE);
+            $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
+            $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
             $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
 
 
-            $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
-            $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
+            $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, RED_FORCE, BLUE_FORCE, false);
+            $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
             $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
 
 //            $this->gameRules->addPhaseChange(BLUE_REPLACEMENT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);

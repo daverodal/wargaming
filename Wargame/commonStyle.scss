@@ -23,11 +23,13 @@ $fa-font-path:   "/fonts/font-awesome";
 #arrow-svg path.range-hex{
   &.hovered, &.hovering{
     stroke: orange;
-    stroke: orange;
     stroke-opacity:1.0;
     fill-opacity:.15;
     &.British{
       stroke:red;
+    }
+    &.Russian{
+      stroke:green;
     }
     &.hovered.hovering{
       stroke-width:4;
