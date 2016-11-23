@@ -19,10 +19,10 @@ You should have received a copy of the GNU General Public License
    */
 
 define("SWEDISH_FORCE", 1);
-define("RUSSIAN", 2);
+define("RUSSIAN_FORCE", 2);
 
 global $force_name;
-$force_name[RUSSIAN] = "Russian";
+$force_name[RUSSIAN_FORCE] = "Russian";
 $force_name[SWEDISH_FORCE] = "Swedish";
 
 class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
@@ -86,12 +86,12 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
         UnitFactory::$injector = $this->force;
 
         if(isset($scenario->commandControl)){
-            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Swedish", false, "hq",false, 2);
-            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Swedish", false, "hq",false, 2);
-            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Swedish", false, "hq",false, 2);
-            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Russian", false, "hq",false, 2);
-            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Russian", false, "hq",false, 2);
-            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Russian", false, "hq",false, 2);
+            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'A', 1, 1, "Swedish", false, "hq",false, 2);
+            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'A', 1, 1, "Swedish", false, "hq",false, 2);
+            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'A', 1, 1, "Swedish", false, "hq",false, 2);
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
 
         }
         foreach($unitSets as $unitSet) {

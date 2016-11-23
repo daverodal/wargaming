@@ -97,22 +97,6 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
     }
 
 
-    public function postRecoverUnits($args)
-    {
-        $b = Battle::getBattle();
-        $scenario = $b->scenario;
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE) {
-            $b->gameRules->flashMessages[] = "Swedish Movement allowance +1 this turn.";
-        }
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
-            if(!empty($scenario->noMovementFirstTurn)) {
-                $b->gameRules->flashMessages[] = "No Saxon Polish Movement this turn.";
-            }else{
-                $b->gameRules->flashMessages[] = "Saxon Polish Movement halved this turn.";
-
-            }
-        }
-    }
 
     public function postRecoverUnit($args)
     {
@@ -120,27 +104,6 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
         $b = Battle::getBattle();
         $scenario = $b->scenario;
         $id = $unit->id;
-
         parent::postRecoverUnit($args);
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY) {
-            $this->movementCache->$id = $unit->maxMove;
-            $unit->maxMove = $unit->maxMove+1;
-        }
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_COMBAT_PHASE && isset($this->movementCache->$id)) {
-            $unit->maxMove = $this->movementCache->$id;
-            unset($this->movementCache->$id);
-        }
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
-            $this->movementCache->$id = $unit->maxMove;
-            if(!empty($scenario->noMovementFirstTurn)){
-                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-            }else{
-                $unit->maxMove = floor($unit->maxMove/2);
-            }
-        }
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_COMBAT_PHASE && isset($this->movementCache->$id)) {
-            $unit->maxMove = $this->movementCache->$id;
-            unset($this->movementCache->$id);
-        }
     }
 }
