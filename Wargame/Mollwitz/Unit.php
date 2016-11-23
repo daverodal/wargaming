@@ -82,7 +82,7 @@ class Unit extends BaseUnit implements \JsonSerializable
 
 
 
-    function set($unitId, $unitName, $unitForceId, $unitHexagon, $unitImage, $unitMaxStrength, $unitMinStrength, $unitMaxMove, $isReduced, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $range, $nationality = "neutral", $forceMarch, $class, $unitDesig)
+    function set($unitId, $unitName, $unitForceId, $unitHexagon, $unitImage, $unitMaxStrength, $unitMinStrength, $unitMaxMove, $isReduced, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $range, $nationality = "neutral", $forceMarch, $class, $unitDesig, $cmdRadius)
     {
         $this->dirty = true;
         $this->id = $unitId;
@@ -121,6 +121,9 @@ class Unit extends BaseUnit implements \JsonSerializable
         $this->unitDesig = $unitDesig;
         if($this->class === "hq") {
             $cmdRange = 3;
+            if($cmdRadius){
+                $cmdRange = $cmdRadius;
+            }
             if ($this->nationality == "Beluchi" || $this->nationality == "Sikh") {
                 $cmdRange = 3;
             }

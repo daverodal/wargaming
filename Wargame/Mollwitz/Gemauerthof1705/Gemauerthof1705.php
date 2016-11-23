@@ -19,10 +19,10 @@ You should have received a copy of the GNU General Public License
    */
 
 define("SWEDISH_FORCE", 1);
-define("SAXON_POLISH_FORCE", 2);
+define("RUSSIAN", 2);
 
 global $force_name;
-$force_name[SAXON_POLISH_FORCE] = "Saxon Russian";
+$force_name[RUSSIAN] = "Russian";
 $force_name[SWEDISH_FORCE] = "Swedish";
 
 class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
@@ -38,14 +38,14 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
     static function playMulti($name, $wargame, $arg = false)
     {
         $deployTwo = $playerOne = "Swedish";
-        $deployOne = $playerTwo = "Saxon-Russian";
+        $deployOne = $playerTwo = "Russian";
         @include_once "playMulti.php";
     }
 
 
     static function getPlayerData($scenario){
-        return \Wargame\Battle::register(["Observer", "Swedish", "Saxon Russian"],
-                                        ["Observer", "Saxon Russian", "Swedish" ]);
+        return \Wargame\Battle::register(["Observer", "Swedish", "Russian"],
+                                        ["Observer", "Swedish" , "Russian"]);
     }
 
     function terrainGen($mapDoc, $terrainDoc){
@@ -85,12 +85,27 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
 
         UnitFactory::$injector = $this->force;
 
+        if(isset($scenario->commandControl)){
+            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Swedish", false, "hq",false, 2);
+            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Swedish", false, "hq",false, 2);
+            UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Swedish", false, "hq",false, 2);
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Russian", false, "hq",false, 2);
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Russian", false, "hq",false, 2);
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 1, 1, 1, "Russian", false, "hq",false, 2);
+
+        }
         foreach($unitSets as $unitSet) {
             for ($i = 0; $i < $unitSet->num; $i++) {
-                if(isset($scenario->stepReduction) && isset($unitSet->reduced)){
-                    UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->reduced, $unitSet->movement, false, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                $name = isset($unitSet->name) ? $unitSet->name : "infantry-1";
+
+                $cmdRange = false;
+                if(isset($unitSet->cmdRange)){
+                    $cmdRange = $unitSet->cmdRange;
+                }
+                if(isset($unitSet->reduced)){
+                    UnitFactory::create($name, $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->reduced, $unitSet->movement, false, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class,false, $cmdRange);
                 }else{
-                    UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                    UnitFactory::create($name, $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class, false, $cmdRange);
                 }
             }
         }
@@ -116,7 +131,7 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
 
             // game data
 
-            $this->gameRules->setMaxTurn(6);
+            $this->gameRules->setMaxTurn(10);
             $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
             $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
             $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
@@ -136,5 +151,39 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
             $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, true);
 
         }
+
+        $this->moveRules->stacking = function($mapHex, $forceId, $unit){
+            $armyGroup = false;
+            if($unit->class == "hq"){
+                return false;
+            }
+            if($unit->name === "smallartillery"){
+                $nUnits = 0;
+                foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                    if($this->force->units[$mKey]->class == "hq"){
+                        continue;
+                    }
+                    $nUnits++;
+                }
+                return $nUnits >= 2;
+            }
+
+            $nUnits = 0;
+            $smallUnit = false;
+            foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                if($this->force->units[$mKey]->class == "hq"){
+                    continue;
+                }
+                if($this->force->units[$mKey]->name == "smallartillery"){
+                    $smallUnit = true;
+                }
+                $nUnits++;
+            }
+            if($smallUnit){
+                return $nUnits >= 2;
+            }
+            return $nUnits >= 1;
+        };
+
     }
 }

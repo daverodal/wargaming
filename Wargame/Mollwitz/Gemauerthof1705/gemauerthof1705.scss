@@ -18,24 +18,10 @@ You should have received a copy of the GNU General Public License
 //@include player(Swedish, One , $swedishColor, $swedishWrapperColor, $swedishWrapperColor);
 @include player(Saxon, Saxon-Russian, #FD4223, #FD4223);
 @include player(Russian, Three, $russianColor, $russianWrapperColor);
-@include badge(Saxon, Saxon);
-@include headerColor(Saxon-Russian, $saxonColor,$saxonColor );
+@include headerColor(Russian, $saxonColor,$saxonColor );
 @include headerColor(Swedish, $swedishColor, $swedishColor);
-
-.french.specialHexes{
-  background-color: $frenchColor;
-}
-
-
-.anglo {
-  background-color: $angloAlliedColor;
-}
-.french.specialHexes, .anglo.specialHexes{
-  color:white;
-}
-.Swedish, .SaxonPolish {
+.Swedish, .Russian {
   p.forceMarch, p.range{
     color:white;
   }
 }
-@include badge(French, Fre);

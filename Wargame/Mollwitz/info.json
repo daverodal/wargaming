@@ -756,6 +756,11 @@
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName": "fogDeploy",
         "value": false
+      },
+      {
+        "name": "Command Control",
+        "keyName": "commandControl",
+        "value": false
       }
     ],
     "scenarios": {
@@ -793,16 +798,7 @@
             "reinforce": "A",
             "range": 2,
             "nationality": "Swedish",
-            "class": "artillery"
-          },
-          {
-            "num": 2,
-            "forceId": 2,
-            "combat": 4,
-            "movement": 2,
-            "reinforce": "B",
-            "range": 3,
-            "nationality": "Russian",
+            "name": "smallartillery",
             "class": "artillery"
           },
           {
@@ -824,6 +820,15 @@
             "range": 1,
             "nationality": "Russian",
             "class": "cavalry"
+          },{
+            "num": 2,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 2,
+            "reinforce": "B",
+            "range": 3,
+            "nationality": "Russian",
+            "class": "artillery"
           }
         ]
       }

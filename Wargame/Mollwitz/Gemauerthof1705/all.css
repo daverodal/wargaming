@@ -4498,79 +4498,14 @@ You should have received a copy of the GNU General Public License
   color: #4cb800;
   font-style: italic; }
 
-.vintage.Saxon.infantry .counterWrapper .counter {
-  background-image: url("/js/SaxonInfBadge.png");
-  background-size: 19px; }
-.vintage.Saxon.cavalry .counterWrapper .counter {
-  background-image: url("/js/SaxonCavBadge.png");
-  background-size: 19px; }
-.vintage.Saxon.artillery .counterWrapper .counter {
-  background-image: url("/js/SaxonArtBadge.png");
-  background-size: 19px; }
-.vintage.Saxon.horseartillery .counterWrapper .counter {
-  background-image: url("/js/SaxonHorArtBadge.png");
-  background-size: 19px; }
-.vintage.Saxon.hq .counterWrapper .counter {
-  background-color: lightgreen;
-  background-image: url("/js/HQBadge.png");
-  background-size: 19px; }
-.vintage.Saxon.pontoon .counterWrapper {
-  border: none; }
-  .vintage.Saxon.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/SaxonPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.Saxon.pontoon .unit-numbers {
-  display: none; }
-
-.Saxon.infantry .counterWrapper .counter {
-  background-image: url("/js/SaxonInfBadge.png");
-  background-size: 14px; }
-
-.Saxon.cavalry .counterWrapper .counter {
-  background-image: url("/js/SaxonCavBadge.png");
-  background-size: 14px; }
-
-.Saxon.artillery .counterWrapper .counter {
-  background-image: url("/js/SaxonArtBadge.png");
-  background-size: 14px; }
-
-.Saxon.horseartillery .counterWrapper .counter {
-  background-image: url("/js/SaxonHorArtBadge.png");
-  background-size: 14px; }
-
-.Saxon.hq .counterWrapper .counter {
-  background-color: lightgreen;
-  background-image: url("/js/HQBadge.png");
-  background-size: 14px; }
-
-.Saxon.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.Saxon.pontoon .counterWrapper {
-  border: none; }
-  .Saxon.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/SaxonPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.Saxon.pontoon .unit-numbers {
-  display: none; }
-
-.playerSaxon-Russian {
+.playerRussian {
   background: #FD4223;
   border-color: #FD4223 !important; }
 
-.Saxon-RussianFace, .playerSaxon-RussianFace {
+.RussianFace, .playerRussianFace {
   color: #FD4223; }
 
-.Saxon-Russian.combatants {
+.Russian.combatants {
   color: #FD4223;
   font-style: italic; }
 
@@ -4585,81 +4520,7 @@ You should have received a copy of the GNU General Public License
   color: #FECC00;
   font-style: italic; }
 
-.french.specialHexes {
-  background-color: #84b5ff; }
-
-.anglo {
-  background-color: #df5842; }
-
-.french.specialHexes, .anglo.specialHexes {
+.Swedish p.forceMarch, .Swedish p.range, .Russian p.forceMarch, .Russian p.range {
   color: white; }
-
-.Swedish p.forceMarch, .Swedish p.range, .SaxonPolish p.forceMarch, .SaxonPolish p.range {
-  color: white; }
-
-.vintage.French.infantry .counterWrapper .counter {
-  background-image: url("/js/FreInfBadge.png");
-  background-size: 19px; }
-.vintage.French.cavalry .counterWrapper .counter {
-  background-image: url("/js/FreCavBadge.png");
-  background-size: 19px; }
-.vintage.French.artillery .counterWrapper .counter {
-  background-image: url("/js/FreArtBadge.png");
-  background-size: 19px; }
-.vintage.French.horseartillery .counterWrapper .counter {
-  background-image: url("/js/FreHorArtBadge.png");
-  background-size: 19px; }
-.vintage.French.hq .counterWrapper .counter {
-  background-color: lightgreen;
-  background-image: url("/js/HQBadge.png");
-  background-size: 19px; }
-.vintage.French.pontoon .counterWrapper {
-  border: none; }
-  .vintage.French.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/FrePontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.French.pontoon .unit-numbers {
-  display: none; }
-
-.French.infantry .counterWrapper .counter {
-  background-image: url("/js/FreInfBadge.png");
-  background-size: 14px; }
-
-.French.cavalry .counterWrapper .counter {
-  background-image: url("/js/FreCavBadge.png");
-  background-size: 14px; }
-
-.French.artillery .counterWrapper .counter {
-  background-image: url("/js/FreArtBadge.png");
-  background-size: 14px; }
-
-.French.horseartillery .counterWrapper .counter {
-  background-image: url("/js/FreHorArtBadge.png");
-  background-size: 14px; }
-
-.French.hq .counterWrapper .counter {
-  background-color: lightgreen;
-  background-image: url("/js/HQBadge.png");
-  background-size: 14px; }
-
-.French.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.French.pontoon .counterWrapper {
-  border: none; }
-  .French.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/FrePontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.French.pontoon .unit-numbers {
-  display: none; }
 
 /*# sourceMappingURL=all.css.map */

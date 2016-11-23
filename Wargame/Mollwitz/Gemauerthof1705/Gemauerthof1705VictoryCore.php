@@ -38,18 +38,18 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->victoryPoints[SWEDISH_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>+5 Swedish vp</span>";
             }
-            if ($forceId == SAXON_POLISH_FORCE) {
+            if ($forceId == RUSSIAN_FORCE) {
                 $this->victoryPoints[SWEDISH_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>-5 Swedish vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == SAXON_POLISH_FORCE) {
-                $this->victoryPoints[SAXON_POLISH_FORCE] += 5;
+            if ($forceId == RUSSIAN_FORCE) {
+                $this->victoryPoints[RUSSIAN_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>+5 Saxon Polish vp</span>";
             }
             if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[SAXON_POLISH_FORCE] -= 5;
+                $this->victoryPoints[RUSSIAN_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>-5 Saxon Polish vp</span>";
             }
         }
@@ -60,41 +60,34 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
         $gameRules = $battle->gameRules;
         $scenario = $battle->scenario;
         $turn = $gameRules->turn;
-        $swedishWin = $saxonPolishWin = $draw = false;
+        $swedishWin = $russianWin = $draw = false;
 
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
-            $winScore = 25;
-            $highWinScore = 30;
+            $winScore = 24;
+
             if ($this->victoryPoints[SWEDISH_FORCE] >= $winScore) {
-                if ($turn <= 4) {
-                    $swedishWin = true;
-                }
-            }
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $highWinScore) {
                     $swedishWin = true;
             }
-            if ($this->victoryPoints[SAXON_POLISH_FORCE] >= $highWinScore) {
-                $saxonPolishWin = true;
+            if ($this->victoryPoints[RUSSIAN_FORCE] >= $winScore) {
+                $russianWin = true;
             }
 
 
-            if ($swedishWin && !$saxonPolishWin) {
+            if ($swedishWin && !$russianWin) {
                 $this->winner = SWEDISH_FORCE;
                 $gameRules->flashMessages[] = "Swedish Win";
             }
 
-            if ($saxonPolishWin && $swedishWin) {
+            if ($russianWin && $swedishWin) {
                 $this->winner = 0;
                 $msg = "Tie Game";
                 $gameRules->flashMessages[] = $msg;
             }
-            if ($swedishWin || $saxonPolishWin ||  $turn == ($gameRules->maxTurn + 1)) {
-                if(!$swedishWin){
-                    $this->winner = SAXON_POLISH_FORCE;
-                    $msg = "Saxon Russian Win";
-                    $gameRules->flashMessages[] = $msg;
-                }
+            if ($swedishWin || $russianWin ||  $turn == ($gameRules->maxTurn + 1)) {
+                $this->winner = 0;
+                $msg = "Tie Game";
+                $gameRules->flashMessages[] = $msg;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
                 return true;
