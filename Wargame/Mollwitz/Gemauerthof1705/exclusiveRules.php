@@ -35,8 +35,7 @@ You should have received a copy of the GNU General Public License
         <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.</p>
     </li>
     <li><span class="lessBig">Movement</span>
-        <p class="indent">The <?= $forceName[1] ?> units receive a 1 MP bonus on turn 1 only.</p>
-        <p class="indent"> The <?= $forceName[2] ?> Units movement rate are halved on turn 1, normal thereafter.</p>
+
     </li>
     <li><span class="lessBig">Terrain</span>
         <p class="indent">Swamps, Rivers and Ponds: Are all frozen and have no effect on movement or combat.</p>
