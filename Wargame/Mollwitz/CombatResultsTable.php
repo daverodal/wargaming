@@ -299,7 +299,7 @@ class CombatResultsTable
                           $unitStrength -= 1;
                         $combatLog .= "<span class='crtDetailComment'>unit strength -1  for $terrainReason</span>&nbsp;&nbsp;<br>";
                     }else{
-                        if(empty($scenario->weakRedoubts)){
+                        if(empty($scenario->weakRedoubts) || $acrossRiver){
                             $unitStrength /= 2;
                             $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>attack halved&nbsp;&nbsp;<br>$terrainReason</span>&nbsp;&nbsp;<br>";
                         }
