@@ -41,7 +41,6 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
         $turn = $gameRules->turn;
         $swedishWin = $russianWin = $draw = false;
 
-        echo "fun  ".$this->gameOver;
         if (!$this->gameOver) {
             $winScore = 24;
 
