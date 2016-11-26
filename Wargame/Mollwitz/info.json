@@ -578,7 +578,7 @@
     "name": "The battle of Fraustadt 1706",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "Great Northern War",
     "fileName": "\\Wargame\\Mollwitz\\Fraustadt1706\\Fraustadt1706",
     "description": "Battle of Fraustadt, 13 February 1706. Swedish vs Saxon and Russian. Great Northern War",
     "params": {
@@ -740,18 +740,13 @@
     "name": "The battle of Gemauerthof 1705",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "Great Northern War",
     "fileName": "\\Wargame\\Mollwitz\\Gemauerthof1705\\Gemauerthof1705",
     "description": "The Battle of Gemauerthof was a battle in the Great Northern War, fought south of Riga, in present-day Latvia in July 1705. The Swedish forces under Adam Ludwig Lewenhaupt fought a Russian army under Boris Sheremetyev.",
     "params": {
       "weakRedoubts": true
     },
     "options": [
-      {
-        "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
-        "keyName": "stepReduction",
-        "value": true
-      },
       {
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName": "fogDeploy",
@@ -839,7 +834,7 @@
     "name": "The battle of Lesnaya 1708",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "Great Northern War",
     "fileName": "\\Wargame\\Mollwitz\\Lesnaya1708\\Lesnaya1708",
     "description": "Battle of Lesnaya 1708",
     "params": {
@@ -992,7 +987,7 @@
     "name": "The Battle of Klissow 1702",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "Great Northern War",
     "fileName": "\\Wargame\\Mollwitz\\Klissow1702\\Klissow1702",
     "description": "The Battle of Klissow took place on July 8 (Julian calendar) / July 9 (Swedish calendar) / July 19, 1702 (Gregorian calendar) near Kliszów, Poland-Lithuania, during the Great Northern War.",
     "params": {
@@ -1232,7 +1227,7 @@
     "name": "The Battle of Holowczyn 1708",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "Great Northern War",
     "fileName": "\\Wargame\\Mollwitz\\Holowczyn1708\\Holowczyn1708",
     "description": "Holowczyn 1708",
     "params": {
@@ -3334,7 +3329,7 @@
     "name": "The Battle of Gadebusch 1712",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "Great Northern War",
     "fileName": "\\Wargame\\Mollwitz\\Gadebusch1712\\Gadebusch1712",
     "description": "The Battle of Gadebusch 1712 between the Swedish and the Danes . ",
     "options": [
@@ -3963,7 +3958,7 @@
     "name": "The Battle of Helsingborg 1710",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "Great Northern War",
     "fileName": "\\Wargame\\Mollwitz\\Helsingborg1710\\Helsingborg1710",
     "description": "The Battle of Helsingborg 1710 between the Swedish and the Danes . ",
     "options": [

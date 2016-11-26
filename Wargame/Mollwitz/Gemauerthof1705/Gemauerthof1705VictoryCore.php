@@ -27,43 +27,22 @@ use \Wargame\Battle;
 
 class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-
-    public function specialHexChange($args)
+    function __construct($data)
     {
-        $battle = Battle::getBattle();
-
-        list($mapHexName, $forceId) = $args;
-        if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] += 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>+5 Swedish vp</span>";
-            }
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] -= 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>-5 Swedish vp</span>";
-            }
-        }
-        if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE] += 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>+5 Saxon Polish vp</span>";
-            }
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE] -= 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>-5 Saxon Polish vp</span>";
-            }
+        parent::__construct($data);
+        if(!$data){
+            $this->victoryPoints[RUSSIAN_FORCE] = 22;
         }
     }
 
     protected function checkVictory( $battle)
     {
         $gameRules = $battle->gameRules;
-        $scenario = $battle->scenario;
         $turn = $gameRules->turn;
         $swedishWin = $russianWin = $draw = false;
 
+        echo "fun  ".$this->gameOver;
         if (!$this->gameOver) {
-            $specialHexes = $battle->mapData->specialHexes;
             $winScore = 24;
 
             if ($this->victoryPoints[SWEDISH_FORCE] >= $winScore) {
@@ -77,17 +56,30 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
             if ($swedishWin && !$russianWin) {
                 $this->winner = SWEDISH_FORCE;
                 $gameRules->flashMessages[] = "Swedish Win";
+                $gameRules->flashMessages[] = "Game Over";
+                $this->gameOver = true;
+                return true;
+            }
+
+
+            if (!$swedishWin && $russianWin) {
+                $this->winner = RUSSIAN_FORCE;
+                $gameRules->flashMessages[] = "Russian Win";
+                $gameRules->flashMessages[] = "Game Over";
+                $this->gameOver = true;
+                return true;
             }
 
             if ($russianWin && $swedishWin) {
                 $this->winner = 0;
-                $msg = "Tie Game";
-                $gameRules->flashMessages[] = $msg;
+                $gameRules->flashMessages[] = "Tie Game";
+                $gameRules->flashMessages[] = "Game Over";
+                $this->gameOver = true;
+                return true;
             }
-            if ($swedishWin || $russianWin ||  $turn == ($gameRules->maxTurn + 1)) {
+            if ( $turn == ($gameRules->maxTurn + 1)) {
                 $this->winner = 0;
-                $msg = "Tie Game";
-                $gameRules->flashMessages[] = $msg;
+                $gameRules->flashMessages[] = "Tie Game";
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
                 return true;
