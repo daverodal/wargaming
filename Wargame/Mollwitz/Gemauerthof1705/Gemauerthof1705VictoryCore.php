@@ -30,9 +30,6 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
     function __construct($data)
     {
         parent::__construct($data);
-        if(!$data){
-            $this->victoryPoints[RUSSIAN_FORCE] = 22;
-        }
     }
 
     protected function checkVictory( $battle)
