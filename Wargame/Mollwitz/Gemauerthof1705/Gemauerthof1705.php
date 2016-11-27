@@ -90,12 +90,36 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
             UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'A', 1, 1, "Swedish", false, "hq",false, 2);
             UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'A', 1, 1, "Swedish", false, "hq",false, 2);
             UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'A', 1, 1, "Swedish", false, "hq",false, 2);
-            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
-            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
-            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
-
         }
         foreach($unitSets as $unitSet) {
+            if($unitSet->forceId !== SWEDISH_FORCE){
+                continue;
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                $name = isset($unitSet->name) ? $unitSet->name : "infantry-1";
+
+                $cmdRange = false;
+                if(isset($unitSet->cmdRange)){
+                    $cmdRange = $unitSet->cmdRange;
+                }
+                if(isset($unitSet->reduced)){
+                    UnitFactory::create($name, $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->reduced, $unitSet->movement, false, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class,false, $cmdRange);
+                }else{
+                    UnitFactory::create($name, $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class, false, $cmdRange);
+                }
+            }
+        }
+
+        if(isset($scenario->commandControl)){
+
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
+            UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
+        }
+        foreach($unitSets as $unitSet) {
+            if($unitSet->forceId !== RUSSIAN_FORCE){
+                continue;
+            }
             for ($i = 0; $i < $unitSet->num; $i++) {
                 $name = isset($unitSet->name) ? $unitSet->name : "infantry-1";
 
