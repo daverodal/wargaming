@@ -26,6 +26,11 @@ You should have received a copy of the GNU General Public License
 ?>
 
 <ol>
+    @section('inner-units')
+        @parent
+        @include('wargame::Mollwitz.gmw-units')
+    @show
+
     <li><span class="lessBig">Deploy Phase</span>
         <p class="indent">The <?= $deployName[1] ?> player deploys first. The <?= $deployName[2] ?> player deploys
             Second</p>
@@ -33,13 +38,5 @@ You should have received a copy of the GNU General Public License
     </li>
     <li><span class="lessBig">First Player</span>
         <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.</p>
-    </li>
-    <li><span class="lessBig">Movement</span>
-
-    </li>
-    <li><span class="lessBig">Terrain</span>
-        <p class="indent">Swamps, Rivers and Ponds: Are all frozen and have no effect on movement or combat.</p>
-        <p class="indent"> Fortifications: The Fortifications had no impact on the Swedish infantry assault so have no
-            effect on infantry and cost 1 MP for cavalry to cross halving cavalry attacking over them.</p>
     </li>
 </ol>
