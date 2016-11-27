@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 @include headerColor(Russian, $saxonColor,$saxonColor );
 @include headerColor(Swedish, $swedishColor, $swedishColor);
 .Swedish, .Russian {
-  p.forceMarch, p.range{
+  p.forceMarch, p.range, .fa-flag{
     color:white;
   }
 }

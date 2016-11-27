@@ -56,8 +56,16 @@ $vintage-unit-numbers-size:10px;
 }
 
 @mixin badge($nationality, $shortName) {
+  .fa-flag{
+    display:none;
+  }
+  .#{$nationality}.hq .counterWrapper .counter {
+    display:none;
+  }
   .vintage{
-
+    &.#{$nationality}.hq .counterWrapper .fa-flag {
+      font-size:19px;
+    }
     &.#{$nationality}.infantry .counterWrapper .counter {
       background-image: url('/js/#{$shortName}InfBadge.png');
       background-size: $vintage-badge-size;
@@ -75,11 +83,7 @@ $vintage-unit-numbers-size:10px;
       background-image: url('/js/#{$shortName}HorArtBadge.png');
       background-size: $vintage-badge-size;
     }
-    &.#{$nationality}.hq .counterWrapper .counter {
-      background-color:lightgreen;
-      background-image: url('/js/HQBadge.png');
-      background-size: $vintage-badge-size;
-    }
+
     &.#{$nationality}.pontoon {
       .counterWrapper {
         border:none;
@@ -115,10 +119,9 @@ $vintage-unit-numbers-size:10px;
     background-image: url('/js/#{$shortName}HorArtBadge.png');
     background-size: $badge-size;
   }
-  .#{$nationality}.hq .counterWrapper .counter {
-    background-color:lightgreen;
-    background-image: url('/js/HQBadge.png');
-    background-size: $badge-size;
+  .#{$nationality}.hq .counterWrapper .fa-flag {
+    display:block;
+    font-size:14px;
   }
 
   .#{$nationality}.wagon .counterWrapper .counter {

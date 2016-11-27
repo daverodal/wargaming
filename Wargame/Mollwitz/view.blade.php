@@ -6,6 +6,7 @@
         <div class="counterWrapper">
             <div class="guard-unit">GD</div>
             <div class="counter"></div>
+            <div class="fa fa-flag"></div>
         </div>
         <p class="range"><?=$unit['range']?></p>
 
