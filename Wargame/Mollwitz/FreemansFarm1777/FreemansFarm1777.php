@@ -143,7 +143,7 @@ class FreemansFarm1777 extends \Wargame\Mollwitz\JagCore
             if($unit->class == "hq"){
                 return false;
             }
-            if($unit->name === "sharpshooter"){
+            if($unit->name === "smallunit"){
                 $nUnits = 0;
                 foreach($mapHex->forces[$forceId] as $mKey => $mVal){
                     if($this->force->units[$mKey]->class == "hq"){
@@ -160,7 +160,7 @@ class FreemansFarm1777 extends \Wargame\Mollwitz\JagCore
                 if($this->force->units[$mKey]->class == "hq"){
                     continue;
                 }
-                if($this->force->units[$mKey]->name == "sharpshooter"){
+                if($this->force->units[$mKey]->name == "smallunit"){
                     $smallUnit = true;
                 }
                 $nUnits++;

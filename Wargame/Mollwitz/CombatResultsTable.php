@@ -279,7 +279,7 @@ class CombatResultsTable
                 }
                 if(!empty($scenario->americanRevolution)){
                     if ($unit->forceId == LOYALIST_FORCE && $isClear && !$acrossRiver) {
-                        if($unit->name !== "sharpshooter") {
+                        if($unit->name !== "smallunit") {
                             $unitStrength++;
                             $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for attack into clear</span>&nbsp;&nbsp;<br>";
                         }
@@ -433,7 +433,7 @@ class CombatResultsTable
             }
             if(!empty($scenario->americanRevolution)){
                 if ($unit->forceId == LOYALIST_FORCE && $class == "infantry" && $isClear) {
-                    if($unit->name !== "sharpshooter"){
+                    if($unit->name !== "smallunit"){
                         $unitDefense += 1;
                         $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in clear</span><br>";
                     }

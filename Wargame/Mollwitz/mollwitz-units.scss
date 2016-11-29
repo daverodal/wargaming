@@ -3,6 +3,8 @@
   display:none;
 }
 
+
+
 .Guard.unit .guard-unit{
   display:block;
   position:absolute;
@@ -68,6 +70,9 @@
   .counterWrapper{
     border: solid black 1px;
     height: $badge-size;
+    .fa-flag{
+      color:white;
+    }
     div.counter{
       width: $badge-size;
       height: $badge-size;

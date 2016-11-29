@@ -793,7 +793,7 @@
             "reinforce": "A",
             "range": 2,
             "nationality": "Swedish",
-            "name": "smallartillery",
+            "name": "smallunit",
             "class": "artillery"
           },
           {
@@ -1476,7 +1476,7 @@
             "range": 1,
             "nationality": "Rebel",
             "class": "artillery",
-            "name": "sharpshooter"
+            "name": "smallunit"
           },
           {
             "num": 4,
@@ -1497,7 +1497,7 @@
             "range": 1,
             "nationality": "Rebel",
             "class": "artillery",
-            "name": "sharpshooter"
+            "name": "smallunit"
           },
           {
             "num": 3,
@@ -1518,7 +1518,7 @@
             "range": 1,
             "nationality": "Rebel",
             "class": "artillery",
-            "name": "sharpshooter"
+            "name": "smallunit"
           },
           {
             "num": 4,
@@ -1539,7 +1539,7 @@
             "range": 1,
             "nationality": "Rebel",
             "class": "artillery",
-            "name": "sharpshooter"
+            "name": "smallunit"
           },
           {
             "num": 2,
@@ -1560,7 +1560,7 @@
             "range": 1,
             "nationality": "Rebel",
             "class": "artillery",
-            "name": "sharpshooter"
+            "name": "smallunit"
           },
           {
             "num": 2,
@@ -3824,7 +3824,7 @@
         },
         {
           "num": 1,
-          "name": "sharpshooter",
+          "name": "smallunit",
           "forceId": 1,
           "combat": 1,
           "movement": 2,
@@ -3835,7 +3835,7 @@
         },
         {
           "num": 3,
-          "name": "sharpshooter",
+          "name": "smallunit",
           "forceId": 1,
           "combat": 1,
           "movement": 2,
@@ -3876,7 +3876,7 @@
         },
         {
           "num": 1,
-          "name": "sharpshooter",
+          "name": "smallunit",
           "forceId": 1,
           "combat": 1,
           "movement": 4,

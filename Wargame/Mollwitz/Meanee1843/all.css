@@ -3195,6 +3195,8 @@ You should have received a copy of the GNU General Public License
   .unit .counterWrapper {
     border: solid black 1px;
     height: 14px; }
+    .unit .counterWrapper .fa-flag {
+      color: white; }
     .unit .counterWrapper div.counter {
       width: 14px;
       height: 14px;

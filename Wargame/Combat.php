@@ -38,10 +38,30 @@ Class Combat
     public $dayTime = false;
     public $unitDefenseStrength;
 
-    public function __construct()
+    public function __construct($data = false)
     {
-        $this->attackers = new stdClass();
-        $this->defenders = new stdClass();
-        $this->thetas = new stdClass();
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $this->$k = $v;
+            }
+        } else {
+            $this->attackers = new stdClass();
+            $this->defenders = new stdClass();
+            $this->thetas = new stdClass();
+        }
+    }
+
+    public function addAttacker($aId, $dId, $bearing){
+        $this->attackers->$aId = $bearing;
+        $this->defenders->$dId = $bearing;
+        if (empty($this->thetas->$aId)) {
+            $this->thetas->$aId = new stdClass();
+        }
+        $this->thetas->$aId->$dId = $bearing;
+    }
+
+    public function removeAttacker($aId){
+        unset($this->attackers->$aId);
+        unset($this->thetas->$aId);
     }
 }

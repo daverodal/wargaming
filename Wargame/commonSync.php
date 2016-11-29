@@ -132,7 +132,7 @@
                     zIndex: zIndex
                 });
 
-                if(mapUnits[i].class === "hq") {
+                if(mapUnits[i].class === "hq" && data.scenario.commandControl === true) {
                     DR.hasHq = true;
                     var hexSideLen = 32;
                     var b = hexSideLen * .866;

@@ -3195,6 +3195,8 @@ You should have received a copy of the GNU General Public License
   .unit .counterWrapper {
     border: solid black 1px;
     height: 14px; }
+    .unit .counterWrapper .fa-flag {
+      color: white; }
     .unit .counterWrapper div.counter {
       width: 14px;
       height: 14px;
@@ -4857,7 +4859,7 @@ You should have received a copy of the GNU General Public License
 .Hessian.pontoon .unit-numbers {
   display: none; }
 
-.Rebel p.forceMarch, .Rebel p.range, .Hessian p.forceMarch, .Hessian p.range {
+.Rebel p.forceMarch, .Rebel p.range, .Rebel .fa-flag, .Hessian p.forceMarch, .Hessian p.range, .Hessian .fa-flag {
   color: white; }
 
 .specialHexes.loyalist {

@@ -199,11 +199,134 @@ class victoryCore extends \Wargame\VictoryCore
 
         list($unit) = $args;
     }
+
     public function postSetDefender($args){
         $this->calcFromAttackers();
 
     }
 
+    public function preUnsetAttacker($args){
+        list($cd, $id) = $args;
+
+//        $this->combats->$oldCd->removeAttacker($id);
+        $b = Battle::getBattle();
+        $unit = $b->force->units[$id];
+//dd($id);
+//        $b->combatRules->addAttacker($cd, $id, $dId, $bearing);
+        $hexNum = $unit->hexagon->name;
+        $mapHex = $b->mapData->getHex($hexNum);
+        $forces = $mapHex->getForces($unit->forceId);
+        $numForces = count((array)$forces);
+
+
+        if($unit->class === "hq"){
+            /*
+             * hq by itself may not attack
+             */
+            if($numForces == 1){
+                return;
+            }
+            foreach($forces as $force){
+                $aUnit = $b->force->units[$force];
+                if($aUnit->id == $id){
+                    continue;
+                }
+                if($aUnit->name === "smallunit"){
+                    continue;
+                }
+
+                $b->combatRules->removeAttacker($cd, $aUnit->id);
+                return;
+            }
+            return;
+
+        }else{
+            $hexNum = $unit->hexagon->name;
+            $mapHex = $b->mapData->getHex($hexNum);
+            $forces = $mapHex->getForces($unit->forceId);
+            if($unit->name === "smallunit"){
+                return;
+            }
+            foreach($forces as $force){
+                $aUnit = $b->force->units[$force];
+                if($aUnit->id == $id){
+                    continue;
+                }
+
+                if($aUnit->class === "hq"){
+                    /*
+                     * blah, for now, only 1 unit required to attack with hq.
+                     */
+                    $b->combatRules->removeAttacker($cd, $aUnit->id);
+                    return;
+                }
+            }
+        }
+
+    }
+
+    public function preSetAttacker($args){
+        list($cd, $id, $dId, $bearing) = $args;
+        $b = Battle::getBattle();
+        $unit = $b->force->units[$id];
+//dd($id);
+//        $b->combatRules->addAttacker($cd, $id, $dId, $bearing);
+        $hexNum = $unit->hexagon->name;
+        $mapHex = $b->mapData->getHex($hexNum);
+        $forces = $mapHex->getForces($unit->forceId);
+        $numForces = count((array)$forces);
+        if($unit->class === "hq"){
+            /*
+             * hq by itself may not attack
+             */
+            if($numForces == 1){
+                $b->combatRules->removeAttacker($cd, $id);
+                return;
+            }
+            foreach($forces as $force){
+                $aUnit = $b->force->units[$force];
+                if($aUnit->id == $id){
+                    continue;
+                }
+                if($aUnit->name === "smallunit"){
+                    continue;
+                }
+                if($aUnit->class === "hq"){
+                    continue;
+                }
+                /*
+                 * blah, for now, only 1 non hq or smallunit unit required to attack with hq.
+                 */
+                $b->combatRules->addAttacker($cd, $aUnit->id, $dId, $bearing);
+                return;
+            }
+            $b->combatRules->removeAttacker($cd, $id);
+//            $b->combatRules->addAttacker($cd, 20, $dId, $bearing);
+
+//            dd($id);
+//            dd($cd);
+        }else{
+            $hexNum = $unit->hexagon->name;
+            $mapHex = $b->mapData->getHex($hexNum);
+            $forces = $mapHex->getForces($unit->forceId);
+            if($unit->name === "smallunit"){
+                return;
+            }
+            foreach($forces as $force){
+                $aUnit = $b->force->units[$force];
+                if($aUnit->id == $id){
+                    continue;
+                }
+                if($aUnit->class === "hq"){
+                    /*
+                     * blah, for now, only 1 unit required to attack with hq.
+                     */
+                    $b->combatRules->addAttacker($cd, $aUnit->id, $dId, $bearing);
+                    return;
+                }
+            }
+        }
+    }
 
     public function preRecoverUnits(){
         $this->headQuarters = [];

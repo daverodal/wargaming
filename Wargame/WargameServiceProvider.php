@@ -14,6 +14,13 @@ class WargameServiceProvider extends ServiceProvider
         \App\Services\WargameService::$viewBase = "Wargame";
         \App\Services\WargameService::addProvider(__DIR__);
 
+        \App\Services\WargameService::addBattleMap(__DIR__.'/Area/Maps');
+        \App\Services\WargameService::addBattleMap(__DIR__.'/TMCW/Maps');
+        \App\Services\WargameService::addBattleMap(__DIR__.'/Troops/Maps');
+        \App\Services\WargameService::addBattleMap(__DIR__.'/Mollwitz/Maps');
+
+
+
         $this->loadViewsFrom(__DIR__, 'wargame');
 
         $this->publishes([

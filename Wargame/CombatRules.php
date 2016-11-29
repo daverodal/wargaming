@@ -63,7 +63,17 @@ class CombatRules
 
         if ($data) {
             foreach ($data as $k => $v) {
-                $this->$k = $v;
+                if($k === "combats"){
+                    $this->$k = new stdClass();
+                    if(is_object($v)) {
+                        foreach ($v as $kv => $vv) {
+                            $this->$k->$kv = new Combat($vv);
+                        }
+                    }
+                }else{
+                    $this->$k = $v;
+
+                }
             }
         } else {
             /*
@@ -79,6 +89,17 @@ class CombatRules
 
     public function injectCrt($crt){
         $this->crt = $crt;
+    }
+
+    public function removeAttacker($cd, $aId){
+
+        unset($this->attackers->$aId);
+        $this->combats->$cd->removeAttacker($aId);
+    }
+
+    public function addAttacker($cd, $id, $defenderId, $bearing){
+        $this->attackers->$id = $cd;
+        $this->combats->$cd->addAttacker($id, $defenderId, $bearing);
     }
 
     function pinCombat($pinVal)
@@ -137,9 +158,13 @@ class CombatRules
 
         foreach ($this->combats->{$this->currentDefender}->attackers as $attackerId => $attacker) {
             $this->force->undoAttackerSetup($attackerId);
-            unset($this->attackers->$attackerId);
-            unset($this->combats->$cd->attackers->$attackerId);
-            unset($this->combats->$cd->thetas->$attackerId);
+            $victory->preUnsetAttacker($cd, $attackerId);
+            $this->removeAttacker($cd, $attackerId);
+
+//            unset($this->attackers->$attackerId);
+//            $this->combats->$cd->removeAttacker($attackerId);
+//            unset($this->combats->$cd->attackers->$attackerId);
+//            unset($this->combats->$cd->thetas->$attackerId);
             $victory->postUnsetAttacker($this->force->units[$attackerId]);
         }
         $this->combats->$cd->useDetermined = false;
@@ -207,9 +232,12 @@ class CombatRules
                     if ($this->currentDefender !== false) {
                         foreach ($this->combats->{$this->currentDefender}->attackers as $attackerId => $attacker) {
                             $this->force->undoAttackerSetup($attackerId);
-                            unset($this->attackers->$attackerId);
-                            unset($this->combats->$cd->attackers->$attackerId);
-                            unset($this->combats->$cd->thetas->$attackerId);
+                            $victory->preUnsetAttacker($cd, $attackerId);
+                            $this->removeAttacker($cd, $attackerId);
+//                            unset($this->attackers->$attackerId);
+//                            $this->combats->$cd->removeAttacker($attackerId);
+//                            unset($this->combats->$cd->attackers->$attackerId);
+//                            unset($this->combats->$cd->thetas->$attackerId);
                             $victory->postUnsetAttacker($this->units[$attackerId]);
                         }
                         $this->defenders->$id = $this->currentDefender;
@@ -258,9 +286,12 @@ class CombatRules
             if ($this->currentDefender !== false && $this->force->units[$id]->status != STATUS_UNAVAIL_THIS_PHASE) {
                 if (isset($this->combats->$cd->attackers->$id) && $this->combats->$cd->attackers->$id !== false && $this->attackers->$id === $cd) {
                     $this->force->undoAttackerSetup($id);
-                    unset($this->attackers->$id);
-                    unset($this->combats->$cd->attackers->$id);
-                    unset($this->combats->$cd->thetas->$id);
+                    $victory->preUnsetAttacker($cd, $id);
+                    $this->removeAttacker($cd, $id);
+//                    unset($this->attackers->$id);
+//                    $this->combats->$cd->removeAttacker($id);
+//                    unset($this->combats->$cd->attackers->$id);
+//                    unset($this->combats->$cd->thetas->$id);
                     $victory->postUnsetAttacker($this->force->units[$id]);
                     $this->crt->setCombatIndex($cd);
                 } else {
@@ -306,19 +337,25 @@ class CombatRules
                                 if (isset($this->attackers->$id) && $this->attackers->$id !== $cd) {
                                     /* move unit to other attack */
                                     $oldCd = $this->attackers->$id;
-                                    unset($this->combats->$oldCd->attackers->$id);
-                                    unset($this->combats->$oldCd->thetas->$id);
+                                    $victory->preUnsetAttacker($oldCd, $id);
+                                    $this->combats->$oldCd->removeAttacker($id);
+//                                    unset($this->combats->$oldCd->attackers->$id);
+//                                    unset($this->combats->$oldCd->thetas->$id);
                                     $this->crt->setCombatIndex($oldCd);
                                     $this->checkBombardment($oldCd);
 
                                 }
-                                $this->attackers->$id = $cd;
-                                $this->combats->$cd->attackers->$id = $bearing;
-                                $this->combats->$cd->defenders->$defenderId = $bearing;
-                                if (empty($this->combats->$cd->thetas->$id)) {
-                                    $this->combats->$cd->thetas->$id = new stdClass();
-                                }
-                                $this->combats->$cd->thetas->$id->$defenderId = $bearing;
+
+                                $this->addAttacker($cd, $id, $defenderId, $bearing);
+                                $victory->preSetAttacker($cd, $id, $defenderId, $bearing);
+//                                $this->attackers->$id = $cd;
+//                                $this->combats->$cd->addAttacker($id, $defenderId, $bearing);
+//                                $this->combats->$cd->attackers->$id = $bearing;
+//                                $this->combats->$cd->defenders->$defenderId = $bearing;
+//                                if (empty($this->combats->$cd->thetas->$id)) {
+//                                    $this->combats->$cd->thetas->$id = new stdClass();
+//                                }
+//                                $this->combats->$cd->thetas->$id->$defenderId = $bearing;
                                 $victory->postSetDefender($this->force->units[$defenderId]);
                                 $this->crt->setCombatIndex($cd);
                             }

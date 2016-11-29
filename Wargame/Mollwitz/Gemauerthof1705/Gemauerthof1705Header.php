@@ -53,7 +53,7 @@ You should have received a copy of the GNU General Public License
         if(unit.class === "hq"){
             str = "("+str+")";
         }
-        var sep = unit.name === "smallartillery" ? ' s ' : ' - '
+        var sep = unit.name === "smallunit" ? ' s ' : ' - '
 
         var symb = unit.supplied !== false ? sep : " <span class='reduced'>u</span> ";
 //        symb = "-"+unit.defStrength+"-";
