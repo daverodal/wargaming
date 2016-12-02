@@ -54,7 +54,7 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
         parent::terrainGen($mapDoc, $terrainDoc);
         $this->terrain->addTerrainFeature("redoubtfront", "redoubtfront", "d", 0, 0, 0, false);
         $this->terrain->addAltTraverseCost('redoubtfront','cavalry',1);
-        $this->terrain->addTerrainFeature("trail", "trail", "r", .68, 0, 0, false);
+        $this->terrain->addTerrainFeature("trail", "trail", "r", .66, 0, 0, false);
     }
 
     function save()
