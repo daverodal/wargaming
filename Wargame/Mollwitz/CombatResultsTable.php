@@ -349,6 +349,7 @@ class CombatResultsTable
                 $combatLog .= " $unitStrength<br>";
             }
             if ($unit->class == "artillery" || $unit->class == "horseartillery") {
+                $origStrength = $unitStrength;
                 $combatLog .= "$unitStrength ".ucfirst($unit->class);
                 if($isSwamp || $acrossRedoubt || $attackUpHill || $isFrozenSwamp || $attackerIsFrozenSwamp){
                     if($attackUpHill || $isFrozenSwamp || $attackerIsFrozenSwamp){
@@ -369,7 +370,7 @@ class CombatResultsTable
                     $class = 'artillery';
                 }
                 if($unit->nationality != "Beluchi"){
-                    $combinedArms[$class]++;
+                    $combinedArms[$class] += $origStrength;
                 }else{
                     $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>no combined arms bonus for Beluchi</span>&nbsp&nbsp;<br>";
                 }
@@ -471,12 +472,23 @@ class CombatResultsTable
         if ($attackStrength >= $defenseStrength) {
             foreach($combinedArms as $key => $arms){
                 if($arms > 0){
-                    if($combinedLog){
-                        $combinedLog .= " + $key";
-                    }else{
-                        $combinedLog .= "$key";
+                    if($key === "artillery"){
+                        if($arms >= 3){
+                            if ($combinedLog) {
+                                $combinedLog .= " + $key";
+                            } else {
+                                $combinedLog .= "$key";
+                            }
+                            $armsShift++;
+                        }
+                    }else {
+                        if ($combinedLog) {
+                            $combinedLog .= " + $key";
+                        } else {
+                            $combinedLog .= "$key";
+                        }
+                        $armsShift++;
                     }
-                    $armsShift++;
                 }
             }
             $armsShift--;
