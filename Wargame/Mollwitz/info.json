@@ -3038,7 +3038,7 @@
           "forceId": 2,
           "combat": 4,
           "movement": 3,
-          "reinforce": "A",
+          "reinforce": "B",
           "range": 1,
           "nationality": "French",
           "class": "infantry"

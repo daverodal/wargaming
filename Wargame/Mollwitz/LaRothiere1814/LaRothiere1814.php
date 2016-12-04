@@ -78,11 +78,6 @@ class LaRothiere1814 extends \Wargame\Mollwitz\JagCore
     function terrainGen($mapDoc, $terrainDoc){
 
         parent::terrainGen($mapDoc, $terrainDoc);
-        if(!empty($this->scenario->mudMovement)){
-            $this->terrain->addTerrainFeature("clear", "", "c", 2, 0, 0, true);
-            $this->terrain->addTerrainFeature("road", "road", "r", 2, 0, 0, false);
-        }
-
     }
 
     public function init()
