@@ -3170,7 +3170,11 @@ You should have received a copy of the GNU General Public License
   width: 12px;
   right: 0px;
   font-size: 8px;
-  top: 1px; }
+  top: 0px;
+  height: 8px; }
+
+.unit-wrapper {
+  font-family: serif; }
 
 .unitOdds.altColor {
   background: #00ec00; }
@@ -4553,6 +4557,13 @@ You should have received a copy of the GNU General Public License
 .Anglo-Allied.combatants {
   color: #f00;
   font-style: italic; }
+
+.specialHexesVP .anglo-allied {
+  background: transparent;
+  text-shadow: 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00; }
+
+.anglo-allied.specialHexes {
+  background-color: #f00; }
 
 .french.specialHexes {
   background-color: #84b5ff; }

@@ -3174,7 +3174,11 @@ You should have received a copy of the GNU General Public License
   width: 12px;
   right: 0px;
   font-size: 8px;
-  top: 1px; }
+  top: 0px;
+  height: 8px; }
+
+.unit-wrapper {
+  font-family: serif; }
 
 .unitOdds.altColor {
   background: #00ec00; }

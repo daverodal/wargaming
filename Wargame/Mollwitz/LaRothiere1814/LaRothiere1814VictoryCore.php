@@ -42,19 +42,6 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
         $ret->deadGuardInf = $this->deadGuardInf;
         return $ret;
     }
-    public function reduceUnit($args)
-    {
-        $unit = $args[0];
-        $mult = 1;
-        if($unit->nationality == "Guard"){
-            $mult = 1.5;
-            if($unit->class == "infantry" && $unit->maxStrength == 9){
-                $mult = 2.0;
-                $this->deadGuardInf = true;
-            }
-        }
-        $this->scoreKills($unit, $mult);
-    }
 
     public function specialHexChange($args)
     {
@@ -62,26 +49,16 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE]  += 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+5 French vp</span>";
-            }
             if ($forceId == ALLIED_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  -= 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>-5 French vp</span>";
+                $this->victoryPoints[ALLIED_FORCE]  += 10;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>+10 Allied vp</span>";
+            }
+            if ($forceId == FRENCH_FORCE) {
+                $this->victoryPoints[ALLIED_FORCE]  -= 10;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-10 Allied vp</span>";
             }
         }
 
-        if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE]  += 15;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+15 French vp</span>";
-            }
-            if ($forceId == ALLIED_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  -= 15;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>-15 French vp</span>";
-            }
-        }
     }
 
     protected function checkVictory( $battle)

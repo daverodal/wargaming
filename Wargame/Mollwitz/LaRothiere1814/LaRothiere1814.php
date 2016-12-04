@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("FRENCH_FORCE", 1);
+define("FRENCH_FORCE", 2);
 define("ALLIED_FORCE", 1);
 
 global $force_name;

@@ -24,6 +24,15 @@ $vintage-unit-numbers-size:10px;
     color: $faceColor;
     font-style:italic;
   }
+
+  .specialHexesVP .#{to-lower-case($nationality)} {
+    background: transparent;
+    @include victoryPoints($faceColor);
+  }
+
+  .#{to-lower-case($nationality)}.specialHexes{
+    background-color: $faceColor;
+  }
 }
 
 @mixin player($nationality, $player, $color, $counterColor: $color, $faceColor: $color) {

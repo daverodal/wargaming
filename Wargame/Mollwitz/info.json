@@ -826,6 +826,74 @@
             "class": "artillery"
           }
         ]
+      },
+      "bigger": {
+        "description": "Russian Infantry Bigger.",
+        "longDescription": "Russian infantry  4-3's",
+        "units": [
+          {
+            "num": 5,
+            "forceId": 1,
+            "combat": 6,
+            "reduced": 3,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Swedish",
+            "class": "infantry"
+          },
+          {
+            "num": 5,
+            "forceId": 1,
+            "combat": 6,
+            "reduced": 3,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Swedish",
+            "class": "cavalry"
+          },
+          {
+            "num": 4,
+            "forceId": 1,
+            "combat": 2,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 2,
+            "nationality": "Swedish",
+            "name": "smallunit",
+            "class": "artillery"
+          },
+          {
+            "num": 4,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 3,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Russian",
+            "class": "infantry"
+          },
+          {
+            "num": 16,
+            "forceId": 2,
+            "combat": 3,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Russian",
+            "class": "cavalry"
+          },{
+            "num": 2,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 2,
+            "reinforce": "B",
+            "range": 3,
+            "nationality": "Russian",
+            "class": "artillery"
+          }
+        ]
       }
     }
   },

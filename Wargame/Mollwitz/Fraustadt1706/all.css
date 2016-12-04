@@ -3170,7 +3170,11 @@ You should have received a copy of the GNU General Public License
   width: 12px;
   right: 0px;
   font-size: 8px;
-  top: 1px; }
+  top: 0px;
+  height: 8px; }
+
+.unit-wrapper {
+  font-family: serif; }
 
 .unitOdds.altColor {
   background: #00ec00; }
@@ -4622,6 +4626,13 @@ You should have received a copy of the GNU General Public License
   color: #FD4223;
   font-style: italic; }
 
+.specialHexesVP .saxon-russian {
+  background: transparent;
+  text-shadow: 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223; }
+
+.saxon-russian.specialHexes {
+  background-color: #FD4223; }
+
 .playerSwedish {
   background: #FECC00;
   border-color: #FECC00 !important; }
@@ -4632,6 +4643,13 @@ You should have received a copy of the GNU General Public License
 .Swedish.combatants {
   color: #FECC00;
   font-style: italic; }
+
+.specialHexesVP .swedish {
+  background: transparent;
+  text-shadow: 0px 0px 1px #FECC00, 0px 0px 1px #FECC00, 0px 0px 1px #FECC00, 0px 0px 2px #FECC00, 0px 0px 2px #FECC00, 0px 0px 2px #FECC00, 0px 0px 3px #FECC00, 0px 0px 3px #FECC00, 0px 0px 3px #FECC00, 0px 0px 4px #FECC00, 0px 0px 4px #FECC00, 0px 0px 4px #FECC00, 0px 0px 5px #FECC00, 0px 0px 5px #FECC00, 0px 0px 5px #FECC00, 0px 0px 6px #FECC00, 0px 0px 6px #FECC00, 0px 0px 6px #FECC00, 0px 0px 7px #FECC00, 0px 0px 7px #FECC00, 0px 0px 7px #FECC00, 0px 0px 8px #FECC00, 0px 0px 8px #FECC00, 0px 0px 8px #FECC00, 0px 0px 9px #FECC00, 0px 0px 9px #FECC00, 0px 0px 9px #FECC00, 0px 0px 10px #FECC00, 0px 0px 10px #FECC00, 0px 0px 10px #FECC00, 0px 0px 1px #FECC00, 0px 0px 1px #FECC00, 0px 0px 1px #FECC00, 0px 0px 2px #FECC00, 0px 0px 2px #FECC00, 0px 0px 2px #FECC00, 0px 0px 3px #FECC00, 0px 0px 3px #FECC00, 0px 0px 3px #FECC00, 0px 0px 4px #FECC00, 0px 0px 4px #FECC00, 0px 0px 4px #FECC00, 0px 0px 5px #FECC00, 0px 0px 5px #FECC00, 0px 0px 5px #FECC00, 0px 0px 6px #FECC00, 0px 0px 6px #FECC00, 0px 0px 6px #FECC00, 0px 0px 7px #FECC00, 0px 0px 7px #FECC00, 0px 0px 7px #FECC00, 0px 0px 8px #FECC00, 0px 0px 8px #FECC00, 0px 0px 8px #FECC00, 0px 0px 9px #FECC00, 0px 0px 9px #FECC00, 0px 0px 9px #FECC00, 0px 0px 10px #FECC00, 0px 0px 10px #FECC00, 0px 0px 10px #FECC00; }
+
+.swedish.specialHexes {
+  background-color: #FECC00; }
 
 .french.specialHexes {
   background-color: #84b5ff; }

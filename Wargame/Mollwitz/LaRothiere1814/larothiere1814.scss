@@ -18,12 +18,13 @@ You should have received a copy of the GNU General Public License
 $prussianNapColor: #003AF3;
 $bavarianWrapperColor: #4287FA;
 $bavarianColor: #FD0013;
+$frenchColor: #0003b4;
 
 @include headerColor(French,$frenchNapoleonColor, $frenchNapoleonColor );
 @include headerColor(Allied,$angloAlliedColor, $angloAlliedWrapperColor );
 
-@include unitColor(Guard, #0003b4, French);
-@include unitColor(French, #0003b4, French);
+@include unitColor(Guard, $frenchColor, French);
+@include unitColor(French, $frenchColor, French);
 @include unitColor(Russian, $russianWrapperColor, Rus);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
 @include unitColor(German, $prussianNapColor, Prussian);
@@ -34,17 +35,23 @@ $bavarianColor: #FD0013;
 @include badge(Bavarian, Bavarian);
 @include badge(German, PruNap);
 
-.french.specialHexes{
-  background-color: $frenchNapoleonColor;
-}
+//.french.specialHexes{
+//  background-color: $frenchNapoleonColor;
+//}
 
-.anglo {
-  background-color: $angloAlliedColor;
-}
-.french.specialHexes, .anglo.specialHexes{
+//.specialHexesVP .allied {
+//  background: transparent;
+//  @include victoryPoints($austrianColor);
+//}
+
+//.allied.specialHexes {
+//  background-color: $angloAlliedColor;
+//}
+
+.french.specialHexes, .allied.specialHexes{
   color:white;
 }
-.French, .AngloAllied, .Guard {
+.French, .German, .Guard, .Russian {
   p.forceMarch, p.range{
     color:white;
   }

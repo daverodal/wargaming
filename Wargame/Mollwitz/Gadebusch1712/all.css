@@ -3170,7 +3170,11 @@ You should have received a copy of the GNU General Public License
   width: 12px;
   right: 0px;
   font-size: 8px;
-  top: 1px; }
+  top: 0px;
+  height: 8px; }
+
+.unit-wrapper {
+  font-family: serif; }
 
 .unitOdds.altColor {
   background: #00ec00; }
@@ -4621,6 +4625,13 @@ You should have received a copy of the GNU General Public License
 .Danes.combatants {
   color: #ff3f1f;
   font-style: italic; }
+
+.specialHexesVP .danes {
+  background: transparent;
+  text-shadow: 0px 0px 1px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 10px #ff3f1f; }
+
+.danes.specialHexes {
+  background-color: #ff3f1f; }
 
 .swedes.specialHexes {
   background-color: #006AA7;

@@ -3170,7 +3170,11 @@ You should have received a copy of the GNU General Public License
   width: 12px;
   right: 0px;
   font-size: 8px;
-  top: 1px; }
+  top: 0px;
+  height: 8px; }
+
+.unit-wrapper {
+  font-family: serif; }
 
 .unitOdds.altColor {
   background: #00ec00; }
@@ -4510,6 +4514,13 @@ You should have received a copy of the GNU General Public License
   color: #84b5ff;
   font-style: italic; }
 
+.specialHexesVP .french {
+  background: transparent;
+  text-shadow: 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff; }
+
+.french.specialHexes {
+  background-color: #84b5ff; }
+
 .playerAllied {
   background: #df5842;
   border-color: #df5842 !important; }
@@ -4520,6 +4531,13 @@ You should have received a copy of the GNU General Public License
 .Allied.combatants {
   color: #f00;
   font-style: italic; }
+
+.specialHexesVP .allied {
+  background: transparent;
+  text-shadow: 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00; }
+
+.allied.specialHexes {
+  background-color: #f00; }
 
 .Guard .counterWrapper {
   background-color: #0003b4; }
@@ -5216,16 +5234,10 @@ You should have received a copy of the GNU General Public License
 .German.pontoon .unit-numbers {
   display: none; }
 
-.french.specialHexes {
-  background-color: #84b5ff; }
-
-.anglo {
-  background-color: #df5842; }
-
-.french.specialHexes, .anglo.specialHexes {
+.french.specialHexes, .allied.specialHexes {
   color: white; }
 
-.French p.forceMarch, .French p.range, .AngloAllied p.forceMarch, .AngloAllied p.range, .Guard p.forceMarch, .Guard p.range {
+.French p.forceMarch, .French p.range, .German p.forceMarch, .German p.range, .Guard p.forceMarch, .Guard p.range, .Russian p.forceMarch, .Russian p.range {
   color: white; }
 
 .French.unit .unit-numbers, .Guard.unit .unit-numbers {

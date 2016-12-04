@@ -3170,7 +3170,11 @@ You should have received a copy of the GNU General Public License
   width: 12px;
   right: 0px;
   font-size: 8px;
-  top: 1px; }
+  top: 0px;
+  height: 8px; }
+
+.unit-wrapper {
+  font-family: serif; }
 
 .unitOdds.altColor {
   background: #00ec00; }
@@ -4510,6 +4514,13 @@ You should have received a copy of the GNU General Public License
   color: #4cb800;
   font-style: italic; }
 
+.specialHexesVP .russian {
+  background: transparent;
+  text-shadow: 0px 0px 1px #4cb800, 0px 0px 1px #4cb800, 0px 0px 1px #4cb800, 0px 0px 2px #4cb800, 0px 0px 2px #4cb800, 0px 0px 2px #4cb800, 0px 0px 3px #4cb800, 0px 0px 3px #4cb800, 0px 0px 3px #4cb800, 0px 0px 4px #4cb800, 0px 0px 4px #4cb800, 0px 0px 4px #4cb800, 0px 0px 5px #4cb800, 0px 0px 5px #4cb800, 0px 0px 5px #4cb800, 0px 0px 6px #4cb800, 0px 0px 6px #4cb800, 0px 0px 6px #4cb800, 0px 0px 7px #4cb800, 0px 0px 7px #4cb800, 0px 0px 7px #4cb800, 0px 0px 8px #4cb800, 0px 0px 8px #4cb800, 0px 0px 8px #4cb800, 0px 0px 9px #4cb800, 0px 0px 9px #4cb800, 0px 0px 9px #4cb800, 0px 0px 10px #4cb800, 0px 0px 10px #4cb800, 0px 0px 10px #4cb800, 0px 0px 1px #4cb800, 0px 0px 1px #4cb800, 0px 0px 1px #4cb800, 0px 0px 2px #4cb800, 0px 0px 2px #4cb800, 0px 0px 2px #4cb800, 0px 0px 3px #4cb800, 0px 0px 3px #4cb800, 0px 0px 3px #4cb800, 0px 0px 4px #4cb800, 0px 0px 4px #4cb800, 0px 0px 4px #4cb800, 0px 0px 5px #4cb800, 0px 0px 5px #4cb800, 0px 0px 5px #4cb800, 0px 0px 6px #4cb800, 0px 0px 6px #4cb800, 0px 0px 6px #4cb800, 0px 0px 7px #4cb800, 0px 0px 7px #4cb800, 0px 0px 7px #4cb800, 0px 0px 8px #4cb800, 0px 0px 8px #4cb800, 0px 0px 8px #4cb800, 0px 0px 9px #4cb800, 0px 0px 9px #4cb800, 0px 0px 9px #4cb800, 0px 0px 10px #4cb800, 0px 0px 10px #4cb800, 0px 0px 10px #4cb800; }
+
+.russian.specialHexes {
+  background-color: #4cb800; }
+
 .playerSwedish {
   background: #FECC00;
   border-color: #FECC00 !important; }
@@ -4520,6 +4531,13 @@ You should have received a copy of the GNU General Public License
 .Swedish.combatants {
   color: #0494e7;
   font-style: italic; }
+
+.specialHexesVP .swedish {
+  background: transparent;
+  text-shadow: 0px 0px 1px #0494e7, 0px 0px 1px #0494e7, 0px 0px 1px #0494e7, 0px 0px 2px #0494e7, 0px 0px 2px #0494e7, 0px 0px 2px #0494e7, 0px 0px 3px #0494e7, 0px 0px 3px #0494e7, 0px 0px 3px #0494e7, 0px 0px 4px #0494e7, 0px 0px 4px #0494e7, 0px 0px 4px #0494e7, 0px 0px 5px #0494e7, 0px 0px 5px #0494e7, 0px 0px 5px #0494e7, 0px 0px 6px #0494e7, 0px 0px 6px #0494e7, 0px 0px 6px #0494e7, 0px 0px 7px #0494e7, 0px 0px 7px #0494e7, 0px 0px 7px #0494e7, 0px 0px 8px #0494e7, 0px 0px 8px #0494e7, 0px 0px 8px #0494e7, 0px 0px 9px #0494e7, 0px 0px 9px #0494e7, 0px 0px 9px #0494e7, 0px 0px 10px #0494e7, 0px 0px 10px #0494e7, 0px 0px 10px #0494e7, 0px 0px 1px #0494e7, 0px 0px 1px #0494e7, 0px 0px 1px #0494e7, 0px 0px 2px #0494e7, 0px 0px 2px #0494e7, 0px 0px 2px #0494e7, 0px 0px 3px #0494e7, 0px 0px 3px #0494e7, 0px 0px 3px #0494e7, 0px 0px 4px #0494e7, 0px 0px 4px #0494e7, 0px 0px 4px #0494e7, 0px 0px 5px #0494e7, 0px 0px 5px #0494e7, 0px 0px 5px #0494e7, 0px 0px 6px #0494e7, 0px 0px 6px #0494e7, 0px 0px 6px #0494e7, 0px 0px 7px #0494e7, 0px 0px 7px #0494e7, 0px 0px 7px #0494e7, 0px 0px 8px #0494e7, 0px 0px 8px #0494e7, 0px 0px 8px #0494e7, 0px 0px 9px #0494e7, 0px 0px 9px #0494e7, 0px 0px 9px #0494e7, 0px 0px 10px #0494e7, 0px 0px 10px #0494e7, 0px 0px 10px #0494e7; }
+
+.swedish.specialHexes {
+  background-color: #0494e7; }
 
 .Swedish p.forceMarch, .Swedish p.range, .Russian p.forceMarch, .Russian p.range {
   color: white; }
