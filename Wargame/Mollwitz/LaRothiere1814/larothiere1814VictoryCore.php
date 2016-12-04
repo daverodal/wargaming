@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 
-class golymin1806VictoryCore extends \Wargame\Mollwitz\victoryCore
+class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
     public $deadGuardInf;
     function __construct($data)

@@ -112,7 +112,7 @@ class LaRothiere1814 extends \Wargame\Mollwitz\JagCore
                 $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
         } else {
-            $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\LaRothiere1814\golymin1806VictoryCore');
+            $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\LaRothiere1814\LaRothiere1814VictoryCore');
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;
