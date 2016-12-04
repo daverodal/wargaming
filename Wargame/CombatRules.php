@@ -92,14 +92,25 @@ class CombatRules
     }
 
     public function removeAttacker($cd, $aId){
+        $this->force->undoAttackerSetup($aId);
 
         unset($this->attackers->$aId);
         $this->combats->$cd->removeAttacker($aId);
     }
 
     public function addAttacker($cd, $id, $defenderId, $bearing){
-        $this->attackers->$id = $cd;
-        $this->combats->$cd->addAttacker($id, $defenderId, $bearing);
+        $los = new Los();
+
+        $unit = $this->force->units[$id];
+        $los->setOrigin($this->force->getUnitHexagon($id));
+        $los->setEndPoint($this->force->getUnitHexagon($defenderId));
+        $range = $los->getRange();
+        $bearing = $los->getBearing();
+        if ($range <= $unit->getRange($id)) {
+            $this->force->setupAttacker($id, $range);
+            $this->attackers->$id = $cd;
+            $this->combats->$cd->addAttacker($id, $defenderId, $bearing);
+        }
     }
 
     function pinCombat($pinVal)

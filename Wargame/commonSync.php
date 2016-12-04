@@ -1130,7 +1130,6 @@
         var toResolveLog = "";
         $('.unit .unitOdds').remove();
 
-
         if (combatRules) {
             cD = combatRules.currentDefender;
             if (combatRules.combats && Object.keys(combatRules.combats).length > 0) {
@@ -1228,9 +1227,7 @@
 
                         var atk = combatRules.combats[i].attackStrength;
                         var atkDisp = atk;
-                        if (combatRules.storm) {
-                            atkDisp = atk * 2 + " halved for storm = " + atk;
-                        }
+
                         var def = combatRules.combats[i].defenseStrength;
                         var ter = combatRules.combats[i].terrainCombatEffect;
                         var idx = combatRules.combats[i].index + 1;
@@ -1254,6 +1251,7 @@
                         }
                         if (combatRules.combats[i].pinCRT !== false) {
                             currentCombatCol = combatRules.combats[i].pinCRT + 1;
+                            currentOddsDisp = $(".col" + currentCombatCol).html();
                             useAltColor = " pinnedColor";
                         }
                         $("#" + i).attr('title', currentOddsDisp).prepend('<div class="unitOdds' + useAltColor + '">' + currentOddsDisp + '</div>');
@@ -1443,10 +1441,7 @@
                     if (combatRules.resolvedCombats[i].index !== null) {
                         atk = combatRules.resolvedCombats[i].attackStrength;
                         atkDisp = atk;
-                        ;
-                        if (combatRules.storm) {
-                            atkDisp = atk * 2 + " halved for storm " + atk;
-                        }
+
                         def = combatRules.resolvedCombats[i].defenseStrength;
                         ter = combatRules.resolvedCombats[i].terrainCombatEffect;
                         idx = combatRules.resolvedCombats[i].index + 1;
@@ -1571,9 +1566,7 @@
 
                         var atk = combatRules.combats[i].attackStrength;
                         var atkDisp = atk;
-                        if (combatRules.storm) {
-                            atkDisp = atk * 2 + " halved for storm = " + atk;
-                        }
+
                         var def = combatRules.combats[i].defenseStrength;
                         var ter = combatRules.combats[i].terrainCombatEffect;
                         var idx = combatRules.combats[i].index + 1;
@@ -1678,10 +1671,7 @@
 
                         var atk = combatRules.combatsToResolve[i].attackStrength;
                         var atkDisp = atk;
-                        ;
-                        if (combatRules.storm) {
-                            atkDisp = atk * 2 + " halved for storm " + atk;
-                        }
+
                         var def = combatRules.combatsToResolve[i].defenseStrength;
                         var ter = combatRules.combatsToResolve[i].terrainCombatEffect;
                         var idx = combatRules.combatsToResolve[i].index + 1;
@@ -1706,10 +1696,7 @@
                     if (combatRules.resolvedCombats[i].index !== null) {
                         atk = combatRules.resolvedCombats[i].attackStrength;
                         atkDisp = atk;
-                        ;
-                        if (combatRules.storm) {
-                            atkDisp = atk * 2 + " halved for storm " + atk;
-                        }
+
                         def = combatRules.resolvedCombats[i].defenseStrength;
                         ter = combatRules.resolvedCombats[i].terrainCombatEffect;
                         idx = combatRules.resolvedCombats[i].index + 1;
