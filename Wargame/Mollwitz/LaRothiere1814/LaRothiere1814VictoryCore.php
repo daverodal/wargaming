@@ -66,9 +66,9 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->victoryPoints[FRENCH_FORCE]  += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+5 French vp</span>";
             }
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE]  -= 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='russian'>-5 French vp</span>";
+            if ($forceId == ALLIED_FORCE) {
+                $this->victoryPoints[ALLIED_FORCE]  -= 5;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>-5 French vp</span>";
             }
         }
 
@@ -77,9 +77,9 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->victoryPoints[FRENCH_FORCE]  += 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+15 French vp</span>";
             }
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE]  -= 15;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='russian'>-15 French vp</span>";
+            if ($forceId == ALLIED_FORCE) {
+                $this->victoryPoints[ALLIED_FORCE]  -= 15;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>-15 French vp</span>";
             }
         }
     }
@@ -91,25 +91,25 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
         $gameRules = $battle->gameRules;
         $scenario = $battle->scenario;
         $turn = $gameRules->turn;
-        $frenchWin = $RussianWin = $draw = false;
+        $frenchWin = $AlliedWin = $draw = false;
 
         $victoryReason = "";
 
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
-            $RussianWinScore = 30;
+            $AlliedWinScore = 30;
             $frenchWinScore = 40;
 
             if($this->victoryPoints[FRENCH_FORCE] >= $frenchWinScore){
                 $frenchWin = true;
                 $victoryReason .= "Over $frenchWinScore ";
             }
-            if ($this->victoryPoints[RUSSIAN_FORCE] >= $RussianWinScore) {
-                $RussianWin = true;
-                $victoryReason .= "Over $RussianWinScore ";
+            if ($this->victoryPoints[ALLIED_FORCE] >= $AlliedWinScore) {
+                $AlliedWin = true;
+                $victoryReason .= "Over $AlliedWinScore ";
             }
 
-            if ($frenchWin && !$RussianWin) {
+            if ($frenchWin && !$AlliedWin) {
                 $this->winner = FRENCH_FORCE;
                 $gameRules->flashMessages[] = "French Win";
                 $gameRules->flashMessages[] = $victoryReason;
@@ -117,15 +117,15 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->gameOver = true;
                 return true;
             }
-            if ($RussianWin && !$frenchWin) {
-                $this->winner = RUSSIAN_FORCE;
+            if ($AlliedWin && !$frenchWin) {
+                $this->winner = ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
                 return true;
             }
-            if($frenchWin && $RussianWin){
+            if($frenchWin && $AlliedWin){
                 $gameRules->flashMessages[] = "Tie Game";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -133,7 +133,7 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = "French Fail to Win";
                 $this->gameOver = true;

@@ -32,7 +32,7 @@
 
         <li>French Win: If their total points reach 40 or more before the end of turn 9.</li>
 
-        <li>Russian Win: If their total points reach 30 or more or the French do not win by the end of turn 9.
+        <li>Allied Win: If their total points reach 30 or more or the French do not win by the end of turn 9.
         </li>
 
         <li>If at the end of any player turn both sides have somehow met their victory conditions above, the result is

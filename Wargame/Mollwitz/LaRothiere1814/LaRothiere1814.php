@@ -20,11 +20,11 @@ You should have received a copy of the GNU General Public License
 
 
 define("FRENCH_FORCE", 1);
-define("RUSSIAN_FORCE", 2);
+define("ALLIED_FORCE", 1);
 
 global $force_name;
 $force_name[FRENCH_FORCE] = "French";
-$force_name[RUSSIAN_FORCE] = "Russian";
+$force_name[ALLIED_FORCE] = "Allied";
 
 
 class LaRothiere1814 extends \Wargame\Mollwitz\JagCore
@@ -41,14 +41,14 @@ class LaRothiere1814 extends \Wargame\Mollwitz\JagCore
     {
         global $force_name;
 
-        $deployTwo = $playerOne = $force_name[FRENCH_FORCE];
-        $deployOne = $playerTwo = $force_name[RUSSIAN_FORCE];
+        $deployTwo = $playerOne = $force_name[ALLIED_FORCE];
+        $deployOne = $playerTwo = $force_name[FRENCH_FORCE];
         @include_once "playMulti.php";
     }
 
 
     static function getPlayerData($scenario){
-        $forceName = ['Observer', "French", "Russian"];
+        $forceName = ['Observer', "Allied", "French"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
