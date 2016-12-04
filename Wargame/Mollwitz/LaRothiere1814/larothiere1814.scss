@@ -23,30 +23,12 @@ $frenchColor: #0003b4;
 @include headerColor(French,$frenchNapoleonColor, $frenchNapoleonColor );
 @include headerColor(Allied,$angloAlliedColor, $angloAlliedWrapperColor );
 
-@include unitColor(Guard, $frenchColor, French);
-@include unitColor(French, $frenchColor, French);
+@include unitColor(Guard, $frenchColor, FrenchNap);
+@include unitColor(French, $frenchColor, FrenchNap);
 @include unitColor(Russian, $russianWrapperColor, Rus);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
-@include unitColor(German, $prussianNapColor, Prussian);
-
-@include badge(French, FrenchNap);
-@include badge(Guard, FrenchNap);
-@include badge(Prussian, PruNap);
-@include badge(Bavarian, Bavarian);
-@include badge(German, PruNap);
-
-//.french.specialHexes{
-//  background-color: $frenchNapoleonColor;
-//}
-
-//.specialHexesVP .allied {
-//  background: transparent;
-//  @include victoryPoints($austrianColor);
-//}
-
-//.allied.specialHexes {
-//  background-color: $angloAlliedColor;
-//}
+@include unitColor(German, $prussianNapColor, PruNap);
+@include unitColor(Austrian, $austrianWrapperColor, Aus);
 
 .french.specialHexes, .allied.specialHexes{
   color:white;
@@ -56,7 +38,6 @@ $frenchColor: #0003b4;
     color:white;
   }
 }
-
 
 .French.unit .unit-numbers, .Guard.unit .unit-numbers{
   color:red;
