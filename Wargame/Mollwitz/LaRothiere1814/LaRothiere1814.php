@@ -49,13 +49,9 @@ class LaRothiere1814 extends \Wargame\Mollwitz\JagCore
 
     public function init()
     {
-
-
         $scenario = $this->scenario;
         $unitSets = $scenario->units;
         UnitFactory::$injector = $this->force;
-
-
 
         foreach($unitSets as $unitSet) {
             for ($i = 0; $i < $unitSet->num; $i++) {
