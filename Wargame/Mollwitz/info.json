@@ -3042,6 +3042,416 @@
       }
     }
   },
+  "Jakobovo1812": {
+    "name": "The Battle of Jakobovo 1812",
+    "path": "Mollwitz",
+    "production": true,
+    "genre": "Napoleonic",
+    "fileName": "\\Wargame\\Mollwitz\\Jakobovo1812\\Jakobovo1812",
+    "description": "The Battle of Jakobovo.",
+    "params": {
+      "units": [
+        {
+          "num": 6,
+          "forceId": 2,
+          "combat": 7,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Guard",
+          "class": "infantry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 8,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Guard",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 6,
+          "movement": 2,
+          "reinforce": "A",
+          "range": 4,
+          "nationality": "Guard",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 4,
+          "nationality": "Guard",
+          "class": "horseartillery"
+        },
+        {
+          "num": 6,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "French",
+          "class": "infantry"
+        },
+        {
+          "num": 5,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "French",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "French",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 6,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "French",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 7,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "French",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 6,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "French",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "French",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 1,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "French",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 1,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "French",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 2,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "French",
+          "class": "horseartillery"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 3,
+          "reinforce": "C",
+          "range": 1,
+          "nationality": "German",
+          "class": "infantry"
+        },
+        {
+          "num": 5,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "C",
+          "range": 1,
+          "nationality": "German",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 5,
+          "reinforce": "C",
+          "range": 1,
+          "nationality": "German",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 3,
+          "movement": 2,
+          "reinforce": "C",
+          "range": 4,
+          "nationality": "German",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 2,
+          "reinforce": "C",
+          "range": 3,
+          "nationality": "German",
+          "class": "artillery"
+        },
+        {
+          "num": 13,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 3,
+          "reinforce": "D",
+          "range": 1,
+          "nationality": "Russian",
+          "class": "infantry"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 3,
+          "reinforce": "D",
+          "range": 1,
+          "nationality": "Russian",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 5,
+          "reinforce": "D",
+          "range": 1,
+          "nationality": "Russian",
+          "class": "cavalry"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 5,
+          "reinforce": "D",
+          "range": 1,
+          "nationality": "Russian",
+          "class": "cavalry"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 6,
+          "reinforce": "D",
+          "range": 1,
+          "nationality": "Russian",
+          "class": "cavalry"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 2,
+          "reinforce": "D",
+          "range": 4,
+          "nationality": "Russian",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 2,
+          "reinforce": "D",
+          "range": 3,
+          "nationality": "Russian",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "D",
+          "range": 3,
+          "nationality": "Russian",
+          "class": "horseartillery"
+        },
+        {
+          "num": 6,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 3,
+          "reinforce": "E",
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 5,
+          "reinforce": "E",
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 6,
+          "reinforce": "E",
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 2,
+          "reinforce": "E",
+          "range": 3,
+          "nationality": "Austrian",
+          "class": "artillery"
+        },
+        {
+          "num": 6,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "F",
+          "range": 1,
+          "nationality": "Bavarian",
+          "class": "infantry"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 6,
+          "reinforce": "F",
+          "range": 1,
+          "nationality": "Bavarian",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 2,
+          "reinforce": "F",
+          "range": 4,
+          "nationality": "Bavarian",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 3,
+          "movement": 2,
+          "reinforce": "F",
+          "range": 3,
+          "nationality": "Bavarian",
+          "class": "artillery"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 3,
+          "reinforce": "F",
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 5,
+          "reinforce": "F",
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 6,
+          "reinforce": "F",
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 2,
+          "reinforce": "F",
+          "range": 3,
+          "nationality": "Austrian",
+          "class": "artillery"
+        }
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's.",
+        "mudMovement": true
+      }
+    }
+  },
+
   "LaRothiere1814": {
     "name": "The Battle of La Rothiere 1814",
     "path": "Mollwitz",

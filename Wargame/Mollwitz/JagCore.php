@@ -92,6 +92,14 @@ class JagCore extends \Wargame\LandBattle{
             $this->moveRules = new MoveRules($this->force, $this->terrain);
             $this->combatRules = new CombatRules($this->force, $this->terrain);
             $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
+
+            $this->mapData->blocksZoc->blocked = true;
+            $this->mapData->blocksZoc->blocksnonroad = true;
+
+            $this->moveRules->enterZoc = "stop";
+            $this->moveRules->exitZoc = "stop";
+            $this->moveRules->noZocZoc = true;
+            $this->moveRules->zocBlocksRetreat = true;
         }
         
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){
@@ -253,5 +261,60 @@ class JagCore extends \Wargame\LandBattle{
         foreach($elevationMap as $key => $val){
             $this->terrain->addTerrain($key, HEXAGON_CENTER, 'elevation0');
         }
+    }
+
+    protected function deployFirstMoveSecond(){
+        $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
+        $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
+        $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
+        $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
+
+
+        $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
+        $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
+        $this->commonPhases();
+    }
+
+    protected function deployFirstMoveFirst(){
+        $this->gameRules->setInitialPhaseMode(BLUE_DEPLOY_PHASE, DEPLOY_MODE);
+        $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
+        $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
+        $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
+
+
+        $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, RED_FORCE, BLUE_FORCE, false);
+        $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
+        $this->commonPhases();
+    }
+
+    protected function commonPhases(){
+
+
+        $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);
+        $this->gameRules->addPhaseChange(BLUE_COMBAT_PHASE, RED_MOVE_PHASE, MOVING_MODE, RED_FORCE, BLUE_FORCE, false);
+
+        $this->gameRules->addPhaseChange(RED_MOVE_PHASE, RED_COMBAT_PHASE, COMBAT_SETUP_MODE, RED_FORCE, BLUE_FORCE, false);
+        $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, true);
+    }
+
+    function save()
+    {
+        $data = new \stdClass();
+        $data->mapData = $this->mapData;
+        $data->mapViewer = $this->mapViewer;
+        $data->moveRules = $this->moveRules->save();
+        $data->force = $this->force;
+        $data->gameRules = $this->gameRules->save();
+        $data->combatRules = $this->combatRules->save();
+        $data->players = $this->players;
+        $data->victory = $this->victory->save();
+        $data->terrainName = $this->terrainName;
+        $data->arg = $this->arg;
+        $data->scenario = $this->scenario;
+        $data->game = $this->game;
+        $data->specialHexA = $this->specialHexA;
+        $data->specialHexB = $this->specialHexB;
+
+        return $data;
     }
 }

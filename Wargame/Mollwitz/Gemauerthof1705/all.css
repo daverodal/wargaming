@@ -4565,6 +4565,9 @@ You should have received a copy of the GNU General Public License
 .russian.specialHexes {
   background-color: #FD4223; }
 
+.specialHexesVP .Russian.victory-points {
+  text-shadow: 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223; }
+
 .playerSwedish {
   background: #FECC00;
   border-color: #FECC00 !important; }
@@ -4582,6 +4585,9 @@ You should have received a copy of the GNU General Public License
 
 .swedish.specialHexes {
   background-color: #FECC00; }
+
+.specialHexesVP .Swedish.victory-points {
+  text-shadow: 0px 0px 1px #FECC00, 0px 0px 1px #FECC00, 0px 0px 1px #FECC00, 0px 0px 2px #FECC00, 0px 0px 2px #FECC00, 0px 0px 2px #FECC00, 0px 0px 3px #FECC00, 0px 0px 3px #FECC00, 0px 0px 3px #FECC00, 0px 0px 4px #FECC00, 0px 0px 4px #FECC00, 0px 0px 4px #FECC00, 0px 0px 5px #FECC00, 0px 0px 5px #FECC00, 0px 0px 5px #FECC00, 0px 0px 6px #FECC00, 0px 0px 6px #FECC00, 0px 0px 6px #FECC00, 0px 0px 7px #FECC00, 0px 0px 7px #FECC00, 0px 0px 7px #FECC00, 0px 0px 8px #FECC00, 0px 0px 8px #FECC00, 0px 0px 8px #FECC00, 0px 0px 9px #FECC00, 0px 0px 9px #FECC00, 0px 0px 9px #FECC00, 0px 0px 10px #FECC00, 0px 0px 10px #FECC00, 0px 0px 10px #FECC00, 0px 0px 1px #FECC00, 0px 0px 1px #FECC00, 0px 0px 1px #FECC00, 0px 0px 2px #FECC00, 0px 0px 2px #FECC00, 0px 0px 2px #FECC00, 0px 0px 3px #FECC00, 0px 0px 3px #FECC00, 0px 0px 3px #FECC00, 0px 0px 4px #FECC00, 0px 0px 4px #FECC00, 0px 0px 4px #FECC00, 0px 0px 5px #FECC00, 0px 0px 5px #FECC00, 0px 0px 5px #FECC00, 0px 0px 6px #FECC00, 0px 0px 6px #FECC00, 0px 0px 6px #FECC00, 0px 0px 7px #FECC00, 0px 0px 7px #FECC00, 0px 0px 7px #FECC00, 0px 0px 8px #FECC00, 0px 0px 8px #FECC00, 0px 0px 8px #FECC00, 0px 0px 9px #FECC00, 0px 0px 9px #FECC00, 0px 0px 9px #FECC00, 0px 0px 10px #FECC00, 0px 0px 10px #FECC00, 0px 0px 10px #FECC00; }
 
 .Swedish p.forceMarch, .Swedish p.range, .Swedish .fa-flag, .Russian p.forceMarch, .Russian p.range, .Russian .fa-flag {
   color: white; }

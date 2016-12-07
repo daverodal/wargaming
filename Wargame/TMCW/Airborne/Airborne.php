@@ -1,6 +1,7 @@
 <?php
 namespace Wargame\TMCW\Airborne;
-use \Wargame\TMCW\Airborne\UnitFactory;
+use Wargame\TMCW\Airborne\UnitFactory;
+use Wargame\SupplyCombatRules;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -178,6 +179,9 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
 
         UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "multiGlider.png", 10,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "multiGlider.png", 10,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);
@@ -229,15 +233,22 @@ class Airborne extends \Wargame\ModernLandBattle
         parent::__construct($data, $arg, $scenario);
 
         $crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(REBEL_FORCE);
-        $this->combatRules->injectCrt($crt);
 
         if ($data) {
             $this->specialHexA = $data->specialHexA;
+
+            $this->combatRules = new SupplyCombatRules($this->force, $this->terrain, $data->combatRules);
+            $this->gameRules->inject($this->moveRules, $this->combatRules, $this->force);
+
         } else {
             $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\Airborne\\airborneVictoryCore");
             if (!empty($scenario->supplyLen)) {
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }
+
+            $this->combatRules = new SupplyCombatRules($this->force, $this->terrain);
+            $this->gameRules->inject($this->moveRules, $this->combatRules, $this->force);
+
 
             $this->moveRules->enterZoc = 2;
             $this->moveRules->exitZoc = 1;
@@ -266,6 +277,7 @@ class Airborne extends \Wargame\ModernLandBattle
             $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, RED_MECH_PHASE, MOVING_MODE, RED_FORCE, BLUE_FORCE, false);
             $this->gameRules->addPhaseChange(RED_MECH_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, true);
         }
+        $this->combatRules->injectCrt($crt);
 
     }
 }

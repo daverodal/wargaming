@@ -4609,6 +4609,9 @@ You should have received a copy of the GNU General Public License
 .french.specialHexes {
   background-color: #84b5ff; }
 
+.specialHexesVP .French.victory-points {
+  text-shadow: 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 1px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 2px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 3px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 4px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 5px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 6px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 7px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 8px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 9px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff, 0px 0px 10px #84b5ff; }
+
 .playerAllies {
   background: #df5842;
   border-color: #df5842 !important; }
@@ -4626,6 +4629,9 @@ You should have received a copy of the GNU General Public License
 
 .allies.specialHexes {
   background-color: #f00; }
+
+.specialHexesVP .Allies.victory-points {
+  text-shadow: 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00; }
 
 .french.specialHexes {
   background-color: #84b5ff; }

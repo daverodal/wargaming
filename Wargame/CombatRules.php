@@ -1,6 +1,6 @@
 <?php
 namespace Wargame;
-use \stdClass;
+use stdClass;
 // combatRules->js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -19,7 +19,7 @@ use \stdClass;
 //You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use \Wargame\Battle;
+use Wargame\Battle;
 
 class CombatRules
 {
@@ -293,6 +293,11 @@ class CombatRules
             }
         } else // attacker
         {
+            $unit = $this->force->units[$id];
+
+            if($this->force->units[$id]->class === "supply" && method_exists($this, "selectSupply")){
+                $this->selectSupply($unit);
+            }
 
             if ($this->currentDefender !== false && $this->force->units[$id]->status != STATUS_UNAVAIL_THIS_PHASE) {
                 if (isset($this->combats->$cd->attackers->$id) && $this->combats->$cd->attackers->$id !== false && $this->attackers->$id === $cd) {

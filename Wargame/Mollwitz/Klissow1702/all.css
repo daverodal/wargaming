@@ -4565,6 +4565,9 @@ You should have received a copy of the GNU General Public License
 .saxon-polish.specialHexes {
   background-color: #FD4223; }
 
+.specialHexesVP .Saxon-Polish.victory-points {
+  text-shadow: 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 1px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 2px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 3px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 4px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 5px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 6px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 7px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 8px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 9px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223, 0px 0px 10px #FD4223; }
+
 .fa-flag {
   display: none; }
 

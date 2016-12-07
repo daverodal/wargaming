@@ -1,6 +1,11 @@
 @include('wargame::global-header')
 @include('wargame::Mollwitz.header')
-@include("$curPath.$clsName"."Header")
+@if(view()->exists("$curPath.$clsName"."Header"))
+    @include("$curPath.$clsName"."Header")
+@else
+    @include("$curPath.Header")
+
+@endif
 <link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/mollwitz/css/'.$clsName.'.css')}}">
 </head>
 @extends('wargame::stdIncludes.view' )

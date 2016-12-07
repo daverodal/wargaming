@@ -98,6 +98,11 @@ class MoveRules
         }
     }
 
+    public function inject($force, $terrain){
+        $this->force = $force;
+        $this->terrain = $terrain;
+    }
+
     public function movesLeft(){
         return false;
     }

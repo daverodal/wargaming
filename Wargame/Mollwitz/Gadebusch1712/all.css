@@ -4633,6 +4633,9 @@ You should have received a copy of the GNU General Public License
 .danes.specialHexes {
   background-color: #ff3f1f; }
 
+.specialHexesVP .Danes.victory-points {
+  text-shadow: 0px 0px 1px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 1px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 2px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 3px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 4px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 5px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 6px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 7px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 8px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 9px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 10px #ff3f1f, 0px 0px 10px #ff3f1f; }
+
 .swedes.specialHexes {
   background-color: #006AA7;
   color: white; }

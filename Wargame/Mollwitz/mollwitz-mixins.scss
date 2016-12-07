@@ -33,6 +33,10 @@ $vintage-unit-numbers-size:10px;
   .#{to-lower-case($nationality)}.specialHexes{
     background-color: $faceColor;
   }
+
+  .specialHexesVP .#{$nationality}.victory-points{
+    @include victoryPoints($faceColor);
+  }
 }
 
 @mixin player($nationality, $player, $color, $counterColor: $color, $faceColor: $color) {

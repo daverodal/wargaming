@@ -89,6 +89,12 @@ class GameRules
         return $data;
     }
 
+    public function inject($MoveRules, $CombatRules, $Force){
+        $this->moveRules = $MoveRules;
+        $this->combatRules = $CombatRules;
+        $this->force = $Force;
+    }
+
     function __construct($MoveRules, $CombatRules, $Force, $data = null)
     {
         if ($data) {
