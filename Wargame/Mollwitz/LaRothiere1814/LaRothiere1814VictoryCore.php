@@ -68,51 +68,38 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
         $gameRules = $battle->gameRules;
         $scenario = $battle->scenario;
         $turn = $gameRules->turn;
-        $frenchWin = $AlliedWin = $draw = false;
+        $frenchWin = $alliedWin = $draw = false;
 
         $victoryReason = "";
 
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
-            $AlliedWinScore = 30;
-            $frenchWinScore = 40;
+            $winScore = 70;
+            $highWinScore = 100;
+            if ($this->victoryPoints[ALLIED_FORCE] >= $winScore) {
+                if ($turn <= 5) {
+                    $alliedWin = true;
+                }
+            }
+            if ($this->victoryPoints[ALLIED_FORCE] >= $highWinScore) {
+                $alliedWin = true;
+            }
 
-            if($this->victoryPoints[FRENCH_FORCE] >= $frenchWinScore){
-                $frenchWin = true;
-                $victoryReason .= "Over $frenchWinScore ";
-            }
-            if ($this->victoryPoints[ALLIED_FORCE] >= $AlliedWinScore) {
-                $AlliedWin = true;
-                $victoryReason .= "Over $AlliedWinScore ";
+
+
+            if ($alliedWin) {
+                $this->winner = ALLIED_FORCE;
+                $gameRules->flashMessages[] = "Allied Win";
             }
 
-            if ($frenchWin && !$AlliedWin) {
-                $this->winner = FRENCH_FORCE;
-                $gameRules->flashMessages[] = "French Win";
-                $gameRules->flashMessages[] = $victoryReason;
+
+            if ( $turn == ($gameRules->maxTurn + 1)) {
+                if(!$alliedWin){
+                    $this->winner = FRENCH_FORCE;
+                    $msg = "French Win";
+                    $gameRules->flashMessages[] = $msg;
+                }
                 $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
-            }
-            if ($AlliedWin && !$frenchWin) {
-                $this->winner = ALLIED_FORCE;
-                $gameRules->flashMessages[] = "Allies Win";
-                $gameRules->flashMessages[] = $victoryReason;
-                $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
-            }
-            if($frenchWin && $AlliedWin){
-                $gameRules->flashMessages[] = "Tie Game";
-                $gameRules->flashMessages[] = $victoryReason;
-                $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
-            }
-            if ($turn > $gameRules->maxTurn) {
-                $this->winner = ALLIED_FORCE;
-                $gameRules->flashMessages[] = "Allies Win";
-                $gameRules->flashMessages[] = "French Fail to Win";
                 $this->gameOver = true;
                 return true;
             }
