@@ -90,14 +90,21 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
             if ($alliedWin) {
                 $this->winner = ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allied Win";
+                $this->gameOver = true;
             }
 
 
             if ( $turn == ($gameRules->maxTurn + 1)) {
                 if(!$alliedWin){
-                    $this->winner = FRENCH_FORCE;
-                    $msg = "French Win";
-                    $gameRules->flashMessages[] = $msg;
+                    if($this->casualties[FRENCH_FORCE] <= $this->casualties[ALLIED_FORCE]){
+                        $this->winner = FRENCH_FORCE;
+                        $msg = "French Win";
+                        $gameRules->flashMessages[] = $msg;
+                    }else{
+                        $this->winner = 0;
+                        $msg = "Tie Game";
+                        $gameRules->flashMessages[] = $msg;
+                    }
                 }
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;

@@ -30,10 +30,11 @@ namespace Wargame\Mollwitz;
 use \Wargame\Battle;
 class victoryCore extends \Wargame\VictoryCore
 {
-    public $victoryPoints;
+    public $victoryPoints = [0,0,0];
     public $movementCache;
-    public $headQuarters;
-    public $histogram;
+    public $headQuarters = [];
+    public $histogram = [[0,0,0]];
+    public $casualties = [0,0,0];
 
     function __construct($data)
     {
@@ -42,6 +43,7 @@ class victoryCore extends \Wargame\VictoryCore
             $this->movementCache = $data->victory->movementCache;
             $this->victoryPoints = $data->victory->victoryPoints;
             $this->headQuarters = $data->victory->headQuarters;
+            $this->casualties = $data->victory->casualties;
 
             if(isset($data->victory->histogram)) {
                 $this->histogram = $data->victory->histogram;
@@ -51,11 +53,7 @@ class victoryCore extends \Wargame\VictoryCore
                 }
             }
         } else {
-            $this->victoryPoints = array(0, 0, 0);
             $this->movementCache = new \stdClass();
-            $this->headQuarters = [];
-            $this->histogram = [];
-            $this->histogram[0] = [0,0,0];
         }
     }
 
@@ -66,6 +64,7 @@ class victoryCore extends \Wargame\VictoryCore
         $ret->movementCache = $this->movementCache;
         $ret->headQuarters = $this->headQuarters;
         $ret->histogram = $this->histogram;
+        $ret->casualties = $this->casualties;
         return $ret;
     }
 
@@ -93,6 +92,7 @@ class victoryCore extends \Wargame\VictoryCore
         $vp = $unit->damage * $mult;
         $this->histogram[$turn][$victorId] += $vp;
         $this->victoryPoints[$victorId] += $vp;
+        $this->casualties[$unit->forceId] += $vp;
         $hex = $unit->hexagon;
         $battle = Battle::getBattle();
         $class = "${victorName} victory-points";
