@@ -21,22 +21,21 @@
  */
 ?><li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
-    <h4>The Game ends instantly at the end of any Player Turn when one or more of the following conditions applies. Mutual
-        victories are a Draw</h4>
+    <h4>The Game ends instantly at the end of any Player Turn when one or more of the following conditions applies. </h4>
     <ol>
-        <li>Each side gains 1 victory point for each hostile combat factor destroyed.
-            Some hexes contain a blue number the French receive victory points = to the number
-            in each of those hexes when they occupy or where last to move through any of those hexes.
+
+
+
+
+        <li>The Allies win if they accumulate 70 points on or before the end of turn 5.
+            Or 100 points on or before the end of turn 10.
+            1 point is awarded for each French strength point destroyed.
+            10 points are awarded for each hex marked with a red 10 that an allied unit was the last to move through.
+
         </li>
 
-
-        <li>French Win: If their total points reach 40 or more before the end of turn 9.</li>
-
-        <li>Allied Win: If their total points reach 30 or more or the French do not win by the end of turn 9.
-        </li>
-
-        <li>If at the end of any player turn both sides have somehow met their victory conditions above, the result is
-            a draw.
+        <li>The French win if the allies do not win and the French have destroyed at least as many Allied strength points as the Allies have destroyed French.
+            Geographic objectives do not figure in to this total. Any other case is a draw.
         </li>
     </ol>
 </li>

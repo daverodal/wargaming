@@ -69,7 +69,7 @@ class LaRothiere1814 extends \Wargame\Mollwitz\JagCore
             $this->specialHexB = $data->specialHexB;
         } else {
             $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\LaRothiere1814\LaRothiere1814VictoryCore');
-            $this->gameRules->setMaxTurn(9);
+            $this->gameRules->setMaxTurn(10);
             $this->deployFirstMoveSecond();
 
         }
