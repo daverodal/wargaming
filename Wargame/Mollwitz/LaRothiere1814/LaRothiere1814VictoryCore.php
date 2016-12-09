@@ -137,15 +137,14 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         parent::postRecoverUnit($args);
 
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE) {
+        if ($b->gameRules->turn <= 2 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE) {
             if($unit->reinforceZone  === "F"){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
             }
-        }
-
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == FRENCH_FORCE) {
-            if($unit->nationality === "Guard"){
-                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            if($b->gameRules->turn == 1){
+                if($unit->reinforceZone  === "E"){
+                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                }
             }
         }
     }
