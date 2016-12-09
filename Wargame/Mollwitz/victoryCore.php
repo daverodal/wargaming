@@ -43,7 +43,12 @@ class victoryCore extends \Wargame\VictoryCore
             $this->movementCache = $data->victory->movementCache;
             $this->victoryPoints = $data->victory->victoryPoints;
             $this->headQuarters = $data->victory->headQuarters;
-            $this->casualties = $data->victory->casualties;
+            if(isset($data->victory->casualties)){
+                $this->casualties = $data->victory->casualties;
+
+            }else{
+                $this->casualties = [0,0,0];
+            }
 
             if(isset($data->victory->histogram)) {
                 $this->histogram = $data->victory->histogram;
