@@ -39,8 +39,8 @@ class LaRothiere1814 extends \Wargame\Mollwitz\JagCore
     }
 
     function terrainGen($mapDoc, $terrainDoc){
-
         parent::terrainGen($mapDoc, $terrainDoc);
+        $this->terrain->addTerrainFeature("trail", "trail", "r", .66, 0, 0, false);
     }
 
     public function terrainInit($terrainDoc){
