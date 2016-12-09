@@ -116,7 +116,15 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     public function postRecoverUnits($args)
     {
+        $b = Battle::getBattle();
+        $scenario = $b->scenario;
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE) {
+            $b->gameRules->flashMessages[] = "Units in extreme right may not move.";
+        }
 
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
+                $b->gameRules->flashMessages[] = "Young Guard may not move this phase.";
+        }
     }
 
     public function postRecoverUnit($args)
@@ -129,5 +137,16 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         parent::postRecoverUnit($args);
 
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE) {
+            if($unit->reinforceZone  === "F"){
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
+        }
+
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == FRENCH_FORCE) {
+            if($unit->nationality === "Guard"){
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
+        }
     }
 }
