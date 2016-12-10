@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <style>
         body{
             background:#000;
-            background:url("<?=url("vendor/wargame/mollwitz/images/1280px-Vernet-Battle_of_Hanau.jpg")?>") #333 no-repeat;
+            background:url("<?=url("vendor/wargame/mollwitz/images/1280px-Bataille_de_La_Rothière,_par_Knötel.jpg")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 
@@ -81,7 +81,7 @@ You should have received a copy of the GNU General Public License
 
 <div class="backBox">
 <h2 style="text-align:center;font-size:30px;font-family:'Monsieur La Doulaise'"> Welcome to</h2>
-    <h1 style=""><span>Golymin 1806</span></h1>
+    <h1 style=""><span><?=$game?></span></h1>
 </div>
 <div style="clear:both"></div>
 <fieldset ><Legend>Play As </Legend>
@@ -89,5 +89,5 @@ You should have received a copy of the GNU General Public License
     <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
-        Horace Vernet [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AVernet-Battle_of_Hanau.jpg">via Wikimedia Commons</a>
+        By Richard Knötel (1857-1914) [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3ABataille_de_La_Rothi%C3%A8re%2C_par_Kn%C3%B6tel.jpg">via Wikimedia Commons</a>    </div>
 </fieldset>

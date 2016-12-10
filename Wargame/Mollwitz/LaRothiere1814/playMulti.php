@@ -20,12 +20,11 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/mollwitz/images/Knötel-Battle_of_Hanau.jpg")?>") #333 no-repeat;
+            background:url("<?=url("vendor/wargame/mollwitz/images/1280px-Bataille_de_La_Rothière,_par_Knötel.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }
     </style>
 
 <footer class="attribution">
-    By Richard Knötel [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AKn%C3%B6tel-Battle_of_Hanau.jpg">via Wikimedia Commons</a>
-</footer>
+    By Richard Knötel (1857-1914) [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3ABataille_de_La_Rothi%C3%A8re%2C_par_Kn%C3%B6tel.jpg">via Wikimedia Commons</a></footer>

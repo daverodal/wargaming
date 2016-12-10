@@ -27,4 +27,4 @@ You should have received a copy of the GNU General Public License
     </style>
 
 <footer class="attribution">
-    See page for author [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3ACharlesXII_Holowczyn_1708.jpg">via Wikimedia Commons</a></footer>
+    See page for author [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3ACharlesXII_Holowczyn_1708.jpg">via Wikimedia Commons</a></footer>

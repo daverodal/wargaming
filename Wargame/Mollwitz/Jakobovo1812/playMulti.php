@@ -20,12 +20,12 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/mollwitz/images/Knötel-Battle_of_Hanau.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Klyastitsy.jpg")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }
     </style>
 
 <footer class="attribution">
-    By Richard Knötel [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AKn%C3%B6tel-Battle_of_Hanau.jpg">via Wikimedia Commons</a>
+    By Peter von Hess  [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File:Klyastitsy.jpg#filelinks">via Wikimedia Commons</a>
 </footer>

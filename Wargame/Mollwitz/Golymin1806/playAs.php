@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
     <style>
         body{
             background:#000;
-            background:url("<?=url("vendor/wargame/mollwitz/images/1280px-Vernet-Battle_of_Hanau.jpg")?>") #333 no-repeat;
+            background:url("<?=url("vendor/wargame/mollwitz/images/1024px-Charles_Meynier_-_Napoleon_in_Berlin.png")?>") #333 no-repeat;
             background-position:center 0;
             background-size:100%;
 
@@ -89,5 +89,6 @@ You should have received a copy of the GNU General Public License
     <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
-        Horace Vernet [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AVernet-Battle_of_Hanau.jpg">via Wikimedia Commons</a>
+        Charles Meynier [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3ACharles_Meynier_-_Napoleon_in_Berlin.png">via Wikimedia Commons</a></footer>
+    </div>
 </fieldset>

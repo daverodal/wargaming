@@ -89,5 +89,5 @@ You should have received a copy of the GNU General Public License
     <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
-        See page for author [Public domain], <a href="https://commons.wikimedia.org/wiki/File%3ACharlesXII_Holowczyn_1708.jpg">via Wikimedia Commons</a>    </div>
+        See page for author [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3ACharlesXII_Holowczyn_1708.jpg">via Wikimedia Commons</a>    </div>
 </fieldset>
