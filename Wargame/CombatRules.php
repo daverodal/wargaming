@@ -338,6 +338,9 @@ class CombatRules
                                 $good = false;
                             }
                         }
+                        if($victory->isCombatVetoed($unit, $this->currentDefender) === true){
+                            $good = false;
+                        }
 
                     }
                     if ($good) {

@@ -61,6 +61,26 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     }
 
+    /*
+     * disallow multi nationality attacks
+     */
+
+    function isCombatVetoed($args){
+        list($unit, $combatId) = $args;
+        $nationality = $unit->nationality;
+        $battle = Battle::getBattle();
+
+        if($unit->forceId === FRENCH_FORCE){
+            return false;
+        }
+        foreach($battle->combatRules->combats->$combatId->attackers as $aId => $a){
+            if($battle->force->units[$aId]->nationality !== $nationality){
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected function checkVictory( $battle)
     {
         $battle = Battle::getBattle();
