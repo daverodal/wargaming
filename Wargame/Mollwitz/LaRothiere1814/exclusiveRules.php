@@ -35,4 +35,16 @@ You should have received a copy of the GNU General Public License
                 The Allied units in the right (R) area may not move on turn 1.
             </li>
         </ol>
+    </li>
+    <li><span class="big">Combat Restrictions.</span>
+        <ol>
+            <li>
+                The Allied player may never have units from more than one nationality in any particular combat. If they wish to add units
+                from a different nationality they will have to remove all attackers from current combat.
+            </li>
+            <li>
+                Different armies have different color schemes to aid in determining nationality.
+            </li>
+        </ol>
+    </li>
 </ol>
