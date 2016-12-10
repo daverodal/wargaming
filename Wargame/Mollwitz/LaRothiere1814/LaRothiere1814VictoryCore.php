@@ -50,12 +50,12 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
             if ($forceId == ALLIED_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  += 10;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>+10 Allied vp</span>";
+                $this->victoryPoints[ALLIED_FORCE]  += 5;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>+5 Allied vp</span>";
             }
             if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  -= 10;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-10 Allied vp</span>";
+                $this->victoryPoints[ALLIED_FORCE]  -= 5;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-5 Allied vp</span>";
             }
         }
 

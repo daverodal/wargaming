@@ -21,7 +21,8 @@
  */
 ?><li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
-    <h4>The Game ends instantly at the end of any Player Turn when one or more of the following conditions applies. </h4>
+    <h4>The Game ends instantly at the end of any Player Turn when the Allies achieve victory. If they cannot do this by the end of turn 10, the French
+    can win.</h4>
     <ol>
 
 
@@ -31,11 +32,15 @@
             Or 100 points on or before the end of turn 10.
             1 point is awarded for each French strength point destroyed.
             10 points are awarded for each hex marked with a red 10 that an allied unit was the last to move through.
+            Only the Allies keep track of victory points.
 
         </li>
 
         <li>The French win if the allies do not win and the French have destroyed at least as many Allied strength points as the Allies have destroyed French.
-            Geographic objectives do not figure in to this total. Any other case is a draw.
+            Geographic objectives do not figure in to this total.
+        </li>
+        <li>
+            If niether of the above occurs, the game is a draw.
         </li>
     </ol>
 </li>

@@ -25,6 +25,14 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-<ol>
-
+<ol class="exclusive">
+    <li><span class="big">Movement Restrictions.</span>
+        <ol>
+            <li>
+                The Allied units in the extream right (ER) area may not move on turns 1 or 2.
+            </li>
+            <li>
+                The Allied units in the right (R) area may not move on turn 1.
+            </li>
+        </ol>
 </ol>
