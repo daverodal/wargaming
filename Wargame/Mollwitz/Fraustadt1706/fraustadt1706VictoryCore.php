@@ -34,22 +34,22 @@ class fraustadt1706VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] += 5;
+            if ($forceId == Fraustadt1706::SWEDISH_FORCE) {
+                $this->victoryPoints[Fraustadt1706::SWEDISH_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>+5 Swedish vp</span>";
             }
-            if ($forceId == SAXON_POLISH_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] -= 5;
+            if ($forceId == Fraustadt1706::SAXON_POLISH_FORCE) {
+                $this->victoryPoints[Fraustadt1706::SWEDISH_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>-5 Swedish vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == SAXON_POLISH_FORCE) {
-                $this->victoryPoints[SAXON_POLISH_FORCE] += 5;
+            if ($forceId == Fraustadt1706::SAXON_POLISH_FORCE) {
+                $this->victoryPoints[Fraustadt1706::SAXON_POLISH_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>+5 Saxon Polish vp</span>";
             }
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[SAXON_POLISH_FORCE] -= 5;
+            if ($forceId == Fraustadt1706::SWEDISH_FORCE) {
+                $this->victoryPoints[Fraustadt1706::SAXON_POLISH_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>-5 Saxon Polish vp</span>";
             }
         }
@@ -66,21 +66,21 @@ class fraustadt1706VictoryCore extends \Wargame\Mollwitz\victoryCore
             $specialHexes = $battle->mapData->specialHexes;
             $winScore = 25;
             $highWinScore = 30;
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Fraustadt1706::SWEDISH_FORCE] >= $winScore) {
                 if ($turn <= 4) {
                     $swedishWin = true;
                 }
             }
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $highWinScore) {
+            if ($this->victoryPoints[Fraustadt1706::SWEDISH_FORCE] >= $highWinScore) {
                     $swedishWin = true;
             }
-            if ($this->victoryPoints[SAXON_POLISH_FORCE] >= $highWinScore) {
+            if ($this->victoryPoints[Fraustadt1706::SAXON_POLISH_FORCE] >= $highWinScore) {
                 $saxonPolishWin = true;
             }
 
 
             if ($swedishWin && !$saxonPolishWin) {
-                $this->winner = SWEDISH_FORCE;
+                $this->winner = Fraustadt1706::SWEDISH_FORCE;
                 $gameRules->flashMessages[] = "Swedish Win";
             }
 
@@ -91,7 +91,7 @@ class fraustadt1706VictoryCore extends \Wargame\Mollwitz\victoryCore
             }
             if ($swedishWin || $saxonPolishWin ||  $turn == ($gameRules->maxTurn + 1)) {
                 if(!$swedishWin){
-                    $this->winner = SAXON_POLISH_FORCE;
+                    $this->winner = Fraustadt1706::SAXON_POLISH_FORCE;
                     $msg = "Saxon Russian Win";
                     $gameRules->flashMessages[] = $msg;
                 }

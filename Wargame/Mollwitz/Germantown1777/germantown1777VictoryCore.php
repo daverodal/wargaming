@@ -53,22 +53,22 @@ class germantown1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == REBEL_FORCE) {
-                $this->victoryPoints[REBEL_FORCE] += 5;
+            if ($forceId == Germantown1777::REBEL_FORCE) {
+                $this->victoryPoints[Germantown1777::REBEL_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+5 Rebel vp</span>";
             }
-            if ($forceId == LOYALIST_FORCE) {
-                $this->victoryPoints[REBEL_FORCE] -= 5;
+            if ($forceId == Germantown1777::LOYALIST_FORCE) {
+                $this->victoryPoints[Germantown1777::REBEL_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-5 Rebel vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == LOYALIST_FORCE) {
-                $this->victoryPoints[LOYALIST_FORCE] += 5;
+            if ($forceId == Germantown1777::LOYALIST_FORCE) {
+                $this->victoryPoints[Germantown1777::LOYALIST_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+5 Loyalist vp</span>";
             }
-            if ($forceId == REBEL_FORCE) {
-                $this->victoryPoints[LOYALIST_FORCE] -= 5;
+            if ($forceId == Germantown1777::REBEL_FORCE) {
+                $this->victoryPoints[Germantown1777::LOYALIST_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>-5 Loyalist vp</span>";
             }
         }
@@ -84,29 +84,29 @@ class germantown1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         if (!$this->gameOver) {
             $winScore = 20;
 
-            if ($this->victoryPoints[REBEL_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Germantown1777::REBEL_FORCE] >= $winScore) {
                     $rebelWin = true;
 
             }
-            if ($this->victoryPoints[LOYALIST_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Germantown1777::LOYALIST_FORCE] >= $winScore) {
                 $loyalistWin = true;
             }
 
             if ($rebelWin && !$loyalistWin) {
-                $this->winner = REBEL_FORCE;
+                $this->winner = Germantown1777::REBEL_FORCE;
                 $gameRules->flashMessages[] = "Rebel Win";
                 $this->gameOver = true;
             }
             if ($loyalistWin && !$rebelWin) {
-                $this->winner = LOYALIST_FORCE;
+                $this->winner = Germantown1777::LOYALIST_FORCE;
                 $gameRules->flashMessages[] = "Loyalist Win";
                 $this->gameOver = true;
             }
             if($rebelWin && $loyalistWin){
-                if($this->victoryPoints[REBEL_FORCE] > $this->victoryPoints[LOYALIST_FORCE]){
+                if($this->victoryPoints[Germantown1777::REBEL_FORCE] > $this->victoryPoints[Germantown1777::LOYALIST_FORCE]){
                     $gameRules->flashMessages[] = "Rebel Win";
                     $gameRules->flashMessages[] = "Rebels have more point.";
-                    $this->winner = REBEL_FORCE;
+                    $this->winner = Germantown1777::REBEL_FORCE;
                 }else{
                     $gameRules->flashMessages[] = "Tie Game";
                 }

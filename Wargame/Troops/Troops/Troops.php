@@ -18,18 +18,16 @@ use \Wargame\Troops\UnitFactory;
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-define("BRITISH_FORCE", 2);
-define("GERMAN_FORCE", 1);
 
 global $force_name;
 $force_name[2] = "PlayerTwo";
-
-
 $force_name[1] = "PlayerOne";
 
 class Troops extends \Wargame\Troops\TroopersCore
 {
 
+    const FORCE_ONE = 1;
+    const FORCE_TWO = 1;
     public $specialHexesMap = ['SpecialHexA' => 2, 'SpecialHexB' => 1, 'SpecialHexC' => 1];
 
     /* @var Mapdata */
@@ -108,31 +106,31 @@ class Troops extends \Wargame\Troops\TroopersCore
 
         if(!empty($scenario->seven)){
             for ($i = 0; $i < 24; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'infantry');
+                UnitFactory::create(SELF::FORCE_ONE, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'infantry');
             }
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 17, 10, 3,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'mg');
+                UnitFactory::create(SELF::FORCE_ONE, "deployBox", 17, 10, 3,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'mg');
             }
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 10, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'artillery');
+                UnitFactory::create(SELF::FORCE_ONE, "deployBox", 10, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'artillery');
             }
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 9, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'howitzer');
+                UnitFactory::create(SELF::FORCE_ONE, "deployBox", 9, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'howitzer');
             }
             for ($i = 0; $i < 0; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 50, 15, 8,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'armor');
+                UnitFactory::create(SELF::FORCE_ONE, "deployBox", 50, 15, 8,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'armor');
             }
 
             /* Belgian */
 
             for ($i = 0; $i < 11; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'infantry');
+                UnitFactory::create(SELF::FORCE_TWO, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'infantry');
             }
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 5, 10, 6,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'mg');
+                UnitFactory::create(SELF::FORCE_TWO, "deployBox", 5, 10, 6,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'mg');
             }
             for ($i = 0; $i < 3; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 11, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'artillery');
+                UnitFactory::create(SELF::FORCE_TWO, "deployBox", 11, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "Belgian", 'artillery');
             }
 
         }elseif(!empty($scenario->one)){
@@ -203,25 +201,25 @@ class Troops extends \Wargame\Troops\TroopersCore
             /* German */
 
             for ($i = 0; $i < 36; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'infantry');
+                UnitFactory::create(SELF::FORCE_ONE, "deployBox", 7, 4, 5,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'infantry');
             }
             for ($i = 0; $i < 3; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 17, 10, 3,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'mg');
+                UnitFactory::create(SELF::FORCE_ONE, "deployBox", 17, 10, 3,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'mg');
             }
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(GERMAN_FORCE, "deployBox", 10, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'artillery');
+                UnitFactory::create(SELF::FORCE_ONE, "deployBox", 10, 25, 4,  STATUS_CAN_DEPLOY, "A", 1,  "German", 'artillery');
             }
 
             /* British */
 
             for ($i = 0; $i < 20; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 11, 6, 5,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'infantry');
+                UnitFactory::create(SELF::FORCE_TWO, "deployBox", 11, 6, 5,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'infantry');
             }
             for ($i = 0; $i < 5; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 6, 10, 5,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'mg');
+                UnitFactory::create(SELF::FORCE_TWO, "deployBox", 6, 10, 5,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'mg');
             }
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(BRITISH_FORCE, "deployBox", 11, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'artillery');
+                UnitFactory::create(SELF::FORCE_TWO, "deployBox", 11, 25, 4,  STATUS_CAN_DEPLOY, "B", 1,  "British", 'artillery');
             }
         }
 

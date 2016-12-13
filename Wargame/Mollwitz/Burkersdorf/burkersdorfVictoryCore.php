@@ -61,25 +61,25 @@ class burkersdorfVictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->cities)) {
-            if ($forceId == PRUSSIAN_FORCE) {
+            if ($forceId == Burkersdorf::PRUSSIAN_FORCE) {
                 $this->prussianEnterVictory = true;
-                $this->victoryPoints[PRUSSIAN_FORCE] += 10;
+                $this->victoryPoints[Burkersdorf::PRUSSIAN_FORCE] += 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>+10 Prussian vp</span>";
             }
-            if ($forceId == AUSTRIAN_FORCE) {
-                $this->victoryPoints[PRUSSIAN_FORCE] -= 10;
+            if ($forceId == Burkersdorf::AUSTRIAN_FORCE) {
+                $this->victoryPoints[Burkersdorf::PRUSSIAN_FORCE] -= 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>-10 Prussian vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->loc)) {
             $vp = 50;
-            if ($forceId == PRUSSIAN_FORCE) {
+            if ($forceId == Burkersdorf::PRUSSIAN_FORCE) {
                 $this->prussianEnterVictory = true;
-                $this->victoryPoints[PRUSSIAN_FORCE] += $vp;
+                $this->victoryPoints[Burkersdorf::PRUSSIAN_FORCE] += $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>+$vp Prussian vp</span>";
             }
-            if ($forceId == AUSTRIAN_FORCE) {
-                $this->victoryPoints[PRUSSIAN_FORCE] -= $vp;
+            if ($forceId == Burkersdorf::AUSTRIAN_FORCE) {
+                $this->victoryPoints[Burkersdorf::PRUSSIAN_FORCE] -= $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>-$vp Prussian vp</span>";
             }
         }
@@ -91,10 +91,10 @@ class burkersdorfVictoryCore extends \Wargame\Mollwitz\victoryCore
         $turn = $gameRules->turn;
         if (!$this->gameOver) {
             $prussianWin = $austrianWin = false;
-            if (($this->victoryPoints[AUSTRIAN_FORCE] >= 70) && ($this->victoryPoints[AUSTRIAN_FORCE] - ($this->victoryPoints[PRUSSIAN_FORCE]) >= 10)) {
+            if (($this->victoryPoints[Burkersdorf::AUSTRIAN_FORCE] >= 70) && ($this->victoryPoints[Burkersdorf::AUSTRIAN_FORCE] - ($this->victoryPoints[Burkersdorf::PRUSSIAN_FORCE]) >= 10)) {
                 $austrianWin = true;
             }
-            if (($this->victoryPoints[PRUSSIAN_FORCE] >= 70) && ($this->victoryPoints[PRUSSIAN_FORCE] - $this->victoryPoints[AUSTRIAN_FORCE] >= 10)) {
+            if (($this->victoryPoints[Burkersdorf::PRUSSIAN_FORCE] >= 70) && ($this->victoryPoints[Burkersdorf::PRUSSIAN_FORCE] - $this->victoryPoints[Burkersdorf::AUSTRIAN_FORCE] >= 10)) {
                 $prussianWin = true;
             }
 
@@ -103,7 +103,7 @@ class burkersdorfVictoryCore extends \Wargame\Mollwitz\victoryCore
             $cities = array_merge($cities, $loc);
             $victoryHexes = 0;
             foreach ($cities as $city) {
-                if ($battle->mapData->getSpecialHex($city) === PRUSSIAN_FORCE) {
+                if ($battle->mapData->getSpecialHex($city) === Burkersdorf::PRUSSIAN_FORCE) {
                     $victoryHexes++;
                 }
             }
@@ -115,11 +115,11 @@ class burkersdorfVictoryCore extends \Wargame\Mollwitz\victoryCore
                 $gameRules->flashMessages[] = "Tie Game";
             }
             if ($prussianWin) {
-                $this->winner = PRUSSIAN_FORCE;
+                $this->winner = Burkersdorf::PRUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Prussian Win";
             }
             if ($austrianWin) {
-                $this->winner = AUSTRIAN_FORCE;
+                $this->winner = Burkersdorf::AUSTRIAN_FORCE;
                 $gameRules->flashMessages[] = "Austrians Win";
             }
             if ($austrianWin || $prussianWin || $turn > 15) {

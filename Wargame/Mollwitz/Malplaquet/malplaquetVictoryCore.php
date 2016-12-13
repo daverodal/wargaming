@@ -49,21 +49,21 @@ class malplaquetVictoryCore extends \Wargame\Mollwitz\victoryCore
             /* @var MapData $mapData */
             $mapData = $battle->mapData;
             /* End of the French player turn */
-            if($gameRules->attackingForceId == FRENCH_FORCE) {
+            if($gameRules->attackingForceId == Malplaquet::FRENCH_FORCE) {
 
                 $malplaquet = $battle->malplaquet[0];
                 $otherCities = $battle->otherCities;
-                if ($mapData->getSpecialHex($malplaquet) === ANGLO_FORCE) {
+                if ($mapData->getSpecialHex($malplaquet) === Malplaquet::ANGLO_FORCE) {
                     $angloMalplaquet = true;
                     foreach ($otherCities as $city) {
-                        if ($mapData->getSpecialHex($city) === ANGLO_FORCE) {
+                        if ($mapData->getSpecialHex($city) === Malplaquet::ANGLO_FORCE) {
                             $angloCities = true;
                         }
                     }
                 }
             }
 
-            if($angloCities && ($this->victoryPoints[ANGLO_FORCE] - ($this->victoryPoints[FRENCH_FORCE]) >= 10)){
+            if($angloCities && ($this->victoryPoints[Malplaquet::ANGLO_FORCE] - ($this->victoryPoints[Malplaquet::FRENCH_FORCE]) >= 10)){
                 $angloWin = true;
             }
 
@@ -84,11 +84,11 @@ class malplaquetVictoryCore extends \Wargame\Mollwitz\victoryCore
 
 
             if($angloWin){
-                $this->winner = ANGLO_FORCE;
+                $this->winner = Malplaquet::ANGLO_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
             }
             if($frenchWin){
-                $this->winner = FRENCH_FORCE;
+                $this->winner = Malplaquet::FRENCH_FORCE;
                 $msg = "French Win Allies hold no cities";
                 $gameRules->flashMessages[] = $msg;
             }

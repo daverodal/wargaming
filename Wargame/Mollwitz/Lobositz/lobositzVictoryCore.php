@@ -47,26 +47,26 @@ class lobositzVictoryCore extends \Wargame\Mollwitz\victoryCore
 
         if(!$this->gameOver){
             $prussianWin = $austrianWin = false;
-            if(($this->victoryPoints[AUSTRIAN_FORCE] > 60) && ($this->victoryPoints[AUSTRIAN_FORCE] - ($this->victoryPoints[PRUSSIAN_FORCE]) >= 10)){
+            if(($this->victoryPoints[Lobositz::AUSTRIAN_FORCE] > 60) && ($this->victoryPoints[Lobositz::AUSTRIAN_FORCE] - ($this->victoryPoints[Lobositz::PRUSSIAN_FORCE]) >= 10)){
                 $austrianWin = true;
                 $reason .= "Austrian Win On Kills ";
             }
-            if(($this->victoryPoints[PRUSSIAN_FORCE] > 60) && ($this->victoryPoints[PRUSSIAN_FORCE] - $this->victoryPoints[AUSTRIAN_FORCE] >= 10)){
+            if(($this->victoryPoints[Lobositz::PRUSSIAN_FORCE] > 60) && ($this->victoryPoints[Lobositz::PRUSSIAN_FORCE] - $this->victoryPoints[Lobositz::AUSTRIAN_FORCE] >= 10)){
                 $prussianWin = true;
                 $reason .= "Prussian Win On Kills ";
             }
 
-            if($attackingId == AUSTRIAN_FORCE){
+            if($attackingId == Lobositz::AUSTRIAN_FORCE){
                 foreach($battle->prussianSpecialHexes as $specialHex){
-                    if($battle->mapData->getSpecialHex($specialHex) == AUSTRIAN_FORCE){
+                    if($battle->mapData->getSpecialHex($specialHex) == Lobositz::AUSTRIAN_FORCE){
                         $austrianWin = true;
                         $reason .= "Austrian Win on Taking Road Hex ";
                     }
                 }
             }
-            if($attackingId == PRUSSIAN_FORCE){
+            if($attackingId == Lobositz::PRUSSIAN_FORCE){
                 foreach($battle->austrianSpecialHexes as $specialHex){
-                    if($battle->mapData->getSpecialHex($specialHex) == PRUSSIAN_FORCE){
+                    if($battle->mapData->getSpecialHex($specialHex) == Lobositz::PRUSSIAN_FORCE){
                         $prussianWin = true;
                         $reason .= "Prussian Win on Taking Road Hex ";
                     }
@@ -83,11 +83,11 @@ class lobositzVictoryCore extends \Wargame\Mollwitz\victoryCore
             }
 
             if($austrianWin){
-                $this->winner = AUSTRIAN_FORCE;
+                $this->winner = Lobositz::AUSTRIAN_FORCE;
                 $gameRules->flashMessages[] = $reason;
             }
             if($prussianWin){
-                $this->winner = PRUSSIAN_FORCE;
+                $this->winner = Lobositz::PRUSSIAN_FORCE;
                 $msg = $reason;
                 $gameRules->flashMessages[] = $msg;
             }

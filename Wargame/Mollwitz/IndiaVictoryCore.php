@@ -35,11 +35,11 @@ class IndiaVictoryCore extends victoryCore
         /* @var Dubba1843 $battle */
         $battle = Battle::getBattle();
         $zocBlocksRetreat = isset($battle->scenario->zocBlocksRetreat) ? true : false;
-        if($unit->forceId !== BRITISH_FORCE || $zocBlocksRetreat ){
-            $battle->moveRules->zocBlocksRetreat = true;
-        }else{
-            $battle->moveRules->zocBlocksRetreat = false;
-        }
+//        if($unit->forceId !== BRITISH_FORCE || $zocBlocksRetreat ){
+//            $battle->moveRules->zocBlocksRetreat = true;
+//        }else{
+//            $battle->moveRules->zocBlocksRetreat = false;
+//        }
     }
 
     public function reduceUnit($args)

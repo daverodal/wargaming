@@ -18,15 +18,12 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-define("SWEDISH_FORCE", 1);
-define("SAXON_POLISH_FORCE", 2);
-
-global $force_name;
-$force_name[SAXON_POLISH_FORCE] = "Saxon Polish";
-$force_name[SWEDISH_FORCE] = "Swedish";
-
 class Klissow1702 extends \Wargame\Mollwitz\JagCore
 {
+
+    const SWEDISH_FORCE = 1;
+    const SAXON_POLISH_FORCE = 2;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
     public $pontoons;

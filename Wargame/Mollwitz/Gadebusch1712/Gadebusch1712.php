@@ -19,17 +19,15 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("SWEDISH_FORCE", 1);
-define("DANISH_FORCE", 2);
-
-global $force_name;
-$force_name[SWEDISH_FORCE] = "Swedish";
-$force_name[DANISH_FORCE] = "Danes";
 
 
 
 class Gadebusch1712 extends \Wargame\Mollwitz\JagCore
 {
+
+    const SWEDISH_FORCE = 1;
+    const DANISH_FORCE = 2;
+
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
     public
@@ -51,8 +49,8 @@ class Gadebusch1712 extends \Wargame\Mollwitz\JagCore
     {
         global $force_name;
 
-        $deployTwo = $playerOne = $force_name[SWEDISH_FORCE];
-        $deployOne = $playerTwo = $force_name[DANISH_FORCE];
+        $deployTwo = $playerOne = $force_name[self::SWEDISH_FORCE];
+        $deployOne = $playerTwo = $force_name[self::DANISH_FORCE];
         @include_once "playMulti.php";
     }
 
@@ -60,8 +58,8 @@ class Gadebusch1712 extends \Wargame\Mollwitz\JagCore
     {
         global $force_name;
         $youAre = $force_name[$player];
-        $deployTwo = $playerOne = $force_name[SWEDISH_FORCE];
-        $deployOne = $playerTwo = $force_name[DANISH_FORCE];
+        $deployTwo = $playerOne = $force_name[self::SWEDISH_FORCE];
+        $deployOne = $playerTwo = $force_name[self::DANISH_FORCE];
         @include_once "view.php";
     }
 

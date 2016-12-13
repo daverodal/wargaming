@@ -18,15 +18,13 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-define("SWEDISH_FORCE", 2);
-define("RUSSIAN_FORCE", 1);
-
-global $force_name;
-$force_name[RUSSIAN_FORCE] = "Russian";
-$force_name[SWEDISH_FORCE] = "Swedish";
 
 class Lesnaya1708 extends \Wargame\Mollwitz\JagCore
 {
+
+    const SWEDISH_FORCE = 2;
+    const RUSSIAN_FORCE = 1;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
 

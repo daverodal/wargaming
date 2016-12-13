@@ -19,11 +19,13 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("FRENCH_FORCE", 2);
-define("ALLIED_FORCE", 1);
+
 
 class LaRothiere1814 extends \Wargame\Mollwitz\JagCore
 {
+    const FRENCH_FORCE = 2;
+    const ALLIED_FORCE = 1;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){

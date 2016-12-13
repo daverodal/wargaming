@@ -72,10 +72,10 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 //
 ////        if(in_array($mapHexName, $battle->specialHexC)){
 ////
-////            if ($forceId == SOVIET_FORCE) {
+////            if ($forceId == KievCorps::SOVIET_FORCE) {
 ////                $this->victoryPoints = "The Soviets hold Kiev";
 ////            }
-////            if ($forceId == GERMAN_FORCE) {
+////            if ($forceId == KievCorps::GERMAN_FORCE) {
 ////                $this->victoryPoints = "The Germans hold Kiev";
 ////            }
 ////        }
@@ -86,7 +86,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         list($zones, $unit) = $args;
 
         $forceId = $unit->forceId;
-        if($unit->forceId == GERMAN_FORCE){
+        if($unit->forceId == KievCorps::GERMAN_FORCE){
             $zones = $this->germanGoal;
         }else{
             $zones = $this->sovietGoal;
@@ -135,7 +135,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 
             $units = $battle->force->units;
             foreach($units as $unit){
-                if($unit->forceId == SOVIET_FORCE){
+                if($unit->forceId == KievCorps::SOVIET_FORCE){
                     if($unit->hexagon->parent == "gameImages"){
                         if($unit->supplied === false){
                             $this->victoryPoints[3] += $unit->getUnmodifiedStrength();
@@ -175,7 +175,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
     {
         $battle = Battle::getBattle();
         $kiev = $battle->specialHexC[0];
-        if ($battle->mapData->getSpecialHex($kiev) === SOVIET_FORCE) {
+        if ($battle->mapData->getSpecialHex($kiev) === KievCorps::SOVIET_FORCE) {
             $battle->gameRules->flashMessages[] = "Soviet Player Wins";
         }else{
             $battle->gameRules->flashMessages[] = "German Player Wins";
@@ -270,17 +270,17 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         if (!empty($b->scenario->supplyRailroads) === true) {
             $germanBias = array(5 => true, 6 => true);
             $sovietBias = array(2 => true, 3 => true);
-            $germanGoal = array_merge($b->moveRules->calcRoadSupply(GERMAN_FORCE, 112, $germanBias),
-            $b->moveRules->calcRoadSupply(GERMAN_FORCE, 121, $germanBias),
-            $b->moveRules->calcRoadSupply(GERMAN_FORCE, 125, $germanBias),
-            $b->moveRules->calcRoadSupply(GERMAN_FORCE, 1901, $germanBias));
+            $germanGoal = array_merge($b->moveRules->calcRoadSupply(KievCorps::GERMAN_FORCE, 112, $germanBias),
+            $b->moveRules->calcRoadSupply(KievCorps::GERMAN_FORCE, 121, $germanBias),
+            $b->moveRules->calcRoadSupply(KievCorps::GERMAN_FORCE, 125, $germanBias),
+            $b->moveRules->calcRoadSupply(KievCorps::GERMAN_FORCE, 1901, $germanBias));
             /* Magic to remove dups then remove holes created by removal */
 //            $germanGoal = array_merge(array_unique($germanGoal));
 
-            $sovietGoal = array_merge($b->moveRules->calcRoadSupply(SOVIET_FORCE, 4201, $sovietBias),
-            $b->moveRules->calcRoadSupply(SOVIET_FORCE, 4612, $sovietBias),
-            $b->moveRules->calcRoadSupply(SOVIET_FORCE, 4622, $sovietBias),
-            $b->moveRules->calcRoadSupply(SOVIET_FORCE, 4626, $sovietBias));
+            $sovietGoal = array_merge($b->moveRules->calcRoadSupply(KievCorps::SOVIET_FORCE, 4201, $sovietBias),
+            $b->moveRules->calcRoadSupply(KievCorps::SOVIET_FORCE, 4612, $sovietBias),
+            $b->moveRules->calcRoadSupply(KievCorps::SOVIET_FORCE, 4622, $sovietBias),
+            $b->moveRules->calcRoadSupply(KievCorps::SOVIET_FORCE, 4626, $sovietBias));
 
             /* Magic to remove dups then remove holes created by removal */
 //            $sovietGoal = array_merge(array_unique($sovietGoal));
@@ -321,7 +321,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 //            return;
         }
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == GERMAN_FORCE) {
+            if ($unit->forceId == KievCorps::GERMAN_FORCE) {
                 $bias = array(5 => true, 6 => true);
                 $goal = $this->germanGoal;
             } else {
@@ -351,13 +351,13 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if ($attackingId == GERMAN_FORCE) {
+        if ($attackingId == KievCorps::GERMAN_FORCE) {
             if($gameRules->turn <= $gameRules->maxTurn){
                 $gameRules->flashMessages[] = "German Player Turn";
                 $gameRules->replacementsAvail = 1;
             }
         }
-        if ($attackingId == SOVIET_FORCE) {
+        if ($attackingId == KievCorps::SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
             $gameRules->replacementsAvail = 6;
         }

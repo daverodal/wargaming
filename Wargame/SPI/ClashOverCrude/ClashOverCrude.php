@@ -23,11 +23,13 @@ use Wargame\ModernLandBattle;
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define("REBEL_FORCE", 1);
-define("LOYALIST_FORCE", 2);
 
 class ClashOverCrude extends ModernLandBattle
 {
+    
+    const REBEL_FORCE = 1;
+    const LOYALIST_FORCE = 2;
+
     /* a comment */
 
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>1];

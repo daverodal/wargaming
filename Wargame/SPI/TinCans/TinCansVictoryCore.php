@@ -161,15 +161,15 @@ class TinCansVictoryCore extends \Wargame\SPI\victoryCore
     public function gameEnded()
     {
         $battle = Battle::getBattle();
-        if ($this->victoryPoints[LOYALIST_FORCE] > $this->victoryPoints[REBEL_FORCE]) {
+        if ($this->victoryPoints[TinCans::FORCE_TWO] > $this->victoryPoints[TinCans::FORCE_ONE]) {
             $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
-            $this->winner = LOYALIST_FORCE;
+            $this->winner = TinCans::FORCE_TWO;
         }
-        if ($this->victoryPoints[REBEL_FORCE] > $this->victoryPoints[LOYALIST_FORCE]) {
+        if ($this->victoryPoints[TinCans::FORCE_ONE] > $this->victoryPoints[TinCans::FORCE_TWO]) {
             $battle->gameRules->flashMessages[] = "Rebel Player Wins";
-            $this->winner = REBEL_FORCE;
+            $this->winner = TinCans::FORCE_ONE;
         }
-        if ($this->victoryPoints[LOYALIST_FORCE] == $this->victoryPoints[REBEL_FORCE]) {
+        if ($this->victoryPoints[TinCans::FORCE_TWO] == $this->victoryPoints[TinCans::FORCE_ONE]) {
             $battle->gameRules->flashMessages[] = "Tie Game";
         }
         $this->gameOver = true;

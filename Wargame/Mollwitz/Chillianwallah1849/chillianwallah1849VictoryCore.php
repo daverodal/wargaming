@@ -35,24 +35,24 @@ class chillianwallah1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
         list($mapHexName, $forceId) = $args;
         if(in_array($mapHexName,$battle->specialHexA)){
-            if ($forceId == SIKH_FORCE) {
-                $this->victoryPoints[SIKH_FORCE]  += 20;
+            if ($forceId == Chillianwallah1849::SIKH_FORCE) {
+                $this->victoryPoints[Chillianwallah1849::SIKH_FORCE]  += 20;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>+20 Sikh vp</span>";
             }
-            if ($forceId == BRITISH_FORCE) {
-                $this->victoryPoints[SIKH_FORCE]  -= 20;
+            if ($forceId == Chillianwallah1849::BRITISH_FORCE) {
+                $this->victoryPoints[Chillianwallah1849::SIKH_FORCE]  -= 20;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>-20 Sikh vp</span>";
             }
         }
         if(in_array($mapHexName,$battle->specialHexB)){
             $vp = 10;
 
-            if ($forceId == BRITISH_FORCE) {
-                $this->victoryPoints[BRITISH_FORCE]  += $vp;
+            if ($forceId == Chillianwallah1849::BRITISH_FORCE) {
+                $this->victoryPoints[Chillianwallah1849::BRITISH_FORCE]  += $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>+$vp British vp</span>";
             }
-            if ($forceId == SIKH_FORCE) {
-                $this->victoryPoints[BRITISH_FORCE]  -= $vp;
+            if ($forceId == Chillianwallah1849::SIKH_FORCE) {
+                $this->victoryPoints[Chillianwallah1849::BRITISH_FORCE]  -= $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>-$vp British vp</span>";
             }
         }
@@ -68,10 +68,10 @@ class chillianwallah1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
             $britVic = 50;
-            if (($this->victoryPoints[BRITISH_FORCE] >= $britVic && ($this->victoryPoints[BRITISH_FORCE] - ($this->victoryPoints[SIKH_FORCE]) >= 15))) {
+            if (($this->victoryPoints[Chillianwallah1849::BRITISH_FORCE] >= $britVic && ($this->victoryPoints[Chillianwallah1849::BRITISH_FORCE] - ($this->victoryPoints[Chillianwallah1849::SIKH_FORCE]) >= 15))) {
                 $britishWin = true;
             }
-            if (($this->victoryPoints[SIKH_FORCE] >= 30)) {
+            if (($this->victoryPoints[Chillianwallah1849::SIKH_FORCE] >= 30)) {
                 $sikhWin = true;
             }
             if ($turn == $gameRules->maxTurn + 1) {
@@ -88,11 +88,11 @@ class chillianwallah1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
 
             if ($britishWin) {
-                $this->winner = BRITISH_FORCE;
+                $this->winner = Chillianwallah1849::BRITISH_FORCE;
                 $gameRules->flashMessages[] = "British Win";
             }
             if ($sikhWin) {
-                $this->winner = SIKH_FORCE;
+                $this->winner = Chillianwallah1849::SIKH_FORCE;
                 $msg = "Sikh Win";
                 $gameRules->flashMessages[] = $msg;
             }

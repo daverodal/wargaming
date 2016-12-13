@@ -113,6 +113,28 @@ class CombatRules
         }
     }
 
+    function recalcCombat($id){
+        $attackers = $this->attackers;
+        $combatId = false;
+        $defenders = $this->defenders;
+
+        if(isset($attackers->$id)){
+            $combatId = $attackers->$id;
+        }elseif(isset($this->defenders->$id)){
+            $combatId = $this->defenders->$id;
+        }
+        if($combatId !== false){
+            $this->crt->setCombatIndex($combatId);
+        }
+    }
+
+    function recalcCurrentCombat(){
+        $cd = $this->currentDefender;
+
+        if($cd !== false){
+            $this->crt->setCombatIndex($cd);
+        }
+    }
     function pinCombat($pinVal)
     {
         $pinVal--; /* make 1 based 0 based */
@@ -295,7 +317,7 @@ class CombatRules
         {
             $unit = $this->force->units[$id];
 
-            if($this->force->units[$id]->class === "supply" && method_exists($this, "selectSupply")){
+            if($this->force->units[$id]->class === "supply" && $this instanceof CombatSupply){
                 $this->selectSupply($unit);
             }
 

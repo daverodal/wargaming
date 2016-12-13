@@ -56,20 +56,20 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
         $turn = $gameRules->turn;
         if(!$this->gameOver){
             $prussianWin = $austrianWin = false;
-            if($this->victoryPoints[AUSTRIAN_FORCE] >= 35){
+            if($this->victoryPoints[Mollwitz::AUSTRIAN_FORCE] >= 35){
                 $austrianWin = true;
                 $reason = "Win on kills";
             }
-            if($this->victoryPoints[PRUSSIAN_FORCE] >= 35){
+            if($this->victoryPoints[Mollwitz::PRUSSIAN_FORCE] >= 35){
                 $prussianWin = true;
                 $reason = "Win on kills";
             }
             if($turn > 1){
-                if($attackingId == PRUSSIAN_FORCE &&  $this->isMollwitz()){
+                if($attackingId == Mollwitz::PRUSSIAN_FORCE &&  $this->isMollwitz()){
                     $prussianWin = true;
                     $reason = " Occupy Mollwitz";
                 }
-                if($attackingId == AUSTRIAN_FORCE &&  $this->isNeudorf()){
+                if($attackingId == Mollwitz::AUSTRIAN_FORCE &&  $this->isNeudorf()){
                     $austrianWin = true;
                     $reason = " Occupy Neudorf";
                 }
@@ -81,12 +81,12 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
                 $gameRules->flashMessages[] = "Tie Game";
             }
             if($austrianWin){
-                $this->winner = AUSTRIAN_FORCE;
-                $gameRules->flashMessages[] = $force_name[AUSTRIAN_FORCE]." $reason";
+                $this->winner = Mollwitz::AUSTRIAN_FORCE;
+                $gameRules->flashMessages[] = $force_name[Mollwitz::AUSTRIAN_FORCE]." $reason";
             }
             if($prussianWin){
-                $this->winner = PRUSSIAN_FORCE;
-                $gameRules->flashMessages[] = $force_name[PRUSSIAN_FORCE]. " $reason";
+                $this->winner = Mollwitz::PRUSSIAN_FORCE;
+                $gameRules->flashMessages[] = $force_name[Mollwitz::PRUSSIAN_FORCE]. " $reason";
             }
             if($austrianWin || $prussianWin){
                 $gameRules->flashMessages[] = "Game Over";
@@ -107,7 +107,7 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
         $force = $b->force;
         $units = $force->units;
         foreach($units as $unit){
-            if($unit->forceId == PRUSSIAN_FORCE && in_array($unit->hexagon->name, $mollwitz) ){
+            if($unit->forceId == Mollwitz::PRUSSIAN_FORCE && in_array($unit->hexagon->name, $mollwitz) ){
                 return true;
             }
         }
@@ -119,7 +119,7 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
         $force = $b->force;
         $units = $force->units;
         foreach($units as $unit){
-            if($unit->forceId == AUSTRIAN_FORCE && in_array($unit->hexagon->name, $neudorf) ){
+            if($unit->forceId == Mollwitz::AUSTRIAN_FORCE && in_array($unit->hexagon->name, $neudorf) ){
                 return true;
             }
         }

@@ -183,12 +183,12 @@ class CombatResultsTable
             }
 
             if(!empty($scenario->americanRevolution) && $unit->class === "hq"){
-                $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>Arnold was here</span>&nbsp;&nbsp;<br>";
+                $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>Arnold was here +1 combat shift</span>&nbsp;&nbsp;<br>";
                 $arnold = true;
             }
 
             if($unit->name === "morgan"){
-                $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>Morgan was here</span>&nbsp;&nbsp;<br>";
+                $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>Morgan was here +1 combat shift</span>&nbsp;&nbsp;<br>";
                 $morgan = true;
             }
 
@@ -278,7 +278,7 @@ class CombatResultsTable
                     }
                 }
                 if(!empty($scenario->americanRevolution)){
-                    if ($unit->forceId == LOYALIST_FORCE && $isClear && !$acrossRiver) {
+                    if ($unit->forceId == $battle::LOYALIST_FORCE && $isClear && !$acrossRiver) {
                         if($unit->name !== "smallunit") {
                             $unitStrength++;
                             $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for attack into clear</span>&nbsp;&nbsp;<br>";
@@ -423,23 +423,23 @@ class CombatResultsTable
             }
 
             if(!empty($scenario->jagersdorfCombat)){
-                if ($unit->forceId == PRUSSIAN_FORCE && $class == "infantry" && $isClear) {
+                if ($unit->forceId == $battle::PRUSSIAN_FORCE && $class == "infantry" && $isClear) {
                     $unitDefense += 1;
                     $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in clear 1</span><br>";
                 }
-                if ($unit->forceId == RUSSIAN_FORCE && $class == "infantry" && ($isTown || $isForest)) {
+                if ($unit->forceId == $battle::RUSSIAN_FORCE && $class == "infantry" && ($isTown || $isForest)) {
                     $unitDefense += 1;
                     $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in town or forest</span><br>";
                 }
             }
             if(!empty($scenario->americanRevolution)){
-                if ($unit->forceId == LOYALIST_FORCE && $class == "infantry" && $isClear) {
+                if ($unit->forceId == $battle::LOYALIST_FORCE && $class == "infantry" && $isClear) {
                     if($unit->name !== "smallunit"){
                         $unitDefense += 1;
                         $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in clear</span><br>";
                     }
                 }
-                if ($unit->forceId == REBEL_FORCE && $class == "infantry" && (!$isClear || $battle->combatRules->allAreAttackingThisAcrossRiver($defId))) {
+                if ($unit->forceId == $battle::REBEL_FORCE && $class == "infantry" && (!$isClear || $battle->combatRules->allAreAttackingThisAcrossRiver($defId))) {
                     $unitDefense += 1;
                     $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>+1 for defending in town or forest</span><br>";
                 }

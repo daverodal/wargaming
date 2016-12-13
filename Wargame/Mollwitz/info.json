@@ -1518,6 +1518,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Germantown1777\\Germantown1777",
     "description": "Germantown 1777",
     "params": {
+      "americanRevolution": true
     },
     "options": [],
     "scenarios": {

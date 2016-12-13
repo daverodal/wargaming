@@ -20,16 +20,17 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("LOYALIST_FORCE", 1);
-define("REBEL_FORCE", 2);
 
-global $force_name;
-$force_name[LOYALIST_FORCE] = "Loyalist";
-$force_name[REBEL_FORCE] = "Rebel";
+//global $force_name;
+//$force_name[Brandywine1777::LOYALIST_FORCE] = "Loyalist";
+//$force_name[Brandywine1777::REBEL_FORCE] = "Rebel";
 
 
 class Brandywine1777 extends \Wargame\Mollwitz\JagCore
 {
+
+    const LOYALIST_FORCE = 1;
+    const REBEL_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
     static function enterMulti()
@@ -41,8 +42,8 @@ class Brandywine1777 extends \Wargame\Mollwitz\JagCore
     {
         global $force_name;
 
-        $deployTwo = $playerOne = $force_name[LOYALIST_FORCE];
-        $deployOne = $playerTwo = $force_name[REBEL_FORCE];
+        $deployTwo = $playerOne = $force_name[Brandywine1777::LOYALIST_FORCE];
+        $deployOne = $playerTwo = $force_name[Brandywine1777::REBEL_FORCE];
         @include_once "playMulti.php";
     }
 
@@ -50,6 +51,11 @@ class Brandywine1777 extends \Wargame\Mollwitz\JagCore
         $forceName = ["Observer", "Loyalist", "Rebel"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
+    }
+
+
+    public function isRebel($forceId){
+        return $forceId === self::REBEL_FORCE;
     }
 
     function save()

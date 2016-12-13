@@ -19,12 +19,14 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("ANGLO_ALLIED_FORCE", 1);
-define("FRENCH_FORCE", 2);
 
 
 class Oudenarde1708 extends \Wargame\Mollwitz\JagCore
 {
+
+    const ANGLO_ALLIED_FORCE = 1;
+    const FRENCH_FORCE = 2;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){

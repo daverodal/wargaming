@@ -69,10 +69,10 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
 
         if(in_array($mapHexName, $battle->specialHexC)){
 
-            if ($forceId == SOVIET_FORCE) {
+            if ($forceId == Moskow::SOVIET_FORCE) {
                 $this->victoryPoints = "The Soviets hold Moskow";
             }
-            if ($forceId == GERMAN_FORCE) {
+            if ($forceId == Moskow::GERMAN_FORCE) {
                 $this->victoryPoints = "The Germans hold Moskow";
             }
         }
@@ -83,7 +83,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
         list($zones, $unit) = $args;
 
         $forceId = $unit->forceId;
-        if($unit->forceId == GERMAN_FORCE){
+        if($unit->forceId == Moskow::GERMAN_FORCE){
             $zones = $this->germanGoal;
         }else{
             $zones = $this->sovietGoal;
@@ -148,7 +148,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
     {
         $battle = Battle::getBattle();
         $moskow = $battle->specialHexC[0];
-        if ($battle->mapData->getSpecialHex($moskow) === SOVIET_FORCE) {
+        if ($battle->mapData->getSpecialHex($moskow) === Moskow::SOVIET_FORCE) {
             $battle->gameRules->flashMessages[] = "Soviet Player Wins";
         }else{
             $battle->gameRules->flashMessages[] = "German Player Wins";
@@ -238,7 +238,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
 //            return;
         }
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == GERMAN_FORCE) {
+            if ($unit->forceId == Moskow::GERMAN_FORCE) {
                 $bias = array(5 => true, 6 => true, 1 => true);
                 $goal = $this->germanGoal;
             } else {
@@ -252,7 +252,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
                 if(!isset($this->movementCache->$id)) {
                     $this->movementCache->$id = $unit->maxMove;
                     $unit->maxMove = 1;
-                    if($unit->forceId == SOVIET_FORCE){
+                    if($unit->forceId == Moskow::SOVIET_FORCE){
                         $unit->class = 'mudinf';
                     }
                 }
@@ -287,7 +287,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if ($attackingId == GERMAN_FORCE) {
+        if ($attackingId == Moskow::GERMAN_FORCE) {
             if($gameRules->turn <= $gameRules->maxTurn){
                 $gameRules->flashMessages[] = "German Player Turn";
                 $gameRules->replacementsAvail = 1;
@@ -301,7 +301,7 @@ class moskowVictoryCore extends \Wargame\TMCW\victoryCore
                 }
             }
         }
-        if ($attackingId == SOVIET_FORCE) {
+        if ($attackingId == Moskow::SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
             $gameRules->replacementsAvail = 8;
             if(!empty($scenario->weakSoviets)){

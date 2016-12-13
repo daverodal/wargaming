@@ -70,4 +70,34 @@ trait ModernSupplyRules
         }
 
     }
+
+    protected function unitCombatSupplyEffects($unit, $goal, $bias, $supplyLen){
+
+        $b = Battle::getBattle();
+        $id = $unit->id;
+
+        if ($unit->hexagon->name) {
+            $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
+        } else {
+            return;
+        }
+
+        if (!$unit->supplied) {
+            $unit->addAdjustment('movement','floorHalfMovement');
+
+        }
+        if ($unit->supplied) {
+            $unit->removeAdjustment('movement');
+        }
+
+        if ((!empty($this->unsuppliedDefenderHalved) || $unit->forceId == $b->gameRules->attackingForceId) && !$unit->supplied) {
+            $unit->addAdjustment('supply','zero');
+            $b->combatRules->recalcCombat($unit->id);
+        }else{
+            $unit->removeAdjustment('supply');
+            $b->combatRules->recalcCombat($unit->id);
+        }
+
+    }
+
 }

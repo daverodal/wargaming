@@ -33,22 +33,22 @@ class oudenarde1708VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == ANGLO_ALLIED_FORCE) {
-                $this->victoryPoints[ANGLO_ALLIED_FORCE] += 15;
+            if ($forceId == Oudenarde1708::ANGLO_ALLIED_FORCE) {
+                $this->victoryPoints[Oudenarde1708::ANGLO_ALLIED_FORCE] += 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='angloallied'>+15 Anglo Allied vp</span>";
             }
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[ANGLO_ALLIED_FORCE] -= 15;
+            if ($forceId == Oudenarde1708::FRENCH_FORCE) {
+                $this->victoryPoints[Oudenarde1708::ANGLO_ALLIED_FORCE] -= 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-15 Anglo Allied vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE] += 10;
+            if ($forceId == Oudenarde1708::FRENCH_FORCE) {
+                $this->victoryPoints[Oudenarde1708::FRENCH_FORCE] += 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+10 French vp</span>";
             }
-            if ($forceId == ANGLO_ALLIED_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE] -= 10;
+            if ($forceId == Oudenarde1708::ANGLO_ALLIED_FORCE) {
+                $this->victoryPoints[Oudenarde1708::FRENCH_FORCE] -= 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='angloallied'>-10 French vp</span>";
             }
         }
@@ -64,21 +64,21 @@ class oudenarde1708VictoryCore extends \Wargame\Mollwitz\victoryCore
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
             $winScore = 40;
-            if (($this->victoryPoints[ANGLO_ALLIED_FORCE] >= $winScore && ($this->victoryPoints[ANGLO_ALLIED_FORCE] - ($this->victoryPoints[FRENCH_FORCE]) >= 5))) {
+            if (($this->victoryPoints[Oudenarde1708::ANGLO_ALLIED_FORCE] >= $winScore && ($this->victoryPoints[Oudenarde1708::ANGLO_ALLIED_FORCE] - ($this->victoryPoints[Oudenarde1708::FRENCH_FORCE]) >= 5))) {
                 if ($turn <= 7) {
                     $angloWin = true;
                 }
             }
-            if ($this->victoryPoints[FRENCH_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Oudenarde1708::FRENCH_FORCE] >= $winScore) {
                 $frenchWin = true;
             }
 
             if ($angloWin) {
-                $this->winner = ANGLO_ALLIED_FORCE;
+                $this->winner = Oudenarde1708::ANGLO_ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Anglo Allied Win";
             }
             if ($frenchWin) {
-                $this->winner = FRENCH_FORCE;
+                $this->winner = Oudenarde1708::FRENCH_FORCE;
                 $msg = "French Win";
                 $gameRules->flashMessages[] = $msg;
             }

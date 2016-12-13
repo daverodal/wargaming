@@ -41,16 +41,16 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
         if (!$this->gameOver) {
             $winScore = 24;
 
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Gemauerthof1705::SWEDISH_FORCE] >= $winScore) {
                     $swedishWin = true;
             }
-            if ($this->victoryPoints[RUSSIAN_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Gemauerthof1705::RUSSIAN_FORCE] >= $winScore) {
                 $russianWin = true;
             }
 
 
             if ($swedishWin && !$russianWin) {
-                $this->winner = SWEDISH_FORCE;
+                $this->winner = Gemauerthof1705::SWEDISH_FORCE;
                 $gameRules->flashMessages[] = "Swedish Win";
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
@@ -59,7 +59,7 @@ class Gemauerthof1705VictoryCore extends \Wargame\Mollwitz\victoryCore
 
 
             if (!$swedishWin && $russianWin) {
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = Gemauerthof1705::RUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Russian Win";
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;

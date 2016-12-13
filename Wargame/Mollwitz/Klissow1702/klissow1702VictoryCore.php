@@ -42,22 +42,22 @@ class klissow1702VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] += 5;
+            if ($forceId == Klissow1702::SWEDISH_FORCE) {
+                $this->victoryPoints[Klissow1702::SWEDISH_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>+5 Swedish vp</span>";
             }
-            if ($forceId == SAXON_POLISH_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] -= 5;
+            if ($forceId == Klissow1702::SAXON_POLISH_FORCE) {
+                $this->victoryPoints[Klissow1702::SWEDISH_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>-5 Swedish vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == SAXON_POLISH_FORCE) {
-                $this->victoryPoints[SAXON_POLISH_FORCE] += 5;
+            if ($forceId == Klissow1702::SAXON_POLISH_FORCE) {
+                $this->victoryPoints[Klissow1702::SAXON_POLISH_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>+5 Saxon Polish vp</span>";
             }
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[SAXON_POLISH_FORCE] -= 5;
+            if ($forceId == Klissow1702::SWEDISH_FORCE) {
+                $this->victoryPoints[Klissow1702::SAXON_POLISH_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>-5 Saxon Polish vp</span>";
             }
         }
@@ -74,26 +74,26 @@ class klissow1702VictoryCore extends \Wargame\Mollwitz\victoryCore
             $specialHexes = $battle->mapData->specialHexes;
             $earlyWinScore = 35;
             $winScore = 40;
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $earlyWinScore) {
+            if ($this->victoryPoints[Klissow1702::SWEDISH_FORCE] >= $earlyWinScore) {
                 if ($turn <= 5) {
                     $swedishWin = true;
                 }
             }
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Klissow1702::SWEDISH_FORCE] >= $winScore) {
                     $swedishWin = true;
 
             }
-            if ($this->victoryPoints[SAXON_POLISH_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Klissow1702::SAXON_POLISH_FORCE] >= $winScore) {
                 $saxonPolishWin = true;
             }
 
             if ($swedishWin && !$saxonPolishWin) {
-                $this->winner = SWEDISH_FORCE;
+                $this->winner = Klissow1702::SWEDISH_FORCE;
                 $gameRules->flashMessages[] = "Swedish Win";
                 $this->gameOver = true;
             }
             if ($saxonPolishWin && !$swedishWin) {
-                $this->winner = SAXON_POLISH_FORCE;
+                $this->winner = Klissow1702::SAXON_POLISH_FORCE;
                 $gameRules->flashMessages[] = "Saxon Polish Win";
                 $this->gameOver = true;
             }
@@ -104,7 +104,7 @@ class klissow1702VictoryCore extends \Wargame\Mollwitz\victoryCore
             if ($turn == ($gameRules->maxTurn + 1)) {
                 $this->gameOver = true;
                 if(!$saxonPolishWin && !$swedishWin){
-                    $this->winner = SAXON_POLISH_FORCE;
+                    $this->winner = Klissow1702::SAXON_POLISH_FORCE;
                     $gameRules->flashMessages[] = "Saxon Polish Win";
                 }
             }

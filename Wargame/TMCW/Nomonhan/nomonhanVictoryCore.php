@@ -94,8 +94,8 @@ class nomonhanVictoryCore{
          */
         list($unit, $hexagon) = $args;
 
-        if($unit->forceId == SOVIET_FORCE && $unit->reinforceTurn == 6){
-            $victorId = SOVIET_FORCE;
+        if($unit->forceId == Nomonhan::SOVIET_FORCE && $unit->reinforceTurn == 6){
+            $victorId = Nomonhan::SOVIET_FORCE;
             $vp = 0 - $unit->maxStrength;
             $this->victoryPoints[$victorId] += $vp;
             $battle = Battle::getBattle();
@@ -113,8 +113,8 @@ class nomonhanVictoryCore{
         }else{
             $vp = $unit->minStrength;
         }
-        if($unit->forceId == JAPANESE_FORCE){
-            $victorId = SOVIET_FORCE;
+        if($unit->forceId == Nomonhan::JAPANESE_FORCE){
+            $victorId = Nomonhan::SOVIET_FORCE;
             if($unit->class == "mech" || $unit->class == "artillery"){
                 $vp += $vp;
             }
@@ -123,7 +123,7 @@ class nomonhanVictoryCore{
             $battle = Battle::getBattle();
             $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='loyalistVictoryPoints'>+$vp vp</span>";
         }else{
-            $victorId = JAPANESE_FORCE;
+            $victorId = Nomonhan::JAPANESE_FORCE;
             $this->victoryPoints[$victorId] += $vp;
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
@@ -190,7 +190,7 @@ class nomonhanVictoryCore{
 //            return;
         }
         if(!empty($b->scenario->supply) === true){
-            if($unit->forceId == JAPANESE_FORCE){
+            if($unit->forceId == Nomonhan::JAPANESE_FORCE){
                 for($i = 101;$i <= 3701;$i += 100){
                     $goal[] = $i;
                 }
@@ -305,11 +305,11 @@ class nomonhanVictoryCore{
         if($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE){
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if($attackingId == SOVIET_FORCE){
+        if($attackingId == Nomonhan::SOVIET_FORCE){
             $gameRules->flashMessages[] = "Soviet Player Turn";
             $gameRules->replacementsAvail = 2;
         }
-        if($attackingId  == JAPANESE_FORCE){
+        if($attackingId  == Nomonhan::JAPANESE_FORCE){
             $gameRules->flashMessages[] = "Japanese Player Turn";
 //            $gameRules->replacementsAvail = 10;
         }

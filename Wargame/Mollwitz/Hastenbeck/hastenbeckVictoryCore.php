@@ -41,24 +41,24 @@ class hastenbeckVictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if(in_array($mapHexName,$battle->specialHexA)){
-            if ($forceId == ALLIED_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  += 5;
+            if ($forceId == Hastenbeck::ALLIED_FORCE) {
+                $this->victoryPoints[Hastenbeck::ALLIED_FORCE]  += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='anglo'>+5 Allied vp</span>";
             }
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  -= 5;
+            if ($forceId == Hastenbeck::FRENCH_FORCE) {
+                $this->victoryPoints[Hastenbeck::ALLIED_FORCE]  -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-5 Allied vp</span>";
             }
         }
         if(in_array($mapHexName,$battle->specialHexB)){
             $vp = 5;
 
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE]  += $vp;
+            if ($forceId == Hastenbeck::FRENCH_FORCE) {
+                $this->victoryPoints[Hastenbeck::FRENCH_FORCE]  += $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+$vp French vp</span>";
             }
-            if ($forceId == ALLIED_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE]  -= $vp;
+            if ($forceId == Hastenbeck::ALLIED_FORCE) {
+                $this->victoryPoints[Hastenbeck::FRENCH_FORCE]  -= $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='anglo'>-$vp French vp</span>";
             }
         }
@@ -66,19 +66,19 @@ class hastenbeckVictoryCore extends \Wargame\Mollwitz\victoryCore
             $vp = 5;
 
             $prevForceId = $battle->mapData->specialHexes->$mapHexName;
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE]  += $vp;
+            if ($forceId == Hastenbeck::FRENCH_FORCE) {
+                $this->victoryPoints[Hastenbeck::FRENCH_FORCE]  += $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+$vp French vp</span>";
                 if($prevForceId !== 0) {
-                    $this->victoryPoints[ALLIED_FORCE] -= $vp;
+                    $this->victoryPoints[Hastenbeck::ALLIED_FORCE] -= $vp;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='anglo'>-$vp Allied vp</span>";
                 }
             }
-            if ($forceId == ALLIED_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  += $vp;
+            if ($forceId == Hastenbeck::ALLIED_FORCE) {
+                $this->victoryPoints[Hastenbeck::ALLIED_FORCE]  += $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='anglo'>+$vp Allied vp</span>";
                 if($prevForceId !== 0) {
-                    $this->victoryPoints[FRENCH_FORCE] -= $vp;
+                    $this->victoryPoints[Hastenbeck::FRENCH_FORCE] -= $vp;
                     $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='french'>-$vp French vp</span>";
                 }
             }
@@ -99,7 +99,7 @@ class hastenbeckVictoryCore extends \Wargame\Mollwitz\victoryCore
         if(!$this->gameOver){
             $frenchObjectives = 0;
             foreach($objectiveHexes as $objectiveHex){
-                if($mapData->getSpecialHex($objectiveHex) == FRENCH_FORCE){
+                if($mapData->getSpecialHex($objectiveHex) == Hastenbeck::FRENCH_FORCE){
                     $frenchObjectives++;
                 }
             }
@@ -108,10 +108,10 @@ class hastenbeckVictoryCore extends \Wargame\Mollwitz\victoryCore
             }
 
 
-            if($this->victoryPoints[ALLIED_FORCE] >= $alliedVictoryPointsNeeded){
+            if($this->victoryPoints[Hastenbeck::ALLIED_FORCE] >= $alliedVictoryPointsNeeded){
                 $angloWin = true;
             }
-            if($frenchThreeObjectives && ($this->victoryPoints[FRENCH_FORCE] >= $frenchVictoryPointsNeeded)){
+            if($frenchThreeObjectives && ($this->victoryPoints[Hastenbeck::FRENCH_FORCE] >= $frenchVictoryPointsNeeded)){
                 if($turn <= 10) {
                     $frenchWin = true;
                 }else{
@@ -148,11 +148,11 @@ class hastenbeckVictoryCore extends \Wargame\Mollwitz\victoryCore
 
 
             if($angloWin){
-                $this->winner = ALLIED_FORCE;
+                $this->winner = Hastenbeck::ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
             }
             if($frenchWin){
-                $this->winner = FRENCH_FORCE;
+                $this->winner = Hastenbeck::FRENCH_FORCE;
                 $msg = "French Win";
                 $gameRules->flashMessages[] = $msg;
             }

@@ -33,12 +33,12 @@ class dubba1843VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
         $battle = \Wargame\Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
-        if ($forceId == BELUCHI_FORCE) {
-            $this->victoryPoints[BELUCHI_FORCE]  += 15;
+        if ($forceId == Dubba1843::BELUCHI_FORCE) {
+            $this->victoryPoints[Dubba1843::BELUCHI_FORCE]  += 15;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='beluchi'>+15 Beluchis  vp</span>";
         }
-        if ($forceId == BRITISH_FORCE) {
-            $this->victoryPoints[BELUCHI_FORCE]  -= 15;
+        if ($forceId == Dubba1843::BRITISH_FORCE) {
+            $this->victoryPoints[Dubba1843::BELUCHI_FORCE]  -= 15;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>-15 Beluchis  vp</span>";
         }
     }
@@ -52,10 +52,10 @@ class dubba1843VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
         if(!$this->gameOver){
             $specialHexes = $battle->mapData->specialHexes;
-            if(($this->victoryPoints[BRITISH_FORCE] >= 45)){
+            if(($this->victoryPoints[Dubba1843::BRITISH_FORCE] >= 45)){
                 $britishWin = true;
             }
-            if(($this->victoryPoints[BELUCHI_FORCE] >= 40)){
+            if(($this->victoryPoints[Dubba1843::BELUCHI_FORCE] >= 40)){
                 $beluchiWin = true;
             }
             if($turn == $gameRules->maxTurn+1){
@@ -73,11 +73,11 @@ class dubba1843VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
             }
 
             if($britishWin){
-                $this->winner = BRITISH_FORCE;
+                $this->winner = Dubba1843::BRITISH_FORCE;
                 $gameRules->flashMessages[] = "British Win";
             }
             if($beluchiWin){
-                $this->winner = BELUCHI_FORCE;
+                $this->winner = Dubba1843::BELUCHI_FORCE;
                 $msg = "Beluchi Win";
                 $gameRules->flashMessages[] = $msg;
             }

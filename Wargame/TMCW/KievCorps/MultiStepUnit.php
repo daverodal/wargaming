@@ -94,10 +94,16 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
             return $this->origSteps > $this->steps;
         }
         $strength = $this->getUnmodifiedStrength();
-        $strength = $this->getCombatAdjustments($strength);
-        if($strength < 0.1){
-            $strength = .1;
+        if($this->id == 54){
+//            echo $strength;
         }
+        $strength = $this->getCombatAdjustments($strength);
+        if($this->id == 54){
+//            echo " $strength";
+        }
+//        if($strength < 0.1){
+//            $strength = .1;
+//        }
 
         return $strength;
     }
@@ -188,6 +194,7 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
         }
         return false;
     }
+
     function __construct($data = null)
     {
         if ($data) {
@@ -203,7 +210,6 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
         }
         $this->forceMarch = true;
     }
-
 
     public function fetchData(){
         $mapUnit = new StdClass();

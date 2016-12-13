@@ -35,34 +35,34 @@ class ferozeshaVictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
         if (!empty($battle->scenario->dayTwo)) {
             list($mapHexName, $forceId) = $args;
 
-            if ($forceId == SIKH_FORCE) {
-                $this->victoryPoints[SIKH_FORCE] += 5;
+            if ($forceId == Ferozesha::SIKH_FORCE) {
+                $this->victoryPoints[Ferozesha::SIKH_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='beluchi'>+5 Sikh  vp</span>";
             }
-            if ($forceId == BRITISH_FORCE) {
-                $this->victoryPoints[SIKH_FORCE] -= 5;
+            if ($forceId == Ferozesha::BRITISH_FORCE) {
+                $this->victoryPoints[Ferozesha::SIKH_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>-5 Sikh  vp</span>";
             }
         } else {
 
             list($mapHexName, $forceId) = $args;
             if ($mapHexName == $battle->moodkee) {
-                if ($forceId == SIKH_FORCE) {
-                    $this->victoryPoints[SIKH_FORCE] += 20;
+                if ($forceId == Ferozesha::SIKH_FORCE) {
+                    $this->victoryPoints[Ferozesha::SIKH_FORCE] += 20;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='beluchi'>+5 Sikh  vp</span>";
                 }
-                if ($forceId == BRITISH_FORCE) {
-                    $this->victoryPoints[SIKH_FORCE] -= 20;
+                if ($forceId == Ferozesha::BRITISH_FORCE) {
+                    $this->victoryPoints[Ferozesha::SIKH_FORCE] -= 20;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>-5 Sikh  vp</span>";
                 }
 
             } else {
-                if ($forceId == BRITISH_FORCE) {
-                    $this->victoryPoints[BRITISH_FORCE] += 5;
+                if ($forceId == Ferozesha::BRITISH_FORCE) {
+                    $this->victoryPoints[Ferozesha::BRITISH_FORCE] += 5;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>+5 British  vp</span>";
                 }
-                if ($forceId == SIKH_FORCE) {
-                    $this->victoryPoints[BRITISH_FORCE] -= 5;
+                if ($forceId == Ferozesha::SIKH_FORCE) {
+                    $this->victoryPoints[Ferozesha::BRITISH_FORCE] -= 5;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='beluchi'>-5 British  vp</span>";
                 }
             }
@@ -81,10 +81,10 @@ class ferozeshaVictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
             $specialHexes = $battle->mapData->specialHexes;
             $britVic = 40;
             $lead = 15;
-            if (($this->victoryPoints[BRITISH_FORCE] >= $britVic && ($this->victoryPoints[BRITISH_FORCE] - ($this->victoryPoints[SIKH_FORCE]) >= $lead))) {
+            if (($this->victoryPoints[Ferozesha::BRITISH_FORCE] >= $britVic && ($this->victoryPoints[Ferozesha::BRITISH_FORCE] - ($this->victoryPoints[Ferozesha::SIKH_FORCE]) >= $lead))) {
                 $britishWin = true;
             }
-            if (($this->victoryPoints[SIKH_FORCE] >= 35)) {
+            if (($this->victoryPoints[Ferozesha::SIKH_FORCE] >= 35)) {
                 $sikhWin = true;
             }
             if ($turn == $gameRules->maxTurn + 1) {
@@ -103,11 +103,11 @@ class ferozeshaVictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
 
             if ($britishWin) {
-                $this->winner = BRITISH_FORCE;
+                $this->winner = Ferozesha::BRITISH_FORCE;
                 $gameRules->flashMessages[] = "British Win";
             }
             if ($sikhWin) {
-                $this->winner = SIKH_FORCE;
+                $this->winner = Ferozesha::SIKH_FORCE;
                 $msg = "Sikh Win";
                 $gameRules->flashMessages[] = $msg;
             }

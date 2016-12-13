@@ -33,22 +33,22 @@ class kesselsdorf1745VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == PRUSSIAN_FORCE) {
-                $this->victoryPoints[PRUSSIAN_FORCE] += 5;
+            if ($forceId == Kesselsdorf1745::PRUSSIAN_FORCE) {
+                $this->victoryPoints[Kesselsdorf1745::PRUSSIAN_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>+5 Prussian vp</span>";
             }
-            if ($forceId == AUSTRIAN_FORCE) {
-                $this->victoryPoints[PRUSSIAN_FORCE] -= 5;
+            if ($forceId == Kesselsdorf1745::AUSTRIAN_FORCE) {
+                $this->victoryPoints[Kesselsdorf1745::PRUSSIAN_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>-5 Prussian vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == AUSTRIAN_FORCE) {
-                $this->victoryPoints[AUSTRIAN_FORCE] += 5;
+            if ($forceId == Kesselsdorf1745::AUSTRIAN_FORCE) {
+                $this->victoryPoints[Kesselsdorf1745::AUSTRIAN_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>+5 Austrian vp</span>";
             }
-            if ($forceId == PRUSSIAN_FORCE) {
-                $this->victoryPoints[AUSTRIAN_FORCE] -= 5;
+            if ($forceId == Kesselsdorf1745::PRUSSIAN_FORCE) {
+                $this->victoryPoints[Kesselsdorf1745::AUSTRIAN_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>-5 Austrian vp</span>";
             }
         }
@@ -64,24 +64,24 @@ class kesselsdorf1745VictoryCore extends \Wargame\Mollwitz\victoryCore
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
             $winScore = 30;
-            if ($this->victoryPoints[PRUSSIAN_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Kesselsdorf1745::PRUSSIAN_FORCE] >= $winScore) {
                     $prussianWin = true;
             }
-            if ($this->victoryPoints[AUSTRIAN_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Kesselsdorf1745::AUSTRIAN_FORCE] >= $winScore) {
                 $austrianWin = true;
             }
 
             if ($prussianWin) {
-                $this->winner = PRUSSIAN_FORCE;
+                $this->winner = Kesselsdorf1745::PRUSSIAN_FORCE;
                 $msg = "Prussian Win";
             }
             if ($austrianWin) {
-                $this->winner = AUSTRIAN_FORCE;
+                $this->winner = Kesselsdorf1745::AUSTRIAN_FORCE;
                 $msg = "Austrian Win";
             }
             if ($prussianWin || $austrianWin ||  $turn == ($gameRules->maxTurn + 1)) {
                 if(!$prussianWin){
-                    $this->winner = AUSTRIAN_FORCE;
+                    $this->winner = Kesselsdorf1745::AUSTRIAN_FORCE;
                     $msg = "Austrian Win";
                 }
                 if($prussianWin && $austrianWin){

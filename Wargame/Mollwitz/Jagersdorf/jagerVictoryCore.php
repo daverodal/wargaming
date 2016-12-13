@@ -38,11 +38,11 @@ class jagerVictoryCore extends \Wargame\Mollwitz\victoryCore
         $turn = $gameRules->turn;
         if(!$this->gameOver){
             $prussianWin = $russianWin = false;
-            if($this->victoryPoints[RUSSIAN_FORCE] >= 20){
+            if($this->victoryPoints[Jagersdorf::RUSSIAN_FORCE] >= 20){
                 $russianWin = true;
                 $reason = "Win on Kills";
             }
-            if($this->victoryPoints[PRUSSIAN_FORCE] >= 25){
+            if($this->victoryPoints[Jagersdorf::PRUSSIAN_FORCE] >= 25){
                 $reason = "Win on Kills";
                 $prussianWin = true;
             }
@@ -66,11 +66,11 @@ class jagerVictoryCore extends \Wargame\Mollwitz\victoryCore
                 $gameRules->flashMessages[] = "Tie Game";
             }
             if($russianWin){
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = Jagersdorf::RUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Russian $reason";
             }
             if($prussianWin){
-                $this->winner = PRUSSIAN_FORCE;
+                $this->winner = Jagersdorf::PRUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Prussian $reason";
             }
             if($russianWin || $prussianWin){
@@ -96,7 +96,7 @@ class jagerVictoryCore extends \Wargame\Mollwitz\victoryCore
         $force = $b->force;
         $units = $force->units;
         foreach($units as $unit){
-            if($unit->forceId == RUSSIAN_FORCE && in_array($unit->hexagon->name, $norKitten) ){
+            if($unit->forceId == Jagersdorf::RUSSIAN_FORCE && in_array($unit->hexagon->name, $norKitten) ){
                 return false;
             }
         }
@@ -109,7 +109,7 @@ class jagerVictoryCore extends \Wargame\Mollwitz\victoryCore
         $force = $b->force;
         $units = $force->units;
         foreach($units as $unit){
-            if($unit->forceId == PRUSSIAN_FORCE && in_array($unit->hexagon->name, $jagersdorf) ){
+            if($unit->forceId == Jagersdorf::PRUSSIAN_FORCE && in_array($unit->hexagon->name, $jagersdorf) ){
                 return false;
             }
         }
@@ -128,10 +128,10 @@ class jagerVictoryCore extends \Wargame\Mollwitz\victoryCore
         $units = $force->units;
         $bothSides = 0;
         foreach($units as $unit){
-            if($unit->forceId == RUSSIAN_FORCE && in_array($unit->hexagon->name, $almCreek)){
+            if($unit->forceId == Jagersdorf::RUSSIAN_FORCE && in_array($unit->hexagon->name, $almCreek)){
                 return false;
             }
-            if($unit->forceId == PRUSSIAN_FORCE && in_array($unit->hexagon->name, $almBridge) ){
+            if($unit->forceId == Jagersdorf::PRUSSIAN_FORCE && in_array($unit->hexagon->name, $almBridge) ){
                 $bothSides++;
             }
         }

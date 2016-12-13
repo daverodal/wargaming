@@ -37,32 +37,32 @@ class goojerat1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
         list($mapHexName, $forceId) = $args;
         if(in_array($mapHexName,$battle->specialHexA)){
-            if ($forceId == SIKH_FORCE) {
-                $this->victoryPoints[SIKH_FORCE]  += 20;
+            if ($forceId == Goojerat1849::SIKH_FORCE) {
+                $this->victoryPoints[Goojerat1849::SIKH_FORCE]  += 20;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='sikh'>+20 Sikh vp</span>";
             }
-            if ($forceId == BRITISH_FORCE) {
-                $this->victoryPoints[SIKH_FORCE]  -= 20;
+            if ($forceId == Goojerat1849::BRITISH_FORCE) {
+                $this->victoryPoints[Goojerat1849::SIKH_FORCE]  -= 20;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>-20 Sikh vp</span>";
             }
         }
         if(in_array($mapHexName,$battle->specialHexB)){
-            if ($forceId == BRITISH_FORCE) {
-                $this->victoryPoints[BRITISH_FORCE]  += 15;
+            if ($forceId == Goojerat1849::BRITISH_FORCE) {
+                $this->victoryPoints[Goojerat1849::BRITISH_FORCE]  += 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>+15 British vp</span>";
             }
-            if ($forceId == SIKH_FORCE) {
-                $this->victoryPoints[BRITISH_FORCE]  -= 15;
+            if ($forceId == Goojerat1849::SIKH_FORCE) {
+                $this->victoryPoints[Goojerat1849::BRITISH_FORCE]  -= 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='sikh'>-15 British vp</span>";
             }
         }
         if(!empty($scenario->altScenario) && in_array($mapHexName,$battle->specialHexC)){
-            if ($forceId == BRITISH_FORCE) {
-                $this->victoryPoints[BRITISH_FORCE]  += 5;
+            if ($forceId == Goojerat1849::BRITISH_FORCE) {
+                $this->victoryPoints[Goojerat1849::BRITISH_FORCE]  += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>+5 British vp</span>";
             }
-            if ($forceId == SIKH_FORCE) {
-                $this->victoryPoints[BRITISH_FORCE]  -= 5;
+            if ($forceId == Goojerat1849::SIKH_FORCE) {
+                $this->victoryPoints[Goojerat1849::BRITISH_FORCE]  -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='sikh'>-5 British vp</span>";
             }
         }    }
@@ -82,10 +82,10 @@ class goojerat1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
             }else{
                 $sikhVic = 50;
             }
-            if (($this->victoryPoints[BRITISH_FORCE] >= $britVic && ($this->victoryPoints[BRITISH_FORCE] - ($this->victoryPoints[SIKH_FORCE]) >= 15))) {
+            if (($this->victoryPoints[Goojerat1849::BRITISH_FORCE] >= $britVic && ($this->victoryPoints[Goojerat1849::BRITISH_FORCE] - ($this->victoryPoints[Goojerat1849::SIKH_FORCE]) >= 15))) {
                 $britishWin = true;
             }
-            if (($this->victoryPoints[SIKH_FORCE] >= $sikhVic)) {
+            if (($this->victoryPoints[Goojerat1849::SIKH_FORCE] >= $sikhVic)) {
                 $sikhWin = true;
             }
             if ($turn == $gameRules->maxTurn + 1) {
@@ -104,11 +104,11 @@ class goojerat1849VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
 
             if ($britishWin) {
-                $this->winner = BRITISH_FORCE;
+                $this->winner = Goojerat1849::BRITISH_FORCE;
                 $gameRules->flashMessages[] = "British Win";
             }
             if ($sikhWin) {
-                $this->winner = SIKH_FORCE;
+                $this->winner = Goojerat1849::SIKH_FORCE;
                 $msg = "Sikh Win";
                 $gameRules->flashMessages[] = $msg;
             }

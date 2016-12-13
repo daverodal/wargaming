@@ -21,16 +21,12 @@ use \Wargame\Mollwitz\UnitFactory;
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-define("PRUSSIAN_FORCE", 1);
-define("AUSTRIAN_FORCE", 2);
-
-global $force_name;
-$force_name = array();
-$force_name[1] = "Prussian";
-$force_name[2] = "Austrian";
 
 class Mollwitz extends \Wargame\Mollwitz\JagCore
 {
+
+    const PRUSSIAN_FORCE = 1;
+    const AUSTRIAN_FORCE = 2;
 
     /* @var Mapdata */
     public $mapData;

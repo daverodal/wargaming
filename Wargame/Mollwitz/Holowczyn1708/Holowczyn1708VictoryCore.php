@@ -66,22 +66,22 @@ class Holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] += 5;
+            if ($forceId == Holowczyn1708::SWEDISH_FORCE) {
+                $this->victoryPoints[Holowczyn1708::SWEDISH_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>+5 Swedish vp</span>";
             }
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] -= 5;
+            if ($forceId == Holowczyn1708::RUSSIAN_FORCE) {
+                $this->victoryPoints[Holowczyn1708::SWEDISH_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>-5 Swedish vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE] += 5;
+            if ($forceId == Holowczyn1708::RUSSIAN_FORCE) {
+                $this->victoryPoints[Holowczyn1708::RUSSIAN_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='saxonPolish'>+5 Russian vp</span>";
             }
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE] -= 5;
+            if ($forceId == Holowczyn1708::SWEDISH_FORCE) {
+                $this->victoryPoints[Holowczyn1708::RUSSIAN_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>-5 Russian vp</span>";
             }
         }
@@ -98,26 +98,26 @@ class Holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
             $specialHexes = $battle->mapData->specialHexes;
             $earlyWinScore = 30;
             $winScore = 40;
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $earlyWinScore) {
+            if ($this->victoryPoints[Holowczyn1708::SWEDISH_FORCE] >= $earlyWinScore) {
                 if ($turn <= 6) {
                     $swedishWin = true;
                 }
             }
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Holowczyn1708::SWEDISH_FORCE] >= $winScore) {
                     $swedishWin = true;
 
             }
-            if ($this->victoryPoints[RUSSIAN_FORCE] >= $winScore) {
+            if ($this->victoryPoints[Holowczyn1708::RUSSIAN_FORCE] >= $winScore) {
                 $saxonPolishWin = true;
             }
 
             if ($swedishWin && !$saxonPolishWin) {
-                $this->winner = SWEDISH_FORCE;
+                $this->winner = Holowczyn1708::SWEDISH_FORCE;
                 $gameRules->flashMessages[] = "Swedish Win";
                 $this->gameOver = true;
             }
             if ($saxonPolishWin && !$swedishWin) {
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = Holowczyn1708::RUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Russian Win";
                 $this->gameOver = true;
             }
@@ -128,7 +128,7 @@ class Holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
             if ($turn == ($gameRules->maxTurn + 1)) {
                 $this->gameOver = true;
                 if(!$saxonPolishWin && !$swedishWin){
-                    $this->winner = RUSSIAN_FORCE;
+                    $this->winner = Holowczyn1708::RUSSIAN_FORCE;
                     $gameRules->flashMessages[] = "Russian Win";
                     $gameRules->flashMessage[] = "Swedish Fail to Win";
                 }

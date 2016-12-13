@@ -19,11 +19,10 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("SWEDISH_FORCE", 1);
-define("DANISH_FORCE", 2);
-
 class Helsingborg1710 extends \Wargame\Mollwitz\JagCore
 {
+    const SWEDISH_FORCE = 1;
+    const DANISH_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
     static function enterMulti()
@@ -35,8 +34,8 @@ class Helsingborg1710 extends \Wargame\Mollwitz\JagCore
     {
         global $force_name;
 
-        $deployTwo = $playerOne = $force_name[SWEDISH_FORCE];
-        $deployOne = $playerTwo = $force_name[DANISH_FORCE];
+        $deployTwo = $playerOne = $force_name[Helsingborg1710::SWEDISH_FORCE];
+        $deployOne = $playerTwo = $force_name[Helsingborg1710::DANISH_FORCE];
         @include_once "playMulti.php";
     }
 
@@ -76,7 +75,7 @@ class Helsingborg1710 extends \Wargame\Mollwitz\JagCore
         UnitFactory::$injector = $this->force;
 
         foreach($unitSets as $unitSet) {
-            if(!empty($scenario->strongerDanes) && $unitSet->forceId == DANISH_FORCE && $unitSet->class !== "artillery"){
+            if(!empty($scenario->strongerDanes) && $unitSet->forceId == Helsingborg1710::DANISH_FORCE && $unitSet->class !== "artillery"){
                 /* one more 6-3 and 6-5, one less 4-3 and 4-5 */
                 if($unitSet->combat == 6){
                     $unitSet->num++;
@@ -85,7 +84,7 @@ class Helsingborg1710 extends \Wargame\Mollwitz\JagCore
                 }
             }
             /* half (round up) the Swedish Army is downgraded to 5-3 */
-            if(!empty($scenario->weakerSwedes) &&  $unitSet->forceId == SWEDISH_FORCE && $unitSet->class === "infantry") {
+            if(!empty($scenario->weakerSwedes) &&  $unitSet->forceId == Helsingborg1710::SWEDISH_FORCE && $unitSet->class === "infantry") {
                 $nUnits = $unitSet->num;
                 $unitSet->num = floor($nUnits / 2);
                 $nWeaker = ceil($nUnits / 2);

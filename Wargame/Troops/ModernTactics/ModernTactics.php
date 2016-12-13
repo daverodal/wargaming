@@ -32,8 +32,7 @@ use Wargame\Victory;
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-define("BRITISH_FORCE", 2);
-define("GERMAN_FORCE", 1);
+
 
 global $force_name;
 $force_name[2] = "PlayerTwo";
@@ -44,6 +43,8 @@ $force_name[1] = "PlayerOne";
 class ModernTactics extends \Wargame\Troops\TroopersCore
 {
 
+    const FORCE_ONE = 1;
+    const FORCE_TWO = 2;
     public $specialHexesMap = ['SpecialHexA' => 2, 'SpecialHexB' => 1, 'SpecialHexC' => 1];
 
     /* @var Mapdata */

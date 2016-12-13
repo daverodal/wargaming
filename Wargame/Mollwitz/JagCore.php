@@ -210,7 +210,7 @@ class JagCore extends \Wargame\LandBattle{
         $this->terrain->addTerrainFeature("river", "river", "v", 0, 1, 0, false);
         $this->terrain->addTerrainFeature("ford", "ford", "d", 0, 1, 0, false);
         $this->terrain->addAltEntranceCost('forest', 'cavalry', 4);
-        $this->terrain->addTerrainFeature("trail", "trail", "r", 1, 0, 0, false);
+        $this->terrain->addTerrainFeature("trail", "trail", "r", .66, 0, 0, false);
         $this->terrain->addTerrainFeature("swamp", "swamp", "s", 9, 0, 1, true, false);
         $this->terrain->addTerrainFeature("blocked", "blocked", "b", 1, 0, 0, true);
         $this->terrain->addTerrainFeature("redoubt", "redoubt", "d", 0, 0, 0, false);

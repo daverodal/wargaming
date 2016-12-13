@@ -61,10 +61,10 @@ class montmirail1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == FRENCH_FORCE) {
+            if ($forceId == Montmirail1814::FRENCH_FORCE) {
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>French Control Vital Objective</span>";
             }
-            if ($forceId == ALLIED_FORCE) {
+            if ($forceId == Montmirail1814::ALLIED_FORCE) {
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>French Lose Vital Objective</span>";
             }
         }
@@ -85,29 +85,29 @@ class montmirail1814VictoryCore extends \Wargame\Mollwitz\victoryCore
             $frenchLowWinScore = 60;
             $frenchHighWinScore = 70;
             /* end of allied turn */
-            if($gameRules->attackingForceId === ALLIED_FORCE && !$this->deadGuardInf){
+            if($gameRules->attackingForceId === Montmirail1814::ALLIED_FORCE && !$this->deadGuardInf){
                 foreach($specialHexes as $specialHex){
-                    if($specialHex === FRENCH_FORCE){
+                    if($specialHex === Montmirail1814::FRENCH_FORCE){
                         $frenchWin = true;
                         $victoryReason .= "Occupy vital objective ";
                     }
                 }
             }
-            if ($this->victoryPoints[FRENCH_FORCE] >= $frenchLowWinScore && $turn <= 5) {
+            if ($this->victoryPoints[Montmirail1814::FRENCH_FORCE] >= $frenchLowWinScore && $turn <= 5) {
                     $frenchWin = true;
                 $victoryReason .= "Over $frenchLowWinScore on or before turn 5 ";
             }
-            if($this->victoryPoints[FRENCH_FORCE] >= $frenchHighWinScore){
+            if($this->victoryPoints[Montmirail1814::FRENCH_FORCE] >= $frenchHighWinScore){
                 $frenchWin = true;
                 $victoryReason .= "Over $frenchHighWinScore ";
             }
-            if ($this->victoryPoints[ALLIED_FORCE] >= $alliedWinScore) {
+            if ($this->victoryPoints[Montmirail1814::ALLIED_FORCE] >= $alliedWinScore) {
                 $alliedWin = true;
                 $victoryReason .= "Over $alliedWinScore ";
             }
 
             if ($frenchWin && !$alliedWin) {
-                $this->winner = FRENCH_FORCE;
+                $this->winner = Montmirail1814::FRENCH_FORCE;
                 $gameRules->flashMessages[] = "French Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -115,7 +115,7 @@ class montmirail1814VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($alliedWin && !$frenchWin) {
-                $this->winner = ALLIED_FORCE;
+                $this->winner = Montmirail1814::ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -130,7 +130,7 @@ class montmirail1814VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn == ($gameRules->maxTurn + 1)) {
-                $this->winner = ALLIED_FORCE;
+                $this->winner = Montmirail1814::ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = "French Fail to Win";
                 $this->gameOver = true;

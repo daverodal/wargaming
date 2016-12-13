@@ -69,7 +69,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
         list($mapHexName, $forceId) = $args;
 
 
-        if ($forceId == LOYALIST_FORCE) {
+        if ($forceId == Airborne::LOYALIST_FORCE) {
             $newLandings = [];
             foreach ($this->landingZones as $landingZone) {
                 if ($landingZone == $mapHexName) {
@@ -115,6 +115,9 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
     public function reduceUnit($args)
     {
         $unit = $args[0];
+        if($unit->supplyUsed){
+            return;
+        }
 
         $vp = $unit->damage;
 
@@ -204,11 +207,25 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
         }
+
     }
 
     public function preRecoverUnits()
     {
         $b = Battle::getBattle();
+
+        if($b->gameRules->mode === COMBAT_RESOLUTION_MODE){
+            /*
+             * remove used supply units
+             */
+            $units = $b->force->units;
+            foreach($units as $id => $unit){
+
+                if($unit->supplyUsed === true){
+                    $b->force->eliminateUnit($unit->id);
+                }
+            }
+        }
 
         $goal = array_merge([101], $this->airdropZones);
         $this->rebelGoal = $goal;
@@ -239,7 +256,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
 //            return;
         }
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == REBEL_FORCE) {
+            if ($unit->forceId == Airborne::REBEL_FORCE) {
                 $bias = array(5 => true, 6 => true, 1 => true);
                 $goal = $this->rebelGoal;
             } else {
@@ -248,6 +265,25 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
             }
             $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
         }
+        if($b->gameRules->mode === COMBAT_SETUP_MODE){
+            $this->unitCombatSupplyEffects($unit, [], [], 2);
+        }
+    }
+
+    public function checkCombatSupply($args)
+    {
+        /* @var unit $unit */
+        $unit = $args[1];
+        $goal = $args[0];
+
+        $b = Battle::getBattle();
+        $id = $unit->id;
+        if ($unit->forceId != $b->gameRules->attackingForceId) {
+            return;
+        }
+
+            $this->unitCombatSupplyEffects($unit, $goal, [], 2);
+
     }
 
     public function preStartMovingUnit($arg)
@@ -280,11 +316,11 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if ($attackingId == REBEL_FORCE) {
+        if ($attackingId == Airborne::REBEL_FORCE) {
             $gameRules->flashMessages[] = "Rebel Player Turn";
             $gameRules->replacementsAvail = 1;
         }
-        if ($attackingId == LOYALIST_FORCE) {
+        if ($attackingId == Airborne::LOYALIST_FORCE) {
             $gameRules->flashMessages[] = "Loyalist Player Turn";
             $gameRules->replacementsAvail = 10;
         }

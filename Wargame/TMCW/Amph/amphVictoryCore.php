@@ -70,12 +70,12 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
 
         list($mapHexName, $forceId) = $args;
 
-//        if ($mapHexName == 1807 && $forceId == REBEL_FORCE) {
+//        if ($mapHexName == 1807 && $forceId == Amph::REBEL_FORCE) {
 //            $this->scienceCenterDestroyed;
 //            $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebelVictoryPoints'>Marine Science Facility Destroyed</span>";
 //            $battle->gameRules->flashMessages[] = "Rebel units may now withdraw from beachheads";
 //        }
-        if ($forceId == LOYALIST_FORCE) {
+        if ($forceId == Amph::LOYALIST_FORCE) {
             $newLandings = [];
             foreach ($this->landingZones as $landingZone) {
                 if ($landingZone == $mapHexName) {
@@ -105,16 +105,16 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
 //            $vp = 25;
 //
 //            $prevForceId = $battle->mapData->specialHexes->$mapHexName;
-//            if ($forceId == REBEL_FORCE) {
-//                $this->victoryPoints[REBEL_FORCE]  += $vp;
+//            if ($forceId == Amph::REBEL_FORCE) {
+//                $this->victoryPoints[Amph::REBEL_FORCE]  += $vp;
 //                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+$vp Rebel vp</span>";
-//                $this->victoryPoints[LOYALIST_FORCE] -= $vp;
+//                $this->victoryPoints[Amph::LOYALIST_FORCE] -= $vp;
 //                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='rebel'> -$vp Loyalist vp</span>";
 //            }
-//            if ($forceId == LOYALIST_FORCE) {
-//                $this->victoryPoints[LOYALIST_FORCE]  += $vp;
+//            if ($forceId == Amph::LOYALIST_FORCE) {
+//                $this->victoryPoints[Amph::LOYALIST_FORCE]  += $vp;
 //                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+$vp Loyalist vp</span>";
-//                $this->victoryPoints[REBEL_FORCE] -= $vp;
+//                $this->victoryPoints[Amph::REBEL_FORCE] -= $vp;
 //                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='loyalist'> -$vp Rebel vp</span>";
 //            }
 //        }
@@ -184,8 +184,8 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         $rebelOption = (int)$battle->gameRules->option;
 
         if($rebelOption === 0){
-            if($battle->mapData->getSpecialHex($battle->specialHexA[0]) === REBEL_FORCE){
-                $this->victoryPoints[REBEL_FORCE] += 25;
+            if($battle->mapData->getSpecialHex($battle->specialHexA[0]) === Amph::REBEL_FORCE){
+                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
                 $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
             }else{
                 $battle->mapData->getSpecialHex($battle->specialHexA[0]);
@@ -194,8 +194,8 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             }
         }
         if($rebelOption === 1){
-            if($battle->mapData->getSpecialHex($battle->specialHexB[0]) === REBEL_FORCE){
-                $this->victoryPoints[REBEL_FORCE] += 25;
+            if($battle->mapData->getSpecialHex($battle->specialHexB[0]) === Amph::REBEL_FORCE){
+                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
                 $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
             }else{
                 $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
@@ -203,23 +203,23 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             }
         }
         if($rebelOption === 2){
-            if($battle->mapData->getSpecialHex($battle->specialHexC[0]) === REBEL_FORCE){
-                $this->victoryPoints[REBEL_FORCE] += 25;
+            if($battle->mapData->getSpecialHex($battle->specialHexC[0]) === Amph::REBEL_FORCE){
+                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
                 $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
             }else{
                 $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
 
             }
         }
-        if ($this->victoryPoints[LOYALIST_FORCE] > $this->victoryPoints[REBEL_FORCE]) {
+        if ($this->victoryPoints[Amph::LOYALIST_FORCE] > $this->victoryPoints[Amph::REBEL_FORCE]) {
             $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
-            $this->winner = LOYALIST_FORCE;
+            $this->winner = Amph::LOYALIST_FORCE;
         }
-        if ($this->victoryPoints[REBEL_FORCE] > $this->victoryPoints[LOYALIST_FORCE]) {
+        if ($this->victoryPoints[Amph::REBEL_FORCE] > $this->victoryPoints[Amph::LOYALIST_FORCE]) {
             $battle->gameRules->flashMessages[] = "Rebel Player Wins";
-            $this->winner = REBEL_FORCE;
+            $this->winner = Amph::REBEL_FORCE;
         }
-        if ($this->victoryPoints[LOYALIST_FORCE] == $this->victoryPoints[REBEL_FORCE]) {
+        if ($this->victoryPoints[Amph::LOYALIST_FORCE] == $this->victoryPoints[Amph::REBEL_FORCE]) {
             $battle->gameRules->flashMessages[] = "Tie Game";
         }
         $this->gameOver = true;
@@ -314,7 +314,7 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
 //            return;
         }
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == REBEL_FORCE) {
+            if ($unit->forceId == Amph::REBEL_FORCE) {
                 $bias = array(5 => true, 6 => true, 1 => true);
                 $goal = $this->rebelGoal;
             } else {
@@ -353,10 +353,10 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             $gameRules->flashMessages[] = "@hide crt";
         }
         if($gameRules->turn <= $gameRules->maxTurn) {
-            if ($attackingId == REBEL_FORCE) {
+            if ($attackingId == Amph::REBEL_FORCE) {
                 $gameRules->flashMessages[] = "Rebel Player Turn";
             }
-            if ($attackingId == LOYALIST_FORCE) {
+            if ($attackingId == Amph::LOYALIST_FORCE) {
                 $gameRules->flashMessages[] = "Loyalist Player Turn";
             }
         }

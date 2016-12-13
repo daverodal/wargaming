@@ -18,17 +18,19 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-
-define("FRENCH_FORCE", 1);
-define("RUSSIAN_FORCE", 2);
-
-global $force_name;
-$force_name[FRENCH_FORCE] = "French";
-$force_name[RUSSIAN_FORCE] = "Russian";
+//
+//global $force_name;
+//$force_name[Golymin1806::FRENCH_FORCE] = "French";
+//$force_name[Golymin1806::RUSSIAN_FORCE] = "Russian";
 
 
 class Golymin1806 extends \Wargame\Mollwitz\JagCore
 {
+
+
+    const FRENCH_FORCE = 1;
+    const RUSSIAN_FORCE = 2;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
 
@@ -41,8 +43,8 @@ class Golymin1806 extends \Wargame\Mollwitz\JagCore
     {
         global $force_name;
 
-        $deployTwo = $playerOne = $force_name[FRENCH_FORCE];
-        $deployOne = $playerTwo = $force_name[RUSSIAN_FORCE];
+        $deployTwo = $playerOne = $force_name[Golymin1806::FRENCH_FORCE];
+        $deployOne = $playerTwo = $force_name[Golymin1806::RUSSIAN_FORCE];
         @include_once "playMulti.php";
     }
 

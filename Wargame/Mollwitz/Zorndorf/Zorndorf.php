@@ -22,12 +22,13 @@ use \Wargame\Mollwitz\UnitFactory;
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define("PRUSSIAN_FORCE", 1);
-define("RUSSIAN_FORCE", 2);
 
 
 class Zorndorf extends \Wargame\Mollwitz\JagCore
-{
+{    
+    const PRUSSIAN_FORCE = 1;
+    const RUSSIAN_FORCE = 2;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>2];
 
     /* @var Mapdata */

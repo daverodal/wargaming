@@ -59,12 +59,12 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         $battle = Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
-        if ($forceId == SOVIET_FORCE) {
-            $this->victoryPoints[SOVIET_FORCE] += 10;
+        if ($forceId == Manchuria1976::SOVIET_FORCE) {
+            $this->victoryPoints[Manchuria1976::SOVIET_FORCE] += 10;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='sovietVictoryPoints'>+10 Soviet vp</span>";
         }
-        if ($forceId == PRC_FORCE) {
-            $this->victoryPoints[SOVIET_FORCE] -= 10;
+        if ($forceId == Manchuria1976::PRC_FORCE) {
+            $this->victoryPoints[Manchuria1976::SOVIET_FORCE] -= 10;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='sovietVictoryPoints'>-10 Soviet vp</span>";
         }
 
@@ -107,7 +107,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 
             $zones = [];
             foreach ($specialHexes as $specialHex) {
-                if ($mapData->getSpecialHex($specialHex) == PRC_FORCE) {
+                if ($mapData->getSpecialHex($specialHex) == Manchuria1976::PRC_FORCE) {
                     $zones[] = new \Wargame\ReinforceZone($specialHex, $specialHex);
                 }
             }
@@ -127,15 +127,15 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         } else {
             $vp = $unit->minStrength;
         }
-        if ($unit->forceId == PRC_FORCE) {
-            $victorId = SOVIET_FORCE;
+        if ($unit->forceId == Manchuria1976::PRC_FORCE) {
+            $victorId = Manchuria1976::SOVIET_FORCE;
             $vp /= 2;
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
             $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='sovietVictoryPoints'>+$vp vp</span>";
         } else {
-            $victorId = PRC_FORCE;
+            $victorId = Manchuria1976::PRC_FORCE;
             $this->victoryPoints[$victorId] += $vp * 1.5;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
@@ -200,9 +200,9 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 
         if (!empty($b->scenario->supply) === true) {
             $bias = array(2 => true, 3 => true);
-            $goal = $b->moveRules->calcRoadSupply(SOVIET_FORCE, 3920, $bias);
-            $goal = array_merge($goal, $b->moveRules->calcRoadSupply(SOVIET_FORCE, 1932, $bias));
-            $goal = array_merge($goal, $b->moveRules->calcRoadSupply(SOVIET_FORCE, 3233, $bias));
+            $goal = $b->moveRules->calcRoadSupply(Manchuria1976::SOVIET_FORCE, 3920, $bias);
+            $goal = array_merge($goal, $b->moveRules->calcRoadSupply(Manchuria1976::SOVIET_FORCE, 1932, $bias));
+            $goal = array_merge($goal, $b->moveRules->calcRoadSupply(Manchuria1976::SOVIET_FORCE, 3233, $bias));
             $goal = array_merge($goal, array(3910, 3911, 3912, 3913, 3914, 3915, 3916, 3917, 3918, 3919));
             $this->sovietGoal = $goal;
             $units = $b->force->units;
@@ -229,10 +229,10 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         }
         $goal = $this->sovietGoal;
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == PRC_FORCE) {
+            if ($unit->forceId == Manchuria1976::PRC_FORCE) {
                 return; /* in supply in china, should verify we ARE in china, but..... */
             }
-            if ($unit->forceId == SOVIET_FORCE) {
+            if ($unit->forceId == Manchuria1976::SOVIET_FORCE) {
                 $bias = array(2 => true, 3 => true);
             } else {
                 $goal = array(101, 102, 103, 104, 201, 301, 401, 501, 601, 701, 801, 901, 1001);
@@ -352,11 +352,11 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if ($attackingId == SOVIET_FORCE) {
+        if ($attackingId == Manchuria1976::SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
             $gameRules->replacementsAvail = 1;
         }
-        if ($attackingId == PRC_FORCE) {
+        if ($attackingId == Manchuria1976::PRC_FORCE) {
             $gameRules->flashMessages[] = "PRC Player Turn";
             $gameRules->replacementsAvail = 5;
         }

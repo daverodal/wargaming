@@ -42,12 +42,12 @@ class hohenfriedebergVictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if(in_array($mapHexName,$battle->specialHexA)){
-            if ($forceId == PRUSSIAN_FORCE) {
-                $this->victoryPoints[PRUSSIAN_FORCE]  += 5;
+            if ($forceId == Hohenfriedeberg::PRUSSIAN_FORCE) {
+                $this->victoryPoints[Hohenfriedeberg::PRUSSIAN_FORCE]  += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>+5 Prussian vp</span>";
             }
-            if ($forceId == AUSTRIAN_FORCE) {
-                $this->victoryPoints[PRUSSIAN_FORCE]  -= 5;
+            if ($forceId == Hohenfriedeberg::AUSTRIAN_FORCE) {
+                $this->victoryPoints[Hohenfriedeberg::PRUSSIAN_FORCE]  -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>-5 Prussian vp</span>";
             }
         }
@@ -56,12 +56,12 @@ class hohenfriedebergVictoryCore extends \Wargame\Mollwitz\victoryCore
             if(in_array($mapHexName,$battle->specialHexC)){
                 $vp = 10;
             }
-            if ($forceId == AUSTRIAN_FORCE) {
-                $this->victoryPoints[AUSTRIAN_FORCE]  += $vp;
+            if ($forceId == Hohenfriedeberg::AUSTRIAN_FORCE) {
+                $this->victoryPoints[Hohenfriedeberg::AUSTRIAN_FORCE]  += $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>+$vp Austrian vp</span>";
             }
-            if ($forceId == PRUSSIAN_FORCE) {
-                $this->victoryPoints[AUSTRIAN_FORCE]  -= $vp;
+            if ($forceId == Hohenfriedeberg::PRUSSIAN_FORCE) {
+                $this->victoryPoints[Hohenfriedeberg::AUSTRIAN_FORCE]  -= $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>-$vp Austrian vp</span>";
             }
         }
@@ -75,10 +75,10 @@ class hohenfriedebergVictoryCore extends \Wargame\Mollwitz\victoryCore
         $turn = $gameRules->turn;
         if(!$this->gameOver){
             $prussianWin = $austrianWin = false;
-            if(($this->victoryPoints[AUSTRIAN_FORCE] >= 60) && ($this->victoryPoints[AUSTRIAN_FORCE] - ($this->victoryPoints[PRUSSIAN_FORCE]) >= 10)){
+            if(($this->victoryPoints[Hohenfriedeberg::AUSTRIAN_FORCE] >= 60) && ($this->victoryPoints[Hohenfriedeberg::AUSTRIAN_FORCE] - ($this->victoryPoints[Hohenfriedeberg::PRUSSIAN_FORCE]) >= 10)){
                 $austrianWin = true;
             }
-            if(($this->victoryPoints[PRUSSIAN_FORCE] >= 60) && ($this->victoryPoints[PRUSSIAN_FORCE] - $this->victoryPoints[AUSTRIAN_FORCE] >= 10)){
+            if(($this->victoryPoints[Hohenfriedeberg::PRUSSIAN_FORCE] >= 60) && ($this->victoryPoints[Hohenfriedeberg::PRUSSIAN_FORCE] - $this->victoryPoints[Hohenfriedeberg::AUSTRIAN_FORCE] >= 10)){
                 $prussianWin = true;
             }
             if($prussianWin && $turn > $prussianWinTurn && $turn <= 15){
@@ -86,11 +86,11 @@ class hohenfriedebergVictoryCore extends \Wargame\Mollwitz\victoryCore
                 $gameRules->flashMessages[] = "Tie Game";
             }
             if(!$prussianWin && $turn > 15){
-                $this->winner = AUSTRIAN_FORCE;
+                $this->winner = Hohenfriedeberg::AUSTRIAN_FORCE;
                 $gameRules->flashMessages[] = "Austrians Win";
             }
             if($prussianWin && $turn <= $prussianWinTurn){
-                $this->winner = PRUSSIAN_FORCE;
+                $this->winner = Hohenfriedeberg::PRUSSIAN_FORCE;
                 $msg = "Prussian Win 60 On or before turn $prussianWinTurn";
                 $gameRules->flashMessages[] = $msg;
             }

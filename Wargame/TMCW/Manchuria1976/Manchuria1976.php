@@ -23,8 +23,6 @@ use \Wargame\TMCW\UnitFactory;
  */
 set_include_path(__DIR__ . "/Manchuria1976". PATH_SEPARATOR .  get_include_path());
 
-define("SOVIET_FORCE",1);
-define("PRC_FORCE",2);
 
 global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
 $force_name = array();
@@ -32,6 +30,9 @@ $force_name = array();
 
 class Manchuria1976 extends \Wargame\ModernLandBattle
 {
+    
+    const SOVIET_FORCE = 1;
+    const PRC_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>1];
 
     static function getPlayerData($scenario){
@@ -73,33 +74,33 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
         $scenario = $this->scenario;
 
         for($i = 0; $i < 30; $i++){
-            UnitFactory::create("xxxx", PRC_FORCE, "deployBox", "multiInf.png", 3, 1, 3, false, STATUS_CAN_DEPLOY, "A", 1, 1, "prc", true, "inf");
+            UnitFactory::create("xxxx", self::PRC_FORCE, "deployBox", "multiInf.png", 3, 1, 3, false, STATUS_CAN_DEPLOY, "A", 1, 1, "prc", true, "inf");
         }
-        UnitFactory::create("xxx", PRC_FORCE, "deployBox", "multiArmor.png", 6, 3, 6, false, STATUS_CAN_DEPLOY, "A", 1, 1, "prc", true, "mech");
+        UnitFactory::create("xxx", self::PRC_FORCE, "deployBox", "multiArmor.png", 6, 3, 6, false, STATUS_CAN_DEPLOY, "A", 1, 1, "prc", true, "mech");
         for($i = 2; $i <= 12;$i++){
-            UnitFactory::create("x", PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
-            UnitFactory::create("x", PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
-            UnitFactory::create("x", PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+            UnitFactory::create("x", self::PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+            UnitFactory::create("x", self::PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+            UnitFactory::create("x", self::PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
         }
 
 
 
 
         for($i = 0;$i < 5;$i++){
-            UnitFactory::create("xxx", SOVIET_FORCE, "deployBox", "multiArmor.png", 9, 4, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
+            UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "multiArmor.png", 9, 4, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
         }
         for($i = 0;$i < 10;$i++){
-            UnitFactory::create("xxx", SOVIET_FORCE, "deployBox", "multiMech.png", 6, 3, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
+            UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "multiMech.png", 6, 3, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
         }
         for($i = 0;$i < 15;$i++){
-            UnitFactory::create("xxx", SOVIET_FORCE, "deployBox", "multiMotInf.png", 4, 2, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
+            UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "multiMotInf.png", 4, 2, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
         }
 
         for($i = 0;$i < 4;$i++){
-            UnitFactory::create("xxx", SOVIET_FORCE, "deployBox", "multiArt.png", 3, 1, 6, false, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "mech");
+            UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "multiArt.png", 3, 1, 6, false, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "mech");
         }
         for($i = 0;$i < 2;$i++){
-            UnitFactory::create("xxx", SOVIET_FORCE, "deployBox", "multiMotMt.png", 1, 1, 3, true, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "supply");
+            UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "multiMotMt.png", 1, 1, 3, true, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "supply");
         }
     }
     function __construct($data = null, $arg = false, $scenario = false)

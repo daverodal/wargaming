@@ -20,20 +20,73 @@
  */
 
 namespace Wargame;
+
 use Wargame\Battle;
 
 use stdClass;
 
-class SupplyCombatRules extends CombatRules
+class SupplyCombatRules extends CombatRules implements CombatSupply
 {
 
-    public function selectSupply(MovableUnit $unit){
-        if($unit->maxMove === 10){
+    public function selectSupply(MovableUnit $unit)
+    {
+        if ($unit->maxMove === 10) {
             $unit->maxMove = 6;
             $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-        }else{
+            $unit->supplyUsed = false;
+        } else {
             $unit->maxMove = 10;
             $unit->status = STATUS_READY;
+            $unit->supplyUsed = true;
+        }
+        $goal = [];
+
+        $units = $this->force->units;
+        foreach ($units as $aUnit) {
+            if($aUnit->supplyUsed && $aUnit->hexagon->name){
+                $goal[]= $aUnit->hexagon->name;
+            }
+        }
+        $b = Battle::getBattle();
+        foreach ($units as $aUnit) {
+            if ($aUnit->forceId != $b->gameRules->attackingForceId) {
+                continue;
+            }
+            $b->victory->checkCombatSupply($goal, $aUnit);
         }
     }
+
+    function combatResolutionMode()
+    {
+        $this->cleanUpUnsuppliedAttackers();
+        $this->combatsToResolve = $this->combats;
+        unset($this->combats);
+    }
+
+    function cleanUpUnsuppliedAttackers()
+    {
+        $battle = Battle::getBattle();
+        $victory = $battle->victory;
+
+        foreach ($this->combats as $id => $combat) {
+
+            if (count((array)$combat->attackers) == 0) {
+                foreach ($combat->defenders as $defenderId => $defender) {
+                    $unit = $this->force->getUnit($defenderId);
+                    $unit->setStatus( STATUS_READY);
+                    unset($this->defenders->$defenderId);
+                    $victory->postUnsetDefender($unit);
+                }
+                unset($this->combats->$id);
+            }else{
+                foreach($combat->attackers as $aId => $attacker){
+                    if($this->force->units[$aId]->supplied !== true){
+                        $this->removeAttacker($id, $aId);
+                        $this->recalcCombat($id);
+                    }
+                }
+            }
+        }
+    }
+
 }

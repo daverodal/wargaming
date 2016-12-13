@@ -49,12 +49,12 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == ALLIED_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  += 5;
+            if ($forceId == LaRothiere1814::ALLIED_FORCE) {
+                $this->victoryPoints[LaRothiere1814::ALLIED_FORCE]  += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>+5 Allied vp</span>";
             }
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[ALLIED_FORCE]  -= 5;
+            if ($forceId == LaRothiere1814::FRENCH_FORCE) {
+                $this->victoryPoints[LaRothiere1814::ALLIED_FORCE]  -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-5 Allied vp</span>";
             }
         }
@@ -70,7 +70,7 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
         $nationality = $unit->nationality;
         $battle = Battle::getBattle();
 
-        if($unit->forceId === FRENCH_FORCE){
+        if($unit->forceId === LaRothiere1814::FRENCH_FORCE){
             return false;
         }
         foreach($battle->combatRules->combats->$combatId->attackers as $aId => $a){
@@ -96,19 +96,19 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
             $specialHexes = $battle->mapData->specialHexes;
             $winScore = 70;
             $highWinScore = 100;
-            if ($this->victoryPoints[ALLIED_FORCE] >= $winScore) {
+            if ($this->victoryPoints[LaRothiere1814::ALLIED_FORCE] >= $winScore) {
                 if ($turn <= 5) {
                     $alliedWin = true;
                 }
             }
-            if ($this->victoryPoints[ALLIED_FORCE] >= $highWinScore) {
+            if ($this->victoryPoints[LaRothiere1814::ALLIED_FORCE] >= $highWinScore) {
                 $alliedWin = true;
             }
 
 
 
             if ($alliedWin) {
-                $this->winner = ALLIED_FORCE;
+                $this->winner = LaRothiere1814::ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allied Win";
                 $this->gameOver = true;
             }
@@ -116,8 +116,8 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
             if ( $turn == ($gameRules->maxTurn + 1)) {
                 if(!$alliedWin){
-                    if($this->casualties[FRENCH_FORCE] <= $this->casualties[ALLIED_FORCE]){
-                        $this->winner = FRENCH_FORCE;
+                    if($this->casualties[LaRothiere1814::FRENCH_FORCE] <= $this->casualties[LaRothiere1814::ALLIED_FORCE]){
+                        $this->winner = LaRothiere1814::FRENCH_FORCE;
                         $msg = "French Win";
                         $gameRules->flashMessages[] = $msg;
                     }else{
@@ -157,7 +157,7 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         parent::postRecoverUnit($args);
 
-        if ($b->gameRules->turn <= 2 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE) {
+        if ($b->gameRules->turn <= 2 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == LaRothiere1814::ALLIED_FORCE) {
             if($unit->reinforceZone  === "F"){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
             }

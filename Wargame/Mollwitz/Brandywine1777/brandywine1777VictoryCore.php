@@ -51,7 +51,7 @@ class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         $unit = $args[0];
         $mult = 1;
         $this->scoreKills($unit, $mult);
-        if ($unit->forceId == REBEL_FORCE) {
+        if ($unit->forceId == Brandywine1777::REBEL_FORCE) {
             $this->rebelLosses += $unit->damage;
         }
         if($this->rebelLosses >= 30){
@@ -61,7 +61,7 @@ class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $battle = Battle::getBattle();
                 global $force_name;
                 $hex = $unit->hexagon;
-                $victorName = $force_name[LOYALIST_FORCE];
+                $victorName = $force_name[Brandywine1777::LOYALIST_FORCE];
                 $class = "${victorName} victory-points";
                 $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$class'>Rebel Demoralized</span>";
             }
@@ -77,12 +77,12 @@ class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         list($mapHexName, $forceId) = $args;
 
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == LOYALIST_FORCE) {
-                $this->victoryPoints[LOYALIST_FORCE] += 10;
+            if ($forceId == Brandywine1777::LOYALIST_FORCE) {
+                $this->victoryPoints[Brandywine1777::LOYALIST_FORCE] += 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+10 Loyalist vp</span>";
             }
-            if ($forceId == REBEL_FORCE) {
-                $this->victoryPoints[LOYALIST_FORCE] -= 10;
+            if ($forceId == Brandywine1777::REBEL_FORCE) {
+                $this->victoryPoints[Brandywine1777::LOYALIST_FORCE] -= 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>-10 Loyalist vp</span>";
             }
         }
@@ -103,18 +103,18 @@ class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
             $loyalScore = 40;
             $rebelScore = 30;
 
-            if ($this->victoryPoints[LOYALIST_FORCE] >= $loyalScore) {
+            if ($this->victoryPoints[Brandywine1777::LOYALIST_FORCE] >= $loyalScore) {
                 $loyalWin = true;
                 $victoryReason .= "Over $loyalScore ";
             }
 
-            if ($this->victoryPoints[REBEL_FORCE] >= $rebelScore) {
+            if ($this->victoryPoints[Brandywine1777::REBEL_FORCE] >= $rebelScore) {
                 $rebelWin = true;
                 $victoryReason .= "Over $rebelScore ";
             }
 
             if ($rebelWin && !$loyalWin) {
-                $this->winner = REBEL_FORCE;
+                $this->winner = Brandywine1777::REBEL_FORCE;
                 $gameRules->flashMessages[] = "Rebel Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -122,7 +122,7 @@ class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($loyalWin && !$rebelWin) {
-                $this->winner = LOYALIST_FORCE;
+                $this->winner = Brandywine1777::LOYALIST_FORCE;
                 $gameRules->flashMessages[] = "Loyal Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -137,7 +137,7 @@ class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                $this->winner = REBEL_FORCE;
+                $this->winner = Brandywine1777::REBEL_FORCE;
                 $gameRules->flashMessages[] = "Rebel Win";
                 $gameRules->flashMessages[] = "Loyalist Fail to Win";
                 $this->gameOver = true;

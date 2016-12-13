@@ -61,15 +61,15 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         
         if (in_array($mapHexName, $battle->specialHexA)) {
 
-            if ($forceId == REBEL_FORCE) {
+            if ($forceId == FreemansFarm1777::REBEL_FORCE) {
                 $this->rebelVictoryHex = true;
-                $this->victoryPoints[REBEL_FORCE] += 10;
+                $this->victoryPoints[FreemansFarm1777::REBEL_FORCE] += 10;
 
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+10 Rebel vp</span>";
             }
-            if ($forceId == LOYALIST_FORCE) {
+            if ($forceId == FreemansFarm1777::LOYALIST_FORCE) {
                 $this->rebelVictoryHex = false;
-                $this->victoryPoints[REBEL_FORCE] -= 10;
+                $this->victoryPoints[FreemansFarm1777::REBEL_FORCE] -= 10;
 
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-10 Rebel vp</span>";
             }
@@ -77,15 +77,15 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         if (in_array($mapHexName, $battle->specialHexB)) {
 
-            if ($forceId == LOYALIST_FORCE) {
+            if ($forceId == FreemansFarm1777::LOYALIST_FORCE) {
                 $this->loyalVictoryHex = true;
-                $this->victoryPoints[LOYALIST_FORCE] += 20;
+                $this->victoryPoints[FreemansFarm1777::LOYALIST_FORCE] += 20;
 
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+20 Loyalist vp</span>";
             }
-            if ($forceId == REBEL_FORCE) {
+            if ($forceId == FreemansFarm1777::REBEL_FORCE) {
                 $this->loyalVictoryHex = false;
-                $this->victoryPoints[LOYALIST_FORCE] -= 20;
+                $this->victoryPoints[FreemansFarm1777::LOYALIST_FORCE] -= 20;
 
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-20 Loyalist vp</span>";
             }
@@ -110,25 +110,25 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
 //            if ($turn > $gameRules->maxTurn) {
 //                if($this->loyalVictoryHex){
-//                    $this->victoryPoints[LOYALIST_FORCE] += 20;
+//                    $this->victoryPoints[FreemansFarm1777::LOYALIST_FORCE] += 20;
 //                }
 //                if($this->rebelVictoryHex){
-//                    $this->victoryPoints[REBEL_FORCE] += 10;
+//                    $this->victoryPoints[FreemansFarm1777::REBEL_FORCE] += 10;
 //                }
 //            }
 
-            if ($this->victoryPoints[LOYALIST_FORCE] >= $loyalScore) {
+            if ($this->victoryPoints[FreemansFarm1777::LOYALIST_FORCE] >= $loyalScore) {
                 $loyalWin = true;
                 $victoryReason .= "$loyalScore or over";
             }
 
-            if ($this->victoryPoints[REBEL_FORCE] >= $rebelScore) {
+            if ($this->victoryPoints[FreemansFarm1777::REBEL_FORCE] >= $rebelScore) {
                 $rebelWin = true;
                 $victoryReason .= "$rebelScore or over ";
             }
 
             if ($rebelWin && !$loyalWin) {
-                $this->winner = REBEL_FORCE;
+                $this->winner = FreemansFarm1777::REBEL_FORCE;
                 $gameRules->flashMessages[] = "Rebel Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -136,7 +136,7 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($loyalWin && !$rebelWin) {
-                $this->winner = LOYALIST_FORCE;
+                $this->winner = FreemansFarm1777::LOYALIST_FORCE;
                 $gameRules->flashMessages[] = "Loyal Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -154,8 +154,8 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
                 /*
                  * if no american points, british win!
                  */
-                if($this->victoryPoints[REBEL_FORCE] === 0){
-                    $this->winner = LOYALIST_FORCE;
+                if($this->victoryPoints[FreemansFarm1777::REBEL_FORCE] === 0){
+                    $this->winner = FreemansFarm1777::LOYALIST_FORCE;
                     $gameRules->flashMessages[] = "Loyal Win";
                     $gameRules->flashMessages[] = "Rebel fail to score points.";
                     $gameRules->flashMessages[] = "Game Over";
@@ -201,13 +201,13 @@ class FreemansFarm1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         parent::postRecoverUnit($args);
 
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == LOYALIST_FORCE) {
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == FreemansFarm1777::LOYALIST_FORCE) {
             /* if early Movement set and unit is north of river they can move */
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
         }
 
         if ($b->gameRules->turn <= 3 && $b->gameRules->phase == BLUE_MOVE_PHASE && $unit->status == STATUS_READY
-            && $unit->hexagon->number >= 2413 &&  $unit->hexagon->number <= 2417 &&  $unit->forceId == LOYALIST_FORCE){
+            && $unit->hexagon->number >= 2413 &&  $unit->hexagon->number <= 2417 &&  $unit->forceId == FreemansFarm1777::LOYALIST_FORCE){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
         }
     }

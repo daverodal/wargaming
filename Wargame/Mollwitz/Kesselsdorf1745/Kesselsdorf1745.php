@@ -19,15 +19,11 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("PRUSSIAN_FORCE", 1);
-define("AUSTRIAN_FORCE", 2);
-
-global $force_name;
-$force_name[AUSTRIAN_FORCE] = "Austrian";
-$force_name[PRUSSIAN_FORCE] = "Prussian";
-
 class Kesselsdorf1745 extends \Wargame\Mollwitz\JagCore
 {
+        
+    const PRUSSIAN_FORCE = 1;
+    const AUSTRIAN_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
 

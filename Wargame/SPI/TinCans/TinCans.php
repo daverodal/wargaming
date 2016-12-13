@@ -21,9 +21,6 @@ namespace Wargame\SPI\TinCans;
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define("REBEL_FORCE", 1);
-define("LOYALIST_FORCE", 2);
-
 global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
 $force_name = array();
 $force_name[0] = "Neutral Observer";
@@ -40,6 +37,8 @@ define("NorthWest", 5);
 
 class TinCans extends \Wargame\ModernNavalBattle
 {
+    const FORCE_ONE = 1;
+    const FORCE_TWO = 2;
     /* a comment */
 
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>1];

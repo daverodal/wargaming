@@ -21,11 +21,13 @@ use \Wargame\Mollwitz\UnitFactory;
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-define("FRENCH_FORCE", 1);
-define("ANGLO_FORCE", 2);
+
 
 class Minden extends \Wargame\Mollwitz\JagCore
 {
+    const FRENCH_FORCE = 1;
+    const ANGLO_FORCE = 2;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>1];
     /* @var Mapdata */
     public $mapData;
@@ -79,7 +81,7 @@ class Minden extends \Wargame\Mollwitz\JagCore
         parent::terrainInit($terrainDoc);
         $specialHexes = $this->mapData->specialHexes;
         foreach($specialHexes as $hexId => $forceId){
-            if($forceId == ANGLO_FORCE){
+            if($forceId == self::ANGLO_FORCE){
                 $this->angloSpecialHexes[] = $hexId;
             }else{
                 $this->frenchSpecialHexes[] = $hexId;
@@ -111,42 +113,42 @@ class Minden extends \Wargame\Mollwitz\JagCore
         $artRange = 3;
 
         for ($i = 0; $i < 19; $i++) {
-            UnitFactory::create("infantry-1", FRENCH_FORCE, "deployBox", "FrenchInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'infantry');
+            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FrenchInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'infantry');
         }
         for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", FRENCH_FORCE, "deployBox", "FrenchInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'infantry');
+            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FrenchInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'infantry');
         }
         for ($i = 0; $i < 12; $i++) {
-            UnitFactory::create("infantry-1", FRENCH_FORCE, "deployBox", "FrenchCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'cavalry');
+            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FrenchCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'cavalry');
         }
         for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", FRENCH_FORCE, "deployBox", "FrenchCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'cavalry');
+            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FrenchCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'cavalry');
         }
         for ($i = 0; $i < 5; $i++) {
-            UnitFactory::create("infantry-1", FRENCH_FORCE, "deployBox", "FrenchArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "French", false, 'artillery');
+            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FrenchArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "French", false, 'artillery');
         }
-        UnitFactory::create("infantry-1", FRENCH_FORCE, "deployBox", "FrenchArtBadge.png", 5, 5, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "French", false, 'artillery');
+        UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FrenchArtBadge.png", 5, 5, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "French", false, 'artillery');
 
 
         for ($i = 0; $i < 20; $i++) {
-            UnitFactory::create("infantry-1", ANGLO_FORCE, "deployBox", "AngInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'infantry');
+            UnitFactory::create("infantry-1", self::ANGLO_FORCE, "deployBox", "AngInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'infantry');
         }
         for ($i = 0; $i < 5; $i++) {
-            UnitFactory::create("infantry-1", ANGLO_FORCE, "deployBox", "AngInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'infantry');
+            UnitFactory::create("infantry-1", self::ANGLO_FORCE, "deployBox", "AngInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'infantry');
         }
         for ($i = 0; $i < 6; $i++) {
-            UnitFactory::create("infantry-1", ANGLO_FORCE, "deployBox", "AngCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'cavalry');
+            UnitFactory::create("infantry-1", self::ANGLO_FORCE, "deployBox", "AngCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'cavalry');
         }
         for ($i = 0; $i < 2; $i++) {
-            UnitFactory::create("infantry-1", ANGLO_FORCE, "deployBox", "AngCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'cavalry');
+            UnitFactory::create("infantry-1", self::ANGLO_FORCE, "deployBox", "AngCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'cavalry');
         }
-        UnitFactory::create("infantry-1", ANGLO_FORCE, "deployBox", "AngCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'cavalry');
+        UnitFactory::create("infantry-1", self::ANGLO_FORCE, "deployBox", "AngCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "AngloAllied", false, 'cavalry');
         for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", ANGLO_FORCE, "deployBox", "AngArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, "A", 1, $artRange, "AngloAllied", false, 'artillery');
+            UnitFactory::create("infantry-1", self::ANGLO_FORCE, "deployBox", "AngArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, "A", 1, $artRange, "AngloAllied", false, 'artillery');
         }
 
         for ($i = 0; $i < 2; $i++) {
-            UnitFactory::create("infantry-1", ANGLO_FORCE, "deployBox", "AngArtBadge.png", 4, 4, 2, true, STATUS_CAN_DEPLOY, "A", 1, $artRange, "AngloAllied", false, 'artillery');
+            UnitFactory::create("infantry-1", self::ANGLO_FORCE, "deployBox", "AngArtBadge.png", 4, 4, 2, true, STATUS_CAN_DEPLOY, "A", 1, $artRange, "AngloAllied", false, 'artillery');
         }
     }
 

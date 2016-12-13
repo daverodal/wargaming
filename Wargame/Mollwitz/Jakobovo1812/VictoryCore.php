@@ -30,6 +30,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
     public $deadGuardInf;
     function __construct($data)
     {
+
         parent::__construct($data);
         if ($data) {
             $this->deadGuardInf = $data->victory->deadGuardInf;
@@ -47,17 +48,6 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
     {
         $battle = Battle::getBattle();
 
-        list($mapHexName, $forceId) = $args;
-        if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE]  += 10;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>+10 Allied vp</span>";
-            }
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE]  -= 10;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-10 Allied vp</span>";
-            }
-        }
 
     }
 
@@ -73,21 +63,31 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         $victoryReason = "";
 
         if (!$this->gameOver) {
-            $specialHexes = $battle->mapData->specialHexes;
-            $AlliedWinScore = 30;
-            $frenchWinScore = 40;
+            $mapData = $battle->mapData;
+            if ($turn > $gameRules->maxTurn) {
+                list($hexB) = $battle->specialHexB;
+                if ($mapData->getSpecialHex($hexB) == Jakobovo1812::RUSSIAN_FORCE) {
+                    $this->winner = Jakobovo1812::RUSSIAN_FORCE;
+                    $gameRules->flashMessages[] = "Russians Control Bridge and WIN";
+                    $this->gameOver = true;
+                    return true;
+                }
+            }
+            $AlliedWinScore = 35;
+            $frenchWinScore = 35;
 
-            if($this->victoryPoints[FRENCH_FORCE] >= $frenchWinScore){
+            if($this->victoryPoints[Jakobovo1812::FRENCH_FORCE] >= $frenchWinScore){
                 $frenchWin = true;
                 $victoryReason .= "Over $frenchWinScore ";
             }
-            if ($this->victoryPoints[RUSSIAN_FORCE] >= $AlliedWinScore) {
+            if ($this->victoryPoints[Jakobovo1812::RUSSIAN_FORCE] >= $AlliedWinScore) {
                 $AlliedWin = true;
                 $victoryReason .= "Over $AlliedWinScore ";
             }
 
+
             if ($frenchWin && !$AlliedWin) {
-                $this->winner = FRENCH_FORCE;
+                $this->winner = Jakobovo1812::FRENCH_FORCE;
                 $gameRules->flashMessages[] = "French Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -95,7 +95,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($AlliedWin && !$frenchWin) {
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = Jakobovo1812::RUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -110,12 +110,32 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                $this->winner = RUSSIAN_FORCE;
-                $gameRules->flashMessages[] = "Allies Win";
-                $gameRules->flashMessages[] = "French Fail to Win";
+
+                $vHexes = [0,0,0];
+
+                /* French control bridge hex */
+                foreach($battle->specialHexA as $hexA){
+                    $vHexes[$mapData->getSpecialHex($hexA)]++;
+                }
+                if($vHexes[Jakobovo1812::FRENCH_FORCE] < $vHexes[Jakobovo1812::RUSSIAN_FORCE]){
+                    $gameRules->flashMessages[] = "Russians Control More Hexes and WIN";
+                    $gameRules->flashMessages[] = $vHexes[Jakobovo1812::RUSSIAN_FORCE]." vs ".$vHexes[Jakobovo1812::FRENCH_FORCE];
+                    $this->winner = Jakobovo1812::RUSSIAN_FORCE;
+                }elseif($vHexes[Jakobovo1812::FRENCH_FORCE] > $vHexes[Jakobovo1812::RUSSIAN_FORCE]){
+                    $gameRules->flashMessages[] = "French Control More Hexes and WIN";
+                    $gameRules->flashMessages[] = $vHexes[Jakobovo1812::FRENCH_FORCE]." vs ".$vHexes[Jakobovo1812::RUSSIAN_FORCE];
+
+                    $this->winner = Jakobovo1812::FRENCH_FORCE;
+                }else{
+                    $gameRules->flashMessages[] = "TIE GAME";
+                    $this->winner = 0;
+                }
+
                 $this->gameOver = true;
                 return true;
             }
+
+
         }
         return false;
     }

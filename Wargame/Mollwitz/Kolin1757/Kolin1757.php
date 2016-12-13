@@ -18,15 +18,16 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-define("PRUSSIAN_FORCE", 1);
-define("AUSTRIAN_FORCE", 2);
 
-global $force_name;
-$force_name[AUSTRIAN_FORCE] = "Austrian";
-$force_name[PRUSSIAN_FORCE] = "Prussian";
+//
+//global $force_name;
+//$force_name[AUSTRIAN_FORCE] = "Austrian";
+//$force_name[PRUSSIAN_FORCE] = "Prussian";
 
 class Kolin1757 extends \Wargame\Mollwitz\JagCore
 {
+    const PRUSSIAN_FORCE = 1;
+    const AUSTRIAN_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){
@@ -78,90 +79,90 @@ class Kolin1757 extends \Wargame\Mollwitz\JagCore
 
         /* Austrian */
         for ($i = 0; $i < 5; $i++) {
-            UnitFactory::create("infantry-1", AUSTRIAN_FORCE, "deployBox", "AustrianInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'infantry');
+            UnitFactory::create("infantry-1", Kolin1757::AUSTRIAN_FORCE, "deployBox", "AustrianInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'infantry');
         }
         for ($i = 0; $i < 16; $i++) {
-            UnitFactory::create("infantry-1", AUSTRIAN_FORCE, "deployBox", "AustrianInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'infantry');
+            UnitFactory::create("infantry-1", Kolin1757::AUSTRIAN_FORCE, "deployBox", "AustrianInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'infantry');
         }
         for ($i = 0; $i < 5; $i++) {
-            UnitFactory::create("infantry-1", AUSTRIAN_FORCE, "deployBox", "AustrianCavBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
+            UnitFactory::create("infantry-1", Kolin1757::AUSTRIAN_FORCE, "deployBox", "AustrianCavBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
         }
         for ($i = 0; $i < 8; $i++) {
-            UnitFactory::create("infantry-1", AUSTRIAN_FORCE, "deployBox", "AustrianCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
+            UnitFactory::create("infantry-1", Kolin1757::AUSTRIAN_FORCE, "deployBox", "AustrianCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
         }
         for ($i = 0; $i < 2; $i++) {
-            UnitFactory::create("infantry-1", AUSTRIAN_FORCE, "deployBox", "AustrianCavBadge.png", 3, 3, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
+            UnitFactory::create("infantry-1", Kolin1757::AUSTRIAN_FORCE, "deployBox", "AustrianCavBadge.png", 3, 3, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
         }
         for ($i = 0; $i < 2; $i++) {
-            UnitFactory::create("infantry-1", AUSTRIAN_FORCE, "deployBox", "AustrianArtBadge.png", 4, 4, 2, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Austrian", false, 'artillery');
+            UnitFactory::create("infantry-1", Kolin1757::AUSTRIAN_FORCE, "deployBox", "AustrianArtBadge.png", 4, 4, 2, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Austrian", false, 'artillery');
         }
         for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", AUSTRIAN_FORCE, "deployBox", "AustrianArtBadge.png", 3, 3, 2, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Austrian", false, 'artillery');
+            UnitFactory::create("infantry-1", Kolin1757::AUSTRIAN_FORCE, "deployBox", "AustrianArtBadge.png", 3, 3, 2, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Austrian", false, 'artillery');
         }
 
         if(!empty($this->scenario->fredBringsMore)){
             /* Prussian */
             for ($i = 0; $i < 5; $i++) {
-                UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 5, 5, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
+                UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 5, 5, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
             }
             for ($i = 0; $i < 16; $i++) {
-                UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
+                UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
             }
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
             }
             for ($i = 0; $i < 8; $i++) {
-                UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
             }
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
             }
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianArtBadge.png", 3, 3, 2, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 3, "Prussian", false, 'artillery');
+                UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianArtBadge.png", 3, 3, 2, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 3, "Prussian", false, 'artillery');
             }
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 3, "Prussian", false, 'artillery');
+                UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 3, "Prussian", false, 'artillery');
             }
         }else{
             if(!empty($this->scenario->fredBringsALittleMore)){
                 /* Prussian */
                 for ($i = 0; $i < 4; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 5, 5, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 5, 5, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
                 }
                 for ($i = 0; $i < 14; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
                 }
                 for ($i = 0; $i < 3; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
                 }
                 for ($i = 0; $i < 6; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
                 }
                 for ($i = 0; $i < 2; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
                 }
                 for ($i = 0; $i < 5; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 3, "Prussian", false, 'artillery');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 3, "Prussian", false, 'artillery');
                 }
             }else{
                 /* Prussian */
                 for ($i = 0; $i < 4; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 5, 5, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 5, 5, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
                 }
                 for ($i = 0; $i < 12; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'infantry');
                 }
                 for ($i = 0; $i < 3; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
                 }
                 for ($i = 0; $i < 5; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
                 }
                 for ($i = 0; $i < 2; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 1, "Prussian", false, 'cavalry');
                 }
                 for ($i = 0; $i < 5; $i++) {
-                    UnitFactory::create("infantry-1", PRUSSIAN_FORCE, "deployBox", "PrussianArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 3, "Prussian", false, 'artillery');
+                    UnitFactory::create("infantry-1", Kolin1757::PRUSSIAN_FORCE, "deployBox", "PrussianArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, $prussianDeploy, 1, 3, "Prussian", false, 'artillery');
                 }
             }
         }

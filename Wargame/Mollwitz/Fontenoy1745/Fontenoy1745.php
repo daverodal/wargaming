@@ -19,12 +19,16 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("ALLIED_FORCE", 1);
-define("FRENCH_FORCE", 2);
 
 
 class Fontenoy1745 extends \Wargame\Mollwitz\JagCore
 {
+    
+    const ALLIED_FORCE = 1;
+    const FRENCH_FORCE = 2;
+
+
+
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
 
@@ -37,8 +41,8 @@ class Fontenoy1745 extends \Wargame\Mollwitz\JagCore
     {
         global $force_name;
 
-        $deployTwo = $playerOne = $force_name[ALLIED_FORCE];
-        $deployOne = $playerTwo = $force_name[FRENCH_FORCE];
+        $deployTwo = $playerOne = $force_name[self::ALLIED_FORCE];
+        $deployOne = $playerTwo = $force_name[self::FRENCH_FORCE];
         @include_once "playMulti.php";
     }
 

@@ -3540,12 +3540,20 @@ You should have received a copy of the GNU General Public License
 
 .unit .unitSize {
   height: 9px; }
+.unit.supply .counterWrapper {
+  height: 20px; }
+  .unit.supply .counterWrapper .counter-symbol {
+    color: black;
+    margin-left: 6px;
+    display: block;
+    font-size: 21px; }
 .unit .counterWrapper {
   height: 11px; }
   .unit .counterWrapper .counter-symbol {
-    stroke: black;
-    margin-left: 7px;
-    display: block; }
+    color: black;
+    margin-left: 10px;
+    display: block;
+    font-size: 14px; }
 
 #angCrtDetailsButton {
   cursor: pointer; }

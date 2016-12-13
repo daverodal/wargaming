@@ -45,12 +45,12 @@ class zorndorfVictoryCore extends \Wargame\Mollwitz\victoryCore
         $battle = \Wargame\Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
-        if ($forceId == PRUSSIAN_FORCE) {
-            $this->victoryPoints[PRUSSIAN_FORCE]  += 5;
+        if ($forceId == Zorndorf::PRUSSIAN_FORCE) {
+            $this->victoryPoints[Zorndorf::PRUSSIAN_FORCE]  += 5;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>+5 Prussian vp</span>";
         }
-        if ($forceId == RUSSIAN_FORCE) {
-            $this->victoryPoints[PRUSSIAN_FORCE]  -= 5;
+        if ($forceId == Zorndorf::RUSSIAN_FORCE) {
+            $this->victoryPoints[Zorndorf::PRUSSIAN_FORCE]  -= 5;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='russian'>-5 Prussian vp</span>";
         }
     }
@@ -59,10 +59,10 @@ class zorndorfVictoryCore extends \Wargame\Mollwitz\victoryCore
         $turn = $gameRules->turn;
         if(!$this->gameOver){
             $prussianWin = $russianWin = false;
-            if(($this->victoryPoints[RUSSIAN_FORCE] >= 62) && ($this->victoryPoints[RUSSIAN_FORCE] - ($this->victoryPoints[PRUSSIAN_FORCE]) >= 10)){
+            if(($this->victoryPoints[Zorndorf::RUSSIAN_FORCE] >= 62) && ($this->victoryPoints[Zorndorf::RUSSIAN_FORCE] - ($this->victoryPoints[Zorndorf::PRUSSIAN_FORCE]) >= 10)){
                 $russianWin = true;
             }
-            if(($this->victoryPoints[PRUSSIAN_FORCE] >= 62) && ($this->victoryPoints[PRUSSIAN_FORCE] - $this->victoryPoints[RUSSIAN_FORCE] >= 10)){
+            if(($this->victoryPoints[Zorndorf::PRUSSIAN_FORCE] >= 62) && ($this->victoryPoints[Zorndorf::PRUSSIAN_FORCE] - $this->victoryPoints[Zorndorf::RUSSIAN_FORCE] >= 10)){
                 $prussianWin = true;
             }
             if($russianWin && $prussianWin){
@@ -70,11 +70,11 @@ class zorndorfVictoryCore extends \Wargame\Mollwitz\victoryCore
                 $gameRules->flashMessages[] = "Tie Game";
             }
             if($russianWin){
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = Zorndorf::RUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Russian Win on Kills";
             }
             if($prussianWin){
-                $this->winner = PRUSSIAN_FORCE;
+                $this->winner = Zorndorf::PRUSSIAN_FORCE;
                 $msg = "Prussian Win 62 or more VP's";
                 $gameRules->flashMessages[] = $msg;
             }

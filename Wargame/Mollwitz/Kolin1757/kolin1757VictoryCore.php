@@ -43,22 +43,22 @@ class kolin1757VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == AUSTRIAN_FORCE) {
-                $this->victoryPoints[AUSTRIAN_FORCE] += 10;
+            if ($forceId == Kolin1757::AUSTRIAN_FORCE) {
+                $this->victoryPoints[Kolin1757::AUSTRIAN_FORCE] += 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>+10 Austrian vp</span>";
             }
-            if ($forceId == PRUSSIAN_FORCE) {
-                $this->victoryPoints[AUSTRIAN_FORCE] -= 10;
+            if ($forceId == Kolin1757::PRUSSIAN_FORCE) {
+                $this->victoryPoints[Kolin1757::AUSTRIAN_FORCE] -= 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>-10 Prussian vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == PRUSSIAN_FORCE) {
-                $this->victoryPoints[PRUSSIAN_FORCE] += 20;
+            if ($forceId == Kolin1757::PRUSSIAN_FORCE) {
+                $this->victoryPoints[Kolin1757::PRUSSIAN_FORCE] += 20;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>+20 Prussian vp</span>";
             }
-            if ($forceId == AUSTRIAN_FORCE) {
-                $this->victoryPoints[PRUSSIAN_FORCE] -= 20;
+            if ($forceId == Kolin1757::AUSTRIAN_FORCE) {
+                $this->victoryPoints[Kolin1757::PRUSSIAN_FORCE] -= 20;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='austrian'>-20 Austrian vp</span>";
             }
         }
@@ -74,7 +74,7 @@ class kolin1757VictoryCore extends \Wargame\Mollwitz\victoryCore
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
             $winScore = 60;
-            if (($this->victoryPoints[PRUSSIAN_FORCE] >= $winScore && ($this->victoryPoints[PRUSSIAN_FORCE] - ($this->victoryPoints[AUSTRIAN_FORCE]) >= 10))) {
+            if (($this->victoryPoints[Kolin1757::PRUSSIAN_FORCE] >= $winScore && ($this->victoryPoints[Kolin1757::PRUSSIAN_FORCE] - ($this->victoryPoints[Kolin1757::AUSTRIAN_FORCE]) >= 10))) {
                 if ($turn < 9) {
                     $prussianWin = true;
                 }
@@ -83,7 +83,7 @@ class kolin1757VictoryCore extends \Wargame\Mollwitz\victoryCore
                 }
                 $prussianScore = true;
             }
-            if ($this->victoryPoints[AUSTRIAN_FORCE] >= $winScore && ($this->victoryPoints[AUSTRIAN_FORCE] - ($this->victoryPoints[PRUSSIAN_FORCE]))) {
+            if ($this->victoryPoints[Kolin1757::AUSTRIAN_FORCE] >= $winScore && ($this->victoryPoints[Kolin1757::AUSTRIAN_FORCE] - ($this->victoryPoints[Kolin1757::PRUSSIAN_FORCE]))) {
                 if ($turn < 13) {
                     $austrianWin = true;
                 }
@@ -98,11 +98,11 @@ class kolin1757VictoryCore extends \Wargame\Mollwitz\victoryCore
             }
 
             if ($prussianWin) {
-                $this->winner = PRUSSIAN_FORCE;
+                $this->winner = Kolin1757::PRUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Prussian Win";
             }
             if ($austrianWin) {
-                $this->winner = AUSTRIAN_FORCE;
+                $this->winner = Kolin1757::AUSTRIAN_FORCE;
                 $msg = "Austrian Win";
                 $gameRules->flashMessages[] = $msg;
             }

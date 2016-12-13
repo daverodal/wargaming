@@ -18,18 +18,20 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-define("REBEL_FORCE", 1);
-define("LOYALIST_FORCE", 2);
-
-global $force_name;
-$force_name[LOYALIST_FORCE] = "Loyalist";
-$force_name[REBEL_FORCE] = "Rebel";
 
 class Germantown1777 extends \Wargame\Mollwitz\JagCore
 {
+    
+    const REBEL_FORCE = 1;
+    const LOYALIST_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
     public $pontoons;
+
+
+    public function isRebel($forceId){
+        return $forceId === self::REBEL_FORCE;
+    }
 
     static function enterMulti()
     {

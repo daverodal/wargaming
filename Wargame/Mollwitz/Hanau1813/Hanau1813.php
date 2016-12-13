@@ -19,16 +19,17 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("FRENCH_FORCE", 1);
-define("ALLIED_FORCE", 2);
 
-global $force_name;
-$force_name[FRENCH_FORCE] = "French";
-$force_name[ALLIED_FORCE] = "Allied";
+//global $force_name;
+//$force_name[FRENCH_FORCE] = "French";
+//$force_name[ALLIED_FORCE] = "Allied";
 
 
 class Hanau1813 extends \Wargame\Mollwitz\JagCore
 {
+
+    const FRENCH_FORCE = 1;
+    const ALLIED_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
     static function enterMulti()
@@ -40,8 +41,8 @@ class Hanau1813 extends \Wargame\Mollwitz\JagCore
     {
         global $force_name;
 
-        $deployTwo = $playerOne = $force_name[FRENCH_FORCE];
-        $deployOne = $playerTwo = $force_name[ALLIED_FORCE];
+        $deployTwo = $playerOne = $force_name[Hanau1813::FRENCH_FORCE];
+        $deployOne = $playerTwo = $force_name[Hanau1813::ALLIED_FORCE];
         @include_once "playMulti.php";
     }
 

@@ -94,12 +94,24 @@
   .unitSize{
     height:9px;
   }
+  &.supply{
+    .counterWrapper{
+      height:20px;
+      .counter-symbol{
+        color:black;
+        margin-left:6px;
+        display:block;
+        font-size:21px;
+      }
+    }
+  }
   .counterWrapper{
     height:11px;
     .counter-symbol{
-      stroke:black;
-      margin-left:7px;
+      color:black;
+      margin-left:10px;
       display:block;
+      font-size:14px;
     }
   }
 }

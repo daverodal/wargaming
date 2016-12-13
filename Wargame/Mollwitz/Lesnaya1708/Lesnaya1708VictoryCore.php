@@ -34,22 +34,22 @@ class Lesnaya1708VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE] += 5;
+            if ($forceId == Lesnaya1708::RUSSIAN_FORCE) {
+                $this->victoryPoints[Lesnaya1708::RUSSIAN_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>+5 Russian vp</span>";
             }
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE] -= 5;
+            if ($forceId == Lesnaya1708::SWEDISH_FORCE) {
+                $this->victoryPoints[Lesnaya1708::RUSSIAN_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='russian'>-5 Russian vp</span>";
             }
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE] += 15;
+            if ($forceId == Lesnaya1708::RUSSIAN_FORCE) {
+                $this->victoryPoints[Lesnaya1708::RUSSIAN_FORCE] += 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='russian'>+15 Russian vp</span>";
             }
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE] -= 15;
+            if ($forceId == Lesnaya1708::SWEDISH_FORCE) {
+                $this->victoryPoints[Lesnaya1708::RUSSIAN_FORCE] -= 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>-15 Russian vp</span>";
             }
         }
@@ -76,22 +76,22 @@ class Lesnaya1708VictoryCore extends \Wargame\Mollwitz\victoryCore
             $specialHexes = $battle->mapData->specialHexes;
             $russianWinScore = 35;
             $swedWinScore = 30;
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $swedWinScore) {
+            if ($this->victoryPoints[Lesnaya1708::SWEDISH_FORCE] >= $swedWinScore) {
                     $swedishWin = true;
             }
 
-            if ($this->victoryPoints[RUSSIAN_FORCE] >= $russianWinScore) {
+            if ($this->victoryPoints[Lesnaya1708::RUSSIAN_FORCE] >= $russianWinScore) {
                 $russianWin = true;
             }
 
             if (!$swedishWin && $russianWin) {
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = Lesnaya1708::RUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Russian Win";
             }
 
 
             if ($swedishWin && !$russianWin) {
-                $this->winner = SWEDISH_FORCE;
+                $this->winner = Lesnaya1708::SWEDISH_FORCE;
                 $gameRules->flashMessages[] = "Swedish Win";
             }
 
@@ -102,7 +102,7 @@ class Lesnaya1708VictoryCore extends \Wargame\Mollwitz\victoryCore
             }
             if ($swedishWin || $russianWin ||  $turn == ($gameRules->maxTurn + 1)) {
                 if(!$russianWin){
-                    $this->winner = SWEDISH_FORCE;
+                    $this->winner = Lesnaya1708::SWEDISH_FORCE;
                     $msg = "Swedish Win";
                     $gameRules->flashMessages[] = $msg;
                     $gameRules->flashMessages[] = "Russians Fail to Win";

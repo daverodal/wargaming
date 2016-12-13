@@ -9,16 +9,17 @@
          ng-class="[unit.nationality, unit.class]">
         <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
         <div class="shadow-mask" ng-class="unit.shadow"></div>
-        <div class="unitSize">lll</div>
+        <div ng-if="unit.class !== 'supply'" class="unitSize">lll</div>
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
              src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
-            <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
-                    class="unit-desig">@{{ unit.unitDesig }}</span>
+            <img ng-if="unit.class !== 'supply'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
+            <i ng-if="unit.class === 'supply'" class="counter-symbol fa fa-adjust"></i>
+            <span class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
         <div ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }}
             - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
-        <div class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
+        <div ng-if="unit.class !== 'supply'" class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
     </div>
 @endsection
 
@@ -27,15 +28,16 @@
          ng-class="[unit.nationality, unit.class]">
         <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
         <div class="shadow-mask" ng-class="unit.shadow"></div>
-        <div class="unitSize">lll</div>
+        <div ng-if="unit.class !== 'supply'" class="unitSize">lll</div>
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
              src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
-            <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
-                    class="unit-desig">@{{ unit.unitDesig }}</span>
+            <img ng-if="unit.class !== 'supply'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
+            <i ng-if="unit.class === 'supply'" class="counter-symbol fa fa-adjust"></i>
+            <span class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
         <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
-        <div class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
+        <div ng-if="unit.class !== 'supply'" class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
     </div>
 @endsection
 
@@ -44,8 +46,9 @@
     <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
          src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
     <div class="counterWrapper">
-        <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
-                class="unit-desig">@{{ unit.unitDesig }}</span>
+        <img ng-if="unit.class !== 'supply'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
+        <i ng-if="unit.class === 'supply'" class="counter-symbol fa fa-adjust"></i>
+        <span class="unit-desig">@{{ unit.unitDesig }}</span>
     </div>
     <div class="range">@{{ unit.armorClass }}</div>
     <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.pointsLeft }}</div>
@@ -53,7 +56,7 @@
 @endsection
 
 @section('inner-crt')
-    @include('wargame::TMCW.Airborne.airborne-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(REBEL_FORCE)])
+    @include('wargame::TMCW.Airborne.airborne-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(Airborne::REBEL_FORCE)])
 @endsection
 
 @section('unitRules')
@@ -151,4 +154,4 @@
     </div>
 @endsection
 
-@extends('wargame::Medieval.angular-view',['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(REBEL_FORCE)] )
+@extends('wargame::Medieval.angular-view',['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(Airborne::REBEL_FORCE)] )

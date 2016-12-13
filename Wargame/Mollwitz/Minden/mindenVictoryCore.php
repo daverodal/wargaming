@@ -45,20 +45,20 @@ class mindenVictoryCore extends \Wargame\Mollwitz\victoryCore
         $battle = \Wargame\Battle::getBattle();
 
         list($mapHexName, $forceId) = $args;
-        if ($forceId == FRENCH_FORCE && in_array($mapHexName,$battle->angloSpecialHexes)) {
-            $this->victoryPoints[FRENCH_FORCE]  += 5;
+        if ($forceId == Minden::FRENCH_FORCE && in_array($mapHexName,$battle->angloSpecialHexes)) {
+            $this->victoryPoints[Minden::FRENCH_FORCE]  += 5;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+5 French vp</span>";
         }
-        if ($forceId == ANGLO_FORCE && in_array($mapHexName,$battle->angloSpecialHexes)) {
-            $this->victoryPoints[FRENCH_FORCE]  -= 5;
+        if ($forceId == Minden::ANGLO_FORCE && in_array($mapHexName,$battle->angloSpecialHexes)) {
+            $this->victoryPoints[Minden::FRENCH_FORCE]  -= 5;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-5 French vp</span>";
         }
-        if ($forceId == ANGLO_FORCE && in_array($mapHexName,$battle->frenchSpecialHexes)) {
-            $this->victoryPoints[ANGLO_FORCE]  += 10;
+        if ($forceId == Minden::ANGLO_FORCE && in_array($mapHexName,$battle->frenchSpecialHexes)) {
+            $this->victoryPoints[Minden::ANGLO_FORCE]  += 10;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='anglo'>+10 Anglo Allied vp</span>";
         }
-        if ($forceId == FRENCH_FORCE && in_array($mapHexName,$battle->frenchSpecialHexes)) {
-            $this->victoryPoints[ANGLO_FORCE]  -= 10;
+        if ($forceId == Minden::FRENCH_FORCE && in_array($mapHexName,$battle->frenchSpecialHexes)) {
+            $this->victoryPoints[Minden::ANGLO_FORCE]  -= 10;
             $battle->mapData->specialHexesVictory->$mapHexName = "<span class='anglo'>-10 Anglo Allied vp</span>";
         }
     }
@@ -67,10 +67,10 @@ class mindenVictoryCore extends \Wargame\Mollwitz\victoryCore
         $turn = $gameRules->turn;
         if(!$this->gameOver){
             $frenchWin = $angloWin = false;
-            if(($this->victoryPoints[ANGLO_FORCE] >= 50) && ($this->victoryPoints[ANGLO_FORCE] - ($this->victoryPoints[FRENCH_FORCE]) >= 10)){
+            if(($this->victoryPoints[Minden::ANGLO_FORCE] >= 50) && ($this->victoryPoints[Minden::ANGLO_FORCE] - ($this->victoryPoints[Minden::FRENCH_FORCE]) >= 10)){
                 $angloWin = true;
             }
-            if(($this->victoryPoints[FRENCH_FORCE] >= 50) && ($this->victoryPoints[FRENCH_FORCE] - $this->victoryPoints[ANGLO_FORCE] >= 10)){
+            if(($this->victoryPoints[Minden::FRENCH_FORCE] >= 50) && ($this->victoryPoints[Minden::FRENCH_FORCE] - $this->victoryPoints[Minden::ANGLO_FORCE] >= 10)){
                 $frenchWin = true;
             }
             if($frenchWin && $angloWin){
@@ -83,11 +83,11 @@ class mindenVictoryCore extends \Wargame\Mollwitz\victoryCore
             }
 
             if($angloWin){
-                $this->winner = ANGLO_FORCE;
+                $this->winner = Minden::ANGLO_FORCE;
                 $gameRules->flashMessages[] = "Anglo Allied Win 50 points or more";
             }
             if($frenchWin){
-                $this->winner = FRENCH_FORCE;
+                $this->winner = Minden::FRENCH_FORCE;
                 $msg = "French Win 50 points or more";
                 $gameRules->flashMessages[] = $msg;
             }

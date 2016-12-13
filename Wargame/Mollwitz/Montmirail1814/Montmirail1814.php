@@ -19,12 +19,14 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("FRENCH_FORCE", 1);
-define("ALLIED_FORCE", 2);
 
 
 class Montmirail1814 extends \Wargame\Mollwitz\JagCore
 {
+
+    const FRENCH_FORCE = 1;
+    const ALLIED_FORCE = 2;
+    
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
     static function enterMulti()

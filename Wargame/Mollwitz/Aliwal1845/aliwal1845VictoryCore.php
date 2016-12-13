@@ -34,12 +34,12 @@ class aliwal1845VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
         list($mapHexName, $forceId) = $args;
         if(in_array($mapHexName,$battle->specialHexB)){
-            if ($forceId == BRITISH_FORCE) {
-                $this->victoryPoints[BRITISH_FORCE]  += 10;
+            if ($forceId == Aliwal1845::BRITISH_FORCE) {
+                $this->victoryPoints[Aliwal1845::BRITISH_FORCE]  += 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='sikh'>+10 British vp</span>";
             }
-            if ($forceId == SIKH_FORCE) {
-                $this->victoryPoints[BRITISH_FORCE]  -= 10;
+            if ($forceId == Aliwal1845::SIKH_FORCE) {
+                $this->victoryPoints[Aliwal1845::BRITISH_FORCE]  -= 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>-10 British vp</span>";
             }
         }
@@ -55,10 +55,10 @@ class aliwal1845VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
             $britVic = 40;
-            if (($this->victoryPoints[BRITISH_FORCE] >= $britVic && ($this->victoryPoints[BRITISH_FORCE] - ($this->victoryPoints[SIKH_FORCE]) >= 15))) {
+            if (($this->victoryPoints[Aliwal1845::BRITISH_FORCE] >= $britVic && ($this->victoryPoints[Aliwal1845::BRITISH_FORCE] - ($this->victoryPoints[Aliwal1845::SIKH_FORCE]) >= 15))) {
                 $britishWin = true;
             }
-            if (($this->victoryPoints[SIKH_FORCE] >= 40)) {
+            if (($this->victoryPoints[Aliwal1845::SIKH_FORCE] >= 40)) {
                 $sikhWin = true;
             }
             if ($turn == $gameRules->maxTurn + 1) {
@@ -77,11 +77,11 @@ class aliwal1845VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
 
             if ($britishWin) {
-                $this->winner = BRITISH_FORCE;
+                $this->winner = Aliwal1845::BRITISH_FORCE;
                 $gameRules->flashMessages[] = "British Win";
             }
             if ($sikhWin) {
-                $this->winner = SIKH_FORCE;
+                $this->winner = Aliwal1845::SIKH_FORCE;
                 $msg = "Sikh Win";
                 $gameRules->flashMessages[] = $msg;
             }

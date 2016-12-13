@@ -61,12 +61,12 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
         list($mapHexName, $forceId) = $args;
 
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == SWEDISH_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] += 10;
+            if ($forceId == self::SWEDISH_FORCE) {
+                $this->victoryPoints[self::SWEDISH_FORCE] += 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='swedish'>+10 Swedish vp</span>";
             }
-            if ($forceId == DANISH_FORCE) {
-                $this->victoryPoints[SWEDISH_FORCE] -= 10;
+            if ($forceId == self::DANISH_FORCE) {
+                $this->victoryPoints[self::SWEDISH_FORCE] -= 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='danish'>-10 Swedish vp</span>";
             }
         }
@@ -86,25 +86,25 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
         if (!$this->gameOver) {
             $winScore = 35;
             $highWinScore = 42;
-            if ($this->victoryPoints[DANISH_FORCE] >= $winScore && $turn <= 5) {
+            if ($this->victoryPoints[self::DANISH_FORCE] >= $winScore && $turn <= 5) {
                 $danishWin = true;
                 $victoryReason .= "Over $winScore on or before turn 5";
             }
-            if ($this->victoryPoints[DANISH_FORCE] >= $highWinScore) {
+            if ($this->victoryPoints[self::DANISH_FORCE] >= $highWinScore) {
                 $danishWin = true;
                 $victoryReason .= "Over $highWinScore ";
             }
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $winScore && $turn <= 5) {
+            if ($this->victoryPoints[self::SWEDISH_FORCE] >= $winScore && $turn <= 5) {
                 $swedishWin = true;
                 $victoryReason .= "Over $winScore on or before turn 5 ";
             }
-            if ($this->victoryPoints[SWEDISH_FORCE] >= $highWinScore) {
+            if ($this->victoryPoints[self::SWEDISH_FORCE] >= $highWinScore) {
                 $swedishWin = true;
                 $victoryReason .= "Over $highWinScore ";
             }
 
             if ($danishWin && !$swedishWin) {
-                $this->winner = DANISH_FORCE;
+                $this->winner = self::DANISH_FORCE;
                 $gameRules->flashMessages[] = "Danish Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -112,7 +112,7 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($swedishWin && !$danishWin) {
-                $this->winner = SWEDISH_FORCE;
+                $this->winner = self::SWEDISH_FORCE;
                 $gameRules->flashMessages[] = "Swedish Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -127,8 +127,8 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                if($battle->mapData->getSpecialHex(1113)  == DANISH_FORCE || $this->victoryPoints[DANISH_FORCE] >= 15){
-                    $this->winner = DANISH_FORCE;
+                if($battle->mapData->getSpecialHex(1113)  == self::DANISH_FORCE || $this->victoryPoints[self::DANISH_FORCE] >= 15){
+                    $this->winner = self::DANISH_FORCE;
                     $gameRules->flashMessages[] = "Danish Win";
                     $gameRules->flashMessages[] = "Swedes Fail to Win";
                     $this->gameOver = true;

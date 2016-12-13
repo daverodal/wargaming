@@ -1,6 +1,6 @@
 <?php
 namespace Wargame\TMCW\Airborne;
-use Wargame\TMCW\KievCorps\MultiStepUnit;
+use Wargame\TMCW\Airborne\MultiStepCombatSupplyUnit;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal
@@ -27,7 +27,7 @@ class UnitFactory {
     public static $injector;
 
     public static function build($data = false){
-        $nUnit =  new MultiStepUnit($data);
+        $nUnit =  new MultiStepCombatSupplyUnit($data);
         if ($data === false) {
             $nUnit->id = self::$id++;
         }

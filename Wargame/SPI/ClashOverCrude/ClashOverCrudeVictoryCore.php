@@ -69,7 +69,7 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
 
         list($mapHexName, $forceId) = $args;
 
-        if ($forceId == LOYALIST_FORCE) {
+        if ($forceId == ClashOverCrude::LOYALIST_FORCE) {
             $newLandings = [];
             foreach ($this->landingZones as $landingZone) {
                 if ($landingZone == $mapHexName) {
@@ -99,16 +99,16 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
 //            $vp = 25;
 //
 //            $prevForceId = $battle->mapData->specialHexes->$mapHexName;
-//            if ($forceId == REBEL_FORCE) {
-//                $this->victoryPoints[REBEL_FORCE]  += $vp;
+//            if ($forceId == ClashOverCrude::REBEL_FORCE) {
+//                $this->victoryPoints[ClashOverCrude::REBEL_FORCE]  += $vp;
 //                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+$vp Rebel vp</span>";
-//                $this->victoryPoints[LOYALIST_FORCE] -= $vp;
+//                $this->victoryPoints[ClashOverCrude::LOYALIST_FORCE] -= $vp;
 //                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='rebel'> -$vp Loyalist vp</span>";
 //            }
-//            if ($forceId == LOYALIST_FORCE) {
-//                $this->victoryPoints[LOYALIST_FORCE]  += $vp;
+//            if ($forceId == ClashOverCrude::LOYALIST_FORCE) {
+//                $this->victoryPoints[ClashOverCrude::LOYALIST_FORCE]  += $vp;
 //                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+$vp Loyalist vp</span>";
-//                $this->victoryPoints[REBEL_FORCE] -= $vp;
+//                $this->victoryPoints[ClashOverCrude::REBEL_FORCE] -= $vp;
 //                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='loyalist'> -$vp Rebel vp</span>";
 //            }
 //        }
@@ -196,15 +196,15 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
     public function gameEnded()
     {
         $battle = Battle::getBattle();
-        if ($this->victoryPoints[LOYALIST_FORCE] > $this->victoryPoints[REBEL_FORCE]) {
+        if ($this->victoryPoints[ClashOverCrude::LOYALIST_FORCE] > $this->victoryPoints[ClashOverCrude::REBEL_FORCE]) {
             $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
-            $this->winner = LOYALIST_FORCE;
+            $this->winner = ClashOverCrude::LOYALIST_FORCE;
         }
-        if ($this->victoryPoints[REBEL_FORCE] > $this->victoryPoints[LOYALIST_FORCE]) {
+        if ($this->victoryPoints[ClashOverCrude::REBEL_FORCE] > $this->victoryPoints[ClashOverCrude::LOYALIST_FORCE]) {
             $battle->gameRules->flashMessages[] = "Rebel Player Wins";
-            $this->winner = REBEL_FORCE;
+            $this->winner = ClashOverCrude::REBEL_FORCE;
         }
-        if ($this->victoryPoints[LOYALIST_FORCE] == $this->victoryPoints[REBEL_FORCE]) {
+        if ($this->victoryPoints[ClashOverCrude::LOYALIST_FORCE] == $this->victoryPoints[ClashOverCrude::REBEL_FORCE]) {
             $battle->gameRules->flashMessages[] = "Tie Game";
         }
         $this->gameOver = true;
@@ -317,7 +317,7 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
 //            return;
         }
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == REBEL_FORCE) {
+            if ($unit->forceId == ClashOverCrude::REBEL_FORCE) {
                 $bias = array(5 => true, 6 => true, 1 => true);
                 $goal = $this->rebelGoal;
             } else {
@@ -357,11 +357,11 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if ($attackingId == REBEL_FORCE) {
+        if ($attackingId == ClashOverCrude::REBEL_FORCE) {
             $gameRules->flashMessages[] = "Rebel Player Turn";
             $gameRules->replacementsAvail = 1;
         }
-        if ($attackingId == LOYALIST_FORCE) {
+        if ($attackingId == ClashOverCrude::LOYALIST_FORCE) {
             $gameRules->flashMessages[] = "Loyalist Player Turn";
             $gameRules->replacementsAvail = 10;
         }

@@ -63,10 +63,10 @@ class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == FRENCH_FORCE) {
+            if ($forceId == Hanau1813::FRENCH_FORCE) {
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>French Control Vital Objective</span>";
             }
-            if ($forceId == ALLIED_FORCE) {
+            if ($forceId == Hanau1813::ALLIED_FORCE) {
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prussian'>French Lose Vital Objective</span>";
             }
         }
@@ -89,29 +89,29 @@ class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
             $frenchLowWinScore = 60;
             $frenchHighWinScore = 70;
             /* end of allied turn */
-            if($gameRules->attackingForceId === ALLIED_FORCE && !$this->deadGuardInf){
+            if($gameRules->attackingForceId === Hanau1813::ALLIED_FORCE && !$this->deadGuardInf){
                 foreach($specialHexes as $specialHex){
-                    if($specialHex === FRENCH_FORCE){
+                    if($specialHex === Hanau1813::FRENCH_FORCE){
                         $frenchWin = true;
                         $victoryReason .= "Occupy vital objective ";
                     }
                 }
             }
-            if ($this->victoryPoints[FRENCH_FORCE] >= $frenchLowWinScore && $turn <= 5) {
+            if ($this->victoryPoints[Hanau1813::FRENCH_FORCE] >= $frenchLowWinScore && $turn <= 5) {
                     $frenchWin = true;
                 $victoryReason .= "Over $frenchLowWinScore on or before turn 5 ";
             }
-            if($this->victoryPoints[FRENCH_FORCE] >= $frenchHighWinScore){
+            if($this->victoryPoints[Hanau1813::FRENCH_FORCE] >= $frenchHighWinScore){
                 $frenchWin = true;
                 $victoryReason .= "Over $frenchHighWinScore ";
             }
-            if ($this->victoryPoints[ALLIED_FORCE] >= $alliedWinScore) {
+            if ($this->victoryPoints[Hanau1813::ALLIED_FORCE] >= $alliedWinScore) {
                 $alliedWin = true;
                 $victoryReason .= "Over $alliedWinScore ";
             }
 
             if ($frenchWin && !$alliedWin) {
-                $this->winner = FRENCH_FORCE;
+                $this->winner = Hanau1813::FRENCH_FORCE;
                 $gameRules->flashMessages[] = "French Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -119,7 +119,7 @@ class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($alliedWin && !$frenchWin) {
-                $this->winner = ALLIED_FORCE;
+                $this->winner = Hanau1813::ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -134,7 +134,7 @@ class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                $this->winner = ALLIED_FORCE;
+                $this->winner = Hanau1813::ALLIED_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = "French Fail to Win";
                 $this->gameOver = true;
@@ -183,7 +183,7 @@ class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         parent::postRecoverUnit($args);
 
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE) {
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId == Hanau1813::ALLIED_FORCE) {
             /* if early Movement set and unit is north of river they can move */
             if(!(isset($scenario->earlyMovement) && empty($this->southOfTheRiver[$unit->hexagon->name]))){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
@@ -191,7 +191,7 @@ class hanau1813VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
 
         if ($b->gameRules->turn == 2 && $b->gameRules->phase == RED_MOVE_PHASE){
-          if($unit->status == STATUS_READY && $unit->forceId == ALLIED_FORCE && !empty($this->southOfTheRiver[$unit->hexagon->name])) {
+          if($unit->status == STATUS_READY && $unit->forceId == Hanau1813::ALLIED_FORCE && !empty($this->southOfTheRiver[$unit->hexagon->name])) {
               $unit->status = STATUS_UNAVAIL_THIS_PHASE;
           }
         }

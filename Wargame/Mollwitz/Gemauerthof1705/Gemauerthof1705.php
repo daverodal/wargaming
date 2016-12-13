@@ -18,15 +18,17 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-define("SWEDISH_FORCE", 1);
-define("RUSSIAN_FORCE", 2);
-
-global $force_name;
-$force_name[RUSSIAN_FORCE] = "Russian";
-$force_name[SWEDISH_FORCE] = "Swedish";
+//
+//global $force_name;
+//$force_name[Gemauerthof1705::RUSSIAN_FORCE] = "Russian";
+//$force_name[Gemauerthof1705::SWEDISH_FORCE] = "Swedish";
 
 class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
 {
+
+    const SWEDISH_FORCE = 1;
+    const RUSSIAN_FORCE = 2;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){
@@ -78,7 +80,7 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
             UnitFactory::create("", 1, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'A', 1, 1, "Swedish", false, "hq",false, 2);
         }
         foreach($unitSets as $unitSet) {
-            if($unitSet->forceId !== SWEDISH_FORCE){
+            if($unitSet->forceId !== Gemauerthof1705::SWEDISH_FORCE){
                 continue;
             }
             for ($i = 0; $i < $unitSet->num; $i++) {
@@ -103,7 +105,7 @@ class Gemauerthof1705 extends \Wargame\Mollwitz\JagCore
             UnitFactory::create("", 2, "deployBox", "", 3, false, 5, false, STATUS_CAN_DEPLOY, 'B', 1, 1, "Russian", false, "hq",false, 2);
         }
         foreach($unitSets as $unitSet) {
-            if($unitSet->forceId !== RUSSIAN_FORCE){
+            if($unitSet->forceId !== Gemauerthof1705::RUSSIAN_FORCE){
                 continue;
             }
             for ($i = 0; $i < $unitSet->num; $i++) {

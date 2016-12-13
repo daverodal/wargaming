@@ -54,10 +54,10 @@ class meanee1843VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
             $britVic = 50;
-            if (($this->victoryPoints[BRITISH_FORCE] >= $britVic && ($this->victoryPoints[BRITISH_FORCE] - ($this->victoryPoints[SIKH_FORCE]) >= 15))) {
+            if (($this->victoryPoints[Meanee1843::BRITISH_FORCE] >= $britVic && ($this->victoryPoints[Meanee1843::BRITISH_FORCE] - ($this->victoryPoints[SIKH_FORCE]) >= 15))) {
                 $britishWin = true;
             }
-            if (($this->victoryPoints[BELUCHI_FORCE] >= 35)) {
+            if (($this->victoryPoints[Meanee1843::BELUCHI_FORCE] >= 35)) {
                 $sikhWin = true;
             }
             if ($turn == $gameRules->maxTurn + 1) {
@@ -76,7 +76,7 @@ class meanee1843VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
 
 
             if ($britishWin) {
-                $this->winner = BRITISH_FORCE;
+                $this->winner = Meanee1843::BRITISH_FORCE;
                 $gameRules->flashMessages[] = "British Win";
             }
             if ($sikhWin) {

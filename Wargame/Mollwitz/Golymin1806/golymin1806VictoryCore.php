@@ -62,23 +62,23 @@ class golymin1806VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE]  += 5;
+            if ($forceId == Golymin1806::FRENCH_FORCE) {
+                $this->victoryPoints[Golymin1806::FRENCH_FORCE]  += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+5 French vp</span>";
             }
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE]  -= 5;
+            if ($forceId == Golymin1806::RUSSIAN_FORCE) {
+                $this->victoryPoints[Golymin1806::RUSSIAN_FORCE]  -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='russian'>-5 French vp</span>";
             }
         }
 
         if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == FRENCH_FORCE) {
-                $this->victoryPoints[FRENCH_FORCE]  += 15;
+            if ($forceId == Golymin1806::FRENCH_FORCE) {
+                $this->victoryPoints[Golymin1806::FRENCH_FORCE]  += 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>+15 French vp</span>";
             }
-            if ($forceId == RUSSIAN_FORCE) {
-                $this->victoryPoints[RUSSIAN_FORCE]  -= 15;
+            if ($forceId == Golymin1806::RUSSIAN_FORCE) {
+                $this->victoryPoints[Golymin1806::RUSSIAN_FORCE]  -= 15;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='russian'>-15 French vp</span>";
             }
         }
@@ -100,17 +100,17 @@ class golymin1806VictoryCore extends \Wargame\Mollwitz\victoryCore
             $RussianWinScore = 30;
             $frenchWinScore = 40;
 
-            if($this->victoryPoints[FRENCH_FORCE] >= $frenchWinScore){
+            if($this->victoryPoints[Golymin1806::FRENCH_FORCE] >= $frenchWinScore){
                 $frenchWin = true;
                 $victoryReason .= "Over $frenchWinScore ";
             }
-            if ($this->victoryPoints[RUSSIAN_FORCE] >= $RussianWinScore) {
+            if ($this->victoryPoints[Golymin1806::RUSSIAN_FORCE] >= $RussianWinScore) {
                 $RussianWin = true;
                 $victoryReason .= "Over $RussianWinScore ";
             }
 
             if ($frenchWin && !$RussianWin) {
-                $this->winner = FRENCH_FORCE;
+                $this->winner = Golymin1806::FRENCH_FORCE;
                 $gameRules->flashMessages[] = "French Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -118,7 +118,7 @@ class golymin1806VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($RussianWin && !$frenchWin) {
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = Golymin1806::RUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -133,7 +133,7 @@ class golymin1806VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                $this->winner = RUSSIAN_FORCE;
+                $this->winner = Golymin1806::RUSSIAN_FORCE;
                 $gameRules->flashMessages[] = "Allies Win";
                 $gameRules->flashMessages[] = "French Fail to Win";
                 $this->gameOver = true;

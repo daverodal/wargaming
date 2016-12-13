@@ -49,6 +49,9 @@ trait UnitAdjustment
                 case 'double':
                     $value = $value * 2;
                     break;
+                case 'zero':
+                    $value = 0;
+                    break;
             }
         }
         return $value;

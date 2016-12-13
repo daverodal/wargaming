@@ -19,11 +19,13 @@ You should have received a copy of the GNU General Public License
    */
 
 
-define("RUSSIAN_FORCE", 1);
-define("FRENCH_FORCE", 2);
 
 class Jakobovo1812 extends \Wargame\Mollwitz\JagCore
 {
+
+    const RUSSIAN_FORCE = 1;
+    const FRENCH_FORCE = 2;
+
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){

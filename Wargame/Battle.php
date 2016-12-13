@@ -101,6 +101,8 @@ class Battle
     private static $isLoaded = false;
     private static $game;
     public static $ad;
+    private static $name;
+    private static $arg;
 
 
     public static function battleFromDoc($doc)
@@ -114,10 +116,17 @@ class Battle
 
         try {
             if (self::$theBattle) {
-                return self::$theBattle;
+                if(self::$name === $name && self::$arg === $arg){
+                    return self::$theBattle;
+                }
+                self::$theBattle = false;
+                self::$isLoaded = false;
             }
 
             $game = self::loadGame($name, $arg);
+            if($game === false){
+                return false;
+            }
 
             if ($game !== false && $arg !== false) {
                 $scenarios = $game->scenarios->$arg;
@@ -198,6 +207,11 @@ class Battle
                     $game->scenarios->$theScenario = $thisScenario;
                 }
 
+                if(!isset($game->scenarios->$arg)){
+                    self::$isLoaded = false;
+                    self::$game = false;
+                    return false;
+                }
                 $argTwo = $game->scenarios->$arg;
                 set_include_path(WARGAMES . $path . PATH_SEPARATOR . get_include_path());
                 $className = preg_replace("/.php$/", "", $game->fileName);

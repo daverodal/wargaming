@@ -35,34 +35,34 @@ class ferozesha2VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
         if (!empty($battle->scenario->dayTwo)) {
             list($mapHexName, $forceId) = $args;
 
-            if ($forceId == SIKH_FORCE) {
-                $this->victoryPoints[SIKH_FORCE] += 5;
+            if ($forceId == FerozeshaDayTwo::SIKH_FORCE) {
+                $this->victoryPoints[FerozeshaDayTwo::SIKH_FORCE] += 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='beluchi'>+5 Sikh  vp</span>";
             }
-            if ($forceId == BRITISH_FORCE) {
-                $this->victoryPoints[SIKH_FORCE] -= 5;
+            if ($forceId == FerozeshaDayTwo::BRITISH_FORCE) {
+                $this->victoryPoints[FerozeshaDayTwo::SIKH_FORCE] -= 5;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>-5 Sikh  vp</span>";
             }
         } else {
 
             list($mapHexName, $forceId) = $args;
             if ($mapHexName == $battle->moodkee) {
-                if ($forceId == SIKH_FORCE) {
-                    $this->victoryPoints[SIKH_FORCE] += 20;
+                if ($forceId == FerozeshaDayTwo::SIKH_FORCE) {
+                    $this->victoryPoints[FerozeshaDayTwo::SIKH_FORCE] += 20;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='beluchi'>+5 Sikh  vp</span>";
                 }
-                if ($forceId == BRITISH_FORCE) {
-                    $this->victoryPoints[SIKH_FORCE] -= 20;
+                if ($forceId == FerozeshaDayTwo::BRITISH_FORCE) {
+                    $this->victoryPoints[FerozeshaDayTwo::SIKH_FORCE] -= 20;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>-5 Sikh  vp</span>";
                 }
 
             } else {
-                if ($forceId == BRITISH_FORCE) {
-                    $this->victoryPoints[BRITISH_FORCE] += 5;
+                if ($forceId == FerozeshaDayTwo::BRITISH_FORCE) {
+                    $this->victoryPoints[FerozeshaDayTwo::BRITISH_FORCE] += 5;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='british'>+5 British  vp</span>";
                 }
-                if ($forceId == SIKH_FORCE) {
-                    $this->victoryPoints[BRITISH_FORCE] -= 5;
+                if ($forceId == FerozeshaDayTwo::SIKH_FORCE) {
+                    $this->victoryPoints[FerozeshaDayTwo::BRITISH_FORCE] -= 5;
                     $battle->mapData->specialHexesVictory->$mapHexName = "<span class='beluchi'>-5 British  vp</span>";
                 }
             }
@@ -81,10 +81,10 @@ class ferozesha2VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
             $specialHexes = $battle->mapData->specialHexes;
             $sikhVic = 35;
             $britLead = 10;
-            if ($this->victoryPoints[SIKH_FORCE] >= $sikhVic ) {
+            if ($this->victoryPoints[FerozeshaDayTwo::SIKH_FORCE] >= $sikhVic ) {
                 $sikhWin = true;
             }
-            if (($this->victoryPoints[BRITISH_FORCE] >= 40) && (($this->victoryPoints[BRITISH_FORCE] - $this->victoryPoints[SIKH_FORCE]) >= $britLead)) {
+            if (($this->victoryPoints[FerozeshaDayTwo::BRITISH_FORCE] >= 40) && (($this->victoryPoints[FerozeshaDayTwo::BRITISH_FORCE] - $this->victoryPoints[FerozeshaDayTwo::SIKH_FORCE]) >= $britLead)) {
                 $britishWin = true;
             }
             if ($turn == $gameRules->maxTurn + 1) {
@@ -102,11 +102,11 @@ class ferozesha2VictoryCore extends \Wargame\Mollwitz\IndiaVictoryCore
             }
 
             if ($sikhWin) {
-                $this->winner = SIKH_FORCE;
+                $this->winner = FerozeshaDayTwo::SIKH_FORCE;
                 $gameRules->flashMessages[] = "Sikh Win";
             }
             if ($britishWin) {
-                $this->winner = BRITISH_FORCE;
+                $this->winner = FerozeshaDayTwo::BRITISH_FORCE;
                 $msg = "British Win";
                 $gameRules->flashMessages[] = $msg;
             }
