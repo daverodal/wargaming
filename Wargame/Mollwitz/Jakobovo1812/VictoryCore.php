@@ -96,7 +96,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             }
             if ($AlliedWin && !$frenchWin) {
                 $this->winner = Jakobovo1812::RUSSIAN_FORCE;
-                $gameRules->flashMessages[] = "Allies Win";
+                $gameRules->flashMessages[] = "Russian Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
