@@ -1,4 +1,4 @@
-@extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(KievCorps::GERMAN_FORCE)] )
+@extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\KievCorps\KievCorps::GERMAN_FORCE)] )
 
 @include('wargame::global-header')
 @include('wargame::TMCW.KievCorps.kievHeader')
@@ -129,7 +129,7 @@
 @endsection
 
 @section('inner-crt')
-    @include('wargame::TMCW.KievCorps.kievCorps-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(KievCorps::GERMAN_FORCE)])
+    @include('wargame::TMCW.KievCorps.kievCorps-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\KievCorps\KievCorps::GERMAN_FORCE)])
 @endsection
 @section('unitRules.unitColors')
     @include('wargame::TMCW.KievCorps.unitColors')

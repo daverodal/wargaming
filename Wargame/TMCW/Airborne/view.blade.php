@@ -56,7 +56,7 @@
 @endsection
 
 @section('inner-crt')
-    @include('wargame::TMCW.Airborne.airborne-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(Airborne::REBEL_FORCE)])
+    @include('wargame::TMCW.Airborne.airborne-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\Airborne\Airborne::REBEL_FORCE)])
 @endsection
 
 @section('unitRules')
@@ -154,4 +154,4 @@
     </div>
 @endsection
 
-@extends('wargame::Medieval.angular-view',['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(Airborne::REBEL_FORCE)] )
+@extends('wargame::Medieval.angular-view',['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\Airborne\Airborne::REBEL_FORCE)] )

@@ -24,8 +24,6 @@ use Wargame\SupplyCombatRules;
  */
 
 
-global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
-$force_name = array();
 
 
 class Airborne extends \Wargame\ModernLandBattle

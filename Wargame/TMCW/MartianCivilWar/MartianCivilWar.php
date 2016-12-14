@@ -22,8 +22,7 @@ use Wargame\ModernLandBattle;
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-define("REBEL_FORCE", 1);
-define("LOYALIST_FORCE", 2);
+
 
 global $force_name;
 $force_name = array();
@@ -35,7 +34,9 @@ global $phase_name, $mode_name, $event_name, $status_name, $results_name, $comba
 
 class MartianCivilWar extends ModernLandBattle
 {
-
+    
+    const REBEL_FORCE = 1;
+    const LOYALIST_FORCE = 2;
     static function getPlayerData($scenario){
         $forceName = ["Neutral Observer", "Rebel", "Loyalist"];
         return \Wargame\Battle::register($forceName,
@@ -176,31 +177,31 @@ class MartianCivilWar extends ModernLandBattle
             return;
         }
 
-        UnitFactory::create("xx", LOYALIST_FORCE, 407, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 516, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1515, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1612, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1316, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1805, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1706, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 208, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 608, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 512, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1909, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 914, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1505, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 2411, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1704, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("xx", LOYALIST_FORCE, 1803, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 407, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 516, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1515, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1612, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1316, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1805, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1706, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 208, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 608, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 512, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1909, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 914, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1505, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 2411, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1704, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
+        UnitFactory::create("xx", self::LOYALIST_FORCE, 1803, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("xx", RED_FORCE, 909, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist");
         UnitFactory::create("xx", RED_FORCE, 1007, "multiInf.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist");
 
-        UnitFactory::create("xxx", LOYALIST_FORCE, 2415, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
-        UnitFactory::create("xxx", LOYALIST_FORCE, 2416, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
-        UnitFactory::create("xxx", LOYALIST_FORCE, 2417, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
-        UnitFactory::create("xxx", LOYALIST_FORCE, 2515, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
-        UnitFactory::create("xxx", LOYALIST_FORCE, 2516, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
-        UnitFactory::create("xxx", LOYALIST_FORCE, 2517, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
+        UnitFactory::create("xxx", self::LOYALIST_FORCE, 2415, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
+        UnitFactory::create("xxx", self::LOYALIST_FORCE, 2416, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
+        UnitFactory::create("xxx", self::LOYALIST_FORCE, 2417, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
+        UnitFactory::create("xxx", self::LOYALIST_FORCE, 2515, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
+        UnitFactory::create("xxx", self::LOYALIST_FORCE, 2516, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
+        UnitFactory::create("xxx", self::LOYALIST_FORCE, 2517, "multiHeavy.png", 2, 1, 4, true, STATUS_READY, "B", 1, 1, "loyalist", true, 'heavy');
 
 
         UnitFactory::create("xxx", RED_FORCE, "gameTurn2", "multiHeavy.png", 2, 1, 4, false, STATUS_CAN_REINFORCE, "B", 2, 1, "loyalist", true, 'heavy');
@@ -278,7 +279,7 @@ class MartianCivilWar extends ModernLandBattle
                 $this->moveRules->exitZoc = 0;
                 $this->moveRules->noZocZocOneHex = false;
             }
-            $this->combatRules->crt->aggressorId = REBEL_FORCE;
+            $this->combatRules->crt->aggressorId = self::REBEL_FORCE;
 
             // game data
             $this->gameRules->setMaxTurn(7);
