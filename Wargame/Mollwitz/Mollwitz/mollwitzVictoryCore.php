@@ -31,10 +31,6 @@ use \Wargame\Battle;
 
 class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-    public $victoryPoints;
-    public $movementCache;
-    public $gameOver;
-
     public function save()
     {
         $ret = parent::save();
