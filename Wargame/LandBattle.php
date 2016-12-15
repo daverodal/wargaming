@@ -15,6 +15,30 @@ use \stdClass;
 //
 //You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+class Click {
+    public $event;
+    public $id;
+    public $x;
+    public $y;
+    public $user;
+    public $click;
+
+    public function __construct($data = false,  $event = false, $id = false, $x= false, $y= false, $user= false, $click = false){
+    if($data){
+        foreach($data as $k => $v){
+            $this->$k = $v;
+        }
+    }else{
+        $this->event = $event;
+        $this->id = $id;
+        $this->x = $x;
+        $this->y = $y;
+        $this->user = $user;
+        $this->click = $click;
+    }
+}
+
+}
 
 class LandBattle extends \Wargame\Battle{
 
@@ -31,6 +55,19 @@ class LandBattle extends \Wargame\Battle{
 
     public static function buildUnit($data = false){
         return UnitFactory::build($data);
+    }
+
+    public $clickHistory = [];
+
+    public function __construct($data = false){
+        if($data){
+            if(isset($data->clickHistory)){
+                foreach($data->clickHistory as $click){
+
+                    $this->clickHistory[] = new Click($click);
+                }
+            }
+        }
     }
 
     static function transformChanges($doc, $last_seq, $user){
@@ -337,11 +374,14 @@ class LandBattle extends \Wargame\Battle{
         $data->players = $this->players;
         $data->victory = $this->victory->save();
         $data->terrainName = $this->terrainName;
+        $data->clickHistory = $this->clickHistory;
         return $data;
     }
 
     function poke($event, $id, $x, $y, $user, $click)
     {
+
+        $this->clickHistory[] = new Click(false, $event, $id, $x, $y, $user, $click);
 
         $playerId = $this->gameRules->attackingForceId;
         if ($this->players[$this->gameRules->attackingForceId] != $user) {

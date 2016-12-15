@@ -124,6 +124,11 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/Mollwitz/Gemauerthof1705/all.css' => public_path('vendor/wargame/mollwitz/css/Gemauerthof1705.css'),
             __DIR__.'/Mollwitz/LaRothiere1814/all.css' => public_path('vendor/wargame/mollwitz/css/LaRothiere1814.css'),
             __DIR__.'/Mollwitz/Jakobovo1812/all.css' => public_path('vendor/wargame/mollwitz/css/Jakobovo1812.css'),
+            __DIR__.'/Mollwitz/Vimeiro1808/all.css' => public_path('vendor/wargame/mollwitz/css/Vimeiro1808.css'),
+            __DIR__.'/Mollwitz/Maloyaroslavets1812/all.css' => public_path('vendor/wargame/mollwitz/css/Maloyaroslavets1812.css'),
+            __DIR__.'/Mollwitz/Heilsberg1807/all.css' => public_path('vendor/wargame/mollwitz/css/Heilsberg1807.css'),
+            __DIR__.'/Mollwitz/BarSurAube1814/all.css' => public_path('vendor/wargame/mollwitz/css/BarSurAube1814.css'),
+
 
         ], 'mollwitz-css');
 
