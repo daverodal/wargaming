@@ -21,13 +21,13 @@ You should have received a copy of the GNU General Public License
 class BarSurAube1814 extends \Wargame\Mollwitz\JagCore
 {
 
-    const RUSSIAN_FORCE = 1;
+    const ALLIED_FORCE = 1;
     const FRENCH_FORCE = 2;
 
-    public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
+    public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>2];
 
     static function getPlayerData($scenario){
-        $forceName = ['Observer', "Russian", "French"];
+        $forceName = ['Observer', "Allied", "French"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
@@ -66,11 +66,10 @@ class BarSurAube1814 extends \Wargame\Mollwitz\JagCore
         parent::__construct($data, $arg, $scenario, $game);
 
         if ($data) {
-            $this->specialHexA = $data->specialHexA;
-            $this->specialHexB = $data->specialHexB;
+
         } else {
             $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\BarSurAube1814\VictoryCore');
-            $this->gameRules->setMaxTurn(9);
+            $this->gameRules->setMaxTurn(8);
             $this->deployFirstMoveSecond();
         }
     }

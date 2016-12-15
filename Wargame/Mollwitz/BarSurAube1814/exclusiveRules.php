@@ -31,10 +31,17 @@ You should have received a copy of the GNU General Public License
     </li>
     <li><span class="lessBig">French: </span>
 
-        French deploy first on any hexes marked Blue F. The two French 6-5 Cavalry units must deploy on the two hexes marked Blue FC. French move second.
-     </li><li><span class="lessBig">Russians: </span>
+        Set up first on and within Hexes marked with Blue F’s. Move second.
 
-        Russians deploy second on or within hexes marked Red R. Russians move first.
+    </li><li><span class="lessBig">Allies: </span>
+
+        Set up second on hexes marked with Red A’s. Move First.
+
 
     </li>
+    <li>
+        <span class="lessBig">Terrain:</span>
+        Orchards Don not effect movement or combat only line of sight.
+    </li>
+
 </ol>

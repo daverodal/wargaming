@@ -25,7 +25,7 @@ $frenchColor: #0003b4;
 
 @include unitColor(Guard, $frenchColor, FrenchNap);
 @include unitColor(French, $frenchColor, FrenchNap);
-@include unitColor(Russian, $russianWrapperColor, Rus);
+@include unitColor(Saxon, white, Sax);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
 @include unitColor(German, $prussianNapColor, PruNap);
 @include unitColor(Austrian, $austrianWrapperColor, Aus);

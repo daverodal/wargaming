@@ -21,14 +21,10 @@ $bavarianColor: #FD0013;
 $frenchColor: #0003b4;
 
 @include headerColor(French,$frenchNapoleonColor, $frenchNapoleonColor );
-@include headerColor(Russian,$russianColor, $angloAlliedWrapperColor );
+@include headerColor(Allied,$russianColor, $russianColor );
 
-@include unitColor(Guard, $frenchColor, FrenchNap);
 @include unitColor(French, $frenchColor, FrenchNap);
-@include unitColor(Russian, $russianWrapperColor, Rus);
-@include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
-@include unitColor(German, $prussianNapColor, PruNap);
-@include unitColor(Austrian, $austrianWrapperColor, Aus);
+@include unitColor(Allied, $russianWrapperColor, Rus);
 
 .french.specialHexes, .allied.specialHexes{
   color:white;
@@ -39,7 +35,7 @@ $frenchColor: #0003b4;
   }
 }
 
-.French.unit .unit-numbers, .Guard.unit .unit-numbers{
+.French.unit .unit-numbers{
   color:red;
 }
 

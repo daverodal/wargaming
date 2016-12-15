@@ -27,19 +27,16 @@ You should have received a copy of the GNU General Public License
 
 class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-    public $deadGuardInf;
     function __construct($data)
     {
         parent::__construct($data);
         if ($data) {
-            $this->deadGuardInf = $data->victory->deadGuardInf;
         }
     }
 
     public function save()
     {
         $ret = parent::save();
-        $ret->deadGuardInf = $this->deadGuardInf;
         return $ret;
     }
 
@@ -49,14 +46,7 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == LaRothiere1814::ALLIED_FORCE) {
-                $this->victoryPoints[LaRothiere1814::ALLIED_FORCE]  += 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='allied'>+5 Allied vp</span>";
-            }
-            if ($forceId == LaRothiere1814::FRENCH_FORCE) {
-                $this->victoryPoints[LaRothiere1814::ALLIED_FORCE]  -= 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='french'>-5 Allied vp</span>";
-            }
+            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, 5);
         }
 
     }

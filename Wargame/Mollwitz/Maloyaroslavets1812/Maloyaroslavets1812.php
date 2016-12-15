@@ -21,10 +21,10 @@ You should have received a copy of the GNU General Public License
 class Maloyaroslavets1812 extends \Wargame\Mollwitz\JagCore
 {
 
-    const RUSSIAN_FORCE = 1;
-    const FRENCH_FORCE = 2;
+    const FRENCH_FORCE = 1;
+    const RUSSIAN_FORCE = 2;
 
-    public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
+    public $specialHexesMap = ['SpecialHexA'=>0, 'SpecialHexB'=>0, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){
         $forceName = ['Observer', "Russian", "French"];
@@ -70,7 +70,7 @@ class Maloyaroslavets1812 extends \Wargame\Mollwitz\JagCore
             $this->specialHexB = $data->specialHexB;
         } else {
             $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\Maloyaroslavets1812\VictoryCore');
-            $this->gameRules->setMaxTurn(9);
+            $this->gameRules->setMaxTurn(12);
             $this->deployFirstMoveSecond();
         }
     }

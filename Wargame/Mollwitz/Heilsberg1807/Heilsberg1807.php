@@ -21,13 +21,13 @@ You should have received a copy of the GNU General Public License
 class Heilsberg1807 extends \Wargame\Mollwitz\JagCore
 {
 
-    const RUSSIAN_FORCE = 1;
-    const FRENCH_FORCE = 2;
+    const FRENCH_FORCE = 1;
+    const RUSSIAN_FORCE = 2;
 
-    public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
+    public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>2];
 
     static function getPlayerData($scenario){
-        $forceName = ['Observer', "Russian", "French"];
+        $forceName = ['Observer', "French", "Russian"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
@@ -55,7 +55,16 @@ class Heilsberg1807 extends \Wargame\Mollwitz\JagCore
 
         foreach($unitSets as $unitSet) {
             for ($i = 0; $i < $unitSet->num; $i++) {
-                UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                $rTurn = 1;
+                $status = STATUS_CAN_DEPLOY;
+                $deploy = "deployBox";
+                if(isset($unitSet->reinforceTurn)){
+                    $rTurn = $unitSet->reinforceTurn;
+                    $status = STATUS_CAN_REINFORCE;
+                    $deploy = "gameTurn$rTurn";
+
+                }
+                UnitFactory::create("infantry-1", $unitSet->forceId, $deploy, "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, $status, $unitSet->reinforce, $rTurn, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
             }
         }
     }

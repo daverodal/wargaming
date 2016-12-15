@@ -27,22 +27,21 @@ You should have received a copy of the GNU General Public License
 
 class VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-    public $deadGuardInf;
     function __construct($data)
     {
 
         parent::__construct($data);
         if ($data) {
-            $this->deadGuardInf = $data->victory->deadGuardInf;
         }
     }
 
     public function save()
     {
         $ret = parent::save();
-        $ret->deadGuardInf = $this->deadGuardInf;
         return $ret;
     }
+
+
 
     public function specialHexChange($args)
     {
@@ -50,25 +49,10 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
 
-        $pData = $battle::getPlayerData($battle->scenario)['forceName'];
-
         if (in_array($mapHexName, $battle->specialHexA)) {
-            if ($forceId == $battle::FRENCH_FORCE) {
-                $this->victoryPoints[$battle::FRENCH_FORCE] += 5;
-                $taker = $pData[$battle::FRENCH_FORCE];
-                $lTaker = strtolower($taker);
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='$lTaker'>+5 $taker vp</span>";
-            }
-            if ($forceId == $battle::BRITISH_FORCE) {
-                $this->victoryPoints[$battle::FRENCH_FORCE] -= 5;
-                $taker = $pData[$battle::BRITISH_FORCE];
-                $lTaker = strtolower($taker);
-                $loser = $pData[$battle::FRENCH_FORCE];
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='$lTaker'>-5 $loser vp</span>";
-            }
+            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, 5);
         }
     }
-
 
     protected function checkVictory( $battle)
     {
@@ -140,15 +124,8 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->gameOver = true;
                 return true;
             }
-
-
         }
         return false;
-    }
-
-    public function postRecoverUnits($args)
-    {
-
     }
 
     public function postRecoverUnit($args)

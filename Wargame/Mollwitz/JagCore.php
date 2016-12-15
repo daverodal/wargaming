@@ -40,7 +40,7 @@ class JagCore extends \Wargame\LandBattle{
     public $specialHexB;
     public $specialHexC;
 
-
+    const NEUTRAL_FORCE = 0;
 
     public static function buildUnit($data = false){
         return UnitFactory::build($data);
@@ -82,6 +82,16 @@ class JagCore extends \Wargame\LandBattle{
             $this->victory = new Victory($data);
 
             $this->players = $data->players;
+            if(isset($data->specialHexA)){
+                $this->specialHexA = $data->specialHexA;
+            }
+            if(isset($data->specialHexB)) {
+                $this->specialHexB = $data->specialHexB;
+            }
+            if(isset($data->specialHexC)) {
+                $this->specialHexC = $data->specialHexC;
+            }
+
         } else {
             $this->arg = $arg;
             $this->scenario = $scenario;
@@ -307,6 +317,7 @@ class JagCore extends \Wargame\LandBattle{
         $data->game = $this->game;
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
+        $data->specialHexC = $this->specialHexC;
 
         return $data;
     }

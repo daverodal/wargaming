@@ -27,28 +27,62 @@ You should have received a copy of the GNU General Public License
 
 class VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-    public $deadGuardInf;
     function __construct($data)
     {
-
         parent::__construct($data);
         if ($data) {
-            $this->deadGuardInf = $data->victory->deadGuardInf;
         }
     }
 
     public function save()
     {
         $ret = parent::save();
-        $ret->deadGuardInf = $this->deadGuardInf;
         return $ret;
     }
 
     public function specialHexChange($args)
     {
         $battle = Battle::getBattle();
+        list($mapHexName, $forceId) = $args;
+
+        if (in_array($mapHexName, $battle->specialHexA)) {
+            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, 10);
+        }
+        if (in_array($mapHexName, $battle->specialHexB)) {
+            $this->takeHex($battle->specialHexesMap['SpecialHexB'], $forceId, $mapHexName, 20);
+        }
+        if (in_array($mapHexName, $battle->specialHexC)) {
+            $this->takeHex($battle->specialHexesMap['SpecialHexC'], $forceId, $mapHexName, 20);
+        }
+
+    }
+
+    public function phaseChange()
+    {
+        /* @var $battle JagCore */
+        $battle = Battle::getBattle();
+        /* @var $gameRules GameRules */
+        $gameRules = $battle->gameRules;
+        $turn = $gameRules->turn;
+        $forceId = $gameRules->attackingForceId;
+        $theUnits = $battle->force->units;
 
 
+        if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
+            $gameRules->flashMessages[] = "@hide deadpile";
+            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
+                $gameRules->flashMessages[] = "@show deployWrapper";
+                $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
+            }
+
+            foreach ($theUnits as $id => $unit) {
+
+                if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
+//                $theUnits[$id]->status = STATUS_ELIMINATED;
+                    $theUnits[$id]->hexagon->parent = "deployBox";
+                }
+            }
+        }
     }
 
     protected function checkVictory( $battle)
@@ -56,81 +90,57 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         $battle = Battle::getBattle();
 
         $gameRules = $battle->gameRules;
-        $scenario = $battle->scenario;
         $turn = $gameRules->turn;
-        $frenchWin = $AlliedWin = $draw = false;
+        $frenchWin = $russianWin = $draw = false;
 
         $victoryReason = "";
 
         if (!$this->gameOver) {
-            $mapData = $battle->mapData;
-            if ($turn > $gameRules->maxTurn) {
-                list($hexB) = $battle->specialHexB;
-                if ($mapData->getSpecialHex($hexB) == Heilsberg1807::RUSSIAN_FORCE) {
-                    $this->winner = Heilsberg1807::RUSSIAN_FORCE;
-                    $gameRules->flashMessages[] = "Russians Control Bridge and WIN";
-                    $this->gameOver = true;
-                    return true;
-                }
-            }
-            $AlliedWinScore = 35;
-            $frenchWinScore = 35;
+
+            $russianWinScore = 90;
+            $frenchWinScore = 90;
+
+            $pData = $battle::getPlayerData($battle->scenario)['forceName'];
 
             if($this->victoryPoints[Heilsberg1807::FRENCH_FORCE] >= $frenchWinScore){
                 $frenchWin = true;
                 $victoryReason .= "Over $frenchWinScore ";
             }
-            if ($this->victoryPoints[Heilsberg1807::RUSSIAN_FORCE] >= $AlliedWinScore) {
-                $AlliedWin = true;
-                $victoryReason .= "Over $AlliedWinScore ";
+            if ($this->victoryPoints[Heilsberg1807::RUSSIAN_FORCE] >= $russianWinScore) {
+                $russianWin = true;
+                $victoryReason .= "Over $russianWinScore ";
             }
 
-
-            if ($frenchWin && !$AlliedWin) {
+            if ($frenchWin && !$russianWin) {
                 $this->winner = Heilsberg1807::FRENCH_FORCE;
-                $gameRules->flashMessages[] = "French Win";
+                $winner = $pData[$this->winner];
+                $gameRules->flashMessages[] = "$winner Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
                 return true;
             }
-            if ($AlliedWin && !$frenchWin) {
+
+            if ($russianWin && !$frenchWin) {
                 $this->winner = Heilsberg1807::RUSSIAN_FORCE;
-                $gameRules->flashMessages[] = "Russian Win";
+                $winner = $pData[$this->winner];
+                $gameRules->flashMessages[] = "$winner Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
                 return true;
             }
-            if($frenchWin && $AlliedWin){
+
+            if($frenchWin && $russianWin){
                 $gameRules->flashMessages[] = "Tie Game";
-                $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
                 return true;
             }
+
             if ($turn > $gameRules->maxTurn) {
-
-                $vHexes = [0,0,0];
-
-                /* French control bridge hex */
-                foreach($battle->specialHexA as $hexA){
-                    $vHexes[$mapData->getSpecialHex($hexA)]++;
-                }
-                if($vHexes[Heilsberg1807::FRENCH_FORCE] < $vHexes[Heilsberg1807::RUSSIAN_FORCE]){
-                    $gameRules->flashMessages[] = "Russians Control More Hexes and WIN";
-                    $gameRules->flashMessages[] = $vHexes[Heilsberg1807::RUSSIAN_FORCE]." vs ".$vHexes[Heilsberg1807::FRENCH_FORCE];
-                    $this->winner = Heilsberg1807::RUSSIAN_FORCE;
-                }elseif($vHexes[Heilsberg1807::FRENCH_FORCE] > $vHexes[Heilsberg1807::RUSSIAN_FORCE]){
-                    $gameRules->flashMessages[] = "French Control More Hexes and WIN";
-                    $gameRules->flashMessages[] = $vHexes[Heilsberg1807::FRENCH_FORCE]." vs ".$vHexes[Heilsberg1807::RUSSIAN_FORCE];
-
-                    $this->winner = Heilsberg1807::FRENCH_FORCE;
-                }else{
-                    $gameRules->flashMessages[] = "TIE GAME";
-                    $this->winner = 0;
-                }
-
+                $gameRules->flashMessages[] = "Tie Game";
+                $this->winner = 0;
                 $this->gameOver = true;
                 return true;
             }
@@ -147,13 +157,6 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     public function postRecoverUnit($args)
     {
-        $unit = $args[0];
-        $b = Battle::getBattle();
-        $scenario = $b->scenario;
-        $id = $unit->id;
-
-
         parent::postRecoverUnit($args);
-
     }
 }

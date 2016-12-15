@@ -27,29 +27,20 @@ You should have received a copy of the GNU General Public License
 
 class VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
-    public $deadGuardInf;
     function __construct($data)
     {
 
         parent::__construct($data);
         if ($data) {
-            $this->deadGuardInf = $data->victory->deadGuardInf;
         }
     }
 
     public function save()
     {
         $ret = parent::save();
-        $ret->deadGuardInf = $this->deadGuardInf;
         return $ret;
     }
 
-    public function specialHexChange($args)
-    {
-        $battle = Battle::getBattle();
-
-
-    }
 
     protected function checkVictory( $battle)
     {
@@ -138,11 +129,6 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         }
         return false;
-    }
-
-    public function postRecoverUnits($args)
-    {
-
     }
 
     public function postRecoverUnit($args)

@@ -79,6 +79,47 @@ class victoryCore extends \Wargame\VictoryCore
         $this->scoreKills($unit, 1);
     }
 
+    /*
+     * Does not work for neutral hexes.
+     * if orig owner take it -prize to opponent
+     * otherwise newowner get +prize
+     */
+    public function takeHex($orig, $newOwner, $hex, $prize){
+        /* @var $battle JagCore */
+        $battle = Battle::getBattle();
+        $pData = $battle::getPlayerData($battle->scenario)['forceName'];
+        $oldOwner = $battle->mapData->getSpecialHex($hex);
+        if($orig === $battle::NEUTRAL_FORCE){
+            $this->victoryPoints[$newOwner] += $prize;
+            $taker = $pData[$newOwner];
+            $lTaker = strtolower($taker);
+            $battle->mapData->specialHexesVictory->$hex = "<span class='$lTaker'>+$prize $taker vp</span>";
+
+            if($oldOwner !== $battle::NEUTRAL_FORCE){
+                $this->victoryPoints[$oldOwner] -= $prize;
+                $taker = $pData[$newOwner];
+                $lTaker = strtolower($taker);
+                $loser = $pData[$oldOwner];
+                $battle->mapData->specialHexesVictory->$hex = "<span class='$lTaker'>-$prize $loser vp</span>";
+            }
+            return;
+        }
+
+        if ($newOwner != $orig) {
+            $this->victoryPoints[$newOwner] += $prize;
+            $taker = $pData[$newOwner];
+            $lTaker = strtolower($taker);
+            $battle->mapData->specialHexesVictory->$hex = "<span class='$lTaker'>+$prize $taker vp</span>";
+        }
+        if ($newOwner == $orig) {
+            $this->victoryPoints[$oldOwner] -= $prize;
+            $taker = $pData[$newOwner];
+            $lTaker = strtolower($taker);
+            $loser = $pData[$oldOwner];
+            $battle->mapData->specialHexesVictory->$hex = "<span class='$lTaker'>-$prize $loser vp</span>";
+        }
+    }
+
     public function scoreKills($unit, $mult = 1){
 
         $force_name = \Wargame\Battle::$forceName;
@@ -393,8 +434,10 @@ class victoryCore extends \Wargame\VictoryCore
         if(!empty($b->scenario->commandControl)){
             $this->checkCommand($unit);
         }
-        if($unit->hexagon->parent === 'deployBox' && $b->gameRules->mode !== DEPLOY_MODE){
-            $unit->hexagon->parent = "not-used";
+        if($b->gameRules->turn === 1) {
+            if ($unit->hexagon->parent === 'deployBox' && $b->gameRules->mode !== DEPLOY_MODE) {
+                $unit->hexagon->parent = "not-used";
+            }
         }
     }
 }

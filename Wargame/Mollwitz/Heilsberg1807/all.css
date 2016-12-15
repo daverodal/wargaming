@@ -4687,75 +4687,75 @@ You should have received a copy of the GNU General Public License
 .French.pontoon .unit-numbers {
   display: none; }
 
-.Russian .counterWrapper {
-  background-color: #006114; }
+.Saxon .counterWrapper {
+  background-color: white; }
 
 .fa-flag {
   display: none; }
 
-.Russian.hq .counterWrapper .counter {
+.Saxon.hq .counterWrapper .counter {
   display: none; }
 
-.vintage.Russian.hq .counterWrapper .fa-flag {
+.vintage.Saxon.hq .counterWrapper .fa-flag {
   font-size: 19px; }
-.vintage.Russian.infantry .counterWrapper .counter {
-  background-image: url("/js/RusInfBadge.png");
+.vintage.Saxon.infantry .counterWrapper .counter {
+  background-image: url("/js/SaxInfBadge.png");
   background-size: 19px; }
-.vintage.Russian.cavalry .counterWrapper .counter {
-  background-image: url("/js/RusCavBadge.png");
+.vintage.Saxon.cavalry .counterWrapper .counter {
+  background-image: url("/js/SaxCavBadge.png");
   background-size: 19px; }
-.vintage.Russian.artillery .counterWrapper .counter {
-  background-image: url("/js/RusArtBadge.png");
+.vintage.Saxon.artillery .counterWrapper .counter {
+  background-image: url("/js/SaxArtBadge.png");
   background-size: 19px; }
-.vintage.Russian.horseartillery .counterWrapper .counter {
-  background-image: url("/js/RusHorArtBadge.png");
+.vintage.Saxon.horseartillery .counterWrapper .counter {
+  background-image: url("/js/SaxHorArtBadge.png");
   background-size: 19px; }
-.vintage.Russian.pontoon .counterWrapper {
+.vintage.Saxon.pontoon .counterWrapper {
   border: none; }
-  .vintage.Russian.pontoon .counterWrapper .counter {
+  .vintage.Saxon.pontoon .counterWrapper .counter {
     background-color: lightgreen;
-    background-image: url("/js/RusPontoon.png");
+    background-image: url("/js/SaxPontoon.png");
     background-size: 32px;
     width: 32px;
     height: 32px;
     border: none; }
-.vintage.Russian.pontoon .unit-numbers {
+.vintage.Saxon.pontoon .unit-numbers {
   display: none; }
 
-.Russian.infantry .counterWrapper .counter {
-  background-image: url("/js/RusInfBadge.png");
+.Saxon.infantry .counterWrapper .counter {
+  background-image: url("/js/SaxInfBadge.png");
   background-size: 14px; }
 
-.Russian.cavalry .counterWrapper .counter {
-  background-image: url("/js/RusCavBadge.png");
+.Saxon.cavalry .counterWrapper .counter {
+  background-image: url("/js/SaxCavBadge.png");
   background-size: 14px; }
 
-.Russian.artillery .counterWrapper .counter {
-  background-image: url("/js/RusArtBadge.png");
+.Saxon.artillery .counterWrapper .counter {
+  background-image: url("/js/SaxArtBadge.png");
   background-size: 14px; }
 
-.Russian.horseartillery .counterWrapper .counter {
-  background-image: url("/js/RusHorArtBadge.png");
+.Saxon.horseartillery .counterWrapper .counter {
+  background-image: url("/js/SaxHorArtBadge.png");
   background-size: 14px; }
 
-.Russian.hq .counterWrapper .fa-flag {
+.Saxon.hq .counterWrapper .fa-flag {
   display: block;
   font-size: 14px; }
 
-.Russian.wagon .counterWrapper .counter {
+.Saxon.wagon .counterWrapper .counter {
   background-image: url("/js/Wagon.png");
   background-size: 14px; }
 
-.Russian.pontoon .counterWrapper {
+.Saxon.pontoon .counterWrapper {
   border: none; }
-  .Russian.pontoon .counterWrapper .counter {
+  .Saxon.pontoon .counterWrapper .counter {
     background-color: lightgreen;
-    background-image: url("/js/RusPontoon.png");
+    background-image: url("/js/SaxPontoon.png");
     background-size: 32px;
     width: 32px;
     height: 32px;
     border: none; }
-.Russian.pontoon .unit-numbers {
+.Saxon.pontoon .unit-numbers {
   display: none; }
 
 .Bavarian .counterWrapper {
