@@ -3216,8 +3216,7 @@
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
-        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's.",
-        "mudMovement": true
+        "longDescription": ""
       }
     }
   },
@@ -3625,8 +3624,7 @@
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
-        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's.",
-        "mudMovement": true
+        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's."
       }
     }
   },
@@ -5166,8 +5164,7 @@
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
-        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's.",
-        "mudMovement": true
+        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's."
       }
     }
   },
@@ -5345,8 +5342,7 @@
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
-        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's.",
-        "mudMovement": true
+        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's."
       }
     }
   }
@@ -5524,8 +5520,7 @@
   "scenarios": {
     "main": {
       "description": "Historical Scenario.",
-      "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's.",
-      "mudMovement": true
+      "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's."
     }
   }
 },
@@ -5540,172 +5535,101 @@
     "params": {
       "units": [
         {
-          "num": 2,
+          "num": 10,
           "forceId": 2,
-          "combat": 5,
-          "movement": 4,
-          "reinforce": "A",
-          "range": 1,
-          "nationality": "French",
-          "class": "infantry"
-        },
-        {
-          "num": 12,
-          "forceId": 2,
-          "combat": 4,
-          "movement": 4,
-          "reinforce": "A",
-          "range": 1,
-          "nationality": "French",
-          "class": "infantry"
-        },
-        {
-          "num": 2,
-          "forceId": 2,
-          "combat": 6,
-          "movement": 5,
-          "reinforce": "B",
-          "range": 1,
-          "nationality": "French",
-          "class": "cavalry"
-        },
-        {
-          "num": 2,
-          "forceId": 2,
-          "combat": 3,
-          "movement": 7,
-          "reinforce": "A",
-          "range": 1,
-          "nationality": "French",
-          "class": "cavalry"
-        },
-        {
-          "num": 2,
-          "forceId": 2,
-          "combat": 3,
-          "movement": 4,
-          "reinforce": "A",
-          "range": 3,
-          "nationality": "French",
-          "class": "artillery"
-        },
-        {
-          "num": 2,
-          "forceId": 2,
-          "combat": 4,
-          "movement": 5,
-          "reinforce": "A",
-          "range": 3,
-          "nationality": "French",
-          "class": "horseartillery"
-        },
-        {
-          "num": 2,
-          "forceId": 1,
           "combat": 5,
           "movement": 3,
-          "reinforce": "C",
+          "reinforce": "B",
           "range": 1,
-          "nationality": "Russian",
+          "nationality": "British",
           "class": "infantry"
         },
         {
           "num": 3,
-          "forceId": 1,
+          "forceId": 2,
           "combat": 4,
           "movement": 3,
-          "reinforce": "C",
+          "reinforce": "B",
           "range": 1,
-          "nationality": "Russian",
+          "nationality": "British",
+          "class": "infantry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 2,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Portuguese",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "British",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "British",
+          "class": "artillery"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "French",
           "class": "infantry"
         },
         {
           "num": 6,
           "forceId": 1,
-          "combat": 3,
-          "movement": 3,
-          "reinforce": "C",
+          "combat": 4,
+          "movement": 4,
+          "reinforce": "A",
           "range": 1,
-          "nationality": "Russian",
+          "nationality": "French",
           "class": "infantry"
         },
         {
-          "num": 1,
-          "forceId": 1,
-          "combat": 5,
-          "movement": 5,
-          "reinforce": "C",
-          "range": 1,
-          "nationality": "Russian",
-          "class": "cavalry"
-        },
-        {
-          "num": 1,
-          "forceId": 1,
-          "combat": 4,
-          "movement": 6,
-          "reinforce": "C",
-          "range": 1,
-          "nationality": "Russian",
-          "class": "cavalry"
-        },
-        {
-          "num": 1,
+          "num": 3,
           "forceId": 1,
           "combat": 3,
-          "movement": 7,
-          "reinforce": "C",
+          "movement": 6,
+          "reinforce": "A",
           "range": 1,
-          "nationality": "Russian",
+          "nationality": "French",
           "class": "cavalry"
-        },
-        {
-          "num": 1,
-          "forceId": 1,
-          "combat": 1,
-          "movement": 7,
-          "reinforce": "C",
-          "range": 1,
-          "nationality": "Russian",
-          "class": "cavalry"
-        },
-        {
-          "num": 4,
-          "forceId": 1,
-          "combat": 5,
-          "movement": 2,
-          "reinforce": "C",
-          "range": 5,
-          "nationality": "Russian",
-          "class": "artillery"
         },
         {
           "num": 3,
           "forceId": 1,
           "combat": 4,
-          "movement": 3,
-          "reinforce": "C",
+          "movement": 4,
+          "reinforce": "A",
           "range": 3,
-          "nationality": "Russian",
+          "nationality": "French",
           "class": "artillery"
-        },
-        {
-          "num": 1,
-          "forceId": 1,
-          "combat": 4,
-          "movement": 5,
-          "reinforce": "C",
-          "range": 3,
-          "nationality": "Russian",
-          "class": "horseartillery"
         }
       ]
     },
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
-        "longDescription": "Mud Rule in effect. Clear/Trail 2 mp's.",
-        "mudMovement": true
+        "longDescription": "Historical Scenario."
       }
     }
   }

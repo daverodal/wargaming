@@ -21,13 +21,13 @@ You should have received a copy of the GNU General Public License
 class Vimeiro1808 extends \Wargame\Mollwitz\JagCore
 {
 
-    const RUSSIAN_FORCE = 1;
-    const FRENCH_FORCE = 2;
+    const BRITISH_FORCE = 2;
+    const FRENCH_FORCE = 1;
 
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){
-        $forceName = ['Observer', "Russian", "French"];
+        $forceName = ['Observer', "French", "British"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }

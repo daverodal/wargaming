@@ -48,8 +48,27 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
     {
         $battle = Battle::getBattle();
 
+        list($mapHexName, $forceId) = $args;
 
+        $pData = $battle::getPlayerData($battle->scenario)['forceName'];
+
+        if (in_array($mapHexName, $battle->specialHexA)) {
+            if ($forceId == $battle::FRENCH_FORCE) {
+                $this->victoryPoints[$battle::FRENCH_FORCE] += 5;
+                $taker = $pData[$battle::FRENCH_FORCE];
+                $lTaker = strtolower($taker);
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='$lTaker'>+5 $taker vp</span>";
+            }
+            if ($forceId == $battle::BRITISH_FORCE) {
+                $this->victoryPoints[$battle::FRENCH_FORCE] -= 5;
+                $taker = $pData[$battle::BRITISH_FORCE];
+                $lTaker = strtolower($taker);
+                $loser = $pData[$battle::FRENCH_FORCE];
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='$lTaker'>-5 $loser vp</span>";
+            }
+        }
     }
+
 
     protected function checkVictory( $battle)
     {
@@ -58,51 +77,47 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         $gameRules = $battle->gameRules;
         $scenario = $battle->scenario;
         $turn = $gameRules->turn;
-        $frenchWin = $AlliedWin = $draw = false;
+        $frenchWin = $BritishWin = $draw = false;
 
         $victoryReason = "";
 
         if (!$this->gameOver) {
+            $pData = $battle::getPlayerData($battle->scenario)['forceName'];
             $mapData = $battle->mapData;
-            if ($turn > $gameRules->maxTurn) {
-                list($hexB) = $battle->specialHexB;
-                if ($mapData->getSpecialHex($hexB) == Vimeiro1808::RUSSIAN_FORCE) {
-                    $this->winner = Vimeiro1808::RUSSIAN_FORCE;
-                    $gameRules->flashMessages[] = "Russians Control Bridge and WIN";
-                    $this->gameOver = true;
-                    return true;
-                }
-            }
-            $AlliedWinScore = 35;
-            $frenchWinScore = 35;
+
+            $BritishWinScore = 25;
+            $frenchWinScore = 25;
 
             if($this->victoryPoints[Vimeiro1808::FRENCH_FORCE] >= $frenchWinScore){
                 $frenchWin = true;
                 $victoryReason .= "Over $frenchWinScore ";
             }
-            if ($this->victoryPoints[Vimeiro1808::RUSSIAN_FORCE] >= $AlliedWinScore) {
-                $AlliedWin = true;
-                $victoryReason .= "Over $AlliedWinScore ";
+            if ($this->victoryPoints[Vimeiro1808::BRITISH_FORCE] >= $BritishWinScore) {
+                $BritishWin = true;
+                $victoryReason .= "Over $BritishWinScore ";
             }
 
 
-            if ($frenchWin && !$AlliedWin) {
+            if ($frenchWin && !$BritishWin) {
                 $this->winner = Vimeiro1808::FRENCH_FORCE;
-                $gameRules->flashMessages[] = "French Win";
+                $winner = $pData[$this->winner];
+                $gameRules->flashMessages[] = "$winner Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
                 return true;
             }
-            if ($AlliedWin && !$frenchWin) {
-                $this->winner = Vimeiro1808::RUSSIAN_FORCE;
-                $gameRules->flashMessages[] = "Russian Win";
+            if ($BritishWin && !$frenchWin) {
+                $this->winner = Vimeiro1808::BRITISH_FORCE;
+                $winner = $pData[$this->winner];
+                $gameRules->flashMessages[] = "$winner Win";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
                 return true;
             }
-            if($frenchWin && $AlliedWin){
+            if($frenchWin && $BritishWin){
+                $this->winner = 0;
                 $gameRules->flashMessages[] = "Tie Game";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
@@ -110,27 +125,18 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-
-                $vHexes = [0,0,0];
-
-                /* French control bridge hex */
-                foreach($battle->specialHexA as $hexA){
-                    $vHexes[$mapData->getSpecialHex($hexA)]++;
-                }
-                if($vHexes[Vimeiro1808::FRENCH_FORCE] < $vHexes[Vimeiro1808::RUSSIAN_FORCE]){
-                    $gameRules->flashMessages[] = "Russians Control More Hexes and WIN";
-                    $gameRules->flashMessages[] = $vHexes[Vimeiro1808::RUSSIAN_FORCE]." vs ".$vHexes[Vimeiro1808::FRENCH_FORCE];
-                    $this->winner = Vimeiro1808::RUSSIAN_FORCE;
-                }elseif($vHexes[Vimeiro1808::FRENCH_FORCE] > $vHexes[Vimeiro1808::RUSSIAN_FORCE]){
-                    $gameRules->flashMessages[] = "French Control More Hexes and WIN";
-                    $gameRules->flashMessages[] = $vHexes[Vimeiro1808::FRENCH_FORCE]." vs ".$vHexes[Vimeiro1808::RUSSIAN_FORCE];
-
-                    $this->winner = Vimeiro1808::FRENCH_FORCE;
+                if($this->victoryPoints[Vimeiro1808::BRITISH_FORCE] > $this->victoryPoints[Vimeiro1808::FRENCH_FORCE]){
+                    $this->winner = Vimeiro1808::BRITISH_FORCE;
+                    $winner = $pData[$this->winner];
+                    $gameRules->flashMessages[] = "$winner Win";
+                    $gameRules->flashMessages[] = $victoryReason;
+                    $gameRules->flashMessages[] = "Game Over";
                 }else{
-                    $gameRules->flashMessages[] = "TIE GAME";
                     $this->winner = 0;
+                    $gameRules->flashMessages[] = "Tie Game";
+                    $gameRules->flashMessages[] = $victoryReason;
+                    $gameRules->flashMessages[] = "Game Over";
                 }
-
                 $this->gameOver = true;
                 return true;
             }
