@@ -5006,7 +5006,7 @@
           "movement": 4,
           "reinforce": "A",
           "range": 1,
-          "nationality": "French",
+          "nationality": "Guard",
           "class": "infantry"
         },
         {
@@ -5016,7 +5016,7 @@
           "movement": 4,
           "reinforce": "A",
           "range": 1,
-          "nationality": "French",
+          "nationality": "RoyalGuard",
           "class": "infantry"
         },
         {

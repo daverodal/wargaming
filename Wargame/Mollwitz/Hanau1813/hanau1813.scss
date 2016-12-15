@@ -24,8 +24,8 @@ $alliedColor: #df5842;
 @include headerColor(French, $frenchColor,$frenchColor);
 
 @include unitColor(Austrian,$austrianWrapperColor, Aus );
-@include unitColor(French, #0003b4, FrenchNap);
-@include unitColor(Guard, #0003b4, FrenchNap);
+@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
+@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap);
 @include unitColor(Russian, $russianWrapperColor, Rus);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
 

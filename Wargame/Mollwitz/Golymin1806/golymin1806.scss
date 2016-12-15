@@ -20,7 +20,7 @@ $bavarianWrapperColor: #4287FA;
 $bavarianColor: #FD0013;
 
 @include player(Russian ,Two , $russianColor, $russianWrapperColor);
-@include player(French, One, $frenchColor, #0003b4, $frenchColor);
+@include player(French, One, $frenchColor, $frenchNapoleonWrapperColor, $frenchColor);
 @include unitColor(Russian, $russianWrapperColor, Rus);
 
 .french.specialHexes{

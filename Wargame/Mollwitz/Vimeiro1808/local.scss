@@ -16,12 +16,11 @@ You should have received a copy of the GNU General Public License
    */
 
 $prussianNapColor: #003AF3;
-$frenchColor: #0003b4;
 
 @include headerColor(French,$frenchNapoleonColor, $frenchNapoleonColor );
 @include headerColor(British,$britishColor, $britishWrapperColor );
 
-@include unitColor(French, $frenchColor, FrenchNap);
+@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
 @include unitColor(Portuguese, $prussianNapColor, PruNap);
 
 .french.specialHexes, .british.specialHexes{

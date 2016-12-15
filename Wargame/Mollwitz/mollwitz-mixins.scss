@@ -67,7 +67,39 @@ $vintage-unit-numbers-size:10px;
     font-style:italic;
   }
 }
+@mixin makeGuard($nationality){
+  .#{$nationality}.unit .guard-unit{
+    display:block;
+    position:absolute;
+    width:6px;
+    right:13px;
+    background:yellow;
+    color:black;
+    font-size:7px;
+    top:16px;
+    word-wrap:break-word;
+    height:16px;
+    &.infoLen7{
+      right:16px;
+    }
+  }
+  .vintage.#{$nationality}.unit{
+    p.range{
+      top:-8px;
+    }
+    p.forceMarch{
+      top: -11px;
+    }
+    .guard-unit{
+      width:12px;
+      right:0px;
+      font-size:8px;
+      top:0px;
+      height:8px;
+    }
+  }
 
+}
 @mixin badge($nationality, $shortName) {
   .fa-flag{
     display:none;

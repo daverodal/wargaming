@@ -18,13 +18,12 @@ You should have received a copy of the GNU General Public License
 $prussianNapColor: #003AF3;
 $bavarianWrapperColor: #4287FA;
 $bavarianColor: #FD0013;
-$frenchColor: #0003b4;
 
 @include headerColor(French,$frenchNapoleonColor, $frenchNapoleonColor );
 @include headerColor(Russian,$russianColor, $angloAlliedWrapperColor );
 
-@include unitColor(Guard, $frenchColor, FrenchNap);
-@include unitColor(French, $frenchColor, FrenchNap);
+@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap);
+@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
 @include unitColor(Russian, $russianWrapperColor, Rus);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
 @include unitColor(German, $prussianNapColor, PruNap);
