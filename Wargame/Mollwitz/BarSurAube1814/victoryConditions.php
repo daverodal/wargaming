@@ -28,12 +28,8 @@
             One point is awarded for each hostile combat strength point destroyed.
             Additionally points are awarded while certain hexes with numbers are occupied Blue for French, Red for allies.
             The number indicates how many points are awarded to the side with the corresponding color.
-            If both sides achieve 50 or more points on the same turn the game is a draw.
+            If both sides achieve 45 or more points on the same turn the game is a draw.
             The French Win if the allies have not by the end of turn 8.
-        </li>
-        <li>
-            (SIC) is it 45 or 50?
-
         </li>
     </ol>
 </li>
