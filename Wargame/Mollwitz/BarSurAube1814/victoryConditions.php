@@ -19,16 +19,30 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><li class="exclusive">
+?>
+<li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
-    <h4>The Game ends instantly at the end of any Player Turn when one or more of the following conditions applies. Mutual
+    <h4>The Game ends instantly at the end of any Player Turn when one or more of the following conditions applies.
+        Mutual
         victories are a Draw</h4>
     <ol>
-        <li> If either side has accumulated 45 points at the end of any game turn that side has won.
+        <li><span class="less-big">
+                Allied:
+            </span>
+            If the Allied side has accumulated 50 points at the end of any game turn they win.
+        </li>
+        <li><span class="less-big">French:</span>
+            If the Allied side has accumulated 25 points at the end of any game turn they win.
+        </li>
+        <li>
             One point is awarded for each hostile combat strength point destroyed.
-            Additionally points are awarded while certain hexes with numbers are occupied Blue for French, Red for allies.
+        </li>
+        <li>
+            Additionally points are awarded while certain hexes with numbers are occupied Blue for French, Red for
+            allies.
             The number indicates how many points are awarded to the side with the corresponding color.
-            If both sides achieve 45 or more points on the same turn the game is a draw.
+        </li>
+        <li>
             The French Win if the allies have not by the end of turn 8.
         </li>
     </ol>

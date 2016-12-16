@@ -26,9 +26,6 @@ You should have received a copy of the GNU General Public License
 ?>
 
 <ol>
-    <li>
-        The Left side of the Map is North.
-    </li>
     <li><span class="lessBig">French: </span>
 
         Set up first on and within Hexes marked with Blue F’s. Move second.
