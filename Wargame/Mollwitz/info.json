@@ -4993,7 +4993,7 @@
   "Maloyaroslavets1812": {
     "name": "The Battle of Maloyaroslavets 1812",
     "path": "Mollwitz",
-    "production": true,
+    "production": false,
     "genre": "Napoleonic",
     "fileName": "\\Wargame\\Mollwitz\\Maloyaroslavets1812\\Maloyaroslavets1812",
     "description": "The Battle of Maloyaroslavets 1812.",
@@ -5171,7 +5171,7 @@
   "Heilsberg1807": {
     "name": "The Battle of Heilsberg 1807",
     "path": "Mollwitz",
-    "production": true,
+    "production": false,
     "genre": "Napoleonic",
     "fileName": "\\Wargame\\Mollwitz\\Heilsberg1807\\Heilsberg1807",
     "description": "The Battle of  Heilsberg 1807.",
@@ -5531,11 +5531,11 @@
         "longDescription": "Historical Scenario"
       }
     }
-  }
-,  "BarSurAube1814": {
+  },
+  "BarSurAube1814": {
   "name": "The Battle of Bar Sur Aube 1814",
   "path": "Mollwitz",
-  "production": true,
+  "production": false,
   "genre": "Napoleonic",
   "fileName": "\\Wargame\\Mollwitz\\BarSurAube1814\\BarSurAube1814",
   "description": "The Battle of Bar Sur Aube 1814.",
@@ -5731,11 +5731,10 @@
     }
   }
 },
-
   "Vimeiro1808": {
     "name": "The Battle of Vimeiro 1808",
     "path": "Mollwitz",
-    "production": true,
+    "production": false,
     "genre": "Napoleonic",
     "fileName": "\\Wargame\\Mollwitz\\Vimeiro1808\\Vimeiro1808",
     "description": "The Battle of Vimeiro 1808.",

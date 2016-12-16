@@ -218,7 +218,7 @@ class JagCore extends \Wargame\LandBattle{
         $this->terrain->addTerrainFeature("road", "road", "r", .5, 0, 0, false);
         $this->terrain->addTerrainFeature("town", "town", "t", 1, 0, 0, true, true);
         $this->terrain->addTerrainFeature("forest", "forest", "f", 2, 0, 1, true, true);
-        $this->terrain->addTerrainFeature("orchard", "orchard", "f", 0, 0, 0, true, true);
+        $this->terrain->addTerrainFeature("orchard", "orchard", "f", 1, 0, 0, true, true);
         $this->terrain->addTerrainFeature("hill", "hill", "h", 2, 0, 0, true, true);
         $this->terrain->addTerrainFeature("river", "river", "v", 0, 1, 0, false);
         $this->terrain->addTerrainFeature("ford", "ford", "d", 0, 1, 0, false);

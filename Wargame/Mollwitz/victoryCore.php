@@ -148,6 +148,8 @@ class victoryCore extends \Wargame\VictoryCore
 
     public function phaseChange()
     {
+        $b = Battle::getBattle();
+
     }
 
     protected function checkVictory( $battle){
@@ -187,7 +189,7 @@ class victoryCore extends \Wargame\VictoryCore
         $b = Battle::getBattle();
         foreach ($attackers as $attackerId => $val) {
             $unit = $b->force->units[$attackerId];
-            if ($unit->class == "artillery" && $unit->status == STATUS_CAN_ADVANCE) {
+            if (($unit->class == "artillery" || $unit->class == "horseartillery") && $unit->status == STATUS_CAN_ADVANCE) {
                 $unit->status = STATUS_ATTACKED;
             }
         }

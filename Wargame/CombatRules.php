@@ -440,6 +440,12 @@ class CombatRules
                 $plusElevation = 1;
             }
             if ($this->terrain->terrainIs($hexPart, "elevation2")) {
+                /*
+                 * can't shoot over woods on a hill
+                 */
+                if($plusElevation){
+                    return false;
+                }
                 $hasElevated2 = true;
                 continue;
             }
@@ -451,6 +457,10 @@ class CombatRules
                 }else{
                     $hasElevated1 = true;
                 }
+                continue;
+            }
+            if($plusElevation){
+                $hasElevated1 = true;
                 continue;
             }
         }

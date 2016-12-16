@@ -105,8 +105,7 @@ class Fraustadt1706 extends \Wargame\Mollwitz\JagCore
 
         parent::__construct($data, $arg, $scenario, $game);
         if ($data) {
-            $this->specialHexA = $data->specialHexA;
-            $this->specialHexB = $data->specialHexB;
+
         } else {
             $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Fraustadt1706\\fraustadt1706VictoryCore");
 
