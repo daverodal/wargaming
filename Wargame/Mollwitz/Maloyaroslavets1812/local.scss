@@ -15,13 +15,12 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-$prussianNapColor: #003AF3;
-$bavarianWrapperColor: #4287FA;
-$bavarianColor: #FD0013;
+
 
 @include headerColor(French,$frenchNapoleonColor, $frenchNapoleonColor );
 @include headerColor(Russian,$russianColor, $angloAlliedWrapperColor );
 
+@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap);
 @include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
 @include unitColor(Russian, $russianWrapperColor, Rus);
 @include unitColor(Italian, white, Sax);
@@ -29,7 +28,7 @@ $bavarianColor: #FD0013;
 
 @include makeGuard(RoyalGuard);
 
-.french.specialHexes, .allied.specialHexes{
+.french.specialHexes, .russian.specialHexes{
   color:white;
 }
 .French, .German, .Guard, .Russian {

@@ -25,9 +25,10 @@ $bavarianColor: #FD0013;
 @include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap);
 @include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
 @include unitColor(Saxon, white, Sax);
-@include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
-@include unitColor(German, $prussianNapColor, PruNap);
-@include unitColor(Austrian, $austrianWrapperColor, Aus);
+
+
+@include unitColor(Prussian, $prussianNapColor, PruNap);
+
 
 .french.specialHexes, .allied.specialHexes{
   color:white;

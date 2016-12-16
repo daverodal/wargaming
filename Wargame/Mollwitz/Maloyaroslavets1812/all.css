@@ -4545,6 +4545,77 @@ You should have received a copy of the GNU General Public License
 .specialHexesVP .Russian.victory-points {
   text-shadow: 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00; }
 
+.Guard .counterWrapper {
+  background-color: #0003b4; }
+
+.fa-flag {
+  display: none; }
+
+.Guard.hq .counterWrapper .counter {
+  display: none; }
+
+.vintage.Guard.hq .counterWrapper .fa-flag {
+  font-size: 19px; }
+.vintage.Guard.infantry .counterWrapper .counter {
+  background-image: url("/js/FrenchNapInfBadge.png");
+  background-size: 19px; }
+.vintage.Guard.cavalry .counterWrapper .counter {
+  background-image: url("/js/FrenchNapCavBadge.png");
+  background-size: 19px; }
+.vintage.Guard.artillery .counterWrapper .counter {
+  background-image: url("/js/FrenchNapArtBadge.png");
+  background-size: 19px; }
+.vintage.Guard.horseartillery .counterWrapper .counter {
+  background-image: url("/js/FrenchNapHorArtBadge.png");
+  background-size: 19px; }
+.vintage.Guard.pontoon .counterWrapper {
+  border: none; }
+  .vintage.Guard.pontoon .counterWrapper .counter {
+    background-color: lightgreen;
+    background-image: url("/js/FrenchNapPontoon.png");
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    border: none; }
+.vintage.Guard.pontoon .unit-numbers {
+  display: none; }
+
+.Guard.infantry .counterWrapper .counter {
+  background-image: url("/js/FrenchNapInfBadge.png");
+  background-size: 14px; }
+
+.Guard.cavalry .counterWrapper .counter {
+  background-image: url("/js/FrenchNapCavBadge.png");
+  background-size: 14px; }
+
+.Guard.artillery .counterWrapper .counter {
+  background-image: url("/js/FrenchNapArtBadge.png");
+  background-size: 14px; }
+
+.Guard.horseartillery .counterWrapper .counter {
+  background-image: url("/js/FrenchNapHorArtBadge.png");
+  background-size: 14px; }
+
+.Guard.hq .counterWrapper .fa-flag {
+  display: block;
+  font-size: 14px; }
+
+.Guard.wagon .counterWrapper .counter {
+  background-image: url("/js/Wagon.png");
+  background-size: 14px; }
+
+.Guard.pontoon .counterWrapper {
+  border: none; }
+  .Guard.pontoon .counterWrapper .counter {
+    background-color: lightgreen;
+    background-image: url("/js/FrenchNapPontoon.png");
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    border: none; }
+.Guard.pontoon .unit-numbers {
+  display: none; }
+
 .French .counterWrapper {
   background-color: #0003b4; }
 
@@ -4854,7 +4925,7 @@ You should have received a copy of the GNU General Public License
   top: 0px;
   height: 8px; }
 
-.french.specialHexes, .allied.specialHexes {
+.french.specialHexes, .russian.specialHexes {
   color: white; }
 
 .French p.forceMarch, .French p.range, .German p.forceMarch, .German p.range, .Guard p.forceMarch, .Guard p.range, .Russian p.forceMarch, .Russian p.range {

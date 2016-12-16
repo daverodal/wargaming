@@ -4758,217 +4758,75 @@ You should have received a copy of the GNU General Public License
 .Saxon.pontoon .unit-numbers {
   display: none; }
 
-.Bavarian .counterWrapper {
-  background-color: #4287FA; }
-
-.fa-flag {
-  display: none; }
-
-.Bavarian.hq .counterWrapper .counter {
-  display: none; }
-
-.vintage.Bavarian.hq .counterWrapper .fa-flag {
-  font-size: 19px; }
-.vintage.Bavarian.infantry .counterWrapper .counter {
-  background-image: url("/js/BavarianInfBadge.png");
-  background-size: 19px; }
-.vintage.Bavarian.cavalry .counterWrapper .counter {
-  background-image: url("/js/BavarianCavBadge.png");
-  background-size: 19px; }
-.vintage.Bavarian.artillery .counterWrapper .counter {
-  background-image: url("/js/BavarianArtBadge.png");
-  background-size: 19px; }
-.vintage.Bavarian.horseartillery .counterWrapper .counter {
-  background-image: url("/js/BavarianHorArtBadge.png");
-  background-size: 19px; }
-.vintage.Bavarian.pontoon .counterWrapper {
-  border: none; }
-  .vintage.Bavarian.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/BavarianPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.Bavarian.pontoon .unit-numbers {
-  display: none; }
-
-.Bavarian.infantry .counterWrapper .counter {
-  background-image: url("/js/BavarianInfBadge.png");
-  background-size: 14px; }
-
-.Bavarian.cavalry .counterWrapper .counter {
-  background-image: url("/js/BavarianCavBadge.png");
-  background-size: 14px; }
-
-.Bavarian.artillery .counterWrapper .counter {
-  background-image: url("/js/BavarianArtBadge.png");
-  background-size: 14px; }
-
-.Bavarian.horseartillery .counterWrapper .counter {
-  background-image: url("/js/BavarianHorArtBadge.png");
-  background-size: 14px; }
-
-.Bavarian.hq .counterWrapper .fa-flag {
-  display: block;
-  font-size: 14px; }
-
-.Bavarian.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.Bavarian.pontoon .counterWrapper {
-  border: none; }
-  .Bavarian.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/BavarianPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.Bavarian.pontoon .unit-numbers {
-  display: none; }
-
-.German .counterWrapper {
+.Prussian .counterWrapper {
   background-color: #003AF3; }
 
 .fa-flag {
   display: none; }
 
-.German.hq .counterWrapper .counter {
+.Prussian.hq .counterWrapper .counter {
   display: none; }
 
-.vintage.German.hq .counterWrapper .fa-flag {
+.vintage.Prussian.hq .counterWrapper .fa-flag {
   font-size: 19px; }
-.vintage.German.infantry .counterWrapper .counter {
+.vintage.Prussian.infantry .counterWrapper .counter {
   background-image: url("/js/PruNapInfBadge.png");
   background-size: 19px; }
-.vintage.German.cavalry .counterWrapper .counter {
+.vintage.Prussian.cavalry .counterWrapper .counter {
   background-image: url("/js/PruNapCavBadge.png");
   background-size: 19px; }
-.vintage.German.artillery .counterWrapper .counter {
+.vintage.Prussian.artillery .counterWrapper .counter {
   background-image: url("/js/PruNapArtBadge.png");
   background-size: 19px; }
-.vintage.German.horseartillery .counterWrapper .counter {
+.vintage.Prussian.horseartillery .counterWrapper .counter {
   background-image: url("/js/PruNapHorArtBadge.png");
   background-size: 19px; }
-.vintage.German.pontoon .counterWrapper {
+.vintage.Prussian.pontoon .counterWrapper {
   border: none; }
-  .vintage.German.pontoon .counterWrapper .counter {
+  .vintage.Prussian.pontoon .counterWrapper .counter {
     background-color: lightgreen;
     background-image: url("/js/PruNapPontoon.png");
     background-size: 32px;
     width: 32px;
     height: 32px;
     border: none; }
-.vintage.German.pontoon .unit-numbers {
+.vintage.Prussian.pontoon .unit-numbers {
   display: none; }
 
-.German.infantry .counterWrapper .counter {
+.Prussian.infantry .counterWrapper .counter {
   background-image: url("/js/PruNapInfBadge.png");
   background-size: 14px; }
 
-.German.cavalry .counterWrapper .counter {
+.Prussian.cavalry .counterWrapper .counter {
   background-image: url("/js/PruNapCavBadge.png");
   background-size: 14px; }
 
-.German.artillery .counterWrapper .counter {
+.Prussian.artillery .counterWrapper .counter {
   background-image: url("/js/PruNapArtBadge.png");
   background-size: 14px; }
 
-.German.horseartillery .counterWrapper .counter {
+.Prussian.horseartillery .counterWrapper .counter {
   background-image: url("/js/PruNapHorArtBadge.png");
   background-size: 14px; }
 
-.German.hq .counterWrapper .fa-flag {
+.Prussian.hq .counterWrapper .fa-flag {
   display: block;
   font-size: 14px; }
 
-.German.wagon .counterWrapper .counter {
+.Prussian.wagon .counterWrapper .counter {
   background-image: url("/js/Wagon.png");
   background-size: 14px; }
 
-.German.pontoon .counterWrapper {
+.Prussian.pontoon .counterWrapper {
   border: none; }
-  .German.pontoon .counterWrapper .counter {
+  .Prussian.pontoon .counterWrapper .counter {
     background-color: lightgreen;
     background-image: url("/js/PruNapPontoon.png");
     background-size: 32px;
     width: 32px;
     height: 32px;
     border: none; }
-.German.pontoon .unit-numbers {
-  display: none; }
-
-.Austrian .counterWrapper {
-  background-color: white; }
-
-.fa-flag {
-  display: none; }
-
-.Austrian.hq .counterWrapper .counter {
-  display: none; }
-
-.vintage.Austrian.hq .counterWrapper .fa-flag {
-  font-size: 19px; }
-.vintage.Austrian.infantry .counterWrapper .counter {
-  background-image: url("/js/AusInfBadge.png");
-  background-size: 19px; }
-.vintage.Austrian.cavalry .counterWrapper .counter {
-  background-image: url("/js/AusCavBadge.png");
-  background-size: 19px; }
-.vintage.Austrian.artillery .counterWrapper .counter {
-  background-image: url("/js/AusArtBadge.png");
-  background-size: 19px; }
-.vintage.Austrian.horseartillery .counterWrapper .counter {
-  background-image: url("/js/AusHorArtBadge.png");
-  background-size: 19px; }
-.vintage.Austrian.pontoon .counterWrapper {
-  border: none; }
-  .vintage.Austrian.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/AusPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.Austrian.pontoon .unit-numbers {
-  display: none; }
-
-.Austrian.infantry .counterWrapper .counter {
-  background-image: url("/js/AusInfBadge.png");
-  background-size: 14px; }
-
-.Austrian.cavalry .counterWrapper .counter {
-  background-image: url("/js/AusCavBadge.png");
-  background-size: 14px; }
-
-.Austrian.artillery .counterWrapper .counter {
-  background-image: url("/js/AusArtBadge.png");
-  background-size: 14px; }
-
-.Austrian.horseartillery .counterWrapper .counter {
-  background-image: url("/js/AusHorArtBadge.png");
-  background-size: 14px; }
-
-.Austrian.hq .counterWrapper .fa-flag {
-  display: block;
-  font-size: 14px; }
-
-.Austrian.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.Austrian.pontoon .counterWrapper {
-  border: none; }
-  .Austrian.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/AusPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.Austrian.pontoon .unit-numbers {
+.Prussian.pontoon .unit-numbers {
   display: none; }
 
 .french.specialHexes, .allied.specialHexes {
