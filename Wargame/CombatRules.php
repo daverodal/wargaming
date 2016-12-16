@@ -435,9 +435,9 @@ class CombatRules
         }
         $hasElevated1 = $hasElevated2 = false;
         foreach ($hexParts as $hexPart) {
-            if ($this->terrain->terrainIs($hexPart, "blocksRanged") && (!$srcElevated2 || !$targetElevated2)) {
-                return false;
-
+            $plusElevation = 0;
+            if ($this->terrain->terrainIs($hexPart, "blocksRanged")) {
+                $plusElevation = 1;
             }
             if ($this->terrain->terrainIs($hexPart, "elevation2")) {
                 $hasElevated2 = true;
@@ -445,8 +445,13 @@ class CombatRules
             }
 
             if ($this->terrain->terrainIs($hexPart, "elevation1")) {
-                $hasElevated1 = true;
-                break;
+                if($plusElevation){
+                    $hasElevated2 = true;
+
+                }else{
+                    $hasElevated1 = true;
+                }
+                continue;
             }
         }
         /* don't do elevation check if non elevation (1) set. This deals with case of coming up
