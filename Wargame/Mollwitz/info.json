@@ -3213,6 +3213,12 @@
         }
       ]
     },
+    "options": [
+      {
+        "name": "Victory points are not used to determine victory",
+        "keyName": "noVP",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",

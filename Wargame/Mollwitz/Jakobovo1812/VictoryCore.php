@@ -64,41 +64,45 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                     return true;
                 }
             }
-            $AlliedWinScore = 35;
-            $frenchWinScore = 35;
-
-            if($this->victoryPoints[Jakobovo1812::FRENCH_FORCE] >= $frenchWinScore){
-                $frenchWin = true;
-                $victoryReason .= "Over $frenchWinScore ";
-            }
-            if ($this->victoryPoints[Jakobovo1812::RUSSIAN_FORCE] >= $AlliedWinScore) {
-                $AlliedWin = true;
-                $victoryReason .= "Over $AlliedWinScore ";
-            }
+            if(!isset($battle->scenario->noVP)) {
 
 
-            if ($frenchWin && !$AlliedWin) {
-                $this->winner = Jakobovo1812::FRENCH_FORCE;
-                $gameRules->flashMessages[] = "French Win";
-                $gameRules->flashMessages[] = $victoryReason;
-                $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
-            }
-            if ($AlliedWin && !$frenchWin) {
-                $this->winner = Jakobovo1812::RUSSIAN_FORCE;
-                $gameRules->flashMessages[] = "Russian Win";
-                $gameRules->flashMessages[] = $victoryReason;
-                $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
-            }
-            if($frenchWin && $AlliedWin){
-                $gameRules->flashMessages[] = "Tie Game";
-                $gameRules->flashMessages[] = $victoryReason;
-                $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
+                $AlliedWinScore = 35;
+                $frenchWinScore = 35;
+
+                if ($this->victoryPoints[Jakobovo1812::FRENCH_FORCE] >= $frenchWinScore) {
+                    $frenchWin = true;
+                    $victoryReason .= "Over $frenchWinScore ";
+                }
+                if ($this->victoryPoints[Jakobovo1812::RUSSIAN_FORCE] >= $AlliedWinScore) {
+                    $AlliedWin = true;
+                    $victoryReason .= "Over $AlliedWinScore ";
+                }
+
+
+                if ($frenchWin && !$AlliedWin) {
+                    $this->winner = Jakobovo1812::FRENCH_FORCE;
+                    $gameRules->flashMessages[] = "French Win";
+                    $gameRules->flashMessages[] = $victoryReason;
+                    $gameRules->flashMessages[] = "Game Over";
+                    $this->gameOver = true;
+                    return true;
+                }
+                if ($AlliedWin && !$frenchWin) {
+                    $this->winner = Jakobovo1812::RUSSIAN_FORCE;
+                    $gameRules->flashMessages[] = "Russian Win";
+                    $gameRules->flashMessages[] = $victoryReason;
+                    $gameRules->flashMessages[] = "Game Over";
+                    $this->gameOver = true;
+                    return true;
+                }
+                if ($frenchWin && $AlliedWin) {
+                    $gameRules->flashMessages[] = "Tie Game";
+                    $gameRules->flashMessages[] = $victoryReason;
+                    $gameRules->flashMessages[] = "Game Over";
+                    $this->gameOver = true;
+                    return true;
+                }
             }
             if ($turn > $gameRules->maxTurn) {
 

@@ -1060,6 +1060,7 @@ class GameRules
 
             $currentPhase = $this->currentPhase();
             if ($currentPhase) {
+                $victory->nextPhase();
                 $this->phase = $currentPhase->nextPhase;
 //                    $prevMode = $this->mode;
                 $this->mode = $currentPhase->nextMode;
