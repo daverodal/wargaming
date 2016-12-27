@@ -131,10 +131,6 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE) {
             $b->gameRules->flashMessages[] = "Units in extreme right may not move.";
         }
-
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
-                $b->gameRules->flashMessages[] = "Young Guard may not move this phase.";
-        }
     }
 
     public function postRecoverUnit($args)
