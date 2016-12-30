@@ -217,13 +217,14 @@ class victoryCore extends \Wargame\VictoryCore
                         $requiredVal = true;
                         $combatId = isset($cR->defenders->$unitId) ? $cR->defenders->$unitId : null ;
                         if($combatId !== null){
-                            $attackers = $cR->combats->$combatId->attackers;
-                            if($attackers){
-                                if(count((array)$attackers) > 0){
-                                    $requiredVal = false;
+                            if(isset($cR->combats->$combatId)) {
+                                $attackers = $cR->combats->$combatId->attackers;
+                                if ($attackers) {
+                                    if (count((array)$attackers) > 0) {
+                                        $requiredVal = false;
+                                    }
                                 }
                             }
-
                         }
 
                         $force->requiredDefenses->$unitId = $requiredVal;
