@@ -396,6 +396,55 @@ You should have received a copy of the GNU General Public License
             });
             $("#mychat").attr("value", "");
         }
+
+        function doitSaveGame(key){
+            var mychat = $("#mychat").attr("value");
+            playAudio();
+            $('body').css({cursor: "wait"});
+            $(this).css({cursor: "wait"});
+//    $("#"+id+"").addClass("pushed");
+
+            $("#comlink").html('Waiting');
+            $.ajax({
+                url: "<?=url("wargame/poke");?>",
+                type: "POST",
+                data: {id: key, event: <?=SAVE_GAME_EVENT?>},
+                error: function (data, text, third) {
+                    try {
+                        obj = jQuery.parseJSON(data.responseText);
+                    } catch (e) {
+//                alert(data);
+                    }
+                    if (obj.emsg) {
+                        alert(obj.emsg);
+                    }
+                    playAudioBuzz();
+                    $('body').css({cursor: "auto"});
+                    $(this).css({cursor: "auto"});
+                    $("#" + id + "").removeClass("pushed");
+                    $("#comlink").html('Working');
+                },
+                success: function (data, textstatus) {
+                    try {
+                        var success = data.success;
+                    } catch (e) {
+//                alert(data);
+                    }
+                    if (success) {
+                        playAudioLow();
+
+                    } else {
+                        playAudioBuzz();
+                    }
+                    $('body').css({cursor: "auto"});
+                    $(this).css({cursor: "auto"});
+//            $("#"+id+"").removeClass("pushed");
+
+
+                }
+            });
+            $("#mychat").attr("value", "");
+        }
         function doitKeypress(key) {
             var mychat = $("#mychat").attr("value");
             playAudio();
@@ -1098,6 +1147,11 @@ You should have received a copy of the GNU General Public License
                     doitKeypress(event.which);
                     return false;
                 }
+                if(event.which == 83){
+                    doitSaveGame(event.which);
+                    return false;
+                }
+
                 return true;
             });
 
@@ -1119,6 +1173,9 @@ You should have received a copy of the GNU General Public License
                 doitKeypress(109);
             });
 
+            $("#debug").on('click', function () {
+                doitSaveGame(83);
+            });
             $("#splitEvent").on('click', function () {
                 doitKeypress(115);
             });

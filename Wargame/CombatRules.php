@@ -39,6 +39,7 @@ class CombatRules
     public $attackers;
     public $resolvedCombats;
     public $lastResolvedCombat;
+    public $dieRoll;
 
     /*
      * TODO
@@ -63,6 +64,9 @@ class CombatRules
 
         if ($data) {
             foreach ($data as $k => $v) {
+                if($k === "dieRoll"){
+                    continue;
+                }
                 if($k === "combats"){
                     $this->$k = new stdClass();
                     if(is_object($v)) {
@@ -84,6 +88,7 @@ class CombatRules
             $this->defenders = new stdClass();
             $this->currentDefender = false;
         }
+        $this->dieRoll = false;
 //        $this->crt = new CombatResultsTable();
     }
 
@@ -617,6 +622,10 @@ class CombatRules
         $Die = floor($this->crt->dieSideCount * (rand() / getrandmax()));
 //        $Die = $this->crt->dieSideCount - 1;
 //        $Die = 2;
+        if($this->dieRoll !== false){
+            $Die = $this->dieRoll;
+        }
+        $this->dieRoll = $Die;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {

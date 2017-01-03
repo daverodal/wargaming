@@ -74,8 +74,8 @@ You should have received a copy of the GNU General Public License
 </div>
 <div style="clear:both"></div>
 <fieldset ><Legend>Play As </Legend>
-    <a  class="link" href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>/">Play Hotseat</a><br>
-    <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
+    <a  class="link" href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
+    <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi</a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
         Antoine Pesne [Public domain], <a target='blank' href="http://commons.wikimedia.org/wiki/File%3AAntoine_Pesne_-_Frederick_the_Great_as_Crown_Prince_-_WGA17377.jpg">via Wikimedia Commons</a>

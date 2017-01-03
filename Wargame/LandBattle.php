@@ -15,30 +15,7 @@ use \stdClass;
 //
 //You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-class Click {
-    public $event;
-    public $id;
-    public $x;
-    public $y;
-    public $user;
-    public $click;
 
-    public function __construct($data = false,  $event = false, $id = false, $x= false, $y= false, $user= false, $click = false){
-    if($data){
-        foreach($data as $k => $v){
-            $this->$k = $v;
-        }
-    }else{
-        $this->event = $event;
-        $this->id = $id;
-        $this->x = $x;
-        $this->y = $y;
-        $this->user = $user;
-        $this->click = $click;
-    }
-}
-
-}
 
 class LandBattle extends \Wargame\Battle{
 
@@ -76,10 +53,6 @@ class LandBattle extends \Wargame\Battle{
         global $mode_name, $phase_name;
         $battle = Battle::battleFromDoc($doc);
 
-        $val = print_r($doc->wargame->force, true);
-        file_put_contents('/tmp/loggy', $val, FILE_APPEND);
-        $val = print_r($doc->wargame->force, true);
-        file_put_contents('/tmp/loggy', $val, FILE_APPEND);
         $chatsIndex = 0;/* remove me */
         $click = $doc->_rev;
         $matches = array();
@@ -381,9 +354,11 @@ class LandBattle extends \Wargame\Battle{
     function poke($event, $id, $x, $y, $user, $click)
     {
 
-        $this->clickHistory[] = new Click(false, $event, $id, $x, $y, $user, $click);
 
         $playerId = $this->gameRules->attackingForceId;
+        $clickClass = new Click(false, $event, $id, $x, $y, $user, $playerId, $click);
+        $this->clickHistory[] = $clickClass;
+
         if ($this->players[$this->gameRules->attackingForceId] != $user) {
             if($event !== SELECT_ALT_COUNTER_EVENT){
                 return false;
@@ -392,11 +367,12 @@ class LandBattle extends \Wargame\Battle{
 
         $hexagon = null;
 
+        $retVal = true;
         switch ($event) {
             case SELECT_MAP_EVENT:
                 $mapGrid = new MapGrid($this->mapViewer[0]);
                 $mapGrid->setPixels($x, $y);
-                return $this->gameRules->processEvent(SELECT_MAP_EVENT, MAP, $mapGrid->getHexagon(), $click);
+                $retVal =  $this->gameRules->processEvent(SELECT_MAP_EVENT, MAP, $mapGrid->getHexagon(), $click);
                 break;
 
             case SELECT_COUNTER_EVENT:
@@ -419,19 +395,20 @@ class LandBattle extends \Wargame\Battle{
             /* fall through */
             case COMBAT_PIN_EVENT:
 
-            return $this->gameRules->processEvent($event, $id, $hexagon, $click);
+            $retVal =  $this->gameRules->processEvent($event, $id, $hexagon, $click);
 
                 break;
 
             case SELECT_BUTTON_EVENT:
-                return $this->gameRules->processEvent(SELECT_BUTTON_EVENT, $id, 0, $click);
+                $retVal =  $this->gameRules->processEvent(SELECT_BUTTON_EVENT, $id, 0, $click);
                 break;
 
             case KEYPRESS_EVENT:
-                return $this->gameRules->processEvent(KEYPRESS_EVENT, $id, null, $click);
+                $retVal =  $this->gameRules->processEvent(KEYPRESS_EVENT, $id, null, $click);
                 break;
 
         }
-        return true;
+        $clickClass->dieRoll = $this->combatRules->dieRoll;
+        return $retVal;
     }
 }

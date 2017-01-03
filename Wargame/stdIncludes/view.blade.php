@@ -21,6 +21,12 @@
  */
 ?>
 <body xmlns="http://www.w3.org/1999/html">
+<div class="bug-report">
+    <form id="bug-report-form">
+        <textarea rows="10" cols="50"></textarea><br>
+        <button id="submit-bug-report">Submit Report</button>
+    </form>
+</div>
 <div id="theDiv">
     <header id="header">
         <div id="headerContent">
@@ -51,12 +57,29 @@
                     <div class="close">X</div>
                     <ul>
                         <li> Welcome {{$user}}</li>
-                        <li>you are playing as  <?= $player; ?></li>
+
+                        @if($playersData[0] != '')
+                            <li>
+                                {{ $playersData[0] }} as {{ $playDat["forceName"][0] }}
+                            </li>
+                        @endif
+                        <li>
+                            {{ $playersData[1] }} as {{ $playDat["forceName"][1] }}
+                        </li>
+                        <li>
+                            {{ $playersData[2] }} as {{ $playDat["forceName"][2] }}
+                        </li>
+
                         <li>
                             in <span class="game-name">{{$gameName}}-{{$arg}}</span></li>
-                        <li> The file is called {{$name}}</li>
+                        <li>
+                            name is {{ $docName }}
+                        </li>
                         <!-- TODO: make game credits from DB -->
                         <li>Game Designer: David Rodal</li>
+                        <li class="game-id">
+                            {{ $wargame }}
+                        </li>
                         <li class="closer"></li>
                     </ul>
                 </div>
@@ -143,6 +166,8 @@
                     <button class="dynamicButton combatButton" id="clearCombatEvent">c</button>
                     <button class="dynamicButton combatButton" id="shiftKey">+</button>
                     <button class="dynamicButton hexButton" id="showHexes">H</button>
+                    <button class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
+
                 @show
 
             </div>

@@ -32,12 +32,14 @@ class VictoryCore
 
     public $gameOver = false;
     public $winner = 0;
+    public $saveDeploy = false;
 
     public function __construct($data){
         if($data) {
             $this->gameOver = $data->victory->gameOver;
             $this->winner = $data->victory->winner;
         }
+        $saveDeploy = false;
     }
 
     public function save()
@@ -46,5 +48,11 @@ class VictoryCore
         $ret->gameOver = $this->gameOver;
         $ret->winner = $this->winner;
         return $ret;
+    }
+    public function nextPhase(){
+        $b = Battle::getBattle();
+        if($b->gameRules->mode == DEPLOY_MODE){
+            $this->saveDeploy = true;
+        }
     }
 }

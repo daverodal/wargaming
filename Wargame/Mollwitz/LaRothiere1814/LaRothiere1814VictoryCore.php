@@ -82,6 +82,9 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         $victoryReason = "";
 
+        /*
+         * french can win at 75 before allied win
+         */
         if (!$this->gameOver) {
             $specialHexes = $battle->mapData->specialHexes;
             $winScore = 70;

@@ -352,9 +352,12 @@ h5 {
 
     #nextPhaseWrapper {
       float: left;
-      .dynamicButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey {
+      .dynamicButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey, #debug {
         font-size: 28px;
         position: static;
+        &.debugButton{
+          display:inline-block;
+        }
       }
     }
 
@@ -479,6 +482,14 @@ body {
   -moz-user-select: -moz-none;
   -ms-user-select: none;
   user-select: none;
+  .game-id{
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -moz-user-select: -moz-all;
+    -ms-user-select: all;
+    user-select: none;
+    word-wrap:break-word;
+  }
 }
 
 .game-rules h4:hover {
@@ -1113,4 +1124,15 @@ svg {
   background: #999;
   margin-bottom: 5px;
   position: relative;
+}
+
+.bug-report{
+  display:none;
+  position:absolute;
+  left:33%;
+  top:33%;
+  z-index: 1000;
+  background: rgba(255,255,255,.9);
+  padding:25px;
+  text-align:center;
 }

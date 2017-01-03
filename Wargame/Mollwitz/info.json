@@ -5842,6 +5842,10 @@
       "main": {
         "description": "Historical Scenario.",
         "longDescription": "Historical Scenario."
+      },
+      "progressive": {
+        "description": "Progressive Victory points for hexes taken",
+        "longDescription": "In order to even the play balance, the victory hexes are worth  3 then 6 then 9 and 9"
       }
     }
   }

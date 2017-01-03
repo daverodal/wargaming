@@ -62,7 +62,7 @@ class NapoleonsTrainingAcademy extends \Wargame\ModernLandBattle{
 
     function save()
     {
-        $data = new \stdClass();
+        $data = parent::save();
         $data->mapData = $this->mapData;
         $data->mapViewer = $this->mapViewer;
         $data->moveRules = $this->moveRules->save();

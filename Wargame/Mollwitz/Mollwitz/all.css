@@ -2476,9 +2476,11 @@ h5 {
       display: inline-block; }
   #header #headerContent #nextPhaseWrapper {
     float: left; }
-    #header #headerContent #nextPhaseWrapper .dynamicButton, #header #headerContent #nextPhaseWrapper #nextPhaseButton, #header #headerContent #nextPhaseWrapper #fullScreenButton, #header #headerContent #nextPhaseWrapper #forceMarchEvent, #header #headerContent #nextPhaseWrapper #determinedAttackEvent, #header #headerContent #nextPhaseWrapper #clearCombatEvent, #header #headerContent #nextPhaseWrapper #shiftKey {
+    #header #headerContent #nextPhaseWrapper .dynamicButton, #header #headerContent #nextPhaseWrapper #nextPhaseButton, #header #headerContent #nextPhaseWrapper #fullScreenButton, #header #headerContent #nextPhaseWrapper #forceMarchEvent, #header #headerContent #nextPhaseWrapper #determinedAttackEvent, #header #headerContent #nextPhaseWrapper #clearCombatEvent, #header #headerContent #nextPhaseWrapper #shiftKey, #header #headerContent #nextPhaseWrapper #debug {
       font-size: 28px;
       position: static; }
+      #header #headerContent #nextPhaseWrapper .dynamicButton.debugButton, #header #headerContent #nextPhaseWrapper #nextPhaseButton.debugButton, #header #headerContent #nextPhaseWrapper #fullScreenButton.debugButton, #header #headerContent #nextPhaseWrapper #forceMarchEvent.debugButton, #header #headerContent #nextPhaseWrapper #determinedAttackEvent.debugButton, #header #headerContent #nextPhaseWrapper #clearCombatEvent.debugButton, #header #headerContent #nextPhaseWrapper #shiftKey.debugButton, #header #headerContent #nextPhaseWrapper #debug.debugButton {
+        display: inline-block; }
   #header #headerContent #phaseClicks a {
     color: black; }
   #header #headerContent #GR {
@@ -2551,6 +2553,13 @@ h5 {
   -moz-user-select: -moz-none;
   -ms-user-select: none;
   user-select: none; }
+  #header .game-id, #theDiv .game-id, #gameViewer .game-id {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -moz-user-select: -moz-all;
+    -ms-user-select: all;
+    user-select: none;
+    word-wrap: break-word; }
 
 .game-rules h4:hover {
   text-decoration: none; }
@@ -3036,6 +3045,16 @@ svg {
   background: #999;
   margin-bottom: 5px;
   position: relative; }
+
+.bug-report {
+  display: none;
+  position: absolute;
+  left: 33%;
+  top: 33%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  text-align: center; }
 
 /*
 Copyright 2012-2015 David Rodal

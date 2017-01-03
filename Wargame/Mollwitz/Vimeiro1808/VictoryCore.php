@@ -27,17 +27,20 @@ You should have received a copy of the GNU General Public License
 
 class VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
+    public $hexesTaken = 0;
     function __construct($data)
     {
 
         parent::__construct($data);
         if ($data) {
+            $this->hexesTaken = $data->victory->hexesTaken;
         }
     }
 
     public function save()
     {
         $ret = parent::save();
+        $ret->hexesTaken = $this->hexesTaken;
         return $ret;
     }
 
@@ -49,8 +52,45 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         list($mapHexName, $forceId) = $args;
 
+        /*
+         * make progressive values
+         */
         if (in_array($mapHexName, $battle->specialHexA)) {
-            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, 5);
+            $value = 5;
+            if(isset($battle->scenario->progressiveVictoryHexes)){
+
+                if($forceId === $battle->specialHexesMap['SpecialHexA']){
+                    $taken = $this->hexesTaken;
+                    $this->hexesTaken--;
+                }else{
+                    $this->hexesTaken++;
+                    $taken = $this->hexesTaken;
+
+                }
+                if($this->hexesTaken < 0){
+                    $this->hexesTaken = 0;
+                }
+                switch($taken){
+                    case 0:
+                        $value = 0;
+                        break;
+                    case 1:
+                        $value = 3;
+                        break;
+                    case 2:
+                        $value = 6;
+                        break;
+                    case 3:
+                    case 4:
+                        $value = 9;
+                        break;
+                    default:
+                        /* should never happen */
+                        $value = 9;
+
+                }
+            }
+            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, $value);
         }
     }
 
@@ -69,8 +109,8 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             $pData = $battle::getPlayerData($battle->scenario)['forceName'];
             $mapData = $battle->mapData;
 
-            $BritishWinScore = 25;
-            $frenchWinScore = 25;
+            $BritishWinScore = 26;
+            $frenchWinScore = 26;
 
             if($this->victoryPoints[Vimeiro1808::FRENCH_FORCE] >= $frenchWinScore){
                 $frenchWin = true;

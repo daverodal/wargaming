@@ -85,8 +85,8 @@ You should have received a copy of the GNU General Public License
 </div>
 <div style="clear:both"></div>
 <fieldset ><Legend>Play As </Legend>
-    <a  class="link" href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>/">Play Hotseat</a><br>
-    <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
+    <a  class="link" href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
+    <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi</a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
         By Richard Knötel (1857-1914) [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3ABataille_de_La_Rothi%C3%A8re%2C_par_Kn%C3%B6tel.jpg">via Wikimedia Commons</a>    </div>

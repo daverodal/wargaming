@@ -85,8 +85,8 @@ You should have received a copy of the GNU General Public License
 </div>
 <div style="clear:both"></div>
 <fieldset ><Legend>Play As </Legend>
-    <a  class="link" href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>/">Play Hotseat</a><br>
-    <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>/">Play Multi</a><br>
+    <a  class="link" href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
+    <a  class="link" href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi</a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a><br>
     <div class="attribution">
         By Johann Christoph Brotze [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3ABm03116am.jpg">via Wikimedia Commons</a>

@@ -68,19 +68,8 @@ class Chillianwallah1849 extends \Wargame\Mollwitz\IndiaCore
     }
     function save()
     {
-        $data = new \stdClass();
-        $data->mapData = $this->mapData;
-        $data->mapViewer = $this->mapViewer;
-        $data->moveRules = $this->moveRules->save();
-        $data->force = $this->force;
-        $data->gameRules = $this->gameRules->save();
-        $data->combatRules = $this->combatRules->save();
-        $data->players = $this->players;
-        $data->victory = $this->victory->save();
-        $data->terrainName = $this->terrainName;
-        $data->arg = $this->arg;
-        $data->scenario = $this->scenario;
-        $data->game = $this->game;
+        $data = parent::save();
+
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
 
