@@ -21,13 +21,14 @@
  */
 ?>
 <body xmlns="http://www.w3.org/1999/html">
-<div class="bug-report">
+<div class="bug-report"  style="display:none;">
     <form id="bug-report-form">
-        <textarea rows="10" cols="50"></textarea><br>
+        <textarea id="bug-report-message" rows="10" cols="50"></textarea><br>
         <button id="submit-bug-report">Submit Report</button>
+        <button id="cancel-bug-report">Cancel</button>
     </form>
 </div>
-<div id="theDiv">
+<div id="main-viewer">
     <header id="header">
         <div id="headerContent">
             <div id="mouseMove">mouse</div>

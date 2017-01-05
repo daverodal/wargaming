@@ -486,7 +486,7 @@
                 y /= DR.globalZoom;
                 x /= DR.globalZoom;
 
-                var mapWidth = $("body").width();
+                var mapWidth = $("#main-viewer").width();
                 var mapHeight = $("#gameViewer").height() / DR.globalZoom;
 
 
@@ -891,7 +891,7 @@
                     return;
                 }
             }
-            $("body").append('<div id="FlashMessage" style="top:' + y + 'px;left:' + x + 'px;" class="flashMessage">' + mess + '</div>');
+            $("#main-viewer").append('<div id="FlashMessage" style="top:' + y + 'px;left:' + x + 'px;" class="flashMessage">' + mess + '</div>');
             $("#FlashMessage").animate({opacity: 0}, fadeOut, flashMessage);
             return;
         }

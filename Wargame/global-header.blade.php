@@ -397,7 +397,7 @@ You should have received a copy of the GNU General Public License
             $("#mychat").attr("value", "");
         }
 
-        function doitSaveGame(key){
+        function doitSaveGame(msg){
             var mychat = $("#mychat").attr("value");
             playAudio();
             $('body').css({cursor: "wait"});
@@ -408,7 +408,7 @@ You should have received a copy of the GNU General Public License
             $.ajax({
                 url: "<?=url("wargame/poke");?>",
                 type: "POST",
-                data: {id: key, event: <?=SAVE_GAME_EVENT?>},
+                data: {id: 83, event: <?=SAVE_GAME_EVENT?>, msg:msg},
                 error: function (data, text, third) {
                     try {
                         obj = jQuery.parseJSON(data.responseText);
@@ -1142,7 +1142,7 @@ You should have received a copy of the GNU General Public License
             });
 
             fixHeader();
-            $("body").keydown(function (event) {
+            $("#main-viewer").keydown(function (event) {
                 if (event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40) {
                     doitKeypress(event.which);
                     return false;
@@ -1156,7 +1156,7 @@ You should have received a copy of the GNU General Public License
             });
 
 
-            $("body").keyup(function (event) {
+            $("#main-viewer").keyup(function (event) {
                 /* why this has to be a keyup event i don't know */
                 if (event.which == 27) {
                     doitKeypress(event.which);
@@ -1165,7 +1165,21 @@ You should have received a copy of the GNU General Public License
                 return true;
             });
 
-            $("body").keypress(function (event) {
+            $("#submit-bug-report").click(function(event){
+                doitSaveGame($("#bug-report-message").val());
+                $(".bug-report").toggle();
+                return false;
+
+            });
+
+
+            $("#cancel-bug-report").click(function(event){
+                $(".bug-report").toggle();
+                event.stopPropagation();
+                return false;
+            });
+
+            $("#main-viewer").keypress(function (event) {
                 doitKeypress(event.which);
             });
 
@@ -1174,8 +1188,10 @@ You should have received a copy of the GNU General Public License
             });
 
             $("#debug").on('click', function () {
-                doitSaveGame(83);
+                $("#bug-report-message").val('')
+                $(".bug-report").toggle();
             });
+
             $("#splitEvent").on('click', function () {
                 doitKeypress(115);
             });
