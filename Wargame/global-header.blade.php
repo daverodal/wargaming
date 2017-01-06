@@ -389,7 +389,7 @@ You should have received a copy of the GNU General Public License
             $.ajax({
                 url: "<?=url("wargame/add/");?>",
                 type: "GET",
-                data: {chat: mychat},
+                data: {wargame: '<?=$wargame?>',chat: mychat},
                 success: function (data, textstatus) {
                     alert(data);
                 }
@@ -408,7 +408,7 @@ You should have received a copy of the GNU General Public License
             $.ajax({
                 url: "<?=url("wargame/poke");?>",
                 type: "POST",
-                data: {id: 83, event: <?=SAVE_GAME_EVENT?>, msg:msg},
+                data: {id: 83, wargame: '<?=$wargame?>', event: '<?=SAVE_GAME_EVENT?>', msg:msg},
                 error: function (data, text, third) {
                     try {
                         obj = jQuery.parseJSON(data.responseText);
@@ -456,7 +456,7 @@ You should have received a copy of the GNU General Public License
             $.ajax({
                 url: "<?=url("wargame/poke");?>",
                 type: "POST",
-                data: {id: key, event: <?=KEYPRESS_EVENT?>},
+                data: {id: key, wargame: '<?=$wargame?>', event: '<?=KEYPRESS_EVENT?>'},
                 error: function (data, text, third) {
                     try {
                         obj = jQuery.parseJSON(data.responseText);
@@ -503,7 +503,7 @@ You should have received a copy of the GNU General Public License
             $.ajax({
                 url: "<?=url("wargame/poke");?>",
                 type: "POST",
-                data: {id: id, event: (event.shiftKey || DR.shiftKey) ? <?=COMBAT_PIN_EVENT;?> : <?=COMBAT_PIN_EVENT?>},
+                data: {id: id,wargame: '<?=$wargame?>', event: (event.shiftKey || DR.shiftKey) ? '<?=COMBAT_PIN_EVENT;?>' : '<?=COMBAT_PIN_EVENT?>'},
                 error: function (data, text, third) {
                     try {
                         obj = jQuery.parseJSON(data.responseText);
@@ -553,6 +553,7 @@ You should have received a copy of the GNU General Public License
                 type: "POST",
                 data: {
                     id: id,
+                    wargame: '<?=$wargame?>',
                     event: (event.metaKey || event.ctrlKey) ? <?=SELECT_ALT_COUNTER_EVENT;?> : (event.shiftKey || DR.shiftKey) ? <?=SELECT_SHIFT_COUNTER_EVENT;?> : <?=SELECT_COUNTER_EVENT?>},
                 error: function (data, text, third) {
                     try {
@@ -597,6 +598,7 @@ You should have received a copy of the GNU General Public License
                 url: "<?=url("wargame/poke");?>",
                 type: "POST",
                 data: {
+                    wargame: '<?=$wargame?>',
                     x: x,
                     y: y,
                     event: <?=SELECT_MAP_EVENT?>
@@ -643,6 +645,7 @@ You should have received a copy of the GNU General Public License
                 url: "<?=url("wargame/poke");?>",
                 type: "POST",
                 data: {
+                    wargame: '<?=$wargame?>',
                     id: checked,
                     event: <?=SELECT_BUTTON_EVENT?>},
                 success: function (data, textstatus) {
@@ -675,7 +678,7 @@ You should have received a copy of the GNU General Public License
             $.ajax({
                 url: "<?=url("wargame/poke");?>",
                 type: "POST",
-                data: {event: <?=SELECT_BUTTON_EVENT?>},
+                data: {wargame: '<?=$wargame?>',event: '<?=SELECT_BUTTON_EVENT?>'},
                 success: function (data, textstatus) {
                     try {
                         var success = +$.parseJSON(data).success;
