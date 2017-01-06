@@ -56,7 +56,7 @@
     }
 
     var x;
-    x = new Sync("<?=url("wargame/fetch/");?>");
+    x = new Sync("<?=url("wargame/fetch/$wargame");?>");
 
 
     function svgRefresh(){
