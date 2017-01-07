@@ -109,22 +109,22 @@ class FerozeshaDayTwo extends \Wargame\Mollwitz\IndiaCore
         }
 
         for ($i = 0; $i < $royalInf; $i++) {
-            UnitFactory::create("infantry-1", Ferozesha::BRITISH_FORCE, "deployBox", "BritInfBadge.png", 5, 5, 4, true, STATUS_CAN_DEPLOY, "A", 1, 1, "British", false, 'infantry');
+            UnitFactory::create("infantry-1", self::BRITISH_FORCE, "deployBox", "BritInfBadge.png", 5, 5, 4, true, STATUS_CAN_DEPLOY, "A", 1, 1, "British", false, 'infantry');
         }
         for ($i = 0; $i < $nativeInf; $i++) {
-            UnitFactory::create("infantry-1", Ferozesha::BRITISH_FORCE, "deployBox", "NativeInfBadge.png", 4, 4, 4, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Native", false, 'infantry');
+            UnitFactory::create("infantry-1", self::BRITISH_FORCE, "deployBox", "NativeInfBadge.png", 4, 4, 4, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Native", false, 'infantry');
         }
         for ($i = 0; $i < 1; $i++) {
-            UnitFactory::create("infantry-1", Ferozesha::BRITISH_FORCE, "deployBox", "BritCavBadge.png", 5, 5, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "British", false, 'cavalry');
+            UnitFactory::create("infantry-1", self::BRITISH_FORCE, "deployBox", "BritCavBadge.png", 5, 5, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "British", false, 'cavalry');
         }
         for ($i = 0; $i < 6; $i++) {
-            UnitFactory::create("infantry-1", Ferozesha::BRITISH_FORCE, "deployBox", "NativeCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Native", false, 'cavalry');
+            UnitFactory::create("infantry-1", self::BRITISH_FORCE, "deployBox", "NativeCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Native", false, 'cavalry');
         }
         for ($i = 0; $i < 4; $i++) {
-            UnitFactory::create("infantry-1", Ferozesha::BRITISH_FORCE, "deployBox", "BritArtBadge.png", 2, 2, 3, true, STATUS_CAN_DEPLOY, "A", 1, 4, "British", false, 'artillery');
+            UnitFactory::create("infantry-1", self::BRITISH_FORCE, "deployBox", "BritArtBadge.png", 2, 2, 3, true, STATUS_CAN_DEPLOY, "A", 1, 4, "British", false, 'artillery');
         }
         for ($i = 0; $i < 2; $i++) {
-            UnitFactory::create("infantry-1", Ferozesha::BRITISH_FORCE, "deployBox", "BritHorArtBadge.png", 2, 2, 5, true, STATUS_CAN_DEPLOY, "A", 1, 3, "British", false, 'horseartillery');
+            UnitFactory::create("infantry-1", self::BRITISH_FORCE, "deployBox", "BritHorArtBadge.png", 2, 2, 5, true, STATUS_CAN_DEPLOY, "A", 1, 3, "British", false, 'horseartillery');
         }
 
     }

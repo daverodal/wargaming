@@ -1145,7 +1145,8 @@ You should have received a copy of the GNU General Public License
             });
 
             fixHeader();
-            $("#main-viewer").keydown(function (event) {
+            $("xxxbody").keydown(function (event) {
+                debugger;
                 if (event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40) {
                     doitKeypress(event.which);
                     return false;
@@ -1159,7 +1160,7 @@ You should have received a copy of the GNU General Public License
             });
 
 
-            $("#main-viewer").keyup(function (event) {
+            $("xxxbody").keyup(function (event) {
                 /* why this has to be a keyup event i don't know */
                 if (event.which == 27) {
                     doitKeypress(event.which);
@@ -1182,8 +1183,18 @@ You should have received a copy of the GNU General Public License
                 return false;
             });
 
-            $("#main-viewer").keypress(function (event) {
-                doitKeypress(event.which);
+            $("body").keypress(function (event) {
+                debugger;
+                if(event.target === this){
+                    if(event.which === 115){
+                        return;
+                    }
+                    doitKeypress(event.which);
+                }
+            });
+
+            $("body #bug-report-message").keypress(function(event){
+                return true;
             });
 
             $("#forceMarchEvent").on('click', function () {
