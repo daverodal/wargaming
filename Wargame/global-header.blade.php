@@ -908,13 +908,14 @@ You should have received a copy of the GNU General Public License
             });
 
 
-            $(".unit").on('mousedown touchstart', function (e) {
-                DR.clickX = e.clientX;
-                DR.clickY = e.clientY;
-                DR.dragged = false;
-            });
+//            $(".unit").on('mousedown touchstart', function (e) {
+//                console.log("Down with the mouse");
+//                DR.clickX = e.clientX;
+//                DR.clickY = e.clientY;
+//                DR.dragged = false;
+//            });
 
-            $(".unit").on('mouseup touchend', counterClick);
+            $(".unit").on('click touchend', counterClick);
 
 
             $("#crt #odds span").on('click touchstart', function (event) {
