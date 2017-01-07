@@ -1146,7 +1146,6 @@ You should have received a copy of the GNU General Public License
 
             fixHeader();
             $("xxxbody").keydown(function (event) {
-                debugger;
                 if (event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40) {
                     doitKeypress(event.which);
                     return false;
@@ -1184,7 +1183,6 @@ You should have received a copy of the GNU General Public License
             });
 
             $("body").keypress(function (event) {
-                debugger;
                 if(event.target === this){
                     if(event.which === 115){
                         return;
