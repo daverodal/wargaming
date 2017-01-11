@@ -24,10 +24,10 @@ class Maloyaroslavets1812 extends \Wargame\Mollwitz\JagCore
     const FRENCH_FORCE = 1;
     const RUSSIAN_FORCE = 2;
 
-    public $specialHexesMap = ['SpecialHexA'=>0, 'SpecialHexB'=>0, 'SpecialHexC'=>0];
+    public $specialHexesMap = ['SpecialHexA'=>self::RUSSIAN_FORCE, 'SpecialHexB'=>0, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){
-        $forceName = ['Observer', "Russian", "French"];
+        $forceName = ['Observer', "French", "Russian"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
@@ -54,8 +54,16 @@ class Maloyaroslavets1812 extends \Wargame\Mollwitz\JagCore
         UnitFactory::$injector = $this->force;
 
         foreach($unitSets as $unitSet) {
+            $reinforceTurn = 1;
+            $unitHex = "deployBox";
+            $status = STATUS_CAN_DEPLOY;
+            if(isset($unitSet->reinforceTurn)){
+                $reinforceTurn = $unitSet->reinforceTurn;
+                $unitHex = "gameTurn$reinforceTurn";
+                $status = STATUS_CAN_REINFORCE;
+            }
             for ($i = 0; $i < $unitSet->num; $i++) {
-                UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                UnitFactory::create("infantry-1", $unitSet->forceId, $unitHex, "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, $status, $unitSet->reinforce, $reinforceTurn, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
             }
         }
     }

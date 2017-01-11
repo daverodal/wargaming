@@ -4947,7 +4947,7 @@ You should have received a copy of the GNU General Public License
 .french.specialHexes, .russian.specialHexes {
   color: white; }
 
-.French p.forceMarch, .French p.range, .German p.forceMarch, .German p.range, .Guard p.forceMarch, .Guard p.range, .Russian p.forceMarch, .Russian p.range {
+.French p.forceMarch, .French p.range, .Guard p.forceMarch, .Guard p.range, .Russian p.forceMarch, .Russian p.range {
   color: white; }
 
 .French.unit .unit-numbers, .Guard.unit .unit-numbers {

@@ -57,12 +57,30 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             $frenchWinScore = 35;
 
             if($this->victoryPoints[Maloyaroslavets1812::FRENCH_FORCE] >= $frenchWinScore){
-                $frenchWin = true;
-                $victoryReason .= "Over $frenchWinScore ";
+                $allHexes = true;
+                foreach($battle->specialHexesA as $specialHex){
+                    if($battle->mapData->getSpecialHex($specialHex) !== Maloyaroslavets1812::FRENCH_FORCE){
+                        $allHexes = false;
+                        break;
+                    }
+                }
+                if($allHexes === true){
+                    $frenchWin = true;
+                    $victoryReason .= "Over $frenchWinScore and all hexes in Maloyaroslavets";
+                }
             }
             if ($this->victoryPoints[Maloyaroslavets1812::RUSSIAN_FORCE] >= $russianWinScore) {
-                $russianWin = true;
-                $victoryReason .= "Over $russianWinScore ";
+                $allHexes = true;
+                foreach($battle->specialHexesA as $specialHex){
+                    if($battle->mapData->getSpecialHex($specialHex) !== Maloyaroslavets1812::RUSSIAN_FORCE){
+                        $allHexes = false;
+                        break;
+                    }
+                }
+                if($allHexes === true) {
+                    $russianWin = true;
+                    $victoryReason .= "Over $russianWinScore and all hexes in Maloyaroslavets";
+                }
             }
 
             if ($frenchWin && !$russianWin) {
@@ -78,13 +96,6 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->winner = Maloyaroslavets1812::RUSSIAN_FORCE;
                 $winner = $pData[$this->winner];
                 $gameRules->flashMessages[] = "$winner Win";
-                $gameRules->flashMessages[] = $victoryReason;
-                $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
-            }
-            if($frenchWin && $russianWin){
-                $gameRules->flashMessages[] = "Tie Game";
                 $gameRules->flashMessages[] = $victoryReason;
                 $gameRules->flashMessages[] = "Game Over";
                 $this->gameOver = true;
@@ -110,5 +121,35 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         parent::postRecoverUnit($args);
 
+    }
+
+
+    public function phaseChange()
+    {
+        parent::phaseChange();
+        /* @var $battle JagCore */
+        $battle = Battle::getBattle();
+        /* @var $gameRules GameRules */
+        $gameRules = $battle->gameRules;
+        $turn = $gameRules->turn;
+        $forceId = $gameRules->attackingForceId;
+        $theUnits = $battle->force->units;
+
+
+        if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
+            $gameRules->flashMessages[] = "@hide deadpile";
+            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
+                $gameRules->flashMessages[] = "@show deployWrapper";
+                $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
+            }
+
+            foreach ($theUnits as $id => $unit) {
+
+                if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
+//                $theUnits[$id]->status = STATUS_ELIMINATED;
+                    $theUnits[$id]->hexagon->parent = "deployBox";
+                }
+            }
+        }
     }
 }

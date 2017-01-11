@@ -1028,7 +1028,7 @@ class MoveRules
 
             for ($i = 1; $i <= 6; $i++) {
                 $newHexNum = $mapHex->neighbors[$i - 1];
-                if($this->hexagonBlocksRetreat($id, new Hexagon($newHexNum))){
+                if($this->hexagonBlocksRetreat($id, new Hexagon($hexNum), new Hexagon($newHexNum))){
                     continue;
                 }
 //                $newMapHex = $this->mapData->getHex($newHexNum);
@@ -1803,7 +1803,7 @@ class MoveRules
         return $isBlocked;
     }
 
-    function hexagonBlocksRetreat($id, Hexagon $hexagon)
+    function hexagonBlocksRetreat($id, Hexagon $startHex, Hexagon $hexagon)
     {
         $isBlocked = false;
 
@@ -1814,7 +1814,6 @@ class MoveRules
 
 
         // make sure hexagon is not ZOC
-        $startHex = $this->force->units[$id]->hexagon;
         $unit = $this->force->units[$id];
         $mapHex = $this->mapData->getHex($hexagon->name);
         $forceId = $unit->forceId;
@@ -1830,7 +1829,7 @@ class MoveRules
         if ($this->terrain->terrainIsHexSide($startHex->name, $hexagon->name, "blocked")) {
             $isBlocked = true;
         }
-        if ($this->terrain->getTerrainMoveCost($startHex->name, $hexagon->name, $unit->forceMarch, $unit) == "blocked") {
+        if ($this->terrain->getTerrainMoveCost($startHex->name, $hexagon->name, false, $unit) == "blocked") {
             $isBlocked = true;
         }
 
@@ -1855,9 +1854,10 @@ class MoveRules
         $movingUnit = $this->force->getUnit($id);
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
+        $startHex = $this->force->units[$id]->hexagon;
 
         if ($this->rangeIsOneHexagon($movingUnit->getUnitHexagon()->name, $hexagon)
-            && $this->hexagonBlocksRetreat($id, $hexagon) === false
+            && $this->hexagonBlocksRetreat($id, $startHex, $hexagon) === false
         ) {
             $this->force->addToRetreatHexagonList($id, $movingUnit->getUnitHexagon());
             // set move amount to 0
