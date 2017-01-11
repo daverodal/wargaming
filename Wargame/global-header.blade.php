@@ -1146,28 +1146,6 @@ You should have received a copy of the GNU General Public License
             });
 
             fixHeader();
-            $("xxxbody").keydown(function (event) {
-                if (event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40) {
-                    doitKeypress(event.which);
-                    return false;
-                }
-                if(event.which == 83){
-                    doitSaveGame(event.which);
-                    return false;
-                }
-
-                return true;
-            });
-
-
-            $("xxxbody").keyup(function (event) {
-                /* why this has to be a keyup event i don't know */
-                if (event.which == 27) {
-                    doitKeypress(event.which);
-                    return false;
-                }
-                return true;
-            });
 
             $("#submit-bug-report").click(function(event){
                 doitSaveGame($("#bug-report-message").val());
@@ -1184,12 +1162,10 @@ You should have received a copy of the GNU General Public License
             });
 
             $("body").keypress(function (event) {
-                if(event.target === this){
-                    if(event.which === 115){
-                        return;
-                    }
-                    doitKeypress(event.which);
+                if(event.target.id === "bug-report-message"){
+                    return;
                 }
+                doitKeypress(event.which);
             });
 
             $("body #bug-report-message").keypress(function(event){
