@@ -26,15 +26,4 @@ You should have received a copy of the GNU General Public License
 ?>
 
 <ol>
-    <li>
-        The Left side of the Map is North.
-    </li>
-    <li><span class="lessBig">French: </span>
-
-        French deploy first on any hexes marked Blue F. The two French 6-5 Cavalry units must deploy on the two hexes marked Blue FC. French move second.
-     </li><li><span class="lessBig">Russians: </span>
-
-        Russians deploy second on or within hexes marked Red R. Russians move first.
-
-    </li>
 </ol>
