@@ -228,7 +228,7 @@ class JagCore extends \Wargame\LandBattle{
         $this->terrain->addTerrainFeature("blocked", "blocked", "b", "blocked", "blocked", 0, true);
         $this->terrain->addTerrainFeature("redoubt", "redoubt", "d", 0, 0, 0, false);
         $this->terrain->addTerrainFeature("redoubtfront", "redoubtfront", "d", 0, 2, 0, false);
-        $this->terrain->addTerrainFeature("blocksnonroad", "blocksnonroad", "b", "blocked", "blocked", 0, false);
+        $this->terrain->addTerrainFeature("blocksnonroad", "blocksnonroad", "b", 1, 0, 0, false);
         $this->terrain->addAltEntranceCost('swamp','artillery','blocked');
         $this->terrain->addTerrainFeature("sunkenroad", "sunkenroad", "k", 0, 0, 1, false, false);
         $this->terrain->addTerrainFeature("crest","crest", "c", 0, 1, 0, false);
