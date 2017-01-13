@@ -1391,6 +1391,9 @@ class MoveRules
                 }
             }
         }
+        if($movingUnit->unitIsDeploying()){
+            $this->stopDeploying($movingUnit);
+        }
         $victory->preStopMovingUnit($movingUnit);
     }
 

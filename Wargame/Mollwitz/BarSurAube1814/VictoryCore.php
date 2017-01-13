@@ -114,7 +114,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                $this->winner = Vimeiro1808::FRENCH_FORCE;
+                $this->winner = BarSurAube1814::FRENCH_FORCE;
                 $winner = $pData[$this->winner];
                 $gameRules->flashMessages[] = "$winner Win";
                 $gameRules->flashMessages[] = $victoryReason;
