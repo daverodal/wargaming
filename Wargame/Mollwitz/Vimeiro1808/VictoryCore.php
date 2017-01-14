@@ -109,8 +109,8 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             $pData = $battle::getPlayerData($battle->scenario)['forceName'];
             $mapData = $battle->mapData;
 
-            $BritishWinScore = 26;
-            $frenchWinScore = 26;
+            $BritishWinScore = 30;
+            $frenchWinScore = 30;
 
             if($this->victoryPoints[Vimeiro1808::FRENCH_FORCE] >= $frenchWinScore){
                 $frenchWin = true;
