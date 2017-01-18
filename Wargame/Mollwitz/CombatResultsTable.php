@@ -242,8 +242,9 @@ class CombatResultsTable
 
             $acrossRiver = false;
             foreach ($defenders as $defId => $defender) {
-                if ($battle->combatRules->thisAttackAcrossRiver($defId, $attackerId)) {
-                    $terrainReason .= "attack across river or wadi";
+                $reason = "";
+                if ($battle->combatRules->thisAttackAcrossRiver($defId, $attackerId, $reason)) {
+                    $terrainReason .= "attack across $reason";
                     $acrossRiver = true;
                 }
             }

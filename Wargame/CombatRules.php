@@ -775,12 +775,10 @@ class CombatRules
         }
         return  count(get_object_vars($this->combatsToResolve->$defenderId->defenders));
     }
-    function thisAttackAcrossRiver($defenderId, $attackerId)
+
+    function thisAttackAcrossRiver($defenderId, $attackerId, &$reason = "")
     {
 
-
-//     $attackerHexagonList = array();
-//    $attackerHexagonList = $this->force->getAttackerHexagonList($combatNumber);
         $attackerUnit = $this->force->getUnit($attackerId);
         $attackerHexagon = $attackerUnit->getUnitHexagon();
         /* @var Hexagon $defenderHexagon */
@@ -794,12 +792,15 @@ class CombatRules
         $hexside = new Hexpart($hexsideX, $hexsideY);
 
         if ($this->terrain->terrainIs($hexside, "river") === true) {
+            $reason = "river";
             return true;
         }
         if ($this->terrain->terrainIs($hexside, "wadi") === true) {
+            $reason = "wadi";
             return true;
         }
         if ($this->terrain->terrainIs($hexside, "blocksnonroad") === true) {
+            $reason = "bridge";
             return true;
         }
         return false;
@@ -833,29 +834,6 @@ class CombatRules
          */
         return ($this->terrain->terrainIs($hexParts[1], $type) || $this->terrain->terrainIs($hexParts[2], $type) );
 
-    }
-
-    function tthisAttackAcrossType($defenderId, $attackerId, $type)
-    {
-
-        $this->isAttackAcrossType($defenderId, $attackerId, $type);
-
-//     $attackerHexagonList = array();
-//    $attackerHexagonList = $this->force->getAttackerHexagonList($combatNumber);
-        $attackerHexagon = $this->force->getCombatHexagon($attackerId);
-        /* @var Hexagon $defenderHexagon */
-        $defenderHexagon = $this->force->getCombatHexagon($defenderId);
-
-
-        $hexsideX = ($defenderHexagon->getX() + $attackerHexagon->getX()) / 2;
-        $hexsideY = ($defenderHexagon->getY() + $attackerHexagon->getY()) / 2;
-
-        $hexside = new Hexpart($hexsideX, $hexsideY);
-
-        if ($this->terrain->terrainIs($hexside, $type) === false) {
-            return false;
-        }
-        return true;
     }
 
 
