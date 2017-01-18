@@ -72,10 +72,11 @@
 }
 
 #crt {
-  width:680px;
+  font-size:14px;
+  width:800px;
   #odds, .roll{
     span{
-      width:45px;
+      width:55px;
     }
   }
   .crt-table-name{
@@ -207,4 +208,10 @@
       width: 24%;
     }
   }
+}
+
+#arrow-svg .range-hex {
+  stroke:black;
+  fill-opacity: .1;
+  display:none;
 }

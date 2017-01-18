@@ -42,7 +42,7 @@
 @endsection
 
 @section('ng-ghost-unit-template')
-    <div class="unitSize">lll</div>
+    <div ng-if="unit.class !== 'supply'" class="unitSize">lll</div>
     <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
          src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
     <div class="counterWrapper">
@@ -52,7 +52,7 @@
     </div>
     <div class="range">@{{ unit.armorClass }}</div>
     <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.pointsLeft }}</div>
-    <div class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
+    <div ng-if="unit.class !== 'supply'" class="unit-steps">@{{ "...".slice(0, unit.steps) }}</div>
 @endsection
 
 @section('inner-crt')
@@ -132,7 +132,7 @@
 
 
 @section('units')
-    <div ng-mouseDown="mouseDown(unit.id, $event)"ng-mouseUp="clickMe(unit.id, $event)"  class="a-unit-wrapper" ng-repeat="unit in mapUnits" ng-style="unit.wrapperstyle">
+    <div ng-click="clickMe(unit.id, $event)" ng-mouseover="hoverHq(unit)" ng-mouseleave="unHoverHq(unit)"  class="a-unit-wrapper" ng-repeat="unit in mapUnits" ng-style="unit.wrapperstyle">
         <unit right-click-me="rightClickMe(id)" unit="unit"></unit>
     </div>
 

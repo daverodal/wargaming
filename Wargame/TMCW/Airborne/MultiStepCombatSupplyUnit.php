@@ -25,10 +25,20 @@ use Wargame\TMCW\KievCorps\MultiStepUnit;
 class MultiStepCombatSupplyUnit extends MultiStepUnit
 {
     public $supplyUsed = false;
+    public $supplyRadius = false;
 
     public function fetchData(){
         $mapUnit = parent::fetchData();
         $mapUnit->supplyUsed = $this->supplyUsed;
+        if($this->supplyRadius !== false){
+            $mapUnit->supplyRadius = $this->supplyRadius;
+        }
         return $mapUnit;
+    }
+
+    public function postSet(){
+        if($this->class === "supply"){
+            $this->supplyRadius = 2;
+        }
     }
 }

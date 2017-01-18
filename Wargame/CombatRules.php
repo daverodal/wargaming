@@ -799,6 +799,9 @@ class CombatRules
         if ($this->terrain->terrainIs($hexside, "wadi") === true) {
             return true;
         }
+        if ($this->terrain->terrainIs($hexside, "blocksnonroad") === true) {
+            return true;
+        }
         return false;
     }
 

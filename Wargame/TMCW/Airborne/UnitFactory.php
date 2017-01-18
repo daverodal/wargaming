@@ -51,6 +51,7 @@ class UnitFactory {
         $unit = static::build();
         $unit->set($unitName, $unitForceId, $unitHexagon, $unitImage, $unitStrength,
             $unitMaxMove, $unitStatus, $unitReinforceZoneName, $unitReinforceTurn,  $nationality, $class, $unitDesig, $curSteps, $maxSteps);
+        $unit->postSet();
         self::$injector->injectUnit($unit);
     }
 }

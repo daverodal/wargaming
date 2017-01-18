@@ -3545,9 +3545,10 @@ You should have received a copy of the GNU General Public License
   position: relative; }
 
 #crt {
-  width: 680px; }
+  font-size: 14px;
+  width: 800px; }
   #crt #odds span, #crt .roll span {
-    width: 45px; }
+    width: 55px; }
   #crt .crt-table-name {
     display: none; }
 
@@ -3642,6 +3643,11 @@ You should have received a copy of the GNU General Public License
     #TECWrapper #TEC ul .column-three {
       float: left;
       width: 24%; }
+
+#arrow-svg .range-hex {
+  stroke: black;
+  fill-opacity: .1;
+  display: none; }
 
 li {
   color: green; }

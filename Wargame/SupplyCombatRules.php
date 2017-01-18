@@ -30,12 +30,10 @@ class SupplyCombatRules extends CombatRules implements CombatSupply
 
     public function selectSupply(MovableUnit $unit)
     {
-        if ($unit->maxMove === 10) {
-            $unit->maxMove = 6;
+        if ($unit->supplyUsed === true) {
             $unit->status = STATUS_UNAVAIL_THIS_PHASE;
             $unit->supplyUsed = false;
         } else {
-            $unit->maxMove = 10;
             $unit->status = STATUS_READY;
             $unit->supplyUsed = true;
         }

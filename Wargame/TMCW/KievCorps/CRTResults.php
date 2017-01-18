@@ -93,30 +93,26 @@ trait CRTResults
                 $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
                 break;
 
-            case DRL2:
+            case DLR2:
                 $distance = 2;
-            case DRL:
             case DLR:
-            case DLF:
             case DL2R:
-            case DL2F:
+            case DL2AL:
+            case DL2AL2:
 
                 if ($numDefenders > 1) {
                     $defUnit->status = STATUS_CAN_DEFEND_LOSE;
                     $force->exchangeAmount = 1;
-                    if ($combatResults === DL2R || $combatResults === DL2F) {
+                    if ($combatResults === DL2R || $combatResults === DL2AL || $combatResults === DL2AL2) {
                         $force->exchangeAmount = 2;
                     }
                     $defUnit->retreatCountRequired = $distance;
-                    if($combatResults === DL2F || $combatResults === DLF){
-                        $defUnit->retreatCountRequired = $defUnit->maxMove;
-                    }
                     $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
 
                     break;
                 }
                 $eliminated = $defUnit->damageUnit();
-                if (($combatResults === DL2R || $combatResults === DL2F) && !$eliminated) {
+                if (($combatResults === DL2R ||  $combatResults === DL2AL || $combatResults === DL2AL2) && !$eliminated) {
                     $eliminated = $defUnit->damageUnit();
                 }
                 if ($eliminated) {
@@ -124,7 +120,9 @@ trait CRTResults
                     $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
 
                 } else {
-                    $defUnit->status = STATUS_CAN_RETREAT;
+                    if($combatResults == DL2R || $combatResults === DLR || $combatResults === DLR2 ){
+                        $defUnit->status = STATUS_CAN_RETREAT;
+                    }
                 }
                 $defUnit->retreatCountRequired = $distance;
                 if($combatResults === DL2F || $combatResults === DLF){
@@ -224,11 +222,13 @@ trait CRTResults
                     case BL:
                     case BLDR:
                     case DEAL:
+                    case DL2AL:
+                    case DL2AL2:
                         if ($numAttackers > 1) {
                             $attUnit->status = STATUS_CAN_ATTACK_LOSE;
                             $attUnit->retreatCountRequired = 0;
                             $force->exchangeAmount = 1;
-                            if ($combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F) {
+                            if ($combatResults === DL2AL2 || $combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F) {
                                 $force->exchangeAmount = 2;
                             }
                             if ($combatResults === ALR || $combatResults === ALF || $combatResults === AL2R || $combatResults === AL2F) {
@@ -241,7 +241,7 @@ trait CRTResults
                             break;
                         }
                         $eliminated = $attUnit->damageUnit();
-                        if (($combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F) && !$eliminated) {
+                        if (($combatResults === AL2 || $combatResults === AL2R || $combatResults === AL2F || $combatResults === DL2AL2) && !$eliminated) {
                             $eliminated = $attUnit->damageUnit();
                         }
                         if (!$eliminated) {
@@ -255,7 +255,7 @@ trait CRTResults
 
                                 }
                             }
-                            if ($combatResults === DEAL || $combatResults === BLDR) {
+                            if ($combatResults === DEAL || $combatResults === BLDR || $combatResults === DL2AL || $combatResults === DL2AL2) {
                                 $attUnit->status = STATUS_CAN_ADVANCE;
                             }
                         }
@@ -273,7 +273,6 @@ trait CRTResults
 
                     case DRL2:
                     case DR2:
-                    case DRL:
                     case DLR:
                     case DR:
                     case DLF:

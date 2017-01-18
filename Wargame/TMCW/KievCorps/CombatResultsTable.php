@@ -42,12 +42,12 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
         $this->crts->normal->maxCombatIndex = 10;
 
         $this->crts->normal->table = array(
-            array(AL, AL, NE,  BL,  DRL,  DRL,  DRL,   DRL,  DL2R, DL2R, DL2R),
-            array(AL, AL, BL,  DR,  DRL,  DRL,  DRL,  DL2R, DL2R, DL2R, DL2R),
-            array(AL, AR, DR,  DRL, DRL,  DRL,  DL2R, DL2R, DL2R, DL2R, DE),
-            array(AR, AR, DR,  DRL, DRL,  DL2R, DL2R, DL2R, DL2R, DE,   DE),
-            array(AR, NE, DRL, DRL, DL2R, DL2R, DL2R, DL2R, DE,   DE,   DE),
-            array(AR, DR, DRL, DRL, DL2R, DL2R, DL2R, DE,   DE,   DE,   DE),
+            array(AL, AL, NE,  BL,  BL,    BL,    DRL,    DRL,    DL2AL, DL2AL, DL2AL),
+            array(AL, AL, BL,  BL,  BL,    DRL,   DRL,    DL2AL2, DL2AL, DL2AL, DL2R),
+            array(AL, AR, DR,  BL,  DRL,   DRL,   DL2AL,  DL2AL2, DL2R, DL2R, DE),
+            array(AR, AR, DR,  DR,  DRL,   DL2AL, DL2AL2, DL2AL,  DL2R, DE,   DE),
+            array(AR, NE, DRL, DRL, DL2AL, DL2AL, DL2AL2, DL2AL,  DEAL,   DE,   DE),
+            array(AR, DR, DRL, DRL, DL2R,  DL2R,  DL2R,   DEAL,   DE,   DE,   DE),
         );
 
         $this->combatIndexCount = 11;
