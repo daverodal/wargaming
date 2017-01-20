@@ -58,7 +58,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
             if($this->victoryPoints[Maloyaroslavets1812::FRENCH_FORCE] >= $frenchWinScore){
                 $allHexes = true;
-                foreach($battle->specialHexesA as $specialHex){
+                foreach($battle->specialHexA as $specialHex){
                     if($battle->mapData->getSpecialHex($specialHex) !== Maloyaroslavets1812::FRENCH_FORCE){
                         $allHexes = false;
                         break;
@@ -71,7 +71,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             }
             if ($this->victoryPoints[Maloyaroslavets1812::RUSSIAN_FORCE] >= $russianWinScore) {
                 $allHexes = true;
-                foreach($battle->specialHexesA as $specialHex){
+                foreach($battle->specialHexA as $specialHex){
                     if($battle->mapData->getSpecialHex($specialHex) !== Maloyaroslavets1812::RUSSIAN_FORCE){
                         $allHexes = false;
                         break;
