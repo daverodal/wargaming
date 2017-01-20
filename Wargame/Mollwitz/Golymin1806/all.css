@@ -4646,7 +4646,7 @@ You should have received a copy of the GNU General Public License
 .french.specialHexes, .anglo.specialHexes {
   color: white; }
 
-.French p.forceMarch, .French p.range, .AngloAllied p.forceMarch, .AngloAllied p.range, .Guard p.forceMarch, .Guard p.range {
+.French p.forceMarch, .French p.range, .AngloAllied p.forceMarch, .AngloAllied p.range, .Guard p.forceMarch, .Guard p.range, .Russian p.forceMarch, .Russian p.range {
   color: white; }
 
 .fa-flag {
