@@ -25,7 +25,7 @@
         victories are a Draw</h4>
     <ol>
         <li>
-            Either side wins at the end of any turn that it has accumulated 35 points.
+            Either side wins at the end of any turn that it has accumulated 35 points UNLESS the "Victory points are not used to determine victory" option is selected.
             1 point is awarded for each Hostile combat point destroyed. A draw is possible.
 
 

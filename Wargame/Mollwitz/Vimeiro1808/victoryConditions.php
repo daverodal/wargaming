@@ -21,7 +21,7 @@
  */
 ?><li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
-    <h4>The Game ends instantly at the end of any Player Turn when either side wins at the end of any turn that it has 25 or more points.
+    <h4>The Game ends instantly at the end of any Player Turn when either side wins at the end of any turn that it has 30 or more points.
         Mutual victories are a Draw</h4>
     <ol>
 
@@ -30,6 +30,11 @@
                 </li>
                 <li>
                     The French are awarded 5 points for each hex marked B5 or 5 that they currently occupy or were the last to move through.
+                </li>
+                <li>
+                    If the "Progressive Victory Points" scenario is being played then cities are work varying amounts depenging on how many
+                    cities the french have captured. If the french have captured no cities, the first one is worth 3 points. If they have captured one, the second one is worth 6 points.
+                    If they have captured 2 or more cities, additional cities will be worth 9 points.
                 </li>
                 <li>
                     The British win if at the end of turn 9 the French have not won and the British have more points than the French.
