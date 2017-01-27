@@ -24,11 +24,12 @@ You should have received a copy of the GNU General Public License
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/icon">
-    <script src="<?=url("js/jquery.js");?>"></script>
+    <script src="{{elixir("javascripts/gameMain.js")}}"></script>
+
     <script src="<?=url("js/jquery-ui.js");?>"></script>
+
     <script src="<?=url("js/jquery.panzoom/dist/jquery.panzoom.js");?>"></script>
     <script src="<?=url("js/jquery.panzoom/test/libs/jquery.mousewheel.js");?>"></script>
-    <script src="{{elixir("js/sync.js")}}"></script>
 
     <script type="text/javascript">
         $.ajaxSetup({
