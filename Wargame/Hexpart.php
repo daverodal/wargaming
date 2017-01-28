@@ -191,7 +191,7 @@ function calculateHexpartName() {
 	   $refHexagon = new Hexagon();
 
 		$refHexagon->setXY($this->refHexpartX, $this->refHexpartY);
-		$this->name = $this->prefix + $refHexagon->getName();
+		$this->name = $this->prefix . $refHexagon->getName();
 
 	} else {
 

@@ -76,6 +76,8 @@ class mollwitzVictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->gameOver = true;
                 $gameRules->flashMessages[] = "Tie Game";
             }
+            $force_name = $battle::getPlayerData($battle->scenario)['forceName'];
+
             if($austrianWin){
                 $this->winner = Mollwitz::AUSTRIAN_FORCE;
                 $gameRules->flashMessages[] = $force_name[Mollwitz::AUSTRIAN_FORCE]." $reason";

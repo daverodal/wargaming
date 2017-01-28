@@ -196,6 +196,10 @@ class MovableUnit{
         return $this->hexagon->parent == "deployBox";
     }
 
+    function isOnMap(){
+       return $this->hexagon->parent == "gameImages";
+    }
+
     function getReplacing( $hexagon)
     {
         if ($this->status == STATUS_REPLACING) {

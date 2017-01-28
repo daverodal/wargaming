@@ -95,6 +95,9 @@ class MapHex
 
     public function setUnit($forceId, $unit)
     {
+        if(!$unit->isOnMap()){
+            return;
+        }
         $id = $unit->id;
         $battle = \Wargame\Battle::getBattle();
         if (!$this->forces) {

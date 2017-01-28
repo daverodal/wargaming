@@ -5175,7 +5175,7 @@
           "class": "infantry"
         },
         {
-          "num": 2,
+          "num": 1,
           "forceId": 2,
           "combat": 5,
           "movement": 2,
@@ -5185,7 +5185,7 @@
           "class": "artillery"
         },
         {
-          "num": 1,
+          "num": 2,
           "forceId": 2,
           "combat": 4,
           "movement": 3,
@@ -5215,7 +5215,7 @@
           "class": "cavalry"
         },
         {
-          "num": 1,
+          "num": 3,
           "forceId": 2,
           "combat": 1,
           "movement": 7,
@@ -5643,7 +5643,7 @@
   "BarSurAube1814": {
   "name": "The Battle of Bar Sur Aube 1814",
   "path": "Mollwitz",
-  "production": false,
+  "production": true,
   "genre": "Napoleonic",
   "fileName": "\\Wargame\\Mollwitz\\BarSurAube1814\\BarSurAube1814",
   "description": "The Battle of Bar Sur Aube 1814.",
@@ -5842,7 +5842,7 @@
   "Vimeiro1808": {
     "name": "The Battle of Vimeiro 1808",
     "path": "Mollwitz",
-    "production": false,
+    "production": true,
     "genre": "Napoleonic",
     "fileName": "\\Wargame\\Mollwitz\\Vimeiro1808\\Vimeiro1808",
     "description": "The Battle of Vimeiro 1808.",
