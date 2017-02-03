@@ -86,7 +86,7 @@
     <div id="deployBox">
 
         <div class="deploy-zone-wrapper">
-            Rebel Zone B
+            <div>Rebel Zone B</div>
             <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)" ng-repeat="unit in deployUnits | filter:{reinforceZone: 'B'}"
                  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="deploy-zone-wrapper">
-            Airdrop Rebel Zone A
+            <div>Airdrop Rebel Zone A</div>
             <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'A'}"
                  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>
@@ -103,7 +103,7 @@
             <div class="clear"></div>
         </div>
         <div class="deploy-zone-wrapper">
-            Loyalist Zone C
+            <div>Loyalist Zone C</div>
             <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'C'}"
                  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>
@@ -111,7 +111,7 @@
             <div class="clear"></div>
         </div>
         <div class="deploy-zone-wrapper">
-            Loyalist Zone D
+            <div>Loyalist Zone D</div>
             <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'D'}"
                  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>
@@ -119,7 +119,7 @@
             <div class="clear"></div>
         </div>
         <div class="deploy-zone-wrapper">
-            Loyalist Zone E
+            <div>Loyalist Zone E<i class="fa fa-times"></i></div>
             <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'E'}"
                  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>

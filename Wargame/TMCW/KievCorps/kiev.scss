@@ -36,10 +36,11 @@
 }
 
 #crt {
-  width:680px;
+  width:800px;
   #odds, .roll{
     span{
-      width:45px;
+      font-size:14px;
+      width:52px;
     }
   }
   .crt-table-name{
@@ -63,6 +64,16 @@
   @include victoryPoints(orange)
 }
 
+#deadpile{
+  .retired-unit-wrapper{
+    position:static;
+    float:left;
+    margin:0 3px 3px 0;
+    .unit{
+      position:relative;
+    }
+  }
+}
 .specialHexesVP .germanVictoryPoints {
  @include victoryPoints(gray);
 }

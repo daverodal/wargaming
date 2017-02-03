@@ -163,12 +163,13 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
     public function gameEnded()
     {
         $battle = Battle::getBattle();
-        $kiev = $battle->specialHexC[0];
-        if ($battle->mapData->getSpecialHex($kiev) === SOVIET_FORCE) {
-            $battle->gameRules->flashMessages[] = "Soviet Player Wins";
-        }else{
-            $battle->gameRules->flashMessages[] = "German Player Wins";
-        }
+//        $kiev = $battle->specialHexC[0];
+//        if ($battle->mapData->getSpecialHex($kiev) === SOVIET_FORCE) {
+//            $battle->gameRules->flashMessages[] = "Soviet Player Wins";
+//        }else{
+//            $battle->gameRules->flashMessages[] = "German Player Wins";
+//        }
+        $battle->gameRules->flashmessagaes[] = "Everybody is a winner! ";
         $this->gameOver = true;
         return true;
     }

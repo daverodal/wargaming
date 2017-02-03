@@ -96,6 +96,7 @@ trait CRTResults
             case DLR2:
                 $distance = 2;
             case DLR:
+            case DRL:
             case DL2R:
             case DL2AL:
             case DL2AL2:
@@ -120,8 +121,10 @@ trait CRTResults
                     $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
 
                 } else {
-                    if($combatResults == DL2R || $combatResults === DLR || $combatResults === DLR2 ){
+                    if($combatResults == DL2R || $combatResults === DLR || $combatResults === DRL || $combatResults === DLR2 ){
                         $defUnit->status = STATUS_CAN_RETREAT;
+                    }else{
+                        $defUnit->status = STATUS_DEFENDED;
                     }
                 }
                 $defUnit->retreatCountRequired = $distance;
@@ -274,6 +277,7 @@ trait CRTResults
                     case DRL2:
                     case DR2:
                     case DLR:
+                    case DRL:
                     case DR:
                     case DLF:
                     case DL2R:

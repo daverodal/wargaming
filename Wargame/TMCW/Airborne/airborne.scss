@@ -39,32 +39,16 @@
   z-index:1;
 
 }
+.unit-wrapper{
+  .a-unit-wrapper{
+    position:static;
+    float:left;
+    margin:3px 3px 0 0;
+  }
+}
+
 #crtDetails{
   display:block;
-}
-
-.selected {
-  background:rgba(255,255,0,.6);
-}
-.pinned{
-  background: rgba(255,0,255,.6)
-}
-.die-roll{
-  background: cyan;
-}
-
-.unit .unit-steps {
-  position: absolute;
-  top: 0px;
-  width: 5px;
-  word-wrap: break-word;
-  line-height: 4px;
-  color:black;
-}
-
-#deployBox .unit {
-  border: solid 3px;
-  border-color: #cccccc #666666 #666666 #cccccc;
 }
 
 .rel-unit{
@@ -87,11 +71,20 @@
 #OBC{
   width:800px;
 }
+
 #infoWrapper .WrapperLabel {
   width: auto;
 }
 
 .unit{
+  .unit-steps {
+    position: absolute;
+    top: 0px;
+    width: 5px;
+    word-wrap: break-word;
+    line-height: 4px;
+    color:black;
+  }
   .unitSize{
     height:9px;
   }
@@ -115,15 +108,17 @@
       font-size:14px;
     }
   }
+  &.loyalGuards{
+    .couterWrapper .couter-symbol{
+      stroke:white;
+    }
+  }
 }
+
 #angCrtDetailsButton{
   cursor:pointer;
 }
-.unit.loyalGuards{
-  .couterWrapper .couter-symbol{
-    stroke:white;
-  }
-}
+
 .mapSymbols {
   margin-top:-7px;
   margin-left:5px;
@@ -138,7 +133,12 @@
     }
   }
 }
+
 #deployBox{
+  .unit {
+    border: solid 3px;
+    border-color: #cccccc #666666 #666666 #cccccc;
+  }
   .deploy-zone-wrapper{
     width:19%;
     float:left;
@@ -146,6 +146,7 @@
     margin-left:5px;
   }
 }
+
 #TECWrapper #TEC {
   padding-bottom:15px;
   width:700px;
