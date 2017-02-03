@@ -896,7 +896,7 @@
         ]
       },
       "biggest": {
-        "description": "Russian Infantry Bigger.",
+        "description": "Russian Units Bigger.",
         "longDescription": "Russian attack strength is 4",
         "units": [
           {
