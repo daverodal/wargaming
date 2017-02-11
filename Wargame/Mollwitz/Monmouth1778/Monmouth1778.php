@@ -22,7 +22,10 @@ class Monmouth1778 extends \Wargame\Mollwitz\JagCore
 {
 
     const AMERICAN_FORCE = 1;
+    const REBEL_FORCE = self::AMERICAN_FORCE;
     const BRITISH_FORCE = 2;
+    const LOYALIST_FORCE = self::BRITISH_FORCE;
+
 
     public $specialHexesMap = ['SpecialHexA'=>self::BRITISH_FORCE, 'SpecialHexB'=>self::AMERICAN_FORCE, 'SpecialHexC'=>0];
 
