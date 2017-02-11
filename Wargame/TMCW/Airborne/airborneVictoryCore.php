@@ -104,8 +104,11 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
 
             if ($zone == "A") {
                 foreach ($this->airdropZones as $airdropZone) {
-                    $zones[] = new \Wargame\ReinforceZone($airdropZone, "C");
+                    $zones[] = new \Wargame\ReinforceZone($airdropZone, "A");
                 }
+            }
+            if($zone == "B"){
+                $zones[] = new \Wargame\ReinforceZone(101, "B");;
             }
         }
 
@@ -266,7 +269,14 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
             $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
         }
         if($b->gameRules->mode === COMBAT_SETUP_MODE){
-            $this->unitCombatSupplyEffects($unit, [], [], 2);
+            $goal = $bias = [];
+            $supplyLen = 2;
+            if($unit->forceId === Airborne::LOYALIST_FORCE){
+                $goal = [2101, 422];
+                $supplyLen = 20;
+                $bias = [2 => true, 3 => true, 4 => true];
+            }
+            $this->unitCombatSupplyEffects($unit, $goal, $bias, $supplyLen);
         }
     }
 
@@ -281,8 +291,10 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
             return;
         }
+        $supplyLen = 2;
+        $bias = [];
 
-            $this->unitCombatSupplyEffects($unit, $goal, [], 2);
+        $this->unitCombatSupplyEffects($unit, $goal, $bias, $supplyLen);
 
     }
 

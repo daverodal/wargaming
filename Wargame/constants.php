@@ -26,6 +26,7 @@ define("NO_FORCE",0);
 define("BLUE_FORCE",1);
 define("RED_FORCE",2);
 define("TEAL_FORCE", 3);
+define("PURPLE_FORCE", 4);
 global $force_name;
 
 if(!isset($force_name)){

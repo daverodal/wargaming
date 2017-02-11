@@ -458,7 +458,8 @@ You should have received a copy of the GNU General Public License
                 url: "<?=url("wargame/poke");?>",
                 type: "POST",
                 data: {id: key, wargame: '<?=$wargame?>', event: '<?=KEYPRESS_EVENT?>'},
-                error: function (data, text, third) {
+                error: (data, text, third) => {
+                    var obj;
                     try {
                         obj = jQuery.parseJSON(data.responseText);
                     } catch (e) {
@@ -473,9 +474,10 @@ You should have received a copy of the GNU General Public License
                     $("#" + id + "").removeClass("pushed");
                     $("#comlink").html('Working');
                 },
-                success: function (data, textstatus) {
+                success:  (data, textstatus) => {
+                    var success;
                     try {
-                        var success = data.success;
+                        success = data.success;
                     } catch (e) {
 //                alert(data);
                     }
@@ -1162,7 +1164,7 @@ You should have received a copy of the GNU General Public License
                 return false;
             });
 
-            $("body").keypress(function (event) {
+            $("body").keydown(function (event) {
                 if(event.target.id === "bug-report-message"){
                     return;
                 }

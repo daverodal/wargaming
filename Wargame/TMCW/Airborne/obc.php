@@ -31,6 +31,12 @@
         <fieldset>
             <legend>turn 2</legend>
             <div id="gameTurn2"></div>
+            A: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2A"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            B: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2B"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
             C: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2C"  ng-style="unit.wrapperstyle">
                  <offmap-unit unit="unit"></offmap-unit>
                 </div>
@@ -44,33 +50,97 @@
         <fieldset>
             <legend>turn 3</legend>
             <div id="gameTurn3"></div>
-            C<div id="gameTurn3C"></div>
-            D<div id="gameTurn3D"></div>
+            A: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2A"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            B: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2B"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            C: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3C"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            D:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3D"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            E:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3E"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
         </fieldset>
         <fieldset>
             <legend>turn 4</legend>
-            <div id="gameTurn4">
+            <div id="gameTurn4"></div>
+            A: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2A"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
             </div>
-            C<div id="gameTurn4C"></div>
-            E<div id="gameTurn4E"></div>
+            B: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2B"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            C: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3C"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            D:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3D"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            E:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3E"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
 
         </fieldset>
         <fieldset>
             <legend>turn 5</legend>
             <div id="gameTurn5">
-            </div>
-            C: <div id="gameTurn5C"></div>
+                A: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2A"  ng-style="unit.wrapperstyle">
+                    <offmap-unit unit="unit"></offmap-unit>
+                </div>
+                B: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2B"  ng-style="unit.wrapperstyle">
+                    <offmap-unit unit="unit"></offmap-unit>
+                </div>
+                C: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3C"  ng-style="unit.wrapperstyle">
+                    <offmap-unit unit="unit"></offmap-unit>
+                </div>
+                D:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3D"  ng-style="unit.wrapperstyle">
+                    <offmap-unit unit="unit"></offmap-unit>
+                </div>
+                E:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3E"  ng-style="unit.wrapperstyle">
+                    <offmap-unit unit="unit"></offmap-unit>
+                </div>
         </fieldset>
         <fieldset>
             <legend>turn 6</legend>
-            <div id="gameTurn6">
+            A: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2A"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
             </div>
-            C: <div id="gameTurn6C"></div>
-
+            B: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2B"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            C: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3C"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            D:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3D"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            E:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3E"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
         </fieldset>
         <fieldset>
             <legend>turn 7</legend>
             <div id="gameTurn7">
+            </div>
+            A: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2A"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            B: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn2B"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            C: <div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3C"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            D:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3D"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            E:<div class="a-unit-wrapper" ng-repeat="unit in reinforcements.gameTurn3E"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
             </div>
         </fieldset>
         <div style="clear:both"></div>

@@ -155,6 +155,8 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiPara.png", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiPara.png", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiPara.png", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "supply", $i++);
+
 
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiArmor.png", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiArmor.png", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
@@ -166,6 +168,7 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiMech.png", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiMech.png", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiMech.png", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
@@ -187,20 +190,24 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 2,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 2,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2A", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "supply", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 3,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 3,  "rebel",  "supply", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 4,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 4,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 4,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 4,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4A", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "A", 4,  "rebel",  "supply", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 5,  "rebel",  "supply", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 6,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 6,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6A", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "A", 6,  "rebel",  "supply", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7C", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 7,  "rebel",  "supply", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7C", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 7,  "rebel",  "supply", $i++);
 
 
         UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "multiGlider.png", 10,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);

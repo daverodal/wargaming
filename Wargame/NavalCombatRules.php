@@ -40,6 +40,8 @@ class NavalCombatRules
     public $attackers;
     public $resolvedCombats;
     public $lastResolvedCombat;
+    public $dieRoll;
+
 
     /*
      * TODO
@@ -64,6 +66,9 @@ class NavalCombatRules
 
         if ($data) {
             foreach ($data as $k => $v) {
+                if($k === "dieRoll"){
+                    continue;
+                }
                 $this->$k = $v;
             }
         } else {
@@ -76,6 +81,8 @@ class NavalCombatRules
             $this->currentDefender = false;
         }
         $this->crt = new \Wargame\SPI\TinCans\CombatResultsTable();
+        $this->dieRoll = false;
+
     }
 
     function pinCombat($pinVal)
@@ -472,6 +479,10 @@ class NavalCombatRules
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
         $Die = floor($this->crt->dieSideCount * (rand() / getrandmax()));
+        if($this->dieRoll !== false){
+            $Die = $this->dieRoll;
+        }
+        $this->dieRoll = $Die;
 //        $Die = 3;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {

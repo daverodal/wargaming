@@ -129,11 +129,13 @@ class NavalMoveRules
                 $movingUnit->moveAmountUsed += $turnCost;
                 if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
                     $this->stopMove($movingUnit);
-                    return;
+                    return true;
                 }
                 $this->calcMove($this->movingUnitId);
+                return true;
             }
         }
+        return false;
 
     }
 
@@ -210,12 +212,13 @@ class NavalMoveRules
                 $movingUnit->moveAmountUsed += $turnCost;
                 if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
                     $this->stopMove($movingUnit);
-                    return;
+                    return true;
                 }
                 $this->calcMove($this->movingUnitId);
+                return true;
             }
         }
-
+        return false;
     }
 
     // id will be map if map event, id will be unit id if counter event

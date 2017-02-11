@@ -119,7 +119,7 @@
             <div class="clear"></div>
         </div>
         <div class="deploy-zone-wrapper">
-            <div>Loyalist Zone E<i class="fa fa-times"></i></div>
+            <div>Loyalist Zone E</div>
             <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'E'}"
                  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>
