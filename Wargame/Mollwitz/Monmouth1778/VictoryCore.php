@@ -38,6 +38,19 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         return $ret;
     }
 
+    public function specialHexChange($args)
+    {
+        $battle = Battle::getBattle();
+        list($mapHexName, $forceId) = $args;
+
+        if (in_array($mapHexName, $battle->specialHexA)) {
+            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, 10);
+        }
+        if (in_array($mapHexName, $battle->specialHexB)) {
+            $this->takeHex($battle->specialHexesMap['SpecialHexB'], $forceId, $mapHexName, 10);
+        }
+    }
+
     protected function checkVictory( $battle)
     {
         $battle = Battle::getBattle();
@@ -45,7 +58,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         $gameRules = $battle->gameRules;
         $scenario = $battle->scenario;
         $turn = $gameRules->turn;
-        $frenchWin = $russianWin = $draw = false;
+        $americanWin = $britishWin = $draw = false;
 
         $victoryReason = "";
 
@@ -53,37 +66,20 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
             $pData = $battle::getPlayerData($battle->scenario)['forceName'];
 
-            $russianWinScore = 25;
-            $frenchWinScore = 25;
+            $britishWinScore = 25;
+            $americanWinScore = 25;
 
-            if($this->victoryPoints[Monmouth1778::AMERICAN_FORCE] >= $frenchWinScore){
-                $allHexes = true;
-                foreach($battle->specialHexA as $specialHex){
-                    if($battle->mapData->getSpecialHex($specialHex) !== Monmouth1778::AMERICAN_FORCE){
-                        $allHexes = false;
-                        break;
-                    }
-                }
-                if($allHexes === true){
-                    $frenchWin = true;
-                    $victoryReason .= "Over $frenchWinScore and all hexes in Maloyaroslavets";
-                }
+            if($this->victoryPoints[Monmouth1778::AMERICAN_FORCE] >= $americanWinScore){
+                $americanWin = true;
+                $victoryReason .= "Over $americanWinScore";
+
             }
-            if ($this->victoryPoints[Monmouth1778::BRITISH_FORCE] >= $russianWinScore) {
-                $allHexes = true;
-                foreach($battle->specialHexA as $specialHex){
-                    if($battle->mapData->getSpecialHex($specialHex) !== Monmouth1778::BRITISH_FORCE){
-                        $allHexes = false;
-                        break;
-                    }
-                }
-                if($allHexes === true) {
-                    $russianWin = true;
-                    $victoryReason .= "Over $russianWinScore and all hexes in Maloyaroslavets";
-                }
+            if ($this->victoryPoints[Monmouth1778::BRITISH_FORCE] >= $britishWinScore) {
+                $britishWin = true;
+                $victoryReason .= "Over $britishWinScore";
             }
 
-            if ($frenchWin && !$russianWin) {
+            if ($americanWin && !$britishWin) {
                 $this->winner = Monmouth1778::AMERICAN_FORCE;
                 $winner = $pData[$this->winner];
                 $gameRules->flashMessages[] = "$winner Win";
@@ -92,7 +88,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->gameOver = true;
                 return true;
             }
-            if ($russianWin && !$frenchWin) {
+            if ($britishWin && !$americanWin) {
                 $this->winner = Monmouth1778::BRITISH_FORCE;
                 $winner = $pData[$this->winner];
                 $gameRules->flashMessages[] = "$winner Win";

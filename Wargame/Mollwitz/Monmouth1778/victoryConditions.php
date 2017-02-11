@@ -23,8 +23,13 @@
     <span class="lessBig">Victory Conditions</span>
     <h4> Victory</h4>
     <ol>
-    <li>
-        For either side to win it must occupy all hexes of Maloyaroslavets and have destroyed at least 35 hostile combat strengths points at the end of any game turn.
+    <li>The first side to score 25 points at the end of any game turn wins.
+        <li>1 point is awarded for each hostile combat point destroyed.
+            </li>
+        <li>Additionally the Americans are awarded 10 points if they currently occupy the Hex marked with a blue 10.
+            </li>
+        <li>The British are awarded 10 points if they currently occupy the Hex marked with a red 10. A tie is possible.</li>
+
     </li>
     </ol>
 </li>

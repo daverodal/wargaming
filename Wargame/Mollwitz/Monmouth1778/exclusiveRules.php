@@ -26,4 +26,13 @@ You should have received a copy of the GNU General Public License
 ?>
 
 <ol>
+    <li><span class="lessBig">Terrain: Hedge</span>
+        <p>The hedge is treated as a stream hex side.</p>
+
+    </li>
+    <li><span class="lessBig">Setup and first player</span>
+        <p>Americans: Set up first on and within hexes marked A. They move first.</p>
+        <p>British (and Hessians): Set up second on hexes marked B. They move second.</p>
+
+    </li>
 </ol>

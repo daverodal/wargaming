@@ -79,7 +79,7 @@ class Monmouth1778 extends \Wargame\Mollwitz\JagCore
             $this->specialHexB = $data->specialHexB;
         } else {
             $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\Monmouth1778\VictoryCore');
-            $this->gameRules->setMaxTurn(12);
+            $this->gameRules->setMaxTurn(8);
             $this->deployFirstMoveFirst();
         }
 
