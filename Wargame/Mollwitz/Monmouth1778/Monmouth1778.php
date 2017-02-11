@@ -24,7 +24,7 @@ class Monmouth1778 extends \Wargame\Mollwitz\JagCore
     const AMERICAN_FORCE = 1;
     const BRITISH_FORCE = 2;
 
-    public $specialHexesMap = ['SpecialHexA'=>self::BRITISH_FORCE, 'SpecialHexB'=>0, 'SpecialHexC'=>0];
+    public $specialHexesMap = ['SpecialHexA'=>self::BRITISH_FORCE, 'SpecialHexB'=>self::AMERICAN_FORCE, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){
         $forceName = ['Observer', "American", "British"];
