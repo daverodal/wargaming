@@ -78,7 +78,7 @@ class Monmouth1778 extends \Wargame\Mollwitz\JagCore
         } else {
             $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\Monmouth1778\VictoryCore');
             $this->gameRules->setMaxTurn(12);
-            $this->deployFirstMoveSecond();
+            $this->deployFirstMoveFirst();
         }
 
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){
