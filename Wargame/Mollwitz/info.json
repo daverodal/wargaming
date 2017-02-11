@@ -4683,6 +4683,153 @@
       }
     }
   },
+  "Monmouth1778": {
+    "name": "The Battle of Monmouth 1778",
+    "path": "Mollwitz",
+    "production": true,
+    "genre": "Americas",
+    "fileName": "\\Wargame\\Mollwitz\\Monmouth1778\\Monmouth1778",
+    "description": "The Battle of Monmouth 1778. ",
+    "options": [
+      {
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": true
+      }
+    ],
+    "params": {
+      "americanRevolution": true,
+      "units": [
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "American",
+          "class": "infantry"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "American",
+          "class": "infantry"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "American",
+          "class": "infantry"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 2,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 2,
+          "nationality": "American",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "name": "smallunit",
+          "forceId": 1,
+          "combat": 4,
+          "movement": 2,
+          "reinforce": "A",
+          "range": 4,
+          "nationality": "American",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 2,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "British",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 8,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "British",
+          "class": "infantry"
+        },
+        {
+          "num": 4,
+          "forceId": 2,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "British",
+          "class": "infantry"
+        },
+        {
+          "num": 4,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "British",
+          "class": "infantry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "British",
+          "class": "infantry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 2,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "British",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "Hessian",
+          "class": "infantry"
+        }
+      ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Main",
+        "longDescription": "Main Scenario."
+      }
+    }
+  },
   "Helsingborg1710": {
     "name": "The Battle of Helsingborg 1710",
     "path": "Mollwitz",
