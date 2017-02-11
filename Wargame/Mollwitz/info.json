@@ -4733,6 +4733,7 @@
         {
           "num": 3,
           "forceId": 1,
+          "name": "smallunit",
           "combat": 2,
           "movement": 3,
           "reinforce": "A",
@@ -4742,7 +4743,6 @@
         },
         {
           "num": 1,
-          "name": "smallunit",
           "forceId": 1,
           "combat": 4,
           "movement": 2,

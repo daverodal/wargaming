@@ -56,13 +56,15 @@ class Monmouth1778 extends \Wargame\Mollwitz\JagCore
             $reinforceTurn = 1;
             $unitHex = "deployBox";
             $status = STATUS_CAN_DEPLOY;
+            $name = isset($unitSet->name) ? $unitSet->name : "infantry-1";
+
             if(isset($unitSet->reinforceTurn)){
                 $reinforceTurn = $unitSet->reinforceTurn;
                 $unitHex = "gameTurn$reinforceTurn";
                 $status = STATUS_CAN_REINFORCE;
             }
             for ($i = 0; $i < $unitSet->num; $i++) {
-                UnitFactory::create("infantry-1", $unitSet->forceId, $unitHex, "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, $status, $unitSet->reinforce, $reinforceTurn, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                UnitFactory::create($name, $unitSet->forceId, $unitHex, "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, $status, $unitSet->reinforce, $reinforceTurn, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
             }
         }
     }
@@ -86,9 +88,6 @@ class Monmouth1778 extends \Wargame\Mollwitz\JagCore
             if($unit->name === "smallunit"){
                 $nUnits = 0;
                 foreach($mapHex->forces[$forceId] as $mKey => $mVal){
-                    if($this->force->units[$mKey]->class == "hq"){
-                        continue;
-                    }
                     $nUnits++;
                 }
                 return $nUnits >= 2;
