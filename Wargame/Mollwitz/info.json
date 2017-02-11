@@ -4817,7 +4817,7 @@
           "combat": 4,
           "movement": 4,
           "reinforce": "B",
-          "range": 4,
+          "range": 1,
           "nationality": "Hessian",
           "class": "infantry"
         }
