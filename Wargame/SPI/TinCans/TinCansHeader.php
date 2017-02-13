@@ -201,8 +201,7 @@
             function(e) {
                 if (e.altKey) {
 
-
-                    $(this).animate({
+                    $(this).css({
                         width: '90px',
                         height: '90px',
                         marginTop: '-30px',
@@ -220,13 +219,14 @@
                 }
             },
             function() {
-                $(this).animate({
+                $(this).css({
                     width:'32px',
                     height: '32px',
                     marginTop: '',
                     marginLeft: '',
                     zIndex: ''
                 }, 0);
+
                 $(this).find('.heading').animate({
                     opacity:1.0
                 }, 0);

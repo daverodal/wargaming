@@ -35,7 +35,6 @@ class AreaMoveRules
     public $movingUnitId;
     public $anyUnitIsMoving = false;
     public $railMove;
-    public $storm;
     private $moves;
     private $path;
     private $moveQueue;
@@ -997,9 +996,7 @@ class AreaMoveRules
 
         // condition 3
         // can only move across river hexside if at start of move
-//        if (($this->isAlongRail($startHex, $hexagon) == false) && $this->railMove) {
-//            $isValid = false;
-//        }
+
 
         // condition 4
         // can not exit
@@ -1032,9 +1029,6 @@ class AreaMoveRules
 
         $movingUnit->updateMoveStatus(new Hexagon($hexagon), $moveAmount);
 
-        if (($this->storm && !$this->railMove) && !$movingUnit->unitHasNotMoved()) {
-            $this->stopMove($movingUnit);
-        }
         if ($movingUnit->unitHasUsedMoveAmount() == true) {
             $this->stopMove($movingUnit);
         }

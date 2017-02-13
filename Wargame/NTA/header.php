@@ -97,9 +97,7 @@ x.register("combatRules", function(combatRules, data){
 
                     var atk = combatRules.combats[i].attackStrength;
                     var atkDisp = atk;
-                    if(combatRules.storm){
-                        atkDisp = atk * 2 + " halved for storm = " + atk;
-                    }
+
                     var def = combatRules.combats[i].defenseStrength;
                     var ter = combatRules.combats[i].terrainCombatEffect;
                     var idx = combatRules.combats[i].index + 1;
@@ -185,9 +183,7 @@ x.register("combatRules", function(combatRules, data){
                     var atk = combatRules.combatsToResolve[i].attackStrength;
                     var atkDisp = atk;
                     ;
-                    if(combatRules.storm){
-                        atkDisp = atk * 2 + " halved for storm " + atk;
-                    }
+
                     var def = combatRules.combatsToResolve[i].defenseStrength;
                     var ter = combatRules.combatsToResolve[i].terrainCombatEffect;
                     var idx = combatRules.combatsToResolve[i].index + 1;
@@ -206,10 +202,7 @@ x.register("combatRules", function(combatRules, data){
                 if(combatRules.resolvedCombats[i].index !== null){
                     atk = combatRules.resolvedCombats[i].attackStrength;
                     atkDisp = atk;
-                    ;
-                    if(combatRules.storm){
-                        atkDisp = atk * 2 + " halved for storm " + atk;
-                    }
+
                     def = combatRules.resolvedCombats[i].defenseStrength;
                     ter = combatRules.resolvedCombats[i].terrainCombatEffect;
                     idx = combatRules.resolvedCombats[i].index + 1;

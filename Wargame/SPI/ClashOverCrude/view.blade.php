@@ -4,7 +4,7 @@
 </head>
 @section('units')
     @foreach($units as $unit)
-    <div class="unit {{$unit['nationality']}} {{$unit['type']}}" id="{{$unit['id']}}" alt="0">
+    <div class="unit {{$unit['nationality']}} {{$unit['class']}}" id="{{$unit['id']}}" alt="0">
         <div class="shadow-mask"></div>
         <img class="arrow" src="<?php echo url('js/short-red-arrow-md.png'); ?>" class="counter">
         <div class="counterWrapper">

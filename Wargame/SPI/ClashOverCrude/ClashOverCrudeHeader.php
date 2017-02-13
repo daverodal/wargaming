@@ -21,7 +21,6 @@
  */
 ?><link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
 <style type="text/css">
-<?php @include "all.css";?>
 </style>
 <script type="text/javascript">
     x.register("specialHexes", function(specialHexes, data) {
@@ -92,13 +91,20 @@
         if(unit.parent !== "deployBox" && typeof moveAmount !== "undefined"){
 
         }
-        var  move = unit.maxMove - unit.moveAmountUsed;
-        if(moveAmount !== undefined){
-            move = moveAmount-0;
+        var  move;
+        if(!$.isNumeric(unit.maxMove)){
+            move = unit.maxMove;
+        }else{
+            move = unit.maxMove - unit.moveAmountUsed;
+            if(moveAmount !== undefined){
+                move = moveAmount-0;
+            }
+            move = move.toFixed(2);
+            move = move.replace(/\.00$/,'');
+            move = move.replace(/(\.[1-9])0$/,'$1');
+
         }
-        move = move.toFixed(2);
-        move = move.replace(/\.00$/,'');
-        move = move.replace(/(\.[1-9])0$/,'$1');
+
         var str = unit.strength;
         var reduceDisp = "<span>";
         var symb = "-";
@@ -110,7 +116,7 @@
             $("#"+unit.id+" .air-strength").html(unit.airStrength);
         }
         var html = reduceDisp + str + symb + move + "</span>";
-        html = "<div class='unit-info'><div class='left'>"+str+"</div><div class='right'>"+move+"</div></div>";
+        html = "<div class='unit-info'><div class='left-number'>"+str+"</div><div class='right-number'>"+move+"</div></div>";
         return html;
 
 

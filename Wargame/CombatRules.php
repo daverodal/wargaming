@@ -193,21 +193,21 @@ class CombatRules
 
         $battle = Battle::getBattle();
         $victory = $battle->victory;
+        $noCombats = true;
 
         foreach ($this->combats->{$this->currentDefender}->attackers as $attackerId => $attacker) {
+            $noCombats = false;
             $this->force->undoAttackerSetup($attackerId);
             $victory->preUnsetAttacker($cd, $attackerId);
             $this->removeAttacker($cd, $attackerId);
-
-//            unset($this->attackers->$attackerId);
-//            $this->combats->$cd->removeAttacker($attackerId);
-//            unset($this->combats->$cd->attackers->$attackerId);
-//            unset($this->combats->$cd->thetas->$attackerId);
             $victory->postUnsetAttacker($this->force->units[$attackerId]);
         }
         $this->combats->$cd->useDetermined = false;
-
         $this->crt->setCombatIndex($cd);
+        if($noCombats === true){
+            return false;
+        }
+        return true;
 
     }
 
@@ -528,8 +528,10 @@ class CombatRules
         if($cd !== false){
             if($this->combats->$cd->useAlt === false && $this->combats->$cd->isBombardment === false){
                 $this->combats->$cd->useDetermined = $this->combats->$cd->useDetermined ? false : true;
+                return true;
             }
         }
+        return false;
     }
     function cleanUpAttacklessDefenders()
     {

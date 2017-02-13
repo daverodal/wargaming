@@ -30,7 +30,7 @@ use \Wargame\Battle;
  * To change this template use File | Settings | File Templates.
  */
 
-class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
+class VictoryCore extends \Wargame\SPI\victoryCore
 {
     private $landingZones;
     private $airdropZones;
@@ -256,7 +256,7 @@ class ClashOverCrudeVictoryCore extends \Wargame\SPI\victoryCore
         }
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
             $gameRules->flashMessages[] = "@hide deadpile";
-            if ($battle->force->reinforceTurns->$turn->$forceId) {
+            if (isset($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }

@@ -289,18 +289,22 @@ class GameRules
             case DEPLOY_MODE:
                 switch ($event) {
                     case KEYPRESS_EVENT:
+                        $bad = true;
                         $c = chr($id);
 
                         if($c == 'i' || $c == 'I'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
                             $unit->enterImproved(true);
+                            $bad = false;
                         }
 
                         if($c == 'u' || $c == 'U'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
                             $unit->exitImproved(true);
+                            $bad = false;
+
                         }
                         if($c == 's' || $c == 'S'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
@@ -309,6 +313,8 @@ class GameRules
                             if($unit->split() === false){
                                 return false;
                             }
+                            $bad = false;
+
                         }
                         if($c == 'c' || $c == 'C'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
@@ -323,6 +329,7 @@ class GameRules
                                 return false;
 
                             }
+                            $bad = false;
                         }
 
                         if($id == 37){
@@ -330,6 +337,7 @@ class GameRules
                                 $ret = $this->moveRules->turnLeft(true);
                                 return $ret;
                             }
+
                         }
 
                         if($id == 40){
@@ -337,6 +345,7 @@ class GameRules
                                 $ret = $this->moveRules->turnAbout(true);
                                 return $ret;
                             }
+
                         }
 
                         if($id == 39){
@@ -344,6 +353,9 @@ class GameRules
                                 $ret = $this->moveRules->turnRight(true);
                                 return $ret;
                             }
+                        }
+                        if($bad === true){
+                            return false;
                         }
 
                     case SELECT_MAP_EVENT:
@@ -366,17 +378,22 @@ class GameRules
                 switch ($event) {
                     case KEYPRESS_EVENT:
                         $c = chr($id);
+                        $bad = true;
 
                         if($c == 'i' || $c == 'I'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
                             $unit->enterImproved(true);
+                            $bad = false;
+
                         }
 
                         if($c == 'u' || $c == 'U'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
                             $unit->exitImproved(true);
+                            $bad = false;
+
                         }
                         if($c == 's' || $c == 'S'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
@@ -385,6 +402,8 @@ class GameRules
                             if($unit->split() === false){
                                 return false;
                             }
+                            $bad = false;
+
                         }
                         if($c == 'c' || $c == 'C'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
@@ -399,6 +418,11 @@ class GameRules
                                 return false;
 
                             }
+                            $bad = false;
+
+                        }
+                        if($bad === true){
+                            return false;
                         }
                     case SELECT_MAP_EVENT:
                     case SELECT_COUNTER_EVENT:
@@ -419,17 +443,20 @@ class GameRules
                 switch ($event) {
                     case KEYPRESS_EVENT:
                         $c = chr($id);
+                        $bad = true;
 
                         if($c == 'i' || $c == 'I'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
                             $unit->enterImproved(true);
+                            $bad = false;
                         }
 
                         if($c == 'u' || $c == 'U'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
                             $unit->exitImproved(true);
+                            $bad = false;
                         }
                         if($c == 's' || $c == 'S'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
@@ -438,6 +465,8 @@ class GameRules
                             if($unit->split() === false){
                                 return false;
                             }
+                            $bad = false;
+
                         }
                         if($c == 'c' || $c == 'C'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
@@ -452,6 +481,11 @@ class GameRules
                                 return false;
 
                             }
+                            $bad = false;
+
+                        }
+                        if($bad === true){
+                            return false;
                         }
                     case SELECT_MAP_EVENT:
                     case SELECT_COUNTER_EVENT:
@@ -496,13 +530,13 @@ class GameRules
                             }
 
                         }
+                        return false;
+
                     case SELECT_MAP_EVENT:
                     case SELECT_COUNTER_EVENT:
                         if ($id === false) {
                             return false;
                         }
-
-                        $this->moveRules->railMove = false;
 
                         $ret = $this->moveRules->selectUnit($event, $id, $location, $this->turn);
                         return $ret;
@@ -522,6 +556,7 @@ class GameRules
 
                     case KEYPRESS_EVENT:
                         if ($this->moveRules->anyUnitIsMoving) {
+                            $bad = true;
                             $c = chr($id);
                             if ($c == 'm' || $c == 'M') {
                                 /* @var Unit $unit */
@@ -534,6 +569,7 @@ class GameRules
                                 } else {
                                     $unit->forceMarch = true;
                                 }
+                                $bad = false;
                             }
 
                             if($c == 'x' || $c == 'X'){
@@ -543,6 +579,7 @@ class GameRules
                                     return $this->moveRules->exitUnit($unit->id);
 
                                 }
+                                return false;
                             }
 
                             if($c == 'i' || $c == 'I'){
@@ -567,7 +604,8 @@ class GameRules
 
                             if($c == 'l' || $c == 'L'){
                                 return $this->moveRules->loadUnit();
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+                                /* is this finished? */
+//                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
                             }
 
                             if($id == 37){
@@ -575,6 +613,7 @@ class GameRules
                                     $ret = $this->moveRules->turnLeft();
                                     return $ret;
                                 }
+                                return false;
                             }
 
                             if($id == 40){
@@ -582,6 +621,7 @@ class GameRules
                                     $ret = $this->moveRules->turnAbout();
                                     return $ret;
                                 }
+                                return false;
                             }
 
                             if($id == 39){
@@ -589,6 +629,7 @@ class GameRules
                                     $ret = $this->moveRules->turnRight();
                                     return $ret;
                                 }
+                                return false;
                             }
 
                             if($c == 's' || $c == 'S'){
@@ -598,6 +639,7 @@ class GameRules
                                 if($unit->split() === false){
                                     return false;
                                 }
+                                $bad = false;
                             }
                             if($c == 'c' || $c == 'C'){
                                 $unit = $this->force->getUnit($this->moveRules->movingUnitId);
@@ -612,16 +654,19 @@ class GameRules
                                     return false;
 
                                 }
+                                $bad = false;
                             }
-
+                            if($bad === true){
+                                return false;
+                            }
+                        }else{
+                            return false;
                         }
                     case SELECT_MAP_EVENT:
                     case SELECT_COUNTER_EVENT:
                         if ($id === false) {
                             return false;
                         }
-
-                        $this->moveRules->railMove = false;
 
                         $ret = $this->moveRules->moveUnit($event, $id, $location, $this->turn);
                         return $ret;
@@ -695,11 +740,13 @@ class GameRules
                     case KEYPRESS_EVENT:
                         $c = chr($id);
                         if ($c == 'd' || $c == 'D') {
-                            $this->combatRules->useDetermined();
+                            return $this->combatRules->useDetermined();
+                            return true;
                         }
                         if ($c == 'c' || $c == 'C') {
-                            $this->combatRules->clearCurrentCombat();
+                            return $this->combatRules->clearCurrentCombat();
                         }
+                        return false;
                         break;
 
                     /** @noinspection PhpMissingBreakStatementInspection */
@@ -766,6 +813,8 @@ class GameRules
             case FIRE_COMBAT_RESOLUTION_MODE:
 
                 switch ($event) {
+                    case KEYPRESS_EVENT:
+                        return false;
 
                     case SELECT_COUNTER_EVENT:
 
@@ -878,8 +927,23 @@ class GameRules
                                 }
                             }else{
                                 $this->moveRules->endAdvancing($this->moveRules->movingUnitId);
+                                if ($this->combatModeType == COMBAT_SETUP_MODE) {
+                                    if ($this->gameHasCombatResolutionMode == true) {
+                                        $this->mode = COMBAT_RESOLUTION_MODE;
+                                    } else {
+                                        $this->mode = COMBAT_SETUP_MODE;
+                                    }
+                                } else {
+                                    if ($this->gameHasCombatResolutionMode == true) {
+                                        $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
+                                    } else {
+                                        $this->mode = FIRE_COMBAT_SETUP_MODE;
+                                    }
+                                }
                             }
+                            return true;
                         }
+                        return false;
                         break;
 
                     case SELECT_MAP_EVENT:

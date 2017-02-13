@@ -4,6 +4,7 @@ use Wargame\Battle;
 use stdClass;
 use Wargame\Hexagon;
 use JsonSerializable;
+use Wargame\AirMovement;
 
 /**
  * Copyright 2015 David Rodal
@@ -25,7 +26,7 @@ use JsonSerializable;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class LandAirUnit extends \Wargame\BaseUnit implements JsonSerializable
+class LandUnit extends \Wargame\BaseUnit implements JsonSerializable
 {
 
     public $origStrength;
@@ -159,19 +160,36 @@ class LandAirUnit extends \Wargame\BaseUnit implements JsonSerializable
 }
 
 
+class AirUnit extends LandUnit implements AirMovement{
+    public function getMaxMove(){
+        if($this->maxMove === 'U'){
+            return 1;
+        }
+        return parent::getMaxMove();
+    }
+}
+
 class UnitFactory {
     public static $id = 0;
     public static $injector;
-    public static function build($data = false){
+    public static function build($data = false, $airUnit = false){
 
-        $sU =  new LandAirUnit($data);
+        if($airUnit){
+            $sU =  new AirUnit($data);
+        }else{
+            if($data && $data->airMovement){
+                $sU =  new AirUnit($data);
+            }else{
+                $sU =  new LandUnit($data);
+            }
+        }
         if($data === false){
             $sU->id = self::$id++;
         }
         return $sU;
     }
     public static function create( $unitName, $unitForceId, $unitHexagon, $unitImage, $unitStrength, $unitAirStrength, $unitMaxMove, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $range, $nationality = "neutral", $class, $unitDesig = "", $airMovement = false){
-        $unit = self::build();
+        $unit = self::build(false, true);
         $unit->set($unitName, $unitForceId, $unitHexagon, $unitImage, $unitStrength, $unitAirStrength, $unitMaxMove, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $range, $nationality, true, $class, $unitDesig, $airMovement);
         self::$injector->injectUnit($unit);
     }

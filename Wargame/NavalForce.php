@@ -95,6 +95,9 @@ class NavalForce extends SimpleForce
         $this->removeEliminatingUnits();
     }
 
+    function addToRetreatHexagonList($id, $hexagon){
+        /* no retreats in naval combat */
+    }
 
     function setupAttacker($id, $range)
     {

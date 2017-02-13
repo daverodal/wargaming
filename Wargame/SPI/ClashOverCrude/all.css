@@ -2950,9 +2950,6 @@ fieldset {
   font-size: 18px;
   text-indent: 2px; }
 
-.storm {
-  font-size: 50%; }
-
 #gameturnContainer #turn1 {
   border-width: 1px; }
 
@@ -3466,9 +3463,6 @@ a {
 li {
   list-style-type: none; }
 
-div {
-  text-align: center; }
-
 .center {
   float: left;
   width: 8%;
@@ -3793,6 +3787,12 @@ footer.attribution {
 .unit .unit-numbers {
   font-family: sans-serif;
   font-size: 14px; }
+  .unit .unit-numbers .unit-info .left-number {
+    float: left;
+    text-align: left; }
+  .unit .unit-numbers .unit-info .right-number {
+    float: right;
+    text-align: right; }
 
 .air.unit .counterWrapper .counter {
   width: 18px;

@@ -180,6 +180,16 @@
   .unit-numbers{
     font-family: sans-serif;
     font-size:14px;
+    .unit-info{
+      .left-number{
+        float:left;
+        text-align:left;
+      }
+      .right-number{
+        float:right;
+        text-align:right;
+      }
+    }
   }
 }
 .air.unit{

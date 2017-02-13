@@ -2,6 +2,7 @@
 namespace Wargame\SPI\ClashOverCrude;
 use Wargame\SPI\ClashOverCrude\UnitFactory;
 use Wargame\ModernLandBattle;
+use Wargame\{MapData, MapViewer, Force, Terrain, AirMoveRules, CombatRules, GameRules};
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -51,6 +52,7 @@ class ClashOverCrude extends ModernLandBattle
         $this->terrain->addAltEntranceCost('blocked', 'air', 0);
         $this->terrain->addAltEntranceCost('blocked', 'air', 0);
     }
+
     function save()
     {
         $data = parent::save();
@@ -90,8 +92,8 @@ class ClashOverCrude extends ModernLandBattle
         UnitFactory::create("lll", RED_FORCE, "deployBox", "multiInf.png", 4, false, 10,  STATUS_CAN_DEPLOY, "A", 1, 1, "saudi",  "inf");
         UnitFactory::create("lll", RED_FORCE, "deployBox", "multiInf.png", 4, false, 10,  STATUS_CAN_DEPLOY, "A", 1, 1, "saudi",  "inf");
         UnitFactory::create("lll", RED_FORCE, "deployBox", "multiMech.png", 6, false, 10,  STATUS_CAN_DEPLOY, "A", 1, 1, "saudi",  "mech");
-        UnitFactory::create("lll", RED_FORCE, "deployBox", "jetPlane4.svg", 2, 2, 25,  STATUS_CAN_DEPLOY, "B", 1, 1, "saudi",  "air", "167", true);
-        UnitFactory::create("lll", RED_FORCE, "deployBox", "jetPlane4.svg", 2, 3, 24,  STATUS_CAN_DEPLOY, "B", 1, 1, "saudi",  "air", "f5", true);
+        UnitFactory::create("lll", RED_FORCE, "deployBox", "jetPlane4.svg", 2, 2, 'U',  STATUS_CAN_DEPLOY, "B", 1, 1, "saudi",  "air", "167", true);
+        UnitFactory::create("lll", RED_FORCE, "deployBox", "jetPlane4.svg", 2, 3, 'U',  STATUS_CAN_DEPLOY, "B", 1, 1, "saudi",  "air", "f5", true);
         UnitFactory::create("lll", RED_FORCE, "deployBox", "jetPlane3.svg", 0, 5, 18,  STATUS_CAN_DEPLOY, "B", 1, 1, "saudi",  "air", "lgtn", true);
 
         /* Iraqi */
@@ -165,18 +167,45 @@ class ClashOverCrude extends ModernLandBattle
 
     function __construct($data = null, $arg = false, $scenario = false, $game = false)
     {
-
-        parent::__construct($data, $arg, $scenario, $game);
-
-        $crt = new \Wargame\SPI\ClashOverCrude\CombatResultsTable();
-        $this->combatRules->injectCrt($crt);
+        $this->mapData = MapData::getInstance();
 
         if ($data) {
-            $this->specialHexA = $data->specialHexA;
+            $this->arg = $data->arg;
+            $this->scenario = $data->scenario;
+            $this->terrainName = $data->terrainName;
+            $this->mapData->init($data->mapData);
+            $this->mapViewer = array(new MapViewer($data->mapViewer[0]), new MapViewer($data->mapViewer[1]), new MapViewer($data->mapViewer[2]));
+            $units = $data->force->units;
+            unset($data->force->units);
+            $this->force = new Force($data->force);
+            foreach($units as $unit){
+                $this->force->injectUnit(static::buildUnit($unit));
+            }
+            if(isset($data->terrain)){
+                $this->terrain = new Terrain($data->terrain);
 
+            }else{
+                $this->terrain = new \stdClass();
+            }
+            $this->moveRules = new AirMoveRules($this->force, $this->terrain, $data->moveRules);
+            $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
+            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
+            $this->victory = new \Wargame\Victory($data);
+
+            $this->players = $data->players;
         } else {
-            $this->victory = new \Wargame\Victory("\\Wargame\\SPI\\ClashOverCrude\\ClashOverCrudeVictoryCore");
-            $this->moveRules = new \Wargame\MoveRules($this->force, $this->terrain);
+            $this->arg = $arg;
+            $this->scenario = $scenario;
+
+            $this->mapViewer = array(new MapViewer(), new MapViewer(), new MapViewer());
+            $this->force = new Force();
+            $this->terrain = new Terrain();
+            $this->moveRules = new AirMoveRules($this->force, $this->terrain);
+            $this->victory = new \Wargame\Victory('\Wargame\SPI\ClashOverCrude\VictoryCore');
+
+            $this->combatRules = new CombatRules($this->force, $this->terrain);
+            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
+
 
             $this->moveRules->enterZoc = 0;
             $this->moveRules->exitZoc = 0;
@@ -199,6 +228,7 @@ class ClashOverCrude extends ModernLandBattle
             $this->gameRules->addPhaseChange(RED_AIR_COMBAT_PHASE, RED_COMBAT_PHASE, COMBAT_SETUP_MODE, RED_FORCE, BLUE_FORCE, false);
             $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, true);
         }
+        static::getPlayerData($scenario);
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){
             $land = $air = 0;
             if($unit->class === "air"){

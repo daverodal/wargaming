@@ -75,8 +75,6 @@ class NavalMoveRules
         } else {
             $this->movingUnitId = NONE;
             $this->anyUnitIsMoving = false;
-            $this->storm = false;
-            $this->railMove = true;
             $this->stickyZoc = false;
         }
     }
@@ -778,9 +776,7 @@ class NavalMoveRules
 
         // condition 3
         // can only move across river hexside if at start of move
-//        if (($this->isAlongRail($startHex, $hexagon) == false) && $this->railMove) {
-//            $isValid = false;
-//        }
+
 
         // condition 4
         // can not exit

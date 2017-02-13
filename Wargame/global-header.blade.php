@@ -447,6 +447,23 @@ You should have received a copy of the GNU General Public License
             $("#mychat").attr("value", "");
         }
         function doitKeypress(key) {
+            if(key < 27){
+                return;
+            }
+            if(key > 27 && key < 37){
+                return;
+            }
+            if(key > 40 && key < 65){
+                return;
+            }
+            if(key > 90){
+                return;
+            }
+            if(key == 27){
+            }
+            if(key === 82){
+                return;
+            }
             var mychat = $("#mychat").attr("value");
             playAudio();
             $('body').css({cursor: "wait"});
@@ -910,14 +927,6 @@ You should have received a copy of the GNU General Public License
                 $('#arrow-svg').attr('viewBox', "0 0 " + width + " " + height);
             });
 
-
-//            $(".unit").on('mousedown touchstart', function (e) {
-//                console.log("Down with the mouse");
-//                DR.clickX = e.clientX;
-//                DR.clickY = e.clientY;
-//                DR.dragged = false;
-//            });
-
             $(".unit").on('click touchend', counterClick);
 
 
@@ -1164,11 +1173,13 @@ You should have received a copy of the GNU General Public License
                 return false;
             });
 
-            $("body").keydown(function (event) {
+            $("body").keydown(function (e) {
+
+                var code = e.keyCode || e.which;
                 if(event.target.id === "bug-report-message"){
                     return;
                 }
-                doitKeypress(event.which);
+                doitKeypress(code);
             });
 
             $("body #bug-report-message").keypress(function(event){
