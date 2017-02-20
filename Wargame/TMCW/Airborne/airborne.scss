@@ -23,7 +23,7 @@
   background:white;
 }
 
-@include player(rebel, One, $rebelColor);
+@include player(rebel, One, orange);
 @include player(loyalist,Two,$loyalistColor);
 //@include player(loyalGuards,Three,$loyalistGuardColor);
 @include headerColor(Rebel, $rebelColor, $rebelColor);
@@ -33,6 +33,13 @@
 @include specialColor(Rebel, $rebelColor, white);
 @include specialColor(Loyalist, $loyalistColor, white);
 
+
+.specialHexes{
+  &.fa-adjust{
+    font-size:30px;
+    margin: -14px 0 0 -14px;
+  }
+}
 
 #gameImages .a-unit-wrapper{
   position:absolute;

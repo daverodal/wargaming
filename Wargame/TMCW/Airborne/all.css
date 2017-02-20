@@ -3542,21 +3542,21 @@ You should have received a copy of the GNU General Public License
   background: white; }
 
 .playerrebel {
-  background: #5c5;
-  border-color: #5c5 !important; }
+  background: orange;
+  border-color: orange !important; }
 
 .playerOne {
-  background: #5c5;
-  border-color: #5c5 !important; }
+  background: orange;
+  border-color: orange !important; }
 
 .rebelFace, .playerrebelFace {
-  color: #5c5; }
+  color: orange; }
 
 .One.combatants {
-  color: #5c5; }
+  color: orange; }
 
 .rebel {
-  background-color: #5c5; }
+  background-color: orange; }
   .rebel .unit-desig {
     color: white; }
 
@@ -3644,6 +3644,10 @@ You should have received a copy of the GNU General Public License
 .specialHexes.Loyalist {
   background: #83aee9;
   color: white; }
+
+.specialHexes.fa-adjust {
+  font-size: 30px;
+  margin: -14px 0 0 -14px; }
 
 #gameImages .a-unit-wrapper {
   position: absolute;
@@ -3775,6 +3779,6 @@ You should have received a copy of the GNU General Public License
   display: none; }
 
 li {
-  color: green; }
+  color: khaki; }
 
 /*# sourceMappingURL=all.css.map */

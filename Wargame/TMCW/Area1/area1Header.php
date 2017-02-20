@@ -207,7 +207,6 @@
     $(document).ready(function(){
 
         $(".area").on("click", function(){
-            console.log($(this).attr('id'));
         });
 
     });

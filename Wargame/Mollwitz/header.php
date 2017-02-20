@@ -22,7 +22,7 @@
 ?><link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
-
+var DR;
     $(document).ready(function(){
     if(!DR){
         DR = {};

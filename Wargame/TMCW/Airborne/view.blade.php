@@ -1,4 +1,4 @@
-@include('wargame::global-header')
+@include('wargame::ng-global-header')
 @include('wargame::TMCW.Airborne.airborneHeader')
 <link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/airborne.css')}}">
 </head>

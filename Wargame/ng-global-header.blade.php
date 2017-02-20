@@ -25,20 +25,15 @@ You should have received a copy of the GNU General Public License
 
     ?>
     <script>
-
         <?php foreach($constants as $k => $v){
             echo "const $k = $v;\n";
         }?>
 
 
-        const addUrl = "<?=url("wargame/add/");?>";
-        const pokeUrl = "<?=url("wargame/poke/");?>";
         const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
-        const wargame = "<?=$wargame?>";
-        const rowSvg = "<?php echo asset('js/rowHex.svg');?>";
-        const mapSymbolsBefore = "<?php echo asset('js');?> /";
 
 
+debugger;
         var DR = window.DR;
 
         if (!DR) {
@@ -56,7 +51,7 @@ You should have received a copy of the GNU General Public License
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/icon">
-    <script src="{{elixir("javascripts/gameMain.js")}}"></script>
+    <script src="{{elixir("javascripts/ngGameMain.js")}}"></script>
 
     <script src="<?=url("js/jquery-ui.js");?>"></script>
 
@@ -69,6 +64,8 @@ You should have received a copy of the GNU General Public License
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+
     </script>
     <link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>

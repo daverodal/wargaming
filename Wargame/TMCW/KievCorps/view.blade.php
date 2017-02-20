@@ -1,6 +1,5 @@
+@include('wargame::ng-global-header')
 @extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\KievCorps\KievCorps::GERMAN_FORCE)] )
-
-@include('wargame::global-header')
 @include('wargame::TMCW.KievCorps.kievHeader')
 <link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/kievcorps.css')}}">
 </head>
