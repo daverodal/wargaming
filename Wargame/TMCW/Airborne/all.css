@@ -3542,21 +3542,21 @@ You should have received a copy of the GNU General Public License
   background: white; }
 
 .playerrebel {
-  background: orange;
-  border-color: orange !important; }
+  background: #5c5;
+  border-color: #5c5 !important; }
 
 .playerOne {
-  background: orange;
-  border-color: orange !important; }
+  background: #5c5;
+  border-color: #5c5 !important; }
 
 .rebelFace, .playerrebelFace {
-  color: orange; }
+  color: #5c5; }
 
 .One.combatants {
-  color: orange; }
+  color: #5c5; }
 
 .rebel {
-  background-color: orange; }
+  background-color: #5c5; }
   .rebel .unit-desig {
     color: white; }
 
