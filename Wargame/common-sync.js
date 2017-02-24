@@ -1069,7 +1069,7 @@ x.register("moveRules", function (moveRules, data) {
                 if (data.gameRules.mode == ADVANCING_MODE) {
                     var unit = moveRules.movingUnitId;
 
-                    thetas = data.combatRules.resolvedCombats[data.combatRules.currentDefender].thetas[unit]
+                    var thetas = data.combatRules.resolvedCombats[data.combatRules.currentDefender].thetas[unit]
                     for (k in thetas) {
                         $("#" + unit + " .arrow").clone().addClass('arrowClone').addClass('arrow' + k).insertAfter("#" + unit + " .arrow").removeClass('arrow');
                         theta = thetas[k];
@@ -1231,14 +1231,14 @@ x.register("combatRules", function (combatRules, data) {
                 if (combatRules.combats[i].index !== null) {
 
 
-                    attackers = combatRules.combats[i].attackers;
-                    defenders = combatRules.combats[i].defenders;
-                    thetas = combatRules.combats[i].thetas;
+                    var attackers = combatRules.combats[i].attackers;
+                    var defenders = combatRules.combats[i].defenders;
+                    var thetas = combatRules.combats[i].thetas;
 
                     var theta = 0;
                     for (var j in attackers) {
                         var numDef = Object.keys(defenders).length;
-                        for (k in defenders) {
+                        for (var k in defenders) {
                             $("#" + j + " .arrow").clone().addClass('arrowClone').addClass('arrow' + k).insertAfter("#" + j + " .arrow").removeClass('arrow');
                             theta = thetas[j][k];
                             theta *= 15;
@@ -1282,7 +1282,7 @@ x.register("combatRules", function (combatRules, data) {
                     ;
 
                     var details = renderCrtDetails(combatRules.combats[i]);
-                    newLine = "<h5>odds = " + oddsDisp + " </h5>" + details;
+                    var newLine = "<h5>odds = " + oddsDisp + " </h5>" + details;
                     if (cD !== false && cD == i) {
                         activeCombat = combatIndex;
                         activeCombatLine = newLine;
@@ -1296,7 +1296,7 @@ x.register("combatRules", function (combatRules, data) {
             }
             str += "There are " + combatIndex + " Combats";
             if (cD !== false) {
-                attackers = combatRules.combats[cD].attackers;
+                var attackers = combatRules.combats[cD].attackers;
 //                    var theta = 0;
 //                    for(var i in attackers){
 //                                      theta = attackers[i];
