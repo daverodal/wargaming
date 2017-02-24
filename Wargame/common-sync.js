@@ -581,7 +581,7 @@ x.register("force", function (force, data) {
 
 x.register("chats", function (chats) {
     var str;
-    for (i in chats) {
+    for (var i in chats) {
         str = "<li>" + chats[i] + "</li>";
         str = str.replace(/:/, ":<span>");
         str = str.replace(/$/, "</span>");
@@ -608,7 +608,7 @@ x.register("phaseClicks", function (clicks, data) {
     var ticker;
     ticker = clicks[0];
     var q = 0;
-    for (i = 0; i < num; i++) {
+    for (var i = 0; i < num; i++) {
         str += '<div class="newPhase"><a class="phaseClick" data-click="' + ticker + '">';
         if (data.gameRules.phaseClickNames) {
             str += phaseClickNames[q++];
@@ -651,7 +651,7 @@ x.register("click", function (click) {
 x.register("users", function (users) {
     var str;
     $("#users").html("");
-    for (i in users) {
+    for (var i in users) {
         str = "<li>" + users[i] + "</li>";
         $("#users").append(str);
     }
@@ -826,7 +826,7 @@ x.register("vp", function (vp, data) {
 x.register("games", function (games) {
     var str;
     $("#games").html("");
-    for (i in games) {
+    for (var i in games) {
         str = "<li>" + games[i] + "</li>";
         $("#games").append(str);
     }
@@ -1043,7 +1043,7 @@ x.register("moveRules", function (moveRules, data) {
                     $(this).css("opacity", 1.0).css('box-shadow', '#333 5px 5px 5px');
                     var path = $(this).attr("path");
                     var pathes = path.split(",");
-                    for (i in pathes) {
+                    for (var i in pathes) {
                         $("#" + id + "Hex" + pathes[i]).css("opacity", 1.0).css("border-color", "#fff").css('box-shadow', '#333 5px 5px 5px');
                         $("#" + id + "Hex" + pathes[i] + ".occupied").css("display", "block");
 
@@ -1056,7 +1056,7 @@ x.register("moveRules", function (moveRules, data) {
                     $(this).css("opacity", opacity).css('box-shadow', 'none');
                     var path = $(this).attr("path");
                     var pathes = path.split(",");
-                    for (i in pathes) {
+                    for (var i in pathes) {
                         $("#" + id + "Hex" + pathes[i]).css("opacity", .4).css("border-color", "#ccc #333 #333 #ccc").css('box-shadow', 'none');
                         $("#" + id + "Hex" + pathes[i] + ".occupied").css("display", "none");
 
@@ -1093,7 +1093,7 @@ x.register("moveRules", function (moveRules, data) {
             );
             var diff = 0;
             var counter = 0;
-            for (i in moveRules.moves) {
+            for (var i in moveRules.moves) {
                 counter++;
                 newId = id + "Hex" + i;
 
@@ -1227,7 +1227,7 @@ x.register("combatRules", function (combatRules, data) {
             var combatIndex = 0;
             $('.unit').removeAttr('title');
             $('.unit .unitOdds').remove();
-            for (i in combatRules.combats) {
+            for (var i in combatRules.combats) {
                 if (combatRules.combats[i].index !== null) {
 
 
@@ -1401,7 +1401,7 @@ x.register("combatRules", function (combatRules, data) {
             }
             var combatsToResolve = 0;
             toResolveLog += "Combats to Resolve<br>";
-            for (i in combatRules.combatsToResolve) {
+            for (var i in combatRules.combatsToResolve) {
                 combatsToResolve++;
                 if (combatRules.combatsToResolve[i].index !== null) {
                     attackers = combatRules.combatsToResolve[i].attackers;
@@ -1460,7 +1460,7 @@ x.register("combatRules", function (combatRules, data) {
             }
             var resolvedCombats = 0;
             toResolveLog += "<br>Resolved Combats <br>";
-            for (i in combatRules.resolvedCombats) {
+            for (var i in combatRules.resolvedCombats) {
                 resolvedCombats++;
                 if (combatRules.resolvedCombats[i].index !== null) {
                     atk = combatRules.resolvedCombats[i].attackStrength;
@@ -1566,7 +1566,7 @@ x.register("combatRulez", function (combatRules, data) {
             $('.unit').removeAttr('title');
             $('.unit .unitOdds').remove();
 
-            for (i in combatRules.combats) {
+            for (var i in combatRules.combats) {
                 if (combatRules.combats[i].index !== null) {
 
 
@@ -1671,7 +1671,7 @@ x.register("combatRulez", function (combatRules, data) {
                 str += "0 combats to resolve";
             }
             var combatsToResolve = 0;
-            for (i in combatRules.combatsToResolve) {
+            for (var i in combatRules.combatsToResolve) {
                 combatsToResolve++;
                 if (combatRules.combatsToResolve[i].index !== null) {
                     attackers = combatRules.combatsToResolve[i].attackers;
@@ -1715,7 +1715,7 @@ x.register("combatRulez", function (combatRules, data) {
 //                str += "Combats To Resolve: "+combatsToResolve;
             }
             var resolvedCombats = 0;
-            for (i in combatRules.resolvedCombats) {
+            for (var i in combatRules.resolvedCombats) {
                 resolvedCombats++;
                 if (combatRules.resolvedCombats[i].index !== null) {
                     atk = combatRules.resolvedCombats[i].attackStrength;
