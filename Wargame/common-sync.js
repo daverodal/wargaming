@@ -1331,7 +1331,7 @@ x.register("combatRules", function (combatRules, data) {
                 title += "<strong style='margin-left:20px;font-size:150%'>" + combatRules.lastResolvedCombat.Die + " " + combatRules.lastResolvedCombat.combatResult + "</strong>";
                 combatCol = combatRules.lastResolvedCombat.index + 1;
 
-                combatRoll = combatRules.lastResolvedCombat.Die;
+                var combatRoll = combatRules.lastResolvedCombat.Die;
                 if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
                     $(".torpedoTable .col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
                     $(".torpedoTable .row" + combatRoll + " .col" + combatCol).css('background-color', "cyan");
