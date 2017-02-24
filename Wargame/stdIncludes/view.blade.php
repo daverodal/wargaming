@@ -76,8 +76,7 @@
                         <li>
                             name is {{ $docName }}
                         </li>
-                        <!-- TODO: make game credits from DB -->
-                        <li>Game Designer: David Rodal</li>
+
                         <li class="game-id">
                             {{ $wargame }}
                         </li>
