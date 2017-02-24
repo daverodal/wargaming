@@ -1192,6 +1192,7 @@ x.register("combatRules", function (combatRules, data) {
                             }
                         }
                     }
+                    var combatCols;
                     if (typeof combatRules.combats[cD].index === 'object') {
                         combatCols = combatRules.combats[cD].index.map(function (val) {
                             return val + 4;
