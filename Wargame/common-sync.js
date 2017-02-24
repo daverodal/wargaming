@@ -1070,9 +1070,9 @@ x.register("moveRules", function (moveRules, data) {
                     var unit = moveRules.movingUnitId;
 
                     var thetas = data.combatRules.resolvedCombats[data.combatRules.currentDefender].thetas[unit]
-                    for (k in thetas) {
+                    for (var k in thetas) {
                         $("#" + unit + " .arrow").clone().addClass('arrowClone').addClass('arrow' + k).insertAfter("#" + unit + " .arrow").removeClass('arrow');
-                        theta = thetas[k];
+                        var theta = thetas[k];
                         theta *= 15;
                         theta += 180;
                         $("#" + unit + " .arrow" + k).css({opacity: "1.0"});
@@ -1411,7 +1411,7 @@ x.register("combatRules", function (combatRules, data) {
                     var theta = 0;
                     for (var j in attackers) {
                         var numDef = Object.keys(defenders).length;
-                        for (k in defenders) {
+                        for (var k in defenders) {
                             $("#" + j + " .arrow").clone().addClass('arrowClone').addClass('arrow' + k).insertAfter("#" + j + " .arrow").removeClass('arrow');
                             theta = thetas[j][k];
                             theta *= 15;
@@ -1577,7 +1577,7 @@ x.register("combatRulez", function (combatRules, data) {
                     var theta = 0;
                     for (var j in attackers) {
                         var numDef = Object.keys(defenders).length;
-                        for (k in defenders) {
+                        for (var k in defenders) {
                             $("#" + j + " .arrow").clone().addClass('arrowClone').addClass('arrow' + k).insertAfter("#" + j + " .arrow").removeClass('arrow');
                             theta = thetas[j][k];
                             theta *= 15;
@@ -1681,9 +1681,9 @@ x.register("combatRulez", function (combatRules, data) {
                     var theta = 0;
                     for (var j in attackers) {
                         var numDef = Object.keys(defenders).length;
-                        for (k in defenders) {
+                        for (var k in defenders) {
                             $("#" + j + " .arrow").clone().addClass('arrowClone').addClass('arrow' + k).insertAfter("#" + j + " .arrow").removeClass('arrow');
-                            theta = thetas[j][k];
+                            var theta = thetas[j][k];
                             theta *= 15;
                             theta += 180;
                             $("#" + j + " .arrow" + k).css({opacity: "1.0"});
