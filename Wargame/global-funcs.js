@@ -64,6 +64,52 @@ export function playAudioBuzz() {
 
 }
 
+export function doitCRT(id, event) {
+    var mychat = $("#mychat").attr("value");
+    playAudio();
+    $('body').css({cursor: "wait"});
+    $(this).css({cursor: "wait"});
+
+    $("#comlink").html('waiting');
+    $.ajax({
+            url: pokeUrl,
+        type: "POST",
+        data: {id: id, wargame: wargame,
+            event: (event.shiftKey || DR.shiftKey) ? COMBAT_PIN_EVENT : COMBAT_PIN_EVENT},
+            error: function (data, text, third) {
+                var obj = {};
+        try {
+            obj = jQuery.parseJSON(data.responseText);
+        } catch (e) {
+//                alert(data);
+        }
+        if (obj.emsg) {
+            alert(obj.emsg);
+        }
+        playAudioBuzz();
+        $('body').css({cursor: "auto"});
+        $(this).css({cursor: "auto"});
+        $("#comlink").html('Working');
+    },
+    success: function (data, textstatus) {
+        try {
+            var success = data.success;
+        } catch (e) {
+//            alert(data);
+        }
+        if (success) {
+            playAudioLow();
+
+        } else {
+            playAudioBuzz();
+        }
+        $('body').css({cursor: "auto"});
+        $(this).css({cursor: "auto"});
+    }
+});
+    $("#mychat").attr("value", "");
+}
+
 export function doitUnit(id, event) {
     var mychat = $("#mychat").attr("value");
     playAudio();
