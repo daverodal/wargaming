@@ -33,7 +33,6 @@ You should have received a copy of the GNU General Public License
         const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
 
 
-debugger;
         var DR = window.DR;
 
         if (!DR) {
