@@ -1363,12 +1363,12 @@ x.register("combatRules", function (combatRules, data) {
                     var hitRoll = combatRules.lastResolvedCombat.hitDie;
                     var hitCol = combatRules.lastResolvedCombat.hitCol;
 
-                    if (combatRules.lastResolvedCombat.hits ===  H ) {
+                    if (combatRules.lastResolvedCombat.hits ===  'H' ) {
                         $('.torpedoHitOneTable').show();
                         $(".torpedoHitOneTable .col" + hitCol).css('background-color', "rgba(255,255,1,.6)");
                         $(".torpedoHitOneTable .row" + hitRoll + " .col" + hitCol).css('background-color', "cyan");
                     }
-                    if (combatRules.lastResolvedCombat.hits ===  HH ) {
+                    if (combatRules.lastResolvedCombat.hits ===  'HH' ) {
                         $('.torpedoHitTwoTable').show();
                         $(".torpedoHitTwoTable .col" + hitCol).css('background-color', "rgba(255,255,1,.6)");
                         $(".torpedoHitTwoTable .row" + hitRoll + " .col" + hitCol).css('background-color', "cyan");
