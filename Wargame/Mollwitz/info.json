@@ -4695,10 +4695,19 @@
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName": "fogDeploy",
         "value": true
+      },
+      {
+        "name": "American + 1 in town/forest, British + 1 clear",
+        "keyName": "americanRevolution",
+        "value" : false
+      },
+      {
+        "name": "American Win Tie Game",
+        "keyName": "americanWinTie",
+        "value" : true
       }
     ],
     "params": {
-      "americanRevolution": true,
       "units": [
         {
           "num": 4,

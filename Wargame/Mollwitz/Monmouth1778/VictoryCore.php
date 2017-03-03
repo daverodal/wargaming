@@ -98,6 +98,15 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
+                $americanWinTie = $battle->scenario->americanWinTie ?? false;
+                if($americanWinTie){
+                    $gameRules->flashMessages[] = "American Win";
+                    $gameRules->flashMessages[] = "British Fail to Win";
+                    $this->winner = Monmouth1778::AMERICAN_FORCE;
+                    $this->gameOver = true;
+                    return true;
+                }
+
                 $gameRules->flashMessages[] = "Tie Game";
                 $this->winner = 0;
                 $this->gameOver = true;

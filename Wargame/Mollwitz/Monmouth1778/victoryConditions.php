@@ -28,7 +28,17 @@
             </li>
         <li>Additionally the Americans are awarded 10 points if they currently occupy the Hex marked with a blue 10.
             </li>
-        <li>The British are awarded 10 points if they currently occupy the Hex marked with a red 10. A tie is possible.</li>
+        <li>The British are awarded 10 points if they currently occupy the Hex marked with a red 10.</li>
+        <li>
+            A tie is possible.
+        </li>
+        <li><span class="lessBig">Optional Victory Condition</span>
+            <p><?=!empty($scenario->americanWinTie) ? "Enabled":""?><br>
+            If the British Player fails to win, the American player wins.
+            A tie game is still possible if both players "win" on the same turn.
+            </p>
+
+        </li>
 
     </li>
     </ol>

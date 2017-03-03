@@ -33,6 +33,18 @@ You should have received a copy of the GNU General Public License
     <li><span class="lessBig">Setup and first player</span>
         <p>Americans: Set up first on and within hexes marked A. They move first.</p>
         <p>British (and Hessians): Set up second on hexes marked B. They move second.</p>
-
     </li>
+    <li><span class="lessBig">
+            Optional Rules <i><?= !empty($scenario->americanRevolution) ? "Enabled" : ""?></i>
+        </span>
+    <ol>
+        <li>
+            British Are +1 attacking and defending in clear
+        </li>
+        <li>American are +1 attacking and defending in town or forest</li>
+    </ol>
+    </li>
+
+
+
 </ol>
