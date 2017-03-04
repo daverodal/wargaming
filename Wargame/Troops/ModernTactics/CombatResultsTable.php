@@ -75,6 +75,9 @@ class CombatResultsTable
         if($index > $this->maxCombatIndex){
             $index = $this->maxCombatIndex;
         }
+        if($index < 0){
+            return NE;
+        }
         if ($combat->useAlt) {
             return $this->crts->normal[$Die][$index];
         } else {
