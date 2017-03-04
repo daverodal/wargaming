@@ -169,7 +169,7 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
 
             /* German */
             for ($i = 0; $i < 12; $i++) {
-                UnitFactory::create(2, "deployBox", 9, 10, 7, 5, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'armor', 'Pz-IV');
+                UnitFactory::create(2, "deployBox", 9, 10, 7, 5, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'armor', 'IV');
             }
 
             /* Soviets */
