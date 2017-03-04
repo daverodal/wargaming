@@ -48,7 +48,7 @@ $russianColor: #B98700;
 @include player(Russian, Russian, $russianColor, $russianColor, darken($russianColor,30%), black);
 @include player(Soviet, Soviet, $russianColor, $russianColor, darken($russianColor,30%), black);
 .unit-desig{
-  bottom:0px;
+  top:0px;
   left:3px;
   transform:none;
   top:initial;
@@ -145,7 +145,26 @@ p.forceMarch,  p.range {
     bottom: 12px;
   }
 }
+
+.unitNumbers{
+  font-size:13px;
+  position:absolute;
+  &.attack{
+    top:0px;
+    left:0px;
+  }
+  &.rangewe{
+    top:0px;
+    right:1px;
+  }
+  &.movement{
+    bottom:0px;
+    right:1px;
+  }
+}
+
+
 .unitNumbers.weapons{
   left:12px;
-  top:-3px;
+  bottom:0px;
 }

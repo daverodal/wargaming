@@ -159,6 +159,9 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
 
         if(!empty($scenario->two)){
 
+            for ($i = 0; $i < 1; $i++) {
+                UnitFactory::create(2, "deployBox", 12, 12, 13, 3, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'armor', 'JVI');
+            }
             /* German */
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create(2, "deployBox", 10, 10, 10, 6, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'armor', 'V');
@@ -170,9 +173,11 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
             }
 
             /* Soviets */
-
+            for ($i = 0; $i < 1; $i++) {
+                UnitFactory::create(1, "deployBox", 11, 11, 13, 4, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "Soviet", 'armor','JS3');
+            }
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create(1, "deployBox", 9, 9, 9, 8, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "Soviet", 'armor','T-34/85');
+                UnitFactory::create(1, "deployBox", 9, 9, 9, 8, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "Soviet", 'armor','85');
             }
             for ($i = 0; $i < 16; $i++) {
                 UnitFactory::create(1, "deployBox", 8, 7, 8, 8, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "Soviet", 'armor','T-34');

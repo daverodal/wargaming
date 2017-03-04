@@ -4239,7 +4239,7 @@ svg#arrow-svg {
     stroke: #B98700; }
 
 .unit-desig {
-  bottom: 0px;
+  top: 0px;
   left: 3px;
   transform: none;
   top: initial; }
@@ -4313,8 +4313,21 @@ p.forceMarch, p.range {
   left: 5px;
   bottom: 12px; }
 
+.unitNumbers {
+  font-size: 13px;
+  position: absolute; }
+  .unitNumbers.attack {
+    top: 0px;
+    left: 0px; }
+  .unitNumbers.rangewe {
+    top: 0px;
+    right: 1px; }
+  .unitNumbers.movement {
+    bottom: 0px;
+    right: 1px; }
+
 .unitNumbers.weapons {
   left: 12px;
-  top: -3px; }
+  bottom: 0px; }
 
 /*# sourceMappingURL=all.css.map */
