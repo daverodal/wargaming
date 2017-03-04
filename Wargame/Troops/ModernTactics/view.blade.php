@@ -70,13 +70,29 @@
                         <line x1="0" x2="10" y1="13" y2="13"></line>
                     </svg>
                 </div>
+
+                <div class="type-wrapper mech-svg">
+                    <svg  width='20' height='10'>
+                        <g transform="scale(0.1)">
+                            <rect x="0" y="0" width="200" height="100" storke="white" stroke-width="13" fill="none"></rect>
+                            <path d="M 70,25 C 20,25 20,75 70,75" stroke="black" stroke-width="8" fill="none" />
+                            <path d="M 130,25 C 180,25 180,75 130,75" stroke="black" stroke-width="8" fill="none" />
+                            <line x1="0" y1="0" x2="199" y2="99" stroke="black" stroke-width="6" fill="none"/>
+                            <line x1="0" y1="99" x2="199" y2="0" stroke="black" stroke-width="6" fill="none"/>
+                            <line x1="70" y1="25" x2="130" y2="25" stroke="black" stroke-width="8" fill="none" />
+                            <line x1="70" y1="75" x2="130" y2="75" stroke="black" stroke-width="8" fill="none"  />
+                        </g>
+                    </svg>
+                </div>
                 <div class="type-wrapper armor-svg">
-                    <svg width="20" height="10" viewBox="0 0 40 20">
-                        <line x1="1" x2="1" y1="0" y2="20" stroke-width="2"></line>
-                        <line x1="0" x2="40" y1="19" y2="19" stroke-width="2"></line>
-                        <line x1="39" x2="39" y1="0" y2="20" stroke-width="2"></line>
-                        <line x1="0" x2="40" y1="1" y2="1" stroke-width="2"></line>
-                        <ellipse cx="20" cy="10" rx="12" ry="5" fill="transparent"/>
+                    <svg  width='20' height='10'>
+                        <g transform="scale(0.1)">
+                            <rect x="0" y="0" width="200" height="100" storke="white" stroke-width="13" fill="none"></rect>
+                            <path d="M 70,25 C 20,25 20,75 70,75" stroke="black" stroke-width="8" fill="none" />
+                            <path d="M 130,25 C 180,25 180,75 130,75" stroke="black" stroke-width="8" fill="none" />
+                            <line x1="70" y1="25" x2="130" y2="25" stroke="black" stroke-width="8" fill="none" />
+                            <line x1="70" y1="75" x2="130" y2="75" stroke="black" stroke-width="8" fill="none"  />
+                        </g>
                     </svg>
                 </div>
                 <div class="type-wrapper infantry-svg">

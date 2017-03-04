@@ -134,7 +134,17 @@ p.forceMarch,  p.range {
     bottom: 12px;
   }
 }
-
+.mech {
+  .unitNumbers {
+    font-size: 11px;
+  }
+ .mech-svg {
+    display: block;
+    position: absolute;
+    left: 5px;
+    bottom: 12px;
+  }
+}
 .unitNumbers.weapons{
   left:12px;
   top:-3px;

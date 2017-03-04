@@ -68,6 +68,7 @@ function clearHexes() {
 
 window.x = new Sync(fetchUrl);
 var x = window.x;
+window.fixHeader = fixHeader;
 
 function svgRefresh(){
     var svgHtml = $('#svgWrapper').html();

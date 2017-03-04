@@ -26,16 +26,4 @@ use \Wargame\Battle;
  */
 class troopersVictoryCore extends \Wargame\Troops\victoryCore
 {
-    public function preStartMovingUnit($arg){
-        /* @var unit $unit */
-        list($unit) = $arg;
-        /* @var Dubba1843 $battle */
-        $battle = Battle::getBattle();
-        $zocBlocksRetreat = !empty($battle->scenario->zocBlocksRetreat);
-        if($unit->forceId !== BRITISH_FORCE || $zocBlocksRetreat ){
-            $battle->moveRules->zocBlocksRetreat = true;
-        }else{
-            $battle->moveRules->zocBlocksRetreat = false;
-        }
-    }
 }

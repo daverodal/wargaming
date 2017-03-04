@@ -3868,6 +3868,14 @@ p.forceMarch {
   left: 2px;
   bottom: 2px; }
 
+.mech .unitNumbers {
+  font-size: 11px; }
+.mech .mech-svg {
+  display: block;
+  position: absolute;
+  left: 5px;
+  bottom: 12px; }
+
 .topDiv.smallUnit {
   width: 32px;
   height: 32px; }
@@ -4292,6 +4300,14 @@ p.forceMarch, p.range {
 .armor .unitNumbers {
   font-size: 11px; }
 .armor .armor-svg {
+  display: block;
+  position: absolute;
+  left: 5px;
+  bottom: 12px; }
+
+.mech .unitNumbers {
+  font-size: 11px; }
+.mech .mech-svg {
   display: block;
   position: absolute;
   left: 5px;

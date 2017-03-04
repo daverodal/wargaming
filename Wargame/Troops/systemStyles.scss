@@ -560,6 +560,18 @@ p.forceMarch {
   }
 }
 
+.mech {
+  .unitNumbers {
+    font-size: 11px;
+  }
+  .mech-svg {
+    display: block;
+    position: absolute;
+    left: 5px;
+    bottom: 12px;
+  }
+}
+
 .topDiv.smallUnit{
   width:32px;
   height:32px;

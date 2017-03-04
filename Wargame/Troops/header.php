@@ -188,7 +188,9 @@ x.register("mapUnits", function(mapUnits) {
     }
     var dpBox = $("#deployBox").children().size();
     if(dpBox != beforeDeploy){
-        fixHeader();
+        if(fixHeader){
+            fixHeader();
+        }
         beforeDeploy = dpBox;
 
     }
