@@ -139,6 +139,13 @@ class BaseUnit extends MovableUnit{
                         $battle->force->requiredDefenses->$id = true;
                     }
                 }
+                if($this instanceof TransportableUnit){
+                    if($this->canBeTransported()){
+                        if($this->getTransporter()){
+                            $this->status = STATUS_UNAVAIL_THIS_PHASE;
+                        }
+                    }
+                }
                 break;
 
             case STATUS_MOVING:
@@ -162,12 +169,14 @@ class BaseUnit extends MovableUnit{
                 }
                 if ($this->status == STATUS_ADVANCING) {
                     $this->status = STATUS_ADVANCED;
-//                    $this->moveAmountUsed = $$this->maxMove;
                     $success = true;
                 }
                 if ($this->status == STATUS_RETREATING) {
                     $this->status = STATUS_RETREATED;
-//                    $this->moveAmountUsed = $$this->maxMove;
+                    $success = true;
+                }
+                if ($this->status == STATUS_LOADING) {
+                    $this->status = STATUS_STOPPED;
                     $success = true;
                 }
                 break;

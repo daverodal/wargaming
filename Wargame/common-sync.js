@@ -414,6 +414,30 @@ x.register("force", function (force, data) {
                 }
                 color = "#ccc #666 #666 #ccc";
                 break;
+
+            case STATUS_CAN_TRANSPORT:
+                color = "fuchsia";
+                shadow = false;
+                break;
+
+            case STATUS_LOADING:
+                color = "lime";
+                shadow = false;
+
+                break;
+
+
+            case STATUS_CAN_UNLOAD:
+                color = "aliceblue";
+                shadow = false;
+                break;
+
+            case STATUS_UNLOADING:
+                color = "beige";
+                shadow = false;
+
+                break;
+
             case STATUS_DEFENDING:
                 color = "orange";
 

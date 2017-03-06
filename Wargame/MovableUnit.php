@@ -106,7 +106,7 @@ class MovableUnit{
         return $maxMove;
     }
 
-    function getUnitHexagon()
+    function getUnitHexagon() : Hexagon
     {
 
         return $this->hexagon;
@@ -231,6 +231,27 @@ class MovableUnit{
         return $isDeploying;
     }
 
+    function unitIsLoading() :bool {
+        if($this->status === STATUS_LOADING){
+            return true;
+        }
+        return false;
+    }
+
+    function unitIsTransporting() : bool{
+        if($this->status === STATUS_CAN_TRANSPORT){
+            return true;
+        }
+        return false;
+    }
+
+    function unitIsUnloading() : bool{
+        return $this->status === STATUS_UNLOADING;
+    }
+
+    function unitCanUnload(): bool{
+        return $this->status ===STATUS_CAN_UNLOAD;
+    }
 
     function getUnitReinforceTurn()
     {
@@ -242,5 +263,12 @@ class MovableUnit{
         return $this->reinforceZone;
     }
 
+    function canBeTransported(){
+        return false;
+    }
+
+    function canTransport(){
+        return false;
+    }
 
 }

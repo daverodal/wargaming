@@ -269,7 +269,7 @@ class MapData implements JsonSerializable
         }
     }
 
-    function getHex($name)
+    function getHex($name) : MapHex
     {
         $name = sprintf("%04d", $name);
         if (!isset($this->hexes->$name)) {

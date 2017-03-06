@@ -234,7 +234,7 @@ abstract class SimpleForce{
 
 
 
-    function getUnit($id)
+    function getUnit($id) : MovableUnit
     {
         return $this->units[$id];
     }

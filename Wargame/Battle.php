@@ -38,6 +38,7 @@ class Battle
 
     static $forceName = [];
     static $deployName = [];
+    public $mapData;
 
     public function __construct(AdminService $ad)
     {
@@ -168,7 +169,7 @@ class Battle
         }
     }
 
-    public static function getBattle()
+    public static function getBattle() : Battle
     {
 
         if (self::$theBattle) {
@@ -234,5 +235,7 @@ class Battle
         }
         return false;
     }
-
+    public function getMapData() : MapData{
+        return $this->mapData;
+    }
 }

@@ -159,5 +159,9 @@ interface Cnst {
     const STATUS_REPLACING =  37;
     const STATUS_COMBINED =  38;
     const STATUS_CAN_COMBINE =  39;
-    const STATUS_CAN_DEFEND_LOSE =  40;
+    const STATUS_CAN_DEFEND_LOSE = 40;
+    const STATUS_LOADING = 41;
+    const STATUS_CAN_TRANSPORT = 42;
+    const STATUS_UNLOADING = 43;
+    const STATUS_CAN_UNLOAD = 44;
 }

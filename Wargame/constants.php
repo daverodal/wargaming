@@ -269,6 +269,10 @@ define("STATUS_REPLACING",37);
 define("STATUS_COMBINED",38);
 define("STATUS_CAN_COMBINE",39);
 define("STATUS_CAN_DEFEND_LOSE",40);
+define("STATUS_LOADING", 41);
+define("STATUS_CAN_TRANSPORT", 42);
+define("STATUS_UNLOADING", 43);
+define("STATUS_CAN_UNLOAD", 44);
 
 
 // unit status names

@@ -114,6 +114,7 @@
                         <line x1="1" x2="19" y1="19" y2="1" stroke-width="2"></line>
                     </svg>
                 </div>
+                <div class="type-wrapper truck"><i class="fa fa-truck"></i></div>
                 <div class="unitNumbers defense">
                     [13]
                 </div>

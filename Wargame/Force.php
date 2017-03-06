@@ -713,7 +713,15 @@ class Force extends SimpleForce
                     break;
             }
             if($phase === BLUE_MOVE_PHASE || $phase === RED_MOVE_PHASE || $phase == TEAL_MOVE_PHASE || $phase == PURPLE_MOVE_PHASE){
-                $this->units[$id]->moveAmountUnused = $this->units[$id]->getMaxMove();
+                $unit = $this->units[$id];
+                $unit->moveAmountUnused = $this->units[$id]->getMaxMove();
+                if($unit instanceof TransportableUnit){
+                    if($unit->canBeTransported()){
+                        if($unit->getTransporter()){
+                            $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                        }
+                    }
+                }
             }
             $this->units[$id]->combatIndex = 0;
             $this->units[$id]->combatNumber = 0;

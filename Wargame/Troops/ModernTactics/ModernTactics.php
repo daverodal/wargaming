@@ -182,6 +182,12 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
             for ($i = 0; $i < 16; $i++) {
                 UnitFactory::create(1, "deployBox", 8, 7, 8, 8, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "A", 1,  "Soviet", 'armor','T-34');
             }
+            UnitFactory::create(2, "deployBox", 6, 3, 5, 1, ModernTacticalUnit::AP_WEAPONS, ModernTacticalUnit::SOFT_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'infantry', '...');
+
+            UnitFactory::create(2, "deployBox", 0, 0, 3, 6, 'T', ModernTacticalUnit::HARD_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'mech', '...', true);
+            UnitFactory::create(2, "deployBox", 0, 0, 1, 7, 'T', ModernTacticalUnit::SOFT_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'truck', 'T', true);
+            UnitFactory::create(2, "deployBox", 0, 0, 1, 7, 'T', ModernTacticalUnit::SOFT_TARGET, STATUS_CAN_DEPLOY, "B", 1,  "German", 'truck', 'T', true);
+
         }
 
 

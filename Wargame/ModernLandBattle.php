@@ -42,6 +42,9 @@ class ModernLandBattle extends LandBattle
     public $players;
 
 
+    public function getMapData(): MapData{
+        return $this->mapData;
+    }
     function __construct($data = null, $arg = false, $scenario = false, $game = false){
         $this->mapData = MapData::getInstance();
         parent::__construct($data, $arg, $scenario, $game);

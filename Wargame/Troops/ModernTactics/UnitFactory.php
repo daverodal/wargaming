@@ -12,9 +12,9 @@ class UnitFactory {
         }
         return $sU;
     }
-    public static function create(  $unitForceId, $unitHexagon,  $attackStrength, $range,  $defense, $unitMaxMove, $weapons, $target,  $unitStatus, $unitReinforceZone, $unitReinforceTurn, $nationality = "neutral", $class, $unitDesig = ""){
+    public static function create(  $unitForceId, $unitHexagon,  $attackStrength, $range,  $defense, $unitMaxMove, $weapons, $target,  $unitStatus, $unitReinforceZone, $unitReinforceTurn, $nationality = "neutral", $class, $unitDesig = "", $canTransport = false){
         $unit = self::build();
-        $unit->set($unitForceId, $unitHexagon,  $attackStrength,$range, $defense, $unitMaxMove, $weapons, $target, $unitStatus, $unitReinforceZone, $unitReinforceTurn,  $nationality, $class, $unitDesig);
+        $unit->set($unitForceId, $unitHexagon,  $attackStrength,$range, $defense, $unitMaxMove, $weapons, $target, $unitStatus, $unitReinforceZone, $unitReinforceTurn,  $nationality, $class, $unitDesig, $canTransport);
         self::$injector->injectUnit($unit);
     }
 

@@ -4304,6 +4304,15 @@ p.forceMarch, p.range {
   left: 5px;
   bottom: 12px; }
 
+.truck .unitNumbers {
+  font-size: 11px; }
+.truck .truck {
+  font-size: 11px;
+  position: absolute;
+  display: block;
+  top: 8px;
+  left: 9px; }
+
 .mech .unitNumbers {
   font-size: 11px; }
 .mech .mech-svg {

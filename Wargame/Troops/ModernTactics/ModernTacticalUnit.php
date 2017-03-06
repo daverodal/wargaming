@@ -27,10 +27,14 @@ use Wargame\Battle;
 use Wargame\Hexagon;
 use stdClass;
 use Wargame\MapData;
+use Wargame\MovableUnit;
+use Wargame\TransportableUnit;
+
+
 /**
 
  */
-class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
+class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable, TransportableUnit
 {
 
     const HARD_TARGET = 0;
@@ -48,7 +52,10 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
     public $target;
     public $pinned = false;
     public $weapons;
+    public $canTransport = false;
 
+    public $carries = false;
+    public $carriedBy = false;
 
 
     public $isDisrupted = false;
@@ -80,6 +87,30 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
 
     public function getUnmodifiedDefStrength(){
         return  $this->getUnmodifiedStrength();
+    }
+
+    public function setCargo(TransportableUnit $carriedUnit){
+        $this->carries = $carriedUnit->id;
+    }
+
+    public function setTransporter(TransportableUnit $carryingUnit){
+        $this->carriedBy = $carryingUnit->id;
+    }
+
+    public function getCargo(){
+            return $this->carries;
+    }
+
+    public function getTransporter(){
+        return $this->carriedBy;
+    }
+
+    public function unsetCargo(){
+         $this->carries = false;
+    }
+
+    public function unsetTransporter(){
+        $this->carriedBy =false;
     }
 
     public function __get($name)
@@ -208,7 +239,7 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         return true;
     }
 
-    function set($unitForceId, $unitHexagon,  $attackStrength, $range, $defenseStrength, $unitMaxMove, $weapons, $target, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $nationality = "neutral",  $class, $unitDesig)
+    function set($unitForceId, $unitHexagon,  $attackStrength, $range, $defenseStrength, $unitMaxMove, $weapons, $target, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $nationality = "neutral",  $class, $unitDesig, $canTransport = false)
     {
         $this->dirty = true;
         $this->forceId = $unitForceId;
@@ -241,6 +272,7 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         $this->nationality = $nationality;
         $this->forceMarch = true;
         $this->unitDesig = $unitDesig;
+        $this->canTransport = $canTransport;
     }
 
     public function checkLos(\Wargame\Los $los, $defenderId = false){
@@ -293,6 +325,28 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         }
     }
 
+    public function canBeTransported(){
+        if($this->target === self::SOFT_TARGET && $this->getMaxMove() < 4){
+            if($this->moveAmountUsed === 0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public function canTransport() : bool {
+        return $this->canTransport && $this->moveAmountUsed === 0;
+    }
+
+    public function updateMoveStatus($hexagon, $moveAmount){
+        parent::updateMoveStatus($hexagon, $moveAmount);
+        if($cargo = $this->getCargo()){
+            $b = Battle::getBattle();
+            $unit = $b->force->getUnit($cargo);
+            $unit->updateMoveStatus($hexagon, 0);
+        }
+    }
 
     public function fetchData(){
         $mapUnit = new stdClass();
@@ -313,6 +367,7 @@ class ModernTacticalUnit extends \Wargame\BaseUnit implements \JsonSerializable
         $mapUnit->target = $this->target;
         $mapUnit->defenseStrength = $this->defenseStrength;
         $mapUnit->pinned = $this->pinned;
+        $mapUnit->canTransport = $this->canTransport();
         return $mapUnit;
     }
 
