@@ -103,7 +103,7 @@ class MapData implements JsonSerializable
         $this->breadcrumbs->$index = $crumbs;
     }
 
-    public static function getInstance()
+    public static function getInstance() : MapData
     {
         if (!MapData::$instance) {
             MapData::$instance = new MapData();

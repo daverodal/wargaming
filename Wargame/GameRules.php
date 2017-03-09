@@ -603,7 +603,10 @@ class GameRules
                             }
 
                             if($c == 'l' || $c == 'L'){
-                                return $this->moveRules->loadUnit();
+                                if($this->moveRules InstanceOf TransportMoveRules){
+                                    return $this->moveRules->loadUnit();
+                                }
+                                return false;
                                 /* is this finished? */
 //                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
                             }

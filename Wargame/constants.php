@@ -273,6 +273,7 @@ define("STATUS_LOADING", 41);
 define("STATUS_CAN_TRANSPORT", 42);
 define("STATUS_UNLOADING", 43);
 define("STATUS_CAN_UNLOAD", 44);
+define("STATUS_CAN_LOAD", 45);
 
 
 // unit status names

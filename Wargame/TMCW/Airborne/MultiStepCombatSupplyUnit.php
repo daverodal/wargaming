@@ -21,11 +21,17 @@
 
 namespace Wargame\TMCW\Airborne;
 use Wargame\TMCW\KievCorps\MultiStepUnit;
+use Wargame\TransportableUnit;
 
-class MultiStepCombatSupplyUnit extends MultiStepUnit
+class MultiStepCombatSupplyUnit extends MultiStepUnit implements TransportableUnit
 {
     public $supplyUsed = false;
     public $supplyRadius = false;
+
+    public $canTransport = false;
+
+    public $carries = false;
+    public $carriedBy = false;
 
     public function fetchData(){
         $mapUnit = parent::fetchData();
@@ -41,4 +47,47 @@ class MultiStepCombatSupplyUnit extends MultiStepUnit
             $this->supplyRadius = 2;
         }
     }
+
+
+
+
+    public function canBeTransported(){
+        if($this->class === 'supply'){
+            if($this->moveAmountUsed === 0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public function canTransport() : bool {
+        return $this->class === "truck";
+    }
+
+    public function setCargo(TransportableUnit $carriedUnit){
+        $this->carries = $carriedUnit->id;
+    }
+
+    public function setTransporter(TransportableUnit $carryingUnit){
+        $this->carriedBy = $carryingUnit->id;
+    }
+
+    public function getCargo(){
+        return $this->carries;
+    }
+
+    public function getTransporter(){
+        return $this->carriedBy;
+    }
+
+    public function unsetCargo(){
+        $this->carries = false;
+    }
+
+    public function unsetTransporter(){
+        $this->carriedBy =false;
+    }
+
+
 }

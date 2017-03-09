@@ -164,4 +164,5 @@ interface Cnst {
     const STATUS_CAN_TRANSPORT = 42;
     const STATUS_UNLOADING = 43;
     const STATUS_CAN_UNLOAD = 44;
+    const STATUS_CAN_LOAD = 45;
 }

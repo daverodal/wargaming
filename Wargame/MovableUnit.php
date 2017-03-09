@@ -253,6 +253,10 @@ class MovableUnit{
         return $this->status ===STATUS_CAN_UNLOAD;
     }
 
+    function unitCanLoad(): bool{
+        return $this->status ===STATUS_CAN_LOAD;
+    }
+
     function getUnitReinforceTurn()
     {
         return $this->reinforceTurn;

@@ -13,8 +13,9 @@
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
              src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
-            <img ng-if="unit.class !== 'supply'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
+            <img ng-if="unit.class !== 'supply' && unit.class !== 'truck'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
             <i ng-if="unit.class === 'supply'" class="counter-symbol fa fa-adjust"></i>
+            <i ng-if="unit.class === 'truck'" class="counter-symbol fa fa-truck"></i>
             <span class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
         <div ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }}
@@ -32,8 +33,9 @@
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
              src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
-            <img ng-if="unit.class !== 'supply'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
+            <img ng-if="unit.class !== 'supply'  && unit.class !== 'truck'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
             <i ng-if="unit.class === 'supply'" class="counter-symbol fa fa-adjust"></i>
+            <i ng-if="unit.class === 'truck'" class="counter-symbol fa fa-truck"></i>
             <span class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
         <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>

@@ -189,6 +189,11 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "multiGor.png", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
+
 
         UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "multiGor.png", 1,  6,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);

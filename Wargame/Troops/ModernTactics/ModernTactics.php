@@ -1,5 +1,6 @@
 <?php
 namespace Wargame\Troops\ModernTactics;
+use Wargame\ModernTacticalMoveRules;
 use Wargame\Troops\ModernTactics\UnitFactory;
 
 use stdClass;
@@ -224,7 +225,7 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
             }else{
                 $this->terrain = new \stdClass();
             }
-            $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
+            $this->moveRules = new ModernTacticalMoveRules($this->force, $this->terrain, $data->moveRules);
             $this->combatRules = new ModernTacticalCombatRules($this->force, $this->terrain, $data->combatRules);
             $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force,  $data->gameRules);
             $this->victory = new Victory($data);
@@ -239,7 +240,7 @@ class ModernTactics extends \Wargame\Troops\TroopersCore
             $this->force = new Force();
             $this->terrain = new Terrain();
 
-            $this->moveRules = new MoveRules($this->force, $this->terrain);
+            $this->moveRules = new ModernTacticalMoveRules($this->force, $this->terrain);
             $this->combatRules = new ModernTacticalCombatRules($this->force, $this->terrain);
             $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
         }
