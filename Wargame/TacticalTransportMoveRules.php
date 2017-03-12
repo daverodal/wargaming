@@ -126,6 +126,10 @@ trait TacticalTransportMoveRules
 
         }
     }
+    function cancelLoading(TransportableUnit $unit)
+    {
+       return $this->stopLoading($unit);
+    }
 
     function stopUnloading(TransportableUnit $unit)
     {

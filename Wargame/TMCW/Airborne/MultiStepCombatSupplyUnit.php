@@ -22,6 +22,7 @@
 namespace Wargame\TMCW\Airborne;
 use Wargame\TMCW\KievCorps\MultiStepUnit;
 use Wargame\TransportableUnit;
+use Wargame\Battle;
 
 class MultiStepCombatSupplyUnit extends MultiStepUnit implements TransportableUnit
 {
@@ -39,6 +40,9 @@ class MultiStepCombatSupplyUnit extends MultiStepUnit implements TransportableUn
         if($this->supplyRadius !== false){
             $mapUnit->supplyRadius = $this->supplyRadius;
         }
+        $mapUnit->carriedBy = $this->carriedBy;
+        $mapUnit->carries = $this->carries;
+        $mapUnit->canTransport = $this->canTransport;
         return $mapUnit;
     }
 
@@ -58,6 +62,16 @@ class MultiStepCombatSupplyUnit extends MultiStepUnit implements TransportableUn
             }
         }
         return false;
+    }
+
+
+    public function updateMoveStatus($hexagon, $moveAmount){
+        parent::updateMoveStatus($hexagon, $moveAmount);
+        if($cargo = $this->getCargo()){
+            $b = Battle::getBattle();
+            $unit = $b->force->getUnit($cargo);
+            $unit->updateMoveStatus($hexagon, 0);
+        }
     }
 
 

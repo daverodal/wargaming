@@ -604,9 +604,10 @@ class GameRules
 
                             if($c == 'l' || $c == 'L'){
                                 if($this->moveRules InstanceOf TransportMoveRules){
-                                    return $this->moveRules->loadUnit();
+                                     return $this->moveRules->loadUnit();
+                                }else {
+                                    return false;
                                 }
-                                return false;
                                 /* is this finished? */
 //                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
                             }

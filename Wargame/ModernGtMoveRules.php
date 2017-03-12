@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: david
  * Date: 3/8/17
- * Time: 9:30 AM
+ * Time: 9:54 AM
  *
  * /*
  * Copyright 2012-2017 David Rodal
@@ -22,13 +22,8 @@
 namespace Wargame;
 
 
-interface TransportMoveRules
+class ModernGtMoveRules extends MoveRules implements TransportMoveRules
 {
-    public function loadUnit();
-    function stopUnloading(TransportableUnit $unit);
-    function stopLoading(TransportableUnit $unit);
-    function cancelLoading(TransportableUnit $unit);
-    function transport(TransportableUnit $unit);
-    function unload(TransportableUnit $movingUnit, $hexagon);
+    use GtTransportMoveRules;
 
 }

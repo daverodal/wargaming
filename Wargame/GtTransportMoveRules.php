@@ -32,19 +32,8 @@ trait GtTransportMoveRules
         /* @var MapData $mapData */
         $hex = $unit->getUnitHexagon()->name;
         $mapHex = $mD->getHex($hex);
-        $neighbors = $mapHex->neighbors;
-        $unloadableHexes = [];
-        foreach($neighbors as $nKey => $nVal) {
-            $nMapHex = $mD->getHex($nVal);
-
-            if ($nMapHex->isOccupied($unit->forceId) ||
-                $mD->hexagonIsOccupiedEnemy(new Hexagon($nVal), $unit->forceId)
-            ) {
-                continue;
-            }
-            $unloadableHexes[] = $nVal;
-        }
-        return $unloadableHexes;
+        $this->unload($unit, $unit->hexagon);
+        return true;
     }
 
 
@@ -73,6 +62,7 @@ trait GtTransportMoveRules
                 }
             }
         }
+        $this->moves = new stdClass();
         if(count($loadableUnits) === 1){
             $this->transport($loadableUnits[0]);
         }
@@ -82,18 +72,30 @@ trait GtTransportMoveRules
     function unload(TransportableUnit $movingUnit, $hexagon)
     {
         /* @var Unit $movingUnit */
-        if ($movingUnit->unitCanUnload() == true) {
-            $carriedUnitId = $movingUnit->getCargo();
+        if (($carriedUnitId = $movingUnit->getCargo()) !== false) {
             /* var \Wargame\TransportableUnit $cargoUnit */
             $cargoUnit = $this->force->getUnit($carriedUnitId);
             $movingUnit->unsetCargo();
             $cargoUnit->unsetTransporter();
-            $movingUnit->status = STATUS_STOPPED;
+            $movingUnit->status = STATUS_MOVING;
             $movingUnit->updateMoveStatus($hexagon, 0);
             $cargoUnit->status = STATUS_STOPPED;
-            $this->anyUnitIsMoving = false;
-            $this->movingUnitId = NONE;
             $this->moves = new stdClass();
+            $newHex = $movingUnit->hexagon->name;
+            $this->moveQueue = array();
+            $hexPath = new HexPath();
+            $hexPath->name = $newHex; //$startHex->name;
+            $hexPath->pointsLeft = $movingUnit->getMaxMove() - $movingUnit->moveAmountUsed;
+            $hexPath->pathToHere = array();
+            $hexPath->firstHex = false;
+            $hexPath->isOccupied = true;
+            if(isset($facing)){
+                $hexPath->facing = $facing;
+            }
+
+            $this->moveQueue[] = $hexPath;
+
+            $this->bfsMoves();
             return true;
         }
     }
@@ -102,24 +104,74 @@ trait GtTransportMoveRules
     {
         /* @var Unit $unit */
         $unit = $this->force->getUnit($this->movingUnitId);
+        $hex = $unit->hexagon->name;
         if ($loadingUnit->unitCanLoad() == true) {
-            $loadingUnit->setStatus(STATUS_STOPPED);
+            $loadingUnit->status = STATUS_STOPPED;
             $loadingUnit->setTransporter($unit);
             $unit->setCargo($loadingUnit);
             $this->getLoadableUnits($loadingUnit, STATUS_READY);
+            $unit->status = STATUS_MOVING;
+
+
+            $newHex = $unit->hexagon->name;
+            $this->moveQueue = array();
+            $hexPath = new HexPath();
+            $hexPath->name = $newHex; //$startHex->name;
+            $hexPath->pointsLeft = $unit->getMaxMove() - $unit->moveAmountUsed;
+            $hexPath->pathToHere = array();
+            $hexPath->firstHex = false;
+            $hexPath->isOccupied = true;
+            if(isset($facing)){
+                $hexPath->facing = $facing;
+            }
+
+            $this->moveQueue[] = $hexPath;
+
+            $this->bfsMoves();
         }
     }
 
+    function cancelLoading(TransportableUnit $unit)
+    {
+        /* @var Unit $unit */
+        if ($unit->unitIsTransporting() == true) {
+            $unit->setStatus(STATUS_MOVING);
+            $this->getLoadableUnits($unit, STATUS_READY);
+            $this->moves = new stdClass();
+            $newHex = $unit->hexagon->name;
+            $this->moveQueue = array();
+            $hexPath = new HexPath();
+            $hexPath->name = $newHex; //$startHex->name;
+            $hexPath->pointsLeft = $unit->getMaxMove() - $unit->moveAmountUsed;
+            $hexPath->pathToHere = array();
+            $hexPath->firstHex = false;
+            $hexPath->isOccupied = true;
+            if(isset($facing)){
+                $hexPath->facing = $facing;
+            }
+
+            $this->moveQueue[] = $hexPath;
+
+            $this->bfsMoves();
+
+        }
+    }
     function stopLoading(TransportableUnit $unit)
     {
         /* @var Unit $unit */
-        if ($unit->unitIsLoading() == true) {
-            $unit->setStatus(STATUS_READY);
+        if ($unit->unitIsTransporting() == true) {
+            if ($unit->unitHasNotMoved()) {
+                $unit->status = STATUS_READY;
+
+            }else{
+                $unit->status = STATUS_STOPPED;
+
+            }
+
             $this->getLoadableUnits($unit, STATUS_READY);
+            $this->moves = new stdClass();
             $this->anyUnitIsMoving = false;
             $this->movingUnitId = NONE;
-            $this->moves = new stdClass();
-
         }
     }
 
@@ -151,35 +203,22 @@ trait GtTransportMoveRules
         if ($this->anyUnitIsMoving) {
             /* @var $unit \Wargame\TransportableUnit */
             $unit = $this->force->getUnit($this->movingUnitId);
-            if($unit->canTransport()){
-                if($unit->unitIsLoading()){
-                    $this->stopLoading($unit);
-                    return true;
-                }else{
+            if($unit->canTransport() && !$unit->getCargo()){
+
                     $unit->status = STATUS_CAN_TRANSPORT;
                     $this->moves = new stdClass();
                     $transportUnits = $this->getLoadableUnits($unit);
                     if(count($transportUnits) > 0){
                         return true;
                     }
-                }
+
             }
             if($unit->canTransport()){
                 if($cargo = $unit->getCargo()){
                     $b = Battle::getBattle();
                     $cargoUnit = $b->force->getUnit($cargo);
-                    $unloadableHexes = $this->getUnloadableHexes($unit);
-                    $this->moves = new stdClass();
-                    foreach($unloadableHexes as $hex){
-                        $newPath = new HexPath();
-                        $newPath->name = $hex;
-                        $newPath->pathToHere = [];
-                        $newPath->pointsLeft = 0;
-                        $this->moves->$hex = $newPath;
-                    }
+                    $this->getUnloadableHexes($unit);
 
-                    $cargoUnit->status = STATUS_UNLOADING;
-                    $unit->status = STATUS_CAN_UNLOAD;
                     return true;
                 }
             }

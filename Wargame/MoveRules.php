@@ -25,7 +25,6 @@ use \Wargame\Battle;
 $numWalks = 0;
 class MoveRules
 {
-//    use GtTransportMoveRules;
     use BfsCalcMovesTrait;
 
     /* @var Force */
@@ -213,6 +212,10 @@ class MoveRules
                         $this->stopUnloading($movingUnit);
                         $dirty = true;
                     }
+                    if($movingUnit->unitIsTransporting()) {
+                        $this->cancelLoading($movingUnit);
+                        $dirty = true;
+                    }
                 } else {
                     /* @var Unit $movingUnit */
                     $movingUnit = $this->force->getUnit($this->movingUnitId);
@@ -244,6 +247,15 @@ class MoveRules
                         }
                     }
 
+                    if($movingUnit->unitIsTransporting()) {
+                        $unit = $this->force->getUnit($id);
+                        if($unit->canBeTransported() !== true){
+                            $this->stopLoading($movingUnit);
+                            $dirty = true;
+                        }
+
+                    }
+
                     if ($eventType == KEYPRESS_EVENT) {
                         if ($this->force->unitCanMove($movingUnitId) == true) {
                             $this->startMoving($movingUnitId);
@@ -251,6 +263,7 @@ class MoveRules
                             $dirty = true;
                         }
                     } else {
+                        $unit = $this->force->getUnit($id);
                         if ($this->force->unitCanMove($id) == true) {
                             $this->startMoving($id);
                             $this->calcMove($id);
@@ -265,6 +278,10 @@ class MoveRules
                             $dirty = true;
                         }
                         if($unit->unitIsTransporting()){
+                            $this->transport($unit);
+                            $dirty = true;
+                        }
+                        if($unit->unitCanLoad()){
                             $this->transport($unit);
                             $dirty = true;
                         }

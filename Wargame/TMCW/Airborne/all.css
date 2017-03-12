@@ -3718,6 +3718,9 @@ You should have received a copy of the GNU General Public License
     .mapSymbols .supply-hex.loyalist {
       color: #6666ff; }
 
+.ghost-unit {
+  z-index: 300; }
+
 #deployBox .unit {
   border: solid 3px;
   border-color: #cccccc #666666 #666666 #cccccc; }
