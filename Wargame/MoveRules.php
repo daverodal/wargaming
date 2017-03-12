@@ -160,7 +160,9 @@ class MoveRules
                             }
 
                             if ($movesAvail === 0) {
-                                $this->stopMove($movingUnit);
+                                if(!isset($facing)){
+                                    $this->stopMove($movingUnit);
+                                }
                             }
                         }
                         $dirty = true;
