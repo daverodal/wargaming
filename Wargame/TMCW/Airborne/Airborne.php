@@ -327,7 +327,7 @@ class Airborne extends \Wargame\ModernLandBattle
                     $nonTruckCnt++;
                 }
             }
-            return $nonTruckCnt >= 3;
+            return $nonTruckCnt >= 2;
         };
 
     }

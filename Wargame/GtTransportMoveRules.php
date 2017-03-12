@@ -79,7 +79,7 @@ trait GtTransportMoveRules
             $cargoUnit->unsetTransporter();
             $movingUnit->status = STATUS_MOVING;
             $movingUnit->updateMoveStatus($hexagon, 0);
-            $cargoUnit->status = STATUS_STOPPED;
+            $cargoUnit->status = STATUS_READY;
             $this->moves = new stdClass();
             $newHex = $movingUnit->hexagon->name;
             $this->moveQueue = array();
