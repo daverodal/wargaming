@@ -60,8 +60,6 @@ You should have received a copy of the GNU General Public License
 
     <script src="<?=url("js/jquery-ui.js");?>"></script>
 
-    <script src="<?=url("js/jquery.panzoom/dist/jquery.panzoom.js");?>"></script>
-    <script src="<?=url("js/jquery.panzoom/test/libs/jquery.mousewheel.js");?>"></script>
 
     <script type="text/javascript">
         $.ajaxSetup({
