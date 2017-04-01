@@ -24,7 +24,7 @@
         var str;
         var fudge;
         var x,y;
-        var beforeDeploy = $("#deployBox").children().size();
+        var beforeDeploy = $("#deployBox").children().length;
     DR.stackModel = {};
     DR.stackModel.ids = {};
     clearHexes();
@@ -130,7 +130,7 @@
         $("#"+i).css('border-style','dotted');
     }
     }
-    var dpBox = $("#deployBox").children().size();
+    var dpBox = $("#deployBox").children().length;
     if(dpBox != beforeDeploy){
     fixHeader();
         beforeDeploy = dpBox;

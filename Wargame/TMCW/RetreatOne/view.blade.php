@@ -34,7 +34,7 @@
         var str;
         var fudge;
         var x, y;
-        var beforeDeploy = $("#deployBox").children().size();
+        var beforeDeploy = $("#deployBox").children().length;
         DR.stackModel = {};
         DR.stackModel.ids = {};
 
@@ -158,7 +158,7 @@
             $("#" + i + " .counterWrapper .guard-unit ").addClass("infoLen" + len);
             $("#" + i).attr("src", img);
         }
-        var dpBox = $("#deployBox").children().size();
+        var dpBox = $("#deployBox").children().length;
         if (dpBox != beforeDeploy) {
             fixHeader();
             beforeDeploy = dpBox;

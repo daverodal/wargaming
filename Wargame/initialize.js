@@ -56,7 +56,7 @@ export default function initialize() {
         $('#arrow-svg').attr('viewBox', "0 0 " + width + " " + height);
     }
 
-    $("#map").load(function () {
+    $("#map").on("load", function () {
         var width = $("#gameImages #map").width();
         var height = $("#gameImages #map").height();
         $('#arrow-svg').width(width);
@@ -386,7 +386,7 @@ export default function initialize() {
         DR.$panzoom.panzoom('reset');
     });
 
-    $('#map').load(function () {
+    $('#map').on("load",function () {
         // fixItAll();
     });
 
