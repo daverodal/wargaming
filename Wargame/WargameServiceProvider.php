@@ -81,7 +81,7 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/TMCW/Airborne/all.css' => public_path('vendor/wargame/tmcw/css/airborne.css'),
             __DIR__.'/TMCW/Kiev/all.css' => public_path('vendor/wargame/tmcw/css/kiev.css'),
             __DIR__.'/TMCW/KievCorps/all.css' => public_path('vendor/wargame/tmcw/css/kievcorps.css'),
-            __DIR__.'/NTA/all.css' => public_path('vendor/wargame/css/nta.css'),
+            __DIR__.'/NTA/all.css' => public_path('vendor/wargame/nta/css/all.css'),
             __DIR__.'/SPI/ClashOverCrude/all.css' => public_path('vendor/wargame/spi/css/clashovercrude.css'),
             __DIR__.'/SPI/FinalChapter/all.css' => public_path('vendor/wargame/spi/css/finalchapter.css'),
             __DIR__.'/SPI/TinCans/all.css' => public_path('vendor/wargame/spi/css/tincans.css'),
