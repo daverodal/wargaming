@@ -16,5 +16,17 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 ?>
+<script type="text/javascript">
 
+x.register("vp", function(vp){
+    debugger;
+    var bridge = "<span class='playerFrenchFace'>French</span> ";
+    if(vp[0]){
+        bridge = "<span class='playerRussianFace'>Russians</span> ";
+    }
+    $("#victory").html(bridge + "Own bridge Hex, <span class='playerFrenchFace' >French Hexes "+vp[2]+ "</span> <span class='playerRussianFace'>Russian Hexes "+vp[1]+"</span>");
+
+
+});
+</script>
 

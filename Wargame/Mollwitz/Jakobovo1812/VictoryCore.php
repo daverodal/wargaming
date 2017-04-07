@@ -27,6 +27,7 @@ You should have received a copy of the GNU General Public License
 
 class VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
+    public $victoryPoints = [0,0,10];
     function __construct($data)
     {
 
@@ -41,8 +42,38 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         return $ret;
     }
 
+    public function specialHexChange($args)
+    {
+        list($mapHexName, $forceId) = $args;
 
-    protected function checkVictory( $battle)
+        $battle = Battle::getBattle();
+        $vHexes = [0,0,0];
+        $mapData = $battle->mapData;
+
+        list($hexB) = $battle->specialHexB;
+        if ((int)$hexB === (int)$mapHexName) {
+
+            $this->victoryPoints[0] = $forceId === Jakobovo1812::FRENCH_FORCE ? 0 : 1; /* Russian Bridge Hex control */
+
+        }
+
+
+        if(in_array($mapHexName, $battle->specialHexA)){
+            if($forceId === Jakobovo1812::RUSSIAN_FORCE){
+                $this->victoryPoints[Jakobovo1812::RUSSIAN_FORCE]++;
+                $this->victoryPoints[Jakobovo1812::FRENCH_FORCE]--;
+            }else{
+                $this->victoryPoints[Jakobovo1812::RUSSIAN_FORCE]--;
+                $this->victoryPoints[Jakobovo1812::FRENCH_FORCE]++;
+            }
+        }
+
+
+
+
+    }
+
+        protected function checkVictory( $battle)
     {
         $battle = Battle::getBattle();
 
@@ -64,46 +95,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                     return true;
                 }
             }
-            if(!isset($battle->scenario->noVP)) {
 
-
-                $AlliedWinScore = 35;
-                $frenchWinScore = 35;
-
-                if ($this->victoryPoints[Jakobovo1812::FRENCH_FORCE] >= $frenchWinScore) {
-                    $frenchWin = true;
-                    $victoryReason .= "Over $frenchWinScore ";
-                }
-                if ($this->victoryPoints[Jakobovo1812::RUSSIAN_FORCE] >= $AlliedWinScore) {
-                    $AlliedWin = true;
-                    $victoryReason .= "Over $AlliedWinScore ";
-                }
-
-
-                if ($frenchWin && !$AlliedWin) {
-                    $this->winner = Jakobovo1812::FRENCH_FORCE;
-                    $gameRules->flashMessages[] = "French Win";
-                    $gameRules->flashMessages[] = $victoryReason;
-                    $gameRules->flashMessages[] = "Game Over";
-                    $this->gameOver = true;
-                    return true;
-                }
-                if ($AlliedWin && !$frenchWin) {
-                    $this->winner = Jakobovo1812::RUSSIAN_FORCE;
-                    $gameRules->flashMessages[] = "Russian Win";
-                    $gameRules->flashMessages[] = $victoryReason;
-                    $gameRules->flashMessages[] = "Game Over";
-                    $this->gameOver = true;
-                    return true;
-                }
-                if ($frenchWin && $AlliedWin) {
-                    $gameRules->flashMessages[] = "Tie Game";
-                    $gameRules->flashMessages[] = $victoryReason;
-                    $gameRules->flashMessages[] = "Game Over";
-                    $this->gameOver = true;
-                    return true;
-                }
-            }
             if ($turn > $gameRules->maxTurn) {
 
                 $vHexes = [0,0,0];
