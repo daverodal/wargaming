@@ -202,9 +202,11 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         list($defenderId, $attackers, $combatResults, $dieRoll) = $arg;
         if(isset($this->releaseMap->$defenderId)){
             $zone = $this->releaseMap->$defenderId;
-            $this->releaseZones[$zone] = true;
-            $b = Battle::getBattle();
-            $b->gameRules->flashMessages[] = "Zone $zone units released.";
+            if($this->releaseZones[$zone] !== true) {
+                $this->releaseZones[$zone] = true;
+                $b = Battle::getBattle();
+                $b->gameRules->flashMessages[] = "Zone $zone units released.";
+            }
 
         }
     }

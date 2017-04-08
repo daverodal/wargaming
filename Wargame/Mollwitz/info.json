@@ -5780,7 +5780,7 @@
           "class": "cavalry"
         },
         {
-          "num": 35,
+          "num": 5,
           "forceId": 2,
           "combat": 2,
           "movement": 7,
@@ -5820,6 +5820,16 @@
           "class": "artillery"
         },
         {
+          "num": 4,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "Russian",
+          "class": "artillery"
+        },
+        {
           "num": 1,
           "forceId": 2,
           "combat": 4,
@@ -5840,11 +5850,11 @@
           "class": "horseartillery"
         },
         {
-          "num": 1,
+          "num": 3,
           "forceId": 2,
           "combat": 4,
           "movement": 5,
-          "reinforce": "D",
+          "reinforce": "B",
           "range": 4,
           "nationality": "Russian",
           "class": "horseartillery"
