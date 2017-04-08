@@ -143,7 +143,7 @@ class klissow1702VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
     }
 
-    public function postRecoverUnits($args)
+    public function postRecoverUnits()
     {
         $b = Battle::getBattle();
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE) {

@@ -122,7 +122,7 @@ class helsingborg1710VictoryCore extends \Wargame\Mollwitz\victoryCore
     }
 
 
-    public function postRecoverUnits($args)
+    public function postRecoverUnits()
     {
         $b = Battle::getBattle();
         $scenario = $b->scenario;

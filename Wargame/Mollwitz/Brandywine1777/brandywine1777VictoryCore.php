@@ -153,7 +153,7 @@ class brandywine1777VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     }
 
-    public function postRecoverUnits($args)
+    public function postRecoverUnits()
     {
 //        parent::postRecoverUnits($args);
         $b = Battle::getBattle();

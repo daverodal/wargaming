@@ -126,7 +126,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         return false;
     }
 
-    public function postRecoverUnits($args)
+    public function postRecoverUnits()
     {
 
     }

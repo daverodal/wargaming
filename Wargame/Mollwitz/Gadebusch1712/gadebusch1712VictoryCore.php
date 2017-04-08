@@ -172,7 +172,7 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
     }
 
-    public function postRecoverUnits($args)
+    public function postRecoverUnits()
     {
 //        parent::postRecoverUnits($args);
         $this->isIndecisive = false;

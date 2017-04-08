@@ -730,7 +730,6 @@ class Force extends SimpleForce
 
         }
         $victory->postRecoverUnits();
-
     }
 
 

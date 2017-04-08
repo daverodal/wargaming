@@ -27,16 +27,28 @@ You should have received a copy of the GNU General Public License
 
 class VictoryCore extends \Wargame\Mollwitz\victoryCore
 {
+    public $releaseMap;
+    /*
+     * zones 1-5,zero is ignored
+     */
+    public $releaseZones = [true, false, false, false, false, false];
+
     function __construct($data)
     {
         parent::__construct($data);
         if ($data) {
+            $this->releaseMap = $data->victory->releaseMap;
+            $this->releaseZones = $data->victory->releaseZones;
+        }else{
+            $this->releaseMap = new \stdClass();
         }
     }
 
     public function save()
     {
         $ret = parent::save();
+        $ret->releaseMap = $this->releaseMap;
+        $ret->releaseZones = $this->releaseZones;
         return $ret;
     }
 
@@ -76,7 +88,6 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             }
 
             foreach ($theUnits as $id => $unit) {
-
                 if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
 //                $theUnits[$id]->status = STATUS_ELIMINATED;
                     $theUnits[$id]->hexagon->parent = "deployBox";
@@ -150,13 +161,73 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         return false;
     }
 
-    public function postRecoverUnits($args)
-    {
+    public function preRecoverUnits(){
 
+        $b = Battle::getBattle();
+        /* @var $force \Wargame\Force */
+
+        if ($b->gameRules->phase == RED_MOVE_PHASE) {
+            if($b->gameRules->turn == 1) {
+                $force = $b->force;
+                $turn = 1;
+                $reinfMap = [];
+                foreach (['D', 'E', 'F', 'G', 'H'] as $reinfLetter) {
+                    $hexes = $b->terrain->getReinforceZonesByName($reinfLetter);
+                    foreach ($hexes as $hex) {
+                        $reinfMap[$hex->hexagon->name] = $turn;
+                    }
+                    $turn++;
+                }
+
+                $units = $force->units;
+                foreach ($units as $unit) {
+                    if ($unit->forceId === Heilsberg1807::RUSSIAN_FORCE) {
+                        if ($unit->isOnMap()) {
+                            $unitHex = $unit->hexagon->name;
+                            $this->releaseMap->{$unit->id} = $reinfMap[$unit->hexagon->name];
+                        }
+                    }
+                }
+            }
+
+        }
+        for($i = 0; $i <= $b->gameRules->turn;$i++){
+            $this->releaseZones[$i] = true;
+        }
+    }
+
+
+    public function postCombatResults($arg){
+
+        list($defenderId, $attackers, $combatResults, $dieRoll) = $arg;
+        if(isset($this->releaseMap->$defenderId)){
+            $zone = $this->releaseMap->$defenderId;
+            $this->releaseZones[$zone] = true;
+            $b = Battle::getBattle();
+            $b->gameRules->flashMessages[] = "Zone $zone units released.";
+
+        }
     }
 
     public function postRecoverUnit($args)
     {
         parent::postRecoverUnit($args);
+        list($unit) = $args;
+
+        $b = Battle::getBattle();
+        $phase = $b->gameRules->phase;
+        if($phase === RED_MOVE_PHASE || $phase === RED_COMBAT_PHASE) {
+            if ($unit->isOnMap() && $unit->forceId === Heilsberg1807::RUSSIAN_FORCE) {
+
+                $id = $unit->id;
+                $zone = $this->releaseMap->$id ?? false;
+                if ($zone === false) {
+                    return;
+                }
+                if ($this->releaseZones[$zone] === false) {
+                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                }
+            }
+        }
     }
 }

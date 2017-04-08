@@ -127,7 +127,7 @@ class LaRothiere1814VictoryCore extends \Wargame\Mollwitz\victoryCore
         return false;
     }
 
-    public function postRecoverUnits($args)
+    public function postRecoverUnits()
     {
         $b = Battle::getBattle();
         $scenario = $b->scenario;

@@ -131,7 +131,7 @@ class burkersdorfVictoryCore extends \Wargame\Mollwitz\victoryCore
         return false;
     }
 
-    public function postRecoverUnits($args)
+    public function postRecoverUnits()
     {
         $b = Battle::getBattle();
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == BLUE_MOVE_PHASE) {

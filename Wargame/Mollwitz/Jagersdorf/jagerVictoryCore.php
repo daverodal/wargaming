@@ -82,7 +82,7 @@ class jagerVictoryCore extends \Wargame\Mollwitz\victoryCore
         return false;
     }
 
-    public function postRecoverUnits($args){
+    public function postRecoverUnits(){
         $b = Battle::getBattle();
         if($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
             $b->gameRules->flashMessages[] = "Russian Movement allowance 2 this turn.";
