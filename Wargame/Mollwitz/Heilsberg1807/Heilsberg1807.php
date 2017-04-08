@@ -79,7 +79,7 @@ class Heilsberg1807 extends \Wargame\Mollwitz\JagCore
             $this->specialHexB = $data->specialHexB;
         } else {
             $this->victory = new \Wargame\Victory('\Wargame\Mollwitz\Heilsberg1807\VictoryCore');
-            $this->gameRules->setMaxTurn(9);
+            $this->gameRules->setMaxTurn(14);
             $this->deployFirstMoveSecond();
         }
     }
