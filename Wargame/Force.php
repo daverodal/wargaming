@@ -447,7 +447,11 @@ class Force extends SimpleForce
                         break;
 
                     case DE:
-                        $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
+                        if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                            $this->units[$attacker]->status = STATUS_ATTACKED;
+                        }else{
+                            $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
+                        }
                         $this->units[$attacker]->retreatCountRequired = 0;
                         break;
 
@@ -463,7 +467,11 @@ class Force extends SimpleForce
                     case DR:
                     case DLF:
                         if($this->units[$attacker]->status !== STATUS_NO_RESULT){
-                            $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
+                            if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                                $this->units[$attacker]->status = STATUS_ATTACKED;
+                            }else {
+                                $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
+                            }
                         }
                         $this->units[$attacker]->retreatCountRequired = 0;
                         break;
@@ -471,7 +479,11 @@ class Force extends SimpleForce
                     case DL:
                         /* for multi defender combats */
                         if ($vacated || $this->units[$attacker]->status == STATUS_CAN_ADVANCE) {
-                            $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
+                            if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                                $this->units[$attacker]->status = STATUS_ATTACKED;
+                            }else {
+                                $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
+                            }
                         } else {
                             $this->units[$attacker]->status = STATUS_NO_RESULT;
                         }
