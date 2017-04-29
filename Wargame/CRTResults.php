@@ -185,7 +185,11 @@ trait CRTResults
                         break;
 
                     case DE:
-                        $attackingUnit->status = STATUS_CAN_ADVANCE;
+                        if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                            $this->units[$attacker]->status = STATUS_ATTACKED;
+                        }else {
+                            $attackingUnit->status = STATUS_CAN_ADVANCE;
+                        }
                         $attackingUnit->retreatCountRequired = 0;
                         break;
 
@@ -200,8 +204,13 @@ trait CRTResults
                     case DLR:
                     case DR:
                     case DLF:
-                        if($attackingUnit->status !== STATUS_NO_RESULT){
-                            $attackingUnit->status = STATUS_CAN_ADVANCE;
+                        if($attackingUnit->status !== STATUS_NO_RESULT)
+                        {
+                            if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                                $this->units[$attacker]->status = STATUS_ATTACKED;
+                            }else{
+                                $attackingUnit->status = STATUS_CAN_ADVANCE;
+                            }
                         }
                         $attackingUnit->retreatCountRequired = 0;
                         break;
@@ -209,7 +218,11 @@ trait CRTResults
                     case DL:
                         /* for multi defender combats */
                         if ($vacated || $attackingUnit->status == STATUS_CAN_ADVANCE) {
-                            $attackingUnit->status = STATUS_CAN_ADVANCE;
+                            if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                                $this->units[$attacker]->status = STATUS_ATTACKED;
+                            }else {
+                                $attackingUnit->status = STATUS_CAN_ADVANCE;
+                            }
                         } else {
                             $attackingUnit->status = STATUS_NO_RESULT;
                         }
