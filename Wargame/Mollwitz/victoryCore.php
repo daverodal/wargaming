@@ -195,6 +195,13 @@ class victoryCore extends \Wargame\VictoryCore
         }
     }
 
+    public function unitProhibitedFromAdvancing($args){
+        list($unit) = $args;
+        if($unit->class === 'artillery' || $unit->class === 'horseartillery'){
+            return true;
+        }
+        return false;
+    }
     public function calcFromAttackers(){
         $mapData = \Wargame\MapData::getInstance();
 

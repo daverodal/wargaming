@@ -805,14 +805,19 @@ class Force extends SimpleForce
     function exchangingAreAdvancing()
     {
         $areAdvancing = false;
+        $b = Battle::getBattle();
         /*
          * Todo should not assign to status, should set status
          */
         for ($id = 0; $id < count($this->units); $id++) {
             if ($this->units[$id]->status == STATUS_CAN_EXCHANGE) {
                 if(count($this->retreatHexagonList)){
-                    $this->units[$id]->status = STATUS_CAN_ADVANCE;
-                    $areAdvancing = true;
+                    if($b->victory->unitProhibitedFromAdvancing($this->units[$id])){
+                        $this->units[$id]->status = STATUS_ATTACKED;
+                    }else{
+                        $this->units[$id]->status = STATUS_CAN_ADVANCE;
+                        $areAdvancing = true;
+                    }
                 }else{
                     $this->units[$id]->status = STATUS_ATTACKED;
                 }
@@ -860,14 +865,19 @@ class Force extends SimpleForce
     function attackingAreAdvancing()
     {
         $areAdvancing = false;
+        $b = Battle::getBattle();
         /*
          * Todo should not assign to status, should set status
          */
         for ($id = 0; $id < count($this->units); $id++) {
             if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
                 if (count($this->retreatHexagonList)) {
-                    $this->units[$id]->status = STATUS_CAN_ADVANCE;
-                    $areAdvancing = true;
+                    if($b->victory->unitProhibitedFromAdvancing($this->units[$id])){
+                        $this->units[$id]->status = STATUS_ATTACKED;
+                    }else {
+                        $this->units[$id]->status = STATUS_CAN_ADVANCE;
+                        $areAdvancing = true;
+                    }
                 } else {
                 $this->units[$id]->status = STATUS_ATTACKED;
             }
