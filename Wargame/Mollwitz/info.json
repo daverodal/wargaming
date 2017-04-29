@@ -5533,7 +5533,7 @@
           "combat": 4,
           "movement": 6,
           "reinforce": "J",
-          "range": 1,
+          "range": 3,
           "reinforceTurn": 6,
           "nationality": "Guard",
           "class": "horseartillery"
