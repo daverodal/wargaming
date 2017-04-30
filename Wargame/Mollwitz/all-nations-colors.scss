@@ -1,0 +1,48 @@
+@import "mollwitz-mixins";
+@import "mollwitz-colors";
+
+@include unitColor(British,$britishWrapperColor, Brit);
+@include unitColor(British, $angloAlliedWrapperColor, Ang);
+
+@include unitColor(Native,$britishWrapperColor, Native);
+@include unitColor(Native, $angloAlliedWrapperColor, Native);
+
+@include unitColor(French,$frenchWrapperColor, French);
+@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
+
+@include unitColor(Allied, $russianWrapperColor, Rus);
+@include unitColor(Allied, $angloAlliedWrapperColor, Ang);
+
+
+@include unitColor(Sikh, $beluchiWrapperColor, Sikh);
+@include unitColor(Beluchi,$beluchiWrapperColor, Sikh);
+@include unitColor(SaxonPolish,$russianWrapperColor, Rus);
+
+@include unitColor(Austrian, $austrianWrapperColor, Aus);
+@include unitColor(Prussian,$prussianWrapperColor, Pru);
+@include unitColor(Russian, $russianWrapperColor, Rus);
+@include unitColor(AngloAllied,$angloAlliedWrapperColor, Ang);
+@include unitColor(Anglo,$angloAlliedWrapperColor , Ang);
+@include unitColor(Swedish, $swedishWrapperColor, Swe);
+
+
+@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap);
+@include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
+@include unitColor(Saxon, white, Sax);
+
+
+@include unitColor(German, $prussianNapColor, PruNap);
+
+
+@include unitColor(Italian, white, Sax);
+@include unitColor(RoyalGuard, white, Sax);
+
+
+@include unitColor(American, $rebelWrapperColor, Rebel);
+
+@include unitColor(Hessian, $russianWrapperColor, Rus);
+@include unitColor(Portuguese, $prussianNapColor, PruNap);
+@include unitColor(Loyalist, $angloAlliedWrapperColor, Ang);
+
+@include unitColor(Rebel, $rebelWrapperColor, Rebel);
+@include unitColor(Militia,  $rebelWrapperColor, Rebel);

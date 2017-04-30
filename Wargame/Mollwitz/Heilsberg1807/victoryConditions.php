@@ -25,15 +25,18 @@
         victories are a Draw</h4>
     <ol>
         <li>
-            Either side wins at the end of any turn that it has accumulated 35 points.
+            Either side wins at the end of any turn that it has accumulated 90 points.
             1 point is awarded for each Hostile combat point destroyed. A draw is possible.
 
 
         <li>
-            At the end of turn 14 the player controlling the Majority of Hexes marked Blue V is the winner.
-            These hexes begin the game under French control. A draw is possible.
-            Control goes to the player currently occupying a hex or last to move through.
+            There are several hexes with Blue numbers the French are awarded points equal to that number at any time that the French are the last to have
+            moved a unit through that hex.
 
+        </li>
+        <li>
+            The Russians receive 20 points each time that the
+            Russian are the last to have moved a unit through either hex D1 or D2 (40 possible points).
         </li>
 
 
