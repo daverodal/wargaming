@@ -117,20 +117,25 @@
     font-size:$stdFont;
   }
 }
-.unit .steps{
-  position:absolute;
-  font-size:10px;
-  left:2px;
-  .step{
-    background:#333;
-    border:1px solid #333;
-    border-radius:100%;
-    width:1px;
-    height:1px;
-    margin-top:3px;
-    &.white{
-      background:white;
-      border-color:white;
+.unit {
+  &.ghost-unit{
+    z-index:30;
+  }
+  .steps {
+    position: absolute;
+    font-size: 10px;
+    left: 2px;
+    .step {
+      background: #333;
+      border: 1px solid #333;
+      border-radius: 100%;
+      width: 1px;
+      height: 1px;
+      margin-top: 3px;
+      &.white {
+        background: white;
+        border-color: white;
+      }
     }
   }
 }

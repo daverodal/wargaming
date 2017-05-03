@@ -96,7 +96,11 @@ class KievCorps extends \Wargame\ModernLandBattle
             $i = 0;
             /* Second panzer army */
             /* 21 corp */
-            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 9, 8,  STATUS_READY, "B", 1, "german",  "mech", "21", 3);
+            $i += 2;
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "21/a", 2, 2);
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "21/4", 2,2);
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "21/10", 2,2);
+            //            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 9, 8,  STATUS_READY, "B", 1, "german",  "mech", "21", 3);
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i++], "multiArmor.png", 6, 3, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "4");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i++], "multiMech.png", 5, 2, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "10");
 
@@ -416,5 +420,22 @@ class KievCorps extends \Wargame\ModernLandBattle
             $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, RED_MECH_PHASE, MOVING_MODE, KievCorps::SOVIET_FORCE, KievCorps::GERMAN_FORCE, false);
             $this->gameRules->addPhaseChange(RED_MECH_PHASE, BLUE_REPLACEMENT_PHASE, REPLACING_MODE, KievCorps::GERMAN_FORCE, KievCorps::SOVIET_FORCE, true);
         }
+
+        $this->moveRules->stacking = function($mapHex, $forceId, $unit){
+            if($unit->name == "xxx"){
+                if(count((array)$mapHex->forces[$forceId]) >= 1){
+                    return true;
+                }
+            }
+
+            foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                if($this->force->units[$mKey]->name == "xxx"){
+                        return true;
+                }
+            }
+            return count((array)$mapHex->forces[$forceId]) >= 3;
+        };
+
+
     }
 }
