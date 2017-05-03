@@ -10,7 +10,7 @@
 @include unitColor(French,$frenchWrapperColor, French);
 @include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
 
-@include unitColor(Allied, $russianWrapperColor, Rus);
+@include unitColor(Allied, $russianWrapperColor, Rus, white);
 @include unitColor(Allied, $angloAlliedWrapperColor, Ang);
 
 
@@ -26,23 +26,23 @@
 @include unitColor(Swedish, $swedishWrapperColor, Swe);
 
 
-@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap);
+@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap, white);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
 @include unitColor(Saxon, white, Sax);
 
 
-@include unitColor(German, $prussianNapColor, PruNap);
+@include unitColor(German, $prussianNapColor, PruNap, white);
 
 
 @include unitColor(Italian, white, Sax);
 @include unitColor(RoyalGuard, white, Sax);
 
 
-@include unitColor(American, $rebelWrapperColor, Rebel);
+@include unitColor(American, $rebelWrapperColor, Rebel, white);
 
-@include unitColor(Hessian, $russianWrapperColor, Rus);
+@include unitColor(Hessian, $russianWrapperColor, Rus, white);
 @include unitColor(Portuguese, $prussianNapColor, PruNap);
 @include unitColor(Loyalist, $angloAlliedWrapperColor, Ang);
 
-@include unitColor(Rebel, $rebelWrapperColor, Rebel);
-@include unitColor(Militia,  $rebelWrapperColor, Rebel);
+@include unitColor(Rebel, $rebelWrapperColor, Rebel, white);
+@include unitColor(Militia,  $rebelWrapperColor, Rebel, white);

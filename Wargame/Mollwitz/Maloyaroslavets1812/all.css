@@ -2500,6 +2500,14 @@ h5 {
     position: absolute;
     z-index: 30;
     display: none; }
+  #header #headerContent .dropDown #logWrapper {
+    padding: 4px 17px;
+    background: white; }
+    #header #headerContent .dropDown #logWrapper li {
+      border-bottom: 1px solid #ccc;
+      margin: 0px 16px;
+      list-style: none;
+      padding: 10px 0px; }
   #header #headerContent #infoWrapper, #header #headerContent #menuWrapper {
     -webkit-touch-callout: none; }
     #header #headerContent #infoWrapper .WrapperLabel, #header #headerContent #menuWrapper .WrapperLabel {
@@ -2589,7 +2597,7 @@ h5 {
     position: absolute;
     z-index: 30;
     display: none;
-    background: #ccc;
+    background: white;
     /* .dropDowns may not exist inside a ul */ }
     #header #headerContent .dropDown .subMenu > ul {
       margin: 0;
@@ -3540,9 +3548,6 @@ You should have received a copy of the GNU General Public License
 #crtDetails {
   display: none; }
 
-.Sikh .counterWrapper {
-  background-color: #c6c102; }
-
 .fa-flag {
   display: none; }
 
@@ -3611,8 +3616,10 @@ You should have received a copy of the GNU General Public License
 .Sikh.pontoon .unit-numbers {
   display: none; }
 
-.Beluchi .counterWrapper {
+.Sikh .counterWrapper {
   background-color: #c6c102; }
+.Sikh p.forceMarch, .Sikh p.range, .Sikh .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -3682,8 +3689,10 @@ You should have received a copy of the GNU General Public License
 .Beluchi.pontoon .unit-numbers {
   display: none; }
 
-.British .counterWrapper {
-  background-color: #f00; }
+.Beluchi .counterWrapper {
+  background-color: #c6c102; }
+.Beluchi p.forceMarch, .Beluchi p.range, .Beluchi .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -3753,8 +3762,10 @@ You should have received a copy of the GNU General Public License
 .British.pontoon .unit-numbers {
   display: none; }
 
-.SaxonPolish .counterWrapper {
-  background-color: #006114; }
+.British .counterWrapper {
+  background-color: #f00; }
+.British p.forceMarch, .British p.range, .British .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -3824,8 +3835,10 @@ You should have received a copy of the GNU General Public License
 .SaxonPolish.pontoon .unit-numbers {
   display: none; }
 
-.Native .counterWrapper {
-  background-color: #f00; }
+.SaxonPolish .counterWrapper {
+  background-color: #006114; }
+.SaxonPolish p.forceMarch, .SaxonPolish p.range, .SaxonPolish .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -3895,8 +3908,10 @@ You should have received a copy of the GNU General Public License
 .Native.pontoon .unit-numbers {
   display: none; }
 
-.Austrian .counterWrapper {
-  background-color: white; }
+.Native .counterWrapper {
+  background-color: #f00; }
+.Native p.forceMarch, .Native p.range, .Native .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -3966,8 +3981,10 @@ You should have received a copy of the GNU General Public License
 .Austrian.pontoon .unit-numbers {
   display: none; }
 
-.Prussian .counterWrapper {
-  background-color: #0117de; }
+.Austrian .counterWrapper {
+  background-color: white; }
+.Austrian p.forceMarch, .Austrian p.range, .Austrian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -4037,8 +4054,10 @@ You should have received a copy of the GNU General Public License
 .Prussian.pontoon .unit-numbers {
   display: none; }
 
-.Russian .counterWrapper {
-  background-color: #006114; }
+.Prussian .counterWrapper {
+  background-color: #0117de; }
+.Prussian p.forceMarch, .Prussian p.range, .Prussian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -4108,8 +4127,10 @@ You should have received a copy of the GNU General Public License
 .Russian.pontoon .unit-numbers {
   display: none; }
 
-.French .counterWrapper {
-  background-color: white; }
+.Russian .counterWrapper {
+  background-color: #006114; }
+.Russian p.forceMarch, .Russian p.range, .Russian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -4179,8 +4200,10 @@ You should have received a copy of the GNU General Public License
 .French.pontoon .unit-numbers {
   display: none; }
 
-.AngloAllied .counterWrapper {
-  background-color: #f00; }
+.French .counterWrapper {
+  background-color: white; }
+.French p.forceMarch, .French p.range, .French .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -4250,8 +4273,10 @@ You should have received a copy of the GNU General Public License
 .AngloAllied.pontoon .unit-numbers {
   display: none; }
 
-.Anglo .counterWrapper {
+.AngloAllied .counterWrapper {
   background-color: #f00; }
+.AngloAllied p.forceMarch, .AngloAllied p.range, .AngloAllied .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -4321,8 +4346,10 @@ You should have received a copy of the GNU General Public License
 .Anglo.pontoon .unit-numbers {
   display: none; }
 
-.Allied .counterWrapper {
+.Anglo .counterWrapper {
   background-color: #f00; }
+.Anglo p.forceMarch, .Anglo p.range, .Anglo .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -4392,8 +4419,10 @@ You should have received a copy of the GNU General Public License
 .Allied.pontoon .unit-numbers {
   display: none; }
 
-.Swedish .counterWrapper {
-  background-color: #006AA7; }
+.Allied .counterWrapper {
+  background-color: #f00; }
+.Allied p.forceMarch, .Allied p.range, .Allied .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -4463,8 +4492,10 @@ You should have received a copy of the GNU General Public License
 .Swedish.pontoon .unit-numbers {
   display: none; }
 
-.Native .counterWrapper {
-  background-color: #f00; }
+.Swedish .counterWrapper {
+  background-color: #006AA7; }
+.Swedish p.forceMarch, .Swedish p.range, .Swedish .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -4533,6 +4564,11 @@ You should have received a copy of the GNU General Public License
     border: none; }
 .Native.pontoon .unit-numbers {
   display: none; }
+
+.Native .counterWrapper {
+  background-color: #f00; }
+.Native p.forceMarch, .Native p.range, .Native .fa-flag {
+  color: black; }
 
 .left {
   float: left;
@@ -4702,80 +4738,6 @@ You should have received a copy of the GNU General Public License
 .specialHexesVP .Russian.victory-points {
   text-shadow: 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 1px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 2px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 3px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 4px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 5px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 6px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 7px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 8px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 9px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00, 0px 0px 10px #f00; }
 
-.Guard .counterWrapper {
-  background-color: #0003b4; }
-
-.fa-flag {
-  display: none; }
-
-.Guard.hq .counterWrapper .counter {
-  display: none; }
-
-.vintage.Guard.hq .counterWrapper .fa-flag {
-  font-size: 19px; }
-.vintage.Guard.infantry .counterWrapper .counter {
-  background-image: url("/js/FrenchNapInfBadge.png");
-  background-size: 19px; }
-.vintage.Guard.cavalry .counterWrapper .counter {
-  background-image: url("/js/FrenchNapCavBadge.png");
-  background-size: 19px; }
-.vintage.Guard.artillery .counterWrapper .counter {
-  background-image: url("/js/FrenchNapArtBadge.png");
-  background-size: 19px; }
-.vintage.Guard.horseartillery .counterWrapper .counter {
-  background-image: url("/js/FrenchNapHorArtBadge.png");
-  background-size: 19px; }
-.vintage.Guard.pontoon .counterWrapper {
-  border: none; }
-  .vintage.Guard.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/FrenchNapPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.Guard.pontoon .unit-numbers {
-  display: none; }
-
-.Guard.infantry .counterWrapper .counter {
-  background-image: url("/js/FrenchNapInfBadge.png");
-  background-size: 14px; }
-
-.Guard.cavalry .counterWrapper .counter {
-  background-image: url("/js/FrenchNapCavBadge.png");
-  background-size: 14px; }
-
-.Guard.artillery .counterWrapper .counter {
-  background-image: url("/js/FrenchNapArtBadge.png");
-  background-size: 14px; }
-
-.Guard.horseartillery .counterWrapper .counter {
-  background-image: url("/js/FrenchNapHorArtBadge.png");
-  background-size: 14px; }
-
-.Guard.hq .counterWrapper .fa-flag {
-  display: block;
-  font-size: 14px; }
-
-.Guard.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.Guard.pontoon .counterWrapper {
-  border: none; }
-  .Guard.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/FrenchNapPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.Guard.pontoon .unit-numbers {
-  display: none; }
-
-.French .counterWrapper {
-  background-color: #0003b4; }
-
 .fa-flag {
   display: none; }
 
@@ -4844,8 +4806,10 @@ You should have received a copy of the GNU General Public License
 .French.pontoon .unit-numbers {
   display: none; }
 
-.Russian .counterWrapper {
-  background-color: #006114; }
+.French .counterWrapper {
+  background-color: #0003b4; }
+.French p.forceMarch, .French p.range, .French .fa-flag {
+  color: white; }
 
 .fa-flag {
   display: none; }
@@ -4915,8 +4879,10 @@ You should have received a copy of the GNU General Public License
 .Russian.pontoon .unit-numbers {
   display: none; }
 
-.Italian .counterWrapper {
-  background-color: white; }
+.Russian .counterWrapper {
+  background-color: #006114; }
+.Russian p.forceMarch, .Russian p.range, .Russian .fa-flag {
+  color: white; }
 
 .fa-flag {
   display: none; }
@@ -4986,8 +4952,10 @@ You should have received a copy of the GNU General Public License
 .Italian.pontoon .unit-numbers {
   display: none; }
 
-.RoyalGuard .counterWrapper {
+.Italian .counterWrapper {
   background-color: white; }
+.Italian p.forceMarch, .Italian p.range, .Italian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -5057,6 +5025,11 @@ You should have received a copy of the GNU General Public License
 .RoyalGuard.pontoon .unit-numbers {
   display: none; }
 
+.RoyalGuard .counterWrapper {
+  background-color: white; }
+.RoyalGuard p.forceMarch, .RoyalGuard p.range, .RoyalGuard .fa-flag {
+  color: black; }
+
 .RoyalGuard.unit .guard-unit {
   display: block;
   position: absolute;
@@ -5083,9 +5056,6 @@ You should have received a copy of the GNU General Public License
   height: 8px; }
 
 .french.specialHexes, .russian.specialHexes {
-  color: white; }
-
-.French p.forceMarch, .French p.range, .Guard p.forceMarch, .Guard p.range, .Russian p.forceMarch, .Russian p.range {
   color: white; }
 
 .French.unit .unit-numbers, .Guard.unit .unit-numbers {

@@ -1,6 +1,3 @@
-.British .counterWrapper {
-  background-color: #f00; }
-
 .fa-flag {
   display: none; }
 
@@ -71,6 +68,8 @@
 
 .British .counterWrapper {
   background-color: #f00; }
+.British p.forceMarch, .British p.range, .British .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -140,8 +139,10 @@
 .British.pontoon .unit-numbers {
   display: none; }
 
-.Native .counterWrapper {
+.British .counterWrapper {
   background-color: #f00; }
+.British p.forceMarch, .British p.range, .British .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -213,6 +214,8 @@
 
 .Native .counterWrapper {
   background-color: #f00; }
+.Native p.forceMarch, .Native p.range, .Native .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -282,8 +285,10 @@
 .Native.pontoon .unit-numbers {
   display: none; }
 
-.French .counterWrapper {
-  background-color: white; }
+.Native .counterWrapper {
+  background-color: #f00; }
+.Native p.forceMarch, .Native p.range, .Native .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -346,6 +351,79 @@
   .French.pontoon .counterWrapper .counter {
     background-color: lightgreen;
     background-image: url("/js/FrenchPontoon.png");
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    border: none; }
+.French.pontoon .unit-numbers {
+  display: none; }
+
+.French .counterWrapper {
+  background-color: white; }
+.French p.forceMarch, .French p.range, .French .fa-flag {
+  color: black; }
+
+.fa-flag {
+  display: none; }
+
+.French.hq .counterWrapper .counter {
+  display: none; }
+
+.vintage.French.hq .counterWrapper .fa-flag {
+  font-size: 19px; }
+.vintage.French.infantry .counterWrapper .counter {
+  background-image: url("/js/FrenchNapInfBadge.png");
+  background-size: 19px; }
+.vintage.French.cavalry .counterWrapper .counter {
+  background-image: url("/js/FrenchNapCavBadge.png");
+  background-size: 19px; }
+.vintage.French.artillery .counterWrapper .counter {
+  background-image: url("/js/FrenchNapArtBadge.png");
+  background-size: 19px; }
+.vintage.French.horseartillery .counterWrapper .counter {
+  background-image: url("/js/FrenchNapHorArtBadge.png");
+  background-size: 19px; }
+.vintage.French.pontoon .counterWrapper {
+  border: none; }
+  .vintage.French.pontoon .counterWrapper .counter {
+    background-color: lightgreen;
+    background-image: url("/js/FrenchNapPontoon.png");
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    border: none; }
+.vintage.French.pontoon .unit-numbers {
+  display: none; }
+
+.French.infantry .counterWrapper .counter {
+  background-image: url("/js/FrenchNapInfBadge.png");
+  background-size: 14px; }
+
+.French.cavalry .counterWrapper .counter {
+  background-image: url("/js/FrenchNapCavBadge.png");
+  background-size: 14px; }
+
+.French.artillery .counterWrapper .counter {
+  background-image: url("/js/FrenchNapArtBadge.png");
+  background-size: 14px; }
+
+.French.horseartillery .counterWrapper .counter {
+  background-image: url("/js/FrenchNapHorArtBadge.png");
+  background-size: 14px; }
+
+.French.hq .counterWrapper .fa-flag {
+  display: block;
+  font-size: 14px; }
+
+.French.wagon .counterWrapper .counter {
+  background-image: url("/js/Wagon.png");
+  background-size: 14px; }
+
+.French.pontoon .counterWrapper {
+  border: none; }
+  .French.pontoon .counterWrapper .counter {
+    background-color: lightgreen;
+    background-image: url("/js/FrenchNapPontoon.png");
     background-size: 32px;
     width: 32px;
     height: 32px;
@@ -355,77 +433,8 @@
 
 .French .counterWrapper {
   background-color: #0003b4; }
-
-.fa-flag {
-  display: none; }
-
-.French.hq .counterWrapper .counter {
-  display: none; }
-
-.vintage.French.hq .counterWrapper .fa-flag {
-  font-size: 19px; }
-.vintage.French.infantry .counterWrapper .counter {
-  background-image: url("/js/FrenchNapInfBadge.png");
-  background-size: 19px; }
-.vintage.French.cavalry .counterWrapper .counter {
-  background-image: url("/js/FrenchNapCavBadge.png");
-  background-size: 19px; }
-.vintage.French.artillery .counterWrapper .counter {
-  background-image: url("/js/FrenchNapArtBadge.png");
-  background-size: 19px; }
-.vintage.French.horseartillery .counterWrapper .counter {
-  background-image: url("/js/FrenchNapHorArtBadge.png");
-  background-size: 19px; }
-.vintage.French.pontoon .counterWrapper {
-  border: none; }
-  .vintage.French.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/FrenchNapPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.French.pontoon .unit-numbers {
-  display: none; }
-
-.French.infantry .counterWrapper .counter {
-  background-image: url("/js/FrenchNapInfBadge.png");
-  background-size: 14px; }
-
-.French.cavalry .counterWrapper .counter {
-  background-image: url("/js/FrenchNapCavBadge.png");
-  background-size: 14px; }
-
-.French.artillery .counterWrapper .counter {
-  background-image: url("/js/FrenchNapArtBadge.png");
-  background-size: 14px; }
-
-.French.horseartillery .counterWrapper .counter {
-  background-image: url("/js/FrenchNapHorArtBadge.png");
-  background-size: 14px; }
-
-.French.hq .counterWrapper .fa-flag {
-  display: block;
-  font-size: 14px; }
-
-.French.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.French.pontoon .counterWrapper {
-  border: none; }
-  .French.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/FrenchNapPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.French.pontoon .unit-numbers {
-  display: none; }
-
-.Allied .counterWrapper {
-  background-color: #006114; }
+.French p.forceMarch, .French p.range, .French .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -488,6 +497,79 @@
   .Allied.pontoon .counterWrapper .counter {
     background-color: lightgreen;
     background-image: url("/js/RusPontoon.png");
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    border: none; }
+.Allied.pontoon .unit-numbers {
+  display: none; }
+
+.Allied .counterWrapper {
+  background-color: #006114; }
+.Allied p.forceMarch, .Allied p.range, .Allied .fa-flag {
+  color: white; }
+
+.fa-flag {
+  display: none; }
+
+.Allied.hq .counterWrapper .counter {
+  display: none; }
+
+.vintage.Allied.hq .counterWrapper .fa-flag {
+  font-size: 19px; }
+.vintage.Allied.infantry .counterWrapper .counter {
+  background-image: url("/js/AngInfBadge.png");
+  background-size: 19px; }
+.vintage.Allied.cavalry .counterWrapper .counter {
+  background-image: url("/js/AngCavBadge.png");
+  background-size: 19px; }
+.vintage.Allied.artillery .counterWrapper .counter {
+  background-image: url("/js/AngArtBadge.png");
+  background-size: 19px; }
+.vintage.Allied.horseartillery .counterWrapper .counter {
+  background-image: url("/js/AngHorArtBadge.png");
+  background-size: 19px; }
+.vintage.Allied.pontoon .counterWrapper {
+  border: none; }
+  .vintage.Allied.pontoon .counterWrapper .counter {
+    background-color: lightgreen;
+    background-image: url("/js/AngPontoon.png");
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    border: none; }
+.vintage.Allied.pontoon .unit-numbers {
+  display: none; }
+
+.Allied.infantry .counterWrapper .counter {
+  background-image: url("/js/AngInfBadge.png");
+  background-size: 14px; }
+
+.Allied.cavalry .counterWrapper .counter {
+  background-image: url("/js/AngCavBadge.png");
+  background-size: 14px; }
+
+.Allied.artillery .counterWrapper .counter {
+  background-image: url("/js/AngArtBadge.png");
+  background-size: 14px; }
+
+.Allied.horseartillery .counterWrapper .counter {
+  background-image: url("/js/AngHorArtBadge.png");
+  background-size: 14px; }
+
+.Allied.hq .counterWrapper .fa-flag {
+  display: block;
+  font-size: 14px; }
+
+.Allied.wagon .counterWrapper .counter {
+  background-image: url("/js/Wagon.png");
+  background-size: 14px; }
+
+.Allied.pontoon .counterWrapper {
+  border: none; }
+  .Allied.pontoon .counterWrapper .counter {
+    background-color: lightgreen;
+    background-image: url("/js/AngPontoon.png");
     background-size: 32px;
     width: 32px;
     height: 32px;
@@ -497,77 +579,8 @@
 
 .Allied .counterWrapper {
   background-color: #f00; }
-
-.fa-flag {
-  display: none; }
-
-.Allied.hq .counterWrapper .counter {
-  display: none; }
-
-.vintage.Allied.hq .counterWrapper .fa-flag {
-  font-size: 19px; }
-.vintage.Allied.infantry .counterWrapper .counter {
-  background-image: url("/js/AngInfBadge.png");
-  background-size: 19px; }
-.vintage.Allied.cavalry .counterWrapper .counter {
-  background-image: url("/js/AngCavBadge.png");
-  background-size: 19px; }
-.vintage.Allied.artillery .counterWrapper .counter {
-  background-image: url("/js/AngArtBadge.png");
-  background-size: 19px; }
-.vintage.Allied.horseartillery .counterWrapper .counter {
-  background-image: url("/js/AngHorArtBadge.png");
-  background-size: 19px; }
-.vintage.Allied.pontoon .counterWrapper {
-  border: none; }
-  .vintage.Allied.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/AngPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.vintage.Allied.pontoon .unit-numbers {
-  display: none; }
-
-.Allied.infantry .counterWrapper .counter {
-  background-image: url("/js/AngInfBadge.png");
-  background-size: 14px; }
-
-.Allied.cavalry .counterWrapper .counter {
-  background-image: url("/js/AngCavBadge.png");
-  background-size: 14px; }
-
-.Allied.artillery .counterWrapper .counter {
-  background-image: url("/js/AngArtBadge.png");
-  background-size: 14px; }
-
-.Allied.horseartillery .counterWrapper .counter {
-  background-image: url("/js/AngHorArtBadge.png");
-  background-size: 14px; }
-
-.Allied.hq .counterWrapper .fa-flag {
-  display: block;
-  font-size: 14px; }
-
-.Allied.wagon .counterWrapper .counter {
-  background-image: url("/js/Wagon.png");
-  background-size: 14px; }
-
-.Allied.pontoon .counterWrapper {
-  border: none; }
-  .Allied.pontoon .counterWrapper .counter {
-    background-color: lightgreen;
-    background-image: url("/js/AngPontoon.png");
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    border: none; }
-.Allied.pontoon .unit-numbers {
-  display: none; }
-
-.Sikh .counterWrapper {
-  background-color: #c6c102; }
+.Allied p.forceMarch, .Allied p.range, .Allied .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -637,8 +650,10 @@
 .Sikh.pontoon .unit-numbers {
   display: none; }
 
-.Beluchi .counterWrapper {
+.Sikh .counterWrapper {
   background-color: #c6c102; }
+.Sikh p.forceMarch, .Sikh p.range, .Sikh .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -708,8 +723,10 @@
 .Beluchi.pontoon .unit-numbers {
   display: none; }
 
-.SaxonPolish .counterWrapper {
-  background-color: #006114; }
+.Beluchi .counterWrapper {
+  background-color: #c6c102; }
+.Beluchi p.forceMarch, .Beluchi p.range, .Beluchi .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -779,8 +796,10 @@
 .SaxonPolish.pontoon .unit-numbers {
   display: none; }
 
-.Austrian .counterWrapper {
-  background-color: white; }
+.SaxonPolish .counterWrapper {
+  background-color: #006114; }
+.SaxonPolish p.forceMarch, .SaxonPolish p.range, .SaxonPolish .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -850,8 +869,10 @@
 .Austrian.pontoon .unit-numbers {
   display: none; }
 
-.Prussian .counterWrapper {
-  background-color: #0117de; }
+.Austrian .counterWrapper {
+  background-color: white; }
+.Austrian p.forceMarch, .Austrian p.range, .Austrian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -921,8 +942,10 @@
 .Prussian.pontoon .unit-numbers {
   display: none; }
 
-.Russian .counterWrapper {
-  background-color: #006114; }
+.Prussian .counterWrapper {
+  background-color: #0117de; }
+.Prussian p.forceMarch, .Prussian p.range, .Prussian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -992,8 +1015,10 @@
 .Russian.pontoon .unit-numbers {
   display: none; }
 
-.AngloAllied .counterWrapper {
-  background-color: #f00; }
+.Russian .counterWrapper {
+  background-color: #006114; }
+.Russian p.forceMarch, .Russian p.range, .Russian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1063,8 +1088,10 @@
 .AngloAllied.pontoon .unit-numbers {
   display: none; }
 
-.Anglo .counterWrapper {
+.AngloAllied .counterWrapper {
   background-color: #f00; }
+.AngloAllied p.forceMarch, .AngloAllied p.range, .AngloAllied .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1134,8 +1161,10 @@
 .Anglo.pontoon .unit-numbers {
   display: none; }
 
-.Swedish .counterWrapper {
-  background-color: #006AA7; }
+.Anglo .counterWrapper {
+  background-color: #f00; }
+.Anglo p.forceMarch, .Anglo p.range, .Anglo .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1205,8 +1234,10 @@
 .Swedish.pontoon .unit-numbers {
   display: none; }
 
-.Guard .counterWrapper {
-  background-color: #0003b4; }
+.Swedish .counterWrapper {
+  background-color: #006AA7; }
+.Swedish p.forceMarch, .Swedish p.range, .Swedish .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1276,8 +1307,10 @@
 .Guard.pontoon .unit-numbers {
   display: none; }
 
-.Bavarian .counterWrapper {
-  background-color: #4287FA; }
+.Guard .counterWrapper {
+  background-color: #0003b4; }
+.Guard p.forceMarch, .Guard p.range, .Guard .fa-flag {
+  color: white; }
 
 .fa-flag {
   display: none; }
@@ -1347,8 +1380,10 @@
 .Bavarian.pontoon .unit-numbers {
   display: none; }
 
-.Saxon .counterWrapper {
-  background-color: white; }
+.Bavarian .counterWrapper {
+  background-color: #4287FA; }
+.Bavarian p.forceMarch, .Bavarian p.range, .Bavarian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1418,8 +1453,10 @@
 .Saxon.pontoon .unit-numbers {
   display: none; }
 
-.German .counterWrapper {
-  background-color: #003AF3; }
+.Saxon .counterWrapper {
+  background-color: white; }
+.Saxon p.forceMarch, .Saxon p.range, .Saxon .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1489,8 +1526,10 @@
 .German.pontoon .unit-numbers {
   display: none; }
 
-.Italian .counterWrapper {
-  background-color: white; }
+.German .counterWrapper {
+  background-color: #003AF3; }
+.German p.forceMarch, .German p.range, .German .fa-flag {
+  color: white; }
 
 .fa-flag {
   display: none; }
@@ -1560,8 +1599,10 @@
 .Italian.pontoon .unit-numbers {
   display: none; }
 
-.RoyalGuard .counterWrapper {
+.Italian .counterWrapper {
   background-color: white; }
+.Italian p.forceMarch, .Italian p.range, .Italian .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1631,8 +1672,10 @@
 .RoyalGuard.pontoon .unit-numbers {
   display: none; }
 
-.American .counterWrapper {
-  background-color: #0117de; }
+.RoyalGuard .counterWrapper {
+  background-color: white; }
+.RoyalGuard p.forceMarch, .RoyalGuard p.range, .RoyalGuard .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1702,8 +1745,10 @@
 .American.pontoon .unit-numbers {
   display: none; }
 
-.Hessian .counterWrapper {
-  background-color: #006114; }
+.American .counterWrapper {
+  background-color: #0117de; }
+.American p.forceMarch, .American p.range, .American .fa-flag {
+  color: white; }
 
 .fa-flag {
   display: none; }
@@ -1773,8 +1818,10 @@
 .Hessian.pontoon .unit-numbers {
   display: none; }
 
-.Portuguese .counterWrapper {
-  background-color: #003AF3; }
+.Hessian .counterWrapper {
+  background-color: #006114; }
+.Hessian p.forceMarch, .Hessian p.range, .Hessian .fa-flag {
+  color: white; }
 
 .fa-flag {
   display: none; }
@@ -1844,8 +1891,10 @@
 .Portuguese.pontoon .unit-numbers {
   display: none; }
 
-.Loyalist .counterWrapper {
-  background-color: #f00; }
+.Portuguese .counterWrapper {
+  background-color: #003AF3; }
+.Portuguese p.forceMarch, .Portuguese p.range, .Portuguese .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1915,8 +1964,10 @@
 .Loyalist.pontoon .unit-numbers {
   display: none; }
 
-.Rebel .counterWrapper {
-  background-color: #0117de; }
+.Loyalist .counterWrapper {
+  background-color: #f00; }
+.Loyalist p.forceMarch, .Loyalist p.range, .Loyalist .fa-flag {
+  color: black; }
 
 .fa-flag {
   display: none; }
@@ -1986,8 +2037,10 @@
 .Rebel.pontoon .unit-numbers {
   display: none; }
 
-.Militia .counterWrapper {
+.Rebel .counterWrapper {
   background-color: #0117de; }
+.Rebel p.forceMarch, .Rebel p.range, .Rebel .fa-flag {
+  color: white; }
 
 .fa-flag {
   display: none; }
@@ -2056,5 +2109,10 @@
     border: none; }
 .Militia.pontoon .unit-numbers {
   display: none; }
+
+.Militia .counterWrapper {
+  background-color: #0117de; }
+.Militia p.forceMarch, .Militia p.range, .Militia .fa-flag {
+  color: white; }
 
 /*# sourceMappingURL=all-nations-colors.css.map */
