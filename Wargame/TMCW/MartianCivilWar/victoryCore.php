@@ -113,7 +113,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
     public function gameEnded(){
         $battle = Battle::getBattle();
 
-        if($this->victoryPoints[REBEL_FORCE] > $this->victoryPoints[LOYALIST_FORCE]){
+        if($this->victoryPoints[MartianCivilWar::REBEL_FORCE] > $this->victoryPoints[MartianCivilWar::LOYALIST_FORCE]){
             $battle->gameRules->flashMessages[] = "Rebel Player Wins";
         }else{
             $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
@@ -159,13 +159,13 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 
         if (!empty($b->scenario->supply) === true) {
             $bias = array(5 => true, 6 => true);
-            $goal = $b->moveRules->calcRoadSupply(REBEL_FORCE, 401, $bias);
+            $goal = $b->moveRules->calcRoadSupply(MartianCivilWar::REBEL_FORCE, 401, $bias);
             $goal = array_merge($goal, array(101, 102, 103, 104, 201, 301, 401, 501, 601, 701, 801, 901, 1001));
             $this->rebelGoal = $goal;
 
 
             $bias = array(2 => true, 3 => true);
-            $goal = $b->moveRules->calcRoadSupply(LOYALIST_FORCE, 3017, $bias);
+            $goal = $b->moveRules->calcRoadSupply(MartianCivilWar::LOYALIST_FORCE, 3017, $bias);
             $goal = array_merge($goal, array(3014, 3015, 3016, 3017, 3018, 3019, 3020, 2620, 2720, 2820, 2920));
             $this->loyalistGoal = $goal;
 
@@ -184,7 +184,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 //            return;
         }
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == REBEL_FORCE) {
+            if ($unit->forceId == MartianCivilWar::REBEL_FORCE) {
                 $bias = array(5 => true, 6 => true);
                 $goal = $this->rebelGoal;
             } else {
@@ -248,11 +248,11 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if ($attackingId == REBEL_FORCE) {
+        if ($attackingId == MartianCivilWar::REBEL_FORCE) {
             $gameRules->flashMessages[] = "Rebel Player Turn";
             $gameRules->replacementsAvail = 1;
         }
-        if ($attackingId == LOYALIST_FORCE) {
+        if ($attackingId == MartianCivilWar::LOYALIST_FORCE) {
             $gameRules->flashMessages[] = "Loyalist Player Turn";
             $gameRules->replacementsAvail = 10;
         }
@@ -264,7 +264,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 $inCity = false;
                 $roadCut = false;
                 foreach ($specialHexes as $k => $v) {
-                    if ($v == REBEL_FORCE) {
+                    if ($v == MartianCivilWar::REBEL_FORCE) {
                         $points = 1;
                         if ($k == 2414 || $k == 2415 || $k == 2515) {
                             $inCity = true;
@@ -283,14 +283,14 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                     }
                 }
                 if ($roadCut !== false) {
-                    $vp[REBEL_FORCE] += 3;
+                    $vp[MartianCivilWar::REBEL_FORCE] += 3;
                     $battle->mapData->specialHexesVictory->$roadCut = "<span class='rebelVictoryPoints'>+3 vp</span>";
                 }
                 if (!$inCity) {
                     /* Cuneiform isolated? */
                     $cuneiform = 2515;
                     if (!$battle->moveRules->calcSupplyHex($cuneiform, array(3014, 3015, 3016, 3017, 3018, 3019, 3020, 2620, 2720, 2820, 2920), array(2 => true, 3 => true), RED_FORCE, $this->supplyLen)) {
-                        $vp[REBEL_FORCE] += 5;
+                        $vp[MartianCivilWar::REBEL_FORCE] += 5;
 
                         $battle->mapData->specialHexesVictory->$cuneiform = "<span class='rebelVictoryPoints'>+5 vp</span>";
 
