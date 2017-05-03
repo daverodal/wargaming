@@ -20,9 +20,8 @@ You should have received a copy of the GNU General Public License
 @include headerColor(French,$frenchNapoleonColor, $frenchNapoleonColor );
 @include headerColor(Russian,$russianColor, $angloAlliedWrapperColor );
 
-@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap);
-@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
-@include unitColor(Russian, $russianWrapperColor, Rus);
+@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap, white);
+@include unitColor(Russian, $russianWrapperColor, Rus, white);
 @include unitColor(Italian, white, Sax);
 @include unitColor(RoyalGuard, white, Sax);
 
@@ -30,11 +29,6 @@ You should have received a copy of the GNU General Public License
 
 .french.specialHexes, .russian.specialHexes{
   color:white;
-}
-.French, .Guard, .Russian {
-  p.forceMarch, p.range{
-    color:white;
-  }
 }
 
 .French.unit .unit-numbers, .Guard.unit .unit-numbers{

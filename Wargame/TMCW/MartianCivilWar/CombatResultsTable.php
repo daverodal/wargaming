@@ -25,5 +25,5 @@ use Wargame\DivMCWCombatShiftTerrain;
 class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 {
     use DivMCWCombatShiftTerrain;
-    public $aggressorId = REBEL_FORCE;
+    public $aggressorId = MartianCivilWar::REBEL_FORCE;
 }

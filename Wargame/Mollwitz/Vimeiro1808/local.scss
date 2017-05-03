@@ -20,16 +20,11 @@ $prussianNapColor: #003AF3;
 @include headerColor(French,$frenchNapoleonColor, $frenchNapoleonColor );
 @include headerColor(British,$britishColor, $britishWrapperColor );
 
-@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
+@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap, white);
 @include unitColor(Portuguese, $prussianNapColor, PruNap);
 
 .french.specialHexes, .british.specialHexes{
   color:white;
-}
-.French {
-  p.forceMarch, p.range{
-    color:white;
-  }
 }
 
 .French.unit .unit-numbers{

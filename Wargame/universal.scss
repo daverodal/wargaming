@@ -201,6 +201,21 @@ h5 {
       display: none;
     }
 
+    .dropDown {
+      #logWrapper{
+
+        padding: 4px 17px;
+        background: white;
+
+        li{
+          border-bottom: 1px solid #ccc;
+          margin: 0px 16px;
+          list-style: none;
+          padding: 10px 0px;
+        }
+      }
+    }
+
     #infoWrapper, #menuWrapper {
       -webkit-touch-callout: none;
       .WrapperLabel {
@@ -322,7 +337,7 @@ h5 {
         position: absolute;
         z-index: 30;
         display: none;
-        background: #ccc;
+        background: white;
         & > ul {
           margin: 0;
           padding: 0;

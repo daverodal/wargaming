@@ -24,8 +24,8 @@ $alliedColor: #df5842;
 @include headerColor(French, $frenchColor,$frenchColor);
 
 @include unitColor(Austrian,$austrianWrapperColor, Aus );
-@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
-@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap);
+@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap, white);
+@include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap, white);
 @include unitColor(Russian, $russianWrapperColor, Rus);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
 
@@ -33,16 +33,8 @@ $alliedColor: #df5842;
   background-color: $frenchColor;
 }
 
-.anglo {
-  background-color: $angloAlliedColor;
-}
-.french.specialHexes, .anglo.specialHexes{
+.french.specialHexes {
   color:white;
-}
-.French, .AngloAllied, .Guard {
-  p.forceMarch, p.range{
-    color:white;
-  }
 }
 
 .French.unit .unit-numbers, .Guard.unit .unit-numbers{

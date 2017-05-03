@@ -804,6 +804,16 @@ x.register("gameRules", function (gameRules, data) {
             $("#floatMessage header").html(result + ": Retreating Mode");
             break;
     }
+    var log = "";
+    for(var i in gameRules.flashLog){
+        var message = gameRules.flashLog[i];
+        if(message.match(/^@/)){
+            continue;
+        }
+        log += "<li>"+gameRules.flashLog[i]+"</li>";
+
+    }
+    $("#logWrapper").html(log);
     $("#topStatus").html(html);
     if (status) {
         $("#status").html(status);

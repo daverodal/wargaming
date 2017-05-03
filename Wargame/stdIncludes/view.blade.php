@@ -133,6 +133,13 @@
                 </div>
             </div>
 
+            <div class="dropDown">
+                <h4 class="WrapperLabel"><span class="tablet">Log</span><span class="desktop">Log</span></h4>
+                <div class="subMenu">
+                    <ol id="logWrapper"></ol>
+                </div>
+            </div>
+
             @section('tec')
                 @include("wargame::Mollwitz.tec")
             @show

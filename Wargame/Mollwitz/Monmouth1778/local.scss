@@ -20,17 +20,11 @@ You should have received a copy of the GNU General Public License
 @include headerColor(American,$rebelColor,  $rebelWrapperColor );
 @include headerColor(British, $angloAlliedColor, $angloAlliedWrapperColor);
 
-@include unitColor(American, $rebelWrapperColor, Rebel);
+@include unitColor(American, $rebelWrapperColor, Rebel, white);
 @include unitColor(British, $angloAlliedWrapperColor, Ang);
 
-@include unitColor(Hessian, $russianWrapperColor, Rus);
+@include unitColor(Hessian, $russianWrapperColor, Rus, white);
 
-
-.American, .Hessian {
-  p.forceMarch, p.range, .fa-flag{
-    color:white;
-  }
-}
 .specialHexes.british{
   background-color: $angloAlliedWrapperColor;
   color:white;

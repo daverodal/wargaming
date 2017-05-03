@@ -58,6 +58,7 @@ class GameRules
     /* @var PhaseChange */
     public $phaseChanges;
     public $flashMessages;
+    public $flashLog;
 
     public $turn;
     public $maxTurn;
@@ -79,6 +80,7 @@ class GameRules
 
     function save()
     {
+        array_splice($this->flashLog, count($this->flashLog),0, $this->flashMessages);
         $data = new stdClass();
         foreach ($this as $k => $v) {
             if (is_object($v)) {
@@ -132,6 +134,11 @@ class GameRules
             $this->options = false;
 
             $this->force->setAttackingForceId($this->attackingForceId);
+            $this->flashLog = [];
+            $this->flashMessages = [];
+        }
+        if(!isset($this->flashLog)){
+            $this->flashLog = [];
         }
         if($this->legacyExchangeRule !== false){
             $this->legacyExchangeRule = true;
@@ -182,7 +189,7 @@ class GameRules
         $mapData->specialHexesVictory = new stdClass();
         //TODO Ugly Ugly Ugly Ugly
 
-        $this->flashMessages = array();
+        $this->flashMessages = [];
 
 
 

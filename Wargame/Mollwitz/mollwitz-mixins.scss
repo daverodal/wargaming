@@ -4,11 +4,16 @@ $vintage-badge-size:19px;
 $unit-numbers-size:16px;
 $vintage-unit-numbers-size:10px;
 
-@mixin unitColor($nationality, $color, $shortName) {
-  .#{$nationality} .counterWrapper {
-    background-color: $color;
-  }
+@mixin unitColor($nationality, $color, $shortName, $rangeNumber:black) {
   @include badge($nationality, $shortName);
+  .#{$nationality} {
+    .counterWrapper {
+      background-color: $color;
+    }
+    p.forceMarch, p.range, .fa-flag{
+      color:$rangeNumber;
+    }
+  }
 }
 
 @mixin headerColor($nationality, $color, $faceColor: $color){

@@ -21,7 +21,7 @@ $bavarianColor: #FD0013;
 
 @include player(Russian ,Two , $russianColor, $russianWrapperColor);
 @include player(French, One, $frenchColor, $frenchNapoleonWrapperColor, $frenchColor);
-@include unitColor(Russian, $russianWrapperColor, Rus);
+@include unitColor(Russian, $russianWrapperColor, Rus, white);
 
 .french.specialHexes{
   background-color: $frenchColor;
@@ -33,7 +33,7 @@ $bavarianColor: #FD0013;
 .french.specialHexes, .anglo.specialHexes{
   color:white;
 }
-.French, .AngloAllied, .Guard, .Russian{
+.French, .AngloAllied, .Guard{
   p.forceMarch, p.range{
     color:white;
   }
