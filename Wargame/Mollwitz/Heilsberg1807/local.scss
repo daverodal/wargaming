@@ -25,7 +25,7 @@ $bavarianColor: #FD0013;
 @include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap, white);
 @include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap, white);
 @include unitColor(Russian, $russianWrapperColor, Rus, white);
-@include unitColor(Saxon, white, Sax);
+@include unitColor(NapSaxon, white, Sax);
 
 
 @include unitColor(Prussian, $prussianNapColor, PruNap);

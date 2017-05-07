@@ -4999,7 +4999,120 @@
     "description": "March 24, 1843. British vs Beluchi. Part of Conquest of Sindh",
     "params": {
       "doubleArt": true,
-      "toughBritish": true
+      "toughBritish": true,
+      "units": [
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Beluchi",
+          "class": "hq"
+        },
+        {
+          "num": 25,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "infantry"
+        },
+        {
+          "num": 15,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 2,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 2,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "hq"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "infantry"
+        },
+        {
+          "num": 5,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 6,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "cavalry"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 6,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Native",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 4,
+          "nationality": "Royal",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Royal",
+          "class": "horseartillery"
+        }
+      ]
+
     },
     "options": [
       {
@@ -5023,7 +5136,120 @@
     "fileName": "\\Wargame\\Mollwitz\\Meanee1843\\Meanee1843",
     "description": "February 17, 1843. British vs Beluchi. Part of the conquest of Sindh.",
     "params": {
-      "doubleArt": true
+      "doubleArt": true,
+      "units": [
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Beluchi",
+          "class": "hq"
+        },
+        {
+          "num": 9,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Beluchi",
+          "class": "infantry"
+        },
+        {
+          "num": 20,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Beluchi",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 2,
+          "movement": 2,
+          "reinforce": "A",
+          "range": 2,
+          "nationality": "Beluchi",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "hq"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "infantry"
+        },
+        {
+          "num": 5,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "cavalry"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "Royal",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "Royal",
+          "class": "horseartillery"
+        }
+      ]
+
     },
     "options": [
       {
@@ -5048,7 +5274,139 @@
     "description": "December 21, 1845. British vs Sikh. First Anglo-Sikh War.",
     "params": {
       "doubleArt": true,
-      "zocBlocksRetreat": true
+      "zocBlocksRetreat": true,
+      "units": [
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "hq"
+        },
+        {
+          "num": 21,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "infantry"
+        },
+        {
+          "num": 10,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "cavalry"
+        },
+        {
+          "num": 4,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 2,
+          "reinforce": "A",
+          "range": 5,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "hq"
+        },
+        {
+          "num": 6,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "infantry"
+        },
+        {
+          "num": 15,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "cavalry"
+        },
+        {
+          "num": 6,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "cavalry"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "Royal",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "Royal",
+          "class": "horseartillery"
+        }
+      ]
+
     },
     "options": [
       {
@@ -5074,7 +5432,138 @@
     "description": "December 22, 1845. British vs Sikh. First Anglo-Sikh War.",
     "params": {
       "doubleArt": true,
-      "zocBlocksRetreat": true
+      "zocBlocksRetreat": true,
+      "units": [
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "hq"
+        },
+        {
+          "num": 20,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "infantry"
+        },
+        {
+          "num": 13,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "cavalry"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 2,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 2,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 3,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 2,
+          "reinforce": "B",
+          "range": 5,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 2,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "hq"
+        },
+        {
+          "num": 6,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "infantry"
+        },
+        {
+          "num": 15,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 6,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "cavalry"
+        },
+        {
+          "num": 6,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 6,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Native",
+          "class": "cavalry"
+        },
+        {
+          "num": 4,
+          "forceId": 2,
+          "combat": 2,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 4,
+          "nationality": "Royal",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 2,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Royal",
+          "class": "horseartillery"
+        }
+      ]
     },
     "options": [
       {
@@ -5093,7 +5582,139 @@
         "description": "Less British for day two.",
         "longDescription": "4 less Native infantry and 2 less Royal, Day of two of a two day battle. Battle continued from sister game, Ferozesha Day One",
         "weakBritish": true,
-        "dayTwo": true
+        "dayTwo": true,
+        "units": [
+          {
+            "num": 3,
+            "forceId": 1,
+            "combat": 1,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "hq"
+          },
+          {
+            "num": 20,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 3,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "infantry"
+          },
+          {
+            "num": 13,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "cavalry"
+          },
+          {
+            "num": 4,
+            "forceId": 1,
+            "combat": 2,
+            "movement": 3,
+            "reinforce": "B",
+            "range": 2,
+            "nationality": "Sikh",
+            "class": "artillery"
+          },
+          {
+            "num": 2,
+            "forceId": 1,
+            "combat": 3,
+            "movement": 3,
+            "reinforce": "B",
+            "range": 3,
+            "nationality": "Sikh",
+            "class": "artillery"
+          },        {
+            "num": 1,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 2,
+            "reinforce": "B",
+            "range": 5,
+            "nationality": "Sikh",
+            "class": "artillery"
+          },
+          {
+            "num": 4,
+            "forceId":2,
+            "combat": 1,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "hq"
+          },
+          {
+            "num": 4,
+            "forceId": 2,
+            "combat": 5,
+            "movement": 4,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "infantry"
+          },
+          {
+            "num": 11,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 4,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Native",
+            "class": "infantry"
+          },
+          {
+            "num": 1,
+            "forceId": 2,
+            "combat": 5,
+            "movement": 6,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "cavalry"
+          },
+          {
+            "num": 6,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 6,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Native",
+            "class": "cavalry"
+          },
+          {
+            "num": 4,
+            "forceId": 2,
+            "combat": 2,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 4,
+            "nationality": "Royal",
+            "class": "artillery"
+          },
+          {
+            "num": 2,
+            "forceId": 2,
+            "combat": 2,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 3,
+            "nationality": "Royal",
+            "class": "horseartillery"
+          }
+        ]
+
       }
     }
   },
@@ -5107,7 +5728,130 @@
     "playerNotes": "Key",
     "params": {
       "doubleArt": true,
-      "zocBlocksRetreat": true
+      "zocBlocksRetreat": true,
+      "units": [
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "hq"
+        },
+        {
+          "num": 20,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "infantry"
+        },
+        {
+          "num": 14,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "cavalry"
+        },
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "hq"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "infantry"
+        },
+        {
+          "num": 9,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
+        },
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 7,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "cavalry"
+        },
+        {
+          "num": 5,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "cavalry"
+        },
+        {
+          "num": 4,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "Royal",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "Royal",
+          "class": "horseartillery"
+        }
+      ]
+
     },
     "options": [
       {
@@ -5132,7 +5876,120 @@
     "playerNotes": "Key",
     "params": {
       "doubleArt": true,
-      "zocBlocksRetreat": true
+      "zocBlocksRetreat": true,
+      "units": [
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "hq"
+        },
+        {
+          "num": 12,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "infantry"
+        },
+        {
+          "num": 16,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "cavalry"
+        },
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "hq"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "infantry"
+        },
+        {
+          "num": 9,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "cavalry"
+        },
+        {
+          "num": 5,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "Royal",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "Royal",
+          "class": "horseartillery"
+        }
+      ]
+
     },
     "options": [
       {
@@ -5156,7 +6013,141 @@
     "description": "February 21, 1849. British vs Sikh. Second Anglo-Sikh War.",
     "params": {
       "doubleArt": true,
-      "zocBlocksRetreat": true
+      "zocBlocksRetreat": true,
+      "units": [
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "hq"
+        },
+        {
+          "num": 20,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "infantry"
+        },
+        {
+          "num": 21,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "Sikh",
+          "class": "cavalry"
+        },
+        {
+          "num": 6,
+          "forceId": 2,
+          "combat": 2,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "Sikh",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 1,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "hq"
+        },
+        {
+          "num": 5,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "infantry"
+        },
+        {
+          "num": 20,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 7,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Royal",
+          "class": "cavalry"
+        },
+        {
+          "num": 6,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "cavalry"
+        },
+        {
+          "num": 5,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "Royal",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 2,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "Royal",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "Royal",
+          "class": "horseartillery"
+        }
+      ]
+
+
     },
     "options": [
       {
@@ -5174,17 +6165,132 @@
       "main": {
         "description": "Standard Scenario",
         "longDescription": "Original scenario, Historical forces."
+
       },
       "altScenario": {
         "description": "Sikh need 45 instead of 50 to win.",
         "altScenario": true,
         "longDescription": "Play Balance Scenario."
+
       },
       "moodkeeVariant": {
         "description": "Same OOB as moodkee, Alt Scenarios rules too",
         "altScenario": true,
         "theMoodkeeOOB": true,
-        "longDescription": "Accidental Order of Battle, made game enjoyable, so we kept it."
+        "longDescription": "Accidental Order of Battle, made game enjoyable, so we kept it.",
+        "units": [
+          {
+            "num": 3,
+            "forceId": 2,
+            "combat": 1,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "hq"
+          },
+          {
+            "num": 12,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "infantry"
+          },
+          {
+            "num": 16,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "cavalry"
+          },
+          {
+            "num": 3,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 3,
+            "nationality": "Sikh",
+            "class": "artillery"
+          },
+          {
+            "num": 4,
+            "forceId": 1,
+            "combat": 1,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "hq"
+          },
+          {
+            "num": 4,
+            "forceId": 1,
+            "combat": 7,
+            "movement": 4,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "infantry"
+          },
+          {
+            "num": 9,
+            "forceId": 1,
+            "combat": 6,
+            "movement": 4,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Native",
+            "class": "infantry"
+          },
+          {
+            "num": 1,
+            "forceId": 1,
+            "combat": 7,
+            "movement": 6,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "cavalry"
+          },
+          {
+            "num": 5,
+            "forceId": 1,
+            "combat": 6,
+            "movement": 6,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Native",
+            "class": "cavalry"
+          },
+          {
+            "num": 2,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 3,
+            "reinforce": "B",
+            "range": 4,
+            "nationality": "Royal",
+            "class": "artillery"
+          },
+          {
+            "num": 2,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 3,
+            "nationality": "Royal",
+            "class": "horseartillery"
+          }
+        ]
+
       }
     }
   },
@@ -5198,6 +6304,7 @@
     "params": {
       "doubleArt": true,
       "zocBlocksRetreat": true
+
     },
     "options": [
       {
@@ -5208,11 +6315,257 @@
     ],
     "scenarios": {
       "main": {
-        "description": "Standard Scenario"
+        "description": "Standard Scenario",
+        "units": [
+          {
+            "num": 3,
+            "forceId": 2,
+            "combat": 1,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "hq"
+          },
+          {
+            "num": 19,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "infantry"
+          },
+          {
+            "num": 8,
+            "forceId": 2,
+            "combat": 4,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "cavalry"
+          },
+          {
+            "num": 6,
+            "forceId": 2,
+            "combat": 2,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 3,
+            "nationality": "Sikh",
+            "class": "artillery"
+          },
+          {
+            "num": 1,
+            "forceId": 2,
+            "combat": 3,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 3,
+            "nationality": "Sikh",
+            "class": "artillery"
+          },
+          {
+            "num": 4,
+            "forceId": 1,
+            "combat": 1,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "hq"
+          },
+          {
+            "num": 2,
+            "forceId": 1,
+            "combat": 7,
+            "movement": 4,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "infantry"
+          },
+          {
+            "num": 9,
+            "forceId": 1,
+            "combat": 6,
+            "movement": 4,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Native",
+            "class": "infantry"
+          },
+          {
+            "num": 1,
+            "forceId": 1,
+            "combat": 7,
+            "movement": 6,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "cavalry"
+          },
+          {
+            "num": 7,
+            "forceId": 1,
+            "combat": 6,
+            "movement": 6,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Native",
+            "class": "cavalry"
+          },
+          {
+            "num": 2,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 3,
+            "reinforce": "B",
+            "range": 4,
+            "nationality": "Royal",
+            "class": "artillery"
+          },
+          {
+            "num": 1,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 3,
+            "nationality": "Royal",
+            "class": "horseartillery"
+          }
+        ]
+
       },
       "weakSikh": {
         "description": "Weaker Sikh, and all 3-3's instead of 4-3's",
-        "weakSikh": true
+        "weakSikh": true,
+        "units": [
+          {
+            "num": 3,
+            "forceId": 2,
+            "combat": 1,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "hq"
+          },
+          {
+            "num": 15,
+            "forceId": 2,
+            "combat": 3,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "infantry"
+          },
+          {
+            "num": 8,
+            "forceId": 2,
+            "combat": 3,
+            "movement": 5,
+            "reinforce": "A",
+            "range": 1,
+            "nationality": "Sikh",
+            "class": "cavalry"
+          },
+          {
+            "num": 4,
+            "forceId": 2,
+            "combat": 2,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 3,
+            "nationality": "Sikh",
+            "class": "artillery"
+          },
+          {
+            "num": 1,
+            "forceId": 2,
+            "combat": 3,
+            "movement": 3,
+            "reinforce": "A",
+            "range": 3,
+            "nationality": "Sikh",
+            "class": "artillery"
+          },
+          {
+            "num": 4,
+            "forceId": 1,
+            "combat": 1,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "hq"
+          },
+          {
+            "num": 2,
+            "forceId": 1,
+            "combat": 7,
+            "movement": 4,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "infantry"
+          },
+          {
+            "num": 9,
+            "forceId": 1,
+            "combat": 6,
+            "movement": 4,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Native",
+            "class": "infantry"
+          },
+          {
+            "num": 1,
+            "forceId": 1,
+            "combat": 7,
+            "movement": 6,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Royal",
+            "class": "cavalry"
+          },
+          {
+            "num": 7,
+            "forceId": 1,
+            "combat": 6,
+            "movement": 6,
+            "reinforce": "B",
+            "range": 1,
+            "nationality": "Native",
+            "class": "cavalry"
+          },
+          {
+            "num": 2,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 3,
+            "reinforce": "B",
+            "range": 4,
+            "nationality": "Royal",
+            "class": "artillery"
+          },
+          {
+            "num": 1,
+            "forceId": 1,
+            "combat": 4,
+            "movement": 5,
+            "reinforce": "B",
+            "range": 3,
+            "nationality": "Royal",
+            "class": "horseartillery"
+          }
+        ]
+
       }
     }
   },
@@ -5569,7 +6922,7 @@
           "reinforce": "I",
           "range": 1,
           "reinforceTurn": 4,
-          "nationality": "Saxon",
+          "nationality": "NapSaxon",
           "class": "infantry"
         },
         {
@@ -5591,7 +6944,7 @@
           "reinforce": "I",
           "range": 1,
           "reinforceTurn": 4,
-          "nationality": "Saxon",
+          "nationality": "NapSaxon",
           "class": "cavalry"
         },
         {
@@ -5613,7 +6966,7 @@
           "reinforce": "I",
           "range": 4,
           "reinforceTurn": 4,
-          "nationality": "Saxon",
+          "nationality": "NapSaxon",
           "class": "artillery"
         },
 

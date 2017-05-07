@@ -64,70 +64,88 @@ class Aliwal1845 extends \Wargame\Mollwitz\IndiaCore
 
     public function init()
     {
-        $artRange = 3;
 
+
+        $scenario = $this->scenario;
+        $unitSets = $scenario->units;
 
         UnitFactory::$injector = $this->force;
 
-        $scenario = $this->scenario;
-        if (!empty($scenario->commandControl)) {
-            for ($i = 0; $i < 3; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'hq');
+        foreach ($unitSets as $unitSet) {
+            if (empty($scenario->commandControl)) {
+                if ($unitSet->class === 'hq'){
+                    continue;
+                }
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
             }
         }
-        if(!empty($scenario->weakSikh)){
-            /* Sikh */
-            for ($i = 0; $i < 15; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'infantry');
-            }
-            for ($i = 0; $i < 8; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'cavalry');
-            }
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhArtBadge.png", 2, 2, 3, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Sikh", false, 'artillery');
-            }
-            for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhArtBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Sikh", false, 'artillery');
-            }
-        }else{
-            /* Sikh */
-            for ($i = 0; $i < 19; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'infantry');
-            }
-            for ($i = 0; $i < 9; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhCavBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'cavalry');
-            }
-            for ($i = 0; $i < 6; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhArtBadge.png", 2, 2, 3, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Sikh", false, 'artillery');
-            }
-            for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhArtBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Sikh", false, 'artillery');
-            }
-        }
-        /* British */
-        if (!empty($scenario->commandControl)) {
-            for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'hq');
-            }
-        }
-        for ($i = 0; $i < 2; $i++) {
-            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritInfBadge.png", 7, 7, 4, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'infantry');
-        }
-        for ($i = 0; $i < 9; $i++) {
-            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "NativeInfBadge.png", 6, 6, 4, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Native", false, 'infantry');
-        }
-        for ($i = 0; $i < 1; $i++) {
-            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritCavBadge.png", 7, 7, 6, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'cavalry');
-        }
-        for ($i = 0; $i < 7; $i++) {
-            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "NativeCavBadge.png", 6, 6, 6, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Native", false, 'cavalry');
-        }
-        for ($i = 0; $i < 2; $i++) {
-            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritArtBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "B", 1, 4, "British", false, 'artillery');
-        }
-        for ($i = 0; $i < 1; $i++) {
-            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritHorArtBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "B", 1, 3, "British", false, 'horseartillery');
-        }
+
+//        $artRange = 3;
+//
+//
+//        UnitFactory::$injector = $this->force;
+//
+//        $scenario = $this->scenario;
+//        if (!empty($scenario->commandControl)) {
+//            for ($i = 0; $i < 3; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'hq');
+//            }
+//        }
+//        if(!empty($scenario->weakSikh)){
+//            /* Sikh */
+//            for ($i = 0; $i < 15; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'infantry');
+//            }
+//            for ($i = 0; $i < 8; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'cavalry');
+//            }
+//            for ($i = 0; $i < 4; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhArtBadge.png", 2, 2, 3, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Sikh", false, 'artillery');
+//            }
+//            for ($i = 0; $i < 1; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhArtBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Sikh", false, 'artillery');
+//            }
+//        }else{
+//            /* Sikh */
+//            for ($i = 0; $i < 19; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'infantry');
+//            }
+//            for ($i = 0; $i < 9; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhCavBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Sikh", false, 'cavalry');
+//            }
+//            for ($i = 0; $i < 6; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhArtBadge.png", 2, 2, 3, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Sikh", false, 'artillery');
+//            }
+//            for ($i = 0; $i < 1; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::SIKH_FORCE, "deployBox", "SikhArtBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 3, "Sikh", false, 'artillery');
+//            }
+//        }
+//        /* British */
+//        if (!empty($scenario->commandControl)) {
+//            for ($i = 0; $i < 4; $i++) {
+//                UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritInfBadge.png", 1, 1, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'hq');
+//            }
+//        }
+//        for ($i = 0; $i < 2; $i++) {
+//            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritInfBadge.png", 7, 7, 4, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'infantry');
+//        }
+//        for ($i = 0; $i < 9; $i++) {
+//            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "NativeInfBadge.png", 6, 6, 4, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Native", false, 'infantry');
+//        }
+//        for ($i = 0; $i < 1; $i++) {
+//            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritCavBadge.png", 7, 7, 6, true, STATUS_CAN_DEPLOY, "B", 1, 1, "British", false, 'cavalry');
+//        }
+//        for ($i = 0; $i < 7; $i++) {
+//            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "NativeCavBadge.png", 6, 6, 6, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Native", false, 'cavalry');
+//        }
+//        for ($i = 0; $i < 2; $i++) {
+//            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritArtBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "B", 1, 4, "British", false, 'artillery');
+//        }
+//        for ($i = 0; $i < 1; $i++) {
+//            UnitFactory::create("infantry-1", Aliwal1845::BRITISH_FORCE, "deployBox", "BritHorArtBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "B", 1, 3, "British", false, 'horseartillery');
+//        }
 
 
     }

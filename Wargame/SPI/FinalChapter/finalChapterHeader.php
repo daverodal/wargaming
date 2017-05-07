@@ -25,9 +25,7 @@
 </style>
 <script type="text/javascript">
 
-    debugger;
     function renderUnitNumbers(unit, moveAmount){
-        debugger;
 
         var  move = unit.maxMove - unit.moveAmountUsed;
         if(moveAmount !== undefined){

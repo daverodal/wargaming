@@ -22,6 +22,7 @@
 
 @include player(British, One, $angloAlliedColor, $angloAlliedWrapperColor);
 @include player(Sikh, Two, $beluchiColor, $beluchiWrapperColor, $beluchiWrapperColor);
+@include unitColor(Royal, $angloAlliedWrapperColor, Brit, white);
 
 .unit.Native .counterWrapper {
   background-color: $angloAlliedColor;

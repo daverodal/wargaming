@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 
 @include player(British, One, $angloAlliedColor, $angloAlliedWrapperColor);
 @include player(Beluchi, Two, $beluchiColor, $beluchiWrapperColor, $beluchiWrapperColor);
+@include unitColor(Royal, $angloAlliedWrapperColor, Brit, white);
 
 .unit.Native .counterWrapper {
   background-color: $angloAlliedWrapperColor;
