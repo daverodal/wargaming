@@ -4740,6 +4740,79 @@ You should have received a copy of the GNU General Public License
   color: #c6c102;
   font-style: italic; }
 
+.fa-flag {
+  display: none; }
+
+.Royal.hq .counterWrapper .counter {
+  display: none; }
+
+.vintage.Royal.hq .counterWrapper .fa-flag {
+  font-size: 19px; }
+.vintage.Royal.infantry .counterWrapper .counter {
+  background-image: url("/js/BritInfBadge.png");
+  background-size: 19px; }
+.vintage.Royal.cavalry .counterWrapper .counter {
+  background-image: url("/js/BritCavBadge.png");
+  background-size: 19px; }
+.vintage.Royal.artillery .counterWrapper .counter {
+  background-image: url("/js/BritArtBadge.png");
+  background-size: 19px; }
+.vintage.Royal.horseartillery .counterWrapper .counter {
+  background-image: url("/js/BritHorArtBadge.png");
+  background-size: 19px; }
+.vintage.Royal.pontoon .counterWrapper {
+  border: none; }
+  .vintage.Royal.pontoon .counterWrapper .counter {
+    background-color: lightgreen;
+    background-image: url("/js/BritPontoon.png");
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    border: none; }
+.vintage.Royal.pontoon .unit-numbers {
+  display: none; }
+
+.Royal.infantry .counterWrapper .counter {
+  background-image: url("/js/BritInfBadge.png");
+  background-size: 14px; }
+
+.Royal.cavalry .counterWrapper .counter {
+  background-image: url("/js/BritCavBadge.png");
+  background-size: 14px; }
+
+.Royal.artillery .counterWrapper .counter {
+  background-image: url("/js/BritArtBadge.png");
+  background-size: 14px; }
+
+.Royal.horseartillery .counterWrapper .counter {
+  background-image: url("/js/BritHorArtBadge.png");
+  background-size: 14px; }
+
+.Royal.hq .counterWrapper .fa-flag {
+  display: block;
+  font-size: 14px; }
+
+.Royal.wagon .counterWrapper .counter {
+  background-image: url("/js/Wagon.png");
+  background-size: 14px; }
+
+.Royal.pontoon .counterWrapper {
+  border: none; }
+  .Royal.pontoon .counterWrapper .counter {
+    background-color: lightgreen;
+    background-image: url("/js/BritPontoon.png");
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    border: none; }
+.Royal.pontoon .unit-numbers {
+  display: none; }
+
+.Royal .counterWrapper {
+  background-color: #df5842; }
+.Royal p.forceMarch, .Royal p.range, .Royal .fa-flag {
+  color: wheat; }
+
 .unit.Native .counterWrapper {
   background-color: #f00; }
 

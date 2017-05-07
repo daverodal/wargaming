@@ -375,7 +375,6 @@ export default function initialize() {
     });
 
     $("#shiftKey").on('click', function () {
-        debugger;
         DR.shiftKey = !DR.shiftKey;
         $("#shiftKey").toggleClass('swooshy', DR.shiftKey);
     });

@@ -167,6 +167,34 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
         $this->vp = 0;
     }
 
+    function updateMoveStatus($hexagon, $moveAmount)
+    {
+        $battle = Battle::getBattle();
+        $gameRules = $battle->gameRules;
+        /* @var \Wargame\Force $force */
+        $force = $battle->force;
+        /* @var \Wargame\MapData $mapData */
+        $mapData = $battle->mapData;
+        $attackingForceId = $battle->force->attackingForceId;
+//        $mapData = MapData::getInstance();
+        /* @var MapHex $mapHex */
+        $fromHex = $this->hexagon->getName();
+        $toHex = $hexagon->getName();
+        $fromMapHex = $mapData->getHex($fromHex);
+        $unitIds = $fromMapHex->getForces($this->forceId);
+        $corps = preg_replace("~([^/]*)/.*$~", "$1", $this->unitDesig);
+        $divisionCount = 0;
+        foreach($unitIds as $unitId){
+            $unit = $force->getUnit($unitId);
+            if($corps === preg_replace("~([^/]*)/.*$~", "$1", $unit->unitDesig)){
+                $divisionCount++;
+            }
+
+        }
+        var_dump($corps);
+        var_dump($divisionCount);
+        dd($unitIds);
+    }
 
     function eliminate(){
     }
