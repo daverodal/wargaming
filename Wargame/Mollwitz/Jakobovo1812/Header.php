@@ -19,7 +19,6 @@ You should have received a copy of the GNU General Public License
 <script type="text/javascript">
 
 x.register("vp", function(vp){
-    debugger;
     var bridge = "<span class='playerFrenchFace'>French</span> ";
     if(vp[0]){
         bridge = "<span class='playerRussianFace'>Russians</span> ";

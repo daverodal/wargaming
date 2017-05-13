@@ -4960,74 +4960,74 @@ You should have received a copy of the GNU General Public License
 .fa-flag {
   display: none; }
 
-.Saxon.hq .counterWrapper .counter {
+.NapSaxon.hq .counterWrapper .counter {
   display: none; }
 
-.vintage.Saxon.hq .counterWrapper .fa-flag {
+.vintage.NapSaxon.hq .counterWrapper .fa-flag {
   font-size: 19px; }
-.vintage.Saxon.infantry .counterWrapper .counter {
+.vintage.NapSaxon.infantry .counterWrapper .counter {
   background-image: url("/js/SaxInfBadge.png");
   background-size: 19px; }
-.vintage.Saxon.cavalry .counterWrapper .counter {
+.vintage.NapSaxon.cavalry .counterWrapper .counter {
   background-image: url("/js/SaxCavBadge.png");
   background-size: 19px; }
-.vintage.Saxon.artillery .counterWrapper .counter {
+.vintage.NapSaxon.artillery .counterWrapper .counter {
   background-image: url("/js/SaxArtBadge.png");
   background-size: 19px; }
-.vintage.Saxon.horseartillery .counterWrapper .counter {
+.vintage.NapSaxon.horseartillery .counterWrapper .counter {
   background-image: url("/js/SaxHorArtBadge.png");
   background-size: 19px; }
-.vintage.Saxon.pontoon .counterWrapper {
+.vintage.NapSaxon.pontoon .counterWrapper {
   border: none; }
-  .vintage.Saxon.pontoon .counterWrapper .counter {
+  .vintage.NapSaxon.pontoon .counterWrapper .counter {
     background-color: lightgreen;
     background-image: url("/js/SaxPontoon.png");
     background-size: 32px;
     width: 32px;
     height: 32px;
     border: none; }
-.vintage.Saxon.pontoon .unit-numbers {
+.vintage.NapSaxon.pontoon .unit-numbers {
   display: none; }
 
-.Saxon.infantry .counterWrapper .counter {
+.NapSaxon.infantry .counterWrapper .counter {
   background-image: url("/js/SaxInfBadge.png");
   background-size: 14px; }
 
-.Saxon.cavalry .counterWrapper .counter {
+.NapSaxon.cavalry .counterWrapper .counter {
   background-image: url("/js/SaxCavBadge.png");
   background-size: 14px; }
 
-.Saxon.artillery .counterWrapper .counter {
+.NapSaxon.artillery .counterWrapper .counter {
   background-image: url("/js/SaxArtBadge.png");
   background-size: 14px; }
 
-.Saxon.horseartillery .counterWrapper .counter {
+.NapSaxon.horseartillery .counterWrapper .counter {
   background-image: url("/js/SaxHorArtBadge.png");
   background-size: 14px; }
 
-.Saxon.hq .counterWrapper .fa-flag {
+.NapSaxon.hq .counterWrapper .fa-flag {
   display: block;
   font-size: 14px; }
 
-.Saxon.wagon .counterWrapper .counter {
+.NapSaxon.wagon .counterWrapper .counter {
   background-image: url("/js/Wagon.png");
   background-size: 14px; }
 
-.Saxon.pontoon .counterWrapper {
+.NapSaxon.pontoon .counterWrapper {
   border: none; }
-  .Saxon.pontoon .counterWrapper .counter {
+  .NapSaxon.pontoon .counterWrapper .counter {
     background-color: lightgreen;
     background-image: url("/js/SaxPontoon.png");
     background-size: 32px;
     width: 32px;
     height: 32px;
     border: none; }
-.Saxon.pontoon .unit-numbers {
+.NapSaxon.pontoon .unit-numbers {
   display: none; }
 
-.Saxon .counterWrapper {
+.NapSaxon .counterWrapper {
   background-color: white; }
-.Saxon p.forceMarch, .Saxon p.range, .Saxon .fa-flag {
+.NapSaxon p.forceMarch, .NapSaxon p.range, .NapSaxon .fa-flag {
   color: black; }
 
 .fa-flag {
