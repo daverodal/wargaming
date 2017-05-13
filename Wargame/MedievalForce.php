@@ -721,6 +721,9 @@ class MedievalForce extends Force
                                 $status = STATUS_UNAVAIL_THIS_PHASE;
                                 $this->units[$id]->clearFireCombat();
                             }
+                            if($victory->isFlankedAttacker($id)){
+                                $status = STATUS_UNAVAIL_THIS_PHASE;
+                            }
                         }
                         if ($mode == COMBAT_RESOLUTION_MODE || $mode == FIRE_COMBAT_RESOLUTION_MODE) {
                             $status = STATUS_UNAVAIL_THIS_PHASE;

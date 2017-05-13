@@ -3741,8 +3741,6 @@ You should have received a copy of the GNU General Public License
     color: #333;
     font-size: 16px; }
 
-.unit.ghost-unit {
-  z-index: 30; }
 .unit .steps {
   position: absolute;
   font-size: 10px;
