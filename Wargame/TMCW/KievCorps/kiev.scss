@@ -138,6 +138,16 @@
       }
     }
   }
+  .integrity{
+    position: absolute;
+    right:  0px;
+    top:  0px;
+    color: white;
+    font-size: 9px;
+    i{
+      background:black;
+    }
+  }
 }
 .white-color{
   color:white;
@@ -151,4 +161,7 @@
 }
 #deployWrapper{
   display:none;
+}
+#crtDetails {
+  display:block !important;
 }

@@ -32,6 +32,7 @@ x.register("victory", function(victory){
         $("#victory").html(" Victory: <span class='playerOneFace'><?=$forceName[1]?> </span>"+vp[1]+ " <span class='playerTwoFace'><?=$forceName[2];?> </span>"+vp[2]+" Surrounded Soviets "+vp[3] + dismissed);
         //        $("#victory").html(" Victory: <span class='playerOneFace'><?//=$forceName[1]?>// </span>"+vp[1]+ " <span class='playerTwoFace'><?//=$forceName[2];?>// </span>"+vp[2]+" Surrounded Soviets "+vp[3]);
 });
+debugger;
 function renderUnitNumbers(unit, moveAmount){
 
         var  move = unit.maxMove - unit.moveAmountUsed;
@@ -72,7 +73,7 @@ function renderCrtDetails(combat){
         var div = atk / def;
         var ter = combat.terrainCombatEffect;
         var combatCol = combat.index + 1;
-
+debugger;
         var html = "<div id='crtDetails'>"+combat.combatLog+"</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Terrain Effects Shift  " + ter + " = " + $(".col" + combatCol).html() + "</div>"
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
         return html;

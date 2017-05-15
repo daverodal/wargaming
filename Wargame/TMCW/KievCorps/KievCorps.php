@@ -97,22 +97,25 @@ class KievCorps extends \Wargame\ModernLandBattle
             /* Second panzer army */
             /* 21 corp */
             $i += 2;
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "21/a", 2, 2);
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "21/4", 2,2);
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "21/10", 2,2);
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "24/3", 2, 2, "pink");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "24/4", 2,2, "pink");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiMech.png", 3, 8,  STATUS_READY, "B", 1, "german",  "mech", "24/10", 2,2, "pink");
             //            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 9, 8,  STATUS_READY, "B", 1, "german",  "mech", "21", 3);
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i++], "multiArmor.png", 6, 3, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "4");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i++], "multiMech.png", 5, 2, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "10");
 
             /* 47 Corps */
-            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 8, 8,  STATUS_READY, "B", 1, "german",  "mech", "47", 3);
+//            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 8, 8,  STATUS_READY, "B", 1, "german",  "mech", "47", 3);
 
-//            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 5, 2, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "47");
-//            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i++], "multiArmor.png", 5, 2, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "18");
-//            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i++], "multiMech.png", 5, 2, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "29");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 3, 8, STATUS_READY, "B", 1, "german", "mech", "47/17", 2, 2, "orange");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiArmor.png", 3, 8, STATUS_READY, "B", 1, "german", "mech", "47/18", 2, 2, "orange");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiMech.png", 2, 8, STATUS_READY, "B", 1, "german", "mech", "47/29", 2, 2, "orange");
 
             /* 48 Corps */
-            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 7, 8,  STATUS_READY, "B", 1, "german",  "mech", "48", 3);
+//            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 7, 8,  STATUS_READY, "B", 1, "german",  "mech", "48", 3);
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 3, 8, STATUS_READY, "B", 1, "german", "mech", "48/9", 2, 2, "red");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiMech.png", 2, 8, STATUS_READY, "B", 1, "german", "mech", "48/16", 2, 2, "red");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i], "multiMech.png", 2, 8, STATUS_READY, "B", 1, "german", "mech", "48/25", 2, 2, "red");
 
 //            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $B[$i += 2], "multiArmor.png", 5, 2, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "48");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $B[$i++], "multiArmor.png", 5, 2, 8, false, STATUS_READY, "B", 1, 1, "german", true, "mech", "16");
@@ -183,55 +186,69 @@ class KievCorps extends \Wargame\ModernLandBattle
 
             /* First panzer army */
             /* 3 Corps */
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 1], "multiArmor.png", 9,  8,  STATUS_READY, "E",  1, "firstPanzerArmy",  "mech", "3", 3);
+//            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 1], "multiArmor.png", 9,  8,  STATUS_READY, "E",  1, "firstPanzerArmy",  "mech", "3", 3);
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiArmor.png", 6, 3, 8, false, STATUS_READY, "E", 1, 1, "firstPanzerArmy", true, "mech", "14");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiMech.png", 5, 2, 8, false, STATUS_READY, "E", 1, 1, "firstPanzerArmy", true, "mech", "25");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiArmor.png", 3, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "3/13", 2, 2, "#58c3ff");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i], "multiArmor.png", 3, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "3/14", 2, 2, "#58c3ff");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i], "multiMech.png", 3, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "3/25", 2, 2, "#58c3ff");
 
             /* 14 Corps */
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 1], "multiMech.png", 8,  8,  STATUS_READY, "E",  1, "firstPanzerArmy",  "mech", "14", 3);
+//            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 1], "multiMech.png", 8,  8,  STATUS_READY, "E",  1, "firstPanzerArmy",  "mech", "14", 3);
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiMech.png", 5, 2, 8, false, STATUS_READY, "E", 1, 1, "firstPanzerArmy", true, "mech", "SS AH");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiMech.png", 4, 2, 8, false, STATUS_READY, "E", 1, 1, "firstPanzerArmy", true, "mech", "SS W");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiArmor.png", 3, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "14/90", 2, 2, "white");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i], "multiMech.png", 2, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "14/SS AH", 2, 2, "white");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i], "multiMech.png", 2, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "14/SS W", 2, 2, "white");
 
             /* 48 Corps ? */
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiArmor.png", 5, 2, 8, false, STATUS_READY, "E", 1, 1, "firstPanzerArmy", true, "mech", "48");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiArmor.png", 5, 2, 8, false, STATUS_READY, "E", 1, 1, "firstPanzerArmy", true, "mech", "16");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiMech.png", 5, 2, 8, false, STATUS_READY, "E", 1, 1, "firstPanzerArmy", true, "mech", "16");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiArmor.png", 3, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "48/11", 2, 2, "lawngreen");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i], "multiArmor.png", 3, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "48/16", 2, 2, "lawngreen");
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i], "multiMech.png", 2, 8, STATUS_READY, "B", 1, "firstPanzerArmy", "mech", "48/16", 2, 2, "lawngreen");
+
             /* 4 Corps ? */
 
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F", 1,  "firstPanzerArmy",  "inf", "4", 3);
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F", 1,  "firstPanzerArmy",  "inf", "49", 3);
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiInf.png", 3,  5,  STATUS_READY, "F", 1,  "firstPanzerArmy",  "inf", "Rum", 3);
+//            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $E[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F", 1,  "firstPanzerArmy",  "inf", "4", 3);
+//            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $E[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F", 1,  "firstPanzerArmy",  "inf", "49", 3);
+//            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $E[$i += 2], "multiInf.png", 3,  5,  STATUS_READY, "F", 1,  "firstPanzerArmy",  "inf", "Rum", 3);
 
 
 
             $i = 0;
 
             /* Seventeenth Army */
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 3,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "Hun", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 3,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "Slo", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 3,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "Rum", 3);
+
             /* 4'th Corps */
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 2], "multiInf.png", 3,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "4", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 3,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "4", 3);
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 3], "multiInf.png", 2, 1, 5, false, STATUS_READY, "F", 1, 1, "seventeenthArmy", true, "inf", "71");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 3], "multiInf.png", 2, 1, 5, false, STATUS_READY, "F", 1, 1, "seventeenthArmy", true, "inf", "262");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 2], "multiInf.png", 2, 1, 5, false, STATUS_READY, "F", 1, 1, "seventeenthArmy", true, "inf", "295");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 3], "multiInf.png", 2, 1, 5, false, STATUS_READY, "F", 1, 1, "seventeenthArmy", true, "inf", "296");
 
             /* 49'th Mountain Corps */
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 2], "multiInf.png", 4,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "49 M", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "49 M", 3);
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 3], "multiInf.png", 2, 1, 5, false, STATUS_READY, "F", 1, 1, "seventeenthArmy", true, "inf", "257");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 3], "multiMountain.png", 2, 1, 5, false, STATUS_READY, "F", 1, 1, "seventeenthArmy", true, "mountain", "1 M");
 
             /* 59'th Corps */
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 5,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "59", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 5,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "59", 3);
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 3], "multiInf.png", 2, 1, 5, false, STATUS_READY, "F", 1, 1, "seventeenthArmy", true, "inf", "97 L");
 //            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 3], "multiInf.png", 2, 1, 5, false, STATUS_READY, "F", 1, 1, "seventeenthArmy", true, "inf", "100 L");
 
             /* 11'th Corps */
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "11", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "11", 3);
 
             /* 55'th Corps */
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 5,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "55", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 5,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "55", 3);
 
             /* additional Corps */
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "add", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i += 1], "multiInf.png", 4,  5,  STATUS_READY, "F",  1, "seventeenthArmy",  "inf", "add", 3);
 
         }
     }

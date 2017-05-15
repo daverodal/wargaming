@@ -44,6 +44,7 @@ trait DivMCWCombatShiftTerrain
         $hexagon = $battle->force->units[$defenderId]->hexagon;
         $hexpart = new Hexpart();
         $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
+        $isDIntegrity = $isAIntegrity = false;
 
         if (count((array)$combats->attackers) == 0) {
             $combats->index = null;
@@ -69,7 +70,10 @@ trait DivMCWCombatShiftTerrain
             if(($isFortB || $isFortA) && $unit->class == "heavy"){
                 $isHeavy = true;
             }
-
+            $integrity = $unit->integrity ?? false;
+            if($integrity){
+                $isDIntegrity = true;
+            }
         }
         $combatLog .= "Attackers<br>";
 
@@ -86,6 +90,10 @@ trait DivMCWCombatShiftTerrain
                 $isShock = true;
             }
             $attackStrength += $unit->strength;
+            $integrity = $unit->integrity ?? false;
+            if($integrity){
+                $isAIntegrity = true;
+            }
         }
         $combatLog .= "total $attackStrength<br>";
 
@@ -112,10 +120,22 @@ trait DivMCWCombatShiftTerrain
 
         /* @var $combatRules CombatRules */
         $terrainCombatEffect = $combatRules->getDefenderTerrainCombatEffect($defenderId);
+        if($terrainCombatEffect !== 0){
+            $combatLog .= "Shift $terrainCombatEffect left for Terrain<br>";
+        }
 
         if($isMountainInf && $isMountain){
             /* Mountain Inf helps combat agains Mountain hexes */
             $terrainCombatEffect--;
+            $combatLog .= "Shift 1 right for mountain inf attacking into mountain<br>";
+        }
+        if($isDIntegrity){
+            $combatLog .= "Shift 1 left for defender having integrity<br>";
+            $terrainCombatEffect += 1;
+        }
+        if($isAIntegrity){
+            $combatLog .= "Shift 2 right for defender having integrity<br>";
+            $terrainCombatEffect -= 2;
         }
         /* FortB trumps FortA in multi defender attacks */
         /* TODO: FORCED ID SHOULD NOT BE HERE!!! */
@@ -132,8 +152,9 @@ trait DivMCWCombatShiftTerrain
                 $terrainCombatEffect += 1;
             }
         }
+        $dispShift = $terrainCombatEffect * -1;
 
-        $combatLog .= "Total Shift $terrainCombatEffect<br>";
+        $combatLog .= "Total Shift $dispShift<br>";
         $combatIndex -= $terrainCombatEffect;
 
         if($isShock && $combatIndex >= 0){

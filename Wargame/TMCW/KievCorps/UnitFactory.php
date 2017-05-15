@@ -26,7 +26,7 @@ class UnitFactory {
     public static $injector;
 
     public static function build($data = false){
-        $nUnit =  new MultiStepUnit($data);
+        $nUnit =  new MultiSizeUnit($data);
         if ($data === false) {
             $nUnit->id = self::$id++;
         }
@@ -46,10 +46,13 @@ class UnitFactory {
                                   $class = false,
                                   $unitDesig = false,
                                   $curSteps = 3,
-                                  $maxSteps = 3){
+                                  $maxSteps = 3,
+                                  $integrityColor = 'transparent'){
         $unit = static::build();
         $unit->set($unitName, $unitForceId, $unitHexagon, $unitImage, $unitStrength,
             $unitMaxMove, $unitStatus, $unitReinforceZoneName, $unitReinforceTurn,  $nationality, $class, $unitDesig, $curSteps, $maxSteps);
         self::$injector->injectUnit($unit);
+        $unit->postProcess();
+        $unit->integrityColor = $integrityColor;
     }
 }

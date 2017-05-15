@@ -17,6 +17,7 @@
         <div class="steps">
             <div ng-repeat="i in [0,0,0].slice(3 - unit.steps) track by $index " class="step"></div>
         </div>
+        <div ng-if="unit.integrity" class="integrity"><i class="fa fa-star"></i></div>
         <div class="shadow-mask" ng-class="unit.shadow"></div>
         <div class="unitSize">@{{ unit.unitSize }}</div>
 
@@ -26,7 +27,7 @@
             <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
-        <div ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }}
+        <div ng-style="{background: unit.integrityColor }" ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }}
             <span ng-class="{'white-color':!unit.supplied}">@{{ unit.supplied ? '-':'u' }}</span> @{{ unit.maxMove - unit.moveAmountUsed }}</div>
     </div>
 @endsection
