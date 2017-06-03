@@ -374,6 +374,34 @@ export default function initialize() {
         }
     });
 
+    $("#showHexes1").on('click', function () {
+        DR.showHexes1 = !DR.showHexes1;
+        if(DR.showHexes1){
+            $("#showHexes1").addClass('negative');
+        }else{
+            $("#showHexes1").removeClass('negative');
+        }
+        if(DR.showHexes1){
+            $('.range-hex.forceId1').addClass('hovering');
+        }else{
+            $('.range-hex.forceId1').removeClass('hovering');
+        }
+    });
+
+    $("#showHexes2").on('click', function () {
+        DR.showHexes2 = !DR.showHexes2;
+        if(DR.showHexes2){
+            $("#showHexes2").addClass('negative');
+        }else{
+            $("#showHexes2").removeClass('negative');
+        }
+        if(DR.showHexes2){
+            $('.range-hex.forceId2').addClass('hovering');
+        }else{
+            $('.range-hex.forceId2').removeClass('hovering');
+        }
+    });
+
     $("#shiftKey").on('click', function () {
         DR.shiftKey = !DR.shiftKey;
         $("#shiftKey").toggleClass('swooshy', DR.shiftKey);
