@@ -121,9 +121,14 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         parent::postRecoverUnit($args);
 
+        $unit->removeAdjustment('movement');
+
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
             if(!empty($scenario->noCavMove) && $unit->class == "cavalry"){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
+            if(!empty($scenario->noCavMove) && $unit->class != "cavalry"){
+                $unit->addAdjustment('movement', 'halfMovement');
             }
         }
     }
@@ -169,7 +174,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
             if(!empty($scenario->noCavMove)) {
-                $b->gameRules->flashMessages[] = "Russian Cavalry cannot move first turn.";
+                $b->gameRules->flashMessages[] = "Russian Cavalry cannot move first turn. All other Russian units half movement.";
             }
         }
     }
