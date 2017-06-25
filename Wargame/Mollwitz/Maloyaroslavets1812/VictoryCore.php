@@ -123,11 +123,11 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         $unit->removeAdjustment('movement');
 
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
+        if ($b->gameRules->turn <= 2 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
             if(!empty($scenario->noCavMove) && $unit->class == "cavalry"){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
             }
-            if(!empty($scenario->noCavMove) && $unit->class != "cavalry"){
+            if($b->gameRules->turn === 1 && !empty($scenario->noCavMove) && $unit->class != "cavalry" && $unit->forceId === Maloyaroslavets1812::RUSSIAN_FORCE){
                 $unit->addAdjustment('movement', 'halfMovement');
             }
         }
