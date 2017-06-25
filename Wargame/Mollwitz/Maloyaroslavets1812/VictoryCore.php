@@ -122,7 +122,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         parent::postRecoverUnit($args);
 
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
-            if(!empty($scenario->noCavMove)){
+            if(!empty($scenario->noCavMove) && $unit->class == "cavalry"){
                 $unit->status = STATUS_UNAVAIL_THIS_PHASE;
             }
         }
