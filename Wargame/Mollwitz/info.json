@@ -6846,6 +6846,12 @@
       "main": {
         "description": "Historical Scenario.",
         "longDescription": "Historical Scenario"
+      },
+      "playBalance":{
+        "description": "No Russin reinforcements",
+        "longDescription": "Play balance options, to give the french a chance. No Russian reinforcements and cavalry cannot move first turn.",
+        "noRussianReinf": true,
+        "noCavMove": true
       }
     }
   },

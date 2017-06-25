@@ -121,6 +121,11 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         parent::postRecoverUnit($args);
 
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
+            if(!empty($scenario->noCavMove)){
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
+        }
     }
 
 
@@ -146,10 +151,27 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             foreach ($theUnits as $id => $unit) {
 
                 if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
-//                $theUnits[$id]->status = STATUS_ELIMINATED;
                     $theUnits[$id]->hexagon->parent = "deployBox";
                 }
             }
         }
     }
+
+
+
+
+
+
+    public function postRecoverUnits()
+    {
+        $b = Battle::getBattle();
+        $scenario = $b->scenario;
+
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
+            if(!empty($scenario->noCavMove)) {
+                $b->gameRules->flashMessages[] = "Russian Cavalry cannot move first turn.";
+            }
+        }
+    }
+
 }
