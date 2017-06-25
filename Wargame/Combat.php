@@ -33,6 +33,7 @@ Class Combat
     public $useAlt = false;
     public $useDetermined = false;
     public $isBombardment = false;
+    public $isArtilleryOnly = false;
     public $pinCRT = false;
     public $dieShift = 0;
     public $dayTime = false;

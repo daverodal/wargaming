@@ -508,25 +508,21 @@ class CombatRules
         $defenders = $this->combats->{$cd}->defenders;
         foreach ($defenders as $defenderId => $defender) {
             foreach ($this->combats->{$cd}->attackers as $attackerId => $attacker) {
-                $los = new Los();
-
-                $los->setOrigin($this->force->getUnitHexagon($attackerId));
-                $los->setEndPoint($this->force->getUnitHexagon($defenderId));
-                $range = $los->getRange();
-                if ($range == 1) {
-                    $this->combats->{$cd}->isBombardment = false;
+                $attacker = $this->force->getUnit($attackerId);
+                if($attacker->class !== 'artillery' && $attacker->class !== 'horseartillery') {
+                    $this->combats->{$cd}->isArtilleryOnly = false;
                     return;
                 }
             }
         }
-        $this->combats->{$cd}->isBombardment = true;
+        $this->combats->{$cd}->isArtilleryOnly = true;
         $this->combats->{$cd}->useDetermined = false;
     }
 
     function useDetermined(){
         $cd = $this->currentDefender;
         if($cd !== false){
-            if($this->combats->$cd->useAlt === false && $this->combats->$cd->isBombardment === false){
+            if($this->combats->$cd->useAlt === false && $this->combats->$cd->isArtilleryOnly === false){
                 $this->combats->$cd->useDetermined = $this->combats->$cd->useDetermined ? false : true;
                 return true;
             }

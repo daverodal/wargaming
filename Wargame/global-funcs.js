@@ -309,7 +309,7 @@ export function nextPhaseMouseDown(event) {
 }
 
 export function doitKeypress(key) {
-    console.log(key);
+
     if(key < 27){
         return;
     }

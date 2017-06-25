@@ -311,9 +311,14 @@ function renderCrtDetails(combat) {
     var div = atk / def;
     var ter = combat.terrainCombatEffect;
     var combatCol = combat.index + 1;
-
+    var oddsDisp;
+    if(combatCol <= 0){
+        oddsDisp = '< '+$(".col" + 1).html();
+    }else{
+        oddsDisp = $(".col" + combatCol).html();
+    }
     div = div.toFixed(2);
-    var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + $(".col" + combatCol).html() + "</div>"
+    var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + oddsDisp + "</div>"
     /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
     return html;
 }
@@ -1305,8 +1310,17 @@ x.register("combatRules", function (combatRules, data) {
                         oddsDisp = currentCombatCol;
                     } else {
                         currentCombatCol = combatRules.combats[i].index + 1;
-                        currentOddsDisp = $(".col" + currentCombatCol).html();
-                        oddsDisp = $(".col" + combatCol).html();
+                        if(currentCombatCol <= 0){
+                            currentOddsDisp =  '<' + $(".col" + 1).html();
+                        }else{
+                            currentOddsDisp = $(".col" + currentCombatCol).html();
+                        }
+                        if(combatCol <= 0){
+                            oddsDisp = '< ' +  $(".col" + 1).html();
+
+                        }else{
+                            oddsDisp = $(".col" + combatCol).html();
+                        }
                     }
                     if (combatRules.combats[i].pinCRT !== false) {
                         currentCombatCol = combatRules.combats[i].pinCRT + 1;
