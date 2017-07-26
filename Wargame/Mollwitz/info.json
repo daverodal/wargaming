@@ -7425,6 +7425,10 @@
     "main": {
       "description": "Historical Scenario.",
       "longDescription": "Historical Scenario"
+    },
+    "alternate": {
+      "description": "New map different victory points.",
+      "longDescription": "New map different victory points"
     }
   }
 },
