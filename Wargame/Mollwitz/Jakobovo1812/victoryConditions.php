@@ -21,23 +21,18 @@
  */
 ?><li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
-    <h4>The Game ends instantly at the end of any Player Turn when one or more of the following conditions applies. Mutual
-        victories are a Draw</h4>
     <ol>
-        <li>
-            Either side wins at the end of any turn that it has accumulated 35 points UNLESS the "Victory points are not used to determine victory" option is selected.
-            1 point is awarded for each Hostile combat point destroyed. A draw is possible.
 
 
         <li>
-            At the end of turn 14 the player controlling the Majority of Hexes marked Blue V is the winner.
+            At the end of turn 9 the player controlling the Majority of Hexes marked Blue V is the winner.
             These hexes begin the game under French control. A draw is possible.
             Control goes to the player currently occupying a hex or last to move through.
 
         </li>
 
 
-        <li>The Russians win if at the end of turn 14 they occupy the Hex marked Red V. This condition trumps all others a draw is not possible.
+        <li>The Russians win if at the end of turn  9 they occupy the Hex marked Red V. This condition trumps all others a draw is not possible.
         </li>
     </ol>
 </li>
