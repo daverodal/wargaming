@@ -73,7 +73,31 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     }
 
-        protected function checkVictory( $battle)
+    public function scoreKills($unit, $mult = 1){
+
+        $force_name = \Wargame\Battle::$forceName;
+        $b = \Wargame\Battle::getBattle();
+        $turn = $b->gameRules->turn;
+
+
+
+        if ($unit->forceId == 1) {
+            $victorId = 2;
+        } else {
+            $victorId = 1;
+        }
+
+        $victorName = $force_name[$victorId];
+        $vp = $unit->damage * $mult;
+        $this->histogram[$turn][$victorId] += $vp;
+        $this->casualties[$unit->forceId] += $vp;
+        $hex = $unit->hexagon;
+        $battle = Battle::getBattle();
+        $class = "${victorName} victory-points";
+        $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$class'>+$vp Kills</span>";
+    }
+
+    protected function checkVictory( $battle)
     {
         $battle = Battle::getBattle();
 
