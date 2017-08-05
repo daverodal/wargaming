@@ -439,14 +439,14 @@ class KievCorps extends \Wargame\ModernLandBattle
         }
 
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){
-            if($unit->name == "xxx"){
+            if($unit->name == "xxx" || $unit->name == "xxxx"){
                 if(count((array)$mapHex->forces[$forceId]) >= 1){
                     return true;
                 }
             }
 
             foreach($mapHex->forces[$forceId] as $mKey => $mVal){
-                if($this->force->units[$mKey]->name == "xxx"){
+                if($this->force->units[$mKey]->name !== "xx"){
                         return true;
                 }
             }
