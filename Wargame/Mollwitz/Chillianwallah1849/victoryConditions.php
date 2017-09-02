@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
    */
 ?><li><span class="lessBig">Victory Conditions</span>
     <ol>
-        <li>12 Turns</li>
+        <li>9 Turns</li>
         <li>British win at 50 points with a lead of 15</li>
         <li>All Sikh losses are scored a face value</li>
         <li>Sikhs win if they score 30 points</li>
