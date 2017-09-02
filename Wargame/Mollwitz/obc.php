@@ -60,23 +60,23 @@
         </fieldset>
         <fieldset>
             <legend>turn 8</legend>
-            <div id="gameTurn7">
+            <div id="gameTurn8">
             </div>
         </fieldset>       <fieldset>
             <legend>turn 9</legend>
-            <div id="gameTurn7">
+            <div id="gameTurn9">
             </div>
         </fieldset>       <fieldset>
             <legend>turn 10</legend>
-            <div id="gameTurn7">
+            <div id="gameTurn10">
             </div>
         </fieldset>       <fieldset>
             <legend>turn 11</legend>
-            <div id="gameTurn7">
+            <div id="gameTurn11">
             </div>
         </fieldset>       <fieldset>
             <legend>turn 12</legend>
-            <div id="gameTurn7">
+            <div id="gameTurn12">
             </div>
         </fieldset>
         <div style="clear:both"></div>
