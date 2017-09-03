@@ -5812,7 +5812,7 @@
         },
         {
           "num": 3,
-          "forceId": 2,
+          "forceId": 1,
           "combat": 7,
           "movement": 6,
           "reinforce": "B",
@@ -5822,7 +5822,7 @@
         },
         {
           "num": 5,
-          "forceId": 2,
+          "forceId": 1,
           "combat": 4,
           "movement": 6,
           "reinforce": "B",
@@ -5832,7 +5832,7 @@
         },
         {
           "num": 4,
-          "forceId": 2,
+          "forceId": 1,
           "combat": 4,
           "movement": 3,
           "reinforce": "B",
@@ -5842,7 +5842,7 @@
         },
         {
           "num": 2,
-          "forceId": 2,
+          "forceId": 1,
           "combat": 4,
           "movement": 5,
           "reinforce": "B",

@@ -2601,7 +2601,7 @@ h5 {
     position: absolute;
     z-index: 30;
     display: none;
-    background: #ccc;
+    background: white;
     /* .dropDowns may not exist inside a ul */ }
     #header #headerContent .dropDown .subMenu > ul {
       margin: 0;
@@ -3709,7 +3709,7 @@ You should have received a copy of the GNU General Public License
       float: left;
       width: 94px;
       height: 56px;
-      background-image: url("../../js/AirborneTEC.png");
+      background-image: url("/js/AirborneTEC.png");
       background-repeat: no-repeat; }
     #TECWrapper #TEC ul .column-one {
       float: left;
