@@ -104,10 +104,24 @@
             </div>
             @include("wargame::stdIncludes.timeTravel")
             <?php //include "timeTravel.php"; ?>
-            <div id="statusWrapper">
+            <div id="nextPhaseWrapper">
+                @section('innerNextPhaseWrapper')
+                <button id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
+                <button class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
+                <button class="dynamicButton movementButton" id="forceMarchEvent">m</button>
+                <button class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+                <button class="dynamicButton combatButton" id="shiftKey">+</button>
+                <button class="dynamicButton hexButton" id="showHexes">H</button>
+                <button class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
+                <button id="nextPhaseButton">Next Phase</button>
                 <div id="comlinkWrapper">
                     <div id="comlink"></div>
                 </div>
+                @show
+
+            </div>
+            <div id="statusWrapper">
+
                 <div id="topStatus"></div>
                 <div class="clear">
                     <span id="status"></span>
@@ -164,20 +178,7 @@
             @section('outer-aux-menu')
             @show
 
-            <div id="nextPhaseWrapper">
-                @section('innerNextPhaseWrapper')
-                    <button id="nextPhaseButton">Next Phase</button>
-                    <button id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
-                    <button class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
-                    <button class="dynamicButton movementButton" id="forceMarchEvent">m</button>
-                    <button class="dynamicButton combatButton" id="clearCombatEvent">c</button>
-                    <button class="dynamicButton combatButton" id="shiftKey">+</button>
-                    <button class="dynamicButton hexButton" id="showHexes">H</button>
-                    <button class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
 
-                @show
-
-            </div>
 
             <div style="clear:both;"></div>
 

@@ -2618,7 +2618,7 @@ h5 {
       font-weight: bold;
       display: inline-block; }
   #header #headerContent #nextPhaseWrapper {
-    float: left; }
+    float: right; }
     #header #headerContent #nextPhaseWrapper .dynamicButton, #header #headerContent #nextPhaseWrapper #nextPhaseButton, #header #headerContent #nextPhaseWrapper #fullScreenButton, #header #headerContent #nextPhaseWrapper #forceMarchEvent, #header #headerContent #nextPhaseWrapper #determinedAttackEvent, #header #headerContent #nextPhaseWrapper #clearCombatEvent, #header #headerContent #nextPhaseWrapper #shiftKey, #header #headerContent #nextPhaseWrapper #debug {
       font-size: 28px;
       position: static; }

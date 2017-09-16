@@ -695,7 +695,9 @@ class GameRules
                             $this->flashMessages[] = "No Combines Possible. Skipping to Next Phase.";
                             $ret =  $this->selectNextPhase($click);
                         }
-                        if($ret === true && $this->mode === COMBAT_SETUP_MODE && $this->force->anyCombatsPossible === false){
+                        if($ret === true && $this->mode === COMBAT_SETUP_MODE &&
+                         ($this->phase === BLUE_COMBAT_PHASE || $this->phase === RED_COMBAT_PHASE) &&
+                         $this->force->anyCombatsPossible === false){
                             $this->flashMessages[] = "No Combats Possible.";
                             $ret =  $this->selectNextPhase($click);
                         }
