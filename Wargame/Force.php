@@ -38,6 +38,7 @@ class Force extends SimpleForce
     public $combatRequired;
     public $exchangesKill = false;
     public $defenderLoseAmount = 0;
+    public $anyCombatsPossible = false;
 
     function __construct($data = null)
     {
@@ -612,6 +613,7 @@ class Force extends SimpleForce
         $battle = Battle::getBattle();
         $victory = $battle->victory;
         $victory->preRecoverUnits();
+        $this->anyCombatsPossible = false;
         for ($id = 0; $id < count($this->units); $id++) {
             $victory->preRecoverUnit($this->units[$id]);
 
@@ -695,6 +697,7 @@ class Force extends SimpleForce
                             $isAdjacent = $this->unitIsAdjacent($id);
                             if ($this->units[$id]->forceId == $this->attackingForceId && ($isZoc || $isAdjacent || $this->unitIsInRange($id))) {
                                 $status = STATUS_READY;
+                                $this->anyCombatsPossible = true;
                             }
                         }
                         if ($mode == COMBAT_RESOLUTION_MODE) {

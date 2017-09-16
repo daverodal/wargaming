@@ -695,6 +695,10 @@ class GameRules
                             $this->flashMessages[] = "No Combines Possible. Skipping to Next Phase.";
                             $ret =  $this->selectNextPhase($click);
                         }
+                        if($ret === true && $this->mode === COMBAT_SETUP_MODE && $this->force->anyCombatsPossible === false){
+                            $this->flashMessages[] = "No Combats Possible.";
+                            $ret =  $this->selectNextPhase($click);
+                        }
                         return $ret;
                         break;
                 }
@@ -789,6 +793,11 @@ class GameRules
                                 $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
                                 $this->phaseClicks[] = $click + 1;
                                 $this->phaseClickNames[] = "Combat Resolution ";
+                                if($this->force->moreCombatToResolve() === false){
+                                    $this->flashMessages[] = "No Combats to Resolve";
+                                    $this->combatRules->cleanUp();
+                                    $this->selectNextPhase($click);
+                                }
                             } else {
                                 $this->flashMessages[] = "Required Combats Remain";
                             }
