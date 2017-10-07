@@ -57,12 +57,6 @@ class WargameServiceProvider extends ServiceProvider
         ], 'genre');
 
         $this->publishes([
-            __DIR__.'/SPI/ClashOverCrude/Images' => public_path('vendor/wargame/spi/clashovercrude/images'),
-            __DIR__.'/SPI/FinalChapter/Images' => public_path('vendor/wargame/spi/finalchapter/images'),
-            __DIR__.'/SPI/TinCans/Images' => public_path('vendor/wargame/spi/tincans/images'),
-        ], 'spi');
-
-        $this->publishes([
             __DIR__.'/NTA/Images' => public_path('vendor/wargame/nta/images')
         ]);
         $this->publishes([
@@ -82,9 +76,6 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/TMCW/Kiev/all.css' => public_path('vendor/wargame/tmcw/css/kiev.css'),
             __DIR__.'/TMCW/KievCorps/all.css' => public_path('vendor/wargame/tmcw/css/kievcorps.css'),
             __DIR__.'/NTA/all.css' => public_path('vendor/wargame/nta/css/all.css'),
-            __DIR__.'/SPI/ClashOverCrude/all.css' => public_path('vendor/wargame/spi/css/clashovercrude.css'),
-            __DIR__.'/SPI/FinalChapter/all.css' => public_path('vendor/wargame/spi/css/finalchapter.css'),
-            __DIR__.'/SPI/TinCans/all.css' => public_path('vendor/wargame/spi/css/tincans.css'),
 
         ], "tmcw-css");
 

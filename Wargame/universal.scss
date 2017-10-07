@@ -39,6 +39,7 @@ h5 {
   background-color: rgba(255, 0, 0, .8) !important;
   font-size:9px;
   color:white;
+  height:50%;
 }
 .red-shadowy:hover{
   background-color: transparent !important;
@@ -886,6 +887,9 @@ fieldset {
     position: absolute;
     background: transparent;
     z-index: 1;
+    &.red-shadowy{
+      height:50%;
+    }
   }
   .unit-numbers {
     text-align: center;
