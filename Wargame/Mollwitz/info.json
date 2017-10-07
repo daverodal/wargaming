@@ -6567,7 +6567,7 @@
   "Maloyaroslavets1812": {
     "name": "The Battle of Maloyaroslavets 1812",
     "path": "Mollwitz",
-    "production": false,
+    "production": true,
     "genre": "Napoleonic",
     "fileName": "\\Wargame\\Mollwitz\\Maloyaroslavets1812\\Maloyaroslavets1812",
     "description": "The Battle of Maloyaroslavets 1812.",
