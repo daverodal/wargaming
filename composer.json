@@ -1,6 +1,8 @@
 {
   "name":"daverodal/wargaming",
+  "description": "This is the primary wargame componet for my game https://github.com/daverodal/",
   "require": {
+    "php": "^7.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.0"
@@ -20,9 +22,6 @@
       ],
       "aliases": {
       }
-    },
-    "other":{
-
     }
   }
 }
