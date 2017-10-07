@@ -1,6 +1,5 @@
 {
-  "name":"daverodal/wargaming"
-  ,
+  "name":"daverodal/wargaming",
   "require": {
   },
   "require-dev": {
@@ -21,6 +20,9 @@
       ],
       "aliases": {
       }
+    },
+    "other":{
+
     }
   }
 }
