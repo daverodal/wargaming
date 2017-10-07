@@ -18,7 +18,7 @@
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class DataTest extends PHPUnit_Framework_TestCase
+class DataTest extends PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider provider
