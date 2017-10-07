@@ -1,6 +1,7 @@
 {
   "name":"daverodal/wargaming",
   "description": "This is the primary wargame componet for my game https://github.com/daverodal/",
+  "license": "GPL-2.0",
   "require": {
     "php": "^7.0"
   },
