@@ -18,7 +18,7 @@
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class StackTest extends PHPUnit_Framework_TestCase
+class StackTest extends PHPUnit\Framework\TestCase
 {
     public function testEmpty()
     {

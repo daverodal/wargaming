@@ -2,7 +2,7 @@
 use \Wargame\Mollwitz\Klissow1702\Klissow1702;
 use \Wargame\MapViewer;
 use \Wargame\Battle;
-class GameRulesTest extends PHPUnit_Framework_TestCase
+class GameRulesTest extends PHPUnit\Framework\TestCase
 {
     public $mapViewer;
 	public function testThis(){
