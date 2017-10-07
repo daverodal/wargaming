@@ -222,24 +222,30 @@
                         <div id="svgWrapper">
                             <svg id="arrow-svg" style="opacity:.6;position:absolute;" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
-                                    <marker id='heead' orient="auto"
-                                            markerWidth='2' markerHeight='4'
-                                            refX='0.1' refY='2'>
-                                        <!-- triangle pointing right (+x) -->
-                                        <path d='M0,0 V4 L2,2 Z' />
+                                    <marker id="comar" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                                        <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
                                     </marker>
+                                    <marker id='heead' orient="auto" fill="red"
+                                            markerWidth='2.5' markerHeight='5'
+                                            refX='0.1' refY='2.5'>
+                                        <!-- triangle pointing right (+x) -->
+                                        <path d='M0,0 V5 L2.5,2.5 Z' />
+                                    </marker>
+
+
                                     <marker
                                         inkscape:stockid="Arrow1Lend"
                                         orient="auto"
                                         refY="0.0"
                                         refX="0.0"
                                         id="head"
+                                        fill="red"
                                         style="overflow:visible;">
                                         <path
                                             id="path3762"
                                             d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
                                             style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
-                                            transform="scale(0.15) rotate(180) translate(12.5,0)" />
+                                            transform="scale(0.15) rotate(180) translate(12.5,0)" ></path>
                                     </marker>
                                 </defs>
                             </svg>

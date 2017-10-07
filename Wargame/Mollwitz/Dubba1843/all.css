@@ -2372,7 +2372,8 @@ h5 {
 .red-shadowy {
   background-color: rgba(255, 0, 0, 0.8) !important;
   font-size: 9px;
-  color: white; }
+  color: white;
+  height: 50%; }
 
 .red-shadowy:hover {
   background-color: transparent !important;
@@ -3000,6 +3001,8 @@ fieldset {
     position: absolute;
     background: transparent;
     z-index: 1; }
+    .unit .shadow-mask.red-shadowy {
+      height: 50%; }
   .unit .unit-numbers {
     text-align: center;
     color: black; }
