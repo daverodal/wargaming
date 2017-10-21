@@ -21,7 +21,6 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "jquery-ui-bundle": "^1.12.1",
-    "jquery.panzoom": "^3.2.2",
-    "wargame-helpers": "file:///Users/david/wargame-helpers/wargame-helpers-1.0.0.tgz"
+    "jquery.panzoom": "^3.2.2"
   }
 }
