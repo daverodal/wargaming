@@ -15,60 +15,18 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-?><!doctype html>
-<html>
+?>
+@include('wargame::export-global-header')
 
-<head>
-    <?php
-    $oClass = new ReflectionClass('Wargame\Cnst');
-    $constants = $oClass->getConstants();
-
-    ?>
-    <script>
-
-        <?php foreach($constants as $k => $v){
-            echo "const $k = $v;\n";
-        }?>
-
-
-        const addUrl = "<?=url("wargame/add/");?>";
-        const pokeUrl = "<?=url("wargame/poke/");?>";
-        const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
-        const wargame = "<?=$wargame?>";
-        const rowSvg = "<?php echo asset('js/rowHex.svg');?>";
-        const mapSymbolsBefore = "<?php echo asset('js');?>/";
-
-
-        var DR = window.DR;
-
-        if (!DR) {
-            DR = {};
-        }
-
-
-        DR.playerOne = "{{$forceName[1]}}";
-        DR.playerTwo = "{{$forceName[2]}}";
-        DR.playerThree = "{{$forceName[3] or ''}}";
-        DR.playerFour = "{{$forceName[4] or ''}}";
-    </script>
-
-    <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/icon">
-    <script src="{{elixir("javascripts/gameMain.js")}}"></script>
-
-    <script src="<?=url("js/jquery-ui.js");?>"></script>
+    <script src="{{mix("vendor/javascripts/wargame/wargame.js")}}"></script>
 
 
     <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+//        $.ajaxSetup({
+//            headers: {
+//                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//            }
+//        });
     </script>
-    <link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+
 

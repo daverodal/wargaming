@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><div class="dropDown"  id="TimeWrapper">
-    <h4 class="WrapperLabel" title=Time Travel'>U<small>ndo</small></h4>
-    <DIV id="Time" style="display:none;"><div class="close">X</div>
+    <h4 class="WrapperLabel" title='Time Travel'>U<small>ndo</small></h4>
+    <div id="Time" style="display:none;"><div class="close">X</div>
 
         Time you are viewing:
         <div id="clickCnt"></div><br>

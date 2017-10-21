@@ -23,14 +23,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-import fixHeader from "./fix-header.js";
-import x from "./common-sync.js";
-import {playAudio, playAudioBuzz, playAudioLow} from "./global-funcs.js";
-import initialize from "./initialize.js"
+import {initialize, x} from "./wargame-helpers";
 var DR = window.DR;
 var zoomed = false;
-
+// $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+// });
 window.zoomed = zoomed;
 
 document.addEventListener("DOMContentLoaded",function(){
@@ -41,6 +41,8 @@ document.addEventListener("DOMContentLoaded",function(){
     if (!DR) {
         DR = {};
     }
+    DR.$ = $;
+    console.log("$ Registered");
     DR.globalZoom = 1;
     DR.playerNameMap = ["Zero", "One", "Two", "Three", "Four"];
 
@@ -94,6 +96,7 @@ document.addEventListener("DOMContentLoaded",function(){
     /* Sync object, well named as x don't start fetching till everything is ready.*/
     x.fetch(0);
 
+    console.log(DR.exported);
 
 });
 

@@ -44,34 +44,40 @@ $vintage-unit-numbers-size:10px;
   }
 }
 
-@mixin player($nationality, $player, $color, $counterColor: $color, $faceColor: $color) {
+
+@mixin player($nationality,  $color, $faceColor: $color, $specialColor: black) {
   .player#{$nationality} {
     background: $color;
     border-color: $color !important;
   }
 
-  .player#{$player} {
-    background: $color;
-    border-color: $color !important;
-  }
-
-  .#{$nationality}Face, .player#{$nationality}Face,.#{$player}Face, .player#{$player}Face {
+  .#{$nationality}Face, .player#{$nationality}Face {
     color: $faceColor;
   }
-  .#{$nationality} .counterWrapper {
-    background-color: $counterColor;
-  }
+
 
   .#{$nationality}.combatants{
     color: $faceColor;
     font-style:italic;
   }
 
-  .#{$player}.combatants{
-    color: $faceColor;
-    font-style:italic;
+  .specialHexesVP .#{to-lower-case($nationality)} {
+    background: transparent;
+    @include victoryPoints($faceColor);
   }
+
+  .#{to-lower-case($nationality)}.specialHexes{
+    background-color: $faceColor;
+    color: $specialColor;
+  }
+
+  .specialHexesVP .#{$nationality}.victory-points{
+    @include victoryPoints($faceColor);
+  }
+
 }
+
+
 @mixin makeGuard($nationality){
   .#{$nationality}.unit .guard-unit{
     display:block;
@@ -105,6 +111,44 @@ $vintage-unit-numbers-size:10px;
   }
 
 }
+@mixin pontoon($nationality, $shortName){
+  .vintage{
+    &.#{$nationality}.pontoon {
+      .counterWrapper {
+        border:none;
+        .counter {
+
+          background-color: lightgreen;
+          background-image: url('badges/#{$shortName}Pontoon.png');
+          background-size: 32px;
+          width: 32px;
+          height: 32px;
+          border:none;
+        }
+      }
+      .unit-numbers {
+        display:none;
+      }
+    }
+  }
+  .#{$nationality}.pontoon {
+    .counterWrapper {
+      border:none;
+      .counter {
+
+        background-color: lightgreen;
+        background-image: url('badges/#{$shortName}Pontoon.png');
+        background-size: 32px;
+        width: 32px;
+        height: 32px;
+        border:none;
+      }
+    }
+    .unit-numbers {
+      display:none;
+    }
+  }
+}
 @mixin badge($nationality, $shortName) {
   .fa-flag{
     display:none;
@@ -117,56 +161,40 @@ $vintage-unit-numbers-size:10px;
       font-size:19px;
     }
     &.#{$nationality}.infantry .counterWrapper .counter {
-      background-image: url('/js/#{$shortName}InfBadge.png');
+      background-image: url('badges/#{$shortName}InfBadge.png');
       background-size: $vintage-badge-size;
     }
     &.#{$nationality}.cavalry .counterWrapper .counter {
-      background-image: url('/js/#{$shortName}CavBadge.png');
+      background-image: url('badges/#{$shortName}CavBadge.png');
       background-size: $vintage-badge-size;
     }
 
     &.#{$nationality}.artillery .counterWrapper .counter {
-      background-image: url('/js/#{$shortName}ArtBadge.png');
+      background-image: url('badges/#{$shortName}ArtBadge.png');
       background-size: $vintage-badge-size;
     }
     &.#{$nationality}.horseartillery .counterWrapper .counter {
-      background-image: url('/js/#{$shortName}HorArtBadge.png');
+      background-image: url('badges/#{$shortName}HorArtBadge.png');
       background-size: $vintage-badge-size;
     }
 
-    &.#{$nationality}.pontoon {
-      .counterWrapper {
-        border:none;
-        .counter {
 
-          background-color: lightgreen;
-          background-image: url('/js/#{$shortName}Pontoon.png');
-          background-size: 32px;
-          width: 32px;
-          height: 32px;
-          border:none;
-        }
-      }
-      .unit-numbers {
-        display:none;
-      }
-    }
   }
   .#{$nationality}.infantry .counterWrapper .counter {
-    background-image: url('/js/#{$shortName}InfBadge.png');
+    background-image: url('badges/#{$shortName}InfBadge.png');
     background-size: $badge-size;
   }
   .#{$nationality}.cavalry .counterWrapper .counter {
-    background-image: url('/js/#{$shortName}CavBadge.png');
+    background-image: url('badges/#{$shortName}CavBadge.png');
     background-size: $badge-size;
   }
 
   .#{$nationality}.artillery .counterWrapper .counter {
-    background-image: url('/js/#{$shortName}ArtBadge.png');
+    background-image: url('badges/#{$shortName}ArtBadge.png');
     background-size: $badge-size;
   }
   .#{$nationality}.horseartillery .counterWrapper .counter {
-    background-image: url('/js/#{$shortName}HorArtBadge.png');
+    background-image: url('badges/#{$shortName}HorArtBadge.png');
     background-size: $badge-size;
   }
   .#{$nationality}.hq .counterWrapper .fa-flag {
@@ -174,27 +202,12 @@ $vintage-unit-numbers-size:10px;
     font-size:14px;
   }
 
+
+}
+@mixin wagon($nationality){
   .#{$nationality}.wagon .counterWrapper .counter {
-    background-image: url('/js/Wagon.png');
+    background-image: url('badges/Wagon.png');
     background-size: $badge-size;
-  }
-
-  .#{$nationality}.pontoon {
-    .counterWrapper {
-      border:none;
-      .counter {
-
-        background-color: lightgreen;
-        background-image: url('/js/#{$shortName}Pontoon.png');
-        background-size: 32px;
-        width: 32px;
-        height: 32px;
-        border:none;
-      }
-    }
-    .unit-numbers {
-      display:none;
-    }
   }
 }
 

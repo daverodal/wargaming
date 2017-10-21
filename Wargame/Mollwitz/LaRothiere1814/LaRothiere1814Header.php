@@ -26,7 +26,7 @@ var p2 = DR.playerTwo.replace(/ /g, '-');
 var p1 = 'player' + p1.replace(/\//ig, '_') + 'Face';
 var p2 = 'player' + p2.replace(/\//ig, '_') + 'Face';
 
-$("#victory").html(" Victory: <span class='" + p1 + "'>" + DR.playerOne + " </span>" + vp[1] + " Casualties <span class='" + p1 + "'>" + DR.playerOne + " </span>" + data.victory.casualties[1] + " <span class='" + p2 + "'>" + DR.playerTwo + " </span>" + data.victory.casualties[2]);
+DR.$("#victory").html(" Victory: <span class='" + p1 + "'>" + DR.playerOne + " </span>" + vp[1] + " Casualties <span class='" + p1 + "'>" + DR.playerOne + " </span>" + data.victory.casualties[1] + " <span class='" + p2 + "'>" + DR.playerTwo + " </span>" + data.victory.casualties[2]);
 if (typeof victoryExtend === 'function') {
 victoryExtend(vp, data);
 }

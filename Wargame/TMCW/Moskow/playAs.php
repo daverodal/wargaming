@@ -49,7 +49,6 @@
         font-family: Kremlin;
     }
 </style>
-<link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
 
 <h2 id="welcome" style="text-align:center;font-size:30px;">Komrad,  Welcome to</h2>
 <h1 id='playastitle' style="text-align:center;font-size:90px;"><span class="guard">MOSKOW</span> &#167;</h1>

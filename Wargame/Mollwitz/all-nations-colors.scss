@@ -1,16 +1,16 @@
 @import "mollwitz-mixins";
 @import "mollwitz-colors";
 
-@include unitColor(British, $angloAlliedWrapperColor, Ang);
+@include unitColor(British, $angloAlliedWrapperColor, Ang, white);
 
 @include unitColor(Native,$britishWrapperColor, Native);
 @include unitColor(Native, $angloAlliedWrapperColor, Native, white);
 @include unitColor(Royal,$britishWrapperColor, Brit, white);
 
-@include unitColor(French,$frenchWrapperColor, French);
-@include unitColor(French, $frenchNapoleonWrapperColor, FrenchNap);
+@include unitColor(French,$frenchWrapperColor, French, white);
+@include unitColor(NapFrench, $frenchNapoleonWrapperColor, FrenchNap, white);
 
-@include unitColor(Allied, $russianWrapperColor, Rus, white);
+@include unitColor(NapAllied, $russianWrapperColor, Rus, white);
 @include unitColor(Allied, $angloAlliedWrapperColor, Ang);
 
 
@@ -23,9 +23,10 @@
 @include unitColor(Prussian,$prussianWrapperColor, Pru);
 @include unitColor(Russian, $russianWrapperColor, Rus, white);
 @include unitColor(AngloAllied,$angloAlliedWrapperColor, Ang);
-@include unitColor(Anglo,$angloAlliedWrapperColor , Ang);
-@include unitColor(Swedish, $swedishWrapperColor, Swe);
+@include unitColor(Anglo,$angloAlliedWrapperColor , Ang, white);
+@include unitColor(Swedish, $swedishWrapperColor, Swe, white);
 
+@include unitColor(NapPrussian, $prussianNapColor, PruNap, white);
 
 @include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap, white);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
@@ -43,7 +44,24 @@
 
 @include unitColor(Hessian, $russianWrapperColor, Rus, white);
 @include unitColor(Portuguese, $prussianNapColor, PruNap);
-@include unitColor(Loyalist, $angloAlliedWrapperColor, Ang);
+@include unitColor(Loyalist, $angloAlliedWrapperColor, Ang, white   );
 
 @include unitColor(Rebel, $rebelWrapperColor, Rebel, white);
 @include unitColor(Militia,  $rebelWrapperColor, Rebel, white);
+@include unitColor(Dutch,  $prussianWrapperColor, Pru, white);
+
+
+@include unitColor(FrenchSaxon, $frenchSaxonWrapperColor, Fre, white);
+
+@include unitColor(Danish,  $danishWrapperColor, Danish);
+
+@include pontoon(Swedish, Swe);
+@include pontoon(SaxonPolish, Saxon);
+@include wagon(Swedish);
+
+.NapFrench, .Guard{
+  &.unit .unit-numbers{
+    color:red;
+  }
+}
+

@@ -27,7 +27,7 @@ class BarSurAube1814 extends \Wargame\Mollwitz\JagCore
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>2];
 
     static function getPlayerData($scenario){
-        $forceName = ['Observer', "Allied", "French"];
+        $forceName = ['Observer', "Austrian Russian Bavarian Allies", "French"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
