@@ -16,7 +16,6 @@ class WargameServiceProvider extends ServiceProvider
 
         \App\Services\WargameService::addBattleMap(__DIR__.'/Area/Maps');
         \App\Services\WargameService::addBattleMap(__DIR__.'/TMCW/Maps');
-        \App\Services\WargameService::addBattleMap(__DIR__.'/Troops/Maps');
         \App\Services\WargameService::addBattleMap(__DIR__.'/Mollwitz/Maps');
 
 
@@ -59,11 +58,7 @@ class WargameServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/NTA/Images' => public_path('vendor/wargame/nta/images')
         ]);
-        $this->publishes([
-            __DIR__.'/Troops/Images' => public_path('js'),
-            __DIR__.'/Troops/Maps' => public_path('battle-maps'),
-            __DIR__.'/Troops/Images' => public_path('vendor/wargame/troops/images'),
-        ], 'troops');
+
         
         $this->publishes([
             __DIR__.'/TMCW/Manchuria1976/all.css' => public_path('vendor/wargame/tmcw/css/manchuria1976.css'),

@@ -1,12 +1,7 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Manchuria1976.Manchuria1976Header')
-<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/manchuria1976.css')}}">
+<link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/manchuria1976.css')}}">
 
-<style type="text/css">
-    <?php
-    include_once "Wargame/TMCW/Manchuria1976/all.css";
-    ?>
-</style>
 </head>
 
 @section('unitRules')

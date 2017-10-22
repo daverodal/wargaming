@@ -45,8 +45,8 @@ class Malplaquet extends \Wargame\Mollwitz\JagCore
     public $players;
 
     static function getPlayerData($scenario){
-        return \Wargame\Battle::register(["Observer", "Anglo Allied", "French"],
-            ["Observer", "French", "Anglo Allied" ]);
+        return \Wargame\Battle::register(["Observer", "Anglo Allied", "French Saxon"],
+            ["Observer", "French Saxon", "Anglo Allied" ]);
     }
 
     static function enterMulti()
@@ -79,13 +79,13 @@ class Malplaquet extends \Wargame\Mollwitz\JagCore
         $artRange = 3;
 
         for ($i = 0; $i < 16; $i++) {
-            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FreInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'infantry');
+            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FreInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "FrenchSaxon", false, 'infantry');
         }
         for ($i = 0; $i < 12; $i++) {
-            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FreCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "French", false, 'cavalry');
+            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FreCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "FrenchSaxon", false, 'cavalry');
         }
         for ($i = 0; $i < 4; $i++) {
-            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FreArtBadge.png", 4, 4, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "French", false, 'artillery');
+            UnitFactory::create("infantry-1", self::FRENCH_FORCE, "deployBox", "FreArtBadge.png", 4, 4, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "FrenchSaxon", false, 'artillery');
         }
 
 

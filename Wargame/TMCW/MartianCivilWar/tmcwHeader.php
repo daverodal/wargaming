@@ -20,4 +20,3 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?>
-<!--<link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>-->

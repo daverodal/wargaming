@@ -90,7 +90,7 @@ class hastenbeckVictoryCore extends \Wargame\Mollwitz\victoryCore
         $turn = $gameRules->turn;
         $frenchLateWin = $frenchWin = $frenchThreeObjectives = $angloWin = false;
         $mapData = $battle->mapData;
-        $objectiveHexes = array_merge($battle->specialHexB, $battle->specialHexC);
+        $objectiveHexes = array_merge($battle->specialHexB, $battle->specialHexC ?? []);
 
         $alliedVictoryPointsNeeded = 45;
         $frenchVictoryPointsNeeded = 60;

@@ -51,16 +51,11 @@ You should have received a copy of the GNU General Public License
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/icon">
-    <script src="{{elixir("javascripts/ngGameMain.js")}}"></script>
+    <script src="{{mix("vendor/javascripts/medieval/ngGameMain.js")}}"></script>
 
-    <script src="<?=url("js/jquery-ui.js");?>"></script>
 
     <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+
 
 
     </script>

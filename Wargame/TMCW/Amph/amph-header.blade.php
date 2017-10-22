@@ -19,7 +19,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
+?>
 <script type="text/javascript">
     x.register("specialHexes", function(specialHexes, data) {
         $('.specialHexes').remove();

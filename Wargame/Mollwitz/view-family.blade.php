@@ -6,7 +6,7 @@
     @include("$curPath.Header")
 
 @endif
-<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/mollwitz/css/'.$clsName.'.css')}}">
+<link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/horse-musket.css')}}">
 </head>
 @extends('wargame::stdIncludes.view' )
 @extends('wargame::Mollwitz.view')
