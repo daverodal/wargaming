@@ -21,6 +21,42 @@ use stdClass;
 
 use Wargame\Battle;
 
+class CombatDefenders{
+    function __construct($data = false){
+        if($data){
+            $this->hasInf = $data->hasInf;
+            $this->hasCav = $data->hasCav;
+            $this->hasSkrim = $data->hasSkirm;
+            $this->hasBow = $data->hasBow;
+            $this->hasHq = $data->hasHq ?? false;
+        }
+    }
+    public $hasInf = false;
+    public $hasCav = false;
+    public $hasSkirm = false;
+    public $hasBow = false;
+    public $hasHq = false;
+
+    function registerDefender($unit){
+        switch($unit->class){
+            case 'inf':
+                $this->hasInf = true;
+                break;
+            case 'cavalry':
+                $this->hasCav = true;
+                break;
+            case 'hq':
+                $this->hasHq = true;
+                break;
+        }
+        if($unit->bow){
+            $this->hasBow = true;
+        }
+        if($unit->armorClass === 'S'){
+            $this->hasSkrim = true;
+        }
+    }
+}
 class CombatRules
 {
     // Class references
@@ -40,6 +76,7 @@ class CombatRules
     public $resolvedCombats;
     public $lastResolvedCombat;
     public $dieRoll;
+    public $combatDefenders;
 
     /*
      * TODO
@@ -49,7 +86,7 @@ class CombatRules
     {
         $data = new StdClass();
         foreach ($this as $k => $v) {
-            if ((is_object($v) && $k != "defenders" && $k != "lastResolvedCombat" && $k != "resolvedCombats" && $k != "combats" && $k != "attackers" && $k != "combatsToResolve") || $k == "crt") {
+            if ((is_object($v) && $k != 'combatDefenders' && $k != "defenders" && $k != "lastResolvedCombat" && $k != "resolvedCombats" && $k != "combats" && $k != "attackers" && $k != "combatsToResolve") || $k == "crt") {
                 continue;
             }
             $data->$k = $v;
@@ -67,6 +104,9 @@ class CombatRules
                 if($k === "dieRoll"){
                     continue;
                 }
+                if($k === 'combatDefenders'){
+                    $this->combatDefenders = new CombatDefenders($data->combatDefenders);
+                }
                 if($k === "combats"){
                     $this->$k = new stdClass();
                     if(is_object($v)) {
@@ -76,7 +116,6 @@ class CombatRules
                     }
                 }else{
                     $this->$k = $v;
-
                 }
             }
         } else {
@@ -87,6 +126,7 @@ class CombatRules
             $this->attackers = new stdClass();
             $this->defenders = new stdClass();
             $this->currentDefender = false;
+            $this->combatDefenders = new CombatDefenders();
         }
         $this->dieRoll = false;
 //        $this->crt = new CombatResultsTable();
@@ -595,6 +635,8 @@ class CombatRules
     {
         $battle = Battle::getBattle();
         global $results_name;
+        $this->combatDefenders = new CombatDefenders();
+
         if ($this->force->unitIsEnemy($id) && !isset($this->combatsToResolve->$id)) {
             if (isset($this->defenders->$id)) {
                 $id = $this->defenders->$id;
@@ -645,6 +687,7 @@ class CombatRules
 
         foreach($defenders as $defenderId => $defender){
             $unit = $this->force->units[$defenderId];
+            $this->combatDefenders->registerDefender($unit);
             $hex = $unit->hexagon;
             if($this->force->units[$defenderId]->class === "air" &&  ($phase == RED_COMBAT_PHASE || $phase == BLUE_COMBAT_PHASE || $phase == TEAL_COMBAT_PHASE || $phase == PURPLE_COMBAT_PHASE)) {
 //                unset($defenders->$defenderId);
