@@ -177,8 +177,12 @@ class Force extends SimpleForce
         $b = Battle::getBattle();
         $advancingQueue = [];
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_ADVANCING || $this->units[$id]->status == STATUS_CAN_ADVANCE) {
+            if ($this->units[$id]->status == STATUS_ADVANCING || $this->units[$id]->status == STATUS_CAN_ADVANCE
+                || $this->units[$id]->status == STATUS_MUST_ADVANCE) {
                 $advancingQueue[] = $this->units[$id];
+                if($this->units[$id]->status === STATUS_MUST_ADVANCE){
+                    $this->units[$id]->status = STATUS_CAN_ADVANCE;
+                }
             }
         }
         $hexNum = $advancedUnit->hexagon->name;
@@ -195,7 +199,7 @@ class Force extends SimpleForce
     function unitCanAdvance($id)
     {
         $Advance = false;
-        if ($this->units[$id]->status == STATUS_CAN_ADVANCE) {
+        if ($this->units[$id]->status == STATUS_CAN_ADVANCE || $this->units[$id]->status == STATUS_MUST_ADVANCE) {
             $Advance = true;
         }
         return $Advance;
@@ -956,6 +960,7 @@ class Force extends SimpleForce
         for ($id = 0; $id < count($this->units); $id++) {
             if ($this->units[$id]->status == STATUS_CAN_ADVANCE
                 || $this->units[$id]->status == STATUS_ADVANCING
+                || $this->units[$id]->status == STATUS_MUST_ADVANCE
             ) {
                 $areAdvancing = true;
                 break;

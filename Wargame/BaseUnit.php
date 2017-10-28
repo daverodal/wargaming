@@ -198,7 +198,7 @@ class BaseUnit extends MovableUnit{
                 break;
 
             case STATUS_ADVANCING:
-                if ($this->status == STATUS_CAN_ADVANCE) {
+                if ($this->status == STATUS_CAN_ADVANCE || $this->status == STATUS_MUST_ADVANCE) {
                     $this->status = $status;
                     $this->moveCount = 0;
                     $this->moveAmountUsed = 0;

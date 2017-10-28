@@ -274,6 +274,7 @@ define("STATUS_CAN_TRANSPORT", 42);
 define("STATUS_UNLOADING", 43);
 define("STATUS_CAN_UNLOAD", 44);
 define("STATUS_CAN_LOAD", 45);
+define("STATUS_MUST_ADVANCE", 46);
 
 
 // unit status names

@@ -872,7 +872,9 @@ class MoveRules
         /* @var Hexagon $hexagon */
         $hexagon = $this->force->getFirstRetreatHex($id);
         $hexes = $this->force->getAllFirstRetreatHexes($id);
+        $uniqueHexes = [];
         foreach ($hexes as $hexagon) {
+            $uniqueHexes[$hexagon->name] = $hexagon;
             $startHex = $hexagon->name;
             $hexPath = new HexPath();
             $hexPath->name = $startHex;
@@ -882,11 +884,18 @@ class MoveRules
             $this->moves->$startHex = $hexPath;
         }
 
+
         /* @var Unit $unit */
         $unit = $this->force->getUnit($id);
+        $startingStatus = $unit->status;
         if ($unit->setStatus(STATUS_ADVANCING) == true) {
             $this->anyUnitIsMoving = true;
             $this->movingUnitId = $id;
+        }
+
+        if(count($uniqueHexes) === 1 && $startingStatus === STATUS_MUST_ADVANCE){
+            $advanceHex = array_shift($uniqueHexes);
+            $this->advance($this->movingUnitId, $advanceHex);
         }
     }
 

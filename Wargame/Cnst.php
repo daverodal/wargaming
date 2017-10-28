@@ -165,4 +165,5 @@ interface Cnst {
     const STATUS_UNLOADING = 43;
     const STATUS_CAN_UNLOAD = 44;
     const STATUS_CAN_LOAD = 45;
+    const STATUS_MUST_ADVANCE = 46;
 }
