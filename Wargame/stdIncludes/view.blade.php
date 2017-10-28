@@ -214,6 +214,8 @@
             </div>
 
             <div class="unit-wrapper" style="display:none;" id="undeadpile"></div>
+            <div id="vue-app">
+            </div>
             @show
             <div id="gameViewer">
                 <div id="gameContainer">
@@ -258,9 +260,9 @@
                             <div class="unit {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
                                 <div class="shadow-mask"></div>
                                 <div class="unitSize">{{$unit['unitSize']}}</div>
-                                <img class="arrow" src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+                                <img class="arrow" src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
                                 <div class="counterWrapper">
-                                    <img src="{{asset("js/".$unit['image'])}}" class="counter"><span class="unit-desig"><?=$unit['unitDesig']?></span>
+                                    <img src="{{asset("assets/unit-images/".$unit['image'])}}" class="counter"><span class="unit-desig"><?=$unit['unitDesig']?></span>
                                 </div>
                                 <div class="unit-numbers">5 - 4</div>
                             </div>
@@ -276,9 +278,9 @@
                 </div>
             </div>
 
-            <audio class="pop" src="{{asset('js/pop.m4a')}}"></audio>
-            <audio class="poop" src="{{asset('js/lowpop.m4a')}}"></audio>
-            <audio class="buzz" src="{{asset('js/buzz.m4a')}}"></audio>
+            <audio class="pop" src="{{asset('assets/audio/pop.m4a')}}"></audio>
+            <audio class="poop" src="{{asset('assets/audio/lowpop.m4a')}}"></audio>
+            <audio class="buzz" src="{{asset('assets/audio/buzz.m4a')}}"></audio>
 
         </div>
     </div>

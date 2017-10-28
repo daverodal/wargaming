@@ -246,7 +246,7 @@
                         <div class="unit {nationality}" id="{id}" alt="0">
                             <div class="shadow-mask"></div>
                             <div class="unitSize">{unitSize}</div>
-                            <img class="arrow" src="<?php echo url('js/short-red-arrow-md.png'); ?>" class="counter">
+                            <img class="arrow" src="<?php echo url('assets/unit-images/short-red-arrow-md.png'); ?>" class="counter">
                             <div class="counterWrapper">
                                 <img src="<?php echo url('js/{image}'); ?>" class="counter"><span class="unit-desig">{unitDesig}</span>
                             </div>

@@ -11,7 +11,7 @@
         <p class="range"><?=$unit['range']?></p>
 
         <p class="forceMarch">M</p>
-        <img class="arrow" src="{{url('js/short-red-arrow-md.png')}}" class="counter">
+        <img class="arrow" src="{{url('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
 
         <div class="unit-numbers">5 - 4</div>
 

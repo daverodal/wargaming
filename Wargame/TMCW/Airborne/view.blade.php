@@ -12,7 +12,7 @@
         <div class="shadow-mask" ng-class="unit.shadow"></div>
         <div ng-if="unit.class !== 'supply'" class="unitSize">lll</div>
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
-             src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+             src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
             <img ng-if="unit.class !== 'supply' && unit.class !== 'truck'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
             <i ng-if="unit.class === 'supply'" class="counter-symbol fa fa-adjust"></i>
@@ -32,7 +32,7 @@
         <div class="shadow-mask" ng-class="unit.shadow"></div>
         <div ng-if="unit.class !== 'supply'" class="unitSize">lll</div>
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
-             src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+             src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
             <img ng-if="unit.class !== 'supply'  && unit.class !== 'truck'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
             <i ng-if="unit.class === 'supply'" class="counter-symbol fa fa-adjust"></i>
@@ -47,7 +47,7 @@
 @section('ng-ghost-unit-template')
     <div ng-if="unit.class !== 'supply'" class="unitSize">lll</div>
     <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
-         src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+         src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
     <div class="counterWrapper">
         <img ng-if="unit.class !== 'supply'  && unit.class !== 'truck'" src="{{asset("js/")}}/@{{ unit.image }}" class="counter">
         <i ng-if="unit.class === 'supply'" class="counter-symbol fa fa-adjust"></i>

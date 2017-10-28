@@ -20,8 +20,30 @@ mix.webpackConfig({
             'window.$': 'jquery',
             Popper: ['popper.js', 'default']
         })
-    ]});
+    ], module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+            },{
+                test: /\.(m4a)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
+                ]
+            }
+        ],
+    },
+    resolve: {
+        extensions: ['*', '.js', '.jsx', '.vue', '.ts', '.tsx'],
+    },
+});
 mix.setPublicPath("../game-dispatcher/public/vendor/");
+mix.copyDirectory('Wargame/wargame-helpers/audio','../game-dispatcher/public/assets/audio')
+    .copyDirectory('Wargame/wargame-helpers/unit-images', '../game-dispatcher/public/assets/unit-images');
 mix.sass('Wargame/Mollwitz/all-nations-colors.scss', 'css/wargame/all-nations-colors.css')
 // mix.sass('Wargame/TMCW/RetreatOne/all.scss', 'css/wargame/retreatOne.css')
 // mix.sass('Wargame/TMCW/Airborne/all.scss', 'css/wargame/amph.css');

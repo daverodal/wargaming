@@ -23,12 +23,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// import {Sync, fixHeader, globalFuncs} from "./index";
+
 import Sync from './Sync';
 import fixHeader from './fix-header';
-import * as gloalFuncs from './global-funcs';
-// import {globalFuncs.showCrtTable, drawHex} from "./wargame-helpers/global-funcs";
-// import fixHeader from "fix-header";
+import * as globalFuncs from './global-funcs';
 
 function clearHexes() {
     $('#arrow-svg path.range-hex').remove();
@@ -1168,16 +1166,16 @@ x.register("combatRules", function (combatRules, data) {
             if (cD !== false) {
                 var defenders = combatRules.combats[cD].defenders;
                 if (combatRules.combats[cD].useAlt) {
-                    globalFuncs.globalFuncs.showCrtTable($('#cavalryTable'));
+                    globalFuncs.showCrtTable($('#cavalryTable'));
                 } else {
                     if (combatRules.combats[cD].useDetermined) {
-                        globalFuncs.globalFuncs.showCrtTable($('#determinedTable'));
+                        globalFuncs.showCrtTable($('#determinedTable'));
                     } else {
-                        globalFuncs.globalFuncs.showCrtTable($('#normalTable'));
+                        globalFuncs.showCrtTable($('#normalTable'));
                     }
                 }
                 if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
-                    globalFuncs.globalFuncs.showCrtTable($('#torpedoTable'));
+                    globalFuncs.showCrtTable($('#torpedoTable'));
                     $('.torpedoHitOneTable').show();
                     $('.torpedoHitTwoTable').show();
 
@@ -1368,7 +1366,7 @@ x.register("combatRules", function (combatRules, data) {
                     $(".row" + combatRoll + " .col" + combatCol).css('background-color', "cyan");
                 }
                 if (combatRules.lastResolvedCombat.useAlt) {
-                    globalFuncs.globalFuncs.showCrtTable($('#cavalryTable'));
+                    globalFuncs.showCrtTable($('#cavalryTable'));
                 } else {
                     if (combatRules.lastResolvedCombat.useDetermined) {
                         globalFuncs.showCrtTable($('#determinedTable'));

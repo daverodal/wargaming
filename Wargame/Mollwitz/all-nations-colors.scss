@@ -7,7 +7,7 @@
 @include unitColor(Native, $angloAlliedWrapperColor, Native, white);
 @include unitColor(Royal,$britishWrapperColor, Brit, white);
 
-@include unitColor(French,$frenchWrapperColor, French, white);
+@include unitColor(French,$frenchWrapperColor, French);
 @include unitColor(NapFrench, $frenchNapoleonWrapperColor, FrenchNap, white);
 
 @include unitColor(NapAllied, $russianWrapperColor, Rus, white);

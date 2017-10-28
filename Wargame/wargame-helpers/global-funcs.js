@@ -31,10 +31,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 export var mute = false;
 
 export function playAudio() {
-console.log("work work");
     var aud = $('.pop').get(0);
     if (aud && !mute) {
         aud.play();

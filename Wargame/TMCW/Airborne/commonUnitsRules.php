@@ -29,7 +29,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiPara.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiPara.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers">8 - 5</div>
@@ -41,7 +41,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiGor.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiGor.png'); ?>" class="counter">
             </div>
             <div class="unit-numbers">3 - 4</div>
         </div>
@@ -49,7 +49,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiArmor.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiArmor.png'); ?>" class="counter">
             </div>
             <div class="unit-numbers">13 - 8</div>
         </div>    </li>
@@ -61,7 +61,7 @@
 
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiArmor.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiArmor.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers">6 - 8</div>
@@ -73,7 +73,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);  position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiMech.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiMech.png'); ?>" class="counter">
             </div>
             <div class="unit-numbers">4 - 8</div>
         </div>
@@ -84,7 +84,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiInf.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiInf.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers">2 - 8</div>
@@ -96,7 +96,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiPara.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiPara.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers">9 - 5</div>
@@ -108,7 +108,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiGlider.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiGlider.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers">10 - 5</div>
@@ -120,7 +120,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiGor.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiGor.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers">3 - 4</div>
@@ -132,7 +132,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiMech.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiMech.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers">9 - 6</div>
@@ -149,7 +149,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); float:left;  position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiArmor.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiArmor.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers"><span class="reduced">3 - 8</span></div>
@@ -158,7 +158,7 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); float:left; position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiMech.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiMech.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers"><span class="reduced">4 - 6</span></div>

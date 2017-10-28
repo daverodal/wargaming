@@ -25,7 +25,7 @@
         <div class="unitSize">@{{ unit.unitSize }}</div>
 
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
-             src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+             src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
             <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
@@ -45,7 +45,7 @@
         <div class="shadow-mask" ng-class="unit.shadow"></div>
         <div class="unitSize">@{{ unit.unitSize }}</div>
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
-             src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+             src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
             <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
@@ -60,7 +60,7 @@
     </div>
     <div class="unitSize">@{{ unit.unitSize }}</div>
     <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
-         src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+         src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
     <div class="counterWrapper">
         <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
                 class="unit-desig">@{{ unit.unitDesig }}</span>
@@ -78,46 +78,46 @@
         Units with less then their maximum steps are eligable for replacements.
         <div class="clear"></div>
         <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
-             src="<?= url('js/short-red-arrow-md.png'); ?>"
+             src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); float:left;  position: relative;">
             <div class="steps"><div class="white step"></div><div class="step"></div><div class="step"></div></div>
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiArmor.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiArmor.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers"><span class="">6 - 8</span></div>
         </div>
         <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
-             src="<?= url('js/short-red-arrow-md.png'); ?>"
+             src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); float:left;  position: relative;">
             <div class="steps"><div class="white step"></div><div class="white step"></div><div class="step"></div></div>
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiArmor.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiArmor.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers"><span class="">3 - 8</span></div>
         </div>
         <div class="unit <?= strtolower($forceName[2]) ?>" alt="0"
-                           src="<?= url('js/short-red-arrow-md.png'); ?>"
+                           src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
                            style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); float:left; position: relative;">
             <div class="steps"><div class="white step"></div><div class="step"></div><div class="step"></div></div>
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiInf.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiInf.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers"><span class="">2 - 4</span></div>
 
         </div>
         <div class="unit <?= strtolower($forceName[2]) ?>" alt="0"
-             src="<?= url('js/short-red-arrow-md.png'); ?>"
+             src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); float:left; position: relative;">
             <div class="steps"><div class="white step"></div><div class="white step"></div><div class="step"></div></div>
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('js/multiInf.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiInf.png'); ?>" class="counter">
             </div>
 
             <div class="unit-numbers"><span class="">1 - 4</span></div>
@@ -173,7 +173,7 @@
             </div>
             <div class="shadow-mask"></div>
             <div class="unitSize">{{$unit['unitSize']}}</div>
-            <img class="arrow" src="{{asset('js/short-red-arrow-md.png')}}" class="counter">
+            <img class="arrow" src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
             <div class="counterWrapper">
                 <img src="{{asset("js/".$unit['image'])}}" class="counter"><span
                         class="unit-desig"><?=$unit['unitDesig']?></span>

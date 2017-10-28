@@ -74,53 +74,53 @@ class WargameServiceProvider extends ServiceProvider
 
         ], "tmcw-css");
 
-        $this->publishes([
-            __DIR__.'/Mollwitz/Aliwal1845/all.css' => public_path('vendor/wargame/mollwitz/css/Aliwal1845.css'),
-            __DIR__.'/Mollwitz/Brandywine1777/all.css' => public_path('vendor/wargame/mollwitz/css/Brandywine1777.css'),
-            __DIR__.'/Mollwitz/Burkersdorf/all.css' => public_path('vendor/wargame/mollwitz/css/Burkersdorf.css'),
-            __DIR__.'/Mollwitz/Chillianwallah1849/all.css' => public_path('vendor/wargame/mollwitz/css/Chillianwallah1849.css'),
-            __DIR__.'/Mollwitz/Dubba1843/all.css' => public_path('vendor/wargame/mollwitz/css/Dubba1843.css'),
-            __DIR__.'/Mollwitz/Ferozesha/all.css' => public_path('vendor/wargame/mollwitz/css/Ferozesha.css'),
-            __DIR__.'/Mollwitz/Fontenoy1745/all.css' => public_path('vendor/wargame/mollwitz/css/Fontenoy1745.css'),
-            __DIR__.'/Mollwitz/Fraustadt1706/all.css' => public_path('vendor/wargame/mollwitz/css/Fraustadt1706.css'),
-            __DIR__.'/Mollwitz/FreemansFarm1777/all.css' => public_path('vendor/wargame/mollwitz/css/FreemansFarm1777.css'),
-            __DIR__.'/Mollwitz/Gadebusch1712/all.css' => public_path('vendor/wargame/mollwitz/css/Gadebusch1712.css'),
-            __DIR__.'/Mollwitz/Germantown1777/all.css' => public_path('vendor/wargame/mollwitz/css/Germantown1777.css'),
-            __DIR__.'/Mollwitz/Golymin1806/all.css' => public_path('vendor/wargame/mollwitz/css/Golymin1806.css'),
-            __DIR__.'/Mollwitz/Goojerat1849/all.css' => public_path('vendor/wargame/mollwitz/css/Goojerat1849.css'),
-            __DIR__.'/Mollwitz/Hanau1813/all.css' => public_path('vendor/wargame/mollwitz/css/Hanau1813.css'),
-            __DIR__.'/Mollwitz/Hastenbeck/all.css' => public_path('vendor/wargame/mollwitz/css/Hastenbeck.css'),
-            __DIR__.'/Mollwitz/Helsingborg1710/all.css' => public_path('vendor/wargame/mollwitz/css/Helsingborg1710.css'),
-            __DIR__.'/Mollwitz/Hohenfriedeberg/all.css' => public_path('vendor/wargame/mollwitz/css/Hohenfriedeberg.css'),
-            __DIR__.'/Mollwitz/Holowczyn1708/all.css' => public_path('vendor/wargame/mollwitz/css/Holowczyn1708.css'),
-            __DIR__.'/Mollwitz/Jagersdorf/all.css' => public_path('vendor/wargame/mollwitz/css/Jagersdorf.css'),
-            __DIR__.'/Mollwitz/Kesselsdorf1745/all.css' => public_path('vendor/wargame/mollwitz/css/Kesselsdorf1745.css'),
-            __DIR__.'/Mollwitz/Klissow1702/all.css' => public_path('vendor/wargame/mollwitz/css/Klissow1702.css'),
-            __DIR__.'/Mollwitz/Kolin1757/all.css' => public_path('vendor/wargame/mollwitz/css/Kolin1757.css'),
-            __DIR__.'/Mollwitz/Lesnaya1708/all.css' => public_path('vendor/wargame/mollwitz/css/Lesnaya1708.css'),
-            __DIR__.'/Mollwitz/Lobositz/all.css' => public_path('vendor/wargame/mollwitz/css/Lobositz.css'),
-            __DIR__.'/Mollwitz/Malplaquet/all.css' => public_path('vendor/wargame/mollwitz/css/Malplaquet.css'),
-            __DIR__.'/Mollwitz/Meanee1843/all.css' => public_path('vendor/wargame/mollwitz/css/Meanee1843.css'),
-            __DIR__.'/Mollwitz/Minden/all.css' => public_path('vendor/wargame/mollwitz/css/Minden.css'),
-            __DIR__.'/Mollwitz/Mollwitz/all.css' => public_path('vendor/wargame/mollwitz/css/Mollwitz.css'),
-            __DIR__.'/Mollwitz/Montmirail1814/all.css' => public_path('vendor/wargame/mollwitz/css/Montmirail1814.css'),
-            __DIR__.'/Mollwitz/Moodkee1845/all.css' => public_path('vendor/wargame/mollwitz/css/Moodkee1845.css'),
-            __DIR__.'/Mollwitz/Oudenarde1708/all.css' => public_path('vendor/wargame/mollwitz/css/Oudenarde1708.css'),
-            __DIR__.'/Mollwitz/Zorndorf/all.css' => public_path('vendor/wargame/mollwitz/css/Zorndorf.css'),
-            __DIR__.'/Mollwitz/Gemauerthof1705/all.css' => public_path('vendor/wargame/mollwitz/css/Gemauerthof1705.css'),
-            __DIR__.'/Mollwitz/LaRothiere1814/all.css' => public_path('vendor/wargame/mollwitz/css/LaRothiere1814.css'),
-            __DIR__.'/Mollwitz/Jakobovo1812/all.css' => public_path('vendor/wargame/mollwitz/css/Jakobovo1812.css'),
-            __DIR__.'/Mollwitz/Vimeiro1808/all.css' => public_path('vendor/wargame/mollwitz/css/Vimeiro1808.css'),
-            __DIR__.'/Mollwitz/Maloyaroslavets1812/all.css' => public_path('vendor/wargame/mollwitz/css/Maloyaroslavets1812.css'),
-            __DIR__.'/Mollwitz/Heilsberg1807/all.css' => public_path('vendor/wargame/mollwitz/css/Heilsberg1807.css'),
-            __DIR__.'/Mollwitz/BarSurAube1814/all.css' => public_path('vendor/wargame/mollwitz/css/BarSurAube1814.css'),
-            __DIR__.'/Mollwitz/Monmouth1778/all.css' => public_path('vendor/wargame/mollwitz/css/Monmouth1778.css'),
-            __DIR__.'/Mollwitz/all-nations-colors.css' => public_path('vendor/wargame/mollwitz/css/all-nations-colors.css')
-
-
-
-
-        ], 'mollwitz-css');
+//        $this->publishes([
+//            __DIR__.'/Mollwitz/Aliwal1845/all.css' => public_path('vendor/wargame/mollwitz/css/Aliwal1845.css'),
+//            __DIR__.'/Mollwitz/Brandywine1777/all.css' => public_path('vendor/wargame/mollwitz/css/Brandywine1777.css'),
+//            __DIR__.'/Mollwitz/Burkersdorf/all.css' => public_path('vendor/wargame/mollwitz/css/Burkersdorf.css'),
+//            __DIR__.'/Mollwitz/Chillianwallah1849/all.css' => public_path('vendor/wargame/mollwitz/css/Chillianwallah1849.css'),
+//            __DIR__.'/Mollwitz/Dubba1843/all.css' => public_path('vendor/wargame/mollwitz/css/Dubba1843.css'),
+//            __DIR__.'/Mollwitz/Ferozesha/all.css' => public_path('vendor/wargame/mollwitz/css/Ferozesha.css'),
+//            __DIR__.'/Mollwitz/Fontenoy1745/all.css' => public_path('vendor/wargame/mollwitz/css/Fontenoy1745.css'),
+//            __DIR__.'/Mollwitz/Fraustadt1706/all.css' => public_path('vendor/wargame/mollwitz/css/Fraustadt1706.css'),
+//            __DIR__.'/Mollwitz/FreemansFarm1777/all.css' => public_path('vendor/wargame/mollwitz/css/FreemansFarm1777.css'),
+//            __DIR__.'/Mollwitz/Gadebusch1712/all.css' => public_path('vendor/wargame/mollwitz/css/Gadebusch1712.css'),
+//            __DIR__.'/Mollwitz/Germantown1777/all.css' => public_path('vendor/wargame/mollwitz/css/Germantown1777.css'),
+//            __DIR__.'/Mollwitz/Golymin1806/all.css' => public_path('vendor/wargame/mollwitz/css/Golymin1806.css'),
+//            __DIR__.'/Mollwitz/Goojerat1849/all.css' => public_path('vendor/wargame/mollwitz/css/Goojerat1849.css'),
+//            __DIR__.'/Mollwitz/Hanau1813/all.css' => public_path('vendor/wargame/mollwitz/css/Hanau1813.css'),
+//            __DIR__.'/Mollwitz/Hastenbeck/all.css' => public_path('vendor/wargame/mollwitz/css/Hastenbeck.css'),
+//            __DIR__.'/Mollwitz/Helsingborg1710/all.css' => public_path('vendor/wargame/mollwitz/css/Helsingborg1710.css'),
+//            __DIR__.'/Mollwitz/Hohenfriedeberg/all.css' => public_path('vendor/wargame/mollwitz/css/Hohenfriedeberg.css'),
+//            __DIR__.'/Mollwitz/Holowczyn1708/all.css' => public_path('vendor/wargame/mollwitz/css/Holowczyn1708.css'),
+//            __DIR__.'/Mollwitz/Jagersdorf/all.css' => public_path('vendor/wargame/mollwitz/css/Jagersdorf.css'),
+//            __DIR__.'/Mollwitz/Kesselsdorf1745/all.css' => public_path('vendor/wargame/mollwitz/css/Kesselsdorf1745.css'),
+//            __DIR__.'/Mollwitz/Klissow1702/all.css' => public_path('vendor/wargame/mollwitz/css/Klissow1702.css'),
+//            __DIR__.'/Mollwitz/Kolin1757/all.css' => public_path('vendor/wargame/mollwitz/css/Kolin1757.css'),
+//            __DIR__.'/Mollwitz/Lesnaya1708/all.css' => public_path('vendor/wargame/mollwitz/css/Lesnaya1708.css'),
+//            __DIR__.'/Mollwitz/Lobositz/all.css' => public_path('vendor/wargame/mollwitz/css/Lobositz.css'),
+//            __DIR__.'/Mollwitz/Malplaquet/all.css' => public_path('vendor/wargame/mollwitz/css/Malplaquet.css'),
+//            __DIR__.'/Mollwitz/Meanee1843/all.css' => public_path('vendor/wargame/mollwitz/css/Meanee1843.css'),
+//            __DIR__.'/Mollwitz/Minden/all.css' => public_path('vendor/wargame/mollwitz/css/Minden.css'),
+//            __DIR__.'/Mollwitz/Mollwitz/all.css' => public_path('vendor/wargame/mollwitz/css/Mollwitz.css'),
+//            __DIR__.'/Mollwitz/Montmirail1814/all.css' => public_path('vendor/wargame/mollwitz/css/Montmirail1814.css'),
+//            __DIR__.'/Mollwitz/Moodkee1845/all.css' => public_path('vendor/wargame/mollwitz/css/Moodkee1845.css'),
+//            __DIR__.'/Mollwitz/Oudenarde1708/all.css' => public_path('vendor/wargame/mollwitz/css/Oudenarde1708.css'),
+//            __DIR__.'/Mollwitz/Zorndorf/all.css' => public_path('vendor/wargame/mollwitz/css/Zorndorf.css'),
+//            __DIR__.'/Mollwitz/Gemauerthof1705/all.css' => public_path('vendor/wargame/mollwitz/css/Gemauerthof1705.css'),
+//            __DIR__.'/Mollwitz/LaRothiere1814/all.css' => public_path('vendor/wargame/mollwitz/css/LaRothiere1814.css'),
+//            __DIR__.'/Mollwitz/Jakobovo1812/all.css' => public_path('vendor/wargame/mollwitz/css/Jakobovo1812.css'),
+//            __DIR__.'/Mollwitz/Vimeiro1808/all.css' => public_path('vendor/wargame/mollwitz/css/Vimeiro1808.css'),
+//            __DIR__.'/Mollwitz/Maloyaroslavets1812/all.css' => public_path('vendor/wargame/mollwitz/css/Maloyaroslavets1812.css'),
+//            __DIR__.'/Mollwitz/Heilsberg1807/all.css' => public_path('vendor/wargame/mollwitz/css/Heilsberg1807.css'),
+//            __DIR__.'/Mollwitz/BarSurAube1814/all.css' => public_path('vendor/wargame/mollwitz/css/BarSurAube1814.css'),
+//            __DIR__.'/Mollwitz/Monmouth1778/all.css' => public_path('vendor/wargame/mollwitz/css/Monmouth1778.css'),
+//            __DIR__.'/Mollwitz/all-nations-colors.css' => public_path('vendor/wargame/mollwitz/css/all-nations-colors.css')
+//
+//
+//
+//
+//        ], 'mollwitz-css');
 
         $this->publishes([
             __DIR__.'/Mollwitz/Images' => public_path('vendor/wargame/mollwitz/images'),

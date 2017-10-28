@@ -21,6 +21,9 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "jquery-ui-bundle": "^1.12.1",
-    "jquery.panzoom": "^3.2.2"
+    "jquery.panzoom": "^3.2.2",
+    "ts-loader": "^3.0.5",
+    "typescript": "^2.5.3",
+    "vue": "^2.5.2"
   }
 }

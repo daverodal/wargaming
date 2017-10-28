@@ -236,7 +236,7 @@
                         <div class="unit {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
                             <div class="shadow-mask"></div>
                             <div class="unitSize">{{$unit['unitSize']}}</div>
-                            <img class="arrow" src="<?php echo url('js/short-red-arrow-md.png'); ?>" class="counter">
+                            <img class="arrow" src="<?php echo url('assets/unit-images/short-red-arrow-md.png'); ?>" class="counter">
                             <div class="counterWrapper">
                                 <img src="{{url("js/".$unit['image'])}}" class="counter"><span class="unit-desig">{{$unit['unitDesig']}}</span>
                             </div>
