@@ -36,7 +36,6 @@ window.zoomed = zoomed;
 document.addEventListener("DOMContentLoaded",function(){
 
 
-    debugger;
     var DR = window.DR;
 
     if (!DR) {

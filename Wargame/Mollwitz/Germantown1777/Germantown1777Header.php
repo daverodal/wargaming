@@ -18,7 +18,6 @@ You should have received a copy of the GNU General Public License
 ?>
 <script type="text/javascript">
     x.register("specialHexes", function(specialHexes, data) {
-        debugger;
         var lab = ['pontoon','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
         for(var i in specialHexes){
             var newHtml = lab[specialHexes[i]];
