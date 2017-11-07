@@ -210,10 +210,10 @@ export function counterClick(event) {
     }
 
     DR.clickX = DR.clickY = undefined;
-    // if (DR.dragged) {
-    //     DR.dragged = false;
-    //     return;
-    // }
+    if (DR.dragged) {
+        DR.dragged = false;
+        return;
+    }
     if (event.which === 3) {
         return;
     }

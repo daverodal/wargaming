@@ -172,6 +172,8 @@ class Unit extends BaseUnit implements \JsonSerializable
         $mapUnit->isDisrupted = $this->isDisrupted;
         $mapUnit->disruptLen = $this->disruptLen;
         $mapUnit->isImproved = $this->isImproved;
+        $mapUnit->image = $this->image;
+        $mapUnit->nationality = $this->nationality;
         return $mapUnit;
     }
 
