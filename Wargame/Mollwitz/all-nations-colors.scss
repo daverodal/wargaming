@@ -42,7 +42,7 @@
 @include unitColor(American, $rebelWrapperColor, Rebel, white);
 
 @include unitColor(Hessian, $russianWrapperColor, Rus, white);
-@include unitColor(Portuguese, $prussianNapColor, PruNap);
+@include unitColor(Portuguese, $prussianNapColor, PruNap, white);
 @include unitColor(Loyalist, $angloAlliedWrapperColor, Ang, white   );
 
 @include unitColor(Rebel, $rebelWrapperColor, Rebel, white);
