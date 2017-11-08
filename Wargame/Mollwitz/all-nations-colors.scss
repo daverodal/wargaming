@@ -3,7 +3,6 @@
 
 @include unitColor(British, $angloAlliedWrapperColor, Ang, white);
 
-@include unitColor(Native,$britishWrapperColor, Native);
 @include unitColor(Native, $angloAlliedWrapperColor, Native, white);
 @include unitColor(Royal,$britishWrapperColor, Brit, white);
 

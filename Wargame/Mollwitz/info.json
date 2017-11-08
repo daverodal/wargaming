@@ -6574,265 +6574,173 @@
     "params": {
       "units": [
         {
-          "num": 1,
+          "num": 3,
           "forceId": 1,
           "combat": 5,
           "movement": 4,
           "reinforce": "A",
           "range": 1,
-          "nationality": "French",
+          "nationality": "NapFrench",
           "class": "infantry"
         },
         {
-          "num": 4,
+          "num": 12,
           "forceId": 1,
           "combat": 4,
           "movement": 4,
           "reinforce": "A",
           "range": 1,
-          "nationality": "French",
+          "nationality": "NapFrench",
           "class": "infantry"
-        },
-        {
-          "num": 2,
-          "forceId": 1,
-          "combat": 3,
-          "movement": 4,
-          "reinforce": "A",
-          "range": 3,
-          "nationality": "French",
-          "class": "artillery"
         },
         {
           "num": 4,
           "forceId": 1,
-          "combat": 4,
-          "movement": 4,
-          "reinforce": "B",
-          "range": 1,
-          "nationality": "French",
-          "class": "infantry"
-        },
-        {
-          "num": 2,
-          "forceId": 1,
           "combat": 3,
           "movement": 4,
-          "reinforce": "B",
-          "range": 3,
-          "nationality": "French",
-          "class": "artillery"
-        },
-        {
-          "num": 5,
-          "forceId": 1,
-          "combat": 4,
-          "movement": 4,
-          "reinforce": "C",
-          "reinforceTurn": 2,
+          "reinforce": "A",
           "range": 1,
-          "nationality": "Italian",
+          "nationality": "NapFrench",
           "class": "infantry"
         },
         {
           "num": 1,
-          "forceId": 1,
-          "combat": 3,
-          "movement": 4,
-          "reinforce": "C",
-          "reinforceTurn": 2,
-          "range": 3,
-          "nationality": "Italian",
-          "class": "artillery"
-        },
-        {
-          "num": 1,
-          "forceId": 1,
-          "combat": 3,
-          "movement": 4,
-          "reinforce": "C",
-          "reinforceTurn": 2,
-          "range": 3,
-          "nationality": "Italian",
-          "class": "horseartillery"
-        },
-        {
-          "num": 2,
           "forceId": 1,
           "combat": 6,
-          "movement": 4,
-          "reinforce": "C",
-          "reinforceTurn": 3,
-          "range": 1,
-          "nationality": "RoyalGuard",
-          "class": "infantry"
-        },
-        {
-          "num": 1,
-          "forceId": 1,
-          "combat": 5,
           "movement": 6,
-          "reinforce": "C",
-          "reinforceTurn": 3,
+          "reinforce": "A",
           "range": 1,
-          "nationality": "RoyalGuard",
-          "class": "cavalry"
-        },
-        {
-          "num": 1,
-          "forceId": 1,
-          "combat": 4,
-          "movement": 4,
-          "reinforce": "C",
-          "reinforceTurn": 3,
-          "range": 3,
-          "nationality": "RoyalGuard",
-          "class": "artillery"
-        },
-        {
-          "num": 2,
-          "forceId": 1,
-          "combat": 4,
-          "movement": 6,
-          "reinforce": "C",
-          "reinforceTurn": 4,
-          "range": 1,
-          "nationality": "French",
+          "nationality": "NapFrench",
           "class": "cavalry"
         },
         {
           "num": 2,
           "forceId": 1,
           "combat": 5,
-          "movement": 4,
-          "reinforce": "C",
-          "reinforceTurn": 3,
-          "range": 5,
-          "nationality": "French",
-          "class": "artillery"
+          "movement": 6,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "NapFrench",
+          "class": "cavalry"
         },
         {
           "num": 2,
           "forceId": 1,
           "combat": 5,
-          "movement": 4,
-          "reinforce": "C",
-          "reinforceTurn": 3,
-          "range": 5,
-          "nationality": "Italian",
-          "class": "artillery"
-        },
-        {
-          "num": 2,
-          "forceId": 2,
-          "combat": 5,
-          "movement": 4,
-          "reinforce": "D",
-          "range": 1,
-          "nationality": "Russian",
-          "class": "infantry"
-        },
-        {
-          "num": 6,
-          "forceId": 2,
-          "combat": 4,
-          "movement": 4,
-          "reinforce": "D",
-          "range": 1,
-          "nationality": "Russian",
-          "class": "infantry"
-        },
-        {
-          "num": 1,
-          "forceId": 2,
-          "combat": 5,
-          "movement": 2,
-          "reinforce": "E",
-          "range": 5,
-          "nationality": "Russian",
-          "class": "artillery"
-        },
-        {
-          "num": 2,
-          "forceId": 2,
-          "combat": 4,
-          "movement": 3,
-          "reinforce": "E",
-          "range": 3,
-          "nationality": "Russian",
-          "class": "artillery"
-        },
-        {
-          "num": 1,
-          "forceId": 2,
-          "combat": 4,
-          "movement": 6,
-          "reinforce": "F",
-          "range": 1,
-          "nationality": "Russian",
-          "class": "cavalry"
-        },
-        {
-          "num": 1,
-          "forceId": 2,
-          "combat": 4,
           "movement": 7,
-          "reinforce": "F",
+          "reinforce": "A",
           "range": 1,
-          "nationality": "Russian",
+          "nationality": "NapFrench",
           "class": "cavalry"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 3,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 2,
+          "nationality": "NapFrench",
+          "class": "artillery"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 2,
+          "nationality": "NapFrench",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "NapFrench",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
+        },
+        {
+          "num": 10,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Native",
+          "class": "infantry"
         },
         {
           "num": 3,
           "forceId": 2,
-          "combat": 1,
-          "movement": 7,
-          "reinforce": "F",
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
           "range": 1,
-          "nationality": "Russian",
-          "class": "cavalry"
+          "nationality": "Portuguese",
+          "class": "infantry"
         },
         {
-          "num": 1,
+          "num": 3,
           "forceId": 2,
           "combat": 3,
-          "movement": 5,
-          "reinforce": "G",
-          "range": 3,
-          "nationality": "Russian",
-          "class": "horseartillery"
+          "movement": 3,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "Portuguese",
+          "class": "infantry"
         },
         {
           "num": 1,
           "forceId": 2,
-          "combat": 5,
-          "movement": 4,
-          "reinforce": "H",
-          "reinforceTurn": 1,
+          "combat": 1,
+          "movement": 6,
+          "reinforce": "B",
           "range": 1,
-          "nationality": "Russian",
-          "class": "infantry"
+          "nationality": "Native",
+          "class": "cavalry"
         },
         {
-          "num": 6,
-          "forceId": 2,
-          "combat": 4,
-          "movement": 4,
-          "reinforce": "H",
-          "reinforceTurn": 1,
-          "range": 1,
-          "nationality": "Russian",
-          "class": "infantry"
-        },
-        {
-          "num": 3,
+          "num": 2,
           "forceId": 2,
           "combat": 4,
           "movement": 3,
-          "reinforce": "H",
-          "reinforceTurn": 1,
-          "range": 3,
-          "nationality": "Russian",
+          "reinforce": "B",
+          "range": 2,
+          "nationality": "Portuguese",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 2,
+          "nationality": "Portuguese",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 2,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 2,
+          "nationality": "Native",
           "class": "artillery"
         }
       ]
@@ -6841,239 +6749,6 @@
       "main": {
         "description": "Historical Scenario.",
         "longDescription": "Historical Scenario"
-      },
-      "playBalance":{
-        "description": "Best Balance",
-        "longDescription": "Play balance options, to give the french a chance. Drastic troop reductions both sides. No Russian cavalry cannot move first turn.",
-        "noCavMove": true,
-        "units": [
-          {
-            "num": 1,
-            "forceId": 1,
-            "combat": 5,
-            "movement": 4,
-            "reinforce": "A",
-            "range": 1,
-            "nationality": "French",
-            "class": "infantry",
-            "deployed": true
-          },
-          {
-            "num": 4,
-            "forceId": 1,
-            "combat": 4,
-            "movement": 4,
-            "reinforce": "A",
-            "range": 1,
-            "nationality": "French",
-            "class": "infantry",
-            "deployed": true
-          },
-          {
-            "num": 2,
-            "forceId": 1,
-            "combat": 3,
-            "movement": 4,
-            "reinforce": "A",
-            "range": 3,
-            "nationality": "French",
-            "class": "artillery",
-            "deployed": true
-          },
-          {
-            "num": 4,
-            "forceId": 1,
-            "combat": 4,
-            "movement": 4,
-            "reinforce": "B",
-            "range": 1,
-            "nationality": "French",
-            "class": "infantry",
-            "deployed": true
-          },
-          {
-            "num": 2,
-            "forceId": 1,
-            "combat": 3,
-            "movement": 4,
-            "reinforce": "B",
-            "range": 3,
-            "nationality": "French",
-            "class": "artillery",
-            "deployed": true
-          },
-          {
-            "num": 2,
-            "forceId": 1,
-            "combat": "4",
-            "movement": "6",
-            "reinforce": "A",
-            "range": 1,
-            "nationality": "French",
-            "class": "cavalry",
-            "deployed": true
-          },
-          {
-            "num": 2,
-            "forceId": 1,
-            "combat": 6,
-            "movement": 4,
-            "reinforce": "C",
-            "reinforceTurn": "2",
-            "range": 1,
-            "nationality": "RoyalGuard",
-            "class": "infantry",
-            "deployed": false
-          },
-          {
-            "num": 1,
-            "forceId": 1,
-            "combat": 5,
-            "movement": 6,
-            "reinforce": "C",
-            "reinforceTurn": "2",
-            "range": 1,
-            "nationality": "RoyalGuard",
-            "class": "cavalry",
-            "deployed": false
-          },
-          {
-            "num": 1,
-            "forceId": 1,
-            "combat": 5,
-            "movement": 4,
-            "reinforce": "C",
-            "reinforceTurn": "2",
-            "range": 5,
-            "nationality": "Italian",
-            "class": "artillery",
-            "deployed": false
-          },
-          {
-            "num": 1,
-            "forceId": 2,
-            "combat": 5,
-            "movement": 4,
-            "reinforce": "D",
-            "range": 1,
-            "nationality": "Russian",
-            "class": "infantry",
-            "deployed": true
-          },
-          {
-            "num": 5,
-            "forceId": 2,
-            "combat": 4,
-            "movement": 4,
-            "reinforce": "D",
-            "range": 1,
-            "nationality": "Russian",
-            "class": "infantry",
-            "deployed": true
-          },
-          {
-            "num": 1,
-            "forceId": 2,
-            "combat": 5,
-            "movement": 2,
-            "reinforce": "E",
-            "range": 5,
-            "nationality": "Russian",
-            "class": "artillery",
-            "deployed": true
-          },
-          {
-            "num": 1,
-            "forceId": 2,
-            "combat": 4,
-            "movement": 3,
-            "reinforce": "E",
-            "range": 3,
-            "nationality": "Russian",
-            "class": "artillery",
-            "deployed": true
-          },
-          {
-            "num": 1,
-            "forceId": 2,
-            "combat": 4,
-            "movement": 6,
-            "reinforce": "F",
-            "range": 1,
-            "nationality": "Russian",
-            "class": "cavalry",
-            "deployed": true
-          },
-          {
-            "num": 1,
-            "forceId": 2,
-            "combat": 4,
-            "movement": 7,
-            "reinforce": "F",
-            "range": 1,
-            "nationality": "Russian",
-            "class": "cavalry",
-            "deployed": true
-          },
-          {
-            "num": 1,
-            "forceId": 2,
-            "combat": 1,
-            "movement": 7,
-            "reinforce": "F",
-            "range": 1,
-            "nationality": "Russian",
-            "class": "cavalry",
-            "deployed": true
-          },
-          {
-            "num": 1,
-            "forceId": 2,
-            "combat": 3,
-            "movement": 5,
-            "reinforce": "G",
-            "range": 3,
-            "nationality": "Russian",
-            "class": "horseartillery",
-            "deployed": true
-          },
-          {
-            "num": 1,
-            "forceId": 2,
-            "combat": 5,
-            "movement": 4,
-            "reinforce": "H",
-            "reinforceTurn": 1,
-            "range": 1,
-            "nationality": "Russian",
-            "class": "infantry",
-            "deployed": false
-          },
-          {
-            "num": 3,
-            "forceId": 2,
-            "combat": 4,
-            "movement": 4,
-            "reinforce": "H",
-            "reinforceTurn": 1,
-            "range": 1,
-            "nationality": "Russian",
-            "class": "infantry",
-            "deployed": false
-          },
-          {
-            "num": 2,
-            "forceId": 2,
-            "combat": 4,
-            "movement": 3,
-            "reinforce": "H",
-            "reinforceTurn": 1,
-            "range": 3,
-            "nationality": "Russian",
-            "class": "artillery",
-            "deployed": false
-          }
-        ]
       }
     }
   },
