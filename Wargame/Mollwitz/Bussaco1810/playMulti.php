@@ -20,12 +20,11 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/mollwitz/images/Klyastitsy.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Batalha_do_Buçaco_(Roque_Gameiro,_Quadros_da_História_de_Portugal,_1917).png")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }
     </style>
 
 <footer class="attribution">
-    By Peter von Hess  [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File:Klyastitsy.jpg#filelinks">via Wikimedia Commons</a>
-</footer>
+    Roque Gameiro [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3ABatalha_do_Bu%C3%A7aco_(Roque_Gameiro%2C_Quadros_da_Hist%C3%B3ria_de_Portugal%2C_1917).png">via Wikimedia Commons</a></footer>

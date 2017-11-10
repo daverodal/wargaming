@@ -20,12 +20,11 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/mollwitz/images/Klyastitsy.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Vimeiro.png")?>") #333 no-repeat;
             background-position: 25% 0;
             background-size:100%;
         }
     </style>
 
 <footer class="attribution">
-    By Peter von Hess  [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File:Klyastitsy.jpg#filelinks">via Wikimedia Commons</a>
-</footer>
+    By J. Cardini esculp e D. Schioppetta delin - Imagem Biblioteca Nacional [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File%3AVimeiro.png">via Wikimedia Commons</a></footer>
