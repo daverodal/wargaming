@@ -38,79 +38,6 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         return $ret;
     }
 
-    protected function checkVictory( $battle)
-    {
-        $battle = Battle::getBattle();
-
-        $gameRules = $battle->gameRules;
-        $scenario = $battle->scenario;
-        $turn = $gameRules->turn;
-        $frenchWin = $russianWin = $draw = false;
-
-        $victoryReason = "";
-
-        if (!$this->gameOver) {
-
-            $pData = $battle::getPlayerData($battle->scenario)['forceName'];
-
-            $russianWinScore = 35;
-            $frenchWinScore = 35;
-
-            if($this->victoryPoints[Bussaco1810::FRENCH_FORCE] >= $frenchWinScore){
-                $allHexes = true;
-                foreach($battle->specialHexA as $specialHex){
-                    if($battle->mapData->getSpecialHex($specialHex) !== Bussaco1810::FRENCH_FORCE){
-                        $allHexes = false;
-                        break;
-                    }
-                }
-                if($allHexes === true){
-                    $frenchWin = true;
-                    $victoryReason .= "Over $frenchWinScore and all hexes in Bussaco";
-                }
-            }
-            if ($this->victoryPoints[Bussaco1810::ANGLO_ALLIED_FORCE] >= $russianWinScore) {
-                $allHexes = true;
-                foreach($battle->specialHexA as $specialHex){
-                    if($battle->mapData->getSpecialHex($specialHex) !== Bussaco1810::ANGLO_ALLIED_FORCE){
-                        $allHexes = false;
-                        break;
-                    }
-                }
-                if($allHexes === true) {
-                    $russianWin = true;
-                    $victoryReason .= "Over $russianWinScore and all hexes in Bussaco";
-                }
-            }
-
-            if ($frenchWin && !$russianWin) {
-                $this->winner = Bussaco1810::FRENCH_FORCE;
-                $winner = $pData[$this->winner];
-                $gameRules->flashMessages[] = "$winner Win";
-                $gameRules->flashMessages[] = $victoryReason;
-                $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
-            }
-            if ($russianWin && !$frenchWin) {
-                $this->winner = Bussaco1810::ANGLO_ALLIED_FORCE;
-                $winner = $pData[$this->winner];
-                $gameRules->flashMessages[] = "$winner Win";
-                $gameRules->flashMessages[] = $victoryReason;
-                $gameRules->flashMessages[] = "Game Over";
-                $this->gameOver = true;
-                return true;
-            }
-            if ($turn > $gameRules->maxTurn) {
-                $gameRules->flashMessages[] = "Tie Game";
-                $this->winner = 0;
-                $this->gameOver = true;
-                return true;
-            }
-        }
-        return false;
-    }
-
     public function postRecoverUnit($args)
     {
         $unit = $args[0];
@@ -163,6 +90,18 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
     }
 
 
+    public function specialHexChange($args)
+    {
+        $battle = Battle::getBattle();
+        list($mapHexName, $forceId) = $args;
+
+        if (in_array($mapHexName, $battle->specialHexA)) {
+            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, 5);
+        }
+        if (in_array($mapHexName, $battle->specialHexB)) {
+            $this->takeHex($battle->specialHexesMap['SpecialHexB'], $forceId, $mapHexName, 10);
+        }
+    }
 
 
 
@@ -177,6 +116,82 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $b->gameRules->flashMessages[] = "Russian Cavalry cannot move first turn. All other Russian units half movement.";
             }
         }
+    }
+
+    protected function checkVictory( $battle)
+    {
+        $battle = Battle::getBattle();
+
+        $gameRules = $battle->gameRules;
+        $scenario = $battle->scenario;
+        $turn = $gameRules->turn;
+        $frenchWin = $BritishWin = $draw = false;
+
+        $victoryReason = "";
+
+        if (!$this->gameOver) {
+            $pData = $battle::getPlayerData($battle->scenario)['forceName'];
+            $mapData = $battle->mapData;
+
+            $AngloAlliedWinScore = 40;
+            $frenchWinScore = 40;
+            $AngloAlliedWin = false;
+            $frenchWin = false;
+
+            if($this->victoryPoints[Bussaco1810::FRENCH_FORCE] >= $frenchWinScore){
+                $frenchWin = true;
+                $victoryReason .= "Over $frenchWinScore ";
+            }
+            if ($this->victoryPoints[Bussaco1810::ANGLO_ALLIED_FORCE] >= $AngloAlliedWinScore) {
+                $AngloAlliedWin = true;
+                $victoryReason .= "Over $AngloAlliedWinScore ";
+            }
+
+
+            if ($frenchWin && !$AngloAlliedWin) {
+                $this->winner = Bussaco1810::FRENCH_FORCE;
+                $winner = $pData[$this->winner];
+                $gameRules->flashMessages[] = "$winner Win";
+                $gameRules->flashMessages[] = $victoryReason;
+                $gameRules->flashMessages[] = "Game Over";
+                $this->gameOver = true;
+                return true;
+            }
+            if ($AngloAlliedWin && !$frenchWin) {
+                $this->winner = Bussaco1810::ANGLO_ALLIED_FORCE;
+                $winner = $pData[$this->winner];
+                $gameRules->flashMessages[] = "$winner Win";
+                $gameRules->flashMessages[] = $victoryReason;
+                $gameRules->flashMessages[] = "Game Over";
+                $this->gameOver = true;
+                return true;
+            }
+            if($frenchWin && $AngloAlliedWin){
+                $this->winner = 0;
+                $gameRules->flashMessages[] = "Tie Game";
+                $gameRules->flashMessages[] = $victoryReason;
+                $gameRules->flashMessages[] = "Game Over";
+                $this->gameOver = true;
+                return true;
+            }
+            if ($turn > $gameRules->maxTurn) {
+                if($this->victoryPoints[Bussaco1810::ANGLO_ALLIED_FORCE] > $this->victoryPoints[Bussaco1810::FRENCH_FORCE]){
+                    $this->winner = Bussaco1810::ANGLO_ALLIED_FORCE;
+                    $winner = $pData[$this->winner];
+                    $gameRules->flashMessages[] = "$winner Win";
+                    $gameRules->flashMessages[] = $victoryReason;
+                    $gameRules->flashMessages[] = "Game Over";
+                }else{
+                    $this->winner = 0;
+                    $gameRules->flashMessages[] = "Tie Game";
+                    $gameRules->flashMessages[] = $victoryReason;
+                    $gameRules->flashMessages[] = "Game Over";
+                }
+                $this->gameOver = true;
+                return true;
+            }
+        }
+        return false;
     }
 
 }

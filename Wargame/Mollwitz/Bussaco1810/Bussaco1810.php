@@ -24,7 +24,7 @@ class Bussaco1810 extends \Wargame\Mollwitz\JagCore
     const FRENCH_FORCE = 1;
     const ANGLO_ALLIED_FORCE = 2;
 
-    public $specialHexesMap = ['SpecialHexA'=>self::ANGLO_ALLIED_FORCE, 'SpecialHexB'=>0, 'SpecialHexC'=>0];
+    public $specialHexesMap = ['SpecialHexA'=>self::ANGLO_ALLIED_FORCE, 'SpecialHexB'=>self::ANGLO_ALLIED_FORCE, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){
         $forceName = ['Observer', "French", "Anglo Allied"];
