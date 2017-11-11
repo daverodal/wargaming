@@ -133,12 +133,6 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     public function postRecoverUnit($args)
     {
-        $unit = $args[0];
-        $b = Battle::getBattle();
-        $scenario = $b->scenario;
-        $id = $unit->id;
-
-
         parent::postRecoverUnit($args);
 
     }

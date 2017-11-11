@@ -40,55 +40,8 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     public function postRecoverUnit($args)
     {
-        $unit = $args[0];
-        $b = Battle::getBattle();
-        $scenario = $b->scenario;
-        $id = $unit->id;
-
-
         parent::postRecoverUnit($args);
-
-        $unit->removeAdjustment('movement');
-
-        if ($b->gameRules->turn <= 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
-            if(!empty($scenario->noCavMove) && $unit->class === "cavalry"){
-                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-            }
-//            if($b->gameRules->turn === 1 && !empty($scenario->noCavMove) && $unit->class != "cavalry" && $unit->forceId === Bussaco1810::ANGLO_ALLIED_FORCE){
-//                $unit->addAdjustment('movement', 'halfMovement');
-//            }
-        }
     }
-
-
-    public function phaseChange()
-    {
-        parent::phaseChange();
-        /* @var $battle JagCore */
-        $battle = Battle::getBattle();
-        /* @var $gameRules GameRules */
-        $gameRules = $battle->gameRules;
-        $turn = $gameRules->turn;
-        $forceId = $gameRules->attackingForceId;
-        $theUnits = $battle->force->units;
-
-
-        if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
-            $gameRules->flashMessages[] = "@hide deadpile";
-            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
-                $gameRules->flashMessages[] = "@show deployWrapper";
-                $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
-            }
-
-            foreach ($theUnits as $id => $unit) {
-
-                if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
-                    $theUnits[$id]->hexagon->parent = "deployBox";
-                }
-            }
-        }
-    }
-
 
     public function specialHexChange($args)
     {
@@ -103,19 +56,9 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
     }
 
-
-
-
     public function postRecoverUnits()
     {
-        $b = Battle::getBattle();
-        $scenario = $b->scenario;
 
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
-            if(!empty($scenario->noCavMove)) {
-                $b->gameRules->flashMessages[] = "Russian Cavalry cannot move first turn. All other Russian units half movement.";
-            }
-        }
     }
 
     protected function checkVictory( $battle)

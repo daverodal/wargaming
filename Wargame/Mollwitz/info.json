@@ -6572,6 +6572,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Bussaco1810\\Bussaco1810",
     "description": "The Battle of Bussaco1810 1810.",
     "params": {
+      "steepHills": true,
       "units": [
         {
           "num": 3,

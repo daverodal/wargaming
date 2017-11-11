@@ -54,21 +54,8 @@ class Bussaco1810 extends \Wargame\Mollwitz\JagCore
         UnitFactory::$injector = $this->force;
 
         foreach($unitSets as $unitSet) {
-            $reinforceTurn = 1;
-            $unitHex = "deployBox";
-            $status = STATUS_CAN_DEPLOY;
-            if(isset($unitSet->reinforceTurn)){
-                if(isset($this->scenario->noRussianReinf)){
-                    if($unitSet->forceId === self::ANGLO_ALLIED_FORCE){
-                        continue;
-                    }
-                }
-                $reinforceTurn = $unitSet->reinforceTurn;
-                $unitHex = "gameTurn$reinforceTurn";
-                $status = STATUS_CAN_REINFORCE;
-            }
             for ($i = 0; $i < $unitSet->num; $i++) {
-                UnitFactory::create("infantry-1", $unitSet->forceId, $unitHex, "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, $status, $unitSet->reinforce, $reinforceTurn, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
             }
         }
     }

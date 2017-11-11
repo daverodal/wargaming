@@ -42,7 +42,7 @@ class CombatResultsTable
     //     combatIndexeCount is 6; maxCombatIndex = 5
     //     index is 0 to 5;  dieSidesCount = 6
     use \Wargame\CRTResults;
-    
+
     function __construct()
     {
         $this->combatResultsHeader = array("1:4", "1:3", "1:2", "1:1", "1.5:1", "2:1", "3:1", "4:1", "5:1", "6:1");
@@ -297,8 +297,15 @@ class CombatResultsTable
                     if(($attackUpHill || $isFrozenSwamp || $attackerIsFrozenSwamp) && !($isSwamp || $attackerIsSwamp || $acrossRiver || $attackerIsSunkenRoad || $acrossRedoubt)){
 //                        $unitStrength *= .75;
 //                        $combats->dieShift = -1;
-                          $unitStrength -= 1;
-                        $combatLog .= "<span class='crtDetailComment'>unit strength -1  for $terrainReason</span>&nbsp;&nbsp;<br>";
+                        if(!empty($scenario->steepHills) && $attackUpHill){
+                            $unitStrength /= 2;
+                            $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>attack halved yo steep Hills&nbsp;&nbsp;<br>$terrainReason</span>&nbsp;&nbsp;<br>";
+
+                        }else{
+                            $unitStrength -= 1;
+                            $combatLog .= "<span class='crtDetailComment'>unit strength -1  for $terrainReason</span>&nbsp;&nbsp;<br>";
+                        }
+
                     }else{
                         if(empty($scenario->weakRedoubts) || $isSwamp || $attackerIsSwamp || $acrossRiver || $attackerIsSunkenRoad){
                             $unitStrength /= 2;
@@ -329,9 +336,16 @@ class CombatResultsTable
 
 //                    $unitStrength *= .75;
 //                    $combats->dieShift = -1;
-                    $unitStrength -= 1;
-                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>unit strength -1 for $terrainReason</span>&nbsp;&nbsp;<br>";
-                    if($unit->nationality != "Beluchi" && $unit->nationality != "Sikh"){
+                    if(!empty($scenario->steepHills) && $attackUpHill){
+                        $unitStrength /= 2;
+                        $combatLog .= "attack halved up steep hills&nbsp;&nbsp;<br>$terrainReason</span>&nbsp;&nbsp;<br>";
+
+                    }else{
+                        $unitStrength -= 1;
+                        $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>unit strength -1 for $terrainReason</span>&nbsp;&nbsp;<br>";
+
+                    }
+                     if($unit->nationality != "Beluchi" && $unit->nationality != "Sikh"){
                         $combinedArms[$battle->force->units[$attackerId]->class]++;
                     }else{
                         $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>no combined arms bonus for ".$unit->nationality." cavalry</span>&nbsp;&nbsp;<br>";
