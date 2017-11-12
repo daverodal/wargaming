@@ -162,6 +162,11 @@ x.register("mapUnits", function (mapUnits, data) {
         if (html) {
             $("#" + i + " .unit-numbers").html(html);
         }
+        if(mapUnits[i].range > 1){
+            $("#" + i + " .range").html(mapUnits[i].range);
+        }else{
+            $("#" + i + " .range").html('');
+        }
         var len = $("#" + i + " .unit-numbers").text().length;
         $("#" + i + " div.unit-numbers span ").addClass("infoLen" + len);
         $("#" + i + " .counterWrapper .guard-unit ").addClass("infoLen" + len);

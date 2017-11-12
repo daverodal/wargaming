@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\Mollwitz\Bussaco1810;
+namespace Wargame\Mollwitz\Friedlingen1702;
 use \Wargame\Battle;
     /*
 Copyright 2012-2015 David Rodal
@@ -40,16 +40,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     public function postRecoverUnit($args)
     {
-        $unit = $args[0];
-        $b = Battle::getBattle();
-
         parent::postRecoverUnit($args);
-
-        if ($b->gameRules->turn <= 3 ) {
-            $unit->addAdjustment("mist","rangeOne");
-        }else{
-            $unit->removeAdjustment("mist");
-        }
     }
 
     public function specialHexChange($args)
@@ -77,7 +68,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         $gameRules = $battle->gameRules;
         $scenario = $battle->scenario;
         $turn = $gameRules->turn;
-        $frenchWin = $BritishWin = $draw = false;
+        $draw = false;
 
         $victoryReason = "";
 
@@ -85,23 +76,23 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             $pData = $battle::getPlayerData($battle->scenario)['forceName'];
             $mapData = $battle->mapData;
 
-            $AngloAlliedWinScore = 40;
-            $frenchWinScore = 40;
-            $AngloAlliedWin = false;
-            $frenchWin = false;
+            $playerTwoWinScore = 40;
+            $playerOneWinScore = 40;
+            $playerTwoWin = false;
+            $playerOneWin = false;
 
-            if($this->victoryPoints[Bussaco1810::FRENCH_FORCE] >= $frenchWinScore){
-                $frenchWin = true;
-                $victoryReason .= "Over $frenchWinScore ";
+            if($this->victoryPoints[HorseMusket::PLAYER_ONE] >= $playerOneWinScore){
+                $playerOneWin = true;
+                $victoryReason .= "Over $playerOneWinScore ";
             }
-            if ($this->victoryPoints[Bussaco1810::ANGLO_ALLIED_FORCE] >= $AngloAlliedWinScore) {
-                $AngloAlliedWin = true;
-                $victoryReason .= "Over $AngloAlliedWinScore ";
+            if ($this->victoryPoints[HorseMusket::PLAYER_TWO] >= $playerTwoWinScore) {
+                $playerTwoWin = true;
+                $victoryReason .= "Over $playerTwoWinScore ";
             }
 
 
-            if ($frenchWin && !$AngloAlliedWin) {
-                $this->winner = Bussaco1810::FRENCH_FORCE;
+            if ($playerOneWin && !$playerTwoWin) {
+                $this->winner = HorseMusket::PLAYER_ONE;
                 $winner = $pData[$this->winner];
                 $gameRules->flashMessages[] = "$winner Win";
                 $gameRules->flashMessages[] = $victoryReason;
@@ -109,8 +100,8 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->gameOver = true;
                 return true;
             }
-            if ($AngloAlliedWin && !$frenchWin) {
-                $this->winner = Bussaco1810::ANGLO_ALLIED_FORCE;
+            if ($playerTwoWin && !$playerOneWin) {
+                $this->winner = HorseMusket::PLAYER_TWO;
                 $winner = $pData[$this->winner];
                 $gameRules->flashMessages[] = "$winner Win";
                 $gameRules->flashMessages[] = $victoryReason;
@@ -118,7 +109,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 $this->gameOver = true;
                 return true;
             }
-            if($frenchWin && $AngloAlliedWin){
+            if($playerOneWin && $playerTwoWin){
                 $this->winner = 0;
                 $gameRules->flashMessages[] = "Tie Game";
                 $gameRules->flashMessages[] = $victoryReason;
@@ -127,8 +118,8 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                if($this->victoryPoints[Bussaco1810::ANGLO_ALLIED_FORCE] >= $this->victoryPoints[Bussaco1810::FRENCH_FORCE]){
-                    $this->winner = Bussaco1810::ANGLO_ALLIED_FORCE;
+                if($this->victoryPoints[HorseMusket::PLAYER_TWO] > $this->victoryPoints[HorseMusket::PLAYER_ONE]){
+                    $this->winner = HorseMusket::PLAYER_TWO;
                     $winner = $pData[$this->winner];
                     $gameRules->flashMessages[] = "$winner Win";
                     $gameRules->flashMessages[] = $victoryReason;
@@ -145,4 +136,5 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
         return false;
     }
+
 }

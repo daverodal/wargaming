@@ -13,11 +13,30 @@
 @section('credit')
     @include('wargame::Mollwitz.credit')
 @endsection
+
+@isset($scenario->corePath)
+@if(view()->exists($scenario->corePath.".victoryConditions"))
+@section('victoryConditions')
+    @include($scenario->corePath.".victoryConditions")
+@endsection
+@endif
+@endisset
+
+
 @if(view()->exists("$curPath.victoryConditions"))
     @section('victoryConditions')
         @include("$curPath.victoryConditions")
     @endsection
 @endif
+
+
+@isset($scenario->corePath)
+    @if(view()->exists($scenario->corePath.".exclusiveRules"))
+        @section('exclusiveRules')
+            @include($scenario->corePath.".exclusiveRules")
+        @endsection
+    @endif
+@endisset
 
 @if(view()->exists("$curPath.exclusiveRules"))
     @section('exclusiveRules')

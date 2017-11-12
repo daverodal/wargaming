@@ -80,4 +80,22 @@ trait UnitAdjustment
         }
         return $value;
     }
+
+    public function getRangeAdjustments($value)
+    {
+        if(empty($this->adjustments)){
+            return $value;
+        }
+        foreach ($this->adjustments as $name => $adjustment) {
+            switch ($adjustment) {
+                case 'rangeOne':
+                    $value = 1;
+                    break;
+                case 'rangeHalf':
+                    $value = $value / 2;
+                    break;
+            }
+        }
+        return $value;
+    }
 }

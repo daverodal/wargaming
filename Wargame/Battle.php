@@ -196,7 +196,8 @@ class Battle
                 self::$isLoaded = true;
                 self::$game = $game;
                 $path = $game->path;
-                $gameName = preg_replace("/.*\\\\/","",$game->fileName);
+//                $gameName = preg_replace("/.*\\\\/","",$game->fileName);
+                $gameName = $name;
 
 
                 $customScenarios = self::$ad->getCustomScenarios($path, $game->genre, $gameName);

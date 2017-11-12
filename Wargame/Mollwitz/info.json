@@ -7956,5 +7956,88 @@
         "progressiveVictoryHexes": true
       }
     }
+  },
+  "HorseMusket": {
+    "name": "Template game",
+    "path": "Mollwitz",
+    "production": true,
+    "genre": "Napoleonic",
+    "playerInfo": ["Observer", "Martians", "Venutians"],
+    "moveFirstDeploySecond": true,
+    "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
+    "description": "Template game",
+    "params": {
+      "playerInfo": ["Observer", "Martians", "Venutians"],
+      "moveFirstDeploySecond": true,
+      "steepHills": true,
+      "gameLength": 14,
+      "units": [ ]
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription": "Historical Scenario"
+      },
+      "alternate": {
+        "description": "New map different victory points.",
+        "longDescription": "New map different victory points"
+      }
+    }
+  },
+  "Friedlingen1702": {
+    "name": "Friedlingen 1702",
+    "path": "Mollwitz",
+    "production": true,
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
+    "description": "Friedlingen 1702",
+    "params": {
+      "corePath":  "wargame::Mollwitz.Friedlingen1702",
+      "victoryCore": "\\Wargame\\Mollwitz\\Friedlingen1702\\VictoryCore",
+      "multiImage": "BattleOfFriedlingen.jpg",
+      "multiAttr": "By The original uploader was Victor falk at English Wikipedia (Transferred from en.wikipedia to Commons.) [Public domain], <a target=\"_blank\" href=\"https://commons.wikimedia.org/wiki/File%3ABattleOfFriedlingen.jpg\">via Wikimedia Commons</a>",
+      "playerInfo": [
+        "Observer",
+        "French",
+        "Imperials"
+      ],
+      "moveFirstDeploySecond": false,
+      "gameLength": 12,
+      "units": []
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription": "Historical Scenario"
+      }
+    }
+  },
+  "Chotusitz1742": {
+    "name": "Chotusitz 1742",
+    "path": "Mollwitz",
+    "production": true,
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
+    "description": "Chotusitz 1742",
+    "params": {
+      "corePath":  "wargame::Mollwitz.Chotusitz1742",
+      "victoryCore": "\\Wargame\\Mollwitz\\Chotusitz1742\\VictoryCore",
+      "multiImage": "BattleOfFriedlingen.jpg",
+      "multiAttr": "By The original uploader was Victor falk at English Wikipedia (Transferred from en.wikipedia to Commons.) [Public domain], <a target=\"_blank\" href=\"https://commons.wikimedia.org/wiki/File%3ABattleOfFriedlingen.jpg\">via Wikimedia Commons</a>",
+      "playerInfo": [
+        "Observer",
+        "Austrian",
+        "Prussian"
+      ],
+      "moveFirstDeploySecond": true,
+      "gameLength": 12,
+      "units": []
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription": "Historical Scenario"
+      }
+    }
   }
 }

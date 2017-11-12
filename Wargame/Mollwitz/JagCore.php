@@ -33,6 +33,8 @@ global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results
 
 class JagCore extends \Wargame\LandBattle{
 
+    const PLAYER_ONE = 1;
+    const PLAYER_TWO = 2;
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>2];
     /* @var MapData $mapData */
     public $mapData;

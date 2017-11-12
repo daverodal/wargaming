@@ -178,7 +178,7 @@ class Unit extends BaseUnit implements \JsonSerializable
         $mapUnit->class = $this->class;
         $mapUnit->forceMarch = $this->forceMarch;
         $mapUnit->status = $this->status;
-        $mapUnit->range = $this->range;
+        $mapUnit->range = $this->getRange();
         $mapUnit->name = $this->name;
         $mapUnit->nationality = $this->nationality;
         if($this->class === "hq") {
@@ -188,6 +188,7 @@ class Unit extends BaseUnit implements \JsonSerializable
     }
 
     public function getRange(){
-        return $this->range;
+        $range = $this->getRangeAdjustments($this->range);
+        return $range;
     }
 }

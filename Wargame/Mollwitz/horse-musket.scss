@@ -8,6 +8,7 @@
 @include player(Sikh,  $beluchiColor, $beluchiWrapperColor, white);
 @include player(Beluchi,  $beluchiColor, $beluchiWrapperColor, white);
 @include player(Austrian,  $austrianColor,  $austrianColor, white);
+@include player(Imperials,  $austrianColor,  $austrianColor, white);
 @include player(Prussian,  $prussianColor,  $prussianWrapperColor, white);
 
 @include player(Allies, $angloAlliedColor, $angloAlliedWrapperColor, white)
@@ -33,3 +34,5 @@
 @include player(Loyalist , $angloAlliedColor,$angloAlliedColor);
 @include player(American, $rebelColor, $rebelWrapperColor, white);
 
+@include player(Martians, pink, fuchsia, white);
+@include player(Venutians, lime, blue, white);

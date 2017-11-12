@@ -196,7 +196,7 @@ abstract class SimpleForce{
     {
         $b = Battle::getBattle();
         $isInRange = false;
-        $range = $this->units[$id]->range;
+        $range = $this->units[$id]->getRange();
         if($argRange !== false){
             $range = $argRange;
         }
@@ -275,7 +275,7 @@ abstract class SimpleForce{
 
     function xxxgetUnitRange($id)
     {
-        return $this->units[$id]->range;
+        return $this->units[$id]->getRange();
     }
 
     /*

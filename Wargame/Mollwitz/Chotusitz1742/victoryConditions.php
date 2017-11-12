@@ -21,19 +21,13 @@
  */
 ?><li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
+    <h4> Victory</h4>
     <ol>
+        <li>
+            the key to victory is defeat!
+        </li>
     <li>
-        Either side wins if they have accumulated 40 points by the end of any game turn a draw is possible.
+        For either side to win it must occupy all hexes of wer and have destroyed at least 35 hostile combat strengths points at the end of any game turn.
     </li>
-        <li>
-            The Anglo allies cannot win (But They can draw) If they do not have at least as many points as the French. Otherwise the Anglo allies win if the French do not.
-        </li>
-        <li>
-            One Victory Point is awarded for each hostile combat strength point destroyed.
-        </li>
-        <li>
-            Points are also awarded for controlling certain hexes.
-            The French are awarded points equal to the blue number in a hex if they occupy it or were the last to move through it.
-        </li>
     </ol>
 </li>
