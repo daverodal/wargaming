@@ -1,6 +1,7 @@
 <?php
 namespace Wargame\Mollwitz\Friedlingen1702;
-use \Wargame\Battle;
+use Wargame\Mollwitz\HorseMusket\HorseMusket;
+use Wargame\Battle;
     /*
 Copyright 2012-2015 David Rodal
 

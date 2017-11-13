@@ -136,7 +136,7 @@ class CombatResultsTable
         }
 
         $defenders = $combats->defenders;
-        $isFrozenSwamp = $isTown = $isHill = $isForest = $isSwamp = $attackerIsSunkenRoad = $isRedoubt = $isElevated = false;
+        $isFort = $isRough = $isFrozenSwamp = $isTown = $isHill = $isForest = $isSwamp = $attackerIsSunkenRoad = $isRedoubt = $isElevated = false;
 
 
         foreach ($defenders as $defId => $defender) {
@@ -147,11 +147,14 @@ class CombatResultsTable
             $isHill |= $battle->terrain->terrainIs($hexpart, 'hill');
             $isForest |= $battle->terrain->terrainIs($hexpart, 'forest');
             $isSwamp |= $battle->terrain->terrainIs($hexpart, 'swamp');
-                if($battle->terrain->terrainIs($hexpart, 'frozenswamp')){
-                   if($battle->terrain->getDefenderTerrainCombatEffect($hexagon)){
-                       $isFrozenSwamp |= true;
-                   }
-                }
+            if($battle->terrain->terrainIs($hexpart, 'frozenswamp')){
+               if($battle->terrain->getDefenderTerrainCombatEffect($hexagon)){
+                   $isFrozenSwamp |= true;
+               }
+            }
+            $isFort |= $battle->terrain->terrainIs($hexpart, 'forta');
+            $isRough |= $battle->terrain->terrainIs($hexpart, 'roughone');
+
 
             if($battle->terrain->terrainIs($hexpart, 'elevation1')){
                 $isElevated = 1;
@@ -161,7 +164,7 @@ class CombatResultsTable
             }
         }
         $isClear = true;
-        if ($isTown || $isForest || $isHill || $isSwamp || $isFrozenSwamp) {
+        if ($isFort || $isRough || $isTown || $isForest || $isHill || $isSwamp || $isFrozenSwamp) {
             $isClear = false;
         }
 
@@ -470,6 +473,16 @@ class CombatResultsTable
                 if(($isTown && $class !== 'cavalry') || $isHill){
                     $defMultiplier = 2;
                     $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>2x for terrain</span><br>";
+                }
+            }
+            if($isFort){
+                if($class === 'cavalry'){
+                    $defMultiplier = 2.0;
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>2x cavalry for fort</span><br>";
+
+                }else{
+                    $defMultiplier = 3.0;
+                    $combatLog .= "&nbsp;&nbsp;<br><span class='crtDetailComment'>3x fort</span><br>";
                 }
             }
             $combatLog .= " ".$unitDefense * $defMultiplier."<br>";

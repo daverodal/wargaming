@@ -239,6 +239,10 @@ class JagCore extends \Wargame\LandBattle{
         $this->terrain->addTerrainFeature("elevation1","elevation1", "e", 0, 0, 0, false);
         $this->terrain->addTerrainFeature("elevation2","elevation2", "e", 0, 0, 0, false);
         $this->terrain->addTerrainFeature("elevation0","elevation0", "e", 0, 0, 0, false);
+        $this->terrain->addTerrainFeature("roughone","elevation0", "e", 1.5, 0, 0, false);
+        $this->terrain->addAltEntranceCost('roughone', 'cavalry', 2);
+        $this->terrain->addTerrainFeature("forta", "fortA", "t", 1, 0, 0, true, true);
+
 
 
 
