@@ -26,6 +26,26 @@ You should have received a copy of the GNU General Public License
 ?>
 
 <ol>
-    <li>exclusive to me! 2
+    <li>
+
+        Game Length: 12 turns
+    </li><li>
+
+        Imperials: Deploy first on any hexes marked Red I. Imperials move first.
+    </li><li>
+        French: Deploy second on any hexes marked Blue F. French move second.
+    </li><li><span class="lessBig">Terrain</span>
+        <ol>
+            <li><span class="lessBig">Forts:</span>
+                Costs 1 to enter. Triple defending Infantry and artillery. Double defending Cavalry block line of site. Halve attacking cavalry no cavalry combined arms shift attacking.
+
+            </li>
+            <li><span class="lessBig">Rough:</span>
+                Costs Infantry and artillery 1.5 to enter, Cavalry 2. Halve attacking cavalry no cavalry combined arms shift attacking. Rough does not block line of site.
+
+            </li>
+        </ol>
+
+
     </li>
 </ol>

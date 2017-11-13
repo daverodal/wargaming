@@ -21,13 +21,15 @@
  */
 ?><li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
-    <h4> Victory</h4>
     <ol>
-        <li>
-            the key to victory is defeat!
-        </li>
+
     <li>
-        For either side to win it must occupy all hexes of wer and have destroyed at least 35 hostile combat strengths points at the end of any game turn.
+        The first side to accumulate 25 or more points and a lead of 5 by the end of any game turn wins. A draw is possible.
+        </li><li> One point is awarded for each hostile combat factor destroyed.
+            </li><li>Additionally there are hexes on the map marked with numbers in the respective sides colors Red for Imperial, Blue for French.
+            </li><li>An amount of points equal to the number is awarded to that given side at any time that that side either occupies or was the last to move through the hex in question.
+        </li><li></li>
+        The Imperials win if at the end of game turn 12 the French have not won and the French have not scored 5 more points than the Imperials or have taken no geographic objectives.
     </li>
     </ol>
 </li>
