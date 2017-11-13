@@ -8220,5 +8220,34 @@
         "longDescription": "Historical Scenario"
       }
     }
+  },
+  "Speyerbach1703": {
+    "name": "Speyerbach 1703",
+    "path": "Mollwitz",
+    "production": true,
+    "genre": "18'th Century Europe",
+    "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
+    "description": "Friedlingen 1702",
+    "params": {
+      "corePath":  "wargame::Mollwitz.Speyerbach1703",
+      "victoryCore": "\\Wargame\\Mollwitz\\Speyerbach1703\\VictoryCore",
+      "multiImage": "Holy_Roman_Empire_c._1700.png",
+      "multiAttr": "By Rebel Redcoat (Own work) [<a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>], <a href=\"https://commons.wikimedia.org/wiki/File%3AHoly_Roman_Empire_c._1700.png\">via Wikimedia Commons</a>",
+      "playerInfo": [
+        "Observer",
+        "Allies",
+        "French"
+      ],
+      "moveFirstDeploySecond": false,
+      "gameLength": 8,
+      "units": []
+    },
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription": "Historical Scenario"
+      }
+    }
   }
+
 }
