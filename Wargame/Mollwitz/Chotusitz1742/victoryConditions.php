@@ -21,13 +21,13 @@
  */
 ?><li class="exclusive">
     <span class="lessBig">Victory Conditions</span>
-    <h4> Victory</h4>
     <ol>
         <li>
-            the key to victory is defeat!
+            Either Side wins at the end of any game turn that it has accumulated 30 points.
         </li>
-    <li>
-        For either side to win it must occupy all hexes of wer and have destroyed at least 35 hostile combat strengths points at the end of any game turn.
-    </li>
+        <li>
+            One point is awarded for each hostile combat factor destroyed.
+        </li>
+
     </ol>
 </li>

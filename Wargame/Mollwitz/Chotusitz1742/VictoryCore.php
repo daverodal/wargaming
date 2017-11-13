@@ -47,8 +47,9 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         if($unit->id == 1){
         }
         if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId === HorseMusket::PLAYER_TWO) {
-            echo "unready ";
-            $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            if($unit->class === "infantry"){
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
         }
 
 
