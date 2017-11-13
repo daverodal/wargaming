@@ -26,6 +26,8 @@
 @include unitColor(Swedish, $swedishWrapperColor, Swe, white);
 
 @include unitColor(NapPrussian, $prussianNapColor, PruNap, white);
+@include unitColor(Nassau, $prussianNapColor, Nassau);
+
 
 @include unitColor(Guard, $frenchNapoleonWrapperColor, FrenchNap, white);
 @include unitColor(Bavarian, $bavarianWrapperColor, Bavarian);
