@@ -63,8 +63,17 @@ class HorseMusket extends \Wargame\Mollwitz\JagCore
         UnitFactory::$injector = $this->force;
 
         foreach($unitSets as $unitSet) {
+            $reinforceTurn = 1;
+            $unitHex = "deployBox";
+            $status = STATUS_CAN_DEPLOY;
+            if(isset($unitSet->reinforceTurn)){
+                $reinforceTurn = $unitSet->reinforceTurn;
+                $unitHex = "gameTurn$reinforceTurn";
+                $status = STATUS_CAN_REINFORCE;
+            }
+
             for ($i = 0; $i < $unitSet->num; $i++) {
-                UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce ?? 1, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+                UnitFactory::create("infantry-1", $unitSet->forceId, $unitHex, "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, $status, $unitSet->reinforce ?? 1, $reinforceTurn, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
             }
         }
     }
@@ -81,8 +90,8 @@ class HorseMusket extends \Wargame\Mollwitz\JagCore
         } else {
             $this->victory = new \Wargame\Victory($scenario->victoryCore);
             $this->gameRules->setMaxTurn($scenario->gameLength);
-            $deployFirstMoveSecond = $scenario->deployFirstMoveSecond ?? false;
-            if($deployFirstMoveSecond){
+            $moveFirstDeploySecond = $scenario->moveFirstDeploySecond ?? false;
+            if($moveFirstDeploySecond){
                 $this->deployFirstMoveSecond();
 
             }else{

@@ -1,6 +1,7 @@
 <?php
 namespace Wargame\Mollwitz\Chotusitz1742;
-use \Wargame\Battle;
+use Wargame\Mollwitz\HorseMusket\HorseMusket;
+use Wargame\Battle;
     /*
 Copyright 2012-2015 David Rodal
 
@@ -40,7 +41,17 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     public function postRecoverUnit($args)
     {
+        $unit = $args[0];
         parent::postRecoverUnit($args);
+        $b = Battle::getBattle();
+        if($unit->id == 1){
+        }
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY && $unit->forceId === HorseMusket::PLAYER_TWO) {
+            echo "unready ";
+            $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+        }
+
+
     }
 
     public function specialHexChange($args)
@@ -118,18 +129,11 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                if($this->victoryPoints[HorseMusket::PLAYER_TWO] > $this->victoryPoints[HorseMusket::PLAYER_ONE]){
-                    $this->winner = HorseMusket::PLAYER_TWO;
-                    $winner = $pData[$this->winner];
-                    $gameRules->flashMessages[] = "$winner Win";
-                    $gameRules->flashMessages[] = $victoryReason;
-                    $gameRules->flashMessages[] = "Game Over";
-                }else{
-                    $this->winner = 0;
-                    $gameRules->flashMessages[] = "Tie Game";
-                    $gameRules->flashMessages[] = $victoryReason;
-                    $gameRules->flashMessages[] = "Game Over";
-                }
+                $this->winner = 0;
+                $gameRules->flashMessages[] = "Tie Game";
+                $gameRules->flashMessages[] = $victoryReason;
+                $gameRules->flashMessages[] = "Game Over";
+
                 $this->gameOver = true;
                 return true;
             }

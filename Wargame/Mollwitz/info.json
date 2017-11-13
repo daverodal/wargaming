@@ -8031,7 +8031,188 @@
       ],
       "moveFirstDeploySecond": true,
       "gameLength": 12,
-      "units": []
+      "units": [
+        {
+          "class": "infantry",
+          "combat": 5,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 3,
+          "nationality": "Austrian",
+          "num": 4,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "infantry",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 3,
+          "nationality": "Austrian",
+          "num": 7,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "infantry",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 4,
+          "nationality": "Austrian",
+          "num": 2,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "cavalry",
+          "combat": 6,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 5,
+          "nationality": "Austrian",
+          "num": 2,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "cavalry",
+          "combat": 5,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 5,
+          "nationality": "Austrian",
+          "num": 1,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "cavalry",
+          "combat": 5,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 6,
+          "nationality": "Austrian",
+          "num": 1,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "cavalry",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 5,
+          "nationality": "Austrian",
+          "num": 1,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "artillery",
+          "combat": 5,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 2,
+          "nationality": "Austrian",
+          "num": 1,
+          "range": 4,
+          "reinforce": "A"
+        },
+        {
+          "class": "infantry",
+          "combat": 5,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 3,
+          "nationality": "Prussian",
+          "num": 3,
+          "range": 1,
+          "reinforce": "D"
+        },
+        {
+          "class": "cavalry",
+          "combat": 6,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 5,
+          "nationality": "Prussian",
+          "num": 1,
+          "range": 1,
+          "reinforce": "C"
+        },
+        {
+          "class": "cavalry",
+          "combat": 5,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 5,
+          "nationality": "Prussian",
+          "num": 4,
+          "range": 1,
+          "reinforce": "C"
+        },
+        {
+          "class": "cavalry",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 5,
+          "nationality": "Prussian",
+          "num": 4,
+          "range": 1,
+          "reinforce": "C"
+        },
+        {
+          "class": "infantry",
+          "combat": 6,
+          "deployed": false,
+          "forceId": 2,
+          "movement": 3,
+          "nationality": "Prussian",
+          "num": 2,
+          "range": 1,
+          "reinforce": "E",
+          "reinforceTurn": 1
+        },
+        {
+          "class": "infantry",
+          "combat": 5,
+          "deployed": false,
+          "forceId": 2,
+          "movement": 3,
+          "nationality": "Prussian",
+          "num": 7,
+          "range": 1,
+          "reinforce": "E",
+          "reinforceTurn": 1
+        },
+        {
+          "class": "cavalry",
+          "combat": 4,
+          "deployed": false,
+          "forceId": 2,
+          "movement": 6,
+          "nationality": "Prussian",
+          "num": 1,
+          "range": 1,
+          "reinforce": "E",
+          "reinforceTurn": 1
+        },
+        {
+          "class": "artillery",
+          "combat": 4,
+          "deployed": false,
+          "forceId": 2,
+          "movement": 2,
+          "nationality": "Prussian",
+          "num": 2,
+          "range": 4,
+          "reinforce": "E",
+          "reinforceTurn": 1
+        }
+      ]
     },
     "scenarios": {
       "main": {

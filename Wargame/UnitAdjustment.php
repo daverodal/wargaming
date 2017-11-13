@@ -76,6 +76,9 @@ trait UnitAdjustment
                 case 'plusOneMovement':
                     $value += 1;
                     break;
+                case 'zeroMovement':
+                    $value = 0;
+                    break;
             }
         }
         return $value;

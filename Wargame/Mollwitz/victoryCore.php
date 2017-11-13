@@ -148,9 +148,30 @@ class victoryCore extends \Wargame\VictoryCore
 
     public function phaseChange()
     {
-        $b = Battle::getBattle();
+        /* @var $battle JagCore */
+        $battle = Battle::getBattle();
+        /* @var $gameRules GameRules */
+        $gameRules = $battle->gameRules;
+        $turn = $gameRules->turn;
+        $forceId = $gameRules->attackingForceId;
+        $theUnits = $battle->force->units;
 
+        if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
+            $gameRules->flashMessages[] = "@hide deadpile";
+            if (!empty($battle->force->reinforceTurns->$turn->$forceId)) {
+                $gameRules->flashMessages[] = "@show deployWrapper";
+                $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
+            }
+
+            foreach ($theUnits as $id => $unit) {
+
+                if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
+                    $theUnits[$id]->hexagon->parent = "deployBox";
+                }
+            }
+        }
     }
+
 
     protected function checkVictory( $battle){
         return false;
