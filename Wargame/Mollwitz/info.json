@@ -8218,6 +8218,14 @@
       "main": {
         "description": "Historical Scenario.",
         "longDescription": "Historical Scenario"
+      },
+      "alt": {
+        "description": "Alternate deploy Scenario.",
+        "longDescription": "Alternet deploy Scenario"
+      },
+      "free": {
+        "description": "Free deploy Scenario.",
+        "longDescription": "Free deploy Scenario"
       }
     }
   },
