@@ -24,7 +24,7 @@ class HorseMusket extends \Wargame\Mollwitz\JagCore
     const FRENCH_FORCE = 1;
     const ANGLO_ALLIED_FORCE = 2;
 
-    public $specialHexesMap = ['SpecialHexA'=>self::ANGLO_ALLIED_FORCE, 'SpecialHexB'=>self::ANGLO_ALLIED_FORCE, 'SpecialHexC'=>0];
+    public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
 
     static function getPlayerData($scenario){
         if(isset($scenario->playerInfo)){
