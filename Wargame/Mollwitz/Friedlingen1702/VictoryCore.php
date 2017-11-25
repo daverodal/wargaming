@@ -77,16 +77,16 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             $pData = $battle::getPlayerData($battle->scenario)['forceName'];
             $mapData = $battle->mapData;
 
-            $playerTwoWinScore = 40;
-            $playerOneWinScore = 40;
+            $playerTwoWinScore = 25;
+            $playerOneWinScore = 25;
             $playerTwoWin = false;
             $playerOneWin = false;
 
-            if($this->victoryPoints[HorseMusket::PLAYER_ONE] >= $playerOneWinScore){
+            if($this->victoryPoints[HorseMusket::PLAYER_ONE] >= $playerOneWinScore && $this->victoryPoints[HorseMusket::PLAYER_ONE] > $this->victoryPoints[HorseMusket::PLAYER_TWO] + 5){
                 $playerOneWin = true;
                 $victoryReason .= "Over $playerOneWinScore ";
             }
-            if ($this->victoryPoints[HorseMusket::PLAYER_TWO] >= $playerTwoWinScore) {
+            if ($this->victoryPoints[HorseMusket::PLAYER_TWO] >= $playerTwoWinScore && $this->victoryPoints[HorseMusket::PLAYER_TWO] > $this->victoryPoints[HorseMusket::PLAYER_ONE] + 5) {
                 $playerTwoWin = true;
                 $victoryReason .= "Over $playerTwoWinScore ";
             }
