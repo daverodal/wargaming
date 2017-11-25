@@ -50,10 +50,10 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         list($mapHexName, $forceId) = $args;
 
         if (in_array($mapHexName, $battle->specialHexA)) {
-            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, 5);
+            $this->takeHex($battle->specialHexesMap['SpecialHexA'], $forceId, $mapHexName, 10);
         }
         if (in_array($mapHexName, $battle->specialHexB)) {
-            $this->takeHex($battle->specialHexesMap['SpecialHexB'], $forceId, $mapHexName, 10);
+            $this->takeHex($battle->specialHexesMap['SpecialHexB'], $forceId, $mapHexName, 20);
         }
     }
 
