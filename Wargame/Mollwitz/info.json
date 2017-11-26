@@ -7962,7 +7962,6 @@
     "path": "Mollwitz",
     "production": true,
     "genre": "Napoleonic",
-    "playerInfo": ["Observer", "Martians", "Venutians"],
     "moveFirstDeploySecond": true,
     "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
     "description": "Template game",
@@ -8002,6 +8001,10 @@
         "French"
       ],
       "moveFirstDeploySecond": false,
+      "specialHexesMap": {
+        "SpecialHexA": 1,
+        "SpecialHexB": 2
+      },
       "gameLength": 12,
       "units": []
     },

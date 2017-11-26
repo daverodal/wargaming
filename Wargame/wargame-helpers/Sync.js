@@ -20,7 +20,6 @@
 
 export default  class Sync {
     constructor(baseUrl) {
-	console.log("That is new!");
         this.baseUrl = baseUrl
         this.id = "Sync";
         this.callbacks = Object;
@@ -57,7 +56,6 @@ export default  class Sync {
             this.timeFork = false;
             this.timeTravel = false;
         }
-console.log("Her ewe go again ");
         this.current = $.ajax(
             {
                 url: this.baseUrl + "/" + last_seq + travel,
@@ -65,6 +63,7 @@ console.log("Her ewe go again ");
                 data: theArgs,
 
                 error:  (jqXHR, two, three) => {
+                    location.href = location.href;
                     //                    jqXHR.abort();
                 },
                 success:  (data, textstatus, jqXHR) => {

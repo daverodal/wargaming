@@ -21,10 +21,8 @@ You should have received a copy of the GNU General Public License
 class HorseMusket extends \Wargame\Mollwitz\JagCore
 {
 
-    const FRENCH_FORCE = 1;
-    const ANGLO_ALLIED_FORCE = 2;
 
-    public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
+    public $specialHexesMap = [];
 
     static function getPlayerData($scenario){
         if(isset($scenario->playerInfo)){
@@ -36,7 +34,7 @@ class HorseMusket extends \Wargame\Mollwitz\JagCore
                 return \Wargame\Battle::register($forceName, $forceName);
             }
         }
-        $forceName = ['Observer', "French", "Aenglo Allied"];
+        $forceName = ['Observer', "Player One", "Player Two"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
@@ -44,6 +42,7 @@ class HorseMusket extends \Wargame\Mollwitz\JagCore
     function save()
     {
         $data = parent::save();
+        $data->specialHexesMap = $this->specialHexesMap;
         return $data;
     }
 
@@ -87,6 +86,7 @@ class HorseMusket extends \Wargame\Mollwitz\JagCore
         if ($data) {
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
+            $this->specialHexesMap = $data->specialHexesMap;
         } else {
             $this->victory = new \Wargame\Victory($scenario->victoryCore);
             $this->gameRules->setMaxTurn($scenario->gameLength);
@@ -96,6 +96,11 @@ class HorseMusket extends \Wargame\Mollwitz\JagCore
 
             }else{
                 $this->deployFirstMoveFirst();
+            }
+            if(isset( $scenario->specialHexesMap)){
+                foreach($scenario->specialHexesMap as $k => $v){
+                    $this->specialHexesMap[$k] = $v;
+                }
             }
         }
     }

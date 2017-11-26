@@ -84,11 +84,11 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
             if($this->victoryPoints[HorseMusket::PLAYER_ONE] >= $playerOneWinScore && $this->victoryPoints[HorseMusket::PLAYER_ONE] > $this->victoryPoints[HorseMusket::PLAYER_TWO] + 5){
                 $playerOneWin = true;
-                $victoryReason .= "Over $playerOneWinScore ";
+                $victoryReason .= "Over $playerOneWinScore with 5 point lead";
             }
             if ($this->victoryPoints[HorseMusket::PLAYER_TWO] >= $playerTwoWinScore && $this->victoryPoints[HorseMusket::PLAYER_TWO] > $this->victoryPoints[HorseMusket::PLAYER_ONE] + 5) {
                 $playerTwoWin = true;
-                $victoryReason .= "Over $playerTwoWinScore ";
+                $victoryReason .= "Over $playerTwoWinScore with 5 point lead";
             }
 
 
