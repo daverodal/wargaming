@@ -10,7 +10,7 @@ $vintage-unit-numbers-size:10px;
     .counterWrapper {
       background-color: $color;
     }
-    p.forceMarch, p.range, .fa-flag{
+    .forceMarch, .range, .fa-flag{
       color:$rangeNumber;
     }
   }
@@ -95,10 +95,10 @@ $vintage-unit-numbers-size:10px;
     }
   }
   .vintage.#{$nationality}.unit{
-    p.range{
+    .range{
       top:-8px;
     }
-    p.forceMarch{
+    .forceMarch{
       top: -11px;
     }
     .guard-unit{
