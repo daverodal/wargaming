@@ -1,2 +1,7 @@
 .idea
 .sass-cache
+/vendor
+/node_modules
+/.idea
+composer.lock
+.idea/directories
