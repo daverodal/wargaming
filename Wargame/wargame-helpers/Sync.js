@@ -63,7 +63,6 @@ export default  class Sync {
                 data: theArgs,
 
                 error:  (jqXHR, two, three) => {
-                    location.href = location.href;
                     //                    jqXHR.abort();
                 },
                 success:  (data, textstatus, jqXHR) => {
