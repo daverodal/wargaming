@@ -8238,7 +8238,7 @@
     "production": true,
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
-    "description": "Friedlingen 1702",
+    "description": "Speyerbach 1703",
     "params": {
       "corePath":  "wargame::Mollwitz.Speyerbach1703",
       "victoryCore": "\\Wargame\\Mollwitz\\Speyerbach1703\\VictoryCore",
