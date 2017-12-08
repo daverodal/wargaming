@@ -8251,7 +8251,230 @@
       ],
       "moveFirstDeploySecond": false,
       "gameLength": 8,
-      "units": []
+      "units": [
+
+        {
+          "class": "infantry",
+          "combat": 5,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 3,
+          "nationality": "FrenchSaxon",
+          "num": 2,
+          "range": 1,
+          "reinforce": "B"
+        },
+
+        {
+          "class": "infantry",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 3,
+          "nationality": "FrenchSaxon",
+          "num": 6,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "infantry",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 3,
+          "nationality": "FrenchSaxon",
+          "num": 2,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "cavalry",
+          "combat": 6,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 5,
+          "nationality": "FrenchSaxon",
+          "num": 1,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "cavalry",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 5,
+          "nationality": "FrenchSaxon",
+          "num": 3,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "cavalry",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 5,
+          "nationality": "FrenchSaxon",
+          "num": 4,
+          "range": 1,
+          "reinforce": "B"
+        },
+        {
+          "class": "artillery",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 2,
+          "nationality": "FrenchSaxon",
+          "num": 2,
+          "range": 3,
+          "reinforce": "B"
+        },
+        {
+          "class": "artillery",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 2,
+          "movement": 2,
+          "nationality": "FrenchSaxon",
+          "num": 2,
+          "range": 2,
+          "reinforce": "B"
+        },
+        {
+          "class": "infantry",
+          "combat": 5,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 3,
+          "nationality": "NapPrussian",
+          "num": 1,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "infantry",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 3,
+          "nationality": "NapPrussian",
+          "num": 3,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "infantry",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 3,
+          "nationality": "NapPrussian",
+          "num": 1,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "cavalry",
+          "combat": 6,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 5,
+          "nationality": "NapPrussian",
+          "num": 1,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "cavalry",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 5,
+          "nationality": "NapPrussian",
+          "num": 2,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "artillery",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 2,
+          "nationality": "NapPrussian",
+          "num": 1,
+          "range": 3,
+          "reinforce": "A"
+        },
+        {
+          "class": "artillery",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 2,
+          "nationality": "NapPrussian",
+          "num": 1,
+          "range": 2,
+          "reinforce": "A"
+        },
+        {
+          "class": "infantry",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 3,
+          "nationality": "Nassau",
+          "num": 2,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "infantry",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 3,
+          "nationality": "Nassau",
+          "num": 2,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "cavalry",
+          "combat": 4,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 5,
+          "nationality": "Nassau",
+          "num": 1,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "cavalry",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 5,
+          "nationality": "Nassau",
+          "num": 2,
+          "range": 1,
+          "reinforce": "A"
+        },
+        {
+          "class": "artillery",
+          "combat": 3,
+          "deployed": true,
+          "forceId": 1,
+          "movement": 2,
+          "nationality": "Nassau",
+          "num": 2,
+          "range": 2,
+          "reinforce": "A"
+        }
+      ]
     },
     "scenarios": {
       "main": {
