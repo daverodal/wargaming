@@ -60,7 +60,7 @@
     }
   }
 
-  p.forceMarch, p.range {
+  .forceMarch, .range {
     position: absolute;
     top: -19px;
     right: 2px;
@@ -69,7 +69,7 @@
     text-transform: lowercase;
   }
 
-  p.range {
+  .range {
     font-size: 15px;
     top: -15px;
     right: 5px;
@@ -120,11 +120,11 @@
     }
   }
 
-  p.forceMarch{
+  .forceMarch{
     right: 0px;
     top:-17px;
   }
-  p.range {
+  .range {
     right: 2px;
     top:-13px;
   }
