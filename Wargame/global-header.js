@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded",function(){
     DR.showArrows = false;
 
 
-    var $panzoom = $('#gameImages').panzoom({
+    var $panzoom = $('#gameContainer').panzoom({
         cursor: "normal", animate: true, maxScale: 2.0, minScale: .3, onPan: function (e, panzoom, e2, e3, e4) {
 
             var event = e;

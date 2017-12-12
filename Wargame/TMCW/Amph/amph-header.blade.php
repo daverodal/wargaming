@@ -22,6 +22,7 @@
 ?>
 <script type="text/javascript">
     x.register("specialHexes", function(specialHexes, data) {
+        debugger;
         $('.specialHexes').remove();
         var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
         for(var i in specialHexes){
@@ -53,6 +54,8 @@
                     });
 
                 }else{
+                    /* this is me */
+                    debugger;
                     if(specialHexes[i] == 1 && i != 'x416y357'){
                         $("#gameImages").append('<div id="special'+i+'" class="specialHexes fa fa-adjust supply"></div>');
                         $("#special"+i).css({top:y+"px", left:x+"px"}).addClass(lab[specialHexes[i]]);
