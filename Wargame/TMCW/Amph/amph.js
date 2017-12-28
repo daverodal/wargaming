@@ -167,7 +167,6 @@ x.register("moveRules", function (moveRules, data) {
                 //     console.log('==========> Occupied <===========');
                 //     continue;
                 // }
-                debugger;
 
                 if (data.gameRules.phase == RED_COMBAT_PHASE || data.gameRules.phase == BLUE_COMBAT_PHASE || data.gameRules.phase == TEAL_COMBAT_PHASE || data.gameRules.phase == PURPLE_COMBAT_PHASE) {
                         borderColor = 'turquoise';
@@ -1033,7 +1032,6 @@ function unitDecorate(unit, data) {
             // }
             // $("#floatMessage").show();
             // $("#floatMessage p").html(status);
-            debugger;
             floaters.message = status;
             floaters.x = x;
             floaters.y = y;

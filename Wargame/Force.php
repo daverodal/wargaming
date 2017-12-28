@@ -472,7 +472,7 @@ class Force extends SimpleForce
                     case DR:
                     case DLF:
                         if($this->units[$attacker]->status !== STATUS_NO_RESULT){
-                            if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                            if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker]) === true){
                                 $this->units[$attacker]->status = STATUS_ATTACKED;
                             }else {
                                 $this->units[$attacker]->status = STATUS_CAN_ADVANCE;

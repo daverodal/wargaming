@@ -118,7 +118,7 @@ $vintage-unit-numbers-size:10px;
         border:none;
         .counter {
 
-          background-color: lightgreen;
+          background-color: transparent;
           background-image: url('badges/#{$shortName}Pontoon.png');
           background-size: 32px;
           width: 32px;
@@ -136,7 +136,7 @@ $vintage-unit-numbers-size:10px;
       border:none;
       .counter {
 
-        background-color: lightgreen;
+        background-color: transparent;
         background-image: url('badges/#{$shortName}Pontoon.png');
         background-size: 32px;
         width: 32px;
@@ -149,6 +149,11 @@ $vintage-unit-numbers-size:10px;
     }
   }
 }
+$badge-size: 14px;
+$vintage-badge-size:19px;
+$unit-numbers-size:16px;
+$vintage-unit-numbers-size:10px;
+
 @mixin badge($nationality, $shortName) {
   .fa-flag{
     display:none;

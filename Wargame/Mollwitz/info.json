@@ -6,6 +6,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Mollwitz\\Mollwitz",
     "description": "April 10, 1741. The War of the Austrian Succession",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
@@ -33,6 +36,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Hastenbeck\\Hastenbeck",
     "description": "July 26, 1757. French vs Anglo Allies. The Seven Years War",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -58,6 +64,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Hohenfriedeberg\\Hohenfriedeberg",
     "description": "June 4 1745. Prussian vs Austrian. The War of the Austrian Succession.",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario"
@@ -81,6 +90,9 @@
     "production": true,
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Minden\\Minden",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
@@ -95,6 +107,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Malplaquet\\Malplaquet",
     "description": "September 11, 1709. The War of the Spanish Succession",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
@@ -116,6 +131,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Burkersdorf\\Burkersdorf",
     "description": "July 21, 1762. Prussian vs Austrian. The Seven Years War.",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "options": [
       {
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
@@ -148,6 +166,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Kolin1757\\Kolin1757",
     "description": "June 18, 1757. Prussian vs Austrian. The Seven Years War.",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -172,6 +193,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Oudenarde1708\\Oudenarde1708",
     "description": "July 11, 1708. Anglo Allies vs Franco Bavarian. The war for Spanish Succession.",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -435,6 +459,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Kesselsdorf1745\\Kesselsdorf1745",
     "description": "1745 ",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -582,6 +609,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Fraustadt1706\\Fraustadt1706",
     "description": "Battle of Fraustadt, 13 February 1706. Swedish vs Saxon and Russian. Great Northern War",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "weakRedoubts": true
     },
     "options": [
@@ -744,6 +772,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Gemauerthof1705\\Gemauerthof1705",
     "description": "The Battle of Gemauerthof was a battle in the Great Northern War, fought south of Riga, in present-day Latvia in July 1705. The Swedish forces under Adam Ludwig Lewenhaupt fought a Russian army under Boris Sheremetyev.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "weakRedoubts": true
     },
     "options": [
@@ -815,7 +844,8 @@
             "range": 1,
             "nationality": "Russian",
             "class": "cavalry"
-          },{
+          },
+          {
             "num": 2,
             "forceId": 2,
             "combat": 4,
@@ -883,7 +913,8 @@
             "range": 1,
             "nationality": "Russian",
             "class": "cavalry"
-          },{
+          },
+          {
             "num": 2,
             "forceId": 2,
             "combat": 4,
@@ -951,7 +982,8 @@
             "range": 1,
             "nationality": "Russian",
             "class": "cavalry"
-          },{
+          },
+          {
             "num": 2,
             "forceId": 2,
             "combat": 4,
@@ -963,7 +995,6 @@
           }
         ]
       }
-
     }
   },
   "Lesnaya1708": {
@@ -974,6 +1005,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Lesnaya1708\\Lesnaya1708",
     "description": "Battle of Lesnaya 1708",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "weakRedoubts": true
     },
     "options": [
@@ -1127,6 +1159,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Klissow1702\\Klissow1702",
     "description": "The Battle of Klissow took place on July 8 (Julian calendar) / July 9 (Swedish calendar) / July 19, 1702 (Gregorian calendar) near Kliszów, Poland-Lithuania, during the Great Northern War.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "wimpySwamps": true
     },
     "options": [
@@ -1367,6 +1400,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Holowczyn1708\\Holowczyn1708",
     "description": "Holowczyn 1708",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 1,
@@ -1586,6 +1620,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Germantown1777\\Germantown1777",
     "description": "Germantown 1777",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "americanRevolution": true
     },
     "options": [],
@@ -1810,6 +1845,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Lobositz\\Lobositz",
     "description": "October 1, 1756. The Seven Years War.",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario"
@@ -1826,6 +1864,9 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Zorndorf\\Zorndorf",
     "description": "August 25, 1758. The Seven Years War.",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
@@ -1852,6 +1893,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Jagersdorf\\Jagersdorf",
     "description": "August 30, 1757. Prussian vs Russian. The Seven Years War.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "jagersdorfCombat": true
     },
     "scenarios": {
@@ -1877,6 +1919,9 @@
     "genre": "Napoleonic",
     "fileName": "\\Wargame\\Mollwitz\\Montmirail1814\\Montmirail1814",
     "description": "The Battle of Montmirail 1814 between the French and Prussian-Russian allies. ",
+    "params": {
+      "unitComponent": "horse-musket-unit"
+    },
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -2806,6 +2851,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Hanau1813\\Hanau1813",
     "description": "The Battle of Hanau 1813 between the French and Austro-Bavarian-Russian allies. ",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 2,
@@ -3119,6 +3165,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Jakobovo1812\\Jakobovo1812",
     "description": "The Battle of Jakobovo.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 2,
@@ -3298,6 +3345,7 @@
     "fileName": "\\Wargame\\Mollwitz\\LaRothiere1814\\LaRothiere1814",
     "description": "The Battle of Lo Rothiere between the French and Allies. ",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 6,
@@ -3706,6 +3754,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Golymin1806\\Golymin1806",
     "description": "The Battle of Golymin 1806 between the French and Russian. ",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 6,
@@ -3849,6 +3898,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Fontenoy1745\\Fontenoy1745",
     "description": " Battle of Fontenoy, 11 May 1745. French vs Allies, The War for Austrian Succession ",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 6,
@@ -4064,6 +4114,7 @@
       }
     ],
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 2,
@@ -4343,6 +4394,7 @@
       }
     ],
     "params": {
+      "unitComponent": "horse-musket-unit",
       "americanRevolution": true,
       "units": [
         {
@@ -4503,6 +4555,7 @@
       }
     ],
     "params": {
+      "unitComponent": "horse-musket-unit",
       "americanRevolution": true,
       "units": [
         {
@@ -4694,15 +4747,16 @@
       {
         "name": "American + 1 in town/forest, British + 1 clear",
         "keyName": "americanRevolution",
-        "value" : false
+        "value": false
       },
       {
         "name": "American Win Tie Game",
         "keyName": "americanWinTie",
-        "value" : true
+        "value": true
       }
     ],
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 4,
@@ -4864,6 +4918,7 @@
       }
     ],
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 2,
@@ -4998,6 +5053,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Dubba1843\\Dubba1843",
     "description": "March 24, 1843. British vs Beluchi. Part of Conquest of Sindh",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "doubleArt": true,
       "toughBritish": true,
       "units": [
@@ -5112,7 +5168,6 @@
           "class": "horseartillery"
         }
       ]
-
     },
     "options": [
       {
@@ -5136,6 +5191,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Meanee1843\\Meanee1843",
     "description": "February 17, 1843. British vs Beluchi. Part of the conquest of Sindh.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "doubleArt": true,
       "units": [
         {
@@ -5249,7 +5305,6 @@
           "class": "horseartillery"
         }
       ]
-
     },
     "options": [
       {
@@ -5273,6 +5328,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Ferozesha\\Ferozesha",
     "description": "December 21, 1845. British vs Sikh. First Anglo-Sikh War.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "doubleArt": true,
       "zocBlocksRetreat": true,
       "units": [
@@ -5325,7 +5381,8 @@
           "range": 3,
           "nationality": "Sikh",
           "class": "artillery"
-        },        {
+        },
+        {
           "num": 1,
           "forceId": 2,
           "combat": 4,
@@ -5406,7 +5463,6 @@
           "class": "horseartillery"
         }
       ]
-
     },
     "options": [
       {
@@ -5431,6 +5487,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Ferozesha\\FerozeshaDayTwo",
     "description": "December 22, 1845. British vs Sikh. First Anglo-Sikh War.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "doubleArt": true,
       "zocBlocksRetreat": true,
       "units": [
@@ -5483,7 +5540,8 @@
           "range": 3,
           "nationality": "Sikh",
           "class": "artillery"
-        },        {
+        },
+        {
           "num": 1,
           "forceId": 1,
           "combat": 4,
@@ -5633,7 +5691,8 @@
             "range": 3,
             "nationality": "Sikh",
             "class": "artillery"
-          },        {
+          },
+          {
             "num": 1,
             "forceId": 1,
             "combat": 4,
@@ -5645,7 +5704,7 @@
           },
           {
             "num": 4,
-            "forceId":2,
+            "forceId": 2,
             "combat": 1,
             "movement": 5,
             "reinforce": "A",
@@ -5714,7 +5773,6 @@
             "class": "horseartillery"
           }
         ]
-
       }
     }
   },
@@ -5727,6 +5785,7 @@
     "description": "January 13, 1849. British vs Sikh. The Second Anglo-Sikh War.",
     "playerNotes": "Key",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "doubleArt": true,
       "zocBlocksRetreat": true,
       "units": [
@@ -5851,7 +5910,6 @@
           "class": "horseartillery"
         }
       ]
-
     },
     "options": [
       {
@@ -5875,6 +5933,7 @@
     "description": "December 18, 1845. British vs Sikh. First Anglo-Sikh War.",
     "playerNotes": "Key",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "doubleArt": true,
       "zocBlocksRetreat": true,
       "units": [
@@ -5989,7 +6048,6 @@
           "class": "horseartillery"
         }
       ]
-
     },
     "options": [
       {
@@ -6012,6 +6070,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Goojerat1849\\Goojerat1849",
     "description": "February 21, 1849. British vs Sikh. Second Anglo-Sikh War.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "doubleArt": true,
       "zocBlocksRetreat": true,
       "units": [
@@ -6146,8 +6205,6 @@
           "class": "horseartillery"
         }
       ]
-
-
     },
     "options": [
       {
@@ -6160,13 +6217,11 @@
       "main": {
         "description": "Standard Scenario",
         "longDescription": "Original scenario, Historical forces."
-
       },
       "altScenario": {
         "description": "Sikh need 45 instead of 50 to win.",
         "altScenario": true,
         "longDescription": "Play Balance Scenario."
-
       },
       "moodkeeVariant": {
         "description": "Same OOB as moodkee, Alt Scenarios rules too",
@@ -6285,7 +6340,6 @@
             "class": "horseartillery"
           }
         ]
-
       }
     }
   },
@@ -6297,9 +6351,9 @@
     "fileName": "\\Wargame\\Mollwitz\\Aliwal1845\\Aliwal1845",
     "description": "January 28 1846. British vs Sikh. First Anglo-Sikh War.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "doubleArt": true,
       "zocBlocksRetreat": true
-
     },
     "options": [
       {
@@ -6433,7 +6487,6 @@
             "class": "horseartillery"
           }
         ]
-
       },
       "weakSikh": {
         "description": "Weaker Sikh, and all 3-3's instead of 4-3's",
@@ -6560,7 +6613,6 @@
             "class": "horseartillery"
           }
         ]
-
       }
     }
   },
@@ -6572,6 +6624,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Bussaco1810\\Bussaco1810",
     "description": "The Battle of Bussaco1810 1810.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "steepHills": true,
       "units": [
         {
@@ -6753,7 +6806,6 @@
       }
     }
   },
-
   "Maloyaroslavets1812": {
     "name": "The Battle of Maloyaroslavets 1812",
     "path": "Mollwitz",
@@ -6762,6 +6814,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Maloyaroslavets1812\\Maloyaroslavets1812",
     "description": "The Battle of Maloyaroslavets 1812.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 1,
@@ -7032,7 +7085,7 @@
         "description": "Historical Scenario.",
         "longDescription": "Historical Scenario"
       },
-      "playBalance":{
+      "playBalance": {
         "description": "Best Balance",
         "longDescription": "Play balance options, to give the french a chance. Drastic troop reductions both sides. No Russian cavalry cannot move first turn.",
         "noCavMove": true,
@@ -7275,6 +7328,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Heilsberg1807\\Heilsberg1807",
     "description": "The Battle of  Heilsberg 1807.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 2,
@@ -7309,7 +7363,6 @@
           "nationality": "Guard",
           "class": "horseartillery"
         },
-
         {
           "num": 7,
           "forceId": 1,
@@ -7387,7 +7440,6 @@
           "nationality": "NapSaxon",
           "class": "artillery"
         },
-
         {
           "num": 1,
           "forceId": 1,
@@ -7408,7 +7460,6 @@
           "nationality": "NapFrench",
           "class": "infantry"
         },
-
         {
           "num": 14,
           "forceId": 1,
@@ -7469,8 +7520,6 @@
           "nationality": "NapFrench",
           "class": "horseartillery"
         },
-
-
         {
           "num": 4,
           "forceId": 2,
@@ -7520,7 +7569,8 @@
           "range": 1,
           "nationality": "Russian",
           "class": "cavalry"
-        },{
+        },
+        {
           "num": 2,
           "forceId": 2,
           "combat": 4,
@@ -7630,8 +7680,6 @@
           "nationality": "Russian",
           "class": "horseartillery"
         }
-
-
       ]
     },
     "scenarios": {
@@ -7642,208 +7690,208 @@
     }
   },
   "BarSurAube1814": {
-  "name": "The Battle of Bar Sur Aube 1814",
-  "path": "Mollwitz",
-  "production": true,
-  "genre": "Napoleonic",
-  "fileName": "\\Wargame\\Mollwitz\\BarSurAube1814\\BarSurAube1814",
-  "description": "The Battle of Bar Sur Aube 1814.",
-  "params": {
-    "units": [
-
-      {
-        "num": 8,
-        "forceId": 1,
-        "combat": 5,
-        "movement": 4,
-        "reinforce": "A",
-        "range": 1,
-        "nationality": "NapAllied",
-        "class": "infantry"
-      },
-      {
-        "num": 12,
-        "forceId": 1,
-        "combat": 4,
-        "movement": 4,
-        "reinforce": "A",
-        "range": 1,
-        "nationality": "NapAllied",
-        "class": "infantry"
-      },
-      {
-        "num": 4,
-        "forceId": 1,
-        "combat": 3,
-        "movement": 4,
-        "reinforce": "A",
-        "range": 1,
-        "nationality": "NapAllied",
-        "class": "infantry"
-      },
-      {
-        "num": 4,
-        "forceId": 1,
-        "combat": 5,
-        "movement": 6,
-        "reinforce": "A",
-        "range": 1,
-        "nationality": "NapAllied",
-        "class": "cavalry"
-      },
-      {
-        "num": 5,
-        "forceId": 1,
-        "combat": 4,
-        "movement": 6,
-        "reinforce": "A",
-        "range": 1,
-        "nationality": "NapAllied",
-        "class": "cavalry"
-      },
-      {
-        "num": 4,
-        "forceId": 1,
-        "combat": 2,
-        "movement": 7,
-        "reinforce": "A",
-        "range": 1,
-        "nationality": "NapAllied",
-        "class": "cavalry"
-      },
-
-      {
-        "num": 2,
-        "forceId": 1,
-        "combat": 6,
-        "movement": 3,
-        "reinforce": "A",
-        "range": 4,
-        "nationality": "NapAllied",
-        "class": "artillery"
-      },
-      {
-        "num": 3,
-        "forceId": 1,
-        "combat": 4,
-        "movement": 3,
-        "reinforce": "A",
-        "range": 4,
-        "nationality": "NapAllied",
-        "class": "artillery"
-      },
-      {
-        "num": 2,
-        "forceId": 1,
-        "combat": 3,
-        "movement": 5,
-        "reinforce": "A",
-        "range": 3,
-        "nationality": "NapAllied",
-        "class": "horseartillery"
-      },{
-        "num": 2,
-        "forceId": 2,
-        "combat": 6,
-        "movement": 4,
-        "reinforce": "B",
-        "range": 1,
-        "nationality": "NapFrench",
-        "class": "infantry"
-      },
-      {
-        "num": 2,
-        "forceId": 2,
-        "combat": 5,
-        "movement": 4,
-        "reinforce": "B",
-        "range": 1,
-        "nationality": "NapFrench",
-        "class": "infantry"
-      },
-      {
-        "num": 8,
-        "forceId": 2,
-        "combat": 4,
-        "movement": 4,
-        "reinforce": "B",
-        "range": 1,
-        "nationality": "NapFrench",
-        "class": "infantry"
-      },
-      {
-        "num": 1,
-        "forceId": 2,
-        "combat": 5,
-        "movement": 6,
-        "reinforce": "B",
-        "range": 1,
-        "nationality": "NapFrench",
-        "class": "cavalry"
-      },
-      {
-        "num": 3,
-        "forceId": 2,
-        "combat": 4,
-        "movement": 5,
-        "reinforce": "B",
-        "range": 1,
-        "nationality": "NapFrench",
-        "class": "cavalry"
-      },
-      {
-        "num": 4,
-        "forceId": 2,
-        "combat": 3,
-        "movement": 5,
-        "reinforce": "B",
-        "range": 1,
-        "nationality": "NapFrench",
-        "class": "cavalry"
-      },
-      {
-        "num":1,
-        "forceId": 2,
-        "combat": 6,
-        "movement": 3,
-        "reinforce": "B",
-        "range": 4,
-        "nationality": "NapFrench",
-        "class": "artillery"
-      },
-      {
-        "num":4,
-        "forceId": 2,
-        "combat": 4,
-        "movement": 3,
-        "reinforce": "B",
-        "range": 4,
-        "nationality": "NapFrench",
-        "class": "artillery"
-      },
-      {
-        "num": 1,
-        "forceId": 2,
-        "combat": 3,
-        "movement": 5,
-        "reinforce": "B",
-        "range": 3,
-        "nationality": "NapFrench",
-        "class": "horseartillery"
-      }
-    ]
-  },
-  "scenarios": {
-    "main": {
-      "description": "Historical Scenario.",
-      "longDescription": "Historical Scenario"
+    "name": "The Battle of Bar Sur Aube 1814",
+    "path": "Mollwitz",
+    "production": true,
+    "genre": "Napoleonic",
+    "fileName": "\\Wargame\\Mollwitz\\BarSurAube1814\\BarSurAube1814",
+    "description": "The Battle of Bar Sur Aube 1814.",
+    "params": {
+      "unitComponent": "horse-musket-unit",
+      "units": [
+        {
+          "num": 8,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "NapAllied",
+          "class": "infantry"
+        },
+        {
+          "num": 12,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "NapAllied",
+          "class": "infantry"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 3,
+          "movement": 4,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "NapAllied",
+          "class": "infantry"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 5,
+          "movement": 6,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "NapAllied",
+          "class": "cavalry"
+        },
+        {
+          "num": 5,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 6,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "NapAllied",
+          "class": "cavalry"
+        },
+        {
+          "num": 4,
+          "forceId": 1,
+          "combat": 2,
+          "movement": 7,
+          "reinforce": "A",
+          "range": 1,
+          "nationality": "NapAllied",
+          "class": "cavalry"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 6,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 4,
+          "nationality": "NapAllied",
+          "class": "artillery"
+        },
+        {
+          "num": 3,
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "A",
+          "range": 4,
+          "nationality": "NapAllied",
+          "class": "artillery"
+        },
+        {
+          "num": 2,
+          "forceId": 1,
+          "combat": 3,
+          "movement": 5,
+          "reinforce": "A",
+          "range": 3,
+          "nationality": "NapAllied",
+          "class": "horseartillery"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 6,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "NapFrench",
+          "class": "infantry"
+        },
+        {
+          "num": 2,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "NapFrench",
+          "class": "infantry"
+        },
+        {
+          "num": 8,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 4,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "NapFrench",
+          "class": "infantry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 5,
+          "movement": 6,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "NapFrench",
+          "class": "cavalry"
+        },
+        {
+          "num": 3,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "NapFrench",
+          "class": "cavalry"
+        },
+        {
+          "num": 4,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 1,
+          "nationality": "NapFrench",
+          "class": "cavalry"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 6,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "NapFrench",
+          "class": "artillery"
+        },
+        {
+          "num": 4,
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "reinforce": "B",
+          "range": 4,
+          "nationality": "NapFrench",
+          "class": "artillery"
+        },
+        {
+          "num": 1,
+          "forceId": 2,
+          "combat": 3,
+          "movement": 5,
+          "reinforce": "B",
+          "range": 3,
+          "nationality": "NapFrench",
+          "class": "horseartillery"
+        }
+      ]
     },
-    "alternate": {
-      "description": "New map different victory points.",
-      "longDescription": "New map different victory points"
+    "scenarios": {
+      "main": {
+        "description": "Historical Scenario.",
+        "longDescription": "Historical Scenario"
+      },
+      "alternate": {
+        "description": "New map different victory points.",
+        "longDescription": "New map different victory points"
+      }
     }
-  }
-},
+  },
   "Vimeiro1808": {
     "name": "The Battle of Vimeiro 1808",
     "path": "Mollwitz",
@@ -7852,6 +7900,7 @@
     "fileName": "\\Wargame\\Mollwitz\\Vimeiro1808\\Vimeiro1808",
     "description": "The Battle of Vimeiro 1808.",
     "params": {
+      "unitComponent": "horse-musket-unit",
       "units": [
         {
           "num": 10,
@@ -7966,11 +8015,16 @@
     "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
     "description": "Template game",
     "params": {
-      "playerInfo": ["Observer", "Martians", "Venutians"],
+      "unitComponent": "horse-musket-unit",
+      "playerInfo": [
+        "Observer",
+        "Martians",
+        "Venutians"
+      ],
       "moveFirstDeploySecond": true,
       "steepHills": true,
       "gameLength": 14,
-      "units": [ ]
+      "units": []
     },
     "scenarios": {
       "main": {
@@ -7991,7 +8045,8 @@
     "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
     "description": "Friedlingen 1702",
     "params": {
-      "corePath":  "wargame::Mollwitz.Friedlingen1702",
+      "unitComponent": "horse-musket-unit",
+      "corePath": "wargame::Mollwitz.Friedlingen1702",
       "victoryCore": "\\Wargame\\Mollwitz\\Friedlingen1702\\VictoryCore",
       "multiImage": "BattleOfFriedlingen.jpg",
       "multiAttr": "By The original uploader was Victor falk at English Wikipedia (Transferred from en.wikipedia to Commons.) [Public domain], <a target=\"_blank\" href=\"https://commons.wikimedia.org/wiki/File%3ABattleOfFriedlingen.jpg\">via Wikimedia Commons</a>",
@@ -8023,7 +8078,8 @@
     "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
     "description": "Chotusitz 1742",
     "params": {
-      "corePath":  "wargame::Mollwitz.Chotusitz1742",
+      "unitComponent": "horse-musket-unit",
+      "corePath": "wargame::Mollwitz.Chotusitz1742",
       "victoryCore": "\\Wargame\\Mollwitz\\Chotusitz1742\\VictoryCore",
       "multiImage": "1280px-Wilhelm_Camphausen-Die_Huldigung.jpg",
       "multiAttr": "Wilhelm Camphausen [Public domain], <a target=\"_blank\" href=\"https://commons.wikimedia.org/wiki/File%3AWilhelm_Camphausen-Die_Huldigung.jpg\">via Wikimedia Commons</a>",
@@ -8240,7 +8296,8 @@
     "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
     "description": "Speyerbach 1703",
     "params": {
-      "corePath":  "wargame::Mollwitz.Speyerbach1703",
+      "unitComponent": "horse-musket-unit",
+      "corePath": "wargame::Mollwitz.Speyerbach1703",
       "victoryCore": "\\Wargame\\Mollwitz\\Speyerbach1703\\VictoryCore",
       "multiImage": "Holy_Roman_Empire_c._1700.png",
       "multiAttr": "By Rebel Redcoat (Own work) [<a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>], <a href=\"https://commons.wikimedia.org/wiki/File%3AHoly_Roman_Empire_c._1700.png\">via Wikimedia Commons</a>",
@@ -8252,7 +8309,6 @@
       "moveFirstDeploySecond": false,
       "gameLength": 8,
       "units": [
-
         {
           "class": "infantry",
           "combat": 5,
@@ -8264,7 +8320,6 @@
           "range": 1,
           "reinforce": "B"
         },
-
         {
           "class": "infantry",
           "combat": 4,
@@ -8483,5 +8538,4 @@
       }
     }
   }
-
 }

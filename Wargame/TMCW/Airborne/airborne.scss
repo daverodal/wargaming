@@ -33,7 +33,9 @@
 @include specialColor(Rebel, $rebelColor, white);
 @include specialColor(Loyalist, $loyalistColor, white);
 
-
+.a-unit-wrapper{
+  position:absolute;
+}
 .specialHexes{
   &.fa-adjust{
     font-size:30px;

@@ -221,8 +221,7 @@
 
     <div id="content">
         <div id="rightCol">
-            @section('unit-boxes')
-            @show
+
             <div id="gameViewer">
                 <div id="floaters" style="position:absolute; width:100%; height:100%;">
                     <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">

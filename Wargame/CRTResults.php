@@ -185,7 +185,7 @@ trait CRTResults
                         break;
 
                     case DE:
-                        if($battle->victory->unitProhibitedFromAdvancing($attackingUnit)){
+                        if($battle->victory->unitProhibitedFromAdvancing($attackingUnit) === true){
                             $attackingUnit->status = STATUS_ATTACKED;
                         }else {
                             $attackingUnit->status = STATUS_CAN_ADVANCE;
@@ -206,7 +206,7 @@ trait CRTResults
                     case DLF:
                         if($attackingUnit->status !== STATUS_NO_RESULT)
                         {
-                            if($battle->victory->unitProhibitedFromAdvancing($attackingUnit)){
+                            if($battle->victory->unitProhibitedFromAdvancing($attackingUnit) === true){
                                 $attackingUnit->status = STATUS_ATTACKED;
                             }else{
                                 $attackingUnit->status = STATUS_CAN_ADVANCE;
@@ -218,7 +218,7 @@ trait CRTResults
                     case DL:
                         /* for multi defender combats */
                         if ($vacated || $attackingUnit->status == STATUS_CAN_ADVANCE) {
-                            if($battle->victory->unitProhibitedFromAdvancing($attackingUnit)){
+                            if($battle->victory->unitProhibitedFromAdvancing($attackingUnit) === true){
                                 $attackingUnit->status = STATUS_ATTACKED;
                             }else {
                                 $attackingUnit->status = STATUS_CAN_ADVANCE;

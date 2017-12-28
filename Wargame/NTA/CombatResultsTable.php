@@ -97,6 +97,7 @@ class CombatResultsTable
 
     public function setCombatIndex($defenderId){
 
+        $combatLog = "";
         /* @var Jagersdorf $battle */
         $battle = Battle::getBattle();
         $combats = $battle->combatRules->combats->$defenderId;
@@ -179,9 +180,11 @@ class CombatResultsTable
         }
 
         $armsShift = 0;
+        $armsTypes = "";
         if ($attackStrength >= $defenseStrength) {
-            foreach($combinedArms as $arms){
+            foreach($combinedArms as $k => $arms){
                 if($arms > 0){
+                    $armsTypes  .= "$k ";
                     $armsShift++;
                 }
             }
@@ -190,6 +193,9 @@ class CombatResultsTable
 
         if ($armsShift < 0) {
             $armsShift = 0;
+        }
+        if($armsShift > 0){
+            $combatLog .= "Combined Arms Shift: +$armsShift ".$armsTypes;
         }
 
         $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
@@ -212,6 +218,7 @@ class CombatResultsTable
         if($defendersAllCav && !$attackersCav){
             $combats->useAlt = true;
         }
+        $combats->combatLog = $combatLog;
     }
 
     function getCombatIndex($attackStrength, $defenseStrength){
