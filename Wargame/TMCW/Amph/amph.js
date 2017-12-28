@@ -44,7 +44,6 @@ Vue.component('units-component', require('./UnitsComponent.vue'));
 Vue.component('map-symbol', require('./MapSymbol.vue'));
 Vue.component('special-event', require('./SpecialEvent.vue'));
 
-Vue.component('tmcw-common-rules', require('../commonRules.vue'));
 
 document.addEventListener("DOMContentLoaded",function(){
 
