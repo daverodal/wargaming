@@ -237,9 +237,13 @@ h5 {
     }
 
     .dropDown .WrapperLabel {
+      font-size:30px;
       margin: 0;
       border: none;
       cursor: pointer;
+      small{
+        color: #333;
+      }
     }
 
     .dropDown .dropDownContent {
