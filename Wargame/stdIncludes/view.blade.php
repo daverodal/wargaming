@@ -209,7 +209,7 @@
             <div class="unit-wrapper" style="display:none;" id="notUsedWrapper">
                 <div class="close">X</div>
                 <div style="margin-right:3px;" class="left">Units not used.</div>
-                <div id="not-used"></div>
+                <div id="notUsed"></div>
                 <div style="clear:both;"></div>
             </div>
 
