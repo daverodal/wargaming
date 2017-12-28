@@ -263,6 +263,7 @@
         "description": "Peoples Republic of China vs Soviet Union, circa 1975",
         "scenarios": {
             "standard": {
+                "nationalities": ["soviet", "prc"],
                 "description": "Standard scenario.",
                 "supply": true
             }

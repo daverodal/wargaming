@@ -165,6 +165,32 @@ class MartianCivilWar extends ModernLandBattle
 
 
     }
+    public function scenInit(){
+
+
+        $scenario = $this->scenario;
+        $unitSets = $scenario->units;
+
+        foreach($unitSets as $unitSet) {
+//            dd($unitSet);
+            if($unitSet->forceId !== MartianCivilWar::LOYALIST_FORCE){
+                continue;
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                    UnitFactory::create("xx", $unitSet->forceId, "deployBox", $unitSet->image, $unitSet->combat, $unitSet->combat/2, $unitSet->movement, false, STATUS_CAN_REINFORCE,  $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, true, $unitSet->class);
+
+            }
+        }
+        foreach($unitSets as $unitSet) {
+//            dd($unitSet);
+            if($unitSet->forceId !== MartianCivilWar::REBEL_FORCE){
+                continue;
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                UnitFactory::create("xx", $unitSet->forceId, "deployBox", $unitSet->image, $unitSet->combat, $unitSet->combat/2, $unitSet->movement, false, STATUS_CAN_REINFORCE,  $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, true, $unitSet->class);
+            }
+        }
+    }
 
     public function init()
     {
@@ -172,6 +198,9 @@ class MartianCivilWar extends ModernLandBattle
         UnitFactory::$injector = $this->force;
 
         $scenario = $this->scenario;
+        if(isset($scenario->units)){
+            return $this->scenInit();
+        }
         if(empty($scenario->hardCuneiform)){
             $this->oldInit();
             return;

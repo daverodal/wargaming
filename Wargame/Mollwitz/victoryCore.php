@@ -467,7 +467,7 @@ class victoryCore extends \Wargame\VictoryCore
         }
         if($b->gameRules->turn === 1) {
             if ($unit->hexagon->parent === 'deployBox' && $unit->status === STATUS_CAN_DEPLOY && $b->gameRules->mode !== DEPLOY_MODE) {
-                $unit->hexagon->parent = "not-used";
+                $unit->hexagon->parent = "notUsed";
             }
         }
     }

@@ -201,7 +201,7 @@ export function doitUnit(id, event) {
     });
     $("#mychat").attr("value", "");
 }
-export function counterClick(event) {
+export function counterClick(event, unitId = null) {
     var zoomed = window.zoomed;
 
     if (event.type == 'touchend') {
@@ -222,23 +222,27 @@ export function counterClick(event) {
         return;
     }
 
-    var didDrag = $("#map").data('did-drag');
-    $("#map").data('did-drag', false);
-    if (didDrag) {
-        return;
-    }
+    // var didDrag = $("#map").data('did-drag');
+    // $("#map").data('did-drag', false);
+    // if (didDrag) {
+    //     return;
+    // }
 
     if (event.altKey) {
         rotateUnits(event, this);
         return;
     }
     var id;
-    id = $(event.target).attr('id');
-    if (!id) {
-        id = $(event.target).parent().attr("id");
-    }
-    if (!id) {
-        id = $(event.target).parent().parent().attr("id");
+    if(unitId !== null){
+        id = unitId;
+    }else{
+        id = $(event.target).attr('id');
+        if (!id) {
+            id = $(event.target).parent().attr("id");
+        }
+        if (!id) {
+            id = $(event.target).parent().parent().attr("id");
+        }
     }
     doitUnit(id, event);
 }

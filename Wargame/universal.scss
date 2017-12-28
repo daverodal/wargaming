@@ -152,6 +152,52 @@ h5 {
   width: 100%;
   padding-bottom: 0px;
   z-index: 2000;
+  #secondHeader{
+    &:after{
+      clear:both;
+    }
+    .dropDown {
+      float:left;
+      .subMenu {
+        font-size: 20px;
+        position: absolute;
+        z-index: 30;
+        background: white;
+        & > ul {
+          margin: 0;
+          padding: 0;
+          z-index: 30;
+          font-size: 50px;
+          & > li {
+            background: white;
+            border: 1px solid #333;
+          }
+        }
+        .dropDown {
+          border: none;
+        }
+
+        /* .dropDowns may not exist inside a ul */
+        .dropDown {
+          float: none;
+          font-size: 24px;
+          cursor: pointer;
+          position: static;
+          font-weight: bold;
+          display: inline-block;
+
+
+        }
+
+      }
+      .WrapperLabel {
+        font-size:30px;
+        margin: 0;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
   #headerContent {
     #mouseMove {
       display: none;
@@ -362,6 +408,63 @@ h5 {
           position: static;
           font-weight: bold;
           display: inline-block;
+        }
+
+      }
+    }
+
+
+
+    .units-menu-enter-active{
+      transition: max-height .5s;
+      max-height:100px
+    }
+    .units-menu-enter{
+      max-height:0px;
+    }
+
+    .dropdown {
+      list-style: none;
+      .dropdown-menu{
+        overflow:hidden;
+          margin:0;
+          padding-left:0px;
+          li{
+            list-style:none;
+            &:hover{
+              background:#84b7fc;
+              a{
+                color:#000 !important;
+              }
+            }
+          }
+      }
+      .sub-menu {
+        font-size: 20px;
+        position: absolute;
+        z-index: 30;
+        background: white;
+        & > ul {
+          margin: 0;
+          padding: 0;
+          z-index: 30;
+          font-size: 50px;
+          & > li {
+            background: white;
+            border: 1px solid #333;
+          }
+        }
+        .dropDown {
+          border: none;
+        }
+
+        /* .dropDowns may not exist inside a ul */
+        .dropDown {
+          float: none;
+          font-size: 24px;
+          cursor: pointer;
+          position: static;
+          font-weight: bold;
         }
 
       }
@@ -860,7 +963,14 @@ fieldset {
   margin-bottom: 5px;
   /*display:none;*/
 }
-
+#deadpile-wrapper{
+  border-radius: 10px;
+  border: 10px solid #555;
+  background: #333;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 5px;
+}
 #deployBox {
   position: relative;
   font-family: serif;
@@ -1065,6 +1175,13 @@ svg {
 
     }
   }
+}
+
+.map-symbols{
+  position:absolute;
+  color:white;
+  background-color: transparent;
+
 }
 
 .mapSymbols{

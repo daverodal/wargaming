@@ -55,5 +55,4 @@ $crts = $topCrt->crts;
             </div>
         @endforeach
     </div>
-
 @endforeach

@@ -25,5 +25,4 @@
  */
 import "jquery-ui-bundle";
 import "jquery.panzoom";
-
-import "./Wargame/global-header.js";
+import "./global-header.js";

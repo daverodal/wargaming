@@ -1,9 +1,8 @@
-@include('wargame::global-header')
+   @include('wargame::global-header')
 @include('wargame::TMCW.Amph.amph-header')
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/amph.css')}}">
-<script src="{{mix('vendor/javascripts/wargame/amph.js')}}"></script>
 </head>
-@extends('wargame::stdIncludes.view')
+@extends('wargame::stdIncludes.view-vue')
 
 @section('inner-crt')
     @include('wargame::stdIncludes.inner-crt',['topCrt'=> $top_crt = new \Wargame\TMCW\CombatResultsTable()])
@@ -45,3 +44,4 @@
 </div>
 <button id="choose-option-button">Choose Your Option</button>
 </div>
+   <script src="{{mix('vendor/javascripts/wargame/amph.js')}}"></script>
