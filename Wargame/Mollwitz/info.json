@@ -8079,6 +8079,7 @@
     "description": "Chotusitz 1742",
     "params": {
       "unitComponent": "horse-musket-unit",
+      "nationalities": ["Austrian", "Prussian"],
       "corePath": "wargame::Mollwitz.Chotusitz1742",
       "victoryCore": "\\Wargame\\Mollwitz\\Chotusitz1742\\VictoryCore",
       "multiImage": "1280px-Wilhelm_Camphausen-Die_Huldigung.jpg",

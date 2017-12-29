@@ -210,6 +210,11 @@
         "path": "TMCW",
         "genre": "20'th Century Games",
         "fileName": "\\Wargame\\TMCW\\Chawinda1965\\Chawinda1965.php",
+        "params": {
+            "unitComponent": "modern-at-def-unit",
+            "nationalities": ["indian", "pakistani"]
+
+        },
         "scenarios": {
             "Main": {
                 "description": "The Battle of Chawinda 1965",
