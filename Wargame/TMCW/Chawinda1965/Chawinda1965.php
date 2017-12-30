@@ -118,6 +118,9 @@ class Chawinda1965 extends \Wargame\ModernLandBattle
 
 
         $scenario = $this->scenario;
+        if(isset($scenario->units)){
+            return $this->scenInit();
+        }
         $infStrength = 3;
         $halfInfStrength = 3;
         $numPakistaniInf = 6;

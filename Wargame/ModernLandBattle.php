@@ -88,6 +88,40 @@ class ModernLandBattle extends LandBattle
         }
         static::getPlayerData($scenario);
     }
+
+
+    /*
+     * Called if a unit finds units in the scenario.
+     */
+    public function scenInit(){
+
+
+        $scenario = $this->scenario;
+        $unitSets = $scenario->units;
+
+        foreach($unitSets as $unitSet) {
+//            dd($unitSet);
+            if($unitSet->forceId !== MartianCivilWar::LOYALIST_FORCE){
+                continue;
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                UnitFactory::create("xx", $unitSet->forceId, "deployBox", $unitSet->image, $unitSet->combat, $unitSet->combat/2, $unitSet->movement, false, STATUS_CAN_REINFORCE,  $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, true, $unitSet->class);
+
+            }
+        }
+        foreach($unitSets as $unitSet) {
+//            dd($unitSet);
+            if($unitSet->forceId !== MartianCivilWar::REBEL_FORCE){
+                continue;
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                UnitFactory::create("xx", $unitSet->forceId, "deployBox", $unitSet->image, $unitSet->combat, $unitSet->combat/2, $unitSet->movement, false, STATUS_CAN_REINFORCE,  $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, true, $unitSet->class);
+            }
+        }
+    }
+
+
+
     /*
      * terrainInit() gets called during game init, from unitInit(). It happens as a new game gets started.
      */
