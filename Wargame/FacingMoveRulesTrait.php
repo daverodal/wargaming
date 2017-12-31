@@ -27,6 +27,9 @@ trait FacingMoveRulesTrait
     function turnLeft($isDeploy = false){
         if ($this->anyUnitIsMoving) {
             $movingUnit = $this->force->units[$this->movingUnitId];
+            if($movingUnit->facing === false){
+                return false;
+            }
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
             $turnCost = 1;
             $origFacing = $movingUnit->facing;
@@ -74,6 +77,9 @@ trait FacingMoveRulesTrait
     function turnAbout($isDeploy = false){
         if ($this->anyUnitIsMoving) {
             $movingUnit = $this->force->units[$this->movingUnitId];
+            if($movingUnit->facing === false){
+                return false;
+            }
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
             $turnCost = 2;
             if($isDeploy || $movesLeft >= $turnCost){
@@ -132,6 +138,9 @@ trait FacingMoveRulesTrait
     function turnRight($isDeploy = false){
         if ($this->anyUnitIsMoving) {
             $movingUnit = $this->force->units[$this->movingUnitId];
+            if($movingUnit->facing === false){
+                return false;
+            }
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
             $origFacing = $movingUnit->facing;
             $turnCost = 1;
