@@ -104,7 +104,7 @@
     "name": "The Battle of Malplaquet",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "War of the Spanish Succession",
     "fileName": "\\Wargame\\Mollwitz\\Malplaquet\\Malplaquet",
     "description": "September 11, 1709. The War of the Spanish Succession",
     "params": {
@@ -190,7 +190,7 @@
     "name": "The Battle of Oudenarde 1708",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "War of the Spanish Succession",
     "fileName": "\\Wargame\\Mollwitz\\Oudenarde1708\\Oudenarde1708",
     "description": "July 11, 1708. Anglo Allies vs Franco Bavarian. The war for Spanish Succession.",
     "params": {
@@ -8041,7 +8041,7 @@
     "name": "Friedlingen 1702",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "War of the Spanish Succession",
     "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
     "description": "Friedlingen 1702",
     "params": {
@@ -8293,7 +8293,7 @@
     "name": "Speyerbach 1703",
     "path": "Mollwitz",
     "production": true,
-    "genre": "18'th Century Europe",
+    "genre": "War of the Spanish Succession",
     "fileName": "\\Wargame\\Mollwitz\\HorseMusket\\HorseMusket",
     "description": "Speyerbach 1703",
     "params": {
