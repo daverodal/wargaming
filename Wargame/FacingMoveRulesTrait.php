@@ -45,8 +45,16 @@ trait FacingMoveRulesTrait
                 }
                 $battle = Battle::getBattle();
                 $mapHex = $battle->mapData->getHex($movingUnit->hexagon->name);
-                if($movingUnit->hexagon->name === $this->turnHex && $this->rightOf($origFacing, $this->turnFacing)){
-                    $turnCost =  0 - $turnCost;
+                if($movingUnit->hexagon->name === $this->turnHex){
+                    if($this->rightOf($origFacing, $this->turnFacing)) {
+                        $turnCost = 0 - $turnCost;
+                    }
+                    if($this->twoLeftOf($origFacing, $this->turnFacing)){
+                        $turnCost =  0;
+                    }
+                    if($this->behind($origFacing, $this->turnFacing)){
+                        $turnCost =  0;
+                    }
                 }
 
                 $movingUnit->updateFacingStatus(-1, $turnCost);
@@ -81,7 +89,21 @@ trait FacingMoveRulesTrait
                 return false;
             }
             $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $origFacing = $movingUnit->facing;
+
             $turnCost = 2;
+            if($movingUnit->hexagon->name === $this->turnHex){
+                if($this->rightOf($origFacing, $this->turnFacing) || $this->leftOf($origFacing, $this->turnFacing)) {
+                    $turnCost = 1;
+                }
+                if($this->twoLeftOf($origFacing, $this->turnFacing) || $this->twoRightOf($origFacing, $this->turnFacing)){
+                    $turnCost =  -1;
+                }
+                if($this->behind($origFacing, $this->turnFacing)){
+                    $turnCost =  -2;
+                }
+            }
+
             if($isDeploy || $movesLeft >= $turnCost){
 
                 if($isDeploy){
@@ -93,7 +115,16 @@ trait FacingMoveRulesTrait
                 }
                 $battle = Battle::getBattle();
                 $mapHex = $battle->mapData->getHex($movingUnit->hexagon->name);
+
                 $movingUnit->updateFacingStatus(3, $turnCost);
+                if($this->turnHex === false || $movingUnit->hexagon->name !== $this->turnHex || $movingUnit->id !== $this->turnId){
+                    $this->turnHex = $movingUnit->hexagon->name;
+                    $this->turnFacing = $origFacing;
+                    $this->turnId = $movingUnit->id;
+                }
+
+
+
                 if ($mapHex->isZoc($this->force->defendingForceId) == true) {
                     if ($this->enterZoc === "stop") {
                         $this->stopMove($movingUnit);
@@ -135,6 +166,31 @@ trait FacingMoveRulesTrait
         return false;
     }
 
+    function twoLeftOf($newCourse, $prevCourse){
+
+        if(($newCourse + 2) % 6 === $prevCourse ){
+            return true;
+        }
+
+        return false;
+    }
+
+    function twoRightOf($newCourse, $prevCourse){
+        if(($prevCourse + 2) % 6 === $newCourse ){
+            return true;
+        }
+        return false;
+    }
+
+    function behind($newCourse, $prevCourse){
+
+        if(($newCourse + 3) % 6 === $prevCourse ){
+            return true;
+        }
+
+        return false;
+    }
+
     function turnRight($isDeploy = false){
         if ($this->anyUnitIsMoving) {
             $movingUnit = $this->force->units[$this->movingUnitId];
@@ -154,8 +210,16 @@ trait FacingMoveRulesTrait
                     return true;
                 }
 
-                if($movingUnit->hexagon->name === $this->turnHex && $this->leftOf($origFacing, $this->turnFacing)){
-                    $turnCost =  0 - $turnCost;
+                if($movingUnit->hexagon->name === $this->turnHex){
+                    if($this->leftOf($origFacing, $this->turnFacing)) {
+                        $turnCost = 0 - $turnCost;
+                    }
+                    if($this->twoRightOf($origFacing, $this->turnFacing)){
+                        $turnCost =  0;
+                    }
+                    if($this->behind($origFacing, $this->turnFacing)){
+                        $turnCost =  0;
+                    }
                 }
                 $movingUnit->updateFacingStatus(1, $turnCost);
                 if($this->turnHex === false || $movingUnit->hexagon->name !== $this->turnHex || $movingUnit->id !== $this->turnId){
