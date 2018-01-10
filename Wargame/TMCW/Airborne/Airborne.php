@@ -77,13 +77,13 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", self::LOYALIST_FORCE, "504", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
         UnitFactory::create("lll", self::LOYALIST_FORCE, "603", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
         UnitFactory::create("lll", self::LOYALIST_FORCE, "703", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "703", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "704", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 
         UnitFactory::create("lll", self::LOYALIST_FORCE, "802", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
         UnitFactory::create("lll", self::LOYALIST_FORCE, "902", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 //        UnitFactory::create("lll", self::LOYALIST_FORCE, "deployBox", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 
-        UnitFactory::create("x", self::LOYALIST_FORCE, "802", "multiHeavy.png", 10,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'heavy', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "1109", "multiHeavy.png", 10,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'heavy', $i++);
 
         UnitFactory::create("lll", self::LOYALIST_FORCE, "1001", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
         UnitFactory::create("lll", self::LOYALIST_FORCE, "604", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
@@ -227,6 +227,19 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "gameTurn4", "multiPara.png", 9,  5,  STATUS_CAN_REINFORCE, "A", 4,  "rebel",  "para", $i++);
 
 
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "multiArmor.png", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "multiArmor.png", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "multiMech.png", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "multiArmor.png", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "multiMech.png", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "multiMech.png", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "multiInf.png", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
+
         $symbol = new \stdClass();
         $symbol->type = 'RebelSupply';
         $symbol->image = '';
@@ -297,14 +310,22 @@ class Airborne extends \Wargame\ModernLandBattle
             $this->moveRules->friendlyAllowsRetreat = true;
             // game data
             $this->gameRules->setMaxTurn(7);
-            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
 
+//            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
 
-            $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
-            $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
+//            $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
+//            $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
+//            $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
+//
+//            $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
+//            $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
+
+            $this->gameRules->setInitialPhaseMode(BLUE_DEPLOY_PHASE, DEPLOY_MODE);
+
+            $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
+            $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
             $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
 
-            $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
 
             $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);

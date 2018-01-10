@@ -79,6 +79,20 @@
 
 #OBC{
   width:800px;
+  .a-unit-wrapper{
+    position:static;
+    display: inline-block;
+    margin: 3px 3px;
+    .unit {
+      border: solid 3px;
+      border-color: #cccccc #666666 #666666 #cccccc;
+      .unit-steps{
+        font-weight:400;
+        font-size:19.2px;
+      }
+    }
+
+  }
 }
 
 #infoWrapper .WrapperLabel {
