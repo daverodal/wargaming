@@ -8133,7 +8133,15 @@
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
-        "longDescription": "Historical Scenario"
+        "longDescription": "Units are deploy as they were historically."
+      },
+      "FreeDeploy": {
+        "description": "Freely deploy units.",
+        "longDescription": "Allow both side to more freely deploy their units."
+      },
+      "AlternateDeploy": {
+        "description": "Alternate deploy units.",
+        "longDescription": "An alternate, forward deploy scenario."
       }
     }
   },
