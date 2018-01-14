@@ -7323,7 +7323,7 @@
   "Heilsberg1807": {
     "name": "The Battle of Heilsberg 1807",
     "path": "Mollwitz",
-    "production": false,
+    "production": true,
     "genre": "Napoleonic",
     "fileName": "\\Wargame\\Mollwitz\\Heilsberg1807\\Heilsberg1807",
     "description": "The Battle of  Heilsberg 1807.",
