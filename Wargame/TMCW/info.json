@@ -188,7 +188,7 @@
         }
     },
     "KievCorps": {
-        "production": true,
+        "production": false,
         "name": "Kiev Corps Level",
         "path": "TMCW",
         "genre": "20'th Century Games",
@@ -205,7 +205,7 @@
     },
 
     "Chawinda1965": {
-        "production": true,
+        "production": false,
         "name": "Chawinda 1965",
         "path": "TMCW",
         "genre": "20'th Century Games",

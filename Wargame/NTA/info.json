@@ -4,6 +4,7 @@
     "path": "NTA",
     "genre": "Training",
     "fileName": "\\Wargame\\NTA\\NapoleonsTrainingAcademy",
+    "production": true,
     "scenarios": {
       "main": {
         "description":"Introductory Game "
