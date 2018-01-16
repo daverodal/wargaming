@@ -24,7 +24,6 @@
         body{
             background:#ccc;
             color:#333;
-<!--            background: url("--><?//=url("js/marsrover.jpg")?><!--") #333 no-repeat;-->
             background-position: 25% 0;
             background-size:1700px;
         }

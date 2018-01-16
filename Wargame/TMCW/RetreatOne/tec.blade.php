@@ -22,6 +22,6 @@
 ?><div class="dropDown"  id="TECWrapper">
     <h4 class="WrapperLabel" title='Terrain Effects Chart'>TEC</h4>
     <DIV id="TEC" style="width:600px;display:none;"><div class="close">X</div>
-        <img style="width:900px;" id="tecImage" src="<?=url('js/ModernAridTEC1.png')?>">
+        <img style="width:900px;" id="tecImage" src="<?=asset('vendor/wargame/tmcw/retreatone/images/ModernAridTEC1.png')?>">
     </div>
 </div>

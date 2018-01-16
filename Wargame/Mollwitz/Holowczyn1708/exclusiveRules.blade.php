@@ -50,7 +50,7 @@ You should have received a copy of the GNU General Public License
     </li>
     <li><span class="lessBig">Pontoons</span>
         <p class="indent">
-            <img id="pontoon-image" src="<?= url("js/SwePontoon.png") ?>">
+            <img id="pontoon-image" src="{{asset('vendor/wargame/mollwitz/images/SwePontoon.png')}}">
             The Swedes had pontoons available. They were unable to use them.
             As an optional rule allow the Swedes to deploy 2 pontoon markers within 2 hexes of any Swedish unit.
             This has the effect of creating clear hex in that hex for the remainder of the game and nullifying any stream hex side between the two pontoons

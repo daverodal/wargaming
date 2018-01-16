@@ -9,7 +9,9 @@
     <li class="exclusive">No units may be receive replacements in this game.
     </li>
 @endsection
-
+@section('tec')
+    @include("wargame::TMCW.RetreatOne.tec")
+@endsection
 @section('victoryConditions')
     {{--    @include('wargame::TMCW.Amph.victoryConditions')--}}
 @endsection

@@ -27,7 +27,7 @@
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
              src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
-            <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
+            <img src="{{asset("assets/unit-images/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
         <div ng-style="{background: unit.integrityColor }" ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }}
@@ -47,7 +47,7 @@
         <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
              src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
-            <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
+            <img src="{{asset("assets/unit-images/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
         <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
@@ -62,7 +62,7 @@
     <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
          src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
     <div class="counterWrapper">
-        <img src="{{asset("js/")}}/@{{ unit.image }}" class="counter"><span
+        <img src="{{asset("assets/unit-images/")}}/@{{ unit.image }}" class="counter"><span
                 class="unit-desig">@{{ unit.unitDesig }}</span>
     </div>
     <div class="range">@{{ unit.armorClass }}</div>
@@ -175,7 +175,7 @@
             <div class="unitSize">{{$unit['unitSize']}}</div>
             <img class="arrow" src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
             <div class="counterWrapper">
-                <img src="{{asset("js/".$unit['image'])}}" class="counter"><span
+                <img src="{{asset("assets/unit-images/".$unit['image'])}}" class="counter"><span
                         class="unit-desig"><?=$unit['unitDesig']?></span>
             </div>
             <div class="unit-numbers">5 - 4</div>
