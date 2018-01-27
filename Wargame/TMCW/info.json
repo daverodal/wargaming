@@ -6,18 +6,6 @@
         "fileName": "\\Wargame\\TMCW\\MartianCivilWar\\MartianCivilWar",
         "description":"Rebels strike from the northwest, trying to capture or isolate cuneiform.",
         "params":{
-            "units": [{
-                "class": "inf",
-                "combat": 3,
-                "movement": 8,
-                "range": 1,
-                "unitSize": "x",
-                "image": "multiInf.png",
-                "nationality": "prc",
-                "num": 6
-            }
-                
-            ]
         },
         "scenarios": {
             "main": {

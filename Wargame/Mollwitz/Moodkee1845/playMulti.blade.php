@@ -19,21 +19,18 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><style type="text/css">
-    body{
-        background:#ccc;
-        color:#333;
-        background: url("<?=url("vendor/wargame/tmcw/retreatone/images/Italian_tanks_captured_Agordat.jpg")?>") #333 no-repeat;
-        background-position: 25% 0;
-        background-size:1700px;
-    }
-    .Laconians{
-        color :#dd4f2b;
-    }
-    .Caprolians{
-        color: #e8e22c;
-    }
+?>
+<link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/all-nations-colors.css')}}">
+<style type="text/css">
+
+        body{
+            background:#ccc;
+            color:#333;
+            background: url("<?=url("vendor/wargame/mollwitz/images/British_Indian_Empire_1909_Imperial_Gazetteer_of_India.png")?>") #333 no-repeat;
+            background-position: 25% 0;
+            background-size:100%;
+        }
     </style>
-<footer class="attribution">
-    By Unknown member of the British Army. [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File%3AItalian_tanks_captured_Agordat.jpg">via Wikimedia Commons</a>
-</footer>
+    <footer class="attribution">
+        By Oxford University Press [Public domain], <a target="_blank" href="http://commons.wikimedia.org/wiki/File%3APolitical_Divisions_of_the_Indian_Empire%2C_1909.jpg">via Wikimedia Commons</a>
+    </footer>

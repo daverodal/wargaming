@@ -19,21 +19,22 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><style type="text/css">
-    body{
-        background:#ccc;
-        color:#333;
-        background: url("<?=url("vendor/wargame/tmcw/retreatone/images/Italian_tanks_captured_Agordat.jpg")?>") #333 no-repeat;
-        background-position: 25% 0;
-        background-size:1700px;
-    }
-    .Laconians{
-        color :#dd4f2b;
-    }
-    .Caprolians{
-        color: #e8e22c;
-    }
+?>
+    <style type="text/css">
+        body{
+            background:#ccc;
+            color:#333;
+            background: url("<?=url("vendor/wargame/tmcw/chawinda1965/images/1280px-1965_Indo-Pak_War_DestroyedShermanTank.jpg")?>") #333 no-repeat;
+            background-position: 10% 0;
+            background-size:100%;
+        }
+        .Indian {
+            color:  #ff9933;
+        }
+        .Pakistani{
+            color: #02b500;
+        }
     </style>
 <footer class="attribution">
-    By Unknown member of the British Army. [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File%3AItalian_tanks_captured_Agordat.jpg">via Wikimedia Commons</a>
+    By Abhinayrathore at English Wikipedia (Work of Brig. Hari Singh Deora A.V.S.M) [Public domain], <a href="http://commons.wikimedia.org/wiki/File%3A1965_Indo-Pak_War_DestroyedShermanTank.jpg">via Wikimedia Commons</a>
 </footer>

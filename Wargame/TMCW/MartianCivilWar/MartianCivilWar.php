@@ -172,7 +172,6 @@ class MartianCivilWar extends ModernLandBattle
         $unitSets = $scenario->units;
 
         foreach($unitSets as $unitSet) {
-//            dd($unitSet);
             if($unitSet->forceId !== MartianCivilWar::LOYALIST_FORCE){
                 continue;
             }

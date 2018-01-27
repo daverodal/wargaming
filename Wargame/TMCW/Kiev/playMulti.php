@@ -29,6 +29,13 @@
             background-size:100%;
         }
 
+        .German {
+            color: #888;
+        }
+
+        .Soviet {
+            color: #ba9f34;
+        }
     </style>
     <footer cl
 <footer class="attribution">

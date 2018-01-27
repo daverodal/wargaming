@@ -21,7 +21,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><style type="text/css">
-        <?php include_once "playMulti.css";?>
 
         body{
             background:#ccc;
@@ -31,6 +30,12 @@
             background-size:1700px;
         }
 
+    .Rebel{
+        color:red;
+    }
+    .Loyalist{
+        color:#84b5ff;
+    }
 
 
     </style>

@@ -66,3 +66,38 @@
   }
 }
 
+
+
+
+@include player(British, $angloAlliedColor,$angloAlliedColor, white);
+@include player(Sikh,  $beluchiColor, $beluchiWrapperColor, white);
+@include player(Beluchi,  $beluchiColor, $beluchiWrapperColor, white);
+@include player(Austrian,  $austrianColor,  $austrianColor, white);
+@include player(Imperials,  $austrianColor,  $austrianColor, white);
+@include player(Prussian,  $prussianColor,  $prussianWrapperColor, white);
+
+@include player(Allies, $angloAlliedColor, $angloAlliedWrapperColor, white)
+@include player(Anglo , $angloAlliedColor, $angloAlliedWrapperColor);
+@include player(French, $frenchColor, $frenchColor, white);
+
+@include player(French-Saxon, $frenchColor, $frenchColor, white);
+@include player(Anglo-Allied, $angloAlliedColor,$angloAlliedColor, white);
+
+
+@include player(Allied, $angloAlliedColor, $angloAlliedColor, white);
+@include player(Austrian-Russian-Bavarian-Allies, $russianColor, $russianColor, white);
+
+@include player(Russian, $russianColor, $angloAlliedWrapperColor, white);
+@include player(Prussian-Russian-Allies, $russianColor,  $angloAlliedWrapperColor, white);
+
+@include player(Saxon-Russian,  #FD4223, #FD4223);
+@include player(Swedish, $swedishColor, $swedishColor);
+@include player(Danish,  $danishColor, $danishColor);
+@include player(Danes,  $danishColor, $danishColor);
+@include player(Saxon-Polish,  #FD4223, #FD4223, white);
+@include player(Rebel, $rebelColor, $rebelWrapperColor, white);
+@include player(Loyalist , $angloAlliedColor,$angloAlliedColor);
+@include player(American, $rebelColor, $rebelWrapperColor, white);
+
+@include player(Martians, pink, fuchsia, white);
+@include player(Venutians, lime, blue, white);

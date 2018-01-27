@@ -51,6 +51,9 @@ $vintage-unit-numbers-size:10px;
     border-color: $color !important;
   }
 
+  .#{$nationality}.multi-player{
+    color: $faceColor;
+  }
   .#{$nationality}Face, .player#{$nationality}Face {
     color: $faceColor;
   }

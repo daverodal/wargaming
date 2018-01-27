@@ -19,21 +19,21 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><style type="text/css">
-    body{
-        background:#ccc;
-        color:#333;
-        background: url("<?=url("vendor/wargame/tmcw/retreatone/images/Italian_tanks_captured_Agordat.jpg")?>") #333 no-repeat;
-        background-position: 25% 0;
-        background-size:1700px;
-    }
-    .Laconians{
-        color :#dd4f2b;
-    }
-    .Caprolians{
-        color: #e8e22c;
-    }
+?>
+<link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/all-nations-colors.css')}}">
+<style type="text/css">
+        body{
+            background:#ccc;
+            color:#333;
+            background: url("<?=url("vendor/wargame/mollwitz/images/Battle_of_Minden_1759.jpeg")?>") #333 no-repeat;
+            background-position: 25% 0;
+            background-size:100%;
+        }
+        .Anglo{
+            color:red;
+        }
+
     </style>
 <footer class="attribution">
-    By Unknown member of the British Army. [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File%3AItalian_tanks_captured_Agordat.jpg">via Wikimedia Commons</a>
+    Richard Caton Woodville [Public domain], <a target='blank' href="http://commons.wikimedia.org/wiki/File%3ACaton-Woodville_Battle_of_Minden_1759.jpeg">via Wikimedia Commons</a>
 </footer>

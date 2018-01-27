@@ -20,7 +20,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><style type="text/css">
-        <?php @include "playMulti.css";?>
         body{
             background:#ccc;
             color:#333;
@@ -38,6 +37,6 @@
 
     </style>
 
-    <footer class="attribution">
+<footer class="attribution">
     By Staff Sgt. D. Myles Cullen (USAF) [Public domain], <a target='blank' href="http://commons.wikimedia.org/wiki/File%3AChinese_MBTs_070324-F-0193C-040.JPEG">via Wikimedia Commons</a>
 </footer>

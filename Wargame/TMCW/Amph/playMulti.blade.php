@@ -20,20 +20,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><style type="text/css">
-    body{
-        background:#ccc;
-        color:#333;
-        background: url("<?=url("vendor/wargame/tmcw/retreatone/images/Italian_tanks_captured_Agordat.jpg")?>") #333 no-repeat;
-        background-position: 25% 0;
-        background-size:1700px;
+    body {
+        background: #ccc;
+        color: #333;
+        background: url("<?=asset("vendor/wargame/tmcw/amph/images/1280px-Amphibious_Assault_Vehicle_(AAV).jpg")?>") #333 no-repeat;
+        background-position: 10% 0;
+        background-size: 100%;
     }
-    .Laconians{
-        color :#dd4f2b;
+    .Loyalist,
+    .loyalist {
+        color: #84b5ff;
     }
-    .Caprolians{
-        color: #e8e22c;
+
+    .Rebel,
+    .rebel,
+    .sympth {
+        color: #5c5;
     }
-    </style>
+</style>
 <footer class="attribution">
-    By Unknown member of the British Army. [Public domain], <a target="blank" href="https://commons.wikimedia.org/wiki/File%3AItalian_tanks_captured_Agordat.jpg">via Wikimedia Commons</a>
+    By Mate 1st Class Brien Aho, U.S. Navy (http://www.navy.mil; exact Source) [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AAmphibious_Assault_Vehicle_(AAV).jpg">via Wikimedia Commons</a>
 </footer>

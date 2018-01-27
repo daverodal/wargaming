@@ -28,11 +28,11 @@
             background-position: 0 0;
             background-size:100%;
         }
-        .Rebel{
-            color:red;
+        .Soviet{
+            color:rgb(223,88,66);
         }
-        .Loyalist{
-            color:blue;
+        .Japanese{
+            color:orange;
         }
 
     </style>
