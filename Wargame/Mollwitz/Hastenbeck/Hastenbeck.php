@@ -85,7 +85,7 @@ class Hastenbeck extends \Wargame\Mollwitz\JagCore
     {
 
         $artRange = 3;
-        $coinFlip = floor(2 * (rand() / getrandmax()));
+        $coinFlip = $this->dieRolls->getEvent(2);
         UnitFactory::$injector = $this->force;
 
 

@@ -175,7 +175,7 @@ class Holowczyn1708VictoryCore extends \Wargame\Mollwitz\victoryCore
                     $this->divisionReleased = true;
                 }
             }else{
-                $dieRoll = rand(1,6);
+                $dieRoll = $battle->dieRolls->getEvent(6) + 1;
                 if($dieRoll === 6 || $autoRelease === true){
                     $this->divisionReleased = true;
                 }

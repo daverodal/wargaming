@@ -338,7 +338,7 @@ h5 {
         border: 2px solid black;
         box-shadow: 10px 10px 10px rgba(30, 30, 30, .85);
         padding: 0 5px;
-        position: absolute;
+        position: absolute !important;
         z-index: 30;
         display: none;
         #phaseClicks {

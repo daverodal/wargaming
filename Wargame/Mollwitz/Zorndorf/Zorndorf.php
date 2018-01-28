@@ -72,7 +72,7 @@ class Zorndorf extends \Wargame\Mollwitz\JagCore
         UnitFactory::$injector = $this->force;
 
 
-        $coinFlip = floor(2 * (rand() / getrandmax()));
+        $coinFlip = $this->dieRolls->getEvent(2);
 
         $pruDeploy = $coinFlip == 1 ? "B": "C";
 

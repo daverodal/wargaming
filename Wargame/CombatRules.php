@@ -75,7 +75,6 @@ class CombatRules
     public $attackers;
     public $resolvedCombats;
     public $lastResolvedCombat;
-    public $dieRoll;
     public $combatDefenders;
 
     /*
@@ -128,8 +127,6 @@ class CombatRules
             $this->currentDefender = false;
             $this->combatDefenders = new CombatDefenders();
         }
-        $this->dieRoll = false;
-//        $this->crt = new CombatResultsTable();
     }
 
     public function injectCrt($crt){
@@ -659,13 +656,8 @@ class CombatRules
         //  6 * Math->random yields number between 0 and 6
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
-        $Die = floor($this->crt->dieSideCount * (rand() / getrandmax()));
-//        $Die = $this->crt->dieSideCount - 1;
+        $Die = $battle->dieRolls->getEvent($this->crt->dieSideCount);
 //        $Die = 2;
-        if($this->dieRoll !== false){
-            $Die = $this->dieRoll;
-        }
-        $this->dieRoll = $Die;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {

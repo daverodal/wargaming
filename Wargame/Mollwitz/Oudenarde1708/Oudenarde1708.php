@@ -53,7 +53,7 @@ class Oudenarde1708 extends \Wargame\Mollwitz\JagCore
     {
 
         $artRange = 3;
-        $coinFlip = floor(2 * (rand() / getrandmax()));
+        $coinFlip = $this->dieRolls->getEvent(2);
         $prussianDeploy = "B";
         $scenario = $this->scenario;
         UnitFactory::$injector = $this->force;

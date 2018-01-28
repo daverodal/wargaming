@@ -35,8 +35,10 @@ class LandBattle extends \Wargame\Battle{
     }
 
     public $clickHistory = [];
+    public $dieRolls;
 
     public function __construct($data = false){
+        $this->dieRolls = new DieRolls();
         if($data){
             if(isset($data->clickHistory)){
                 foreach($data->clickHistory as $click){
@@ -408,7 +410,7 @@ class LandBattle extends \Wargame\Battle{
                 break;
 
         }
-        $clickClass->dieRoll = $this->combatRules->dieRoll;
+        $clickClass->dieRoll = $this->dieRolls->getEvents();
         return $retVal;
     }
 }

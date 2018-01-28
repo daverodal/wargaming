@@ -478,7 +478,7 @@ class NavalCombatRules
         //  6 * Math->random yields number between 0 and 6
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
-        $Die = floor($this->crt->dieSideCount * (rand() / getrandmax()));
+        $Die = $battle->dieRolls->getEvent($this->crt->dieSideCount);
         if($this->dieRoll !== false){
             $Die = $this->dieRoll;
         }

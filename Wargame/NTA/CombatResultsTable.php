@@ -65,6 +65,14 @@ class CombatResultsTable
             array(AE, AE, AE, AR, AR, DR, DR, DR, DR, DR),
             array(AE, AE, AE, AE, AR, AR, DR, DR, DR, DR),
         );
+        $this->crts->determined = array(
+            array(AE, AE, AE, AR, AR, AR, DR, DR, DR, EX),
+            array(AE, AE, AR, AR, AR, DR, DR, DR, EX, DE),
+            array(AE, AE, AR, AR, DR, DR, EX, EX, DE, DE),
+            array(AE, AE, NE, NE, DR, EX, EX, DE, DE, DE),
+            array(AE, AR, NE, DR, EX, EX, DE, DE, DE, DE),
+            array(AR, AR, DR, EX, EX, DE, DE, DE, DE, DE),
+        );
         $this->combatOddsTable = array(
             array(),
             array(),

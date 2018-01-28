@@ -155,7 +155,7 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
         $turn = $b->gameRules->turn;
         if ($turn <= 3 && $this->wasIndecisive === false && $b->gameRules->phase == RED_MOVE_PHASE) {
-            $Die = floor(6 * (rand() / getrandmax()));
+            $Die = $b->dieRolls->getEvent(6);
             /* 1 or 2 is 0 or 1 */
             if ($Die < 2) {
 
