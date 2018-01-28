@@ -27,7 +27,7 @@ class DieRolls implements RandEvents
     protected $usedPre = false;
     protected $preEvents = [];
     protected $events = [];
-    function getEvent(int $dieSides){
+    function getEvent(int $dieSides, int $arg2 = null){
         if(count($this->preEvents) > 0){
             $this->usedPre = true;
             return array_shift($this->preEvents);
@@ -35,7 +35,11 @@ class DieRolls implements RandEvents
         if($this->usedPre){
             dd('bad');
         }
-        $Die = floor($dieSides * (rand() / getrandmax()));
+        if($arg2 !== null){
+            $Die = rand($dieSides, $arg2);
+        }else{
+            $Die = floor($dieSides * (rand() / getrandmax()));
+        }
         $this->events[] = $Die;
         return $Die;
     }

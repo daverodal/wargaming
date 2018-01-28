@@ -24,5 +24,5 @@ namespace Wargame;
 
 interface RandEvents
 {
-    function getEvent(int $num);
+    function getEvent(int $num, int $arg2 = null);
 }
