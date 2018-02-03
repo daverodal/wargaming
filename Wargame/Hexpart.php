@@ -162,25 +162,25 @@ function calculateHexpartName() {
 
  	switch ( $this->hexpartType ) {
 
-	    case 1:
+	    case HEXAGON_CENTER:
 			$this->refHexpartX = $this->x;
 			$this->refHexpartY = $this->y;
 			$this->prefix = "hexpart:";
 			break;
 
-	    case 2:
+	    case BOTTOM_HEXSIDE:
 			$this->refHexpartX = $this->x;
 			$this->refHexpartY = $this->y - 2;
 			$this->prefix = "hexpart_";
 			break;
 
-	    case 3:
+	    case LOWER_LEFT_HEXSIDE:
 			$this->refHexpartX = $this->x + 1;
 			$this->refHexpartY = $this->y - 1;
 			$this->prefix = "hexpart\\";
 			break;
 
-	    case 4:
+	    case UPPER_LEFT_HEXSIDE:
 			$this->refHexpartX = $this->x + 1;
 			$this->refHexpartY = $this->y + 1;
 			$this->prefix = "hexpart/";
@@ -196,22 +196,23 @@ function calculateHexpartName() {
         $num = $refHexagon->getNumber();
         $upper = floor($num / 100);
         $lower = $num % 100;
+        $upperOdd = $upper & 1;
         switch ( $this->hexpartType ) {
 
-            case 1:
+            case HEXAGON_CENTER:
                 $this->neighbors = [];
                 break;
 
-            case 2:
+            case BOTTOM_HEXSIDE:
                 $this->neighbors = [$num, $num+1];
                 break;
 
-            case 3:
-                $this->neighbors = [$num, ($upper - 1) * 100 + ($lower + 1)];
+            case LOWER_LEFT_HEXSIDE:
+                $this->neighbors = [$num, ($upper - 1) * 100 + ($lower + ($upperOdd ? 0 : 1))];
                 break;
 
-            case 4:
-                $this->neighbors = [$num, ($upper - 1) * 100 + $lower];
+            case UPPER_LEFT_HEXSIDE:
+                $this->neighbors = [$num, ($upper - 1) * 100 + ($lower + ($upperOdd ? -1: 0))];
                 break;
         }
 	} else {
