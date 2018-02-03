@@ -28,6 +28,7 @@ class Hexpart
 	public $hexpartType;
 	public $name;
 	public $prefix;
+	public $neighbors = [];
 	
     function __construct(){
 	// Hexpart(name)
@@ -192,7 +193,27 @@ function calculateHexpartName() {
 
 		$refHexagon->setXY($this->refHexpartX, $this->refHexpartY);
 		$this->name = $this->prefix . $refHexagon->getName();
+        $num = $refHexagon->getNumber();
+        $upper = floor($num / 100);
+        $lower = $num % 100;
+        switch ( $this->hexpartType ) {
 
+            case 1:
+                $this->neighbors = [];
+                break;
+
+            case 2:
+                $this->neighbors = [$num, $num+1];
+                break;
+
+            case 3:
+                $this->neighbors = [$num, ($upper - 1) * 100 + ($lower + 1)];
+                break;
+
+            case 4:
+                $this->neighbors = [$num, ($upper - 1) * 100 + $lower];
+                break;
+        }
 	} else {
 
 		$this->hexpartName = "null";

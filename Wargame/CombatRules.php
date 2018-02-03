@@ -76,6 +76,7 @@ class CombatRules
     public $resolvedCombats;
     public $lastResolvedCombat;
     public $combatDefenders;
+    public $unitsBlock = false;
 
     /*
      * TODO
@@ -456,7 +457,7 @@ class CombatRules
 
     function checkBlocked($los, $id){
         $mapData = MapData::getInstance();
-
+        $unit = $this->force->units[$id];
         $good = true;
         $hexParts = $los->getlosList();
         // remove first and last hexPart
@@ -479,6 +480,36 @@ class CombatRules
         }
         $hasElevated1 = $hasElevated2 = false;
         foreach ($hexParts as $hexPart) {
+
+            if($this->unitsBlock || ($unit->unitsBlock ?? false)){
+                $hexPart->calculateHexpartType();
+                $hexPart->calculateHexpartName();
+                if($hexPart->getHexpartType() == HEXAGON_CENTER){
+                    $hexName =  $hexPart->getName();
+                    $hexName = preg_replace("/hexpart:/","", $hexName);
+                    $isIt = $mapData->hexagonIsOccupiedForce(new Hexagon($hexName), $unit->forceId);
+                    $isIt |= $mapData->hexagonIsOccupiedEnemy(new Hexagon($hexName), $unit->forceId);
+                    if($isIt){
+                        return false;
+                    }
+                }else{
+                    $neighbors = $hexPart->neighbors;
+                    /*
+                     * if both neighbors block, than the hexside blocks.
+                     */
+                    $both = 0;
+                    foreach($neighbors as $neighbor){
+                        $isIt = $mapData->hexagonIsOccupiedForce(new Hexagon($neighbor), $unit->forceId);
+                        $isIt |= $mapData->hexagonIsOccupiedEnemy(new Hexagon($neighbor), $unit->forceId);
+                        if($isIt){
+                           $both++;
+                        }
+                    }
+                    if($both === 2){
+                        return false;
+                    }
+                }
+            }
             $plusElevation = 0;
             if ($this->terrain->terrainIs($hexPart, "blocksRanged")) {
                 $plusElevation = 1;

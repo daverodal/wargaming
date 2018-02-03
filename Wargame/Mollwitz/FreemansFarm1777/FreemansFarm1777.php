@@ -91,6 +91,9 @@ class FreemansFarm1777 extends \Wargame\Mollwitz\JagCore
             }
         }
 
+        $morgan = $this->force->getUnit(1); /* gag gag gag */
+        $morgan->unitsBlock = true;
+
 
     }
 
