@@ -362,7 +362,7 @@ class LandBattle extends \Wargame\Battle{
         $this->clickHistory[] = $clickClass;
 
         if ($this->players[$this->gameRules->attackingForceId] != $user) {
-            if($event !== SELECT_ALT_COUNTER_EVENT){
+            if($event !== SELECT_ALT_COUNTER_EVENT && $event !== SELECT_ALT_MAP_EVENT){
                 return false;
             }
         }
