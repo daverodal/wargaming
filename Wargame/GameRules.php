@@ -193,9 +193,9 @@ class GameRules
 
 
 
-        if($event === SELECT_ALT_COUNTER_EVENT){
+        if($event === SELECT_ALT_COUNTER_EVENT || $event === SELECT_ALT_MAP_EVENT){
             if($location !== null){
-                $this->flashMessages[] = "@hex ".$location;
+                $this->flashMessages[] = "@hex ".$location->getName();
             }else{
                 $hex = $battle->force->units[$id]->hexagon;
                 if($hex->parent == "gameImages"){

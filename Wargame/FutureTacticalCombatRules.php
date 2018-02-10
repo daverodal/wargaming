@@ -22,13 +22,14 @@
 namespace Wargame;
 
 use stdClass;
+use Wargame\Tactical\ModernTacticalCombatRules;
 
 class FutureTacticalCombatRules extends ModernTacticalCombatRules
 {
     public $currentAttacker = false;
+    public $unitsBlock = false;
 
     public function isAttacking($defender){
-        echo "Is Attacking ";
         $cA = $this->currentAttacker;
         $curDef = $this->combats->$cA ?? false;
         if($curDef && isset($curDef->defenders->$defender)){
@@ -55,7 +56,7 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
         $battle = Battle::getBattle();
         $unit = $this->force->getUnit($attackerId);
         $victory = $battle->victory;
-
+        $good = true;
         $los = new Los();
 
         $los->setOrigin($this->force->getUnitHexagon($attackerId));
@@ -69,6 +70,7 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
         if ($range > 1) {
             $good = $this->checkBlocked($los, $attackerId);
             if ($good) {
+
                 $isHidden = false;
 
                 $hexagon = $this->force->getUnitHexagon($defenderId);
@@ -125,6 +127,7 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
         if ($this->force->unitIsEnemy($id) == true) {
 
             if($this->currentAttacker === false){
+
                 $this->cleanUpAttacklessDefenders();
                 return;
             }
@@ -138,11 +141,12 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
             if ($isHidden && !$battle->force->unitIsAdjacent($id) && !$this->isSighted($hexagon->name, $id)) {
                 return false;
             }
-
             if($this->isAttacking($id)){
                 $this->notAttacking();
             }else{
                 if($this->validCombat($id, $ca)){
+
+
                     $los = new Los();
 
                     $los->setOrigin($this->force->getUnitHexagon($ca));
@@ -171,6 +175,7 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
         } else // attacker
         {
 
+
             if ($this->force->units[$id]->status != STATUS_UNAVAIL_THIS_PHASE) {
                 if($this->currentAttacker === false){
                     $this->currentAttacker = $id;
@@ -197,5 +202,14 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
 
     function cleanUpAttacklessDefenders(){
 
+    }
+    function cleanUp(){
+        parent::cleanup();
+        $this->currentAttacker = false;
+    }
+    function undoDefendersWithoutAttackers()
+    {
+        parent::undoDefendersWithoutAttackers();
+        $this->currentAttacker = false;
     }
 }

@@ -270,6 +270,7 @@ export function mapClick(event) {
         zoomed = false;
         return;
     }
+    doitMap(pixelX, pixelY);
 }
 
 export function doitOption() {
@@ -525,6 +526,9 @@ export function doitSaveGame(msg){
 }
 
 export function doitMap(x, y) {
+    if(!(event.metaKey || event.ctrlKey)) {
+        return;
+    }
     playAudio();
 
     $.ajax({
@@ -534,14 +538,11 @@ export function doitMap(x, y) {
             wargame: wargame,
             x: x,
             y: y,
-            event: SELECT_MAP_EVENT
+            event: (event.metaKey || event.ctrlKey) ? SELECT_ALT_MAP_EVENT : (shiftKey || DR.shiftKey) ? SELECT_SHIFT_COUNTER_EVENT : SELECT_MAP_EVENT
+
         },
         success: function (data, textstatus) {
-            try {
-                var success = +$.parseJSON(data).success;
-            } catch (e) {
-//            alert(data);
-            }
+            let success = data.success;
             if (success) {
                 playAudioLow();
 

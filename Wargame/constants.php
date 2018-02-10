@@ -212,6 +212,7 @@ define("KEYPRESS_EVENT",8);
 define("COMBAT_PIN_EVENT",9);
 define("SELECT_ALT_COUNTER_EVENT",10);
 define("SAVE_GAME_EVENT", 11);
+define("SELECT_ALT_MAP_EVENT", 12);
 
 
 // event names

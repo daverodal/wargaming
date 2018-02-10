@@ -121,6 +121,7 @@ interface Cnst {
     const COMBAT_PIN_EVENT =  9;
     const SELECT_ALT_COUNTER_EVENT =  10;
     const SAVE_GAME_EVENT =  11;
+    const SELECT_ALT_MAP_EVENT = 12;
 
 
 // unit status

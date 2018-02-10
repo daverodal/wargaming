@@ -372,9 +372,10 @@ class LandBattle extends \Wargame\Battle{
         $retVal = true;
         switch ($event) {
             case SELECT_MAP_EVENT:
+            case SELECT_ALT_MAP_EVENT:
                 $mapGrid = new MapGrid($this->mapViewer[0]);
                 $mapGrid->setPixels($x, $y);
-                $retVal =  $this->gameRules->processEvent(SELECT_MAP_EVENT, MAP, $mapGrid->getHexagon(), $click);
+                $retVal =  $this->gameRules->processEvent($event, MAP, $mapGrid->getHexagon(), $click);
                 break;
 
             case SELECT_COUNTER_EVENT:
