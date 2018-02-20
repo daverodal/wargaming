@@ -24,7 +24,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "./global-funcs";
-import "jquery.panzoom";
+import "./jquery.panzoom";
 import "jquery-ui-bundle";
 export default function initialize() {
     var zoomed = window.zoomed;
@@ -86,13 +86,13 @@ export default function initialize() {
         col = col.replace(/col/, '');
         doitCRT(col, event);
     })
-    $("#gameImages").on("click", ".specialHexes", mapClick);
-    $("#gameImages").on("click", "svg", mapClick);
+    // $("#gameImages").on("click touchend", ".specialHexes", mapClick);
+    $("#gameImages").on("click touchend", "svg", mapClick);
     $("#choose-option-button").on("click", doitOption);
 
     $("#nextPhaseButton").on('click', nextPhaseMouseDown);
 //    $("#gameImages" ).draggable({stop:mapStop, distance:15});
-    $("#gameImages #map").on("click", mapClick);
+//     $("#gameImages #map").on("click touchend", mapClick);
 
     $("#header, #deadpile, #deployWrapper, #exitWrapper, #combinedWrapper").on('touchmove', function (event) {
         if ($(event.target).parents('#crt').length > 0) {
@@ -101,7 +101,7 @@ export default function initialize() {
         event.stopPropagation();
     });
 
-    $("#fullScreenButton").on('click touchstart', function () {
+    $("#fullScreenButton").on('click touch', function () {
         toggleFullScreen();
         return false;
     });

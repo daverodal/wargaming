@@ -250,6 +250,10 @@ export function counterClick(event, unitId = null) {
 export function mapClick(event) {
 
     var zoomed = window.zoomed;
+    if (DR.dragged) {
+        DR.dragged = false;
+        return;
+    }
 
     var didDrag = $("#map").data('did-drag');
     $("#map").data('did-drag', false);
@@ -258,12 +262,26 @@ export function mapClick(event) {
     }
 
     var pixelX, pixelY;
-    pixelX = event.pageX;
-    pixelY = event.pageY;
-    var p;
-    p = $("#gameImages").offset();
-    pixelX -= p.left;
-    pixelY -= p.top;
+    if(event.type === "touchend"){
+        let page = event.originalEvent.changedTouches[0];
+        pixelX = page.pageX;
+        pixelY = page.pageY;
+        var p;
+        p = $("#gameImages").offset();
+        pixelX -= p.left;
+        pixelY -= p.top;
+        pixelX /= DR.globalZoom;
+        pixelY /= DR.globalZoom;
+    }
+    if(event.type === "click"){
+        pixelX = event.offsetX;
+        pixelY = event.offsetY;
+    }
+
+    // var p;
+    // p = $("#gameImages").offset();
+    // pixelX -= p.left;
+    // pixelY -= p.top;
 
     if (zoomed) {
         doZoom(event);

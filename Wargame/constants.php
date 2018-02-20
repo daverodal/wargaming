@@ -90,10 +90,10 @@ define("BLUE_FIRE_COMBAT_PHASE_TWO", 48);
 $phase_name = array();
 $phase_name[1] = "<span class='playerOneFace'>fNameOne</span> Move";
 $phase_name[2] = "<span class='playerOneFace'>fNameOne</span>";
-$phase_name[3] = "<span class='playerOneFace'>fNameOne</span> Fire";
+$phase_name[3] = "<span class='playerOneFace'>fNameOne</span> Off Fire";
 $phase_name[4] = "<span class='playerTwoFace'>fNameTwo</span> Move";
 $phase_name[5] = "<span class='playerTwoFace'>fNameTwo</span>";
-$phase_name[6] = "<span class='playerOneFace'>fNameTwo</span> Fire";
+$phase_name[6] = "<span class='playerOneFace'>fNameTwo</span> Def Fire";
 $phase_name[7] = "Victory";
 $phase_name[8] = "<span class='playerOneFace'>fNameOne</span> Deploy";
 $phase_name[9] = "<span class='playerOneFace'>fNameOne</span> Mech";
@@ -135,8 +135,8 @@ $phase_name[43] = "<span class='playerOneFace'>fNameOne</span> Air Transport ";
 $phase_name[44] = "<span class='playerTwoFace'>fNameTwo</span> Air Transport ";
 $phase_name[45] = "<span class='playerOneFace'>fNameOne</span> Option ";
 $phase_name[46] = "<span class='playerTwoFace'>fNameTwo</span> Option ";
-$phase_name[47] = "<span class='playerTwoFace'>fNameTwo</span> Fire ";
-$phase_name[48] = "<span class='playerOneFace'>fNameOne</span> Fire ";
+$phase_name[47] = "<span class='playerTwoFace'>fNameTwo</span> Off Fire ";
+$phase_name[48] = "<span class='playerOneFace'>fNameOne</span> Def Fire ";
 
 // game modes
 define("SELECT_TO_MOVE_MODE",1);

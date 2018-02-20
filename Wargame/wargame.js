@@ -24,5 +24,5 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import "jquery-ui-bundle";
-import "jquery.panzoom";
+import "./wargame-helpers/jquery.panzoom";
 import "./global-header.js";
