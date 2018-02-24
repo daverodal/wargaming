@@ -189,6 +189,47 @@ trait BfsCalcMovesTrait
 
     }
 
+    function calcNeighbors($oldNeighbors, $hexPath){
+        /*
+         * Front 3 hexes kept just in case game designer chnages his mind.
+         * $neighbors = array_slice(array_merge($mapHex->neighbors,$mapHex->neighbors), ($hexPath->facing + 6 - 1)%6, 3);
+         */
+
+        /*
+         * Just the front facing hex
+         */
+        $frontHexNum = $oldNeighbors[ $hexPath->facing];
+        $neighbors = [];
+        $obj = new stdClass();
+        $obj->hexNum = $frontHexNum;
+        $obj->facing = $hexPath->facing;
+        $neighbors[] = $obj;
+        foreach($oldNeighbors as $oldFacing => $oldNeighbor){
+            if($oldNeighbor == $frontHexNum){
+                continue;
+            }
+            if ($this->terrain->terrainIsHexSideOnly($hexPath->name, $oldNeighbor,  "trail")) {
+                $obj = new stdClass();
+                $obj->hexNum = $oldNeighbor;
+                $obj->facing = $oldFacing;
+                $neighbors[] = $obj;
+            }
+        }
+        $backupHexNum = $behind = null;
+        /* first hex can do backup move */
+        if($hexPath->firstHex === true){
+            $behind = $hexPath->facing + 3;
+            $behind %= 6;
+            $backupHexNum = $oldNeighbors[$behind];
+            $obj = new stdClass();
+            $obj->hexNum = $backupHexNum;
+            $obj->facing = $hexPath->facing;
+            $neighbors[] = $obj;
+        }
+
+        return [$neighbors, $backupHexNum, $behind];
+    }
+
     function bfsMoves()
     {
         $hist = array();
@@ -253,28 +294,17 @@ trait BfsCalcMovesTrait
             $backupHexNum = false;
             $behind = false;
             if(isset($hexPath->facing)){
-                $newFacing = $hexPath->facing;
-                /*
-                 * Front 3 hexes kept just in case game designer chnages his mind.
-                 * $neighbors = array_slice(array_merge($mapHex->neighbors,$mapHex->neighbors), ($hexPath->facing + 6 - 1)%6, 3);
-                 */
-
-                /*
-                 * Just the front facing hex
-                 */
-                $neighbors = array_slice($mapHex->neighbors, $hexPath->facing, 1);
-                /* first hex can do backup move */
-                if($hexPath->firstHex === true){
-                    $behind = $hexPath->facing + 3;
-                    $behind %= 6;
-                    $backupHexNum = $neighbors[] = $mapHex->neighbors[$behind];
-                }
-
+                list($neighbors, $backupHexNum, $behind) = $this->calcNeighbors($neighbors, $hexPath);
             }
             $curHex = Hexagon::getHexPartXY($hexNum);
 
             foreach ($neighbors as $neighbor) {
                 $newHexNum = $neighbor;
+                if(is_object($neighbor)){
+                    $newHexNum = $neighbor->hexNum;
+                    $newFacing = $neighbor->facing;
+
+                }
                 $gnuHex = Hexagon::getHexPartXY($newHexNum);
                 if (!$gnuHex) {
                     continue;

@@ -338,7 +338,7 @@ class Terrain
 
     /*
      * public
-     * Check the hexside AND destination Hex
+     * Check the hexside OR destination Hex
      */
     function terrainIsHexSide($startHex,$endHex, $terrainName)
     {
@@ -353,6 +353,24 @@ class Terrain
         }
         $terrainCode = $this->getTerrainCodeXY($endX, $endY);
         if(isset($terrainCode->$terrainName)){
+            return true;
+        }
+        return false;
+    }
+
+    /*
+     * public
+     * Check ONLY the hexside
+     */
+    function terrainIsHexSideOnly($startHex,$endHex, $terrainName)
+    {
+        list($startX, $startY) = Hexagon::getHexPartXY($startHex);
+        list($endX, $endY) = Hexagon::getHexPartXY($endHex);
+        $hexsideX = ($startX + $endX) / 2;
+        $hexsideY = ($startY + $endY) / 2;
+
+        $terrainCode = $this->getTerrainCodeXY($hexsideX,$hexsideY);
+        if (isset($terrainCode->$terrainName)) {
             return true;
         }
         return false;
