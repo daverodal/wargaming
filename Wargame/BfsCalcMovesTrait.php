@@ -204,15 +204,19 @@ trait BfsCalcMovesTrait
         $obj->hexNum = $frontHexNum;
         $obj->facing = $hexPath->facing;
         $neighbors[] = $obj;
-        foreach($oldNeighbors as $oldFacing => $oldNeighbor){
-            if($oldNeighbor == $frontHexNum){
-                continue;
-            }
-            if ($this->terrain->terrainIsHexSideOnly($hexPath->name, $oldNeighbor,  "trail")) {
-                $obj = new stdClass();
-                $obj->hexNum = $oldNeighbor;
-                $obj->facing = $oldFacing;
-                $neighbors[] = $obj;
+        $unitId = $this->movingUnitId;
+        $unit = $this->force->units[$unitId];
+        if($unit->forceMarch) {
+            foreach ($oldNeighbors as $oldFacing => $oldNeighbor) {
+                if ($oldNeighbor == $frontHexNum) {
+                    continue;
+                }
+                if ($this->terrain->terrainIsHexSideOnly($hexPath->name, $oldNeighbor, "trail")) {
+                    $obj = new stdClass();
+                    $obj->hexNum = $oldNeighbor;
+                    $obj->facing = $oldFacing;
+                    $neighbors[] = $obj;
+                }
             }
         }
         $backupHexNum = $behind = null;
@@ -271,7 +275,9 @@ trait BfsCalcMovesTrait
             }
             $this->moves->$hexNum->pointsLeft = $movePoints;
             $this->moves->$hexNum->pathToHere = $hexPath->pathToHere;
-            $this->moves->$hexNum->facing = $hexPath->facing;
+            if(isset($hexPath->facing)){
+                $this->moves->$hexNum->facing = $hexPath->facing;
+            }
 
             if ($this->moves->$hexNum->isZoc == NULL) {
                 $this->moves->$hexNum->isZoc = $this->force->mapHexIsZOC($mapHex);
