@@ -271,6 +271,7 @@ trait BfsCalcMovesTrait
             }
             $this->moves->$hexNum->pointsLeft = $movePoints;
             $this->moves->$hexNum->pathToHere = $hexPath->pathToHere;
+            $this->moves->$hexNum->facing = $hexPath->facing;
 
             if ($this->moves->$hexNum->isZoc == NULL) {
                 $this->moves->$hexNum->isZoc = $this->force->mapHexIsZOC($mapHex);
@@ -405,7 +406,6 @@ trait BfsCalcMovesTrait
             $attackingForceId = $this->force->attackingForceId;
             $defendingForceId = $this->force->defendingForceId;
         }else{
-            /* Reverse attack and defender for defender retreats (retreating units are moving) */
             /* Reverse attack and defender for defender retreats (retreating units are moving) */
             $defendingForceId = $this->force->attackingForceId;
             $attackingForceId = $this->force->defendingForceId;
