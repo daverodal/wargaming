@@ -764,6 +764,11 @@
                                     column
                                     favorable odds shift.
                                 </li>
+                                <li>
+                                    In order to receive the combined arms bonus for artillery, there must be at least 3
+                                    combat points of artillery to trigger the shift. Attacks with only 2 points will not trigger
+                                    the combined arms shift.
+                                </li>
                             </ol>
                         </li>
 

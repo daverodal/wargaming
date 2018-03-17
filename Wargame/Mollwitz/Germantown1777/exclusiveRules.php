@@ -34,4 +34,10 @@ You should have received a copy of the GNU General Public License
     <li><span class="lessBig">First Player</span>
         <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.</p>
     </li>
+    <li>
+        <span class="lessBig">Chew House Garrison</span>
+        (7)-0	Garrison unit	May not attack may not move.	Ignores defender retreats deployed on Chew house
+        This was a small detachment of British Infantry that  held out in a stone house all day. They inflicted significant casualties on the Americans that tried to dislodge them.
+
+    </li>
 </ol>

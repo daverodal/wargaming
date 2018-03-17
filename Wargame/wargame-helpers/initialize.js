@@ -333,11 +333,7 @@ export default function initialize() {
     });
 
     $("body").keydown(function (e) {
-
         var code = e.keyCode || e.which;
-        if(event.target.id === "bug-report-message"){
-            return;
-        }
         doitKeypress(code);
     });
 

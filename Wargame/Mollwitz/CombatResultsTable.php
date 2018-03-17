@@ -521,13 +521,17 @@ class CombatResultsTable
             }
             $armsShift--;
         }
-        if($armsShift){
-            $combatLog .= "Combined Arms Bonus<br> $combinedLog<br>Column Shift +$armsShift<br><br>";
-        }
+
 
         if ($armsShift < 0) {
             $armsShift = 0;
         }
+
+        if($armsShift){
+            $combatLog .= "Combined Arms Bonus<br> $combinedLog<br>Column Shift +$armsShift<br><br>";
+        }
+
+
 
         $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
         /* Do this before terrain effects */
