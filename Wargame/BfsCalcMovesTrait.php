@@ -33,6 +33,7 @@ trait BfsCalcMovesTrait
         $hexPath->name = $startHex;
         $hexPath->pathToHere = array();
         $hexPath->firstHex = true;
+        $hexPath->firstPath = true;
         $hexPath->isOccupied = true;
         if($maxHex !== false){
             $hexPath->pointsLeft = $maxHex;
@@ -61,6 +62,7 @@ trait BfsCalcMovesTrait
             $hexPath->name = $aGoal;
             $hexPath->pathToHere = array();
             $hexPath->firstHex = true;
+            $hexPath->firstPath = true;
             $hexPath->isOccupied = true;
             $this->moveQueue[] = $hexPath;
         }
@@ -99,10 +101,12 @@ trait BfsCalcMovesTrait
         $hexPath->pointsLeft = $movesLeft;
         $hexPath->pathToHere = array();
         $hexPath->firstHex = $firstHex;
+        $hexPath->firstPath = true;
         $hexPath->isOccupied = true;
         if(isset($this->force->units[$id]->facing)){
             $hexPath->facing = $this->force->units[$id]->facing;
         }
+        $hexPath->firstPath = true;
         $this->moveQueue[] = $hexPath;
         $this->bfsMoves();
 
@@ -125,6 +129,7 @@ trait BfsCalcMovesTrait
             $hexPath->pointsLeft = $movesLeft;
             $hexPath->pathToHere = array();
             $hexPath->firstHex = true;
+            $hexPath->firstPath = true;
             $hexPath->isOccupied = true;
             $this->moveQueue[] = $hexPath;
             $this->bfsRetreat();
@@ -206,6 +211,9 @@ trait BfsCalcMovesTrait
         $neighbors[] = $obj;
         $unitId = $this->movingUnitId;
         $unit = $this->force->units[$unitId];
+        $backupHexNum = $behind = null;
+
+
         if($unit->forceMarch) {
             foreach ($oldNeighbors as $oldFacing => $oldNeighbor) {
                 if ($oldNeighbor == $frontHexNum) {
@@ -218,17 +226,17 @@ trait BfsCalcMovesTrait
                     $neighbors[] = $obj;
                 }
             }
-        }
-        $backupHexNum = $behind = null;
-        /* first hex can do backup move */
-        if($hexPath->firstHex === true){
-            $behind = $hexPath->facing + 3;
-            $behind %= 6;
-            $backupHexNum = $oldNeighbors[$behind];
-            $obj = new stdClass();
-            $obj->hexNum = $backupHexNum;
-            $obj->facing = $hexPath->facing;
-            $neighbors[] = $obj;
+        }else{
+            if($hexPath->firstHex === true){
+                /* first hex can do backup move */
+                $behind = $hexPath->facing + 3;
+                $behind %= 6;
+                $backupHexNum = $oldNeighbors[$behind];
+                $obj = new stdClass();
+                $obj->hexNum = $backupHexNum;
+                $obj->facing = $hexPath->facing;
+                $neighbors[] = $obj;
+            }
         }
 
         return [$neighbors, $backupHexNum, $behind];

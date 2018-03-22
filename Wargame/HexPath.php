@@ -28,6 +28,7 @@ class HexPath implements \JsonSerializable{
     public $pathToHere = array();
     public $depth = false;
     public $firstHex = false;
+    public $firstPath = false;
     public function jsonSerialize(){
         unset($this->isZoc);
         unset($this->isValid);

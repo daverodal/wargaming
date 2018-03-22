@@ -361,6 +361,7 @@ define("D3", 48);
 define("DL2AL", 49);
 define("DL2AL2",50);
 define("DLR2",51);
+define("HALFE", 52);
 
 $results_name = array();
 //results_name[DE] = "Defender eliminated";
@@ -419,6 +420,7 @@ $results_name[D3] = "D-3";
 $results_name[DL2AL] = "DL2AL";
 $results_name[DL2AL2] = "DL2AL2";
 $results_name[DLR2] = DLR2;
+$results_name[HALFE] = "½ E";
 
 
 

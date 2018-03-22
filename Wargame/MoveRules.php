@@ -143,6 +143,7 @@ class MoveRules
                             $hexPath->pointsLeft = $movesLeft;
                             $hexPath->pathToHere = array();
                             $hexPath->firstHex = false;
+                            $hexPath->firstPath = true;
                             $hexPath->isOccupied = true;
                             if(isset($facing)){
                                 $hexPath->facing = $facing;
@@ -572,6 +573,7 @@ class MoveRules
                     $hexPath->pointsLeft = $movesLeft;
                     $hexPath->pathToHere = array();
                     $hexPath->firstHex = true;
+                    $hexPath->firstPath = true;
                     $this->moves->$startHex = $hexPath;
                 }
                 $this->anyUnitIsMoving = true;
@@ -603,6 +605,7 @@ class MoveRules
                     $hexPath->pointsLeft = $movesLeft;
                     $hexPath->pathToHere = array();
                     $hexPath->firstHex = true;
+                    $hexPath->firstPath = true;
                     $this->moves->$startHex = $hexPath;
                 }
                 $this->anyUnitIsMoving = true;
@@ -633,6 +636,7 @@ class MoveRules
                 $hexPath->pointsLeft = $movesLeft;
                 $hexPath->pathToHere = array();
                 $hexPath->firstHex = true;
+                $hexPath->firstPath = true;
                 $this->moves->$startHex = $hexPath;
             }
             $this->anyUnitIsMoving = true;
@@ -881,6 +885,7 @@ class MoveRules
             $hexPath->pointsLeft = $this->force->units[$id]->getMaxMove();
             $hexPath->pathToHere = array();
             $hexPath->firstHex = true;
+            $hexPath->firstPath = true;
             $this->moves->$startHex = $hexPath;
         }
 

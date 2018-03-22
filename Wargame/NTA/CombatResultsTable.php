@@ -66,12 +66,12 @@ class CombatResultsTable
             array(AE, AE, AE, AE, AR, AR, DR, DR, DR, DR),
         );
         $this->crts->determined = array(
-            array(AE, AE, AE, AR, AR, AR, DR, DR, DR, EX),
-            array(AE, AE, AR, AR, AR, DR, DR, DR, EX, DE),
-            array(AE, AE, AR, AR, DR, DR, EX, EX, DE, DE),
-            array(AE, AE, NE, NE, DR, EX, EX, DE, DE, DE),
-            array(AE, AR, NE, DR, EX, EX, DE, DE, DE, DE),
-            array(AR, AR, DR, EX, EX, DE, DE, DE, DE, DE),
+            array(AE, AR, AR, DR, DR, DR, DE, DE, DE, DE),
+            array(AE, AE, AR, AR, DR, DR, DR, DE, DE, DE),
+            array(AE, AE, AE, AR, EX, DR, DR, DR, DE, DE),
+            array(AE, AE, AE, AR, AR, EX, DR, EX, DE, DE),
+            array(AE, AE, AE, AR, AR, EX, EX, EX, EX, DE),
+            array(AE, AE, AE, AE, AR, AR, EX, EX, EX, DE),
         );
         $this->combatOddsTable = array(
             array(),
@@ -95,6 +95,9 @@ class CombatResultsTable
             if($combat->useAlt){
                 return $this->crts->cavalry[$Die][$index];
             }else{
+                if($combat->useDetermined){
+                    return $this->crts->determined[$Die][$index];
+                }
                 return $this->crts->normal[$Die][$index];
             }
         }
@@ -138,12 +141,6 @@ class CombatResultsTable
             $unitStrength = $unit->strength;
 
             if($unit->class == "infantry"){
-//                if($unit->forceId == PRUSSIAN_FORCE && $isClear){
-//                    $unitStrength++;
-//                }
-//                if($unit->forceId == RUSSIAN_FORCE && ($isTown || $isForest)){
-//                    $unitStrength++;
-//                }
                 if($battle->combatRules->thisAttackAcrossRiver($defenderId,$attackerId)){
                     $unitStrength /= 2;
                 }
@@ -157,7 +154,6 @@ class CombatResultsTable
             }
             $attackStrength += $unitStrength;
         }
-//        $attackStrength = $battle->force->getAttackerStrength($combats->attackers);
         $defenseStrength = 0;
         $defendersAllCav = true;
         foreach($defenders as $defId => $defender){
@@ -167,13 +163,6 @@ class CombatResultsTable
             if($unit->class != 'cavalry'){
                 $defendersAllCav = false;
             }
-//            if($unit->forceId == PRUSSIAN_FORCE && $class == "infantry" && $isClear){
-//                $unitDefense += 1;
-//            }
-//            if($unit->forceId == RUSSIAN_FORCE  && $class == "infantry" && ($isTown || $isForest)){
-//                $unitDefense += 1;
-//            }
-
             $defenseStrength += $unitDefense * (($isTown && $class != 'cavalry') || $isHill ? 2 : 1);
         }
 
@@ -214,9 +203,7 @@ class CombatResultsTable
             $combatIndex = $this->maxCombatIndex;
         }
 
-//        $terrainCombatEffect = $battle->combatRules->getDefenderTerrainCombatEffect($defenderId);
 
-//        $combatIndex -= $terrainCombatEffect;
 
         $combats->attackStrength = $attackStrength;
         $combats->defenseStrength = $defenseStrength;
