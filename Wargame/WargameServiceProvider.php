@@ -36,12 +36,12 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/TMCW/Amph/Images/' => public_path('vendor/wargame/tmcw/amph/images'),
             __DIR__.'/TMCW/KievCorps/Fonts' => public_path('vendor/wargame/tmcw/kievcorps/fonts'),
             __DIR__.'/TMCW/Moskow/Images' => public_path('vendor/wargame/tmcw/moskow/images'),
-            __DIR__.'/TMCW/Maps' => public_path('battle-maps'),
             __DIR__.'/TMCW/Chawinda1965/Images/' => public_path('vendor/wargame/tmcw/chawinda1965/images'),
             __DIR__.'/TMCW/MartianCivilWar/Images/' => public_path('vendor/wargame/tmcw/martiancivilwar/images'),
             __DIR__.'/TMCW/RetreatOne/Images/' => public_path('vendor/wargame/tmcw/retreatone/images'),
             __DIR__.'/TMCW/Nomonhan/Images/' => public_path('vendor/wargame/tmcw/nomonhan/images'),
 
+            __DIR__.'/TMCW/Maps' => public_path('battle-maps'),
         ], 'tmcw');
 
 
@@ -59,7 +59,7 @@ class WargameServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/Mollwitz/Images' => public_path('vendor/wargame/mollwitz/images'),
             __DIR__.'/Mollwitz/Maps' => public_path('battle-maps')
-        ], 'mollwitz');
+        ], 'mollwitz-maps-images');
 
     }
 
