@@ -1,26 +1,7 @@
-<link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
-
 <script type="text/javascript">
-$(document).ready(function(){
-    $("#altTable").on('click', function(){
-        $(this).hide();
-        $("#mainTable").show();
-        $('.tableWrapper.main').hide();
-        $('.tableWrapper.alt').show();
-    });
-    $("#mainTable").on('click', function(){
-        $(this).hide();
-        $("#altTable").show();
-        $('.tableWrapper.alt').hide();
-        $('.tableWrapper.main').show();
-    });
-    $("#altTable").show();
-    $("#mainTable").hide();
-    $(".tableWrapper.alt").hide();
-    $(".tableWrapper.main").show();
-});
 x.register("combatRules", function(combatRules, data){
 
+    $ = DR.$;
     for(var combatCol = 1; combatCol <= 10; combatCol++){
         $(".col" + combatCol).css({background: "transparent"});
 //            $(".odd .col"+combatCol).css({color:"white"});
@@ -229,8 +210,8 @@ x.register("combatRules", function(combatRules, data){
 
 
 });
-
-x.register("vp", function(vp, data){
+x.register("victory", function(vp, data){
+    $ = DR.$;
     var ownerObj = data.specialHexes;
     var owner;
     for(i in ownerObj){
@@ -242,12 +223,34 @@ x.register("vp", function(vp, data){
         name = "Nobody Owns the tree";
     }
     if(owner == 1){
-        name = "<span class='rebelFace'>Red owns the tree </span>";
+        name = "<span class='playerRedFace'>Red owns the tree </span>";
     }
     if(owner == 2){
-        name = "<span class='loyalistFace'>Blue owns the tree </span>";
+        name = "<span class='playerBlueFace'>Blue owns the tree </span>";
     }
     $("#victory").html(name);
 
 });
+
+x.register("vp", function(vp, data){
+    });
+
+    DR.$(document).ready(function(){
+        $("#altTable").on('click', function(){
+            $(this).hide();
+            $("#mainTable").show();
+            $('.tableWrapper.main').hide();
+            $('.tableWrapper.alt').show();
+        });
+        $("#mainTable").on('click', function(){
+            $(this).hide();
+            $("#altTable").show();
+            $('.tableWrapper.alt').hide();
+            $('.tableWrapper.main').show();
+        });
+        $("#altTable").show();
+        $("#mainTable").hide();
+        $(".tableWrapper.alt").hide();
+        $(".tableWrapper.main").show();
+    });
 </script>
