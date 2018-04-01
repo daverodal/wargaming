@@ -332,13 +332,12 @@ export default function initialize() {
         return false;
     });
 
-    $("body").keydown(function (e) {
+    $("body").keypress(function (e) {
+        if(e.target.id === "bug-report-message"){
+            return;
+        }
         var code = e.keyCode || e.which;
         doitKeypress(code);
-    });
-
-    $("body #bug-report-message").keypress(function(event){
-        return true;
     });
 
     $("#forceMarchEvent").on('click', function () {

@@ -432,7 +432,8 @@
                                             are affected.
                                         </li>
                                         <li>Bombarding units may NOT attack more than one unit unless they are attacking
-                                            with other adjacent, non bombarding units. See multi unit combat below.
+                                            with another adjacent, non bombarding units. This adjacent unit may be artillery,
+                                            but may not attack adjacent and non adjacent units at the same time. See multi unit combat below.
                                         </li>
                                         <li>Artillery units that are adjacent to an enemy unit may NOT bombard a distant
                                             enemy unit. If they attack at all, they must attack one of the adjacent

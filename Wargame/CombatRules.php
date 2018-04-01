@@ -139,6 +139,9 @@ class CombatRules
 
         unset($this->attackers->$aId);
         $this->combats->$cd->removeAttacker($aId);
+        if($this->multiDefender() && !$this->adjacentAttacker()){
+            $this->clearCurrentCombat();
+        }
     }
 
     public function addAttacker($cd, $id, $defenderId, $bearing){
@@ -247,6 +250,44 @@ class CombatRules
         }
         return true;
 
+    }
+
+    function multiDefender(){
+        if($this->currentDefender === false){
+            return false;
+        }
+        if(!$this->combats->{$this->currentDefender}){
+            return false;
+        }
+        if(!$this->combats->{$this->currentDefender}->defenders){
+            return false;
+        }
+        return count((array)$this->combats->{$this->currentDefender}->defenders) > 1;
+
+    }
+
+    function adjacentAttacker(){
+        if($this->currentDefender === false){
+            return false;
+        }
+        if(!$this->combats->{$this->currentDefender}){
+            return false;
+        }
+        if(!$this->combats->{$this->currentDefender}->attackers){
+            return false;
+        }
+
+        $attackers = $this->combats->{$this->currentDefender}->attackers;
+        $los = new Los();
+        foreach($attackers as $aId => $attacker){
+            $los->setOrigin($this->force->getUnitHexagon($aId));
+            $los->setEndPoint($this->force->getUnitHexagon($this->currentDefender));
+            $range = $los->getRange();
+            if($range === 1.0){
+                return true;
+            }
+        }
+        return false;
     }
 
     function setupCombat($id, $shift = false)
@@ -392,6 +433,12 @@ class CombatRules
                         if ($range > 1) {
                             if($this->checkBlocked($los,$id) === false){
                                 $good = false;
+                            }
+                            if($this->multiDefender()){
+                                $adjacentAttacker = $this->adjacentAttacker();
+                                if(!$adjacentAttacker){
+                                    $good = false;
+                                }
                             }
                         }
                         if ($range == 1) {

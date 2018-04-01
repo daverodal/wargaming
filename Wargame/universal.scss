@@ -614,6 +614,16 @@ body {
     user-select: none;
     word-wrap:break-word;
   }
+  #headerContent{
+    #GRWrapper {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+      cursor: text;
+    }
+  }
+
 }
 
 .game-rules h4:hover {
