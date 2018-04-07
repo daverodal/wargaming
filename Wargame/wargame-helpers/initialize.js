@@ -332,7 +332,7 @@ export default function initialize() {
         return false;
     });
 
-    $("body").keypress(function (e) {
+    $("body").keydown(function (e) {
         if(e.target.id === "bug-report-message"){
             return;
         }
@@ -354,7 +354,7 @@ export default function initialize() {
     });
 
     $("#determinedAttackEvent").on('click', function () {
-        doitKeypress(100);
+        doitKeypress(68);
     });
 
     $("#combineEvent").on('click', function () {
