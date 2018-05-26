@@ -77,6 +77,8 @@ class hohenfriedebergVictoryCore extends \Wargame\Mollwitz\victoryCore
             $prussianWin = $austrianWin = false;
             if(($this->victoryPoints[Hohenfriedeberg::AUSTRIAN_FORCE] >= 60) && ($this->victoryPoints[Hohenfriedeberg::AUSTRIAN_FORCE] - ($this->victoryPoints[Hohenfriedeberg::PRUSSIAN_FORCE]) >= 10)){
                 $austrianWin = true;
+                $this->winner = Hohenfriedeberg::AUSTRIAN_FORCE;
+                $gameRules->flashMessages[] = "Austrians Win";
             }
             if(($this->victoryPoints[Hohenfriedeberg::PRUSSIAN_FORCE] >= 60) && ($this->victoryPoints[Hohenfriedeberg::PRUSSIAN_FORCE] - $this->victoryPoints[Hohenfriedeberg::AUSTRIAN_FORCE] >= 10)){
                 $prussianWin = true;
