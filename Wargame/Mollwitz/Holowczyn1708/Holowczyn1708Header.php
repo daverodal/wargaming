@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
 <script type="text/javascript">
     x.register("specialHexes", function(specialHexes, data) {
         var lab = ['pontoon','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
-        DR.$('.specialHexes').remove();
+        DR.$('#gameImages .specialHexes').remove();
         for(var i in specialHexes){
             var newHtml = lab[specialHexes[i]];
             var curHtml = DR.$("#special"+i).html();
@@ -54,7 +54,8 @@ You should have received a copy of the GNU General Public License
                     }else if(specialHexes[i] === -2){
                         DR.$("#gameImages").append('<div id="special'+i+'" class="specialHexes SaxonPolish pontoon"></div>');
                     }else{
-                        DR.$("#gameImages").append('<div id="special'+i+'" class="specialHexes">'+lab[specialHexes[i]]+'</div>').addClass(lab[specialHexes[i]]);
+                        DR.$("#gameImages").append('<div id="special'+i+'" class="specialHexes">'+lab[specialHexes[i]]+'</div>');
+                        DR.$("#special"+i).addClass(lab[specialHexes[i]].replace(/ /,'-'));
                     }
                     DR.$("#special"+i).css({top:y+"px", left:x+"px"});
 

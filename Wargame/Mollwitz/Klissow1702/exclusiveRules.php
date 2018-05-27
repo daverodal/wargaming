@@ -44,9 +44,10 @@ You should have received a copy of the GNU General Public License
             In addition, during combat only attacks into a marsh are halved. Not attacks out of them, like the TEC
             states.</p>
     </li>
-    <li><span class="lessBig">Pontoons</span>
+    <li><span class="lessBig">Pontoons</span><br><br>
+        <div class="specialHexes pontoon Swedish clear" style="margin:0 !important;"></div><br><br>
+        <div class="specialHexes pontoon SaxonPolish " style="margin:0 !important;"></div><br>
         <p class="indent">
-            <img id="pontoon-image" src="<?= url('badges/AngloPontoon.png') ?>">
             Each side during their deployment may place one Pontoon marker on any swamp hex within 3 hexes of a friendly
             deploy hex.
             This changes the hex to clear terrain for the remainder of the game. Pontoons may be used by either side.
