@@ -117,6 +117,15 @@ $vintage-unit-numbers-size:10px;
 @mixin pontoon($nationality, $shortName){
   .vintage{
     &.#{$nationality}.pontoon {
+      &.specialHexes{
+        margin: -16px 0 0 -16px;
+        background-color: transparent;
+        background-image: url('badges/#{$shortName}Pontoon.png');
+        background-size: 32px;
+        width: 32px;
+        height: 32px;
+        border:none;
+      }
       .counterWrapper {
         border:none;
         .counter {
@@ -135,6 +144,16 @@ $vintage-unit-numbers-size:10px;
     }
   }
   .#{$nationality}.pontoon {
+    &.specialHexes{
+      margin: -16px 0 0 -16px;
+
+      background-color: transparent;
+      background-image: url('badges/#{$shortName}Pontoon.png');
+      background-size: 32px;
+      width: 32px;
+      height: 32px;
+      border:none;
+    }
     .counterWrapper {
       border:none;
       .counter {
