@@ -303,10 +303,14 @@ export default function initialize() {
         return;
     });
     $("#closeAllUnits").click(function () {
-        $(".unit-wrapper").hide({effect: "blind", direction: "up", complete: fixHeader});
-        $("#units").hide({effect: "blind", direction: "up", complete: fixHeader});
+        $("#deployWrapper").hide({effect: "blind", direction: "up"});
+        $("#deadpile").hide({effect: "blind", direction: "up"});
+        $("#exitWrapper").hide({effect: "blind", direction: "up"});
+        $("#notUsedWrapper").hide({effect: "blind", direction: "up"});
+        $("#undeadpile").hide({effect: "blind", direction: "up", complete: fixHeader});
+
+        $("#units").hide({effect: "blind", direction: "up"});
         $("#unitsWrapper .WrapperLabel").removeClass('dropDownSelected');
-        fixHeader();
     });
 
     $("#showCombined").click(function () {
