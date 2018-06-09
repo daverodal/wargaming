@@ -309,6 +309,16 @@
           },
           {
             "forceId": 2,
+            "combat": 5,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "cavalry",
+            "reinforce": "A",
+            "num": 2
+          },
+          {
+            "forceId": 2,
             "combat": 3,
             "movement": 5,
             "range": 1,
@@ -324,6 +334,16 @@
             "range": 1,
             "nationality": "Austrian",
             "class": "cavalry",
+            "reinforce": "A",
+            "num": 2
+          },
+          {
+            "forceId": 2,
+            "combat": 4,
+            "movement": 2,
+            "range": 3,
+            "nationality": "Austrian",
+            "class": "artillery",
             "reinforce": "A",
             "num": 2
           },
@@ -447,6 +467,16 @@
           },
           {
             "forceId": 2,
+            "combat": 5,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "cavalry",
+            "reinforce": "A",
+            "num": 2
+          },
+          {
+            "forceId": 2,
             "combat": 3,
             "movement": 5,
             "range": 1,
@@ -462,6 +492,16 @@
             "range": 1,
             "nationality": "Austrian",
             "class": "cavalry",
+            "reinforce": "A",
+            "num": 2
+          },
+          {
+            "forceId": 2,
+            "combat": 4,
+            "movement": 2,
+            "range": 3,
+            "nationality": "Austrian",
+            "class": "artillery",
             "reinforce": "A",
             "num": 2
           },
