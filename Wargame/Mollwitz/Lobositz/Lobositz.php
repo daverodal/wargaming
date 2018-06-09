@@ -72,51 +72,96 @@ class Lobositz extends \Wargame\Mollwitz\JagCore
 
     public function init()
     {
+        $scenario = $this->scenario;
+        $unitSets = $scenario->units;
 
-        $artRange = 3;
         UnitFactory::$injector = $this->force;
 
+        foreach ($unitSets as $unitSet) {
+            if (empty($scenario->commandControl)) {
+                if ($unitSet->class === 'hq'){
+                    continue;
+                }
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+            }
+        }
+        return;
 
-        for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruInfBadge.png", 5, 5, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'infantry');
-        }
-        for ($i = 0; $i < 11; $i++) {
-            UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'infantry');
-        }
-        for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'cavalry');
-        }
-        UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'cavalry');
-        for ($i = 0; $i < 4; $i++) {
-            UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'cavalry');
-        }
-        for ($i = 0; $i < 1; $i++) {
-            UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruArtBadge.png", 3, 3, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "Prussian", false, 'artillery');
-        }
-        for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "Prussian", false, 'artillery');
-        }
-
-
-        for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'infantry');
-        }
-        for ($i = 0; $i < 15; $i++) {
-            UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'infantry');
-        }
-        for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusCavBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
-        }
-        UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusCavBadge.png", 3, 3, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
-        for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
-        }
-        for ($i = 0; $i < 1; $i++) {
-            UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusArtBadge.png", 4, 4, 2, true, STATUS_CAN_DEPLOY, "A", 1, $artRange, "Austrian", false, 'artillery');
-        }
-        for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, "A", 1, $artRange, "Austrian", false, 'artillery');
-        }
+//        $artRange = 3;
+//        UnitFactory::$injector = $this->force;
+//
+//
+//        for ($i = 0; $i < 3; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruInfBadge.png", 5, 5, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'infantry');
+//        }
+//        $ret .= '"num": 3},';
+//        echo $ret;
+//        for ($i = 0; $i < 11; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'infantry');
+//        }
+//        $ret .= '"num": 11},';
+//        echo $ret;
+//        for ($i = 0; $i < 3; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruCavBadge.png", 5, 5, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'cavalry');
+//        }
+//        $ret .= '"num": 3},';
+//        echo $ret;
+//        $ret = UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruCavBadge.png", 4, 4, 6, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'cavalry');
+//        $ret .= '"num": 1},';
+//        echo $ret;
+//        for ($i = 0; $i < 4; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "B", 1, 1, "Prussian", false, 'cavalry');
+//        }
+//        $ret .= '"num": 4},';
+//        echo $ret;
+//        for ($i = 0; $i < 1; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruArtBadge.png", 3, 3, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "Prussian", false, 'artillery');
+//        }
+//        $ret .= '"num": 1},';
+//        echo $ret;
+//        for ($i = 0; $i < 3; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::PRUSSIAN_FORCE, "deployBox", "PruArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, "B", 1, $artRange, "Prussian", false, 'artillery');
+//        }
+//        $ret .= '"num": 3},';
+//        echo $ret;
+//
+//
+//        for ($i = 0; $i < 3; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusInfBadge.png", 4, 4, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'infantry');
+//        }
+//        $ret .= '"num": 3},';
+//        echo $ret;
+//        for ($i = 0; $i < 15; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusInfBadge.png", 3, 3, 3, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'infantry');
+//        }
+//        $ret .= '"num": 15},';
+//        echo $ret;
+//        for ($i = 0; $i < 3; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusCavBadge.png", 4, 4, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
+//        }
+//        $ret .= '"num": 3},';
+//        echo $ret;
+//        $ret = UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusCavBadge.png", 3, 3, 6, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
+//        $ret .= '"num": 1},';
+//        echo $ret;
+//        for ($i = 0; $i < 3; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusCavBadge.png", 3, 3, 5, true, STATUS_CAN_DEPLOY, "A", 1, 1, "Austrian", false, 'cavalry');
+//        }
+//        $ret .= '"num": 3},';
+//        echo $ret;
+//        for ($i = 0; $i < 1; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusArtBadge.png", 4, 4, 2, true, STATUS_CAN_DEPLOY, "A", 1, $artRange, "Austrian", false, 'artillery');
+//        }
+//        $ret .= '"num": 1},';
+//        echo $ret;
+//        for ($i = 0; $i < 3; $i++) {
+//            $ret = UnitFactory::create("infantry-1", self::AUSTRIAN_FORCE, "deployBox", "AusArtBadge.png", 2, 2, 2, true, STATUS_CAN_DEPLOY, "A", 1, $artRange, "Austrian", false, 'artillery');
+//        }
+//        $ret .= '"num": 3},';
+//        echo $ret;
+//        dd('done');
 
     }
 

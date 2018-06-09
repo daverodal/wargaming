@@ -65,7 +65,139 @@
     "fileName": "\\Wargame\\Mollwitz\\Hohenfriedeberg\\Hohenfriedeberg",
     "description": "June 4 1745. Prussian vs Austrian. The War of the Austrian Succession.",
     "params": {
-      "unitComponent": "horse-musket-unit"
+      "unitComponent": "horse-musket-unit",
+      "units": [
+        {
+          "forceId": 1,
+          "combat": 5,
+          "movement": 3,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "infantry",
+          "reinforce": "B",
+          "num": 5
+        },
+        {
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "infantry",
+          "reinforce": "B",
+          "num": 12
+        },
+        {
+          "forceId": 1,
+          "combat": 5,
+          "movement": 5,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "cavalry",
+          "reinforce": "B",
+          "num": 4
+        },
+        {
+          "forceId": 1,
+          "combat": 3,
+          "movement": 5,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "cavalry",
+          "reinforce": "B",
+          "num": 4
+        },
+        {
+          "forceId": 1,
+          "combat": 4,
+          "movement": 6,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "cavalry",
+          "reinforce": "B",
+          "num": 2
+        },
+        {
+          "forceId": 1,
+          "combat": 4,
+          "movement": 2,
+          "range": 3,
+          "nationality": "Prussian",
+          "class": "artillery",
+          "reinforce": "B",
+          "num": 2
+        },
+        {
+          "forceId": 1,
+          "combat": 2,
+          "movement": 2,
+          "range": 3,
+          "nationality": "Prussian",
+          "class": "artillery",
+          "reinforce": "B",
+          "num": 4
+        },
+        {
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "infantry",
+          "reinforce": "A",
+          "num": 3
+        },
+        {
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "infantry",
+          "reinforce": "A",
+          "num": 14
+        },
+        {
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 4
+        },
+        {
+          "forceId": 2,
+          "combat": 3,
+          "movement": 5,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 4
+        },
+        {
+          "forceId": 2,
+          "combat": 3,
+          "movement": 6,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 2
+        },
+        {
+          "forceId": 2,
+          "combat": 2,
+          "movement": 2,
+          "range": 3,
+          "nationality": "Austrian",
+          "class": "artillery",
+          "reinforce": "A",
+          "num": 5
+        }
+      ]
     },
     "scenarios": {
       "main": {
@@ -73,13 +205,277 @@
       },
       "BigAustrian": {
         "description": "Larger Austrian force for play balance",
-        "bigAustrian": true
+        "bigAustrian": true,
+        "units": [
+          {
+            "forceId": 1,
+            "combat": 5,
+            "movement": 3,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "infantry",
+            "reinforce": "B",
+            "num": 5
+          },
+          {
+            "forceId": 1,
+            "combat": 4,
+            "movement": 3,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "infantry",
+            "reinforce": "B",
+            "num": 12
+          },
+          {
+            "forceId": 1,
+            "combat": 5,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "cavalry",
+            "reinforce": "B",
+            "num": 4
+          },
+          {
+            "forceId": 1,
+            "combat": 3,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "cavalry",
+            "reinforce": "B",
+            "num": 4
+          },
+          {
+            "forceId": 1,
+            "combat": 4,
+            "movement": 6,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "cavalry",
+            "reinforce": "B",
+            "num": 2
+          },
+          {
+            "forceId": 1,
+            "combat": 4,
+            "movement": 2,
+            "range": 3,
+            "nationality": "Prussian",
+            "class": "artillery",
+            "reinforce": "B",
+            "num": 2
+          },
+          {
+            "forceId": 1,
+            "combat": 2,
+            "movement": 2,
+            "range": 3,
+            "nationality": "Prussian",
+            "class": "artillery",
+            "reinforce": "B",
+            "num": 4
+          },
+          {
+            "forceId": 2,
+            "combat": 4,
+            "movement": 3,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "infantry",
+            "reinforce": "A",
+            "num": 7
+          },
+          {
+            "forceId": 2,
+            "combat": 3,
+            "movement": 3,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "infantry",
+            "reinforce": "A",
+            "num": 10
+          },
+          {
+            "forceId": 2,
+            "combat": 4,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "cavalry",
+            "reinforce": "A",
+            "num": 2
+          },
+          {
+            "forceId": 2,
+            "combat": 3,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "cavalry",
+            "reinforce": "A",
+            "num": 4
+          },
+          {
+            "forceId": 2,
+            "combat": 3,
+            "movement": 6,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "cavalry",
+            "reinforce": "A",
+            "num": 2
+          },
+          {
+            "forceId": 2,
+            "combat": 2,
+            "movement": 2,
+            "range": 3,
+            "nationality": "Austrian",
+            "class": "artillery",
+            "reinforce": "A",
+            "num": 3
+          }
+        ]
       },
       "deployForward": {
         "description": "Prussians deploy farther forward, Bigger Austrians too.",
         "longDescription": "Prussians deploy farther forward. Larger Russian units for play balance. Game is one turn shorter",
         "bigAustrian": true,
-        "deployForward": true
+        "deployForward": true,
+        "units": [
+          {
+            "forceId": 1,
+            "combat": 5,
+            "movement": 3,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "infantry",
+            "reinforce": "B",
+            "num": 5
+          },
+          {
+            "forceId": 1,
+            "combat": 4,
+            "movement": 3,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "infantry",
+            "reinforce": "B",
+            "num": 12
+          },
+          {
+            "forceId": 1,
+            "combat": 5,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "cavalry",
+            "reinforce": "B",
+            "num": 4
+          },
+          {
+            "forceId": 1,
+            "combat": 3,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "cavalry",
+            "reinforce": "B",
+            "num": 4
+          },
+          {
+            "forceId": 1,
+            "combat": 4,
+            "movement": 6,
+            "range": 1,
+            "nationality": "Prussian",
+            "class": "cavalry",
+            "reinforce": "B",
+            "num": 2
+          },
+          {
+            "forceId": 1,
+            "combat": 4,
+            "movement": 2,
+            "range": 3,
+            "nationality": "Prussian",
+            "class": "artillery",
+            "reinforce": "B",
+            "num": 2
+          },
+          {
+            "forceId": 1,
+            "combat": 2,
+            "movement": 2,
+            "range": 3,
+            "nationality": "Prussian",
+            "class": "artillery",
+            "reinforce": "B",
+            "num": 4
+          },
+          {
+            "forceId": 2,
+            "combat": 4,
+            "movement": 3,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "infantry",
+            "reinforce": "A",
+            "num": 7
+          },
+          {
+            "forceId": 2,
+            "combat": 3,
+            "movement": 3,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "infantry",
+            "reinforce": "A",
+            "num": 10
+          },
+          {
+            "forceId": 2,
+            "combat": 4,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "cavalry",
+            "reinforce": "A",
+            "num": 2
+          },
+          {
+            "forceId": 2,
+            "combat": 3,
+            "movement": 5,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "cavalry",
+            "reinforce": "A",
+            "num": 4
+          },
+          {
+            "forceId": 2,
+            "combat": 3,
+            "movement": 6,
+            "range": 1,
+            "nationality": "Austrian",
+            "class": "cavalry",
+            "reinforce": "A",
+            "num": 2
+          },
+          {
+            "forceId": 2,
+            "combat": 2,
+            "movement": 2,
+            "range": 3,
+            "nationality": "Austrian",
+            "class": "artillery",
+            "reinforce": "A",
+            "num": 3
+          }
+        ]
       }
     }
   },
@@ -91,7 +487,139 @@
     "genre": "18'th Century Europe",
     "fileName": "\\Wargame\\Mollwitz\\Minden\\Minden",
     "params": {
-      "unitComponent": "horse-musket-unit"
+      "unitComponent": "horse-musket-unit",
+      "units": [
+        {
+          "forceId": 1,
+          "combat": 3,
+          "movement": 3,
+          "range": 1,
+          "nationality": "French",
+          "class": "infantry",
+          "reinforce": "B",
+          "num": 19
+        },
+        {
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "range": 1,
+          "nationality": "French",
+          "class": "infantry",
+          "reinforce": "B",
+          "num": 3
+        },
+        {
+          "forceId": 1,
+          "combat": 3,
+          "movement": 5,
+          "range": 1,
+          "nationality": "French",
+          "class": "cavalry",
+          "reinforce": "B",
+          "num": 12
+        },
+        {
+          "forceId": 1,
+          "combat": 5,
+          "movement": 5,
+          "range": 1,
+          "nationality": "French",
+          "class": "cavalry",
+          "reinforce": "B",
+          "num": 3
+        },
+        {
+          "forceId": 1,
+          "combat": 2,
+          "movement": 2,
+          "range": 3,
+          "nationality": "French",
+          "class": "artillery",
+          "reinforce": "B",
+          "num": 5
+        },
+        {
+          "forceId": 1,
+          "combat": 5,
+          "movement": 2,
+          "range": 3,
+          "nationality": "French",
+          "class": "artillery",
+          "reinforce": "B",
+          "num": 1
+        },
+        {
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "range": 1,
+          "nationality": "AngloAllied",
+          "class": "infantry",
+          "reinforce": "A",
+          "num": 20
+        },
+        {
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "range": 1,
+          "nationality": "AngloAllied",
+          "class": "infantry",
+          "reinforce": "A",
+          "num": 5
+        },
+        {
+          "forceId": 2,
+          "combat": 3,
+          "movement": 5,
+          "range": 1,
+          "nationality": "AngloAllied",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 6
+        },
+        {
+          "forceId": 2,
+          "combat": 5,
+          "movement": 5,
+          "range": 1,
+          "nationality": "AngloAllied",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 2
+        },
+        {
+          "forceId": 2,
+          "combat": 4,
+          "movement": 6,
+          "range": 1,
+          "nationality": "AngloAllied",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 1
+        },
+        {
+          "forceId": 2,
+          "combat": 2,
+          "movement": 2,
+          "range": 3,
+          "nationality": "AngloAllied",
+          "class": "artillery",
+          "reinforce": "A",
+          "num": 3
+        },
+        {
+          "forceId": 2,
+          "combat": 4,
+          "movement": 2,
+          "range": 3,
+          "nationality": "AngloAllied",
+          "class": "artillery",
+          "reinforce": "A",
+          "num": 2
+        }
+      ]
     },
     "scenarios": {
       "main": {
@@ -1846,7 +2374,149 @@
     "fileName": "\\Wargame\\Mollwitz\\Lobositz\\Lobositz",
     "description": "October 1, 1756. The Seven Years War.",
     "params": {
-      "unitComponent": "horse-musket-unit"
+      "unitComponent": "horse-musket-unit",
+      "units": [
+        {
+          "forceId": 1,
+          "combat": 5,
+          "movement": 3,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "infantry",
+          "reinforce": "B",
+          "num": 3
+        },
+        {
+          "forceId": 1,
+          "combat": 4,
+          "movement": 3,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "infantry",
+          "reinforce": "B",
+          "num": 11
+        },
+        {
+          "forceId": 1,
+          "combat": 5,
+          "movement": 5,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "cavalry",
+          "reinforce": "B",
+          "num": 3
+        },
+        {
+          "forceId": 1,
+          "combat": 4,
+          "movement": 6,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "cavalry",
+          "reinforce": "B",
+          "num": 1
+        },
+        {
+          "forceId": 1,
+          "combat": 3,
+          "movement": 5,
+          "range": 1,
+          "nationality": "Prussian",
+          "class": "cavalry",
+          "reinforce": "B",
+          "num": 4
+        },
+        {
+          "forceId": 1,
+          "combat": 3,
+          "movement": 2,
+          "range": 3,
+          "nationality": "Prussian",
+          "class": "artillery",
+          "reinforce": "B",
+          "num": 1
+        },
+        {
+          "forceId": 1,
+          "combat": 2,
+          "movement": 2,
+          "range": 3,
+          "nationality": "Prussian",
+          "class": "artillery",
+          "reinforce": "B",
+          "num": 3
+        },
+        {
+          "forceId": 2,
+          "combat": 4,
+          "movement": 3,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "infantry",
+          "reinforce": "A",
+          "num": 3
+        },
+        {
+          "forceId": 2,
+          "combat": 3,
+          "movement": 3,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "infantry",
+          "reinforce": "A",
+          "num": 15
+        },
+        {
+          "forceId": 2,
+          "combat": 4,
+          "movement": 5,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 3
+        },
+        {
+          "forceId": 2,
+          "combat": 3,
+          "movement": 6,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 1
+        },
+        {
+          "forceId": 2,
+          "combat": 3,
+          "movement": 5,
+          "range": 1,
+          "nationality": "Austrian",
+          "class": "cavalry",
+          "reinforce": "A",
+          "num": 3
+        },
+        {
+          "forceId": 2,
+          "combat": 4,
+          "movement": 2,
+          "range": 3,
+          "nationality": "Austrian",
+          "class": "artillery",
+          "reinforce": "A",
+          "num": 1
+        },
+        {
+          "forceId": 2,
+          "combat": 2,
+          "movement": 2,
+          "range": 3,
+          "nationality": "Austrian",
+          "class": "artillery",
+          "reinforce": "A",
+          "num": 3
+        }
+      ]
     },
     "scenarios": {
       "main": {
