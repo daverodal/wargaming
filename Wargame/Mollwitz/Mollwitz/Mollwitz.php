@@ -61,6 +61,23 @@ class Mollwitz extends \Wargame\Mollwitz\JagCore
 
     public function init(){
 
+
+        $scenario = $this->scenario;
+        $unitSets = $scenario->units;
+
+        UnitFactory::$injector = $this->force;
+
+        foreach ($unitSets as $unitSet) {
+            if (empty($scenario->commandControl)) {
+                if ($unitSet->class === 'hq'){
+                    continue;
+                }
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                UnitFactory::create("infantry-1", $unitSet->forceId, "deployBox", "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, STATUS_CAN_DEPLOY, $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
+            }
+        }
+        return;
         $artRange = 3;
         $artStr = 2;
         UnitFactory::$injector = $this->force;
