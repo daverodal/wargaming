@@ -291,9 +291,13 @@ trait BfsCalcMovesTrait
                 $this->moves->$hexNum->isZoc = $this->force->mapHexIsZOC($mapHex);
             }
             $exitCost = 0;
+            $exitZoc = $this->exitZoc;
             if ($this->moves->$hexNum->isZoc) {
-                if (is_numeric($this->exitZoc)) {
-                    $exitCost += $this->exitZoc;
+                if(is_callable($exitZoc)){
+                    $exitZoc();
+                }
+                if (is_numeric($exitZoc)) {
+                    $exitCost += $exitZoc;
                 }
                 if (!$hexPath->firstHex) {
                     if ($this->enterZoc === "stop") {
@@ -393,7 +397,7 @@ trait BfsCalcMovesTrait
                     if ($newPath->pointsLeft < 0) {
                         $newPath->pointsLeft = 0;
                     }
-                    if ($this->exitZoc === "stop" && $hexPath->isZoc) {
+                    if ($exitZoc === "stop" && $hexPath->isZoc) {
                         $newPath->pointsLeft = 0;
                     }
                     if ($head) {
