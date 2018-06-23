@@ -116,7 +116,19 @@ class JagCore extends \Wargame\LandBattle{
             $this->moveRules->noZocZoc = true;
             $this->moveRules->zocBlocksRetreat = true;
         }
-        
+
+        $this->moveRules->exitZoc =  function($mapHex, $hexNum, $unit){
+            if($unit->class !== 'cavalry'){
+                return 'stop';
+            }
+            $zocIds = $mapHex->getZocUnits($this->force->defendingForceId);
+            foreach($zocIds as $unitId => $unitVal){
+                if($this->force->units[$unitId]->class === 'cavalry'){
+                    return 'stop';
+                }
+            }
+          return 1;
+        };
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){
             /*
              * Return false if can stack, true if stacking forbidden.

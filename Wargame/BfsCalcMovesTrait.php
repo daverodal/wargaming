@@ -294,7 +294,7 @@ trait BfsCalcMovesTrait
             $exitZoc = $this->exitZoc;
             if ($this->moves->$hexNum->isZoc) {
                 if(is_callable($exitZoc)){
-                    $exitZoc();
+                    $exitZoc = $exitZoc($mapHex, $hexNum, $unit);
                 }
                 if (is_numeric($exitZoc)) {
                     $exitCost += $exitZoc;
