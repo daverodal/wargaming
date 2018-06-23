@@ -558,7 +558,7 @@ x.register("force", function (force, data) {
             if (units[i].disruptLevel) {
                 disp = 'D' + units[i].disruptLevel;
             }
-            if (units[i].isDisrupted === true || units[i].pinned === true) {
+            if (units[i].isDisrupted !== false || units[i].pinned === true) {
                 $("#" + i + " .shadow-mask").addClass("red-shadowy").html("<span class='disrupted'>" + disp + "</span>");
             }
         } else {

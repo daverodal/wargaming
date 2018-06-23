@@ -49,6 +49,7 @@ class ModernNavalBattle extends LandBattle
     }
 
     function __construct($data = null, $arg = false, $scenario = false, $game = false){
+        parent::__construct($data);
         $this->mapData = MapData::getInstance();
         if ($data) {
             $this->arg = $data->arg;
