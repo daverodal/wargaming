@@ -155,7 +155,10 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
         }
         $turn = $b->gameRules->turn;
         if ($turn <= 3 && $this->wasIndecisive === false && $b->gameRules->phase == RED_MOVE_PHASE) {
-            $Die = $b->dieRolls->getEvent(6);
+            $Die = (int)$b->dieRolls->getEvent(6);
+            $dispDie = $Die + 1;
+            $b->gameRules->flashMessages[] = "Indecision Die Roll $dispDie";
+
             /* 1 or 2 is 0 or 1 */
             if ($Die < 2) {
 
@@ -169,6 +172,8 @@ class gadebusch1712VictoryCore extends \Wargame\Mollwitz\victoryCore
         if ($turn == 4 && $this->wasIndecisive === false && $b->gameRules->phase == RED_MOVE_PHASE) {
             $this->isIndecisive = true;
             $this->wasIndecisive = true;
+            $b->gameRules->flashMessages[] = "No Danish Movement this turn.";
+
         }
     }
 

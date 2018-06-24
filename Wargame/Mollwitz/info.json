@@ -9,6 +9,12 @@
     "params": {
       "unitComponent": "horse-musket-unit"
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
@@ -400,6 +406,12 @@
     "params": {
       "unitComponent": "horse-musket-unit"
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -560,6 +572,12 @@
         }
       ]
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario"
@@ -1022,6 +1040,12 @@
         }
       ]
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
@@ -1039,6 +1063,12 @@
     "params": {
       "unitComponent": "horse-musket-unit"
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
@@ -1068,8 +1098,14 @@
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName": "fogDeploy",
         "value": false
+      },
+      {
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
       }
     ],
+
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -1098,6 +1134,12 @@
     "params": {
       "unitComponent": "horse-musket-unit"
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -1125,6 +1167,12 @@
     "params": {
       "unitComponent": "horse-musket-unit"
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -1391,6 +1439,12 @@
     "params": {
       "unitComponent": "horse-musket-unit"
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -1546,6 +1600,10 @@
         "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
         "keyName": "stepReduction",
         "value": true
+      },      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       },
       {
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
@@ -1714,6 +1772,11 @@
         "name": "Command Control",
         "keyName": "commandControl",
         "value": false
+      },
+      {
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
       }
     ],
     "scenarios": {
@@ -1947,6 +2010,11 @@
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName": "fogDeploy",
         "value": false
+      },
+      {
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
       }
     ],
     "scenarios": {
@@ -2096,6 +2164,11 @@
         "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
         "keyName": "stepReduction",
         "value": true
+      },
+      {
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
       }
     ],
     "scenarios": {
@@ -2522,6 +2595,11 @@
         "name": "Swedish units have step reduction and can be reduced to half strength in an exchange.",
         "keyName": "stepReduction",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -2552,7 +2630,12 @@
       "unitComponent": "horse-musket-unit",
       "americanRevolution": true
     },
-    "options": [],
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -2919,6 +3002,12 @@
         }
       ]
     },
+    "options": [
+    {
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario"
@@ -2938,6 +3027,12 @@
     "params": {
       "unitComponent": "horse-musket-unit"
     },
+    "options": [
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
@@ -2967,6 +3062,11 @@
       "unitComponent": "horse-musket-unit",
       "jagersdorfCombat": true
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "jagersdorfCombat": true,
@@ -2993,6 +3093,11 @@
     "params": {
       "unitComponent": "horse-musket-unit"
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario.",
@@ -4216,6 +4321,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -4400,7 +4510,11 @@
         }
       ]
     },
-    "options": [],
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -4810,6 +4924,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -4949,6 +5068,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -5163,6 +5287,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -5182,6 +5311,11 @@
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName": "fogDeploy",
         "value": false
+      },
+      {
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
       }
     ],
     "params": {
@@ -5462,6 +5596,11 @@
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName": "fogDeploy",
         "value": false
+      },
+      {
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
       }
     ],
     "params": {
@@ -5623,6 +5762,11 @@
         "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
         "keyName": "fogDeploy",
         "value": true
+      },
+      {
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
       }
     ],
     "params": {
@@ -5824,6 +5968,11 @@
         "name": "American Win Tie Game",
         "keyName": "americanWinTie",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "params": {
@@ -5985,6 +6134,11 @@
       {
         "name": "Hasty raised Swedish Army, half the 6-3's are 5-3.",
         "keyName": "weakerSwedes",
+        "value": false
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
         "value": false
       }
     ],
@@ -6245,6 +6399,11 @@
         "name": "Command and Control. 2HQ Beluchi, 4HQ British ",
         "keyName": "commandControl",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -6382,6 +6541,11 @@
         "name": "Command and Control. 2HQ Beluchi, 4HQ British ",
         "keyName": "commandControl",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -6540,6 +6704,11 @@
         "name": "Command and Control. 3HQ Sikh, 4HQ British ",
         "keyName": "commandControl",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -6699,6 +6868,11 @@
         "name": "Command and Control. 3HQ Sikh, 4HQ British ",
         "keyName": "commandControl",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -6987,6 +7161,11 @@
         "name": "Command and Control. 3HQ Sikh, 4HQ British ",
         "keyName": "commandControl",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -7125,6 +7304,11 @@
         "name": "Command and Control. 3HQ Sikh, 4HQ British ",
         "keyName": "commandControl",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -7282,6 +7466,11 @@
         "name": "Command and Control. 3HQ Sikh, 4HQ British ",
         "keyName": "commandControl",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -7431,6 +7620,11 @@
         "name": "Command and Control. 3HQ Sikh, 4HQ British ",
         "keyName": "commandControl",
         "value": true
+      },
+      {
+        "name": "Experimental Cavalry Rule",
+        "keyName": "fluidZoc",
+        "value": false
       }
     ],
     "scenarios": {
@@ -7870,6 +8064,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -8151,6 +8350,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -8952,6 +9156,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -9065,6 +9274,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -9200,6 +9414,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -9419,6 +9638,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
@@ -9677,6 +9901,11 @@
         }
       ]
     },
+    "options": [{
+      "name": "Experimental Cavalry Rule",
+      "keyName": "fluidZoc",
+      "value": false
+    }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",
