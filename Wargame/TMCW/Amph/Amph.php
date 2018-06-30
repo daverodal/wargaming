@@ -196,15 +196,38 @@ class Amph extends ModernLandBattle
             }
             // game data
             $this->gameRules->setMaxTurn(7);
-            $this->gameRules->options = ['Nuclear Facility','Chateau sur mer', 'Marine Science Facility'];
 
-            $this->gameRules->setInitialPhaseMode(BLUE_OPTION_PHASE, OPTION_MODE);
-//            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
-            $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
-            $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
+
+
+            /*
+             * comment out this and uncomment below to turn on option
+             */
+            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
+            $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
+            $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
             $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
+            /*
+             * comment out above to turn on options
+             */
 
-            $this->gameRules->addPhaseChange(BLUE_OPTION_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, RED_FORCE, BLUE_FORCE, false);
+
+
+
+            /*
+             * uncomment this to turn on options
+             */
+
+//            $this->gameRules->options = ['Nuclear Facility','Chateau sur mer', 'Marine Science Facility'];
+//
+//            $this->gameRules->setInitialPhaseMode(BLUE_OPTION_PHASE, OPTION_MODE);
+//            $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
+//            $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
+//            $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
+
+//            $this->gameRules->addPhaseChange(BLUE_OPTION_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, RED_FORCE, BLUE_FORCE, false);
+            /*
+             * uncommenet above to turn on options
+             */
             $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, BLUE_FORCE, RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);

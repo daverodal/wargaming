@@ -2,7 +2,7 @@
 @include('wargame::TMCW.Amph.amph-header')
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/amph.css')}}">
 </head>
-@extends('wargame::stdIncludes.view-vue')
+@extends('wargame::stdIncludes.view')
 
 @section('inner-crt')
     @include('wargame::stdIncludes.inner-crt',['topCrt'=> $top_crt = new \Wargame\TMCW\CombatResultsTable()])
@@ -32,16 +32,4 @@
 @section('obc')
     @include('wargame::TMCW.obc')
 @endsection
-<div id="options-pane">
-    There are 3 major facilities on the map. The nuclear facility, on the left, Chateau sur mer, in the center, and the marine science center, on the right.
-    You must choose which facility to make your primary goal. Taking and holding your primary goal at the end of the game will give you extra victory points.
-    Not taking your primary goal will deduct points. Your opponents will NOT know what your goal is, they may suspect what it is after you start playing,
-    you may of course try to decieve your opponent into thinking your goal is really another. Your opponent will know you have chosen a goal and will try to prevent you
-    from holding it. Good luck.
-<div id="options-box">
-    these are options
 
-</div>
-<button id="choose-option-button">Choose Your Option</button>
-</div>
-   <script src="{{mix('vendor/javascripts/wargame/amph.js')}}"></script>

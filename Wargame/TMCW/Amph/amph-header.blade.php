@@ -22,6 +22,7 @@
 ?>
 <script type="text/javascript">
     x.register("specialHexes", function(specialHexes, data) {
+        $ = DR.$;
         $('.specialHexes').remove();
         var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
         for(var i in specialHexes){
