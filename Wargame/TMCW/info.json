@@ -191,6 +191,39 @@
             }
         }
     },
+    "EastvsWest": {
+        "production": false,
+        "name": "East vs West",
+        "path": "TMCW",
+        "genre": "20'th Century Games",
+        "fileName": "\\Wargame\\TMCW\\EastvsWest\\EastvsWest.php",
+        "params": {
+            "unitComponent": "modern-at-def-unit",
+            "nationalities": ["indian", "pakistani"]
+
+        },
+        "scenarios": {
+            "Main": {
+                "description": "The Battle of Chawinda 1965",
+                "longDescription":"Unfair Historical India always wins.",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true
+            },
+            "PlayBalance": {
+                "description": "More Pakistani Forces",
+                "longDescription":"Pakistani force starts with 6 more infantry units, and all infantry units are reduced to 3 strength..",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true,
+                "bigPakistani":true
+            }
+        }
+    },
 
     "Chawinda1965": {
         "production": false,
