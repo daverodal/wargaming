@@ -38,7 +38,6 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
         return false;
     }
     public function notAttacking(){
-        echo "not attacking ";
         $cA = $this->currentAttacker;
         $this->currentDefender = false;
         unset($this->combats->$cA);
@@ -62,7 +61,6 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
         $los->setOrigin($this->force->getUnitHexagon($attackerId));
         $los->setEndPoint($this->force->getUnitHexagon($defenderId));
         $range = $los->getRange();
-        echo $range;
         if ($range > $unit->getRange($attackerId)) {
             $good = false;
             return $good;
