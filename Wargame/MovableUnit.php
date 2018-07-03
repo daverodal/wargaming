@@ -62,6 +62,8 @@ class MovableUnit{
     }
 
     public function __call($name, $args){
+        var_dump($args);
+        dd($name);
         echo $name;
         if(strpos($name, 'can') === 0){
             return false;
@@ -115,6 +117,10 @@ class MovableUnit{
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    public function railMove(bool $mode){
+
     }
 
     function updateFacingStatus($facing, $moveAmount)

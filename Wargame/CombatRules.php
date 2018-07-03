@@ -406,7 +406,6 @@ class CombatRules
             if($this->force->units[$id]->class === "supply" && $this instanceof CombatSupply){
                 $this->selectSupply($unit);
             }
-
             if ($this->currentDefender !== false && $this->force->units[$id]->status != STATUS_UNAVAIL_THIS_PHASE) {
                 if (isset($this->combats->$cd->attackers->$id) && $this->combats->$cd->attackers->$id !== false && $this->attackers->$id === $cd) {
                     $this->force->undoAttackerSetup($id);

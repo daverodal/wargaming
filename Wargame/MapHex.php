@@ -200,7 +200,8 @@ class MapHex
     {
         if(is_callable($num)){
             $closure = $num;
-            return $closure($this, $forceId, $unit);
+            $ret =  $closure($this, $forceId, $unit);
+            return $ret;
         }
         return count((array)$this->forces[$forceId]) >= $num;
     }

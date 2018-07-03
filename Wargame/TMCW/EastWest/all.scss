@@ -19,5 +19,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$indianColor: #ff9933;
-$pakistaniColor: #02b500;
+@import "../../commonStyle";
+@import "../tmcw";
+@import "local";

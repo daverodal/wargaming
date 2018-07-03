@@ -30,6 +30,7 @@ class ModernLandBattle extends LandBattle
     /* @var MapData $mapData */
     public $mapData;
     public $mapViewer;
+    /* @var Force $force */
     public $force;
     public $terrain;
     public $moveRules;

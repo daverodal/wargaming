@@ -954,7 +954,7 @@ fieldset {
   border-width: 1px;
 }
 
-#turnCounter {
+#turnCounter, #gameTurnCounter {
   width: 32px;
   height: 32px;
   font-size: 11px;
@@ -964,6 +964,8 @@ fieldset {
   text-align: center;
   border: 2px solid;
   border-color: #ccc #666 #666 #ccc;
+  background-color: rgb(0,128,0);
+  color:white;
 
 }
 

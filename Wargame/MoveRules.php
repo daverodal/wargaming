@@ -57,6 +57,7 @@ class MoveRules
     public $turnFacing = false;
     public $turnId = false;
     public $transitStacking = 1;
+    public $zocBlocksSupply = true;
 
     /*
      * usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
@@ -719,13 +720,17 @@ class MoveRules
     {
             // id will be retreating unit id if counter event
             if ($this->anyUnitIsMoving == false) {
+
                 if ($this->force->unitCanRetreat($id) == true) {
                     $this->startRetreating($id);
                     if($this->anyUnitIsMoving){
                         $this->calcRetreat($id);
+
+
                     }
                 }
             } else {
+
                     $finalHex = $hexagon;
                     $moves = $this->moves->$finalHex;
                     foreach ($moves->pathToHere as $move){
@@ -798,7 +803,7 @@ class MoveRules
         if ($this->zocBlocksRetreat === true && $this->force->mapHexIsZOC($mapHex, $this->force->enemy($unit->forceId))){
             $isBlocked = true;
             if($this->friendlyAllowsRetreat && $mapHex->isOccupied($forceId)){
-                if(!$mapHex->isOccupied($forceId,$this->stacking, $unit)){
+                    if(!$mapHex->isOccupied($forceId,$this->stacking, $unit)){
                     $isBlocked = false;
                 }
             }

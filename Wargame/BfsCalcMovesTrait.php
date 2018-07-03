@@ -593,10 +593,9 @@ trait BfsCalcMovesTrait
                 $this->moves->$hexNum->isZoc = $this->force->mapHexIsZOC($mapHex, $defendingForceId);
             }
             if ($this->moves->$hexNum->isZoc) {
-                if (!$this->moves->$hexNum->isOccupied) {
+                if (!$this->moves->$hexNum->isOccupied && $this->zocBlocksSupply === true) {
                     continue;
                 }
-
             }
             $path = $hexPath->pathToHere;
             $path[] = $hexNum;

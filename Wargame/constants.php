@@ -362,6 +362,13 @@ define("DL2AL", 49);
 define("DL2AL2",50);
 define("DLR2",51);
 define("HALFE", 52);
+define("DR1", 53);
+define("DR2", 54);
+define("DR3", 55);
+define("DR4", 56);
+define("AR1", 57);
+define("AR2", 58);
+define("AR3", 59);
 
 $results_name = array();
 //results_name[DE] = "Defender eliminated";
@@ -421,7 +428,13 @@ $results_name[DL2AL] = "DL2AL";
 $results_name[DL2AL2] = "DL2AL2";
 $results_name[DLR2] = DLR2;
 $results_name[HALFE] = "½ E";
-
+$results_name[DR1] = "DR-1";
+$results_name[DR2] = "DR-2";
+$results_name[DR3] = "DR-3";
+$results_name[DR4] = "DR-4";
+$results_name[AR1] = "AR-1";
+$results_name[AR2] = "AR-2";
+$results_name[AR3] = "AR-3";
 
 
 // combat ratio

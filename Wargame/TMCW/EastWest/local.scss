@@ -1,0 +1,185 @@
+/**
+ *
+ * Copyright 2012-2015 David Rodal
+ * User: David Markarian Rodal
+ * Date: 3/8/15
+ * Time: 5:48 PM
+ *
+ *  This program is free software; you can redistribute it
+ *  and/or modify it under the terms of the GNU General Public License
+ *  as published by the Free Software Foundation;
+ *  either version 2 of the License, or (at your option) any later version
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@import "localColors";
+
+@include player(german, One, $germanColor);
+@include player(secondArmy, Four, $secondArmyColor);
+@include player(firstPanzerArmy, Five, $firstPanzerArmyColor);
+@include player(sixthArmy, Five, $sixthArmyColor);
+@include player(seventeenthArmy, Five, $seventeenthArmyColor, $germanColor, black);
+@include headerColor(Soviet, $sovietColor, $sovietColor);
+@include headerColor(German, $germanColor, $germanColor);
+
+
+@include player(soviet,Two,$sovietColor);
+
+#map {
+  width:auto;
+}
+
+#crt {
+  width:800px;
+  #odds, .roll{
+    span{
+      font-size:14px;
+      width:52px;
+    }
+  }
+  .crt-table-name{
+    display:none;
+  }
+}
+
+.reduced {
+  color: white;
+}
+
+#infoWrapper .WrapperLabel {
+  width: auto;
+}
+
+#gameTurn6 .unit {
+  float: left;
+}
+
+.specialHexesVP .rebelVictoryPoints {
+  @include victoryPoints(orange)
+}
+
+#deadpile{
+  .retired-unit-wrapper{
+    position:static;
+    float:left;
+    margin:0 3px 3px 0;
+    .unit{
+      position:relative;
+    }
+  }
+}
+.specialHexesVP .germanVictoryPoints {
+ @include victoryPoints(gray);
+}
+
+.specialHexesVP .sovietVictoryPoints {
+  @include victoryPoints(brown);
+}
+/* RULES OVERRIDES */
+
+.gameLength{
+  color:transparent;
+  font-size:0px;
+  &::before{
+    content:"11";
+    color:rgb(51,51,51);
+    color:$darkBlack;
+    font-size:$stdFont;
+  }
+}
+
+.player-one-replacements{
+  color:transparent;
+  font-size:0px;
+  &::before{
+    content:"1";
+    color:rgb(51,51,51);
+    color:$darkBlack;
+    font-size:$stdFont;
+  }
+}
+
+.player-two-replacements{
+  color:transparent;
+  font-size:0px;
+  &::before{
+    content:"6";
+    color:rgb(51,51,51);
+    color:$darkBlack;
+    font-size:$stdFont;
+  }
+}
+.unit {
+  &.ghost-unit{
+    z-index:30;
+  }
+  .steps {
+    position: absolute;
+    font-size: 10px;
+    left: 2px;
+    .step {
+      background: #333;
+      border: 1px solid #333;
+      border-radius: 100%;
+      width: 1px;
+      height: 1px;
+      margin-top: 3px;
+      &.white {
+        background: white;
+        border-color: white;
+      }
+    }
+  }
+  .integrity{
+    position: absolute;
+    right:  0px;
+    top:  0px;
+    color: white;
+    font-size: 9px;
+    i{
+      background:black;
+    }
+  }
+}
+.white-color{
+  color:white;
+}
+.unit{
+  .unit-numbers{
+    &.infoLen7{
+      letter-spacing:-1px;
+    }
+  }
+}
+#deployWrapper{
+}
+#crtDetails {
+  display:block !important;
+}
+#gameImages .a-unit-wrapper{
+  position: absolute;
+}
+#deployBox{
+  .a-unit-wrapper{
+    position:relative;
+    float:left;
+    margin:3px 3px 0 0;
+  }
+}
+.rel-unit{
+  position:relative;
+}
+
+
+#deployBox{
+  .unit {
+    border: solid 3px;
+    border-color: #cccccc #666666 #666666 #cccccc;
+  }
+}

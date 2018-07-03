@@ -573,8 +573,10 @@ class GameRules
                                 }
                                 if ($unit->forceMarch === true) {
                                     $unit->forceMarch = false;
+                                    $unit->railMove(false);
                                 } else {
                                     $unit->forceMarch = true;
+                                    $unit->railMove(true);
                                 }
                                 $bad = false;
                             }

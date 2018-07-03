@@ -19,22 +19,24 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?>
-    <style type="text/css">
+?><style type="text/css">
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/tmcw/eastvsWest/images/1280px-1965_Indo-Pak_War_DestroyedShermanTank.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/tmcw/EastWest/images/Bundesarchiv_Bild_146-1981-149-34A,_Russland,_Herausziehen_eines_Autos.jpg")?>") #333 no-repeat;
             background-position: 10% 0;
             background-size:100%;
         }
-        .Indian {
-            color:  #ff9933;
+
+        .German {
+            color: #888;
         }
-        .Pakistani{
-            color: #02b500;
+
+        .Soviet {
+            color: #ba9f34;
         }
     </style>
+    <footer cl
 <footer class="attribution">
-    By Abhinayrathore at English Wikipedia (Work of Brig. Hari Singh Deora A.V.S.M) [Public domain], <a href="http://commons.wikimedia.org/wiki/File%3A1965_Indo-Pak_War_DestroyedShermanTank.jpg">via Wikimedia Commons</a>
+    Bundesarchiv, Bild 146-1981-149-34A / CC-BY-SA [<a href="http://creativecommons.org/licenses/by-sa/3.0/de/deed.en">CC-BY-SA-3.0-de</a>], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3ABundesarchiv_Bild_146-1981-149-34A%2C_Russland%2C_Herausziehen_eines_Autos.jpg">via Wikimedia Commons</a>
 </footer>
