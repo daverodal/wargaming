@@ -49,7 +49,6 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
         if (!$unit->supplied) {
             $unit->addAdjustment('movement','zeroMovement');
-            echo "$id zero ";
 
         }
         if ($unit->supplied) {
@@ -289,18 +288,11 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     public function preStartMovingUnit($arg)
     {
         $unit = $arg[0];
-        $battle = Battle::getBattle();
+        $b = $battle = Battle::getBattle();
         /* mech and art and supply pay 2 */
         $battle->moveRules->noZocZocOneHex = false;
         $battle->moveRules->noZocZoc = false;
-        if($unit->supplied){
-            $battle->moveRules->oneHex = true;
 
-        }else{
-            $battle->moveRules->oneHex = false;
-            $battle->moveRules->noZocZocOneHex = true;
-
-        }
         if ($unit->class == 'inf') {
             $battle->moveRules->enterZoc = 1;
             $battle->moveRules->exitZoc = 1;
@@ -319,6 +311,35 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $battle->moveRules->noZoc = true;
         }else{
             $battle->moveRules->noZoc = false;
+        }
+
+        if (!empty($b->scenario->supply) === true) {
+            if ($unit->forceId == EastWest::GERMAN_FORCE) {
+                $b->moveRules->zocBlocksSupply = false;
+                $bias = array(5 => true, 6 => true);
+                $goal = $this->germanGoal;
+            } else {
+                $bias = array(2 => true, 3 => true);
+                $goal = $this->sovietGoal;
+                $b->moveRules->zocBlocksSupply = true;
+
+            }
+
+            $units = $b->force->units;
+            foreach ($units as $aUnit) {
+                if($aUnit->class === "supply" && $aUnit->hexagon->name){
+                    $goal[]= $aUnit->hexagon->name;
+                }
+            }
+            $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
+        }
+        if($unit->supplied){
+            $battle->moveRules->oneHex = true;
+
+        }else{
+            $battle->moveRules->oneHex = false;
+            $battle->moveRules->noZocZocOneHex = true;
+
         }
     }
 
