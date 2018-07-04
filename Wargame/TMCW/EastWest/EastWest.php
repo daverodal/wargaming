@@ -87,7 +87,7 @@ class EastWest extends \Wargame\ModernLandBattle
 
         }
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiArt.png", 2, 1, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "art", "3", 3);
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiArt.png", 2, 1, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "art", "3", 4);
 
         }
         for($i = 0; $i < 2; $i++){
