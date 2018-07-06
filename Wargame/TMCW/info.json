@@ -214,6 +214,29 @@
             }
         }
     },
+    "Collapse": {
+        "production": false,
+        "name": "Collapse in the east",
+        "path": "TMCW",
+        "genre": "20'th Century Games",
+        "fileName": "\\Wargame\\TMCW\\Collapse\\Collapse.php",
+        "params": {
+            "unitComponent": "modern-at-def-unit",
+            "nationalities": ["indian", "pakistani"]
+
+        },
+        "scenarios": {
+            "Main": {
+                "description": "Summer of 44",
+                "longDescription":"not romantic.",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true
+            }
+        }
+    },
 
     "Chawinda1965": {
         "production": false,

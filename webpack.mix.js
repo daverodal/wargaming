@@ -54,6 +54,7 @@ mix.sass('Wargame/TMCW/KievCorps/all.scss', 'css/wargame/kievCorps.css');
 mix.sass('Wargame/TMCW/Manchuria1976/all.scss', 'css/wargame/manchuria1976.css');
 mix.sass('Wargame/TMCW/Chawinda1965/all.scss', 'css/wargame/chawinda1965.css');
 mix.sass('Wargame/TMCW/EastWest/all.scss', 'css/wargame/eastwest.css');
+mix.sass('Wargame/TMCW/Collapse/all.scss', 'css/wargame/collapse.css');
 mix.sass('Wargame/NTA/all.scss', 'css/wargame/nta.css');
 
 

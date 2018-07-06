@@ -781,10 +781,12 @@ class GameRules
                         break;
 
                     case SELECT_BUTTON_EVENT:
+
                         $this->combatRules->undoDefendersWithoutAttackers();
                         if ($this->gameHasCombatResolutionMode == true) {
                             if (!(isset($this->force->landForce) && $this->force->landForce && $this->force->requiredCombats())) {
                                 $this->combatRules->combatResolutionMode();
+
                                 if($this->mode == FIRE_COMBAT_SETUP_MODE){
                                     $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
 

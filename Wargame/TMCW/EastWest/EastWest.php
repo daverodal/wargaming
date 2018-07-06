@@ -96,7 +96,7 @@ class EastWest extends \Wargame\ModernLandBattle
         }
 
         for($i = 0; $i < 4; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiGor.png", 0, 2, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "supply", "S");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiSupply.png", 0, 2, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "supply", "S");
 
         }
 
@@ -106,7 +106,7 @@ class EastWest extends \Wargame\ModernLandBattle
         }
 
         for($i = 2; $i <= 8; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "multiGor.png",
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "multiSupply.png",
                 0, 1, 2,STATUS_CAN_REINFORCE, "A", $i, "german", "supply", "$i S");
 
         }
@@ -123,14 +123,14 @@ class EastWest extends \Wargame\ModernLandBattle
         }
 
         for($i = 0; $i < 4; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "multiGor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "multiSupply.png",
                 0, 1, 2,STATUS_CAN_DEPLOY, "C", 1, "soviet", "supply", "$i S");
 
         }
 
 
         for($i = 2; $i <= 8; $i += 2){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$i", "multiGor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$i", "multiSupply.png",
                 0, 1, 2,STATUS_CAN_REINFORCE, "E", $i, "soviet", "supply", "$i S");
 
         }
