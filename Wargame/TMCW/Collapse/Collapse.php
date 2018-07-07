@@ -160,7 +160,7 @@ class Collapse extends \Wargame\ModernLandBattle
 
         }
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("", Collapse::SOVIET_FORCE, "deployBox", "railhead.png",
+            UnitFactory::create("", Collapse::SOVIET_FORCE, "deployBox", "railHead.png",
                 1,  1,STATUS_CAN_DEPLOY, "E", 1, "soviet", "railhead", $i + 1);
 
         }
