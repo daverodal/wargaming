@@ -151,11 +151,17 @@ return;
 
     public function reduceUnit($args)
     {
+        /* @var $unit SimpleUnit */
         $unit = $args[0];
 
         $vp = $unit->damage;
         if($unit->class == 'mech'){
-            $vp *= 3;
+            if($vp == 1){
+                /* bg */
+                $vp *= 5;
+            }else{
+                $vp *= 3;
+            }
         }
         if ($unit->forceId == Collapse::GERMAN_FORCE) {
             $victorId = Collapse::SOVIET_FORCE;
