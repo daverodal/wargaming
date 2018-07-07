@@ -103,7 +103,7 @@ class Collapse extends \Wargame\ModernLandBattle
 
         }
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiArmor.png", 4,  8,STATUS_CAN_DEPLOY, "B", 1, "german", "mech", "1");
+            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiMech.png", 4,  8,STATUS_CAN_DEPLOY, "B", 1, "german", "mech", "1");
 
         }
         for($i = 0; $i < 36; $i++){
@@ -130,7 +130,7 @@ class Collapse extends \Wargame\ModernLandBattle
 
         UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn5", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "C", 5, "german", "inf", "2");
 
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn6", "multiArmor.png", 4,  8,STATUS_CAN_DEPLOY, "B", 6, "german", "mech", "1");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn6", "multiMech.png", 4,  8,STATUS_CAN_DEPLOY, "B", 6, "german", "mech", "1");
 
         UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn7", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "B", 7, "german", "inf", "2");
 
