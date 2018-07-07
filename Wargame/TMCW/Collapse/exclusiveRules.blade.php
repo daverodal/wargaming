@@ -33,28 +33,7 @@
 
             <ol>
                 <li>
-                    <span class="big">General Budyonny Relieved.</span>
-                    <p class="ruleComment">
-                    During the actual battle, Stalin got fed up with soviet leadership and made General Budyonny a scapegoat.
-                    He relieved him after the germans made their encirclement. After that point there was no possibility for the
-                    soviets to break out because they could not make corridinated attacks.
-                    </p>
-                    <ol>
-                        <li>
-                            At the end of each phase, the computer checks to see if the soviets loss and the number of surrounded units
-                            equals or exceeds the 35 points. If it does, General Budyonny is relieved of command.
-                        </li>
-                        <li>
-                            If the general is relieved, all unsupplied units may not enter a zoc nor may they attack.
-                        </li>
-                        <li>
-                            Once relieved, the effect remains for the entire game. Even if the number of surrounded units lowers.
-                        </li>
-                        <li>
-                            The word dismissed appears on the victory points line once the general is relieved.
-                        </li>
-                    </ol>
-
+                  Gettin' there
 
 
                 </li>
