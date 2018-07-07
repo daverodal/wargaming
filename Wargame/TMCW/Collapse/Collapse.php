@@ -99,40 +99,40 @@ class Collapse extends \Wargame\ModernLandBattle
 
         $i = 0;
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiArmor.png", 5,  8,STATUS_CAN_DEPLOY, "B", 1, "german", "mech", "1");
+            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiArmor.png", 5,  8,STATUS_CAN_DEPLOY, "B", 1, "german", "mech", $i + 1);
 
         }
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiMech.png", 4,  8,STATUS_CAN_DEPLOY, "B", 1, "german", "mech", "1");
+            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiMech.png", 4,  8,STATUS_CAN_DEPLOY, "B", 1, "german", "mech", $i + 1);
 
         }
         for($i = 0; $i < 36; $i++){
-            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "2");
+            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", $i + 1);
 
         }
         for($i = 0; $i < 4; $i++){
-            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiInf.png", 1,  5,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "2");
+            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiInf.png", 1,  5,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", $i + 1);
 
         }
         for($i = 0; $i < 11; $i++){
-            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiInf.png", 1,  4,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "2");
+            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiInf.png", 1,  4,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", $i + 1);
 
         }
 
         //
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn2", "multiArmor.png", 5,  8,STATUS_CAN_DEPLOY, "B", 2, "german", "mech", "1");
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn3", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "B", 3, "german", "inf", "2");
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn3", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "C", 3, "german", "inf", "2");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn2", "multiArmor.png", 5,  8,STATUS_CAN_REINFORCE, "C", 2, "german", "mech", "t 2");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn3", "multiInf.png", 2,  5,STATUS_CAN_REINFORCE, "C", 3, "german", "inf", "t 3");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn3", "multiInf.png", 2,  5,STATUS_CAN_REINFORCE, "F", 3, "german", "inf", "t 3");
 
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn4", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "B", 4, "german", "inf", "2");
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn4", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "B", 4, "german", "inf", "2");
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn4", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "C", 4, "german", "inf", "2");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn4", "multiInf.png", 2,  5,STATUS_CAN_REINFORCE, "C", 4, "german", "inf", "t 4");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn4", "multiInf.png", 2,  5,STATUS_CAN_REINFORCE, "C", 4, "german", "inf", "t 4");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn4", "multiInf.png", 2,  5,STATUS_CAN_REINFORCE, "F", 4, "german", "inf", "t 4");
 
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn5", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "C", 5, "german", "inf", "2");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn5", "multiInf.png", 2,  5,STATUS_CAN_REINFORCE, "F", 5, "german", "inf", "t 5");
 
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn6", "multiMech.png", 4,  8,STATUS_CAN_DEPLOY, "B", 6, "german", "mech", "1");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn6", "multiMech.png", 4,  8,STATUS_CAN_REINFORCE, "C", 6, "german", "mech", "t 6");
 
-        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn7", "multiInf.png", 2,  5,STATUS_CAN_DEPLOY, "B", 7, "german", "inf", "2");
+        UnitFactory::create("xx", Collapse::GERMAN_FORCE, "gameTurn7", "multiInf.png", 2,  5,STATUS_CAN_REINFORCE, "C", 7, "german", "inf", "t 7");
 
         for($i = 0; $i < 44; $i++){
             UnitFactory::create("xxx", Collapse::SOVIET_FORCE, "deployBox", "multiInf.png",

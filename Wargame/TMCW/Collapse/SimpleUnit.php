@@ -31,17 +31,40 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
 
     public $origStrength;
     public $supplied = true;
+    public $saveMaxMove = false;
+    public $saveClass = false;
 
     public function railMove(bool $mode)
     {
-
         $b = Battle::getBattle();
-        if($this->class === "railhead"){
+        $turn = $b->gameRules->turn;
+        if($this->class === "railhead" && $this->forceId === Collapse::SOVIET_FORCE){
             $this->forceMarch = true;
         }else{
+            if($turn > 1 && $turn === $this->reinforceTurn && $b->gameRules->phase === RED_MOVE_PHASE){
+                if($mode === true){
+                    $this->saveMaxMove = $this->maxMove;
+                    $this->maxMove = 30;
+                    $this->forceMarch = true;
+                    $this->saveClass = $this->class;
+                    $this->class= "railhead";
+                    return;
+                }else{
+                    $this->recover();
+                }
+            }
             $this->forceMarch = false;
         }
 
+    }
+
+    public function recover(){
+        if($this->saveMaxMove){
+            $this->maxMove = $this->saveMaxMove;
+            $this->class = $this->saveClass;
+            $this->saveMaxMove = $this->saveClass = false;
+            $this->forceMarch = false;
+        }
     }
 
     public function getUnmodifiedStrength()

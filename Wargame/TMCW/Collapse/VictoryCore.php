@@ -210,7 +210,6 @@ return;
     public function phaseChange()
     {
 
-        return;
         /* @var $battle MartianCivilWar */
         $battle = Battle::getBattle();
         /* @var $gameRules GameRules */
@@ -274,6 +273,7 @@ return;
         $this->germanGoal = array_merge($b->moveRules->calcRoadSupply(Collapse::GERMAN_FORCE, 207, $germanBias));
         $this->sovietGoal = [];
         foreach($units as $id => $unit){
+            $unit->recover();
             if($unit->class == 'railhead' && $unit->hexagon->parent == 'gameImages'){
                 $this->sovietGoal[] = $unit->hexagon->name;
             }
