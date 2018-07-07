@@ -96,7 +96,7 @@ trait CRTResults
                         break;
 
                     case DE:
-                        $attUnit->status = STATUS_ATTACKED;
+                        $attUnit->status = STATUS_CAN_ADVANCE;
                         $attUnit->retreatCountRequired = 0;
                         break;
 
