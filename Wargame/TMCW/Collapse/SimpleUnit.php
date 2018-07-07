@@ -122,9 +122,12 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
     {
         $battle = Battle::getBattle();
         if($this->forceId === Collapse::GERMAN_FORCE && $this->class === "mech" && $this->origStrength > 1){
+            $this->damage = $this->getUnmodifiedStrength() - 1;
             $this->status = STATUS_DEFENDED;
             $this->exchangeAmount = $this->getUnmodifiedStrength();
             $this->defExchangeAmount = $this->getUnmodifiedDefStrength();
+            $battle->victory->reduceUnit($this);
+
             $this->origStrength = 1;
             $this->noZoc = true;
             $this->name = "bg";

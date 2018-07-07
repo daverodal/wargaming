@@ -152,12 +152,14 @@ return;
     public function reduceUnit($args)
     {
         $unit = $args[0];
-        if($unit->supplyUsed){
-            return;
-        }
+
         $vp = $unit->damage;
-        if ($unit->forceId == 1) {
-            $victorId = 2;
+        if($unit->class == 'mech'){
+            $vp *= 3;
+        }
+        if ($unit->forceId == Collapse::GERMAN_FORCE) {
+            $victorId = Collapse::SOVIET_FORCE;
+
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
@@ -166,7 +168,8 @@ return;
             }
             $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
         } else {
-            $victorId = 1;
+            $victorId = Collapse::GERMAN_FORCE;
+
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
             if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
