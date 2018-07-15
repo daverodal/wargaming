@@ -25,7 +25,6 @@
  */
 export default function fixHeader() {
 
-console.log("that fixed everything ;)");
     var DR = window.DR;
     var winHeight = $(window).height();
     var winWidth = $(window).width();
