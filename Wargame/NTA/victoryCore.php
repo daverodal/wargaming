@@ -50,7 +50,7 @@ class victoryCore extends \Wargame\VictoryCore
         return $ret;
     }
 
-    public function unitProhibitedFromAdvancing($args){
+    public function isUnitProhibitedFromAdvancing($args){
         list($unit) = $args;
         if($unit->class === 'artillery' || $unit->class === 'horseartillery'){
             return true;

@@ -66,6 +66,7 @@ mix.js('Wargame/wargame.js', 'javascripts/wargame/wargame.js');
 mix.js('Wargame/TMCW/Amph/amph.js', 'javascripts/wargame/amph.js');
 // mix.js('Wargame/TMCW/Airborne/airborne.js', 'javascripts/wargame/airborne.js');
 // mix.js('Wargame/TMCW/Moskow/moskow.js', 'javascripts/wargame/moskow.js');
+mix.js('Wargame/TMCW/Collapse/collapse.js', 'javascripts/wargame/collapse.js');
 
 
 mix.setResourceRoot("/vendor/").sass('Wargame/Mollwitz/horse-musket.scss', 'css/wargame/horse-musket.css')

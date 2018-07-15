@@ -812,6 +812,19 @@ class CombatRules
         return $Die;
     }
 
+    function groomAdvancing(){
+        $this->force->groomRetreatList();
+        if(count($this->force->retreatHexagonList) === 0){
+            $attackers = $this->lastResolvedCombat->attackers;
+            foreach($attackers as $uId => $ignore){
+                $unit = $this->force->getUnit($uId);
+                if ($unit->status == STATUS_CAN_ADVANCE) {
+                    $unit->status = STATUS_ATTACKED;
+                }
+            }
+        }
+    }
+
 
     function resolveFireCombat($id)
     {

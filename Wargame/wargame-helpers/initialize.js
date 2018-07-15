@@ -83,9 +83,11 @@ export default function initialize() {
 
     $("#crt #odds span").on('click touchstart', function (event) {
         var col = $(event.target).attr('class');
-        col = col.replace(/col/, '');
-        doitCRT(col, event);
-    })
+        if(col.match(/col/)){
+            col = col.replace(/col/, '');
+            doitCRT(col, event);
+        }
+    });
     // $("#gameImages").on("click touchend", ".specialHexes", mapClick);
     $("#gameImages").on("click touchend", "svg", mapClick);
     $("#choose-option-button").on("click", doitOption);

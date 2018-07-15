@@ -312,7 +312,6 @@ class Force extends SimpleForce
                     if($distance) {
                         $defUnit->status = STATUS_CAN_RETREAT;
                     }else{
-                        $this->clearAdvancing();
                         $defUnit->status = STATUS_EXCHANGED;
                     }
                     $defUnit->retreatCountRequired = $distance;
@@ -452,7 +451,7 @@ class Force extends SimpleForce
                         break;
 
                     case DE:
-                        if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                        if($battle->victory->isUnitProhibitedFromAdvancing($this->units[$attacker])){
                             $this->units[$attacker]->status = STATUS_ATTACKED;
                         }else{
                             $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
@@ -472,7 +471,7 @@ class Force extends SimpleForce
                     case DR:
                     case DLF:
                         if($this->units[$attacker]->status !== STATUS_NO_RESULT){
-                            if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker]) === true){
+                            if($battle->victory->isUnitProhibitedFromAdvancing($this->units[$attacker]) === true){
                                 $this->units[$attacker]->status = STATUS_ATTACKED;
                             }else {
                                 $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
@@ -484,7 +483,7 @@ class Force extends SimpleForce
                     case DL:
                         /* for multi defender combats */
                         if ($vacated || $this->units[$attacker]->status == STATUS_CAN_ADVANCE) {
-                            if($battle->victory->unitProhibitedFromAdvancing($this->units[$attacker])){
+                            if($battle->victory->isUnitProhibitedFromAdvancing($this->units[$attacker])){
                                 $this->units[$attacker]->status = STATUS_ATTACKED;
                             }else {
                                 $this->units[$attacker]->status = STATUS_CAN_ADVANCE;
@@ -831,7 +830,7 @@ class Force extends SimpleForce
         for ($id = 0; $id < count($this->units); $id++) {
             if ($this->units[$id]->status == STATUS_CAN_EXCHANGE) {
                 if(count($this->retreatHexagonList)){
-                    if($b->victory->unitProhibitedFromAdvancing($this->units[$id])){
+                    if($b->victory->isUnitProhibitedFromAdvancing($this->units[$id])){
                         $this->units[$id]->status = STATUS_ATTACKED;
                     }else{
                         $this->units[$id]->status = STATUS_CAN_ADVANCE;
@@ -891,7 +890,7 @@ class Force extends SimpleForce
         for ($id = 0; $id < count($this->units); $id++) {
             if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
                 if (count($this->retreatHexagonList)) {
-                    if($b->victory->unitProhibitedFromAdvancing($this->units[$id])){
+                    if($b->victory->isUnitProhibitedFromAdvancing($this->units[$id])){
                         $this->units[$id]->status = STATUS_ATTACKED;
                     }else {
                         $this->units[$id]->status = STATUS_CAN_ADVANCE;
@@ -943,6 +942,7 @@ class Force extends SimpleForce
     
     function clearAdvancing()
     {
+        return;
         foreach($this->units as $unit){
             if($unit->status == STATUS_CAN_ADVANCE){
                 $unit->setStatus(STATUS_ADVANCING);
@@ -956,6 +956,8 @@ class Force extends SimpleForce
     function unitsAreAdvancing()
     {
         $areAdvancing = false;
+        $b = Battle::getBattle();
+        $b->combatRules->groomAdvancing();
 
         for ($id = 0; $id < count($this->units); $id++) {
             if ($this->units[$id]->status == STATUS_CAN_ADVANCE

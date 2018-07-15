@@ -155,7 +155,6 @@ trait BfsCalcMovesTrait
                         $this->force->eliminateUnit($id);
                     }else{
                         $this->force->units[$id]->setStatus(STATUS_STOPPED);
-                        $this->force->clearAdvancing();
                     }
                 }else{
                     $this->force->eliminateUnit($id);
@@ -180,7 +179,6 @@ trait BfsCalcMovesTrait
                             $this->force->eliminateUnit($id);
                         }else{
                             $this->force->units[$id]->setStatus(STATUS_STOPPED);
-                            $this->force->clearAdvancing();
                         }
                     }else{
                         $this->force->eliminateUnit($id);

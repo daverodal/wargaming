@@ -9,7 +9,7 @@ $crts = $topCrt->crts;
 <div ng-show="crtName == curCrt" ng-repeat="(crtName, crt) in topCrt.crts">
     <div id="odds">
         <span>&nbsp;</span>
-        <span ng-repeat="(colId, col) in crt.header" ng-class="{pinned:colId == crt.pinned, selected:colId == crt.selected}" > @{{ col }}</span>
+        <span ng-repeat="(colId, col) in crt.header" ng-click="pinShow(colId, $event)"  ng-class="{pinned:colId == crt.pinned, selected:colId == crt.selected}" > @{{ col }}</span>
         <div class="clear"></div>
     </div>
     <div class="shadow-wrapper">

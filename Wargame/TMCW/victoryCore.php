@@ -53,11 +53,6 @@ class victoryCore extends \Wargame\VictoryCore
         }
     }
 
-
-    public function unitProhibitedFromAdvancing($args){
-        return false;
-    }
-
     public function save()
     {
         $ret = parent::save();

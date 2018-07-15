@@ -36,7 +36,7 @@ trait CRTResults
 
 
             case DE:
-                $defUnit->status = STATUS_ELIMINATING;
+                $defUnit->damageUnit(true);
                 $defUnit->retreatCountRequired = $distance;
                 $defUnit->moveCount = 0;
                 $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
@@ -91,7 +91,7 @@ trait CRTResults
 
 
                     case AE:
-                        $attUnit->status = STATUS_ELIMINATING;
+                        $attUnit->damageUnit(true);
                         $defUnit->retreatCountRequired = 0;
                         break;
 
@@ -114,7 +114,7 @@ trait CRTResults
 
                     case DR:
 
-                        $attUnit->status = STATUS_ATTACKED;
+                        $attUnit->status = STATUS_CAN_ADVANCE;
                         $attUnit->retreatCountRequired = 0;
                         break;
 

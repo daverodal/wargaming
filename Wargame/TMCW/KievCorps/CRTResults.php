@@ -45,7 +45,6 @@ trait CRTResults
                     if ($distance) {
                         $defUnit->status = STATUS_CAN_RETREAT;
                     } else {
-                        $force->clearAdvancing();
                         $defUnit->status = STATUS_EXCHANGED;
                     }
                     $defUnit->retreatCountRequired = $distance;

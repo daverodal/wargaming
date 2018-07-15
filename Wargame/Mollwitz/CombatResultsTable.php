@@ -41,7 +41,7 @@ class CombatResultsTable
 
     //     combatIndexeCount is 6; maxCombatIndex = 5
     //     index is 0 to 5;  dieSidesCount = 6
-    use \Wargame\CRTResults;
+    use \Wargame\Mollwitz\CRTResults;
 
     function __construct()
     {

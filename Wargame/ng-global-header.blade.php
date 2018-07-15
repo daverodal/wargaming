@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 
     ?>
     <script>
-        const GAME_NAME_DUDE = "SubGameController";
+        const GAME_NAME_DUDE = "<?=$classOverride ?? '' ?>" || "SubGameController";
         <?php foreach($constants as $k => $v){
             echo "const $k = $v;\n";
         }?>
@@ -51,7 +51,6 @@ You should have received a copy of the GNU General Public License
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/icon">
-    <script src="{{mix("vendor/javascripts/medieval/ngGameMain.js")}}"></script>
 
 
     <script type="text/javascript">

@@ -1,15 +1,18 @@
+<? $classOverride = "myGameController";?>
 @include('wargame::ng-global-header')
+<script src="{{mix("vendor/javascripts/wargame/collapse.js")}}"></script>
 @extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\Collapse\CombatResultsTable(\Wargame\TMCW\Collapse\Collapse::GERMAN_FORCE)] )
-@include('wargame::TMCW.Collapse.kievHeader')
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/collapse.css')}}">
-<script src="{{mix('vendor/javascripts/wargame/kievCoprs.js')}}">
-
-</script>
 </head>
 @section('credit')
     @include('wargame::TMCW.Collapse.credit')
 @endsection
+@section('victory')
 
+    <span id="victory">
+        Victorey: <span class='playerSovietFace'><?=$forceName[1]?></span> @{{ vp[1] }} / <span class='playerGermanFace'><?=$forceName[2]?></span> @{{ vp[2] }} @{{ ratio }} @{{ winner }}
+    </span>
+@endsection
 @section('outer-deploy-box')
     <div style="margin-right:3px;" class="left">Deploy/Staging area</div>
     <div id="deployBox">
@@ -25,10 +28,6 @@
          ng-right-click="rightClickMe({id:unit.id})"   ng-style="unit.style" class="unit rel-unit"
          ng-class="[unit.nationality, unit.class]">
         <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
-        <div class="steps">
-            <div ng-repeat="i in [0,0,0].slice(3 - unit.steps) track by $index " class="step"></div>
-        </div>
-        <div ng-if="unit.integrity" class="integrity"><i class="fa fa-star"></i></div>
         <div class="shadow-mask" ng-class="unit.shadow"></div>
         <div class="unitSize">@{{ unit.name }}</div>
 
@@ -38,7 +37,7 @@
             <img src="{{asset("assets/unit-images/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
-        <div ng-style="{background: unit.integrityColor }" ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }} -
+        <div ng-class="unit.infoLen" class="unit-numbers">@{{ unit.strength }} @{{ unit.supplied ? '-' : 'u' }}
              @{{ unit.maxMove - unit.moveAmountUsed }}</div>
     </div>
 @endsection
@@ -74,7 +73,7 @@
                 class="unit-desig">@{{ unit.unitDesig }}</span>
     </div>
     <div class="range">@{{ unit.armorClass }}</div>
-    <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.pointsLeft }}</div>
+    <div class="unit-numbers" ng-class="unit.infoLen" >@{{ unit.strength }}  @{{ unit.supplied ? '-' : 'u' }} @{{ unit.pointsLeft }}</div>
 @endsection
 
 
