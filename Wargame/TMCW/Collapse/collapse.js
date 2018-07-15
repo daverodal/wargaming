@@ -25,7 +25,7 @@
  */
 import "../../../../Medieval/Medieval/ngGameMain";
 import { GameController } from "../../../../Medieval/Medieval/game-controller";
-import { Sync } from "../../wargame-helpers/";
+import { Sync } from "../../wargame-helpers/Sync";
 
 export class CollapseCtlr extends GameController {
     victory(){

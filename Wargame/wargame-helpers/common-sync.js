@@ -24,7 +24,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Sync from './Sync';
+import { Sync } from './Sync';
 import fixHeader from './fix-header';
 import * as globalFuncs from './global-funcs';
 

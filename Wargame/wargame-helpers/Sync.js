@@ -18,7 +18,7 @@
 /* to make module again, do this
  */
 
-export default  class Sync {
+export  class Sync {
     constructor(baseUrl) {
         this.baseUrl = baseUrl
         this.id = "Sync";
