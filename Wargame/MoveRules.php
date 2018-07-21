@@ -685,6 +685,10 @@ class MoveRules
                     $this->anyUnitIsMoving = false;
                     $this->movingUnitId = NONE;
                     $this->moves = new stdClass();
+                    $battle = Battle::getBattle();
+                    $victory = $battle->victory;
+                    $victory->unitDeployed($movingUnit);
+
                 }
 
             }

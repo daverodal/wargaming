@@ -110,6 +110,34 @@ export class CollapseCtlr extends GameController {
         });
     }
 
+    mapSymbols(){
+        debugger;
+        this.sync.register("mapSymbols", function (mapSymbols, data) {
+            $(".mapSymbols").remove();
+            for (var i in mapSymbols) {
+
+                var hexPos = i.replace(/\.\d*/g, '');
+                var x = hexPos.match(/x(\d*)y/)[1];
+                var y = hexPos.match(/y(\d*)\D*/)[1];
+                $("#mapSymbol" + i).remove();
+
+                for (var symbolName in mapSymbols[i]) {
+                    var newHtml;
+
+                    var c = mapSymbols[i][symbolName].class
+                    $("#mapSymbol" + hexPos + " " + c).remove();
+                    newHtml = '<i class="' + c + '"></i>';
+                    if (mapSymbols[i][symbolName].image) {
+                        newHtml = '<img src="'+rowSvg + '" class="' + c + '">';
+                    }
+                    $("#gameImages").append('<div id="mapSymbol' + i + '" class="mapSymbols">' + newHtml + '</div>');
+                    $("#mapSymbol" + i).css({top: y + "px", left: x + "px"});
+
+                }
+
+            }
+        });
+    }
     chooseOption(){
         let finalResult = _.reduce(this.freeDeployMap, function(result, value, key) {
             let units = _.reduce(value.units, (result, value, key) => {

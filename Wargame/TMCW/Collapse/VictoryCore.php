@@ -37,6 +37,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 
     public $sovietGoal;
     public $germanGoal;
+    public $ungarrisoned;
 
     function unitSupplyEffects($unit, $goal, $bias, $supplyLen){
         $b = Battle::getBattle();
@@ -99,32 +100,33 @@ return;
         if ($data) {
             $this->germanGoal = $data->victory->germanGoal;
             $this->sovietGoal = $data->victory->sovietGoal;
+            $this->ungarrisoned = $data->victory->ungarrisoned;
         } else {
             $this->germanGoal = [];
             $this->sovietGoal = [];
             $this->victoryPoints[3] = 0;
+            $this->ungarrisoned = [];
         }
     }
 
     public function vetoPhaseChange(){
+        /* @var $battle Collapse */
         $battle = Battle::getBattle();
         if($battle->gameRules->phase === RED_DEPLOY_PHASE){
-            $good = $this->checkGarrisons();
+            $good = $this->enoughGarrisons();
+            if(!$good){
+                $battle->gameRules->flashMessages[] = "required garrisons see red hexes";
+            }
             return !$good;
         }
         return false;
     }
 
-    public function checkGarrisons(){
+    public function getUnGarrisoned(){
         $cities = [self::VITEBSK, 4611, 4615, 4121, 2527, 2310, 1616, 2901, 3316];
         $b = BATTLE::getBattle();
-
-        $good = true;
-        $badCities = "";
+        $ungarrisoned = [];
         foreach($cities as $city){
-
-            $numRequired = 1;
-
             /* @var MapHex $mapHex */
             $mapHex = $b->mapData->getHex($city);
 
@@ -134,20 +136,26 @@ return;
                 $occupied = $mapHex->isOccupied(2, 1);
             }
             if(!$occupied){
-                $badCities .= " $city ";
-                $good = false;
+                $ungarrisoned[] = $city;
+                $this->requireGarrison($city);
+            }else{
+                $this->unRequiredGarrison($city);
             }
         }
-        if($badCities){
-            $b->gameRules->flashMessages[] = "Required $badCities";
-        }
-        return $good;
+        $this->ungarrisoned = $ungarrisoned;
+        return $ungarrisoned;
+    }
+    public function enoughGarrisons(){
+
+        $cities = $this->getUnGarrisoned();
+        return count($cities) == 0;
     }
     public function save()
     {
         $ret = parent::save();
         $ret->germanGoal = $this->germanGoal;
         $ret->sovietGoal = $this->sovietGoal;
+        $ret->ungarrisoned = $this->ungarrisoned;
         return $ret;
     }
 
@@ -251,6 +259,30 @@ return;
         return true;
     }
 
+    public function unRequiredGarrison($hexName)
+    {
+
+        /* @var $battle Collapse */
+        $battle = Battle::getBattle();
+        $battle->mapData->removeMapSymbol($hexName, "spotted");
+    }
+
+    public function requireGarrison($hexName)
+    {
+
+        /* @var $battle Collapse */
+        $battle = Battle::getBattle();
+        $symbol = new stdClass();
+        $symbol->type = 'Spotted';
+        $symbol->image = 'spotted.svg';
+        $symbol->class = 'row-hex';
+        $symbols = new stdClass();
+        foreach ([$hexName] as $id) {
+            $symbols->$id = $symbol;
+        }
+        $battle->mapData->setMapSymbols($symbols, "spotted");
+    }
+
     public function phaseChange()
     {
 
@@ -263,7 +295,7 @@ return;
         $force = $battle->force;
         $theUnits = $battle->force->units;
 
-        if($gameRules->phase === RED_DEPLOY_PHASE){
+        if($gameRules->phase === RED_DEPLOY_PHASE && $gameRules->turn === 1){
             $gameRules->flashMessages[] = "@show deployWrapper";
             $freeUnits = $gameRules->option;
             if($freeUnits) {
@@ -271,6 +303,7 @@ return;
                     $force->units[$unitId]->reinforceZone = 'B';
                 }
             }
+            $this->enoughGarrisons();
         }
 //
 //        foreach ($theUnits as $id => $unit) {
@@ -303,6 +336,16 @@ return;
         }
     }
 
+    public function unitDeployed($arg){
+        $unit = $arg[0];
+        /* @var $b Collapse */
+        $b  = Battle::getBattle();
+
+        if($b->gameRules->phase === RED_DEPLOY_PHASE){
+            $this->enoughGarrisons();
+        }
+
+    }
     public function preStartMovingUnit($arg)
     {
         $unit = $arg[0];
