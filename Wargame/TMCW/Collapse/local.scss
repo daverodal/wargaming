@@ -30,6 +30,48 @@
 
 
 @include player(soviet,Two,$sovietColor);
+#options-pane{
+  position: absolute;
+  background: lightgray;
+  left:50%;
+  transform: translateX(-50%);
+  width: 75%;
+  h2,h3{
+    text-align: center;
+  }
+
+  offmap-unit {
+    .unit {
+      border: solid 3px;
+      border-color: #cccccc #666666 #666666 #cccccc;
+    }
+  }
+}
+.cool-header {
+  font-size: 22px;
+  background: rgba(255, 255, 255, .9);
+  border: 1px solid #333;
+  border-radius: 15px;
+  margin: 40px;
+  padding: 20px;
+  box-shadow: 10px 10px 10px rgba(20, 20, 20, .7);
+  margin: 0 auto;
+  text-align: center;
+  h2,h3{
+    margin:0;
+  }
+}
+.cool-box {
+  font-size: 22px;
+  background: rgba(255, 255, 255, .9);
+  border: 1px solid #333;
+  border-radius: 15px;
+  margin: 40px;
+  padding: 20px;
+  box-shadow: 10px 10px 10px rgba(20, 20, 20, .7);
+  width: 40%;
+  margin: 0 auto;
+}
 #floatMessage{
   display:block;
   z-index: 1000;
@@ -173,6 +215,9 @@
     position:relative;
     float:left;
     margin:3px 3px 0 0;
+  }
+  h1,h2,h3,h4{
+    margin: 5px auto;
   }
 }
 .rel-unit{

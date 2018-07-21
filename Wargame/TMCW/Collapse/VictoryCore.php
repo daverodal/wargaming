@@ -33,9 +33,10 @@ use \stdClass;
 class VictoryCore extends \Wargame\TMCW\victoryCore
 {
 
+    const VITEBSK = 4606;
+
     public $sovietGoal;
     public $germanGoal;
-    public $unsuppliedDefenderHalved = false;
 
     function unitSupplyEffects($unit, $goal, $bias, $supplyLen){
         $b = Battle::getBattle();
@@ -82,7 +83,7 @@ return;
             $unit->removeAdjustment('movement');
         }
 
-        if ((!empty($this->unsuppliedDefenderHalved) || $unit->forceId == $b->gameRules->attackingForceId) && !$unit->supplied) {
+        if (( $unit->forceId == $b->gameRules->attackingForceId) && !$unit->supplied) {
 //            $unit->addAdjustment('supply','half');
 //            $b->combatRules->recalcCombat($unit->id);
         }else{
@@ -105,6 +106,43 @@ return;
         }
     }
 
+    public function vetoPhaseChange(){
+        $battle = Battle::getBattle();
+        if($battle->gameRules->phase === RED_DEPLOY_PHASE){
+            $good = $this->checkGarrisons();
+            return !$good;
+        }
+        return false;
+    }
+
+    public function checkGarrisons(){
+        $cities = [self::VITEBSK, 4611, 4615, 4121, 2527, 2310, 1616, 2901, 3316];
+        $b = BATTLE::getBattle();
+
+        $good = true;
+        $badCities = "";
+        foreach($cities as $city){
+
+            $numRequired = 1;
+
+            /* @var MapHex $mapHex */
+            $mapHex = $b->mapData->getHex($city);
+
+            if($city === self::VITEBSK){
+                $occupied = $mapHex->isOccupied(2, 3);
+            }else{
+                $occupied = $mapHex->isOccupied(2, 1);
+            }
+            if(!$occupied){
+                $badCities .= " $city ";
+                $good = false;
+            }
+        }
+        if($badCities){
+            $b->gameRules->flashMessages[] = "Required $badCities";
+        }
+        return $good;
+    }
     public function save()
     {
         $ret = parent::save();
@@ -225,6 +263,15 @@ return;
         $force = $battle->force;
         $theUnits = $battle->force->units;
 
+        if($gameRules->phase === RED_DEPLOY_PHASE){
+            $gameRules->flashMessages[] = "@show deployWrapper";
+            $freeUnits = $gameRules->option;
+            if($freeUnits) {
+                foreach ($freeUnits as $unitId) {
+                    $force->units[$unitId]->reinforceZone = 'B';
+                }
+            }
+        }
 //
 //        foreach ($theUnits as $id => $unit) {
 //            $unit->railMove(false);

@@ -15,9 +15,28 @@
 @endsection
 @section('outer-deploy-box')
     <div style="margin-right:3px;" class="left">Deploy/Staging area</div>
+    <div class="clear"></div>
     <div id="deployBox">
-        <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
+        <div>
+            <h4>free deploy</h4>
+        <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper" ng-if="unit.reinforceZone === 'B'" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
             <offmap-unit unit="unit"></offmap-unit>
+        </div>
+        </div>
+        <div class="clear"></div>
+        <div>
+            <h4>fortified deploy</h4>
+            <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.reinforceZone === 'A'" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <h4>soviet deploy</h4>
+            <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.forceId === 1" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            <div class="clear"></div>
         </div>
         <div class="clear"></div>
     </div>
@@ -171,21 +190,37 @@
     </div>
 @endsection
 
-@section('unitsz')
-    @foreach ($units as $unit)
-        <div class="unit {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
-            <div class="steps">
-                <div class="step"></div>
-                <div class="step"></div>
-            </div>
-            <div class="shadow-mask"></div>
-            <div class="unitSize">{{$unit['unitSize']}}</div>
-            <img class="arrow" src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
-            <div class="counterWrapper">
-                <img src="{{asset("assets/unit-images/".$unit['image'])}}" class="counter"><span
-                        class="unit-desig"><?=$unit['unitDesig']?></span>
-            </div>
-            <div class="unit-numbers">5 - 4</div>
+
+@section('options')
+    <div ng-if="options" id="options-pane">
+        <div class="cool-header">
+            <h2 >Choose 25 strength points for free deploy area.</h2>
+            <h3> @{{ freeDeployStrength.count }} of 25 chosen @{{ 25 - freeDeployStrength.count }} available</h3>
+            Click on a unit to move it to the other side
         </div>
-    @endforeach
+        <div class="left cool-box">
+            <h3>Units deployed in fortified only @{{ 25 - freeDeployStrength.count }}</h3>
+            <div  ng-if="maplet.unit.forceId === 2" ng-repeat="(key, maplet) in deployMap">
+                <div ng-click="addToFree(key, maplet)" class="a-unit-wrapper"
+                     ng-style="maplet.unit.wrapperstyle">
+                    <offmap-unit unit="maplet.unit"></offmap-unit>
+                </div>
+                Count @{{ maplet.count }}
+            </div>
+        </div>
+        <div class="right cool-box">
+            <h3>Units free to deploy anywhere @{{ freeDeployStrength.count }} </h3>
+
+            <div ng-repeat="(key, maplet) in freeDeployMap">
+                <div ng-click="removeFromFree(key, maplet)" class="a-unit-wrapper" ng-if="maplet.unit.forceId === 2"
+                     ng-style="unit.wrapperstyle">
+                    <offmap-unit unit="maplet.unit"></offmap-unit>
+                </div>
+                Count @{{ maplet.count }}
+            </div>
+        </div>
+        <div id="options-box">
+        </div>
+        <button ng-click="chooseOption()" id="choose-option-button">Choose Your Option</button>
+    </div>
 @endsection

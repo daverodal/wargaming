@@ -331,14 +331,14 @@ export function doitOption() {
 }
 
 
-export function doitNext() {
+export function doitNext(id = false) {
     playAudio();
 
 
     $.ajax({
         url: pokeUrl,
         type: "POST",
-        data: {wargame: wargame,event: SELECT_BUTTON_EVENT},
+        data: {wargame: wargame,event: SELECT_BUTTON_EVENT, id: id},
         success: function (data, textstatus) {
             try {
                 var success = +$.parseJSON(data).success;

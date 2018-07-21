@@ -99,11 +99,11 @@ class Collapse extends \Wargame\ModernLandBattle
 
         $i = 0;
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiArmor.png", 5,  8,STATUS_CAN_DEPLOY, "B", 1, "german", "mech", $i + 1);
+            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiArmor.png", 5,  8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", $i + 1);
 
         }
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiMech.png", 4,  8,STATUS_CAN_DEPLOY, "B", 1, "german", "mech", $i + 1);
+            UnitFactory::create("xx", Collapse::GERMAN_FORCE, "deployBox", "multiMech.png", 4,  8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", $i + 1);
 
         }
         for($i = 0; $i < 36; $i++){
@@ -200,24 +200,27 @@ class Collapse extends \Wargame\ModernLandBattle
 
             // game data
             $this->gameRules->setMaxTurn(10);
-            $this->gameRules->setInitialPhaseMode(RED_DEPLOY_PHASE, DEPLOY_MODE);
 
+            $this->gameRules->options = ['Nuclear Facility','Chateau sur mer', 'Marine Science Facility'];
+
+            $this->gameRules->setInitialPhaseMode(RED_OPTION_PHASE, OPTION_MODE);
             $this->gameRules->attackingForceId = RED_FORCE; /* object oriented! */
             $this->gameRules->defendingForceId = BLUE_FORCE; /* object oriented! */
             $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
 
+            $this->gameRules->addPhaseChange(RED_OPTION_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, RED_FORCE, BLUE_FORCE, false);
+
             $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, BLUE_DEPLOY_PHASE, DEPLOY_MODE, Collapse::BLUE_FORCE, Collapse::RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, Collapse::BLUE_FORCE, Collapse::RED_FORCE, false);
 
-//            $this->gameRules->addPhaseChange(BLUE_REPLACEMENT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, Collapse::GERMAN_FORCE, Collapse::SOVIET_FORCE, false);
 
             $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, Collapse::BLUE_FORCE, Collapse::RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_COMBAT_PHASE, BLUE_MECH_PHASE, MOVING_MODE, Collapse::BLUE_FORCE, Collapse::RED_FORCE, false);
             $this->gameRules->addPhaseChange(BLUE_MECH_PHASE, RED_MOVE_PHASE, MOVING_MODE, Collapse::RED_FORCE, Collapse::BLUE_FORCE, false);
-//            $this->gameRules->addPhaseChange(RED_REPLACEMENT_PHASE, RED_MOVE_PHASE, MOVING_MODE, Collapse::SOVIET_FORCE, Collapse::GERMAN_FORCE, false);
             $this->gameRules->addPhaseChange(RED_MOVE_PHASE, RED_COMBAT_PHASE, COMBAT_SETUP_MODE, Collapse::RED_FORCE, Collapse::BLUE_FORCE, false);
             $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, RED_MECH_PHASE, MOVING_MODE, Collapse::RED_FORCE, Collapse::BLUE_FORCE, false);
             $this->gameRules->addPhaseChange(RED_MECH_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, Collapse::BLUE_FORCE, Collapse::RED_FORCE, true);
+            $this->gameRules->flashMessages[] = "@hide deployWrapper";
         }
 
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){

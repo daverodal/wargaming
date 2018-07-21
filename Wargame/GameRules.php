@@ -1136,7 +1136,13 @@ class GameRules
     function selectNextPhase($click)
     {
         global $phase_name;
+        /* @var Battle $battle */
+        $battle = Battle::getBattle();
+        $victory = $battle->victory;
 
+        if($victory->vetoPhaseChange()){
+            return true;
+        }
         if($this->mode == MOVING_MODE && $this->moveRules->movesLeft()){
             return false;
         }
@@ -1144,10 +1150,6 @@ class GameRules
             $this->moveRules->stopMove($this->force->units[$this->moveRules->movingUnitId]);
         }
         if ((($this->gameHasCombatResolutionMode  == false) ||  ($this->force->moreCombatToResolve() == false)) && $this->moveRules->anyUnitIsMoving == false) {
-            /* @var Battle $battle */
-            $battle = Battle::getBattle();
-            $victory = $battle->victory;
-
             $currentPhase = $this->currentPhase();
             if ($currentPhase) {
                 $victory->nextPhase();

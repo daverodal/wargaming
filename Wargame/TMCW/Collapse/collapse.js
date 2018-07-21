@@ -24,10 +24,63 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import "../../../../Medieval/Medieval/ngGameMain";
+import { doitNext} from "../../wargame-helpers/global-funcs";
+
 import { GameController } from "../../../../Medieval/Medieval/game-controller";
 import { Sync } from "../../wargame-helpers/Sync";
+import "lodash";
 
 export class CollapseCtlr extends GameController {
+
+    constructor($scope, $http, sync, $sce){
+
+        super($scope, $http, sync, $sce);
+        this.$scope = $scope;
+        this.$scope.chooseOption = this.chooseOption;
+        this.$scope.addToFree    = this.addToFree;
+        this.$scope.removeFromFree = this.removeFromFree;
+        this.freeDeployStrength = { count: 0};
+        this.freeDeployMap = {};
+        $scope.freeDeployStrength = this.freeDeployStrength;
+        $scope.freeDeployMap = this.freeDeployMap;
+    }
+
+    addToFree(key,maplet){
+        let totalFreeCount = this.freeDeployStrength.count;
+        if(totalFreeCount >= 25){
+            return;
+        }
+        if(totalFreeCount + maplet.unit.strength > 25){
+            return;
+        }
+        if(!this.freeDeployMap[key]){
+            this.freeDeployMap[key] = { unit: maplet.unit, count: 0, units:[]}
+        }
+        let unit = this.deployMap[key].units.pop();
+        this.freeDeployMap[key].units.push(unit);
+        this.freeDeployMap[key].count++;
+        this.deployMap[key].count--;
+        this.freeDeployStrength.count += maplet.unit.strength;
+        if(this.deployMap[key].count === 0){
+            delete this.deployMap[key];
+        }
+    }
+
+    removeFromFree(key,maplet){
+        let totalFreeCount = this.freeDeployStrength.count;
+        if(!this.deployMap[key]){
+            this.deployMap[key] = { unit: maplet.unit, count: 0, units: []}
+        }
+        this.deployMap[key].count++;
+        let unit = this.freeDeployMap[key].units.pop();
+        this.deployMap[key].units.push(unit);
+        this.freeDeployMap[key].count--;
+        this.freeDeployStrength.count -= maplet.unit.strength;
+        if(this.freeDeployMap[key].count === 0){
+            delete this.freeDeployMap[key];
+        }
+    }
+
     victory(){
         this.sync.register("vp", (vp, data) => {
             /* do nothing */
@@ -55,6 +108,17 @@ export class CollapseCtlr extends GameController {
             this.$scope.victory =
                 this.$scope.vp = victory.victoryPoints;
         });
+    }
+
+    chooseOption(){
+        let finalResult = _.reduce(this.freeDeployMap, function(result, value, key) {
+            let units = _.reduce(value.units, (result, value, key) => {
+                result.push(value.id);
+                return result;
+            },result);
+            return result;
+        }, []);
+        doitNext(finalResult);
     }
 }
 

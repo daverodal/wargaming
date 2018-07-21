@@ -201,6 +201,7 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $mapUnit->unitDesig = $this->unitDesig;
         $mapUnit->supplyUsed = $this->supplyUsed;
         $mapUnit->name = $this->name;
+        $mapUnit->reinforceZone = $this->reinforceZone;
         if ($this->supplyRadius !== false) {
             $mapUnit->supplyRadius = $this->supplyRadius;
         }
