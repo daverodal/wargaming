@@ -78,14 +78,8 @@
 @section('ng-offmap-unit-template')
     <div id="@{{unit.id}}"  ng-style="unit.style" class="unit rel-unit"
          ng-class="[unit.nationality, unit.class]">
-        <div ng-show="unit.oddsDisp" class="unitOdds" ng-class="unit.oddsColor">@{{ unit.oddsDisp }}</div>
-        <div class="steps">
-            <div ng-repeat="i in [0,0,0].slice(3 - unit.steps) track by $index " class="step"></div>
-        </div>
         <div class="shadow-mask" ng-class="unit.shadow"></div>
         <div class="unitSize">@{{ unit.name }}</div>
-        <img ng-repeat="arrow in unit.arrows" ng-style="arrow.style" class="arrow"
-             src="{{asset('assets/unit-images/short-red-arrow-md.png')}}" class="counter">
         <div class="counterWrapper">
             <img src="{{asset("assets/unit-images/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
