@@ -32,6 +32,20 @@
             <div class="clear"></div>
         </div>
         <div>
+            <h4>Reinforce West deploy</h4>
+            <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.reinforceZone === 'C'" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <h4>Reinforce North deploy</h4>
+            <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.reinforceZone === 'F'" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
+                <offmap-unit unit="unit"></offmap-unit>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div>
             <h4>soviet deploy</h4>
             <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.forceId === 1" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>
