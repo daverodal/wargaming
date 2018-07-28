@@ -122,12 +122,40 @@ return;
         return false;
     }
 
+    public function markGarrisonedUnits(){
+        $fortifiedCities = [self::VITEBSK, 4611, 4615, 4121];
+        $garrisonCities = [ 2527, 2310, 1616, 2901, 3316];
+        /* @var $b Collapse */
+        $b = BATTLE::getBattle();
+        foreach($fortifiedCities as $city) {
+            /* @var \Wargame\MapHex $mapHex */
+            $mapHex = $b->mapData->getHex($city);
+            $unitIds = $mapHex->getForces(Collapse::GERMAN_FORCE);
+            foreach($unitIds as $id => $unit){
+                /* @var $unit SimpleUnit */
+                $unit = $b->force->units[$id];
+                $unit->setFortifiedGarrison();
+            }
+        }
+        foreach($garrisonCities as $city) {
+            /* @var \Wargame\MapHex $mapHex */
+            $mapHex = $b->mapData->getHex($city);
+            $unitIds = $mapHex->getForces(Collapse::GERMAN_FORCE);
+            foreach($unitIds as $id => $unit){
+                /* @var $unit SimpleUnit */
+                $unit = $b->force->units[$id];
+                $unit->setGarrisoning();
+            }
+        }
+    }
+
     public function getUnGarrisoned(){
         $cities = [self::VITEBSK, 4611, 4615, 4121, 2527, 2310, 1616, 2901, 3316];
+        /* @var $b Collapse */
         $b = BATTLE::getBattle();
         $ungarrisoned = [];
         foreach($cities as $city){
-            /* @var MapHex $mapHex */
+            /* @var \Wargame\MapHex $mapHex */
             $mapHex = $b->mapData->getHex($city);
 
             if($city === self::VITEBSK){
@@ -283,12 +311,36 @@ return;
         $battle->mapData->setMapSymbols($symbols, "spotted");
     }
 
+    public function releaseGarrisons()
+    {
+        /*@var $b Collapse */
+        $b = Battle::getBattle();
+        $units = $b->force->units;
+        /* @var $unit SimpleUnit */
+        foreach ($units as $unitId => $unit) {
+            if ($unit->isGarrisoning()) {
+                /* @var $sovietUnit SimpleUnit */
+                foreach ($units as $sovietId => $sovietUnit) {
+                    if ($sovietUnit->forceId === Collapse::SOVIET_FORCE) {
+                        $los = new \Wargame\Los();
+
+                        $los->setOrigin($unit->hexagon);
+                        $los->setEndPoint($sovietUnit->hexagon);
+                        $range = $los->getRange();
+                        if($range <= 6){
+                            $unit->releaseGarrisoning();
+                        }
+                    }
+                }
+            }
+        }
+    }
     public function phaseChange()
     {
 
-        /* @var $battle MartianCivilWar */
+        /* @var $battle Collapse */
         $battle = Battle::getBattle();
-        /* @var $gameRules GameRules */
+        /* @var $gameRules \Wargame\GameRules */
         $gameRules = $battle->gameRules;
         $forceId = $gameRules->attackingForceId;
         $turn = $gameRules->turn;
@@ -320,10 +372,13 @@ return;
         }
 
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
-            $gameRules->flashMessages[] = "@hide deadpile";
+            $gameRules->flashMessages[] = "@hide deployWrapper";
             if (isset($battle->force->reinforceTurns->$turn->$forceId)) {
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
+            }
+            if($gameRules->phase === RED_MOVE_PHASE){
+                $this->releaseGarrisons();
             }
 
             foreach ($theUnits as $id => $unit) {
@@ -334,7 +389,13 @@ return;
                 }
             }
         }
+        if($gameRules->phase === BLUE_DEPLOY_PHASE){
+            if($gameRules->turn === 1){
+                $this->markGarrisonedUnits();
+            }
+        }
     }
+
 
     public function unitDeployed($arg){
         $unit = $arg[0];
@@ -401,11 +462,30 @@ return;
         /* @var unit $unit */
         $unit = $args[0];
 
+        /* @var $b Collapse */
         $b = Battle::getBattle();
+        $gameRules = $b->gameRules;
         $phase = $b->gameRules->phase;
         $id = $unit->id;
-        if ($unit->forceId != $b->gameRules->attackingForceId) {
-//            return;
+
+        if($gameRules->phase === RED_MOVE_PHASE) {
+            if ($unit->forceId === Collapse::GERMAN_FORCE) {
+                if ($unit->isFortifiedGarrison()) {
+                    if ($gameRules->turn < 4) {
+                        $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                    } else {
+                        $unit->releaseFortifiedGarrison();
+                    }
+                }
+                if ($unit->isGarrisoning()) {
+                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                }
+            }
+            if ($gameRules->turn === 1 && $unit->forceId === Collapse::GERMAN_FORCE) {
+                if ($unit->reinforceZone === "A") {
+                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                }
+            }
         }
         /*
          * all units move in second movement phase
