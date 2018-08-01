@@ -1074,13 +1074,14 @@ fieldset {
   background: white;
   color:black;
   border-radius: 10px;
-  left: 15px;
   text-align: center;
   letter-spacing: -1px;
   font-size: 70%;
   z-index: 26;
   border: 1px solid #999;
   padding: 0 5px;
+  top: 5px;
+  left: 5px;
   &:hover {
     background: transparent;
     color: transparent;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Wargame\TMCW\Collapse;
+namespace Wargame\TMCW\NorthVsSouth;
 
 use \Wargame\Hexagon;
 use \stdClass;
@@ -32,16 +32,14 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
     public $origStrength;
     public $supplied = true;
     public $saveMaxMove = false;
-    public $saveClass = false;
-    public $garrison = false;
-    public $fortifiedGarrison = false;
-    public $garrisonHex = false;
+    public $untriedStrength;
+    public $tried = false;
 
     public function railMove(bool $mode)
     {
         $b = Battle::getBattle();
         $turn = $b->gameRules->turn;
-        if($this->class === "railhead" && $this->forceId === Collapse::SOVIET_FORCE){
+        if($this->class === "railhead" && $this->forceId === NorthVsSouth::NORTHERN_FORCE){
             $this->forceMarch = true;
         }else{
             if($turn > 1 && $turn === $this->reinforceTurn && $b->gameRules->phase === RED_MOVE_PHASE){
@@ -76,33 +74,6 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
     }
 
 
-    public function setFortifiedGarrison(){
-        $this->fortifiedGarrison = true;
-        $this->garrisonHex = $this->hexagon->name;
-    }
-
-    public function isFortifiedGarrison(){
-        if($this->garrisonHex !== $this->hexagon->name){
-            $this->fortifiedGarrison = false;
-        }
-        return $this->fortifiedGarrison;
-    }
-
-    public function releaseFortifiedGarrison(){
-        $this->fortifiedGarrison = false;
-    }
-
-    public function setGarrisoning(){
-        $this->garrison = true;
-    }
-
-    public function isGarrisoning(){
-        return $this->garrison;
-    }
-
-    public function releaseGarrisoning(){
-        $this->garrison = false;
-    }
     public function getUnmodifiedDefStrength()
     {
         return $this->origStrength;
@@ -113,7 +84,11 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         if ($name !== "strength" && $name !== "defStrength" && $name !== "attStrength") {
             return false;
         }
-        $strength = $this->origStrength;
+        $strength = $this->untriedStrength;
+
+        if($this->tried){
+            $strength = $this->origStrength;
+        }
 
         $strength = $this->getCombatAdjustments($strength);
 
@@ -121,21 +96,17 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
     }
 
 
-    function set($unitName, $unitForceId, $unitHexagon, $unitImage, $unitStrength,  $unitMaxMove, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $range, $nationality = "neutral", $class = "", $unitDesig = "")
+    function set($unitName, $unitForceId, $unitHexagon, $unitImage, $unitStrength, $untriedStrength,  $unitMaxMove, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $range, $nationality = "neutral", $class = "", $unitDesig = "")
     {
         $this->dirty = true;
+        $this->tried = false;
         $this->name = $unitName;
         $this->forceId = $unitForceId;
         $this->class = $class;
         $this->hexagon = new Hexagon($unitHexagon);
 
-        /* blah! this can get called from the constructor of Battle. so we can't get ourselves while creating ourselves */
-//        $battle = Battle::getBattle();
-//        $mapData = $battle->mapData;
-
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
-//        $mapData = MapData::getInstance();
 
         $mapHex = $mapData->getHex($this->hexagon->getName());
         if ($mapHex) {
@@ -144,7 +115,6 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $this->image = $unitImage;
 
 
-//        $this->strength = $isReduced ? $unitMinStrength : $unitMaxStrength;
         if($this->class === "railhead"){
             $this->forceMarch = true;
             $this->noZoc = true;
@@ -155,6 +125,7 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $this->maxMove = $unitMaxMove;
         $this->moveAmountUnused = $unitMaxMove;
         $this->origStrength = $unitStrength;
+        $this->untriedStrength = $untriedStrength;
         $this->status = $unitStatus;
         $this->moveAmountUsed = 0;
         $this->reinforceZone = $unitReinforceZone;
@@ -174,20 +145,6 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
     function damageUnit($kill = false)
     {
         $battle = Battle::getBattle();
-        if($this->forceId === Collapse::GERMAN_FORCE && $this->class === "mech" && $this->origStrength > 1){
-            $this->damage = $this->getUnmodifiedStrength() - 1;
-            $this->status = STATUS_DEFENDED;
-            $this->exchangeAmount = $this->getUnmodifiedStrength();
-            $this->defExchangeAmount = $this->getUnmodifiedDefStrength();
-            $battle->victory->reduceUnit($this);
-
-            $this->origStrength = 1;
-            $this->noZoc = true;
-            $this->name = "bg";
-            /* fake out loss of zoc */
-            $this->updateMoveStatus($this->hexagon, 0);
-            return false;
-        }
 
         $this->status = STATUS_ELIMINATING;
         $this->exchangeAmount = $this->getUnmodifiedStrength();
@@ -201,7 +158,6 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
             foreach ($data as $k => $v) {
                 if ($k == "hexagon") {
                     $this->hexagon = new Hexagon($v);
-//                    $this->hexagon->parent = $data->parent;
                     continue;
                 }
                 $this->$k = $v;
@@ -226,26 +182,14 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $mapUnit->supplied = $this->supplied;
         $mapUnit->status = $this->status;
         $mapUnit->forceId = $this->forceId;
-        $mapUnit->facing = 0;
         $mapUnit->hexagon = $this->hexagon->name;
         $mapUnit->unitDesig = $this->unitDesig;
-        $mapUnit->supplyUsed = $this->supplyUsed;
         $mapUnit->name = $this->name;
-        $mapUnit->reinforceZone = $this->reinforceZone;
-        if ($this->supplyRadius !== false) {
-            $mapUnit->supplyRadius = $this->supplyRadius;
-        }
+        $mapUnit->tried = $this->tried;
         return $mapUnit;
     }
 
 
-    public $supplyUsed = false;
-    public $supplyRadius = false;
-
-    public $canTransport = false;
-
-    public $carries = false;
-    public $carriedBy = false;
 
 
     public function postSet()

@@ -351,7 +351,11 @@
 
                         </li>
 
-                        <li>Zones of Control. When a unit enters a Hostile <abbr title="Zone Of Control">ZOC</abbr> it
+
+                        <li>Zones of Control.
+                            <p> The 6 hexes adjacent to a unit are within that units zone of control.
+                            <img src="{{url('vendor/wargame/mollwitz/images/zoc.png')}}"></p>
+                            When a unit enters a Hostile <abbr title="Zone Of Control">ZOC</abbr> it
                             must stop and
                             move no
                             further that turn. When a unit exits a hostile zone of control it must stop and move no

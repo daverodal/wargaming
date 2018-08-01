@@ -1004,6 +1004,8 @@ class CombatRules
 
     function combatResolutionMode()
     {
+        $b = Battle::getBattle();
+        $b->victory->combatResolutionMode();
         $this->combatsToResolve = $this->combats;
         unset($this->combats);
     }

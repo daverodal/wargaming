@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\TMCW\Collapse;
+namespace Wargame\TMCW\NorthVsSouth;
 use \Wargame\Battle;
 use \stdClass;
 /**
@@ -32,19 +32,15 @@ use \stdClass;
 
 class VictoryCore extends \Wargame\TMCW\victoryCore
 {
-
-    const VITEBSK = 4606;
-
     public $sovietGoal;
     public $germanGoal;
-    public $ungarrisoned;
 
     function unitSupplyEffects($unit, $goal, $bias, $supplyLen){
         $b = Battle::getBattle();
         $id = $unit->id;
 
         if ($unit->hexagon->parent === "gameImages") {
-            $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
+            $unit->supplied = true; //$b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
         } else {
             return;
         }
@@ -66,124 +62,29 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
-    function unitCombatSupplyEffects($unit, $goal, $bias, $supplyLen){
-return;
-        $b = Battle::getBattle();
-
-        if ($unit->hexagon->name) {
-            $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
-        } else {
-            return;
-        }
-
-        if (!$unit->supplied) {
-//            $unit->addAdjustment('movement','floorHalfMovement');
-
-        }
-        if ($unit->supplied) {
-            $unit->removeAdjustment('movement');
-        }
-
-        if (( $unit->forceId == $b->gameRules->attackingForceId) && !$unit->supplied) {
-//            $unit->addAdjustment('supply','half');
-//            $b->combatRules->recalcCombat($unit->id);
-        }else{
-            $unit->removeAdjustment('supply');
-            $b->combatRules->recalcCombat($unit->id);
-        }
-
-    }
-
     function __construct($data)
     {
         parent::__construct($data);
         if ($data) {
             $this->germanGoal = $data->victory->germanGoal;
             $this->sovietGoal = $data->victory->sovietGoal;
-            $this->ungarrisoned = $data->victory->ungarrisoned;
         } else {
             $this->germanGoal = [];
             $this->sovietGoal = [];
             $this->victoryPoints[3] = 0;
-            $this->ungarrisoned = [];
         }
     }
 
     public function vetoPhaseChange(){
-        /* @var $battle Collapse */
-        $battle = Battle::getBattle();
-        if($battle->gameRules->phase === RED_DEPLOY_PHASE){
-            $good = $this->enoughGarrisons();
-            if(!$good){
-                $battle->gameRules->flashMessages[] = "required garrisons see red hexes";
-            }
-            return !$good;
-        }
+
         return false;
     }
 
-    public function markGarrisonedUnits(){
-        $fortifiedCities = [self::VITEBSK, 4611, 4615, 4121];
-        $garrisonCities = [ 2527, 2310, 1616, 2901, 3316];
-        /* @var $b Collapse */
-        $b = BATTLE::getBattle();
-        foreach($fortifiedCities as $city) {
-            /* @var \Wargame\MapHex $mapHex */
-            $mapHex = $b->mapData->getHex($city);
-            $unitIds = $mapHex->getForces(Collapse::GERMAN_FORCE);
-            foreach($unitIds as $id => $unit){
-                /* @var $unit SimpleUnit */
-                $unit = $b->force->units[$id];
-                $unit->setFortifiedGarrison();
-            }
-        }
-        foreach($garrisonCities as $city) {
-            /* @var \Wargame\MapHex $mapHex */
-            $mapHex = $b->mapData->getHex($city);
-            $unitIds = $mapHex->getForces(Collapse::GERMAN_FORCE);
-            foreach($unitIds as $id => $unit){
-                /* @var $unit SimpleUnit */
-                $unit = $b->force->units[$id];
-                $unit->setGarrisoning();
-            }
-        }
-    }
-
-    public function getUnGarrisoned(){
-        $cities = [self::VITEBSK, 4611, 4615, 4121, 2527, 2310, 1616, 2901, 3316];
-        /* @var $b Collapse */
-        $b = BATTLE::getBattle();
-        $ungarrisoned = [];
-        foreach($cities as $city){
-            /* @var \Wargame\MapHex $mapHex */
-            $mapHex = $b->mapData->getHex($city);
-
-            if($city === self::VITEBSK){
-                $occupied = $mapHex->isOccupied(2, 3);
-            }else{
-                $occupied = $mapHex->isOccupied(2, 1);
-            }
-            if(!$occupied){
-                $ungarrisoned[] = $city;
-                $this->requireGarrison($city);
-            }else{
-                $this->unRequiredGarrison($city);
-            }
-        }
-        $this->ungarrisoned = $ungarrisoned;
-        return $ungarrisoned;
-    }
-    public function enoughGarrisons(){
-
-        $cities = $this->getUnGarrisoned();
-        return count($cities) == 0;
-    }
     public function save()
     {
         $ret = parent::save();
         $ret->germanGoal = $this->germanGoal;
         $ret->sovietGoal = $this->sovietGoal;
-        $ret->ungarrisoned = $this->ungarrisoned;
         return $ret;
     }
 
@@ -191,37 +92,6 @@ return;
     {
         $this->supplyLen = $supplyLen[0];
     }
-
-//    public function specialHexChange($args)
-//    {
-//        $battle = Battle::getBattle();
-//        list($mapHexName, $forceId) = $args;
-//
-////        if(in_array($mapHexName, $battle->specialHexC)){
-////
-////            if ($forceId == Collapse::SOVIET_FORCE) {
-////                $this->victoryPoints = "The Soviets hold Kiev";
-////            }
-////            if ($forceId == Collapse::GERMAN_FORCE) {
-////                $this->victoryPoints = "The Germans hold Kiev";
-////            }
-////        }
-//    }
-//
-//    public function postReinforceZones($args)
-//    {
-//        list($zones, $unit) = $args;
-//
-//        $forceId = $unit->forceId;
-//
-//        $reinforceZones = [];
-//        foreach($zones as $zone){
-//            $reinforceZones[] = new \Wargame\ReinforceZone($zone, $zone);
-//        }
-//        $battle = Battle::getBattle();
-//
-//        return array($reinforceZones);
-//    }
 
     public function reduceUnit($args)
     {
@@ -237,8 +107,8 @@ return;
                 $vp *= 3;
             }
         }
-        if ($unit->forceId == Collapse::GERMAN_FORCE) {
-            $victorId = Collapse::SOVIET_FORCE;
+        if ($unit->forceId == NorthVsSouth::SOUTHERN_FORCE) {
+            $victorId = NorthVsSouth::NORTHERN_FORCE;
 
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
@@ -248,7 +118,7 @@ return;
             }
             $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
         } else {
-            $victorId = Collapse::GERMAN_FORCE;
+            $victorId = NorthVsSouth::SOUTHERN_FORCE;
 
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
@@ -274,73 +144,24 @@ return;
 
     public function gameEnded()
     {
+        $battle = Battle::getBattle();
+//        $kiev = $battle->specialHexC[0];
+//        if ($battle->mapData->getSpecialHex($kiev) === NorthVsSouth::NORTHERN_FORCE) {
+//            $battle->gameRules->flashMessages[] = "Soviet Player Wins";
+//        }else{
+//            $battle->gameRules->flashMessages[] = "German Player Wins";
+//        }
+        $battle->gameRules->flashMessages[] = "Nobody Wins";
 
-        $b = Battle::getBattle();
-        if(!$this->gameOver){
-            $this->gameOver = true;
-            if($this->victoryPoints[Collapse::GERMAN_FORCE]/ $this->victoryPoints[Collapse::SOVIET_FORCE] > .5){
-                $this->winner = Collapse::GERMAN_FORCE;
-                $b->gameRules->flashMessages[] = "Germany Wins ";
-            }else{
-                $this->winner = Collapse::SOVIET_FORCE;
-                $b->gameRules->flashMessages[] = "Soviet Union Wins ";
-            }
-        }
+        $this->gameOver = true;
         return true;
     }
 
-    public function unRequiredGarrison($hexName)
-    {
 
-        /* @var $battle Collapse */
-        $battle = Battle::getBattle();
-        $battle->mapData->removeMapSymbol($hexName, "spotted");
-    }
-
-    public function requireGarrison($hexName)
-    {
-
-        /* @var $battle Collapse */
-        $battle = Battle::getBattle();
-        $symbol = new stdClass();
-        $symbol->type = 'Spotted';
-        $symbol->image = 'spotted.svg';
-        $symbol->class = 'row-hex';
-        $symbols = new stdClass();
-        foreach ([$hexName] as $id) {
-            $symbols->$id = $symbol;
-        }
-        $battle->mapData->setMapSymbols($symbols, "spotted");
-    }
-
-    public function releaseGarrisons()
-    {
-        /*@var $b Collapse */
-        $b = Battle::getBattle();
-        $units = $b->force->units;
-        /* @var $unit SimpleUnit */
-        foreach ($units as $unitId => $unit) {
-            if ($unit->isGarrisoning()) {
-                /* @var $sovietUnit SimpleUnit */
-                foreach ($units as $sovietId => $sovietUnit) {
-                    if ($sovietUnit->forceId === Collapse::SOVIET_FORCE) {
-                        $los = new \Wargame\Los();
-
-                        $los->setOrigin($unit->hexagon);
-                        $los->setEndPoint($sovietUnit->hexagon);
-                        $range = $los->getRange();
-                        if($range <= 6){
-                            $unit->releaseGarrisoning();
-                        }
-                    }
-                }
-            }
-        }
-    }
     public function phaseChange()
     {
 
-        /* @var $battle Collapse */
+        /* @var $battle NorthVsSouth */
         $battle = Battle::getBattle();
         /* @var $gameRules \Wargame\GameRules */
         $gameRules = $battle->gameRules;
@@ -351,18 +172,8 @@ return;
 
         if($gameRules->phase === RED_DEPLOY_PHASE && $gameRules->turn === 1){
             $gameRules->flashMessages[] = "@show deployWrapper";
-            $freeUnits = $gameRules->option;
-            if($freeUnits) {
-                foreach ($freeUnits as $unitId) {
-                    $force->units[$unitId]->reinforceZone = 'B';
-                }
-            }
-            $this->enoughGarrisons();
         }
-//
-//        foreach ($theUnits as $id => $unit) {
-//            $unit->railMove(false);
-//        }
+
         if ($gameRules->phase == RED_COMBAT_PHASE || $gameRules->phase == BLUE_COMBAT_PHASE) {
             $gameRules->flashMessages[] = "@hide deployWrapper";
         } else {
@@ -379,9 +190,7 @@ return;
                 $gameRules->flashMessages[] = "@show deployWrapper";
                 $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
             }
-            if($gameRules->phase === RED_MOVE_PHASE){
-                $this->releaseGarrisons();
-            }
+
 
             foreach ($theUnits as $id => $unit) {
                 $unit->railMove(false);
@@ -391,23 +200,27 @@ return;
                 }
             }
         }
-        if($gameRules->phase === BLUE_DEPLOY_PHASE){
-            if($gameRules->turn === 1){
-                $this->markGarrisonedUnits();
+    }
+
+    public function combatResolutionMode(){
+        $b = Battle::getBattle();
+        $force = $b->force;
+        $units = $force->units;
+        foreach($b->combatRules->combats as $combatId => $combat){
+            foreach($combat->attackers as $attackerId => $fake){
+                $units[$attackerId]->tried = true;
             }
+            foreach($combat->defenders as $defenderId => $fake){
+                $units[$defenderId]->tried = true;
+            }
+            $b->combatRules->crt->setCombatIndex($combatId);
         }
     }
 
-
     public function unitDeployed($arg){
         $unit = $arg[0];
-        /* @var $b Collapse */
+        /* @var $b NorthVsSouth */
         $b  = Battle::getBattle();
-
-        if($b->gameRules->phase === RED_DEPLOY_PHASE){
-            $this->enoughGarrisons();
-        }
-
     }
     public function preStartMovingUnit($arg)
     {
@@ -429,7 +242,7 @@ return;
 
         $germanBias = array(5 => true, 6 => true);
         $sovietBias = array(2 => true, 3 => true);
-        $this->germanGoal = array_merge($b->moveRules->calcRoadSupply(Collapse::GERMAN_FORCE, 207, $germanBias));
+        $this->germanGoal = array_merge($b->moveRules->calcRoadSupply(NorthVsSouth::SOUTHERN_FORCE, 207, $germanBias));
         $this->sovietGoal = [];
         foreach($units as $id => $unit){
             $unit->recover();
@@ -441,7 +254,7 @@ return;
 
     public function preRecoverUnit($arg){
         list($unit) = $arg;
-        if ($unit->forceId == Collapse::GERMAN_FORCE) {
+        if ($unit->forceId == NorthVsSouth::SOUTHERN_FORCE) {
             $bias = array(5 => true, 6 => true);
             $goal = $this->germanGoal;
         } else {
@@ -464,37 +277,17 @@ return;
         /* @var unit $unit */
         $unit = $args[0];
 
-        /* @var $b Collapse */
+        /* @var $b NorthVsSouth */
         $b = Battle::getBattle();
         $gameRules = $b->gameRules;
         $phase = $b->gameRules->phase;
         $id = $unit->id;
-
-        if($gameRules->phase === RED_MOVE_PHASE) {
-            if ($unit->forceId === Collapse::GERMAN_FORCE) {
-                if ($unit->isFortifiedGarrison()) {
-                    if ($gameRules->turn < 4) {
-                        $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-                    } else {
-                        $unit->releaseFortifiedGarrison();
-                    }
-                }
-                if ($unit->isGarrisoning()) {
-                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-                }
-            }
-            if ($gameRules->turn === 1 && $unit->forceId === Collapse::GERMAN_FORCE) {
-                if ($unit->reinforceZone === "A") {
-                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-                }
-            }
-        }
         /*
          * all units move in second movement phase
          */
 
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == Collapse::GERMAN_FORCE) {
+            if ($unit->forceId == NorthVsSouth::SOUTHERN_FORCE) {
                 $bias = array(5 => true, 6 => true);
                 $goal = $this->germanGoal;
             } else {
@@ -508,7 +301,7 @@ return;
         if($b->gameRules->mode === COMBAT_SETUP_MODE){
             $goal = $bias = [];
 
-            if($unit->forceId === Collapse::SOVIET_FORCE){
+            if($unit->forceId === NorthVsSouth::NORTHERN_FORCE){
                 $bias = [2 => true, 3 => true, 4 => true];
 
             }
@@ -532,7 +325,7 @@ return;
         if($b->gameRules->turn >= 6 && $b->gameRules->turn <= 8){
             $supplyLen = 1;
         }
-        if($unit->forceId === Collapse::SOVIET_FORCE){
+        if($unit->forceId === NorthVsSouth::NORTHERN_FORCE){
             $supplyLen = 3;
         }
 
@@ -542,6 +335,9 @@ return;
         $bias = [];
         $this->unitCombatSupplyEffects($unit, $goal, $bias, $supplyLen);
     }
+
+
+
 
     public function playerTurnChange($arg)
     {
@@ -558,5 +354,6 @@ return;
             $gameRules->flashMessages[] = "@hide crt";
         }
 
+        $gameRules->replacementsAvail = 8;
     }
 }

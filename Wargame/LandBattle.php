@@ -169,6 +169,7 @@ class LandBattle extends \Wargame\Battle{
                 $hex = new Hexagon($k);
                 $mapGrid->setHexagonXY($hex->getX(), $hex->getY());
                 $n = new stdClass();
+                $moveRules->moves->{$k}->hexagon = (int)$k;
                 $moveRules->moves->{$k}->pixX = $mapGrid->getPixelX();
                 $moveRules->moves->{$k}->pixY = $mapGrid->getPixelY();
                 $pointsLeft = sprintf("%.2f",$moveRules->moves->{$k}->pointsLeft);
