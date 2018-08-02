@@ -25,7 +25,7 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("vendor/wargame/tmcw/Collapse/images/19440628_destroyed_panzer_iv_20._panzer_division_bobruisk.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/collapse/images/19440628_destroyed_panzer_iv_20._panzer_division_bobruisk.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
