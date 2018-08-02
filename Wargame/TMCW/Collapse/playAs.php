@@ -25,7 +25,7 @@
 <style>
     <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("vendor/wargame/tmcw/Collapse/images/lossy-page1-1280px-German_troops_in_Russia_-_NARA_-_540156.tif.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/Collapse/images/19440628_destroyed_panzer_iv_20._panzer_division_bobruisk.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
@@ -61,6 +61,5 @@
     <a class="link"  href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a>
     <div class="attribution">
-        By Unknown or not provided [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AGerman_troops_in_Russia_-_NARA_-_540156.tif">via Wikimedia Commons</a>
-    </div>
+        See page for author [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File:19440628_destroyed_panzer_iv_20._panzer_division_bobruisk.jpg">via Wikimedia Commons</a></footer>    </div>
 </fieldset>
