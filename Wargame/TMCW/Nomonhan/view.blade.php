@@ -1,8 +1,10 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Nomonhan.nomonhanHeader')
+<link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/nomonhan.css')}}">
+
 <style type="text/css">
     <?php
-    include_once "Wargame/TMCW/Nomonhan/all.css";
+//    include_once "Wargame/TMCW/Nomonhan/all.css";
 ?>
 </style>
 </head>

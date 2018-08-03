@@ -46,6 +46,7 @@ mix.copyDirectory('Wargame/wargame-helpers/audio','../game-dispatcher/public/ass
     .copyDirectory('Wargame/wargame-helpers/unit-images', '../game-dispatcher/public/assets/unit-images');
 mix.sass('Wargame/Mollwitz/all-nations-colors.scss', 'css/wargame/all-nations-colors.css')
 mix.sass('Wargame/TMCW/commonPlay.scss', 'css/wargame/common-play.css');
+mix.sass('Wargame/TMCW/Nomonhan/all.scss', 'css/wargame/nomonhan.css')
 mix.sass('Wargame/TMCW/RetreatOne/all.scss', 'css/wargame/retreatOne.css')
 mix.sass('Wargame/TMCW/Airborne/all.scss', 'css/wargame/airborne.css');
 mix.sass('Wargame/TMCW/Amph/all.scss', 'css/wargame/amph.css');

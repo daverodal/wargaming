@@ -21,10 +21,9 @@
  */
 ?><body>
 <style>
-    <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("vendor/wargame/tmcw/manchuria1976/images/ChineseType59Small.png")?>") #333 no-repeat;
-        background-position:center 0;
+        background:url("<?=url("vendor/wargame/tmcw/martiancivilwar/images//Mars.jpg")?>") #333 no-repeat;
+        background-position:center;
         background-size:100%;
     }
     h1{
@@ -49,7 +48,7 @@
         color:red;
     }
     .loyalist{
-        font-size:40px;
+      font-size:40px;
         color:blue;
 
     }
@@ -60,14 +59,14 @@
         text-shadow: 3px 3px 3px black,3px 3px 3px black,3px 3px 3px black,3px 3px 3px black,3px 3px 3px black
     }
     legend   {
-        color:white;
+    color:white;
     }
-    fieldset{
-        background:rgba(0,0,0,.3);
-        text-align:center;width:30%;
-        margin:60px auto;
-        border-radius:15px;
-    }
+   fieldset{
+       background:rgba(0,0,0,.3);
+       text-align:center;width:30%;
+       margin:60px auto;
+       border-radius:15px;
+   }
     .clear{
         clear:both;
     }
@@ -75,16 +74,14 @@
         text-decoration: underline;
     }
 </style>
-<link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
+<!--<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>-->
 
-<h2 style="text-align:center;font-size:30px;font-family:'Great Vibes'"> Welcome to</h2>
-<h1 style="text-align:center;font-size:90px;font-family:'Nosifer'">Manchuria 1976</h1>
+<h2 style=""> Welcome to</h2>
+    <h1 style="text-align:center;font-size:90px;font-family:'Great Vibes'">The Martian Civil War</h1>
 <div class="clear">&nbsp;</div>
 <fieldset ><Legend>Play As </Legend>
     <a class="link"  href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
     <a class="link"  href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a>
-    <div class="attribution">
-        By Staff Sgt. D. Myles Cullen (USAF) [Public domain], <a target='blank' href="http://commons.wikimedia.org/wiki/File%3AChinese_MBTs_070324-F-0193C-040.JPEG">via Wikimedia Commons</a>
-    </div>
 </fieldset>
+@extends("wargame::playAs")

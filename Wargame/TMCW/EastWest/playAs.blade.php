@@ -23,23 +23,22 @@
     <meta charset="UTF-8">
 </head><body>
 <style>
-    <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("vendor/wargame/tmcw/kievcorps/images/lossy-page1-1280px-German_troops_in_Russia_-_NARA_-_540156.tif.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/EastWest/images/lossy-page1-1280px-German_troops_in_Russia_-_NARA_-_540156.tif.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
     @font-face{
         font-family: OctoberGuard;
-        src: url('<?=url("vendor/wargame/tmcw/kievcorps/fonts/octoberguard.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/EastWest/fonts/octoberguard.ttf");?>');
     }
     @font-face{
         font-family: Ussr;
-        src: url('<?=url("vendor/wargame/tmcw/kievcorps/fonts/Back_In_the_USSR_DL_k.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/EastWest/fonts/Back_In_the_USSR_DL_k.ttf");?>');
     }
     @font-face{
         font-family: Kremlin;
-        src: url('<?=url("vendor/wargame/tmcw/kievcorps/fonts/kremlin.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/EastWest/fonts/kremlin.ttf");?>');
     }
     .guard{
         font-family:OctoberGuard;
@@ -52,9 +51,8 @@
     }
 </style>
 
-<h2 id="welcome" style="text-align:center;font-size:30px;">Komrad,  Welcome to</h2>
-<h1 id='playastitle' style="text-align:center;font-size:90px;"><span class="guard">Битва Киеве</span> &#167;</h1>
-<h2 id='playastitle' style="text-align:center;font-size:90px;"><span class="guard">(The Battle of Kiev)</span> &#167;</h2>
+<h2 id="welcome" style="text-align:center;font-size:30px;"> Welcome to</h2>
+<h2 id='playastitle' style="text-align:center;font-size:90px;"><span class="guard">East Vs West</span></h2>
 <div class="clear">&nbsp;</div>
 <fieldset ><Legend>Play As </Legend>
     <a class="link"  href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
@@ -64,3 +62,4 @@
         By Unknown or not provided [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AGerman_troops_in_Russia_-_NARA_-_540156.tif">via Wikimedia Commons</a>
     </div>
 </fieldset>
+@extends("wargame::playAs")

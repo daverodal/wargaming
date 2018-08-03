@@ -21,9 +21,9 @@
  */
 ?><body>
 <style>
-    <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("vendor/wargame/tmcw/retreatone/images/MoyaleEastAfrica1941.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/manchuria1976/images/ChineseType59Small.png")?>") #333 no-repeat;
+        background-position:center 0;
         background-size:100%;
     }
     h1{
@@ -48,7 +48,7 @@
         color:red;
     }
     .loyalist{
-      font-size:40px;
+        font-size:40px;
         color:blue;
 
     }
@@ -59,37 +59,32 @@
         text-shadow: 3px 3px 3px black,3px 3px 3px black,3px 3px 3px black,3px 3px 3px black,3px 3px 3px black
     }
     legend   {
-    color:white;
+        color:white;
     }
-   fieldset{
-       background:rgba(0,0,0,.3);
-       text-align:center;width:30%;
-       margin:60px auto;
-       border-radius:15px;
-   }
+    fieldset{
+        background:rgba(0,0,0,.3);
+        text-align:center;width:30%;
+        margin:60px auto;
+        border-radius:15px;
+    }
     .clear{
         clear:both;
     }
     a:hover{
         text-decoration: underline;
     }
-    @font-face{
-        font-family: Zenzai;
-        src: url('<?=url("js/CHOWFUN.ttf");?>');
-    }
-    .zenFont{
-        font-family:Zenzai;
-    }
 </style>
+<link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
 
-<h2 class="zenFont"> Welcome to</h2>
-    <h1 class="zenFont" style="text-align:center;font-size:90px;line-height:40px;">Retreate One</h1>
+<h2 style="text-align:center;font-size:30px;font-family:'Great Vibes'"> Welcome to</h2>
+<h1 style="text-align:center;font-size:90px;font-family:'Nosifer'">Manchuria 1976</h1>
 <div class="clear">&nbsp;</div>
 <fieldset ><Legend>Play As </Legend>
     <a class="link"  href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
     <a class="link"  href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a>
     <div class="attribution">
-        By Not stated in source [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AMoyaleEastAfrica1941.JPG">via Wikimedia Commons</a>
+        By Staff Sgt. D. Myles Cullen (USAF) [Public domain], <a target='blank' href="http://commons.wikimedia.org/wiki/File%3AChinese_MBTs_070324-F-0193C-040.JPEG">via Wikimedia Commons</a>
     </div>
 </fieldset>
+@extends("wargame::playAs")
