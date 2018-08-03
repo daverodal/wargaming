@@ -19,14 +19,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><head>
-    <meta charset="UTF-8">
-</head>
-<body>
+?><body>
 <style>
-    <?php include "playAs.css";?>
     body{
-        background:url("<?=asset("vendor/wargame/tmcw/nomonhan/images/KhalkhinGolTank.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/retreatone/images/MoyaleEastAfrica1941.jpg")?>") #333 no-repeat;
         background-size:100%;
     }
     h1{
@@ -86,13 +82,14 @@
 </style>
 
 <h2 class="zenFont"> Welcome to</h2>
-    <h1 class="zenFont" style="text-align:center;font-size:90px;line-height:40px;">The Nomonhan Incident</h1>
+    <h1 class="zenFont" style="text-align:center;font-size:90px;line-height:40px;">Retreate One</h1>
 <div class="clear">&nbsp;</div>
 <fieldset ><Legend>Play As </Legend>
     <a class="link"  href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
     <a class="link"  href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a>
     <div class="attribution">
-        By Dōmei Tsushin (Contemporary Military Historian) [Public domain], <a target='blank' href="http://commons.wikimedia.org/wiki/File%3ABattle_of_Khalkhin_Gol-Japanese_Type_89_Chi-Ro_midium_tank.jpg">via Wikimedia Commons</a>
+        By Not stated in source [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AMoyaleEastAfrica1941.JPG">via Wikimedia Commons</a>
     </div>
 </fieldset>
+@extends("wargame::playAs")

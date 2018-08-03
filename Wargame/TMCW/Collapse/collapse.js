@@ -111,7 +111,6 @@ export class CollapseCtlr extends GameController {
     }
 
     mapSymbols(){
-        debugger;
         this.sync.register("mapSymbols", function (mapSymbols, data) {
             $(".mapSymbols").remove();
             for (var i in mapSymbols) {

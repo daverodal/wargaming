@@ -23,23 +23,22 @@
     <meta charset="UTF-8">
 </head><body>
 <style>
-    <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("vendor/wargame/tmcw/collapse/images/19440628_destroyed_panzer_iv_20._panzer_division_bobruisk.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/kiev/images/lossy-page1-1280px-German_troops_in_Russia_-_NARA_-_540156.tif.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
     @font-face{
         font-family: OctoberGuard;
-        src: url('<?=url("vendor/wargame/tmcw/Collapse/fonts/octoberguard.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/kiev/fonts/octoberguard.ttf");?>');
     }
     @font-face{
         font-family: Ussr;
-        src: url('<?=url("vendor/wargame/tmcw/Collapse/fonts/Back_In_the_USSR_DL_k.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/kiev/fonts/Back_In_the_USSR_DL_k.ttf");?>');
     }
     @font-face{
         font-family: Kremlin;
-        src: url('<?=url("vendor/wargame/tmcw/Collapse/fonts/kremlin.ttf");?>');
+        src: url('<?=url("vendor/wargame/tmcw/kiev/fonts/kremlin.ttf");?>');
     }
     .guard{
         font-family:OctoberGuard;
@@ -61,5 +60,7 @@
     <a class="link"  href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a>
     <div class="attribution">
-        See page for author [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File:19440628_destroyed_panzer_iv_20._panzer_division_bobruisk.jpg">via Wikimedia Commons</a></footer>    </div>
+        By Unknown or not provided [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AGerman_troops_in_Russia_-_NARA_-_540156.tif">via Wikimedia Commons</a>
+    </div>
 </fieldset>
+@extends("wargame::playAs")

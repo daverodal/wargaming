@@ -20,7 +20,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><style type="text/css">
-        <?php include "playAs.css";?>
         body{
             background:#ccc;
             color:#333;

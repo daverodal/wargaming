@@ -19,24 +19,25 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><body>
+?><head>
+    <meta charset="UTF-8">
+</head><body>
 <style>
-    <?php @include "playAs.css";?>
     body{
-        background:url("<?=url("vendor/wargame/tmcw/airborne/images/C-47_Dakotas_and_paratroops.jpg")?>") #333 no-repeat;
+        background:url("<?=url("vendor/wargame/tmcw/collapse/images/19440628_destroyed_panzer_iv_20._panzer_division_bobruisk.jpg")?>") #333 no-repeat;
         background-position:center 0;
         background-size:100%;
     }
 </style>
-<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
-<h2 style="text-align:center;font-size:30px;font-family:'Great Vibes'"> Welcome to</h2>
-<h1 style="text-align:center;font-size:90px;font-family:'Lobster'">Uit de Hemel</h1>
+<h2 id="welcome" style="text-align:center;font-size:30px;">Welcome to</h2>
+<h1 id='playastitle' style="text-align:center;font-size:90px;"><span class="guard">Collapse in the east</span></h1>
 <div class="clear">&nbsp;</div>
 <fieldset ><Legend>Play As </Legend>
     <a class="link"  href="<?=url("wargame/enter-hotseat");?>/<?=$wargame?>">Play Hotseat</a><br>
     <a class="link"  href="<?=url("wargame/enter-multi");?>/<?=$wargame?>">Play Multi Player </a><br>
     <a class="link" href="<?=url("wargame/leave-game");?>">Go to Lobby</a>
     <div class="attribution">
-        By Sgt. D.M. Smith, British Army Film and Photographic Unit [Public domain], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3AC-47_Dakotas_and_paratroops.jpg">via Wikimedia Commons</a>    </div>
+        See page for author [Public domain], <a target="_blank" href="https://commons.wikimedia.org/wiki/File:19440628_destroyed_panzer_iv_20._panzer_division_bobruisk.jpg">via Wikimedia Commons</a></footer>    </div>
 </fieldset>
+@extends("wargame::playAs")
