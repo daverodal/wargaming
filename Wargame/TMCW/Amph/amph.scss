@@ -32,12 +32,6 @@
 #map {
 }
 
-#crt {
-  width: 308px;
-  .crt-table-name{
-    display:none;
-  }
-}
 #options-pane {
   display:none;
   position: absolute;
@@ -100,6 +94,7 @@
       width: 94px;
       height: 56px;
       background-repeat: no-repeat;
+      background-image: url("Images/AmphTEC.png");
 
     }
     .column-one {

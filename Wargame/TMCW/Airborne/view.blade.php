@@ -63,7 +63,9 @@
 @section('inner-crt')
     @include('wargame::TMCW.Airborne.airborne-inner-crt', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\Airborne\Airborne::REBEL_FORCE)])
 @endsection
-
+@section('tec')
+    @include("wargame::TMCW.Airborne.tec")
+@endsection
 @section('unitRules')
     @parent
     <li class="exclusive">No units may be receive replacements in this game.
@@ -72,6 +74,10 @@
 
 @section('victoryConditions')
     @include('wargame::TMCW.Amph.victoryConditions')
+@endsection
+
+@section('zoc-rules')
+    @include('wargame::TMCW.Amph.zoc-rules')
 @endsection
 
 @section('commonRules')

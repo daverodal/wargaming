@@ -1,6 +1,6 @@
 @include('wargame::global-header')
 @include('wargame::TMCW.Moskow.moskowHeader')
-<link rel="stylesheet" type="text/css" href="{{elixir('vendor/wargame/tmcw/css/moskow.css')}}">
+<link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/moskow.css')}}">
 <script src="{{mix('vendor/javascripts/wargame/moskow.js')}}"></script>
 </head>
 

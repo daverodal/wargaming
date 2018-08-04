@@ -89,10 +89,9 @@
                 <?php //include "commonMoveRules.php" ?>
                 </li>
                 <li id="zocRules">
-                    @include('wargame::TMCW.commonZocRules')
-
-                <?php //include "commonZocRules.php"; ?>
-
+                    @section('zoc-rules')
+                        @include('wargame::TMCW.commonZocRules')
+                    @show
                 </li>
                 <li id="combatRules">
                     @include('wargame::TMCW.commonCombatRules')

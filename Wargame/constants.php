@@ -363,7 +363,6 @@ define("DL2AL2",50);
 define("DLR2",51);
 define("HALFE", 52);
 define("DR1", 53);
-define("DR2", 54);
 define("DR3", 55);
 define("DR4", 56);
 define("AR1", 57);

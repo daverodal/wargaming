@@ -10,6 +10,9 @@
 @section('tec')
     @include("wargame::TMCW.Amph.tec")
 @endsection
+@section('zoc-rules')
+    @include('wargame::TMCW.Amph.zoc-rules')
+@endsection
 
 @section('unitRules')
     @parent

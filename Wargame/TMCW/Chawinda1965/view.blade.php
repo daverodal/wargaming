@@ -7,6 +7,9 @@
 </style>
 </head>
 
+@section('zoc-rules')
+    @include('wargame::TMCW.Chawinda1965.commonZocRules')
+@endsection
 @section('innerNextPhaseWrapper')
     @parent
     <button class="dynamicButton movementButton" id="splitEvent">s</button>
@@ -50,7 +53,7 @@
 @section('obc')
     @include('wargame::TMCW.obc')
 @endsection
-@include('wargame::stdIncludes.view' )
+@extends('wargame::stdIncludes.view' )
 <script type="text/javascript">
 function renderCrtDetails(combat) {
 var atk = combat.attackStrength;
