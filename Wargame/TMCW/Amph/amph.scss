@@ -32,6 +32,19 @@
 #map {
 }
 
+
+#crt {
+  width: 508px;
+  .crt-table-name{
+    display:none;
+  }
+  .roll span, #odds span {
+    margin-right: 10px;
+    float: left;
+    display: block;
+    width: 52px;
+  }
+}
 #options-pane {
   display:none;
   position: absolute;
