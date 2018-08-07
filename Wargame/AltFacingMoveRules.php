@@ -25,6 +25,8 @@ use stdClass;
 
 class AltFacingMoveRules extends FacingMoveRules
 {
+    use AltFacingMoveRulesTrait;
+
     function calcNeighbors($oldNeighbors, $hexPath){
         /*
          * Front 3 hexes kept just in case game designer chnages his mind.
