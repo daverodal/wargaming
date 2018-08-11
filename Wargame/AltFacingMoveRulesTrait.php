@@ -37,10 +37,7 @@ trait AltFacingMoveRulesTrait
 
 
                 if($isDeploy){
-                    $movingUnit->facing--;
-                    if($movingUnit->facing < 0){
-                        $movingUnit->facing += 6;
-                    }
+                    $movingUnit->updateFacingStatus(-1, 0);
                     return true;
                 }
                 $battle = Battle::getBattle();
@@ -113,10 +110,8 @@ trait AltFacingMoveRulesTrait
             if($isDeploy || $movesLeft >= $turnCost){
 
                 if($isDeploy){
-                    $movingUnit->facing += 3;
-                    if($movingUnit->facing >= 6){
-                        $movingUnit->facing -= 6;
-                    }
+                    $movingUnit->updateFacingStatus(3, 0);
+
                     return true;
                 }
                 $battle = Battle::getBattle();
@@ -203,10 +198,7 @@ trait AltFacingMoveRulesTrait
             if($isDeploy || $movesLeft >= $turnCost){
 
                 if($isDeploy){
-                    $movingUnit->facing++;
-                    if($movingUnit->facing >= 6){
-                        $movingUnit->facing -= 6;
-                    }
+                    $movingUnit->updateFacingStatus(1, 0);
                     return true;
                 }
 

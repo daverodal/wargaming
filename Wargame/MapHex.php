@@ -73,7 +73,9 @@ class MapHex
             unset($this->forces[$forceId]->$id);
             $this->dirty = true;
         }
-        $neighbors = $this->neighbors;
+        $b = Battle::getBattle();
+        $unit = $b->force->units[$id];
+        $neighbors = $this->getZocNeighbors($unit);
         $mapData = MapData::getInstance();
         foreach ($neighbors as $neighbor) {
             $hex = $mapData->getHex($neighbor);
