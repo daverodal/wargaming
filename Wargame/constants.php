@@ -369,6 +369,8 @@ define("AR1", 57);
 define("AR2", 58);
 define("AR3", 59);
 define("BR", 60);
+define("AX", 61);
+
 
 $results_name = array();
 //results_name[DE] = "Defender eliminated";
@@ -436,6 +438,7 @@ $results_name[AR1] = "AR-1";
 $results_name[AR2] = "AR-2";
 $results_name[AR3] = "AR-3";
 $results_name[BR] = "BR";
+$results_name[AX] = "AX";
 
 
 // combat ratio

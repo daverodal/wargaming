@@ -437,6 +437,7 @@ export default function initialize() {
     });
 
     $("#phaseClicks").on("click", ".phaseClick", function () {
+        x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
             x.current.abort();
@@ -446,6 +447,7 @@ export default function initialize() {
         x.fetch(click);
     });
     $("#click-back").click(function () {
+        x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
             x.current.abort();
@@ -455,6 +457,7 @@ export default function initialize() {
         x.fetch(click);
     });
     $("#phase-back").click(function () {
+        x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
             x.current.abort();
@@ -477,6 +480,7 @@ export default function initialize() {
     });
 
     $("#phase-surge").click(function () {
+        x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
             x.current.abort();
@@ -500,6 +504,7 @@ export default function initialize() {
     });
 
     $("#player-turn-back").click(function () {
+        x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
             x.current.abort();
@@ -522,6 +527,7 @@ export default function initialize() {
     });
 
     $("#player-turn-surge").click(function () {
+        x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
             x.current.abort();
@@ -545,12 +551,14 @@ export default function initialize() {
     });
 
     $("#click-surge").click(function () {
+        x = DR.sync;
         var click = DR.currentClick;
         click++;
         x.fetch(click);
     });
 
     $("#timeBranch").click(function () {
+        x = DR.sync;
         x.timeTravel = true;
         x.timeBranch = true;
         if (x.current) {
@@ -562,6 +570,7 @@ export default function initialize() {
     });
 
     $("#timeFork").click(function () {
+        x = DR.sync;
         x.timeTravel = true;
         x.timeFork = true;
         if (x.current) {
@@ -573,10 +582,12 @@ export default function initialize() {
     });
 
     $("#phaseClicks").on("click", ".realtime", function () {
+        x = DR.sync;
         x.timeTravel = false;
         x.fetch(0);
     })
     $("#timeLive").click(function () {
+        x = DR.sync;
         $("#TimeWrapper .WrapperLabel").click();
         x.timeTravel = false;
         x.fetch(0);

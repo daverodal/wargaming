@@ -34,43 +34,57 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
         global $results_name;
         $this->resultsNames = $results_name;
         $this->aggressorId = $aggressor;
-        $results_name[EX2] = "½EX";
+        $results_name[EX] = "DX";
+        $results_name[DR1] = "D1";
+        $results_name[DR2] = "D2";
+        $results_name[DR3] = "D3";
+        $results_name[AR1] = "A1";
+        $results_name[AR2] = "A2";
+        $results_name[AR3] = "A3";
+
+        $this->combatIndexCount = 10;
+        $this->maxCombatIndex = $this->combatIndexCount - 1;
+        $this->dieSideCount = 6;
+        $this->combatResultCount = 5;
+
 
         $this->crts = new stdClass();
         $this->crts->normal = new stdClass();
-        $this->crts->normal->header = array("1:3", "1:2", "1:1","2:1","3:1","4:1","5:1","6:1", "7:1", "8:1", "9:1");
+        $this->crts->normal->header = array("1:4", "1:3", "1:2", "1:1","2:1","3:1","4:1","5:1","6:1", "7:1");
         $this->crts->normal->next = '';
-        $this->crts->normal->maxCombatIndex = 10;
-        $this->crts->normal->dieOffsetHelper = 0;
-        $this->rowNum = 0;
+        $this->crts->normal->combatIndexCount = 10;
+        $this->crts->normal->maxCombatIndex = $this->crts->normal->combatIndexCount - 1;
+        $this->crts->normal->dieOffsetHelper = -1;
+        $this->rowNum = 1;
+
 
         $this->crts->normal->table = array(
-            array(AE, AE, AE, AE, AR, AR, BR, BR, BR, DR, DR),
-            array(AE, AE, AE, AE, AR, AR, BR, BR, EX, EX, EX2),
-            array(AE, AE, AE, AR, AR, BR, DR, EX, EX, EX2, EX2),
-            array(AE, AE, AR, AR, BR, DR, EX, EX, EX2, EX2, DE),
-            array(AE, AE, AR, BR, BR, DR, EX, EX2, EX2, DE, DE),
-            array(AE, DR, BR, BR, DR, EX, EX2, EX2, DE, DE, DE),
-            array(AE, AR, BR, DR, DR, EX, EX2, DE, DE, DR, DE),
+            array(AR1, DR1, DR1, EX, DE, DE, DE, DE, DE, DE),
+            array(AR2, AR1, DR1, DR1, EX, EX, DE, DE, DE, DE),
+            array(AR3, AR2, AR1, DR1, DR2, EX, EX, DE, DE, DE),
+            array(AE, AR3, AR2, DR1, DR1, DR2, EX, EX, DE, DE),
+            array(AE, AE, AX, AR1, DR1, DR2, DR3, DR3, EX, DE),
+            array(AE, AE, AE, AX, AR2, DR1, DR2, DR3, DR3, EX),
         );
 
-        $this->maxCombatIndex = 10;
+
+            $this->maxCombatIndex = 9;
         $this->dieSideCount = 6;
     }
 
 
     function getCombatResults($Die, $index, $combat)
     {
-        return $this->crts->normal->table[(int)$Die + 1 + $combat->dieOffset][$index];
+        return $this->crts->normal->table[(int)$Die + $combat->dieOffset][$index];
     }
 
     function getCombatIndex($attackStrength, $defenseStrength)
     {
         $ratio = $attackStrength / $defenseStrength;
         if ($attackStrength >= $defenseStrength) {
-            $combatIndex = floor($ratio) + 1;
+            $combatIndex = floor($ratio) + 2;
         } else {
-            $combatIndex = 3 - ceil($defenseStrength / $attackStrength);
+            $combatIndex = 4 - ceil($defenseStrength / $attackStrength);
         }
         return $combatIndex;
     }

@@ -140,12 +140,54 @@ trait AirMoveRulesTrait
         return true;
     }
 
+    function limitedMoves()
+    {
+
+        $b = Battle::getBattle();
+        if($this->moveQueue[0]->pointsLeft === 0){
+            return;
+        }
+        $startY = [0, 21, 20, 20, 19, 19, 18, 18, 10, 10, 9, 9, 8, 8, 7, 7, 6, 6, 5, 5, 4, 4];
+        $unit = $this->force->units[$this->movingUnitId];
+        for ($x = 1; $x <= 21; $x++) {
+            for ($y = $startY[$x]; $y <= 29; $y++) {
+                $hexNum = sprintf("%02d%02d", $x, $y);
+
+                $hexPath = new HexPath();
+                $hexPath->name = $hexNum;
+                $hexPath->pathToHere = [];
+                $hexPath->pointsLeft = 0;
+                /* @var MapHex $mapHex */
+                $mapHex = $this->mapData->getHex($hexNum);
+                if(in_array($hexNum, $b->specialHexB)){
+                    $specialHexOwner = $this->mapData->getSpecialHex($hexNum);
+                    if($specialHexOwner === 2){
+                        continue;
+                    }
+
+                }
+
+                if ($mapHex->isOccupied($this->force->attackingForceId, $this->stacking, $unit)) {
+//                    $this->moves->$hexNum->isOccupied = true;
+                    continue;
+                }
+
+                if ($mapHex->isOccupied($this->force->defendingForceId,$this->enemyStackingLimit, $unit)) {
+//                    $this->moves->$hexNum->isValid = false;
+                    continue;
+                }
+                $this->moves->$hexNum = $hexPath;
+
+
+            }
+        }
+    }
     function unlimitedMoves(){
+        $b = Battle::getBattle();
         if($this->moveQueue[0]->pointsLeft === 0){
             return;
         }
         $unit = $this->force->units[$this->movingUnitId];
-
         for($x = 1; $x <= 21; $x++){
             for($y=1;$y <= 29;$y++){
                 $hexNum = sprintf("%02d%02d", $x, $y);
@@ -157,6 +199,13 @@ trait AirMoveRulesTrait
 
                 /* @var MapHex $mapHex */
                 $mapHex = $this->mapData->getHex($hexNum);
+                if(in_array($hexNum, $b->specialHexB)){
+                    $specialHexOwner = $this->mapData->getSpecialHex($hexNum);
+                    if($specialHexOwner === 2){
+                        continue;
+                    }
+
+                }
 
                 if ($mapHex->isOccupied($this->force->attackingForceId, $this->stacking, $unit)) {
 //                    $this->moves->$hexNum->isOccupied = true;
@@ -183,7 +232,7 @@ trait AirMoveRulesTrait
         /* @var MapData $mapData */
         $mapData = $battle->mapData;
         $fromHex = $movingUnit->hexagon;
-        if($movingUnit->maxMove === 'U'){
+        if($movingUnit->maxMove === 'U' || $movingUnit->maxMove === 'L'){
             $moveAmount = 0;
         }else{
             $moveAmount = 1;

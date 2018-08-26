@@ -21,7 +21,6 @@
 
 namespace Wargame;
 
-
 class AirMoveRules extends MoveRules
 {
     use AirMoveRulesTrait;
@@ -57,7 +56,10 @@ class AirMoveRules extends MoveRules
         if($unit instanceof AirMovement){
             if($unit->maxMove === 'U'){
                 $this->unlimitedMoves();
-//            $this->airMoves();
+                return;
+            }
+            if($unit->maxMove === 'L'){
+                $this->limitedMoves();
                 return;
             }
 

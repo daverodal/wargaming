@@ -34,7 +34,7 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>2];
 
     static function getPlayerData($scenario){
-        $forceName = ["Neutral Observer", "Soviet", "German"];
+        $forceName = ["Neutral Observer", "Northern States", "Southern States"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
@@ -58,11 +58,11 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
         $this->terrain->addAltEntranceCost('road', 'railhead', 1);
 
 
-
-        $this->terrain->addNatAltEntranceCost('forta', 'german', 'mech', 3);
-        $this->terrain->addNatAltEntranceCost('forta',  'german', 'inf', 3);
-        $this->terrain->addNatAltEntranceCost('fortb', 'soviet', 'mech', 3);
-        $this->terrain->addNatAltEntranceCost('fortb', 'soviet', 'inf', 3);
+//
+//        $this->terrain->addNatAltEntranceCost('forta', 'german', 'mech', 3);
+//        $this->terrain->addNatAltEntranceCost('forta',  'german', 'inf', 3);
+//        $this->terrain->addNatAltEntranceCost('fortb', 'soviet', 'mech', 3);
+//        $this->terrain->addNatAltEntranceCost('fortb', 'soviet', 'inf', 3);
 
 
     }
@@ -98,97 +98,99 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
 
         $i = 0;
         for($i = 0; $i < 4; $i++){
-            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deadpile", "multiArmor.png", 10, 8,  8,STATUS_ELIMINATED, "A", 1, "german", "mech", $i + 1);
+            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deadpile", "multiArmor.png", 10, 8,  8,STATUS_ELIMINATED, "A", 1, "southern", "mech", $i + 1);
 
         }
         for($i = 0; $i < 8; $i++){
-            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiArmor.png", 8, 8,  8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", $i + 1);
+            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiArmor.png", 8, 8,  8,STATUS_CAN_DEPLOY, "A", 1, "southern", "mech", $i + 1);
 
         }
         for($i = 0; $i < 6; $i++){
-            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiArmor.png", 6, 8,  8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", $i + 1);
+            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiArmor.png", 6, 8,  8,STATUS_CAN_DEPLOY, "A", 1, "southern", "mech", $i + 1);
 
         }
         UnitFactory::flush();
 //        for($i = 0; $i < 5; $i++){
 //            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiMech.png",
-//                7,5,  8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", $i + 1);
+//                7,5,  8,STATUS_CAN_DEPLOY, "A", 1, "southern", "mech", $i + 1);
 //
 //        }
 //        for($i = 0; $i < 8; $i++){
 //            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiMech.png",
-//                5,5,  8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", $i + 1);
+//                5,5,  8,STATUS_CAN_DEPLOY, "A", 1, "southern", "mech", $i + 1);
 //
 //        }
 //        for($i = 0; $i < 8; $i++){
 //            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiMech.png",
-//                3,5,  8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", $i + 1);
+//                3,5,  8,STATUS_CAN_DEPLOY, "A", 1, "southern", "mech", $i + 1);
 //
 //        }
 //        for($i = 0; $i < 4; $i++){
 //            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiInf.png",
-//                4, 3, 8,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", $i + 1);
+//                4, 3, 8,STATUS_CAN_DEPLOY, "A", 1, "southern", "inf", $i + 1);
 //
 //        }
 //        for($i = 0; $i < 12; $i++){
 //            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiInf.png",
-//                2, 3, 8,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", $i + 1);
+//                2, 3, 8,STATUS_CAN_DEPLOY, "A", 1, "southern", "inf", $i + 1);
 //
 //        }
 //        for($i = 0; $i < 6; $i++){
 //            UnitFactory::create("xx", NorthVsSouth::SOUTHERN_FORCE, "deployBox", "multiInf.png",
-//                2, 3, 8,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", $i + 1);
+//                2, 3, 8,STATUS_CAN_DEPLOY, "A", 1, "southern", "inf", $i + 1);
 //
 //        }
         //
 
         for($i = 0; $i < 4; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiMech.png",
-                8, 5, 6,STATUS_CAN_DEPLOY, "D", 1, "soviet", "mech", "$i a");
+                8, 5, 6,STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", "$i a");
 
         }
 
         for($i = 0; $i < 10; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiMech.png",
-                5, 5, 6,STATUS_CAN_DEPLOY, "D", 1, "soviet", "mech", "$i a");
+                5, 5, 6,STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", "$i a");
 
         }
 
         for($i = 0; $i < 4; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiMech.png",
-                3, 5, 6,STATUS_CAN_DEPLOY, "D", 1, "soviet", "mech", "$i a");
+                3, 5, 6,STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", "$i a");
 
         }
+        UnitFactory::flush();
 
         for($i = 0; $i < 6; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiInf.png",
-                6,  4,8,STATUS_CAN_DEPLOY, "D", 1, "soviet", "inf", "$i i");
+                6,  4,8,STATUS_CAN_DEPLOY, "D", 1, "northern", "inf", "$i i");
 
         }
         for($i = 0; $i < 10; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiInf.png",
-                4,  4,8,STATUS_CAN_DEPLOY, "D", 1, "soviet", "inf", "$i i");
+                4,  4,8,STATUS_CAN_DEPLOY, "D", 1, "northern", "inf", "$i i");
 
         }
         for($i = 0; $i < 4; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiInf.png",
-                2,  4,8,STATUS_CAN_DEPLOY, "D", 1, "soviet", "inf", "$i i");
+                2,  4,8,STATUS_CAN_DEPLOY, "D", 1, "northern", "inf", "$i i");
 
         }
+        UnitFactory::flush();
 
         for($i = 0; $i < 3; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiArmor.png",
-                10,  8,6,STATUS_CAN_DEPLOY, "D", 1, "soviet", "mech", "$i a");
+                10,  8,6,STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", "$i a");
 
         }
         for($i = 0; $i < 6; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiArmor.png",
-                8,  8,6,STATUS_CAN_DEPLOY, "D", 1, "soviet", "mech", "$i a");
+                8,  8,6,STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", "$i a");
 
         }
         for($i = 0; $i < 3; $i++){
             UnitFactory::create("xxx", NorthVsSouth::NORTHERN_FORCE, "deployBox", "multiArmor.png",
-                4,  8,6,STATUS_CAN_DEPLOY, "D", 1, "soviet", "mech", "$i a");
+                4,  8,6,STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", "$i a");
 
         }
         UnitFactory::flush();
@@ -215,10 +217,11 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }
 
-            $this->moveRules->enterZoc = 2;
-            $this->moveRules->exitZoc = 2;
+            $this->moveRules->enterZoc = 'stop';
+            $this->moveRules->exitZoc = 0;
+            $this->moveRules->noZocZoc = false;
             $this->moveRules->stacking = 3;
-            $this->moveRules->oneHex = true;
+            $this->moveRules->oneHex = false;
             $this->moveRules->noZocZocOneHex = true;
             $this->moveRules->zocBlocksSupply = true;
 

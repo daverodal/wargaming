@@ -714,6 +714,28 @@ class Force extends SimpleForce
                         }
                     }
 
+                if ($phase == BLUE_AIR_COMBAT_PHASE || $phase == RED_AIR_COMBAT_PHASE ) {
+                    if($this->units[$id]->class === 'air'){
+                    if ($mode == COMBAT_SETUP_MODE) {
+                        $status = STATUS_UNAVAIL_THIS_PHASE;
+
+                        $isAdjacent = $this->unitIsAdjacent($id);
+                        if ($this->units[$id]->forceId == $this->attackingForceId && ( $isAdjacent )) {
+                            $status = STATUS_READY;
+                            $this->anyCombatsPossible = true;
+                        }
+                    }
+                    if ($mode == COMBAT_RESOLUTION_MODE) {
+                        $status = STATUS_UNAVAIL_THIS_PHASE;
+                        if ($this->units[$id]->status == STATUS_ATTACKING ||
+                            $this->units[$id]->status == STATUS_DEFENDING
+                        ) {
+                            $status = $this->units[$id]->status;
+                        }
+
+                    }
+                    }
+                }
 
                     if ($mode == MOVING_MODE && $moveRules->stickyZoc) {
                         if ($this->units[$id]->forceId == $this->attackingForceId &&

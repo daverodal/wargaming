@@ -149,6 +149,7 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $this->status = STATUS_ELIMINATING;
         $this->exchangeAmount = $this->getUnmodifiedStrength();
         $this->defExchangeAmount = $this->getUnmodifiedDefStrength();
+        $this->tried = false;
         return true;
     }
 

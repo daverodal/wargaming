@@ -62,7 +62,6 @@ class MovableUnit{
     }
 
     public function __call($name, $args){
-        var_dump($args);
         dd($name);
         echo $name;
         if(strpos($name, 'can') === 0){

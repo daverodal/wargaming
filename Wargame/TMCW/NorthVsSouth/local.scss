@@ -20,35 +20,14 @@
  */
 @import "localColors";
 
-@include player(german, One, $germanColor);
-@include player(secondArmy, Four, $secondArmyColor);
-@include player(firstPanzerArmy, Five, $firstPanzerArmyColor);
-@include player(sixthArmy, Five, $sixthArmyColor);
-@include player(seventeenthArmy, Five, $seventeenthArmyColor, $germanColor, black);
-@include headerColor(Soviet, $sovietColor, $sovietColor);
-@include headerColor(German, $germanColor, $germanColor);
+@include player(southern, One, $southernColor);
+@include player(northern,Two,$northernColor);
 
+@include headerColor(Southern-States, $southernColor, $southernColor);
+@include headerColor(Northern-States, $northernColor, $northernColor);
 
-@include player(soviet,Two,#58c3ff);
-.soviet.unit{
-
-}
 #options-pane{
-  position: absolute;
-  background: lightgray;
-  left:50%;
-  transform: translateX(-50%);
-  width: 75%;
-  h2,h3{
-    text-align: center;
-  }
-
-  offmap-unit {
-    .unit {
-      border: solid 3px;
-      border-color: #cccccc #666666 #666666 #cccccc;
-    }
-  }
+  display:none;
 }
 .cool-header {
   font-size: 22px;
@@ -122,12 +101,12 @@
     }
   }
 }
-.specialHexesVP .germanVictoryPoints {
- @include victoryPoints(gray);
+.specialHexesVP .southernVictoryPoints {
+ @include victoryPoints($darkSouthernColor);
 }
 
-.specialHexesVP .sovietVictoryPoints {
-  @include victoryPoints(brown);
+.specialHexesVP .northernVictoryPoints {
+  @include victoryPoints($northernColor);
 }
 /* RULES OVERRIDES */
 
@@ -163,38 +142,7 @@
     font-size:$stdFont;
   }
 }
-.unit {
-  &.ghost-unit{
-    z-index:30;
-  }
-  .steps {
-    position: absolute;
-    font-size: 10px;
-    left: 2px;
-    .step {
-      background: #333;
-      border: 1px solid #333;
-      border-radius: 100%;
-      width: 1px;
-      height: 1px;
-      margin-top: 3px;
-      &.white {
-        background: white;
-        border-color: white;
-      }
-    }
-  }
-  .integrity{
-    position: absolute;
-    right:  0px;
-    top:  0px;
-    color: white;
-    font-size: 9px;
-    i{
-      background:black;
-    }
-  }
-}
+
 .white-color{
   color:white;
 }
@@ -204,15 +152,18 @@
       letter-spacing:-1px;
     }
   }
+  &.ghost-unit{
+    z-index:30;
+  }
 }
-#deployWrapper{
-}
+
 #crtDetails {
   display:block !important;
 }
 #gameImages .a-unit-wrapper{
   position: absolute;
 }
+
 #deployBox{
   .a-unit-wrapper{
     position:relative;
@@ -222,15 +173,11 @@
   h1,h2,h3,h4{
     margin: 5px auto;
   }
-}
-.rel-unit{
-  position:relative;
-}
-
-
-#deployBox{
   .unit {
     border: solid 3px;
     border-color: #cccccc #666666 #666666 #cccccc;
   }
+}
+.rel-unit{
+  position:relative;
 }

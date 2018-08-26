@@ -23,7 +23,9 @@ trait CRTResults
         switch ($combatResults) {
 
 
-            case AR:
+            case AR1:
+            case AR2:
+            case AR3:
 
                 $defUnit->status = STATUS_DEFENDED;
                 $defUnit->retreatCountRequired = 0;
@@ -42,16 +44,31 @@ trait CRTResults
                 $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
                 break;
 
-            case DR:
+            case DR1:
 
                 $defUnit->status = STATUS_CAN_RETREAT;
                 $defUnit->retreatCountRequired = 1;
                 break;
-
-            case BR:
+            case DR2:
 
                 $defUnit->status = STATUS_CAN_RETREAT;
-                $defUnit->retreatCountRequired = 1;
+                $defUnit->retreatCountRequired = 2;
+                break;
+
+            case DR3:
+
+                $defUnit->status = STATUS_CAN_RETREAT;
+                $defUnit->retreatCountRequired = 3;
+                break;
+
+            case AX:
+                /*
+                 * gross hack, this is called once for each defender, if we clear it every times, it will
+                 * be accurate for the last defender called.
+                 */
+                $force->defenderLoseAmount = 0;
+                $defUnit->status = STATUS_CAN_DEFEND_LOSE;
+                $defUnit->retreatCountRequired = 0;
                 break;
 
             case EX:
@@ -63,19 +80,7 @@ trait CRTResults
                 $defUnit->moveCount = 0;
                 break;
 
-            case EX2:
-                $defUnit->damageUnit(true);
-
-                $defUnit->moveCount = 0;
-                $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
-                $force->exchangeAmount += $defUnit->defExchangeAmount / 2;
-                $defUnit->moveCount = 0;
-                break;
-
-
-
-
-            default:
+             default:
                 break;
         }
         $defUnit->combatResults = $combatResults;
@@ -95,31 +100,46 @@ trait CRTResults
                         $defUnit->retreatCountRequired = 0;
                         break;
 
+
+                    case AX:
+                        $attUnit->damageUnit(true);
+                        $defUnit->retreatCountRequired = 0;
+                        $force->defenderLoseAmount += $attUnit->exchangeAmount;
+                        echo "\n ".$force->defenderLoseAmount. " " . $attUnit->id;
+                        $defUnit->moveCount = 0;
+                        break;
+
                     case DE:
                         $attUnit->status = STATUS_CAN_ADVANCE;
                         $attUnit->retreatCountRequired = 0;
                         break;
 
-                    case AR:
+                    case AR1:
 
                         $attUnit->status = STATUS_CAN_RETREAT;
                         $attUnit->retreatCountRequired = 1;
                         break;
 
-                    case BR:
+                    case AR2:
 
                         $attUnit->status = STATUS_CAN_RETREAT;
-                        $attUnit->retreatCountRequired = 1;
+                        $attUnit->retreatCountRequired = 2;
+                        break;
+                    case AR3:
+
+                        $attUnit->status = STATUS_CAN_RETREAT;
+                        $attUnit->retreatCountRequired = 3;
                         break;
 
-                    case DR:
+                    case DR1:
+                    case DR2:
+                    case DR3:
 
                         $attUnit->status = STATUS_CAN_ADVANCE;
                         $attUnit->retreatCountRequired = 0;
                         break;
 
                     case EX:
-                    case EX2:
                         $attUnit->status = STATUS_CAN_EXCHANGE;
                         $attUnit->retreatCountRequired = 0;
                         break;

@@ -99,14 +99,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $unit = $args[0];
 
         $vp = $unit->damage;
-        if($unit->class == 'mech'){
-            if($vp == 1){
-                /* bg */
-                $vp *= 5;
-            }else{
-                $vp *= 3;
-            }
-        }
+        $hex  = $unit->hexagon;
         if ($unit->forceId == NorthVsSouth::SOUTHERN_FORCE) {
             $victorId = NorthVsSouth::NORTHERN_FORCE;
 
@@ -116,7 +109,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
                 $battle->mapData->specialHexesVictory->{$hex->name} = '';
             }
-            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='northernVictoryPoints'>+$vp</span>";
         } else {
             $victorId = NorthVsSouth::SOUTHERN_FORCE;
 
@@ -125,7 +118,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
                 $battle->mapData->specialHexesVictory->{$hex->name} = '';
             }
-            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='germanVictoryPoints'>+$vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='southernVictoryPoints'>+$vp</span>";
             $this->victoryPoints[$victorId] += $vp;
         }
     }
@@ -348,12 +341,17 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $mapData = $battle->mapData;
         $vp = $this->victoryPoints;
         $specialHexes = $mapData->specialHexes;
+        /* @var $gameRules \Wargame\GameRules */
         $gameRules = $battle->gameRules;
 
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
 
-        $gameRules->replacementsAvail = 8;
+        $gameRules->replacementsAvail = 2;
+
+        if($attackingId === NorthVsSouth::NORTHERN_FORCE){
+            $gameRules->replacementsAvail = 3;
+        }
     }
 }

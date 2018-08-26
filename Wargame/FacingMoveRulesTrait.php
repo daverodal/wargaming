@@ -71,7 +71,7 @@ trait FacingMoveRulesTrait
                     $this->stopMove($movingUnit);
                     return true;
                 }
-                $this->calcMove($this->movingUnitId, false);
+                $this->calcMove($this->movingUnitId, $movingUnit->moveAmountUsed === 0  );
                 return true;
             }
             return false;
@@ -130,7 +130,7 @@ trait FacingMoveRulesTrait
                     $this->stopMove($movingUnit);
                     return true;
                 }
-                $this->calcMove($this->movingUnitId, false);
+                $this->calcMove($this->movingUnitId, $movingUnit->moveAmountUsed === 0 );
                 return true;
             }
             return false;
@@ -232,7 +232,7 @@ trait FacingMoveRulesTrait
                     $this->stopMove($movingUnit);
                     return true;
                 }
-                $this->calcMove($this->movingUnitId, false);
+                $this->calcMove($this->movingUnitId, $movingUnit->moveAmountUsed === 0 );
                 return true;
             }
             return false;

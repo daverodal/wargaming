@@ -27,9 +27,13 @@ export  class Sync {
         this.timeTravel = false;
         this.fetchTimes = [];
         this.animate = false;
+        this.fetched = false;
 
     }
 
+    fetchDone(callback){
+        this.fetched = callback;
+    }
     register(name, callback) {
         this.callbacks[name] = callback;
         this.lengths[name] = 0;
@@ -107,6 +111,9 @@ export  class Sync {
                     $("#comlink").html(msg);
                     if (!this.timeTravel) {
                         this.fetch(last_seq, fetchArgs);
+                    }
+                    if(this.fetched){
+                        this.fetched();
                     }
                 },
                 complete: (jq, textstatus) => {

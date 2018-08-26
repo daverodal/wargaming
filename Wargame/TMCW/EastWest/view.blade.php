@@ -59,7 +59,7 @@
             <img src="{{asset("assets/unit-images/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
-        <div class="unit-numbers">@{{ unit.strength }}  @{{ unit.defStrength }} @{{ unit.maxMove - unit.moveAmountUsed }}</div>
+        <div class="unit-numbers">@{{ unit.strength }} @{{ unit.defStrength }} @{{ unit.maxMove - unit.moveAmountUsed }}</div>
     </div>
 @endsection
 

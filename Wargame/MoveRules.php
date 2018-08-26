@@ -144,6 +144,9 @@ class MoveRules
                             $hexPath->pointsLeft = $movesLeft;
                             $hexPath->pathToHere = array();
                             $hexPath->firstHex = false;
+                            if($movingUnit->moveAmountUnused === 0){
+                                $hexPath->firstHex = false;
+                            }
                             $hexPath->firstPath = true;
                             $hexPath->isOccupied = true;
                             if(isset($facing)){
@@ -676,9 +679,15 @@ class MoveRules
 
     function deploy($movingUnit, $hexagon)
     {
+        $b = Battle::getBattle();
         /* @var Unit $movingUnit */
         if ($movingUnit->unitIsDeploying() == true) {
-            if (in_array($movingUnit->getUnitReinforceZone(), $this->terrain->getReinforceZoneList($hexagon))) {
+
+
+            $zones = $this->terrain->getReinforceZoneList($hexagon);
+            list($zones) = $b->victory->postDeployZonesList($zones, $movingUnit);
+
+            if (in_array($movingUnit->getUnitReinforceZone(), $zones)) {
 
                 if ($movingUnit->setStatus(STATUS_CAN_DEPLOY) == true) {
                     $movingUnit->updateMoveStatus($hexagon, 0);

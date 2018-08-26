@@ -10,7 +10,7 @@
 @section('victory')
 
     <span id="victory">
-        Victorey: <span class='playerSovietFace'><?=$forceName[1]?></span> @{{ vp[1] }} / <span class='playerGermanFace'><?=$forceName[2]?></span> @{{ vp[2] }} @{{ ratio }} @{{ winner }}
+        Victory: <span class='playerSovietFace'><?=$forceName[1]?></span> @{{ vp[1] }} / <span class='playerGermanFace'><?=$forceName[2]?></span> @{{ vp[2] }} @{{ ratio }} @{{ winner }}
     </span>
 @endsection
 @section('outer-deploy-box')
@@ -84,7 +84,7 @@
             <img src="{{asset("assets/unit-images/")}}/@{{ unit.image }}" class="counter"><span
                     class="unit-desig">@{{ unit.unitDesig }}</span>
         </div>
-        <div class="unit-numbers">@{{ unit.strength }}  - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
+        <div class="unit-numbers">@{{ unit.strength }} - @{{ unit.maxMove - unit.moveAmountUsed }}</div>
     </div>
 @endsection
 
