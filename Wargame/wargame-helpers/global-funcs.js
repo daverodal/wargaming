@@ -70,43 +70,45 @@ export function doitCRT(id, event) {
     $('body').css({cursor: "wait"});
     $(this).css({cursor: "wait"});
 
-    $("#comlink").html('waiting');
+    $("#comlink").html('r');
+    $("#comlinkWrapper").css({background: 'red'})
+
     $.ajax({
-            url: pokeUrl,
+        url: pokeUrl,
         type: "POST",
         data: {id: id, wargame: wargame,
             event: (event.shiftKey || DR.shiftKey) ? COMBAT_PIN_EVENT : COMBAT_PIN_EVENT},
-            error: function (data, text, third) {
-                var obj = {};
-        try {
-            obj = jQuery.parseJSON(data.responseText);
-        } catch (e) {
+        error: function (data, text, third) {
+            var obj = {};
+            try {
+                obj = jQuery.parseJSON(data.responseText);
+            } catch (e) {
 //                alert(data);
-        }
-        if (obj.emsg) {
-            alert(obj.emsg);
-        }
-        playAudioBuzz();
-        $('body').css({cursor: "auto"});
-        $(this).css({cursor: "auto"});
-        $("#comlink").html('Working');
-    },
-    success: function (data, textstatus) {
-        try {
-            var success = data.success;
-        } catch (e) {
-//            alert(data);
-        }
-        if (success) {
-            playAudioLow();
-
-        } else {
+            }
+            if (obj.emsg) {
+                alert(obj.emsg);
+            }
             playAudioBuzz();
+            $('body').css({cursor: "auto"});
+            $(this).css({cursor: "auto"});
+            $("#comlink").html('Working');
+        },
+        success: function (data, textstatus) {
+            try {
+                var success = data.success;
+            } catch (e) {
+//            alert(data);
+            }
+            if (success) {
+                playAudioLow();
+
+            } else {
+                playAudioBuzz();
+            }
+            $('body').css({cursor: "auto"});
+            $(this).css({cursor: "auto"});
         }
-        $('body').css({cursor: "auto"});
-        $(this).css({cursor: "auto"});
-    }
-});
+    });
     $("#mychat").attr("value", "");
 }
 
@@ -153,11 +155,13 @@ export function doitUnit(id, event) {
     $("#" + id + "").addClass("pushed");
 
     var shiftKey = event.shiftKey;
-    $("#comlink").html('waiting');
+    $("#comlink").html('r');
+    $("#comlinkWrapper").css({background: 'red'})
     if (DR.shiftKey) {
         shiftKey = true;
         $("#shiftKey").click();
     }
+    let obj;
     $.ajax({
         url: pokeUrl,
         type: "POST",
@@ -191,6 +195,10 @@ export function doitUnit(id, event) {
 
             } else {
                 playAudioBuzz();
+
+                var msg = '<span>g</span>';
+                $("#comlink").html(msg);
+                $("#comlinkWrapper").css({background: 'lightgreen'})
             }
             $('body').css({cursor: "auto"});
             $(this).css({cursor: "auto"});
@@ -391,7 +399,8 @@ export function doitKeypress(key) {
     $(this).css({cursor: "wait"});
 //    $("#"+id+"").addClass("pushed");
 
-    $("#comlink").html('Waiting');
+    $("#comlink").html('r');
+    $("#comlinkWrapper").css({background: 'red'});
     $.ajax({
         url: pokeUrl,
         type: "POST",
@@ -424,6 +433,10 @@ export function doitKeypress(key) {
 
             } else {
                 playAudioBuzz();
+
+                var msg = '<span title="' + last_seq + '">g</span>';
+                $("#comlink").html(msg);
+                $("#comlinkWrapper").css({background: 'lightgreen'})
             }
             $('body').css({cursor: "auto"});
             $(this).css({cursor: "auto"});
@@ -501,7 +514,8 @@ export function doitSaveGame(msg){
     $(this).css({cursor: "wait"});
 //    $("#"+id+"").addClass("pushed");
 
-    $("#comlink").html('Waiting');
+    $("#comlink").html('r');
+    $("#comlinkWrapper").css({background: 'red'})
     $.ajax({
         url: pokeUrl,
         type: "POST",

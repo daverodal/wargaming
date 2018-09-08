@@ -317,10 +317,21 @@ class GameRules
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
 
-                            if($unit->split() === false){
+                            if(method_exists($unit, 'split')){
+                                if($unit->split() === false){
+                                    return false;
+                                }
+                                $bad = false;
+                            }
+                            if(method_exists($unit, 'standOrgStatus')){
+                                if($unit->standOrgStatus() === false){
+                                    return false;
+                                }
+                                $bad = false;
+                            }
+                            if($bad){
                                 return false;
                             }
-                            $bad = false;
 
                         }
                         if($c == 'c' || $c == 'C'){
@@ -645,14 +656,43 @@ class GameRules
                                 return false;
                             }
 
+                            if($c == 'b' || $c == 'B'){
+                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                                if(method_exists($unit, 'battleReadyOrgStatus')){
+                                    if (!$unit->unitHasNotMoved()) {
+                                        return false;
+                                    }
+                                    if($unit->battleReadyOrgStatus() === false){
+                                        return false;
+                                    }
+                                    return true;
+                                }
+                                return false;
+                            }
+
                             if($c == 's' || $c == 'S'){
                                 $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
-
-                                if($unit->split() === false){
+                                if(method_exists($unit, 'split')){
+                                    if($unit->split() === false){
+                                        return false;
+                                    }
+                                    $bad = false;
+                                }
+                                if(method_exists($unit, 'standOrgStatus')){
+                                    if (!$unit->unitHasNotMoved()) {
+                                        return false;
+                                    }
+                                    if($unit->standOrgStatus() === false){
+                                        return false;
+                                    }
+                                    return true;
+                                    $bad = false;
+                                }
+                                if($bad){
                                     return false;
                                 }
-                                $bad = false;
                             }
                             if($c == 'c' || $c == 'C'){
                                 $unit = $this->force->getUnit($this->moveRules->movingUnitId);

@@ -18,7 +18,6 @@ $darkBlack: #333;
 $stdFont: 16px;
 
 body {
-  min-width: 675px;
   margin: 0;
   padding: 0;
 }
@@ -199,6 +198,10 @@ h5 {
     }
   }
   #headerContent {
+    .right-wrapper{
+      width: 55%;
+      float:right;
+    }
     #mouseMove {
       display: none;
     }
@@ -210,6 +213,9 @@ h5 {
       float: left;
       margin-right: 10px;
       border-right: 1px solid black;
+      @media(max-width: 800px){
+        border-right:none;
+      }
       padding-right: 10px;
       &.alpha {
         padding-left: 10px;
@@ -220,8 +226,14 @@ h5 {
       border-right: 1px solid black;
       padding-right: 10px;
       margin-right: 10px;
+      @media(max-width: 800px){
+        border-right:none;
+      }
     }
 
+    @media(max-width: 800px){
+
+    }
     #zoomWrapper {
       font-size: 30px;
       #zoom {
@@ -1148,13 +1160,13 @@ svg {
   color: #eee;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 0px) {
   .tablet {
     display: none !important;
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 0px) {
   .tablet {
 
   }

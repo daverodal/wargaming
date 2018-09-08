@@ -107,8 +107,9 @@ export  class Sync {
                         }
                     }
                     last_seq = data.last_seq;
-                    var msg = '<span title="' + last_seq + '">Working</span>';
+                    var msg = '<span title="' + last_seq + '">g</span>';
                     $("#comlink").html(msg);
+                    $("#comlinkWrapper").css({background: 'lightgreen'})
                     if (!this.timeTravel) {
                         this.fetch(last_seq, fetchArgs);
                     }
