@@ -30,7 +30,7 @@ trait FacingMoveRulesTrait
             if($movingUnit->facing === false){
                 return false;
             }
-            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $movesLeft = $movingUnit->getMaxMove() - $movingUnit->moveAmountUsed;
             $turnCost = 1;
             $origFacing = $movingUnit->facing;
             if($isDeploy || $movesLeft >= $turnCost){
@@ -67,7 +67,7 @@ trait FacingMoveRulesTrait
                         return true;
                     }
                 }
-                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                if($movingUnit->moveAmountUsed >= $movingUnit->getMaxMove()){
                     $this->stopMove($movingUnit);
                     return true;
                 }
@@ -85,7 +85,7 @@ trait FacingMoveRulesTrait
             if($movingUnit->facing === false){
                 return false;
             }
-            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $movesLeft = $movingUnit->getMaxMove() - $movingUnit->moveAmountUsed;
             $origFacing = $movingUnit->facing;
 
             $turnCost = 2;
@@ -126,7 +126,7 @@ trait FacingMoveRulesTrait
                         return true;
                     }
                 }
-                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                if($movingUnit->moveAmountUsed >= $movingUnit->getMaxMove()){
                     $this->stopMove($movingUnit);
                     return true;
                 }
@@ -192,7 +192,7 @@ trait FacingMoveRulesTrait
             if($movingUnit->facing === false){
                 return false;
             }
-            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $movesLeft = $movingUnit->getMaxMove() - $movingUnit->moveAmountUsed;
             $origFacing = $movingUnit->facing;
             $turnCost = 1;
             if($isDeploy || $movesLeft >= $turnCost){
@@ -228,7 +228,7 @@ trait FacingMoveRulesTrait
                         return true;
                     }
                 }
-                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                if($movingUnit->moveAmountUsed >= $movingUnit->getMaxMove()){
                     $this->stopMove($movingUnit);
                     return true;
                 }

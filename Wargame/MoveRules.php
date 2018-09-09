@@ -113,6 +113,7 @@ class MoveRules
     {
         $dirty = false;
         $this->turnHex = false;
+        $this->turnId = false;
         $this->turnFacing = false;
         if ($eventType == SELECT_MAP_EVENT) {
             if ($this->anyUnitIsMoving) {

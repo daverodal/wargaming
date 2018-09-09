@@ -434,7 +434,7 @@ export function doitKeypress(key) {
             } else {
                 playAudioBuzz();
 
-                var msg = '<span title="' + last_seq + '">g</span>';
+                var msg = '<span>g</span>';
                 $("#comlink").html(msg);
                 $("#comlinkWrapper").css({background: 'lightgreen'})
             }

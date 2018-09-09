@@ -30,7 +30,7 @@ trait AltFacingMoveRulesTrait
             if($movingUnit->facing === false){
                 return false;
             }
-            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $movesLeft = $movingUnit->getMaxMove() - $movingUnit->moveAmountUsed;
             $turnCost = 1;
             $origFacing = $movingUnit->facing;
             if($isDeploy || $movesLeft >= $turnCost){
@@ -67,7 +67,7 @@ trait AltFacingMoveRulesTrait
                     $this->turnId = $movingUnit->id;
                 }
 
-                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                if($movingUnit->moveAmountUsed >= $movingUnit->getMaxMove()){
                     $this->stopMove($movingUnit);
                     return true;
                 }
@@ -85,7 +85,7 @@ trait AltFacingMoveRulesTrait
             if($movingUnit->facing === false){
                 return false;
             }
-            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $movesLeft = $movingUnit->getMaxMove() - $movingUnit->moveAmountUsed;
             $origFacing = $movingUnit->facing;
 
             $turnCost = 1;
@@ -126,7 +126,7 @@ trait AltFacingMoveRulesTrait
 
 
 
-                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                if($movingUnit->moveAmountUsed >= $movingUnit->getMaxMove()){
                     $this->stopMove($movingUnit);
                     return true;
                 }
@@ -192,7 +192,7 @@ trait AltFacingMoveRulesTrait
             if($movingUnit->facing === false){
                 return false;
             }
-            $movesLeft = $movingUnit->maxMove - $movingUnit->moveAmountUsed;
+            $movesLeft = $movingUnit->getMaxMove() - $movingUnit->moveAmountUsed;
             $origFacing = $movingUnit->facing;
             $turnCost = 1;
             if($isDeploy || $movesLeft >= $turnCost){
@@ -230,7 +230,7 @@ trait AltFacingMoveRulesTrait
                 $battle = Battle::getBattle();
                 $mapHex = $battle->mapData->getHex($movingUnit->hexagon->name);
 
-                if($movingUnit->moveAmountUsed >= $movingUnit->maxMove){
+                if($movingUnit->moveAmountUsed >= $movingUnit->getMaxMove()){
                     $this->stopMove($movingUnit);
                     return true;
                 }
