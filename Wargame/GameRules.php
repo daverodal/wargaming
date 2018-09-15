@@ -313,6 +313,20 @@ class GameRules
                             $bad = false;
 
                         }
+                        if($c == 'b' || $c == 'B'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                            if(method_exists($unit, 'battleReadyOrgStatus')){
+                                if (!$unit->unitHasNotMoved()) {
+                                    return false;
+                                }
+                                if($unit->battleReadyOrgStatus() === false){
+                                    return false;
+                                }
+                                return true;
+                            }
+                            return false;
+                        }
                         if($c == 's' || $c == 'S'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
@@ -327,7 +341,7 @@ class GameRules
                                 if($unit->standOrgStatus() === false){
                                     return false;
                                 }
-                                $bad = false;
+                                return true;
                             }
                             if($bad){
                                 return false;

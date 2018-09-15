@@ -34,6 +34,7 @@ function clearHexes() {
 
 window.x = new Sync(fetchUrl);
 var x = window.x;
+DR.sync = window.x;
 window.fixHeader = fixHeader;
 
 function svgRefresh(){
