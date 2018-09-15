@@ -74,7 +74,7 @@
         text-decoration: underline;
     }
 </style>
-<link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
 
 <h2 style="text-align:center;font-size:30px;font-family:'Great Vibes'"> Welcome to</h2>
 <h1 style="text-align:center;font-size:90px;font-family:'Nosifer'">Manchuria 1976</h1>
