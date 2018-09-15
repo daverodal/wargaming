@@ -664,7 +664,7 @@ class MoveRules
         $battle = Battle::getBattle();
         if ($movingUnit->unitIsReinforcing() == true) {
 
-            list($zones) = $battle->victory->postReinforceZoneNames($this->terrain->getReinforceZoneList($hexagon), $movingUnit);
+            list($zones) = $battle->victory->postReinforceZoneNames($this->terrain->getReinforceZoneList($hexagon), $movingUnit, $hexagon);
 
             if (in_array($movingUnit->getUnitReinforceZone() , $zones)) {
                 if ($movingUnit->setStatus(STATUS_MOVING) == true) {

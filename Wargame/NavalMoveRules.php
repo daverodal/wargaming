@@ -959,7 +959,7 @@ class NavalMoveRules
         $battle = Battle::getBattle();
         if ($this->force->unitIsReinforcing($id) == true) {
 
-            list($zones) = $battle->victory->postReinforceZoneNames($this->terrain->getReinforceZoneList($hexagon), $battle->force->units[$id]);
+            list($zones) = $battle->victory->postReinforceZoneNames($this->terrain->getReinforceZoneList($hexagon), $battle->force->units[$id], $hexagon);
 
             /* @var Unit $movingUnit */
             $movingUnit = $this->force->getUnit($id);
