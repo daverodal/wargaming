@@ -38,6 +38,7 @@ class MovableUnit{
     public $dirty;
     public $unitDesig;
     public $moveAmountUnused;
+    public $noZoc = false;
 
     use UnitAdjustment;
 
@@ -75,6 +76,17 @@ class MovableUnit{
         $maxMove = $this->getMovementAdjustments($maxMove);
 
         return $maxMove;
+    }
+
+    /* return filtered array of neighbor hexes, allows units to
+     * modify their zoc's array. For example unit with  facing.
+     * Or a unit with no ZOc's to return empty [];
+     */
+    public function getZocNeighbors($neighbors){
+        if($this->noZoc === true){
+            return [];
+        }
+        return $neighbors;
     }
 
     function unitHasNotMoved()

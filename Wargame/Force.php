@@ -106,7 +106,9 @@ class Force extends SimpleForce
         //  the moveCount is 0 for 1st step and 1 for 2nd step
 
         $retreatStep = new RetreatStep();
-        $retreatStep->set($this->units[$id]->moveCount, $retreatHexagon);
+        $unit = $this->units[$id];
+
+        $retreatStep->set($unit->moveCount, $retreatHexagon);
 
         $this->retreatHexagonList[] = $retreatStep;
     }
@@ -137,12 +139,14 @@ class Force extends SimpleForce
     {
         $isOnList = false;
         for ($i = 0; $i < count($this->retreatHexagonList); $i++) {
+            $unit = $this->units[$id];
+
             // note: addToRetreatHexagonList() is invoked before retreat move, so
             //  the moveCount is 0 for 1st step and 1 for 2nd step
             //  when advancing unit.moveCount will be 0 which will match 1st step retreat number
 
             //alert("function .prototype. checkingt: " + id + " hexagon: " + hexagon.getName() + " with array " + $this->retreatHexagonList[i].hexagon.getName());
-            if ($this->retreatHexagonList[$i]->stepNumber == $this->units[$id]->moveCount
+            if ($this->retreatHexagonList[$i]->stepNumber == $unit->moveCount
                 && $this->retreatHexagonList[$i]->hexagon->equals($hexagon)
             ) {
                 $isOnList = true;
@@ -156,8 +160,10 @@ class Force extends SimpleForce
     function resetRemainingNonAdvancingUnits()
     {
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_ADVANCE) {
-                $this->units[$id]->status = STATUS_ATTACKED;
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_ADVANCE) {
+                $unit->status = STATUS_ATTACKED;
             }
         }
     }
@@ -165,8 +171,10 @@ class Force extends SimpleForce
     function resetRemainingAdvancingUnits()
     {
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_ADVANCING || $this->units[$id]->status == STATUS_CAN_ADVANCE) {
-                $this->units[$id]->status = STATUS_ATTACKED;
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_ADVANCING || $unit->status == STATUS_CAN_ADVANCE) {
+                $unit->status = STATUS_ATTACKED;
             }
         }
     }
@@ -177,11 +185,13 @@ class Force extends SimpleForce
         $b = Battle::getBattle();
         $advancingQueue = [];
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_ADVANCING || $this->units[$id]->status == STATUS_CAN_ADVANCE
-                || $this->units[$id]->status == STATUS_MUST_ADVANCE) {
-                $advancingQueue[] = $this->units[$id];
-                if($this->units[$id]->status === STATUS_MUST_ADVANCE){
-                    $this->units[$id]->status = STATUS_CAN_ADVANCE;
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_ADVANCING || $unit->status == STATUS_CAN_ADVANCE
+                || $unit->status == STATUS_MUST_ADVANCE) {
+                $advancingQueue[] = $unit;
+                if($unit->status === STATUS_MUST_ADVANCE){
+                    $unit->status = STATUS_CAN_ADVANCE;
                 }
             }
         }
@@ -199,7 +209,9 @@ class Force extends SimpleForce
     function unitCanAdvance($id)
     {
         $Advance = false;
-        if ($this->units[$id]->status == STATUS_CAN_ADVANCE || $this->units[$id]->status == STATUS_MUST_ADVANCE) {
+        $unit = $this->units[$id];
+
+        if ($unit->status == STATUS_CAN_ADVANCE || $unit->status == STATUS_MUST_ADVANCE) {
             $Advance = true;
         }
         return $Advance;
@@ -208,7 +220,9 @@ class Force extends SimpleForce
     function unitCanRetreat($id)
     {
         $canRetreat = false;
-        if ($this->units[$id]->status == STATUS_CAN_RETREAT) {
+        $unit = $this->units[$id];
+
+        if ($unit->status == STATUS_CAN_RETREAT) {
             $canRetreat = true;
         }
         return $canRetreat;
@@ -218,7 +232,9 @@ class Force extends SimpleForce
     {
         $unitHasMetRetreatCountRequired = false;
 
-        if ($this->units[$id]->moveCount >= $this->units[$id]->retreatCountRequired) {
+        $unit = $this->units[$id];
+
+        if ($unit->moveCount >= $unit->retreatCountRequired) {
             $unitHasMetRetreatCountRequired = true;
         }
 
@@ -577,11 +593,13 @@ class Force extends SimpleForce
 
     function setupAttacker($id, $range)
     {
+        $unit = $this->units[$id];
+
         if ($range > 1) {
-            $this->units[$id]->status = STATUS_BOMBARDING;
+            $unit->status = STATUS_BOMBARDING;
 
         } else {
-            $this->units[$id]->status = STATUS_ATTACKING;
+            $unit->status = STATUS_ATTACKING;
         }
 
         if ($this->combatRequired && isset($this->requiredAttacks->$id)) {
@@ -591,7 +609,9 @@ class Force extends SimpleForce
 
     function setupDefender($id)
     {
-        $this->units[$id]->status = STATUS_DEFENDING;
+        $unit = $this->units[$id];
+
+        $unit->status = STATUS_DEFENDING;
 
         if ($this->combatRequired && isset($this->requiredDefenses->$id)) {
             $this->requiredDefenses->$id = false;
@@ -618,15 +638,17 @@ class Force extends SimpleForce
         $victory->preRecoverUnits();
         $this->anyCombatsPossible = false;
         for ($id = 0; $id < count($this->units); $id++) {
-            $victory->preRecoverUnit($this->units[$id]);
+            $unit = $this->units[$id];
 
-            switch ($this->units[$id]->status) {
+            $victory->preRecoverUnit($unit);
+
+            switch ($unit->status) {
 
 
                 case STATUS_ELIMINATED:
                     if($mode === REPLACING_MODE){
-                        if ($this->units[$id]->forceId == $this->attackingForceId){
-                            $this->units[$id]->status = STATUS_CAN_REPLACE;
+                        if ($unit->forceId == $this->attackingForceId){
+                            $unit->status = STATUS_CAN_REPLACE;
                         }
                     }
                     break;
@@ -634,7 +656,7 @@ class Force extends SimpleForce
                     if($mode == DEPLOY_MODE){
                         continue;
                     }
-                    if ($this->units[$id]->isDeploy()) {
+                    if ($unit->isDeploy()) {
                         continue;
                     }
 
@@ -662,7 +684,7 @@ class Force extends SimpleForce
 
                     if($mode === COMBINING_MODE){
                         $status = STATUS_UNAVAIL_THIS_PHASE;
-                        if($this->units[$id]->status === STATUS_CAN_COMBINE){
+                        if($unit->status === STATUS_CAN_COMBINE){
                             $status = STATUS_READY;
                         }
                     }
@@ -673,17 +695,17 @@ class Force extends SimpleForce
 //                        $status = STATUS_STOPPED;
 //                    }
 
-                    if ($phase == BLUE_MECH_PHASE && $this->units[$id]->forceId == BLUE_FORCE && $this->units[$id]->class != "mech") {
+                    if ($phase == BLUE_MECH_PHASE && $unit->forceId == BLUE_FORCE && $unit->class != "mech") {
                         $status = STATUS_STOPPED;
                     }
-                    if ($phase == RED_MECH_PHASE && $this->units[$id]->forceId == RED_FORCE && $this->units[$id]->class != "mech") {
+                    if ($phase == RED_MECH_PHASE && $unit->forceId == RED_FORCE && $unit->class != "mech") {
                         $status = STATUS_STOPPED;
                     }
                     if ($phase == BLUE_REPLACEMENT_PHASE || $phase == RED_REPLACEMENT_PHASE || $phase == TEAL_REPLACEMENT_PHASE || $phase == PURPLE_REPLACEMENT_PHASE) {
                         $status = STATUS_STOPPED;
                         /* TODO Hack Hack Hack better answer is not isReduced, but canReduce */
-                        if ($this->units[$id]->forceId == $this->attackingForceId &&
-                            $this->units[$id]->isReduced && $this->units[$id]->class !== "gorilla"
+                        if ($unit->forceId == $this->attackingForceId &&
+                            $unit->isReduced && $unit->class !== "gorilla"
                         ) {
                             $status = STATUS_CAN_UPGRADE;
                         }
@@ -698,39 +720,39 @@ class Force extends SimpleForce
                                 $this->markRequired($id);
                             }
                             $isAdjacent = $this->unitIsAdjacent($id);
-                            if ($this->units[$id]->forceId == $this->attackingForceId && ($isZoc || $isAdjacent || $this->unitIsInRange($id))) {
+                            if ($unit->forceId == $this->attackingForceId && ($isZoc || $isAdjacent || $this->unitIsInRange($id))) {
                                 $status = STATUS_READY;
                                 $this->anyCombatsPossible = true;
                             }
                         }
                         if ($mode == COMBAT_RESOLUTION_MODE) {
                             $status = STATUS_UNAVAIL_THIS_PHASE;
-                            if ($this->units[$id]->status == STATUS_ATTACKING ||
-                                $this->units[$id]->status == STATUS_DEFENDING
+                            if ($unit->status == STATUS_ATTACKING ||
+                                $unit->status == STATUS_DEFENDING
                             ) {
-                                $status = $this->units[$id]->status;
+                                $status = $unit->status;
                             }
 
                         }
                     }
 
                 if ($phase == BLUE_AIR_COMBAT_PHASE || $phase == RED_AIR_COMBAT_PHASE ) {
-                    if($this->units[$id]->class === 'air'){
+                    if($unit->class === 'air'){
                     if ($mode == COMBAT_SETUP_MODE) {
                         $status = STATUS_UNAVAIL_THIS_PHASE;
 
                         $isAdjacent = $this->unitIsAdjacent($id);
-                        if ($this->units[$id]->forceId == $this->attackingForceId && ( $isAdjacent )) {
+                        if ($unit->forceId == $this->attackingForceId && ( $isAdjacent )) {
                             $status = STATUS_READY;
                             $this->anyCombatsPossible = true;
                         }
                     }
                     if ($mode == COMBAT_RESOLUTION_MODE) {
                         $status = STATUS_UNAVAIL_THIS_PHASE;
-                        if ($this->units[$id]->status == STATUS_ATTACKING ||
-                            $this->units[$id]->status == STATUS_DEFENDING
+                        if ($unit->status == STATUS_ATTACKING ||
+                            $unit->status == STATUS_DEFENDING
                         ) {
-                            $status = $this->units[$id]->status;
+                            $status = $unit->status;
                         }
 
                     }
@@ -738,23 +760,23 @@ class Force extends SimpleForce
                 }
 
                     if ($mode == MOVING_MODE && $moveRules->stickyZoc) {
-                        if ($this->units[$id]->forceId == $this->attackingForceId &&
+                        if ($unit->forceId == $this->attackingForceId &&
                             $this->unitIsZOC($id)
                         ) {
                             $status = STATUS_STOPPED;
                         }
                     }
 
-                    $this->units[$id]->status = $status;
-                    $this->units[$id]->moveAmountUsed = 0;
+                    $unit->status = $status;
+                    $unit->moveAmountUsed = 0;
                     break;
 
                 default:
                     break;
             }
             if($phase === BLUE_MOVE_PHASE || $phase === RED_MOVE_PHASE || $phase == TEAL_MOVE_PHASE || $phase == PURPLE_MOVE_PHASE){
-                $unit = $this->units[$id];
-                $unit->moveAmountUnused = $this->units[$id]->getMaxMove();
+                $unit = $unit;
+                $unit->moveAmountUnused = $unit->getMaxMove();
                 if($unit instanceof TransportableUnit){
                     if($unit->canBeTransported()){
                         if($unit->getTransporter()){
@@ -763,10 +785,10 @@ class Force extends SimpleForce
                     }
                 }
             }
-            $this->units[$id]->combatIndex = 0;
-            $this->units[$id]->combatNumber = 0;
-            $this->units[$id]->combatResults = NE;
-            $victory->postRecoverUnit($this->units[$id]);
+            $unit->combatIndex = 0;
+            $unit->combatNumber = 0;
+            $unit->combatResults = NE;
+            $victory->postRecoverUnit($unit);
 
         }
         $victory->postRecoverUnits();
@@ -775,8 +797,10 @@ class Force extends SimpleForce
 
     function markRequired($id)
     {
+        $unit = $this->units[$id];
+
         if ($this->combatRequired) {
-            if ($this->units[$id]->forceId == $this->attackingForceId) {
+            if ($unit->forceId == $this->attackingForceId) {
                 $this->markRequiredAttack($id);
             } else {
                 $this->markRequiredDefense($id);
@@ -850,16 +874,18 @@ class Force extends SimpleForce
          * Todo should not assign to status, should set status
          */
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_EXCHANGE) {
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_EXCHANGE) {
                 if(count($this->retreatHexagonList)){
-                    if($b->victory->isUnitProhibitedFromAdvancing($this->units[$id])){
-                        $this->units[$id]->status = STATUS_ATTACKED;
+                    if($b->victory->isUnitProhibitedFromAdvancing($unit)){
+                        $unit->status = STATUS_ATTACKED;
                     }else{
-                        $this->units[$id]->status = STATUS_CAN_ADVANCE;
+                        $unit->status = STATUS_CAN_ADVANCE;
                         $areAdvancing = true;
                     }
                 }else{
-                    $this->units[$id]->status = STATUS_ATTACKED;
+                    $unit->status = STATUS_ATTACKED;
                 }
             }
         }
@@ -872,12 +898,14 @@ class Force extends SimpleForce
          * Todo should not assign to status, should set status
          */
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_DEFEND_LOSE) {
-                if ($this->units[$id]->retreatCountRequired) {
-                    $this->units[$id]->status = STATUS_CAN_RETREAT;
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_DEFEND_LOSE) {
+                if ($unit->retreatCountRequired) {
+                    $unit->status = STATUS_CAN_RETREAT;
                     $areRetreating = true;
                 } else {
-                    $this->units[$id]->status = STATUS_DEFENDED;
+                    $unit->status = STATUS_DEFENDED;
                 }
             }
         }
@@ -891,9 +919,11 @@ class Force extends SimpleForce
          * Todo should not assign to status, should set status
          */
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
-                if ($this->units[$id]->retreatCountRequired) {
-                    $this->units[$id]->status = STATUS_CAN_RETREAT;
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_ATTACK_LOSE) {
+                if ($unit->retreatCountRequired) {
+                    $unit->status = STATUS_CAN_RETREAT;
                     $areRetreating = true;
                 } else {
                 }
@@ -901,7 +931,7 @@ class Force extends SimpleForce
         }
         return $areRetreating;
     }
-    
+
     function attackingAreAdvancing()
     {
         $areAdvancing = false;
@@ -910,16 +940,18 @@ class Force extends SimpleForce
          * Todo should not assign to status, should set status
          */
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_ATTACK_LOSE) {
                 if (count($this->retreatHexagonList)) {
-                    if($b->victory->isUnitProhibitedFromAdvancing($this->units[$id])){
-                        $this->units[$id]->status = STATUS_ATTACKED;
+                    if($b->victory->isUnitProhibitedFromAdvancing($unit)){
+                        $unit->status = STATUS_ATTACKED;
                     }else {
-                        $this->units[$id]->status = STATUS_CAN_ADVANCE;
+                        $unit->status = STATUS_CAN_ADVANCE;
                         $areAdvancing = true;
                     }
                 } else {
-                $this->units[$id]->status = STATUS_ATTACKED;
+                $unit->status = STATUS_ATTACKED;
             }
             }
         }
@@ -931,7 +963,9 @@ class Force extends SimpleForce
         $areAdvancing = false;
 
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_EXCHANGE) {
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_EXCHANGE) {
                 return true;
             }
         }
@@ -943,7 +977,9 @@ class Force extends SimpleForce
         $areAdvancing = false;
 
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_ATTACK_LOSE) {
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_ATTACK_LOSE) {
                 return true;
             }
         }
@@ -955,7 +991,9 @@ class Force extends SimpleForce
         $areAdvancing = false;
 
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_DEFEND_LOSE) {
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_DEFEND_LOSE) {
                 return true;
             }
         }
@@ -979,12 +1017,15 @@ class Force extends SimpleForce
     {
         $areAdvancing = false;
         $b = Battle::getBattle();
+        $this->groomRetreatList();
         $b->combatRules->groomAdvancing();
 
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_ADVANCE
-                || $this->units[$id]->status == STATUS_ADVANCING
-                || $this->units[$id]->status == STATUS_MUST_ADVANCE
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_ADVANCE
+                || $unit->status == STATUS_ADVANCING
+                || $unit->status == STATUS_MUST_ADVANCE
             ) {
                 $areAdvancing = true;
                 break;
@@ -998,8 +1039,10 @@ class Force extends SimpleForce
     {
         $areRetreating = false;
         for ($id = 0; $id < count($this->units); $id++) {
-            if ($this->units[$id]->status == STATUS_CAN_RETREAT
-                || $this->units[$id]->status == STATUS_RETREATING
+            $unit = $this->units[$id];
+
+            if ($unit->status == STATUS_CAN_RETREAT
+                || $unit->status == STATUS_RETREATING
             ) {
                 $areRetreating = true;
                 break;

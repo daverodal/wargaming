@@ -892,8 +892,7 @@ class MoveRules
 
     function startAdvancing($id)
     {
-        /* @var Hexagon $hexagon */
-        $hexagon = $this->force->getFirstRetreatHex($id);
+        /* @var Hexagon[] $hexes */
         $hexes = $this->force->getAllFirstRetreatHexes($id);
         $uniqueHexes = [];
         foreach ($hexes as $hexagon) {

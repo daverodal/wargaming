@@ -734,7 +734,7 @@ class CombatRules
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
         $Die = $battle->dieRolls->getEvent($this->crt->dieSideCount);
-//        $Die = 3;
+//        $Die = 6;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {
@@ -818,7 +818,9 @@ class CombatRules
             $attackers = $this->lastResolvedCombat->attackers;
             foreach($attackers as $uId => $ignore){
                 $unit = $this->force->getUnit($uId);
-                if ($unit->status == STATUS_CAN_ADVANCE) {
+                if ($unit->status == STATUS_CAN_ADVANCE
+                    || $unit->status == STATUS_ADVANCING
+                    || $unit->status == STATUS_MUST_ADVANCE) {
                     $unit->status = STATUS_ATTACKED;
                 }
             }

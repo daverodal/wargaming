@@ -75,24 +75,25 @@ class MapHex
         }
         $b = Battle::getBattle();
         $unit = $b->force->units[$id];
-        $neighbors = $this->getZocNeighbors($unit);
+        /* do zoc's first then all adjacents next */
+        $neighbors = $unit->getZocNeighbors($this->neighbors);
         $mapData = MapData::getInstance();
         foreach ($neighbors as $neighbor) {
             $hex = $mapData->getHex($neighbor);
             if ($hex) {
                 unset($hex->zocs[$forceId]->$id);
+            }
+
+        }
+        /* clear all adjacents */
+        $neighbors = $this->neighbors;
+        foreach ($neighbors as $neighbor) {
+            $hex = $mapData->getHex($neighbor);
+            if ($hex) {
                 unset($hex->adjacent[$forceId]->$id);
             }
 
         }
-    }
-
-    public function getZocNeighbors($unit){
-        $neighbors = $this->neighbors;
-        if(isset($unit->facing)){
-            $neighbors = array_slice(array_merge($neighbors,$neighbors), ($unit->facing + 6 - 1)%6, 3);
-        }
-        return $neighbors;
     }
 
     public function setUnit($forceId, $unit)
@@ -117,31 +118,30 @@ class MapHex
         $blocksZoc = $mapData->blocksZoc;
         $unitHex = $unit->hexagon;
 
-        if($unit->noZoc !== true) {
-            $neighbors = $this->getZocNeighbors($unit);
+        $neighbors = $unit->getZocNeighbors($this->neighbors);
 
-            foreach ($neighbors as $neighbor) {
-                $hex = $mapData->getHex($neighbor);
+        foreach ($neighbors as $neighbor) {
+            $hex = $mapData->getHex($neighbor);
 
-                if (!empty($blocksZoc->blocked) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocked")) {
-                    continue;
+            if (!empty($blocksZoc->blocked) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocked")) {
+                continue;
+            }
+
+            if (!empty($blocksZoc->blocksnonroad) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocksnonroad")) {
+                continue;
+            }
+            if ($hex) {
+                if (!$hex->zocs) {
+                    $hex->zocs = array(new stdClass(), new stdClass(), new stdClass(), new stdClass(), new stdClass());
                 }
 
-                if (!empty($blocksZoc->blocksnonroad) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocksnonroad")) {
-                    continue;
+                if (!$hex->zocs[$forceId]) {
+                    $hex->zocs[$forceId] = new stdClass();
                 }
-                if ($hex) {
-                    if (!$hex->zocs) {
-                        $hex->zocs = array(new stdClass(), new stdClass(), new stdClass(), new stdClass(), new stdClass());
-                    }
-
-                    if (!$hex->zocs[$forceId]) {
-                        $hex->zocs[$forceId] = new stdClass();
-                    }
-                    $hex->zocs[$forceId]->$id = $id;
-                }
+                $hex->zocs[$forceId]->$id = $id;
             }
         }
+
 
             $neighbors = $this->neighbors;
 

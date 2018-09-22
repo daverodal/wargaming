@@ -327,6 +327,20 @@ class GameRules
                             }
                             return false;
                         }
+                        if($c == 'h' || $c == 'H'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                            if(method_exists($unit, 'hedgeHogOrgStatus')){
+                                if (!$unit->unitHasNotMoved()) {
+                                    return false;
+                                }
+                                if($unit->hedgeHogOrgStatus() === false){
+                                    return false;
+                                }
+                                return true;
+                            }
+                            return false;
+                        }
                         if($c == 's' || $c == 'S'){
                             $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
@@ -678,6 +692,21 @@ class GameRules
                                         return false;
                                     }
                                     if($unit->battleReadyOrgStatus() === false){
+                                        return false;
+                                    }
+                                    return true;
+                                }
+                                return false;
+                            }
+
+                            if($c == 'h' || $c == 'H'){
+                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                                if(method_exists($unit, 'hedgeHogOrgStatus')){
+                                    if (!$unit->unitHasNotMoved()) {
+                                        return false;
+                                    }
+                                    if($unit->hedgeHogOrgStatus() === false){
                                         return false;
                                     }
                                     return true;
