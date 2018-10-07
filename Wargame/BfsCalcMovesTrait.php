@@ -119,8 +119,16 @@ trait BfsCalcMovesTrait
         $numWalks = 0;
         $numBangs = 0;
         $done = false;
-        $startHex = $this->force->units[$id]->hexagon;
-        $movesLeft = $this->force->units[$id]->retreatCountRequired;
+        $unit = $this->force->units[$id];
+        $startHex = $unit->hexagon;
+        $movesLeft = $unit->retreatCountRequired;
+        $origMovesLeft = $movesLeft;
+
+        $los = new Los();
+
+        $los->setOrigin($unit->hexagon);
+
+
         do{
             $this->moves = new stdClass();
             $this->moveQueue = array();
@@ -137,6 +145,12 @@ trait BfsCalcMovesTrait
             $validCount = 0;
             foreach($moves as $key => $val){
                 if($moves->$key->pointsLeft){
+                    unset($moves->$key);
+                    continue;
+                }
+                $los->setEndPoint(new Hexagon($moves->$key->name));
+                $range = $los->getRange();
+                if($range < $origMovesLeft){
                     unset($moves->$key);
                     continue;
                 }

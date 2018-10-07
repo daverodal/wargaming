@@ -38,6 +38,9 @@ trait AltFacingMoveRulesTrait
 
                 if($isDeploy){
                     $movingUnit->updateFacingStatus(-1, 0);
+                    $b = Battle::getBattle();
+                    $b->moveRules->stopDeploying($movingUnit);
+                    $b->moveRules->startDeploying($movingUnit->id, $b->gameRules->turn);
                     return true;
                 }
                 $battle = Battle::getBattle();
@@ -111,7 +114,9 @@ trait AltFacingMoveRulesTrait
 
                 if($isDeploy){
                     $movingUnit->updateFacingStatus(3, 0);
-
+                    $b = Battle::getBattle();
+                    $b->moveRules->stopDeploying($movingUnit);
+                    $b->moveRules->startDeploying($movingUnit->id, $b->gameRules->turn);
                     return true;
                 }
                 $battle = Battle::getBattle();
@@ -199,6 +204,9 @@ trait AltFacingMoveRulesTrait
 
                 if($isDeploy){
                     $movingUnit->updateFacingStatus(1, 0);
+                    $b = Battle::getBattle();
+                    $b->moveRules->stopDeploying($movingUnit);
+                    $b->moveRules->startDeploying($movingUnit->id, $b->gameRules->turn);
                     return true;
                 }
 

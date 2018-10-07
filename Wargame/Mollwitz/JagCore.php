@@ -6,7 +6,6 @@ use \Wargame\MoveRules;
 use \Wargame\CombatRules;
 use \Wargame\Force;
 use \Wargame\Terrain;
-use \Wargame\GameRules;
 use \Wargame\Victory;
 use \Wargame\Hexagon;
 /**
@@ -80,7 +79,7 @@ class JagCore extends \Wargame\LandBattle{
             }
             $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
             $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
-            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
+            $this->gameRules = new HorseMusketGameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
             $this->victory = new Victory($data);
 
             $this->players = $data->players;
@@ -106,7 +105,7 @@ class JagCore extends \Wargame\LandBattle{
 
             $this->moveRules = new MoveRules($this->force, $this->terrain);
             $this->combatRules = new CombatRules($this->force, $this->terrain);
-            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
+            $this->gameRules = new HorseMusketGameRules($this->moveRules, $this->combatRules, $this->force);
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;

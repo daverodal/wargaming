@@ -611,6 +611,9 @@ class MoveRules
                     $hexPath->pathToHere = array();
                     $hexPath->firstHex = true;
                     $hexPath->firstPath = true;
+                    if(isset($unit->facing)){
+                        $hexPath->facing = $unit->facing;
+                    }
                     $this->moves->$startHex = $hexPath;
                 }
                 $this->anyUnitIsMoving = true;

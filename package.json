@@ -17,13 +17,16 @@
     "cross-env": "^5.0.1",
     "jquery": "^3.1.1",
     "laravel-mix": "^1.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.11",
     "vue": "^2.1.10"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
+    "hoek": "^5.0.4",
     "jquery-ui-bundle": "^1.12.1",
     "jquery.panzoom": "^3.2.2",
+    "marked": "^0.5.1",
+    "ssri": "^6.0.1",
     "ts-loader": "^3.0.5",
     "typescript": "^2.5.3",
     "vue": "^2.5.2",
