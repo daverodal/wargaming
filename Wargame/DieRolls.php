@@ -32,6 +32,9 @@ class DieRolls implements RandEvents
             $this->usedPre = true;
             return array_shift($this->preEvents);
         }
+        if($this->playBack){
+            throw new \Exception("tried to get non saved event");
+        }
         if($this->usedPre){
             dd('bad');
         }
@@ -50,5 +53,6 @@ class DieRolls implements RandEvents
 
     function setEvents(array $events){
         $this->preEvents = $events;
+        $this->playBack = true;
     }
 }
