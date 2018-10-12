@@ -24,19 +24,19 @@ namespace Wargame;
 
 class DieRolls implements RandEvents
 {
-    protected $usedPre = false;
     protected $preEvents = [];
     protected $events = [];
+    protected $playBack = false;
+    protected $eventsTaken = 0;
+    protected $eventsCreated = 0;
     function getEvent(int $dieSides, int $arg2 = null){
         if(count($this->preEvents) > 0){
-            $this->usedPre = true;
-            return array_shift($this->preEvents);
+            $ret = array_shift($this->preEvents);
+            $this->eventsTaken++;
+            return $ret;
         }
         if($this->playBack){
             throw new \Exception("tried to get non saved event");
-        }
-        if($this->usedPre){
-            dd('bad');
         }
         if($arg2 !== null){
             $Die = rand($dieSides, $arg2);
@@ -44,7 +44,16 @@ class DieRolls implements RandEvents
             $Die = floor($dieSides * (rand() / getrandmax()));
         }
         $this->events[] = $Die;
+        $this->eventsCreated++;
         return $Die;
+    }
+
+    function getEventsTaken(){
+        return $this->eventsTaken;
+    }
+
+    function getEventsCreated(){
+        return $this->eventsCreated;
     }
 
     function getEvents(){
@@ -53,6 +62,7 @@ class DieRolls implements RandEvents
 
     function setEvents(array $events){
         $this->preEvents = $events;
+        $this->events = $events;
         $this->playBack = true;
     }
 }
