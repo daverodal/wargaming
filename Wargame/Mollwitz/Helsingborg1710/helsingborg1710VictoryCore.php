@@ -111,7 +111,7 @@ class helsingborg1710VictoryCore extends \Wargame\Mollwitz\victoryCore
                 return true;
             }
             if ($turn > $gameRules->maxTurn) {
-                $this->winner = Helsingborg1710::SWEDISH_FORCE;
+                $this->winner = Helsingborg1710::DANISH_FORCE;
                 $gameRules->flashMessages[] = "Danish Win";
                 $gameRules->flashMessages[] = "Swedes Fail to Win";
                 $this->gameOver = true;
