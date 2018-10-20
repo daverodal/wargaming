@@ -69,7 +69,10 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
             $mapData = $battle->mapData;
 
             $playerTwoWinScore = 32;
-            $playerOneWinScore = 16;
+            $playerOneWinScore = 22;
+            if(!empty($scenario->ironman)){
+                $playerOneWinScore = 22;
+            }
             $playerTwoWin = false;
             $playerOneWin = false;
 

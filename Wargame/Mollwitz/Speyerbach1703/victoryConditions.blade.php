@@ -27,7 +27,11 @@
             The French win at the end of any game turn they have accumulated 32 points.
         </li>
         <li>
-            The Allies win at the end of any game turn that they have accumulated 16 points.
+            @isset($scenario->ironman)
+                The Allies win at the end of any game turn that they have accumulated 32 points.
+            @else
+                The Allies win at the end of any game turn that they have accumulated 22 points.
+            @endif
         </li>
         <li>
             One point is awarded for each hostile combat strength point destroyed.

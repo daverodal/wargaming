@@ -9910,6 +9910,11 @@
       "main": {
         "description": "Historical Scenario.",
         "longDescription": "Historical Scenario"
+      },
+      "ironman": {
+        "description": "Ironman Scenario.",
+        "longDescription": "Makes Imperials vp's equal french vp's",
+        "ironman": true
       }
     }
   }
