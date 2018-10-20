@@ -776,18 +776,7 @@ class GameRules
                         }
 
                         $ret =  $this->selectNextPhase($click);
-                        if($ret === true && $this->mode === COMBINING_MODE && $numCombines === 0){
-                            $this->flashMessages[] = "No Combines Possible. Skipping to Next Phase.";
-                            $ret =  $this->selectNextPhase($click);
-                        }
-                        if($ret === true &&
-                            (($this->mode === COMBAT_SETUP_MODE && ($this->phase === BLUE_COMBAT_PHASE || $this->phase === RED_COMBAT_PHASE))
-                                || ($this->mode === FIRE_COMBAT_SETUP_MODE)
-                            ) &&
-                            $this->force->anyCombatsPossible === false){
-                            $this->flashMessages[] = "No Combats Possible.";
-                            $ret =  $this->selectNextPhase($click);
-                        }
+
                         return $ret;
                         break;
                 }
@@ -1218,7 +1207,36 @@ class GameRules
         $this->force->setAttackingForceId($attackingId, $defendingId);
     }
 
-    function selectNextPhase($click)
+    function selectNextPhase($click){
+        $ret = $this->endPhase($click);
+
+        $numCombines = 0;
+        if (method_exists($this->force, 'getCombine')) {
+            $numCombines = $this->force->getCombine();
+        }
+
+        if ($ret === true && $this->mode === COMBINING_MODE && $numCombines === 0) {
+            $this->flashMessages[] = "No Combines Possible. Skipping to Next Phase.";
+            $ret = $this->endPhase($click);
+        }
+        do {
+            $didOne = false;
+
+            if ($ret === true &&
+                (($this->mode === COMBAT_SETUP_MODE &&
+                        ($this->phase === BLUE_COMBAT_PHASE || $this->phase === RED_COMBAT_PHASE))
+                    || ($this->mode === FIRE_COMBAT_SETUP_MODE)
+                ) &&
+                $this->force->anyCombatsPossible === false) {
+                $didOne = true;
+                $this->flashMessages[] = "No Combats Possible.";
+                $ret = $this->endPhase($click);
+            }
+        }while($didOne === true);
+        return $ret;
+
+    }
+    function endPhase($click)
     {
         global $phase_name;
         /* @var Battle $battle */
