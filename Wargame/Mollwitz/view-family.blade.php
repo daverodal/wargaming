@@ -35,7 +35,7 @@
         @section('exclusiveRules')
             <h2>Exclusive Rules</h2>
             <ol>
-                @include('wargame::Mollwitz.common-exclusive-rules');
+                @include('wargame::Mollwitz.common-exclusive-rules')
                 @include($scenario->corePath.".exclusiveRules")
             </ol>
         @endsection
