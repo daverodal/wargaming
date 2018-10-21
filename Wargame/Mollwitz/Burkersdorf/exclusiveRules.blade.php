@@ -25,21 +25,11 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
-
-        <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
-        </li>
-        <li>
-            <span>First Player</span>
-
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
+<li>
+    <span class="big"><?= $forceName[1] ?> Movement Phase</span>
+    <p>
+    On the first movement phase all of Austrian units have a movement allowance of two. This is for
+    the Austrian's first movement phase only.
+    </p>
+</li>
 

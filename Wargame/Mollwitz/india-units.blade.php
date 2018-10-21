@@ -1,5 +1,5 @@
 <li><span class="big">Additional Units</span>
-    <ol style="counter-reset:item 5">
+    <ol>
         <li>
             <span> British units have horse artillery.</span>
             <p></p>
@@ -31,6 +31,7 @@
                  alt="0">
                 <nav class="counterWrapper">
                     <div class="counter"></div>
+                    <div class="fa fa-flag"></div>
                 </nav>
                 <p class="range"></p>
 
@@ -131,7 +132,7 @@
     </ol>
 </li>
 <li><span class="big">Command Control</span>
-    <ol style="counter-reset:item 5">
+    <ol>
         <li>
             <span> Unit require command control to move and attack.</span>
             <p>At the beginning of each movement phase command control is determined. Units must be withing

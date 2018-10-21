@@ -25,21 +25,19 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
 
-        <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
-        </li>
-        <li>
-            <span>First Player</span>
+    <li><span class="lessBig">French: </span>
 
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
+        Set up first on and within Hexes marked with Blue F’s. Move second.
+
+    </li><li><span class="lessBig">Allies: </span>
+
+        Set up second on hexes marked with Red A’s. Move First.
+
+
+    </li>
+    <li>
+        <span class="lessBig">Terrain:</span>
+        Orchards Don not effect movement or combat only line of sight.
+    </li>
 

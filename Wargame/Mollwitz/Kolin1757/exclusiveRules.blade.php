@@ -24,22 +24,14 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 ?>
+<li>
+    <span class="lessBig">Deploy Phase</span>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
+    <p class="indent">The <?= $deployName[1] ?> player deploys first. The <?= $deployName[2] ?> player deploys
+        Second</p>
 
-        <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
-        </li>
-        <li>
-            <span>First Player</span>
 
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
-
+</li>
+<li><span class="lessBig">Movement Phase</span>
+    <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.</p>
+</li>

@@ -25,21 +25,14 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
+    <li>
+        The Left side of the Map is North.
+    </li>
+    <li><span class="lessBig">French: </span>
 
-        <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
-        </li>
-        <li>
-            <span>First Player</span>
+        French deploy first on any hexes marked Blue F. The two French 6-5 Cavalry units must deploy on the two hexes marked Blue FC. French move second.
+     </li><li><span class="lessBig">Russians: </span>
 
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
+        Russians deploy second on or within hexes marked Red R. Russians move first.
 
+    </li>

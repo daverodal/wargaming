@@ -24,11 +24,10 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<ol>
     @section('inner-units')
         @parent
 
-        <li class="exclusive">
+        <li >
             <span class="lessBig">Aditional Units</span>
             <p>Wagons look like this.</p>
             <div class="unit Swedish wagon"
@@ -65,7 +64,7 @@ You should have received a copy of the GNU General Public License
     </li>
     @section('inner-movement')
         @parent
-        <li class="exclusive"><span class="lessBig">Wagons</span>
+        <li><span class="lessBig">Wagons</span>
             <p class="indent">Wagons may stack with one other non-wagon unit, they may not stack with another wagon. The
                 stacking limit is one wagon and one non-wagon unit.</p>
         </li>
@@ -75,4 +74,3 @@ You should have received a copy of the GNU General Public License
             stack.</p>
         <p class="indent">Wagons may not retreat and are eleminated if forced to do so.</p>
     </li>
-</ol>

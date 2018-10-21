@@ -37,22 +37,20 @@ You should have received a copy of the GNU General Public License
         <p class="indent">The <?= $forceName[1] ?> units receive a 1 MP bonus on turn 1 only.</p>
         <p class="indent"> The <?= $forceName[2] ?> Units movement rate are halved on turn 1, normal thereafter.</p>
     </li>
-    <li>
-        <span class="lessBig">Reserve Division</span>
-        <p>Sheremetiev’s Division, Did not participate in the battle but could have done.
-            At the beginning of each Russian Movement Phase starting with turn 2 the Russian player rolls a die.
-            No unit deployed on one of the R6 hexes may move until a six is scored or until any Unit deployed on an R6 Hex has been attacked by the Swedes.
-            In either case those Russian units may subsequently move normally
-
-
-        </p>
+    <li><span class="lessBig">Terrain</span>
+        <p class="indent">Marsh: The Swedes experienced very little difficulty attacking across the marshes, therefore
+            marshes are only +2 MP's to enter.
+            In addition, during combat only attacks into a marsh are halved. Not attacks out of them, like the TEC
+            states.</p>
     </li>
-    <li><span class="lessBig">Pontoons</span><br>
-        <div class="specialHexes pontoon Swedish " style="margin:0 !important;"></div><br>
+    <li><span class="lessBig">Pontoons</span><br><br>
+        <div class="specialHexes pontoon Swedish clear" style="margin:0 !important;"></div><br><br>
+        <div class="specialHexes pontoon SaxonPolish " style="margin:0 !important;"></div><br>
         <p class="indent">
-            The Swedes had pontoons available. They were unable to use them.
-            As an optional rule allow the Swedes to deploy 2 pontoon markers within 2 hexes of any Swedish unit.
-            This has the effect of creating clear hex in that hex for the remainder of the game and nullifying any stream hex side between the two pontoons
+            Each side during their deployment may place one Pontoon marker on any swamp hex within 3 hexes of a friendly
+            deploy hex.
+            This changes the hex to clear terrain for the remainder of the game. Pontoons may be used by either side.
+            And may not be destroyed.
         </p>
 
     </li>

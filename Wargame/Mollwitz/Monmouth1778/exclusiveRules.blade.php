@@ -25,21 +25,21 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
+    <li><span class="lessBig">Terrain: Hedge</span>
+        <p>The hedge is treated as a stream hex side.</p>
 
+    </li>
+    <li><span class="lessBig">Setup and first player</span>
+        <p>Americans: Set up first on and within hexes marked A. They move first.</p>
+        <p>British (and Hessians): Set up second on hexes marked B. They move second.</p>
+    </li>
+    <li><span class="lessBig">
+            Optional Rules <i><?= !empty($scenario->americanRevolution) ? "Enabled" : ""?></i>
+        </span>
+    <ol>
         <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
+            British Are +1 attacking and defending in clear
         </li>
-        <li>
-            <span>First Player</span>
-
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
-
+        <li>American are +1 attacking and defending in town or forest</li>
+    </ol>
+    </li>

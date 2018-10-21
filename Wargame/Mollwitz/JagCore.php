@@ -126,6 +126,7 @@ class JagCore extends \Wargame\LandBattle{
                         return 'stop';
                     }
                 }
+                $this->moveRules->noZoc = true;
                 return 1;
             };
         }else{

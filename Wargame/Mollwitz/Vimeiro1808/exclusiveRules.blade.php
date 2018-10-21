@@ -25,21 +25,12 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
+<li><span class="lessBig">French: </span>
 
-        <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
-        </li>
-        <li>
-            <span>First Player</span>
+    French Deploy second on Hexes marked F. French Move first.
 
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
+</li><li><span class="lessBig">British: </span>
 
+    British Deploy first on hexes marked B or B5. British Move second.
+
+</li>

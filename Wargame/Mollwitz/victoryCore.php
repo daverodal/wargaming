@@ -343,6 +343,13 @@ class victoryCore extends \Wargame\VictoryCore
 
     }
 
+    public function preStartMovingUnit($arg){
+        /* @var unit $unit */
+        list($unit) = $arg;
+        $battle = Battle::getBattle();
+        $battle->moveRules->noZoc = false;
+    }
+
     public function preSetAttacker($args){
         list($cd, $id, $dId, $bearing) = $args;
         $b = Battle::getBattle();

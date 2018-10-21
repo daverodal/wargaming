@@ -117,13 +117,13 @@ class Lesnaya1708VictoryCore extends \Wargame\Mollwitz\victoryCore
 
     public function preStartMovingUnit($arg)
     {
+        parent::preStartMovingUnit($arg);
         $unit = $arg[0];
         $battle = Battle::getBattle();
         if ($unit->class === "wagon") {
             $battle->moveRules->noZoc = true;
         }else{
             $battle->moveRules->noZoc = false;
-
         }
     }
 

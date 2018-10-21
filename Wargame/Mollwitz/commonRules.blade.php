@@ -749,7 +749,6 @@
                                     hex sides.
                                 </li>
                                 <li>See the Terrain Effects Chart, the TEC button, for more info.</li>
-                                <?php @include "combatTerrainEffects.php";?>
                             </ol>
                         </li>
                         <li><span class="lessBig">Combined Arms Bonus</span>

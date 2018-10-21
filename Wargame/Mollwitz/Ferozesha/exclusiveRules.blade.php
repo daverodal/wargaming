@@ -24,12 +24,9 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 ?>
-            <div class="indent">
-                <ol style="counter-reset: item 0;">
-                    @section('inner-units')
-                        @parent
-                        @include('wargame::Mollwitz.india-units')
-                    @show
-                </ol>
-            </div>
+
+@section('inner-units')
+    @parent
+    @include('wargame::Mollwitz.india-units')
+@show
 

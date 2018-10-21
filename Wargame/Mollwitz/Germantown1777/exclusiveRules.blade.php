@@ -25,20 +25,20 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-@section('inner-units')
-    @parent
-    @include('wargame::Mollwitz.india-units',['beluchi'=>'Beluchi'])
-@show
-<li><span>Deploy Phase</span>
-
-    <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player deploys
+<li><span class="lessBig">Deploy Phase</span>
+    <p class="indent">The <?= $deployName[1] ?> player deploys first. The <?= $deployName[2] ?> player deploys
         Second</p>
 
 </li>
+<li><span class="lessBig">First Player</span>
+    <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.</p>
+</li>
 <li>
-    <span>First Player</span>
+    <span class="lessBig">Chew House Garrison</span>
+    (7)-0	Garrison unit	May not attack may not move.	Ignores defender retreats deployed on Chew house
+    This was a small detachment of British Infantry that  held out in a stone house all day. They inflicted significant casualties on the Americans that tried to dislodge them.
+</li>
+<li><span class="lessBig">Visibility</span>
+    In the Historical scenario, due to fog, the Arty has a range of 1. Their range is not printed on the counter in the normal way.
 
-    <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-        second. After the <?= $forceName[2]?> player completes their
-        turn, the game turn is incremented.</p>
 </li>

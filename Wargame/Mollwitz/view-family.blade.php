@@ -33,14 +33,22 @@
 @isset($scenario->corePath)
     @if(view()->exists($scenario->corePath.".exclusiveRules"))
         @section('exclusiveRules')
-            @include($scenario->corePath.".exclusiveRules")
+            <h2>Exclusive Rules</h2>
+            <ol>
+                @include('wargame::Mollwitz.common-exclusive-rules');
+                @include($scenario->corePath.".exclusiveRules")
+            </ol>
         @endsection
     @endif
 @endisset
 
 @if(view()->exists("$curPath.exclusiveRules"))
     @section('exclusiveRules')
+        <h2>Exclusive Rules</h2>
+        <ol>
+        @include('wargame::Mollwitz.common-exclusive-rules')
         @include("$curPath.exclusiveRules")
+        </ol>
     @endsection
 @endif
 

@@ -25,21 +25,20 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-
-@section('inner-units')
-    @parent
-    @include('wargame::Mollwitz.india-units',['beluchi'=>'Beluchi'])
-@show
-<li>
-    <span>Deploy Phase</span>
-
+<li><span class="lessBig">Deploy Phase</span>
     <p class="indent">The <?= $deployName[1] ?> player deploys first. The <?= $deployName[2] ?> player deploys
         Second</p>
-</li>
-<li>
-    <span>First Player</span>
 
-    <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.
-        After the <?= $forceName[2] ?> player completes their
-        turn, the game turn is incremented.</p>
+</li>
+<li><span class="lessBig">First Player</span>
+    <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.</p>
+</li>
+<li><span class="lessBig">Movement</span>
+    <p class="indent">The <?= $forceName[1] ?> units receive a 1 MP bonus on turn 1 only.</p>
+    <p class="indent"> The <?= $forceName[2] ?> Units movement rate are halved on turn 1, normal thereafter.</p>
+</li>
+<li><span class="lessBig">Terrain</span>
+    <p class="indent">Swamps, Rivers and Ponds: Are all frozen and have no effect on movement or combat.</p>
+    <p class="indent"> Fortifications: The Fortifications had no impact on the Swedish infantry assault so have no
+        effect on infantry and cost 1 MP for cavalry to cross halving cavalry attacking over them.</p>
 </li>

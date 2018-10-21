@@ -15,7 +15,6 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-
 /**
  * Created by JetBrains PhpStorm.
  * User: david
@@ -24,22 +23,27 @@ You should have received a copy of the GNU General Public License
  * To change this template use File | Settings | File Templates.
  */
 ?>
+    <li>
+        <h4><?= $forceName[2] ?> Movement Phase </h4>
+        <ul>
+            <li>
+                No <?= $forceName[2] ?> unit may expend more than 2 MP on turn 1 only
+            </li>
+        </ul>
+    </li>
+    <li>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
+        <h4>Terrain Effects on Combat</h4>
+        <ul>
+            <li>Russian Infantry units are +1 to their combat factor when Attacking into
+                or Defending in woods or
+                towns, unless they are attacking across a creek or bridge.
+            </li>
 
-        <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
-        </li>
-        <li>
-            <span>First Player</span>
+            <li>Prussian Infantry units are +1 to their combat factor when Attacking into
+                or Defending in clear, unless they are attacking across a creek or bridge.
+            </li>
+        </ul>
+    </li>
 
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
 

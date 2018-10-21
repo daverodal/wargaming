@@ -25,21 +25,24 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
-
-        <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
-        </li>
-        <li>
-            <span>First Player</span>
-
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
-
+    <li><span class="big">Movement Restrictions.</span>
+        <ol>
+            <li>
+                The Allied units in the extream right (ER) area may not move on turns 1 or 2.
+            </li>
+            <li>
+                The Allied units in the right (R) area may not move on turn 1.
+            </li>
+        </ol>
+    </li>
+    <li><span class="big">Combat Restrictions.</span>
+        <ol>
+            <li>
+                The Allied player may never have units from more than one nationality in any particular combat. If they wish to add units
+                from a different nationality they will have to remove all attackers from current combat.
+            </li>
+            <li>
+                Different armies have different color schemes to aid in determining nationality.
+            </li>
+        </ol>
+    </li>

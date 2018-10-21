@@ -25,21 +25,24 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
-
+    <li>
+        Game Length 12 Turns
+    </li>
+    <li><span class="big"> Prussians</span>
+     <ol>
         <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
+           Set Up first move second. Leopold’s rear guard sets up on the map Infantry on any hexes marked PI Cavalry on any hexes marked PC.
+        </li><li>
+            Fredrick’s Main body: enters the map at the Hex Marked F on turn 1.
+        </li><li>
+            Leopold’s Prussian Infantry: may not move turn 1
         </li>
+    </ol>
+    </li>
+    <li> <span class="big">Austrians</span>
+    <ol>
         <li>
-            <span>First Player</span>
-
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
+            Set Up Second, move first. Austrian Infantry and artillery deploys on hexes marked AI. Austrian Cavalry Sets up on Hexes marked AC.
         </li>
-
+    </ol>
+    </li>

@@ -27,20 +27,11 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
-@section('inner-units')
-    @parent
-    @include('wargame::Mollwitz.india-units')
-@show
-<li>
-    <span>Deploy Phase</span>
-
-    <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?>
-        player deploys Second</p>
-</li>
-<li>
-    <span>First Player</span>
-
-    <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player
-        moves second. After the <?= $forceName[2]?> player completes their
-        turn, the game turn is incremented.</p>
-</li>
+    <li>
+        During the Prussian Deploy Phase, there is a 50/50 chance they will be allowed to deploy in the P1
+        Hexes, or the P2 hexes.
+        This will not be obvious until the Prussian player tries to deploy their first unit.
+        A surprise to both players.
+        <p class="ruleComment">This reflects the fact that the prussians were performing a flanking
+            maneuver and there was a chance that russians would notice before the battle started.</p>
+    </li>

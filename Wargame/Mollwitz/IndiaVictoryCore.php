@@ -30,6 +30,7 @@ use Wargame\Battle;
 class IndiaVictoryCore extends victoryCore
 {
     public function preStartMovingUnit($arg){
+        parent()::preStartMovingUnit($arg);
         /* @var unit $unit */
         list($unit) = $arg;
         /* @var Dubba1843 $battle */

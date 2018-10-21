@@ -25,7 +25,6 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-<ol>
     @section('inner-units')
         @parent
         @include('wargame::Mollwitz.gmw-units')
@@ -39,4 +38,3 @@ You should have received a copy of the GNU General Public License
     <li><span class="lessBig">First Player</span>
         <p class="indent">The <?= $forceName[1] ?> player moves first. The <?= $forceName[2] ?> player moves second.</p>
     </li>
-</ol>

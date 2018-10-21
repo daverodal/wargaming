@@ -25,21 +25,25 @@ You should have received a copy of the GNU General Public License
  */
 ?>
 
-        @section('inner-units')
-            @parent
-            @include('wargame::Mollwitz.india-units')
-        @show
+    <li>
 
-        <li>
-            <span> Deploy Phase</span>
-            <p class="indent">The <?= $deployName[1]?> player deploys first. The <?= $deployName[2]?> player
-                deploys Second</p>
-        </li>
-        <li>
-            <span>First Player</span>
+        Game Length: 12 turns
+    </li><li>
 
-            <p class="indent">The <?= $forceName[1]?> player moves first. The <?= $forceName[2]?> player moves
-                second. After the <?= $forceName[2]?> player completes their
-                turn, the game turn is incremented.</p>
-        </li>
+        Imperials: Deploy first on any hexes marked Red I. Imperials move first.
+    </li><li>
+        French: Deploy second on any hexes marked Blue F. French move second.
+    </li><li><span class="lessBig">Terrain</span>
+        <ol>
+            <li><span class="lessBig">Forts:</span>
+                Costs 1 to enter. Triple defending Infantry and artillery. Double defending Cavalry block line of site. Halve attacking cavalry no cavalry combined arms shift attacking.
 
+            </li>
+            <li><span class="lessBig">Rough:</span>
+                Costs Infantry and artillery 1.5 to enter, Cavalry 2. Halve attacking cavalry no cavalry combined arms shift attacking. Rough does not block line of site.
+
+            </li>
+        </ol>
+
+
+    </li>
