@@ -145,6 +145,10 @@ class victoryCore extends \Wargame\VictoryCore
         $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='$class'>+$vp VP's</span>";
     }
 
+    public function preStartMovingUnit($arg){
+       return;
+    }
+
 
     public function phaseChange()
     {
