@@ -262,8 +262,13 @@ class CombatRules
         if(!$this->combats->{$this->currentDefender}->defenders){
             return false;
         }
-        return count((array)$this->combats->{$this->currentDefender}->defenders) > 1;
-
+        $defenders = $this->combats->{$this->currentDefender}->defenders;
+        $hexes = [];
+        foreach($defenders as $defenderId=>$defenderVal){
+            $hex = $this->force->getUnitHexagon($defenderId);
+            $hexes[$hex->name] = true;
+        }
+        return count($hexes) > 1;
     }
 
     function adjacentAttacker(){
