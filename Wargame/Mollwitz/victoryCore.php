@@ -348,6 +348,9 @@ class victoryCore extends \Wargame\VictoryCore
         list($unit) = $arg;
         $battle = Battle::getBattle();
         $battle->moveRules->noZoc = false;
+        if($battle->force->unitIsZoc($unit->id)){
+            $battle->moveRules->noZoc = true;
+        }
     }
 
     public function preSetAttacker($args){
