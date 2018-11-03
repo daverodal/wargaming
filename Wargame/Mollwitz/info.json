@@ -3506,7 +3506,7 @@
             "movement": 4,
             "reinforce": "A",
             "range": 1,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "infantry"
           },
           {
@@ -3516,7 +3516,7 @@
             "movement": 4,
             "reinforce": "A",
             "range": 1,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "infantry"
           },
           {
@@ -3526,7 +3526,7 @@
             "movement": 6,
             "reinforce": "A",
             "range": 1,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "cavalry"
           },
           {
@@ -3536,7 +3536,7 @@
             "movement": 6,
             "reinforce": "A",
             "range": 1,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "cavalry"
           },
           {
@@ -3546,7 +3546,7 @@
             "movement": 3,
             "reinforce": "A",
             "range": 4,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "artillery"
           },
           {
@@ -3812,7 +3812,7 @@
             "movement": 4,
             "reinforce": "A",
             "range": 1,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "infantry"
           },
           {
@@ -3822,7 +3822,7 @@
             "movement": 4,
             "reinforce": "A",
             "range": 1,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "infantry"
           },
           {
@@ -3832,7 +3832,7 @@
             "movement": 6,
             "reinforce": "A",
             "range": 1,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "cavalry"
           },
           {
@@ -3842,7 +3842,7 @@
             "movement": 6,
             "reinforce": "A",
             "range": 1,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "cavalry"
           },
           {
@@ -3852,7 +3852,7 @@
             "movement": 3,
             "reinforce": "A",
             "range": 4,
-            "nationality": "French",
+            "nationality": "NapFrench",
             "class": "artillery"
           },
           {
