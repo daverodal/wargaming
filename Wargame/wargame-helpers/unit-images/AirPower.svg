@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="18px" viewBox="0 0 32 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Air Power</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Air-Power" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-10" fill-rule="nonzero" stroke="#000000">
+            <g id="Group" transform="translate(6.000000, 7.000000)">
+                <path d="M4.17959972,0.00300206551 C2.02379379,-0.0594086583 1.54581021e-16,0.857849428 0,2.14172515 C0,3.42560086 1.87265069,4.76321422 4.17959972,4.83000054 C5.82983185,4.59965371 7.60042623,3.79515397 9.49138284,2.4165013 C7.90443586,1.07583827 6.13384149,0.27133852 4.17959972,0.00300206551 Z" id="Path"></path>
+                <path d="M13.6795997,0.00300206551 C11.5237938,-0.0594086583 9.5,0.857849428 9.5,2.14172515 C9.5,3.42560086 11.3726507,4.76321422 13.6795997,4.83000054 C15.3298319,4.59965371 17.1004262,3.79515397 18.9913828,2.4165013 C17.4044359,1.07583827 15.6338415,0.27133852 13.6795997,0.00300206551 Z" id="Path-Copy" transform="translate(14.245691, 2.415000) scale(-1, 1) translate(-14.245691, -2.415000) "></path>
+            </g>
+            <rect id="unit-rectangle" x="0.5" y="0.5" width="31" height="17"></rect>
+        </g>
+    </g>
+</svg>

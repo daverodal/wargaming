@@ -191,6 +191,7 @@ class MovableUnit{
         if ($mapHex) {
             $mapHex->setUnit($this->forceId, $this);
             $mapHexName = $mapHex->name;
+            $mapData->fireTrigger($mapHexName, $this);
             if (isset($mapData->specialHexes->$mapHexName)) {
 
                 if ($mapData->specialHexes->$mapHexName >= 0 && $mapData->specialHexes->$mapHexName != $this->forceId) {

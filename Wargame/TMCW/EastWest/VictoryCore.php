@@ -33,6 +33,8 @@ use \stdClass;
 class VictoryCore extends \Wargame\TMCW\victoryCore
 {
 
+    public $cityValues;
+
     public $sovietGoal;
     public $germanGoal;
     public $unsuppliedDefenderHalved = false;
@@ -42,27 +44,26 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $b = Battle::getBattle();
         $id = $unit->id;
 
-        if ($unit->status == STATUS_READY || $unit->status == STATUS_UNAVAIL_THIS_PHASE) {
+        if ($unit->isOnMap() && $unit->status == STATUS_READY || $unit->status == STATUS_UNAVAIL_THIS_PHASE) {
             $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
         } else {
             return;
         }
         if (!$unit->supplied) {
             $unit->addAdjustment('movement','zeroMovement');
-
         }
         if ($unit->supplied) {
+            $unit->gotSupplied();
             $unit->removeAdjustment('movement');
         }
         $unit->removeAdjustment('supply');
-
     }
 
     function unitCombatSupplyEffects($unit, $goal, $bias, $supplyLen){
 
         $b = Battle::getBattle();
 
-        if ($unit->hexagon->name) {
+        if ($unit->isOnMap()) {
             $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
         } else {
             return;
@@ -83,6 +84,10 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     function __construct($data)
     {
         parent::__construct($data);
+        $this->cityValues = [706 => 16, 909 => 2, 712 => 1, 1803 => 6, 1705 => 1, 1907=> 2, 1409 => 5, 2010 => 3,
+            1811 => 2, 1613 => 2, 1412 => 4, 1213 =>3, 1215 => 5, 1016 => 8,
+            717 => 2, 518 => 3, 2405 => 2 , 2809 => 8, 2907 => 4, 2214 => 12, 2218 => 6, 2121 => 3, 3717 => 3, 1419 => 2, 1319 => 2, 3117 => 3];
+
         if ($data) {
             $this->germanGoal = $data->victory->germanGoal;
             $this->sovietGoal = $data->victory->sovietGoal;
@@ -97,7 +102,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             }
             $this->germanGoal = $germanGoal;
             $this->sovietGoal = $sovietGoal;
-            $this->victoryPoints[3] = 0;
+            $this->victoryPoints = [0, 26, 77, 0, 0];
         }
     }
 
@@ -106,6 +111,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $ret = parent::save();
         $ret->germanGoal = $this->germanGoal;
         $ret->sovietGoal = $this->sovietGoal;
+        $ret->cityValues = $this->cityValues;
         return $ret;
     }
 
@@ -114,21 +120,27 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $this->supplyLen = $supplyLen[0];
     }
 
-//    public function specialHexChange($args)
-//    {
-//        $battle = Battle::getBattle();
-//        list($mapHexName, $forceId) = $args;
-//
-////        if(in_array($mapHexName, $battle->specialHexC)){
-////
-////            if ($forceId == EastWest::SOVIET_FORCE) {
-////                $this->victoryPoints = "The Soviets hold Kiev";
-////            }
-////            if ($forceId == EastWest::GERMAN_FORCE) {
-////                $this->victoryPoints = "The Germans hold Kiev";
-////            }
-////        }
-//    }
+    public function specialHexChange($args)
+    {
+        $battle = Battle::getBattle();
+        list($mapHexName, $forceId) = $args;
+
+            $hexNum = preg_replace("/^0/", '', $mapHexName);
+            if ($forceId == EastWest::SOVIET_FORCE) {
+                $vp = $this->cityValues[$hexNum];
+                $this->victoryPoints[EastWest::SOVIET_FORCE] += $vp;
+                $this->victoryPoints[EastWest::GERMAN_FORCE] -= $vp;
+                $battle->mapData->specialHexesVictory->{$mapHexName} = "<span class='soviet'>+$vp</span>";
+            }
+            if ($forceId == EastWest::GERMAN_FORCE) {
+                $vp = $this->cityValues[$hexNum];
+                $this->victoryPoints[EastWest::GERMAN_FORCE] += $vp;
+                $this->victoryPoints[EastWest::SOVIET_FORCE] -= $vp;
+                $battle->mapData->specialHexesVictory->{$mapHexName} = "<span class='german'>+$vp</span>";
+
+            }
+
+    }
 //
 //    public function postReinforceZones($args)
 //    {
@@ -154,6 +166,13 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $vp = $unit->damage;
         if ($unit->forceId == 1) {
             $victorId = 2;
+            $vp = 2;
+            if($unit->defStrength === 7){
+                $vp = 3;
+            }
+            if($unit->defStrength === 8){
+                $vp = 9;
+            }
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
@@ -162,6 +181,16 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             }
             $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
         } else {
+            $vp = 1;
+            if($unit->defStrength === 4){
+                $vp = 1;
+            }
+            if($unit->defStrength === 2){
+                $vp = 2;
+            }
+            if($unit->defStrength === 1 && $unit->attStrength === 2){
+                $vp = 3;
+            }
             $victorId = 1;
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
@@ -301,11 +330,6 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $battle->moveRules->enterZoc = 2;
             $battle->moveRules->exitZoc = 1;
         }
-        if($unit->class == 'supply' || $unit->class == 'art'){
-            $unit->noZoc = true;
-        }else {
-            $unit->noZoc = false;
-        }
 
         if($unit->moveByRail === true){
             $battle->moveRules->noZoc = true;
@@ -399,7 +423,16 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
                     $goal[]= $aUnit->hexagon->name;
                 }
             }
-            $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
+            if($unit->isOnMap()) {
+                $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
+                if ($phase === BLUE_MOVE_PHASE || $phase === RED_MOVE_PHASE) {
+                    if ($unit->forceId === $b->gameRules->attackingForceId) {
+                        $unit->startSupplyCheck();
+                    } else {
+                        $unit->killUnsupplied();
+                    }
+                }
+            }
         }
 
         if ($phase == BLUE_MECH_PHASE && $unit->forceId == BLUE_FORCE  && $unit->hexagon->parent === "gameImages") {
@@ -422,6 +455,8 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
                 $b->moveRules->zocBlocksRetreat = true;
             }
             $this->unitCombatSupplyEffects($unit, $goal, $bias, $supplyLen);
+        }else{
+            $unit->removeAdjustment('supply');
         }
     }
 

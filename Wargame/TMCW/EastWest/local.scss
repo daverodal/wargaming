@@ -28,7 +28,6 @@
 @include headerColor(Soviet, $sovietColor, $sovietColor);
 @include headerColor(German, $germanColor, $germanColor);
 
-
 @include player(soviet,Two,$sovietColor);
 
 #map {
@@ -64,6 +63,13 @@
   @include victoryPoints(orange)
 }
 
+.specialHexes {
+  border: 3px solid white;
+  border-radius: 11px;
+  padding: 3px;
+  color: white;
+}
+
 #deadpile{
   .retired-unit-wrapper{
     position:static;
@@ -82,7 +88,9 @@
   @include victoryPoints(brown);
 }
 /* RULES OVERRIDES */
-
+.german .unit-desig{
+  color:black;
+}
 .gameLength{
   color:transparent;
   font-size:0px;
@@ -144,6 +152,14 @@
     font-size: 9px;
     i{
       background:black;
+    }
+  }
+  &.art{
+    .counter{
+      display:block;
+      margin-top: 0px;
+      width: 20px;
+      margin-left: 6px;
     }
   }
 }

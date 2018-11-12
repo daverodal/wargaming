@@ -60,8 +60,15 @@ trait CRTResults
                 if($combatResults == DR1){
                     $distance = 1;
                 }
-                $defUnit->status = STATUS_CAN_RETREAT;
-                $defUnit->retreatCountRequired = $distance;
+                if($defUnit->class === "supply"){
+                    $defUnit->status = STATUS_ELIMINATING;
+                    $defUnit->retreatCountRequired = $distance;
+                    $defUnit->moveCount = 0;
+                    $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
+                }else{
+                    $defUnit->status = STATUS_CAN_RETREAT;
+                    $defUnit->retreatCountRequired = $distance;
+                }
                 break;
 
 

@@ -28,6 +28,7 @@ class MapData implements JsonSerializable
     public $maxX;
     public $maxY;
     public $specialHexes;
+    public $triggers = false;
     private static $instance;
     public $mapUrl;
     public $vp;
@@ -226,6 +227,29 @@ class MapData implements JsonSerializable
         foreach ($hexes as $k => $v) {
             $k = sprintf("%04d", "0000" . $k);
             $this->specialHexes->$k = $v;
+        }
+    }
+
+    function fireTrigger($hexNum, $unit){
+        if($this->triggers){
+            if(isset($this->triggers->$hexNum)){
+                $b = Battle::getBattle();
+                $b->victory->fireTrigger($hexNum, $unit);
+            }
+        }
+    }
+    function setTrigger($hex)
+    {
+        if (!$this->triggers) {
+            $this->triggers = new stdClass();
+        }
+        $k = sprintf("%04d", "0000" . $hex);
+        $this->triggers->$k = true;
+    }
+
+    function setTriggers(array $hexes){
+        foreach($hexes as $hex){
+            $this->setTrigger($hex);
         }
     }
 

@@ -1,3 +1,6 @@
+
+
+
 @mixin headerColor($nationality, $color, $faceColor: $color){
   .player#{$nationality}{
     background:$color;
@@ -6,7 +9,34 @@
   .#{$nationality}Face, .player#{$nationality}Face{
     color:$faceColor;
   }
+
+  .#{$nationality}.combatants{
+    color: $faceColor;
+    font-style:italic;
+  }
+
+  .specialHexesVP .#{to-lower-case($nationality)} {
+    background: transparent;
+    @include victoryPoints($faceColor);
+  }
+
+  .#{to-lower-case($nationality)}.specialHexes{
+    background-color: $faceColor;
+  }
+  .#{$nationality}.specialHexes{
+    background-color: $faceColor;
+  }
+
+  .specialHexesVP .#{$nationality}.victory-points{
+    @include victoryPoints($faceColor);
+  }
 }
+
+
+
+
+
+
 
 @mixin victoryPoints($color) {
   text-shadow: 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 1px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 2px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 3px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 4px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 5px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 6px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 7px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 8px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 9px $color, 0px 0px 10px $color, 0px 0px 10px $color, 0px 0px 10px $color;
@@ -45,7 +75,7 @@ h5 {
   color:transparent;
 }
 
-#turn, #phase, #status, #victory {
+.status-corner, #turn, #phase, #status, #victory {
   background: white;
   padding: 0 3px;
   font-family: sans-serif;
@@ -648,6 +678,7 @@ body {
 
 #statusWrapper {
   float: right;
+  background: white;
 }
 
 #crtWrapper {

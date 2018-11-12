@@ -32,6 +32,7 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
     public $origStrength;
     public $unitDefStrength;
     public $supplied = true;
+    public $hadAnySupplies = true;
 
     public $moveByRail = false;
 
@@ -84,6 +85,22 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         return $this->unitDefStrength;
     }
 
+    public function startSupplyCheck(){
+        $this->hadAnySupplies = $this->supplied;
+    }
+
+    public function gotSupplied(){
+        $this->hadAnySupplies = true;
+    }
+
+    public function killUnsupplied(){
+        if($this->hadAnySupplies === false){
+            $this->damageUnit(true);
+            $b = Battle::getBattle();
+            $b->force->eliminateUnit($this->id);
+        }
+
+    }
     public function __get($name)
     {
         if ($name !== "strength" && $name !== "defStrength" && $name !== "attStrength") {
@@ -143,6 +160,9 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $this->nationality = $nationality;
         $this->forceMarch = false;
         $this->unitDesig = $unitDesig;
+        if($class == 'supply' || $class == 'art'){
+            $this->noZoc = true;
+        }
 
     }
 

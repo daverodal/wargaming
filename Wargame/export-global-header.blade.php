@@ -36,6 +36,8 @@ You should have received a copy of the GNU General Public License
         const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
         const wargame = "<?=$wargame?>";
         const rowSvg = "<?php echo asset('vendor/wargame/genre/images/rowHex.svg');?>";
+        const imagesBase = "<?php echo asset('vendor/wargame/genre/images/');?>";
+
         const mapSymbolsBefore = "<?php echo asset('assets/unit-images/');?>/";
 
 

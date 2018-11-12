@@ -51,7 +51,10 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/universal.scss' => base_path('resources/assets/sass/vendor/wargame/universal.scss')
         ], 'common-sass');
 
-        
+        $this->publishes([
+            __DIR__.'/wargame-helpers/unit-images' => public_path('assets/unit-images'),
+        ], 'unit-images');
+
         $this->publishes([
             __DIR__.'/Genre/Images' => public_path('vendor/wargame/genre/images'),
         ], 'genre');

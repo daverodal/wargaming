@@ -43,9 +43,9 @@ class EastWest extends \Wargame\ModernLandBattle
     {
 
         parent::terrainGen($mapDoc, $terrainDoc);
-
-
-
+        $this->terrain->addAltEntranceCost('roughone', 'mech', 3);
+        $this->terrain->addAltEntranceCost('roughone', 'art', 3);
+        $this->terrain->addAltEntranceCost('roughone', 'supply', 3);
     }
 
     public static function buildUnit($data = false){
@@ -79,29 +79,32 @@ class EastWest extends \Wargame\ModernLandBattle
 
         $i = 0;
         for($i = 0; $i < 4; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiArmor.png", 11, 8, 8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", "1");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiArmor.png", 11, 8, 8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", "");
 
         }
         for($i = 0; $i < 7; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiInf.png", 5, 7, 3,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "2");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiInf.png", 5, 7, 3,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "");
 
         }
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiArt.png", 2, 1, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "art", "3", 4);
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "AirPower.svg", 2, 1, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "art", "", 4);
 
         }
         for($i = 0; $i < 2; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiInf.png", 2, 4, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "4");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiInf.png", 2, 4, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "R");
 
         }
+        for($i = 0; $i < 2; $i++){
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiInf.png", 2, 4, 2,STATUS_CAN_DEPLOY, "F", 1, "german", "inf", "F");
 
+        }
         for($i = 0; $i < 4; $i++){
             UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiSupply.png", 0, 2, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "supply", "S");
 
         }
 
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn2", "multiInf.png", 5, 7, 3,STATUS_CAN_REINFORCE, "A", 2, "german", "inf", "11 i");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn2", "multiInf.png", 5, 7, 3,STATUS_CAN_REINFORCE, "A", 2, "german", "inf", "");
 
         }
 
@@ -135,51 +138,51 @@ class EastWest extends \Wargame\ModernLandBattle
 
         }
         for($i = 0; $i < 2; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2414 + $i, "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2214 + $i, "multiInf.png",
                 2, 4, 2,STATUS_CAN_DEPLOY, "C", 1, "soviet", "inf", "$i i");
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2515, "multiArmor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2215, "multiArmor.png",
                 2, 1, 5,STATUS_READY, "C", 1, "soviet", "mech", "$i a");
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2515, "multiMech.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2215, "multiMech.png",
                 1, 2, 5,STATUS_READY, "C", 1, "soviet", "mech", "$i m");
 
         }
 
 
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2401, "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 717, "multiInf.png",
                 2, 4, 2,STATUS_READY, "C", 1, "soviet", "inf", $i);
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2502, "multiArmor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 718, "multiArmor.png",
                 2, 1, 5,STATUS_READY, "C", 1, "soviet", "mech", $i);
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2503, "multiMech.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 716, "multiMech.png",
                 1, 2, 5,STATUS_READY, "C", 1, "soviet", "mech", $i);
 
         }
 
 
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 3010, "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2121, "multiInf.png",
                 2, 4, 2,STATUS_READY, "C", 1, "soviet", "inf", $i);
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 3011, "multiArmor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2121, "multiArmor.png",
                 2, 1, 5,STATUS_READY, "C", 1, "soviet", "mech", $i);
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 3012, "multiMech.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2122, "multiMech.png",
                 1, 2, 5,STATUS_READY, "C", 1, "soviet", "mech", $i);
 
         }
@@ -271,6 +274,9 @@ class EastWest extends \Wargame\ModernLandBattle
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }
 
+            foreach($this->mapViewer as $mapView){
+                $mapView->trueRows = true;
+            }
             $this->combatRules = new SupplyCombatRules($this->force, $this->terrain);
             $this->gameRules->inject($this->moveRules, $this->combatRules, $this->force);
             $this->moveRules->enterZoc = 2;
