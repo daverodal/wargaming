@@ -37,7 +37,6 @@ let up = 0;
 document.addEventListener("DOMContentLoaded",function() {
 
     $("#showIsrael").click(function () {
-        debugger;
         up ^= 1;
         $("#israelWrapper").toggle({effect: "blind", direction: "up", complete: fixHeader});
         $(this).parent().parent().find(".WrapperLabel").click();
@@ -385,7 +384,6 @@ export class NorthVsSouthCtlr extends GameController {
             let $scope = this.$scope;
             $scope.mapSymbols = mapSymbols;
             $scope.imagesBase = imagesBase;
-            debugger;
             for(var i in mapSymbols){
                 mapSymbols[i].id = i;
 

@@ -1205,6 +1205,7 @@ class GameRules
         $this->attackingForceId = $attackingId;
         $this->defendingForceId = $defendingId;
         $this->force->setAttackingForceId($attackingId, $defendingId);
+        $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
     }
 
     function selectNextPhase($click){
