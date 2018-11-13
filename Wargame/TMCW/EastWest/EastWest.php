@@ -104,13 +104,13 @@ class EastWest extends \Wargame\ModernLandBattle
         }
 
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn2", "multiInf.png", 5, 7, 3,STATUS_CAN_REINFORCE, "A", 2, "german", "inf", "");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn2", "multiInf.png", 5, 7, 3,STATUS_CAN_REINFORCE, "G", 2, "german", "inf", "");
 
         }
 
         for($i = 2; $i <= 8; $i++){
             UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "multiSupply.png",
-                0, 1, 2,STATUS_CAN_REINFORCE, "A", $i, "german", "supply", "$i S");
+                0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "$i S");
 
         }
 
