@@ -67,7 +67,7 @@ trait DivCombatDoubleMultipleTerrain
             }
             if($terrain->terrainIs($hexpart, 'town'))
             {
-                $thisHex['town'] = 1;
+                $thisHex['town'] = 2;
                 $thisLog .= "2x defend in town<br>";
             }
             if($terrain->terrainIs($hexpart, 'roughtwo'))
