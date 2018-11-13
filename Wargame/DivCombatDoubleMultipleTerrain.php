@@ -65,12 +65,17 @@ trait DivCombatDoubleMultipleTerrain
                 $thisHex['roughone'] = 2;
                 $thisLog .= "2x defend in rough<br>";
             }
+            if($terrain->terrainIs($hexpart, 'town'))
+            {
+                $thisHex['town'] = 1;
+                $thisLog .= "2x defend in town<br>";
+            }
             if($terrain->terrainIs($hexpart, 'roughtwo'))
             {
                 $thisHex['roughtwo'] = 3;
                 $thisLog .= "3x defend in mountain<br>";
             }
-            if($battle->combatRules->allAreAttackingAcrossRiver($defId))
+            if($battle->combatRules->allAreAttackingAcrossRiver($defId) && $battle->gameRules->turn < 6)
             {
                 $thisHex['river'] = 2;
                 $thisLog .= "2x defend behind river<br>";
