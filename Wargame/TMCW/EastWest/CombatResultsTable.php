@@ -24,7 +24,7 @@ use \stdClass;
 
 class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 {
-    use \Wargame\DivCombatDoubleMultipleTerrain;
+    use \Wargame\TMCW\EastWest\DivCombatDoubleMultipleTerrain;
     use CRTResults;
     public $aggressorId;
     public $resultsName;
