@@ -1,5 +1,7 @@
 <?php
 namespace Wargame\TMCW\EastWest;
+use Wargame\Battle;
+use Wargame\Hexpart;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal

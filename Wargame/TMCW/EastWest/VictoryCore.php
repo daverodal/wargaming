@@ -460,6 +460,18 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
+    public function postStartMovingUnit($args){
+        $b = Battle::getBattle();
+        list($unit) = $args;
+        if($unit->status === STATUS_RETREATING){
+            if($unit->forceId === EastWest::GERMAN_FORCE){
+                $b->moveRules->zocBlocksRetreat = false;
+            }else{
+                $b->moveRules->zocBlocksRetreat = true;
+            }
+        }
+    }
+
     public function checkCombatSupply($args)
     {
         /* @var unit $unit */
