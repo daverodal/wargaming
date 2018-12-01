@@ -30,42 +30,13 @@ import { GameController } from "../../../../Medieval/Medieval/game-controller";
 import { Sync } from "../../wargame-helpers/Sync";
 import "lodash";
 
-export class NorthVsSouthCtlr extends GameController {
+export class Manchuria1976Ctlr extends GameController {
 
     constructor($scope, $http, sync, $sce){
 
         super($scope, $http, sync, $sce);
         this.$scope = $scope;
-    }
-
-
-    vvictory(){
-        this.sync.register("vp", (vp, data) => {
-            /* do nothing */
-        });
-        this.sync.register("victory", (victory, data) => {
-            const gvp = victory.victoryPoints[2];
-            const svp = victory.victoryPoints[1];
-            this.$scope.ratio = "";
-            this.$scope.winner = "";
-            if(gvp > 0 && svp > 0) {
-                this.$scope.ratio = Number.parseFloat(gvp / svp).toFixed(2);
-                let winner = "Soviet Decisive";
-                if (this.$scope.ratio >= .2){
-                    winner = "Soviet Marginal";
-                }
-                if (this.$scope.ratio >= .5) {
-                    winner = "German Marginal"
-                }
-                if (this.$scope.ratio >= 1.0) {
-                    winner = "German Decisive";
-                }
-                this.$scope.winner = winner;
-
-            }
-            this.$scope.victory =
-                this.$scope.vp = victory.victoryPoints;
-        });
+        debugger;
     }
 
     mapSymbols(){
@@ -97,9 +68,9 @@ export class NorthVsSouthCtlr extends GameController {
     }
 }
 
-
+debugger;
 var gameApp = angular.module('gameApp', ['ngRightClick', 'ngSanitize']);
-gameApp.controller('GameController',  NorthVsSouthCtlr);
+gameApp.controller('GameController',  Manchuria1976Ctlr);
 
 
 

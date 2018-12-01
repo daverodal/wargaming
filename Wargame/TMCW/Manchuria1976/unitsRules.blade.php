@@ -28,7 +28,7 @@
                 <img src="<?= url('assets/unit-images/multiArmor.png'); ?>" class="counter">
             </div>
 
-            <div class="unit-numbers">6 - 8</div>
+            <div class="unit-numbers">9 - 6</div>
         </div>
     </li>
     <li>
@@ -38,9 +38,9 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('assets/unit-images/multiMech.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/multiInf.png'); ?>" class="counter">
             </div>
-            <div class="unit-numbers">9 - 6</div>
+            <div class="unit-numbers">3 - 3</div>
         </div>
     </li>
     <li>
@@ -55,7 +55,7 @@
                 <img src="<?= url('assets/unit-images/multiArmor.png'); ?>" class="counter">
             </div>
 
-            <div class="unit-numbers">6 - 8</div>
+            <div class="unit-numbers">9 - 6</div>
         </div>
     </li>
     <li>
@@ -67,12 +67,51 @@
             <div class="counterWrapper">
                 <img src="<?= url('assets/unit-images/multiMech.png'); ?>" class="counter">
             </div>
-            <div class="unit-numbers">4 - 8</div>
+            <div class="unit-numbers">6 - 6</div>
+        </div>
+    </li>
+    <li>
+        This is Moterized Infantry. (soldiers in trucks that fight on foot, with small arms).
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
+             src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
+             style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
+            <div class="unitSize">xx</div>
+            <div class="counterWrapper">
+                <img src="<?= url('assets/unit-images/multiMotInf.png'); ?>" class="counter">
+            </div>
+
+            <div class="unit-numbers">4 - 6</div>
+        </div>
+    </li>
+    <li>
+        This is Artillery. (Big guns that fire from the rear, they have a range of 2 hexes).
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
+             src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
+             style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
+            <div class="unitSize">xx</div>
+            <div class="counterWrapper">
+                <img src="<?= url('assets/unit-images/multiArt.png'); ?>" class="counter">
+            </div>
+
+            <div class="unit-numbers">3 - 6</div>
+        </div>
+    </li>
+    <li>
+        This is a supply unit. (Trucks for carrying food and ammo).
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
+             src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
+             style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
+            <div class="unitSize">xx</div>
+            <div class="counterWrapper">
+                <img src="<?= url('assets/unit-images/multiMotMt.png'); ?>" class="counter">
+            </div>
+
+            <div class="unit-numbers"><span class="reduced">1 - 3</span></div>
         </div>
     </li>
     <li>
         This is Infantry. (soldiers on foot, with small arms).
-        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
+        <div class="unit <?= strtolower($forceName[2]) ?>" alt="0"
              src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
@@ -80,12 +119,12 @@
                 <img src="<?= url('assets/unit-images/multiInf.png'); ?>" class="counter">
             </div>
 
-            <div class="unit-numbers">2 - 5</div>
+            <div class="unit-numbers">3 - 3</div>
         </div>
     </li>
     <li>
         The number on the left is the combat strength. The number on the right is the movement allowance
-        <div class="unit <?= strtolower($forceName[2]) ?>" alt="0"
+        <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
@@ -98,7 +137,7 @@
         <p class="ruleComment">
             The above unit has a combat strength of 9 and a movenent allowance of 6.</p>
     </li>
-    @show
+    @endsection
 
 @section('unitRules.reducedUnits')
     <li>
@@ -130,4 +169,4 @@
 
         <div class="clear">&nbsp;</div>
     </li>
-    @show
+    @endsection

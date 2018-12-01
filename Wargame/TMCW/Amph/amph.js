@@ -190,7 +190,7 @@ x.register("moveRules", function (moveRules, data) {
             });
 
             var newId = "firstclone";
-            var width = $("#" + id).width();
+            width = $("#" + id).width();
             var height = $("#" + id).height();
 
             var MYCLONE = $("#" + id).clone(true).detach();

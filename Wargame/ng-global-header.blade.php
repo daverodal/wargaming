@@ -25,7 +25,6 @@ You should have received a copy of the GNU General Public License
 
     ?>
     <script>
-        const GAME_NAME_DUDE = "<?=$classOverride ?? '' ?>" || "SubGameController";
         <?php foreach($constants as $k => $v){
             echo "const $k = $v;\n";
         }?>

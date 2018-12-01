@@ -4,10 +4,11 @@
 
 </head>
 
-@section('unitRules')
-    @parent
-    <li class="exclusive">No units may be receive replacements in this game.
-    </li>
+
+@include('wargame::TMCW.Manchuria1976.unitsRules')
+
+@section('inner-crt')
+    @include('wargame::stdIncludes.inner-crt',['topCrt'=> $top_crt = new \Wargame\TMCW\Manchuria1976\CombatResultsTable()])
 @endsection
 
 @section('victoryConditions')
@@ -30,4 +31,4 @@
     @include('wargame::TMCW.Manchuria1976.obc')
 @endsection
 
-@include('wargame::stdIncludes.view' )
+@extends('wargame::stdIncludes.view' )

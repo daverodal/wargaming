@@ -143,7 +143,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
             $this->gameRules->addPhaseChange(RED_MECH_PHASE, BLUE_REPLACEMENT_PHASE, REPLACING_MODE, BLUE_FORCE, RED_FORCE, true);
 
         }
-        $crt = new \Wargame\TMCW\CombatResultsTable();
+        $crt = new CombatResultsTable();
         $this->combatRules->injectCrt($crt);
         $this->moveRules->noZocZocOneHex = false;
 

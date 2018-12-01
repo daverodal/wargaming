@@ -1,4 +1,3 @@
-<? $classOverride = "myGameController";?>
 @include('wargame::ng-global-header')
 <script src="{{mix("vendor/javascripts/wargame/collapse.js")}}"></script>
 @extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\Collapse\CombatResultsTable(\Wargame\TMCW\Collapse\Collapse::GERMAN_FORCE)] )

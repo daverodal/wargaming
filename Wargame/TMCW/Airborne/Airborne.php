@@ -70,36 +70,45 @@ class Airborne extends \Wargame\ModernLandBattle
         $i = 0;
 
         /* Loyalists units */
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "106", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "205", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "305", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "404", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "504", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "603", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "703", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "704", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "106", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "205", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "305", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "404", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "504", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "603", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "703", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "802", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "902", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "802", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "902", "multiGor.png",
+            $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 //        UnitFactory::create("lll", self::LOYALIST_FORCE, "deployBox", "multiGor.png", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 
-        UnitFactory::create("x", self::LOYALIST_FORCE, "1109", "multiHeavy.png", 10,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'heavy', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "1109", "multiHeavy.png",
+            10,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'heavy', $i++);
 
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "1001", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "604", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "206", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "803", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "505", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "306", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "1002", "multiGor.png", $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "1110", "multiInf.png", 7,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "1009", "multiInf.png", 7,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "1001", "multiGor.png",
+            $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "1110", "multiInf.png",
+            7,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "1009", "multiInf.png",
+            7,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'inf', $i++);
 
 
 
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "multiArmor.png", 13,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "multiArmor.png", 13,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "multiMech.png", 12,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "multiArmor.png",
+            13,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "multiArmor.png",
+            13,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "multiMech.png",
+            12,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
 
 
 

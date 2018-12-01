@@ -29,6 +29,10 @@
   width:500px;
 }
 #crt{
+  width:500px;
+  span{
+    width:38px;
+  }
   .crt-table-name{
     display:none;
   }
@@ -59,4 +63,24 @@
     color:$darkBlack;
     font-size:$stdFont;
   }
+}
+#deployBox{
+  .unit{
+    position:relative;
+    float:left;
+    margin:3px 3px 0 0;
+  }
+  h1,h2,h3,h4{
+    margin: 5px auto;
+  }
+  .unit {
+    border: solid 3px;
+    border-color: #cccccc #666666 #666666 #cccccc;
+  }
+}
+.rel-unit{
+  position:relative;
+}
+#gameImages .a-unit-wrapper{
+  position: absolute;
 }

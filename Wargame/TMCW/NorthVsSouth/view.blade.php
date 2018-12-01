@@ -1,4 +1,3 @@
-<? $classOverride = "myGameController";?>
 @include('wargame::ng-global-header')
 <script src="{{mix("vendor/javascripts/wargame/northvssouth.js")}}"></script>
 @extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\NorthVsSouth\CombatResultsTable(\Wargame\TMCW\NorthVsSouth\NorthVsSouth::SOUTHERN_FORCE)] )
@@ -17,36 +16,18 @@
     <div style="margin-right:3px;" class="left">Deploy/Staging area</div>
     <div class="clear"></div>
     <div id="deployBox">
-        <div>
-            <h4>free deploy</h4>
-        <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper" ng-if="unit.reinforceZone === 'B'" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
-            <offmap-unit unit="unit"></offmap-unit>
-        </div>
-        </div>
+
         <div class="clear"></div>
         <div>
-            <h4>fortified deploy</h4>
-            <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.reinforceZone === 'A'" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
+            <h4>Southern Units</h4>
+            <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.forceId === 2" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>
             </div>
             <div class="clear"></div>
         </div>
+
         <div>
-            <h4>Reinforce West deploy</h4>
-            <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.reinforceZone === 'C'" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
-                <offmap-unit unit="unit"></offmap-unit>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <div>
-            <h4>Reinforce North deploy</h4>
-            <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.reinforceZone === 'F'" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
-                <offmap-unit unit="unit"></offmap-unit>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <div>
-            <h4>soviet deploy</h4>
+            <h4>Northern Units</h4>
             <div ng-click="clickMe(unit.id,  $event)" class="a-unit-wrapper"  ng-if="unit.forceId === 1" ng-repeat="unit in deployUnits"  ng-style="unit.wrapperstyle">
                 <offmap-unit unit="unit"></offmap-unit>
             </div>
