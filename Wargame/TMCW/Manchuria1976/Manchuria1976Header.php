@@ -20,3 +20,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?>
+<script type="text/javascript">
+function renderUnitNumbers(unit, moveAmount) {
+
+var move = unit.maxMove - unit.moveAmountUsed;
+if (moveAmount !== undefined) {
+move = moveAmount - 0;
+}
+move = move.toFixed(2);
+move = move.replace(/\.00$/, '');
+move = move.replace(/(\.[1-9])0$/, '$1');
+var str = unit.strength;
+var reduced = unit.isReduced;
+var reduceDisp = "<span class='unit-info'>";
+    if (reduced) {
+        reduceDisp = "<span class='unit-info reduced'>";
+    }
+    var symb = unit.supplied !== false ? " - " : " <span class='reduced'>u</span> ";
+//        symb = "-"+unit.defStrength+"-";
+    var html = reduceDisp + str + symb + move + "</span>";
+    return html;
+
+
+}
+</script>

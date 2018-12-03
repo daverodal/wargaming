@@ -33,7 +33,7 @@
 <div class="dropDown" id="GRWrapper">
     <h4 class="WrapperLabel" title="Game Rules">Common Rules</h4>
 
-    <div id="GR" style="display:none">
+    <div id="GR" style="">
         <div class="close">X</div>
         <div class="game-rules">
             <H1>
