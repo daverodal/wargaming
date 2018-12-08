@@ -31,7 +31,7 @@ class Unit extends \Wargame\Unit implements \JsonSerializable
 
     function getReplacing( $hexagon)
     {
-        if(parent::getReplacing($hexagon)){
+        if(parent::getReplacing($hexagon) !== false){
             $this->forceMarch = true;
             return $this->id;
         }
