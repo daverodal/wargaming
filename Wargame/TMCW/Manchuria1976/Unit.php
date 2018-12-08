@@ -28,4 +28,13 @@ class Unit extends \Wargame\Unit implements \JsonSerializable
             $this->noZoc = true;
         }
     }
+
+    function getReplacing( $hexagon)
+    {
+        if(parent::getReplacing($hexagon)){
+            $this->forceMarch = true;
+            return $this->id;
+        }
+        return false;
+    }
 }
