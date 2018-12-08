@@ -103,10 +103,10 @@
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
             <div class="unitSize">xx</div>
             <div class="counterWrapper">
-                <img src="<?= url('assets/unit-images/multiMotMt.png'); ?>" class="counter">
+                <img src="<?= url('assets/unit-images/Supply.svg'); ?>" class="counter">
             </div>
 
-            <div class="unit-numbers"><span class="reduced">1 - 3</span></div>
+            <div class="unit-numbers"><span class="">1 - 3</span></div>
         </div>
     </li>
     <li>
