@@ -14,6 +14,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }],
     "scenarios": {
       "main": {
@@ -411,6 +415,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }],
     "scenarios": {
       "main": {
@@ -576,6 +584,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }],
     "scenarios": {
@@ -1045,6 +1057,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }],
     "scenarios": {
       "main": {
@@ -1067,6 +1083,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }],
     "scenarios": {
@@ -1139,6 +1159,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }],
     "scenarios": {
       "main": {
@@ -1171,6 +1195,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }],
     "scenarios": {
@@ -1443,6 +1471,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }],
     "scenarios": {
@@ -2169,6 +2201,10 @@
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
       "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }
     ],
     "scenarios": {
@@ -2600,6 +2636,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }
     ],
     "scenarios": {
@@ -2634,6 +2674,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }],
     "scenarios": {
@@ -3007,7 +3051,11 @@
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
       "value": false
-    }],
+    },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
+      }],
     "scenarios": {
       "main": {
         "description": "Standard Scenario"
@@ -3031,6 +3079,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }],
     "scenarios": {
@@ -3066,6 +3118,10 @@
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
       "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
+      "value": false
     }],
     "scenarios": {
       "main": {
@@ -3096,6 +3152,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
@@ -4325,6 +4385,10 @@
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
       "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
+      "value": false
     }],
     "scenarios": {
       "main": {
@@ -4513,6 +4577,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
@@ -4928,6 +4996,10 @@
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
       "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
+      "value": false
     }],
     "scenarios": {
       "main": {
@@ -5071,6 +5143,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
@@ -5290,6 +5366,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
@@ -6404,6 +6484,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }
     ],
     "scenarios": {
@@ -6545,6 +6629,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }
     ],
@@ -6709,6 +6797,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }
     ],
     "scenarios": {
@@ -6872,6 +6964,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }
     ],
@@ -7166,6 +7262,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }
     ],
     "scenarios": {
@@ -7308,6 +7408,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }
     ],
@@ -7471,6 +7575,10 @@
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
+        "value": false
       }
     ],
     "scenarios": {
@@ -7624,6 +7732,10 @@
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
+        "value": false
+      },{
+        "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+        "keyName": "fogDeploy",
         "value": false
       }
     ],
@@ -8068,6 +8180,10 @@
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
       "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
+      "value": false
     }],
     "scenarios": {
       "main": {
@@ -8353,6 +8469,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
@@ -9160,6 +9280,10 @@
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
       "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
+      "value": false
     }],
     "scenarios": {
       "main": {
@@ -9277,6 +9401,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
@@ -9417,6 +9545,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
@@ -9641,6 +9773,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
@@ -9904,6 +10040,10 @@
     "options": [{
       "name": "Experimental Cavalry Rule",
       "keyName": "fluidZoc",
+      "value": false
+    },{
+      "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
+      "keyName": "fogDeploy",
       "value": false
     }],
     "scenarios": {
