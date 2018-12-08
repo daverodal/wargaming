@@ -193,7 +193,9 @@
                 <div class="unit-wrapper" id="deployWrapper">
                     <div class="close">X</div>
                     <div style="margin-right:3px;" class="left">Deploy/Staging area</div>
+                    @section('deploy-box')
                     <div id="deployBox"></div>
+                    @show()
                     <div style="clear:both;"></div>
                 </div>
                 <div class="unit-wrapper" style="display:none;" id="deadpile">

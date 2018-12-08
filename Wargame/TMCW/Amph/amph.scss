@@ -32,6 +32,10 @@
 #map {
 }
 
+.deploy-zone-wrapper{
+  display: inline-block;
+  margin:0 15px;
+}
 
 #crt {
   width: 508px;
@@ -136,7 +140,7 @@
 }
 
 .specialHexesVP .rebelVictoryPoints {
-  @include victoryPoints(orange)
+  @include victoryPoints($rebelColor)
 }
 
 .specialHexesVP .loyalistVictoryPoints {

@@ -1,6 +1,5 @@
 <?php
 namespace Wargame\TMCW\Manchuria1976;
-use \Wargame\TMCW\UnitFactory;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -100,7 +99,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
             UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "multiArt.png", 3, 1, 6, false, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "mech");
         }
         for($i = 0;$i < 2;$i++){
-            UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "multiMotMt.png", 1, 1, 3, true, STATUS_CAN_DEPLOY, "B", 1, 2, "soviet", true, "supply");
+            UnitFactory::create("", self::SOVIET_FORCE, "deployBox", "Supply.svg", 1, 1, 3, true, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "supply");
         }
     }
     function __construct($data = null, $arg = false, $scenario = false)

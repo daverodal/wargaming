@@ -81,7 +81,7 @@ trait DivMCWCombatShiftTerrain
             $unit = $force->units[$id];
             $combatLog .= $unit->class." ".$unit->strength."<br>";
 
-            if($unit->class == "mountain"){
+            if($unit->class == "mountain" && $isMountain){
                 $combatLog .= "+1 shift Mountain Inf in Mountain<br>";
                 $isMountainInf = true;
             }

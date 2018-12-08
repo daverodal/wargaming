@@ -145,16 +145,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 
     public function incrementTurn()
     {
-        $battle = Battle::getBattle();
 
-        $theUnits = $battle->force->units;
-        foreach ($theUnits as $id => $unit) {
-
-            if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
-//                $theUnits[$id]->status = STATUS_ELIMINATED;
-                $theUnits[$id]->hexagon->parent = "deployBox";
-            }
-        }
     }
 
     public function phaseChange()
@@ -234,15 +225,13 @@ class victoryCore extends \Wargame\TMCW\victoryCore
             }
             if ($unit->forceId == Manchuria1976::SOVIET_FORCE) {
                 $bias = array(2 => true, 3 => true);
-            } else {
-                $goal = array(101, 102, 103, 104, 201, 301, 401, 501, 601, 701, 801, 901, 1001);
-                $bias = array(5 => true, 6 => true);
             }
+
             if ($b->gameRules->mode == REPLACING_MODE) {
                 if ($unit->status == STATUS_CAN_UPGRADE) {
                     $unit->supplied = $this->calcSupply($unit->id, $goal, $bias, $supplyLen);
+                    /* unsupplied units cannot receive replacements */
                     if (!$unit->supplied) {
-                        /* TODO: make this not cry  (call a method) */
                         $unit->status = STATUS_STOPPED;
                     }
                 }
@@ -254,13 +243,11 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 } else {
                     return;
                 }
-                if (!$unit->supplied && !isset($this->movementCache->$id)) {
-                    $this->movementCache->$id = $unit->maxMove;
-                    $unit->maxMove = floor($unit->maxMove / 2);
+                if (!$unit->supplied) {
+                    $unit->addAdjustment("supply", "halfMovement");
                 }
-                if ($unit->supplied && isset($this->movementCache->$id)) {
-                    $unit->maxMove = $this->movementCache->$id;
-                    unset($this->movementCache->$id);
+                if ($unit->supplied) {
+                    $unit->removeAdjustment("supply");
                 }
             }
             if ($b->gameRules->mode == COMBAT_SETUP_MODE) {
@@ -272,10 +259,8 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 if ($unit->forceId == $b->gameRules->attackingForceId && !$unit->supplied && !isset($this->combatCache->$id)) {
                     $this->combatCache->$id = true;
                     $unit->addAdjustment('supply','floorHalf');
-//                    $unit->strength = floor($unit->strength / 2);
                 }
                 if ($unit->supplied && isset($this->combatCache->$id)) {
-//                    $unit->strength = $this->combatCache->$id;
                     $unit->removeAdjustment('supply');
                     unset($this->combatCache->$id);
                 }
@@ -326,7 +311,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
     {
         $unit = $arg[0];
         $battle = Battle::getBattle();
-        if (!empty($battle->scenario->supply) === true) {
+        if (!empty($battle->scenario->supply) === true && $unit->isOnMap()) {
             if ($unit->class != 'mech') {
                 $battle->moveRules->enterZoc = "stop";
                 $battle->moveRules->exitZoc = 0;
@@ -348,6 +333,8 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
         $gameRules = $battle->gameRules;
+        $theUnits = $battle->force->units;
+
 
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
@@ -361,7 +348,23 @@ class victoryCore extends \Wargame\TMCW\victoryCore
             $gameRules->replacementsAvail = 5;
         }
 
-        /*only get special VPs' at end of first Movement Phase */
+        $gorillaCnt = 0;
+        foreach($theUnits as $unit) {
+            if(($unit->isOnMap() || $unit->hexagon->parent === 'deployBox') && $unit->class === 'gorilla'){
+                $gorillaCnt++;
+            }
+        }
+        foreach ($theUnits as $id => $unit) {
 
+            if ($unit->forceId === $attackingId && $unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && strpos($unit->hexagon->parent, "gameTurn") === 0) {
+                if($gorillaCnt < 3){
+                    $theUnits[$id]->hexagon->parent = "deployBox";
+                    $gorillaCnt++;
+                }else{
+                    $theUnits[$id]->hexagon->parent = "notUsed";
+                    $theUnits[$id]->status = STATUS_ELIMINATED;
+                }
+            }
+        }
     }
 }

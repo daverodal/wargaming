@@ -705,7 +705,7 @@ class Force extends SimpleForce
                         $status = STATUS_STOPPED;
                         /* TODO Hack Hack Hack better answer is not isReduced, but canReduce */
                         if ($unit->forceId == $this->attackingForceId &&
-                            $unit->isReduced && $unit->class !== "gorilla"
+                            $unit->isReduced && $unit->class !== "gorilla" && $unit->class !== 'supply'
                         ) {
                             $status = STATUS_CAN_UPGRADE;
                         }
