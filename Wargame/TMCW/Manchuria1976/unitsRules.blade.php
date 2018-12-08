@@ -101,7 +101,7 @@
         <div class="unit <?= strtolower($forceName[1]) ?>" alt="0"
              src="<?= url('assets/unit-images/short-red-arrow-md.png'); ?>"
              style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204); position: relative;">
-            <div class="unitSize">xx</div>
+            <div class="unitSize"></div>
             <div class="counterWrapper">
                 <img src="<?= url('assets/unit-images/Supply.svg'); ?>" class="counter">
             </div>
