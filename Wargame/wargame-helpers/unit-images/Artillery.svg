@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="18px" viewBox="0 0 32 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Artillery</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Artillery" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-5" stroke="#000000" fill-rule="nonzero" x="0.5" y="0.5" width="31" height="17"></rect>
+        <circle id="Oval" stroke="#000000" fill="#000000" fill-rule="nonzero" cx="16" cy="9" r="3"></circle>
+    </g>
+</svg>
