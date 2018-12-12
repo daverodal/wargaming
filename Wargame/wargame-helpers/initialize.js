@@ -78,7 +78,7 @@ export default function initialize() {
         $('#arrow-svg').attr('viewBox', "0 0 " + width + " " + height);
     });
 
-    $(".unit").on('click touchend', counterClick);
+    $(".unit").on('click touch', counterClick);
 
 
     $("#crt #odds span").on('click touchstart', function (event) {
