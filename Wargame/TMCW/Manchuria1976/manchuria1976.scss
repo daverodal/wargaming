@@ -41,46 +41,62 @@
   color:black;
 }
 
-.unit .counter{
-  margin-top:-5px;
-}
+.unit {
+  .unit-numbers{
+    font-family: Arimo, SansSerif;
 
-.reduced {
-  color: white;
-}
-//@import "../commonPlay";
-
-
-
-/* RULES OVERRIDES */
-
-.gameLength{
-  color:transparent;
-  font-size:0px;
-  &::before{
-    content:"12";
-    color:rgb(51,51,51);
-    color:$darkBlack;
-    font-size:$stdFont;
   }
-}
-#deployBox{
-  .unit{
+  .counter {
+    margin: 0 auto;
+    display: block;
+    width:20px;
+  }
+
+  &.supply
+  .counterWrapper{
+      margin-bottom:3px;
+      .counter{
+        margin-top:-5px;
+        width:28px;
+    }
+  }
+  .reduced {
+    color: white;
+  }
+  //@import "../commonPlay";
+
+
+
+  /* RULES OVERRIDES */
+
+  .gameLength{
+    color:transparent;
+    font-size:0px;
+    &::before{
+      content:"12";
+      color:rgb(51,51,51);
+      color:$darkBlack;
+      font-size:$stdFont;
+    }
+  }
+  #deployBox{
+    .unit{
+      position:relative;
+      float:left;
+      margin:3px 3px 0 0;
+    }
+    h1,h2,h3,h4{
+      margin: 5px auto;
+    }
+    .unit {
+      border: solid 3px;
+      border-color: #cccccc #666666 #666666 #cccccc;
+    }
+  }
+  .rel-unit{
     position:relative;
-    float:left;
-    margin:3px 3px 0 0;
   }
-  h1,h2,h3,h4{
-    margin: 5px auto;
+  #gameImages .a-unit-wrapper{
+    position: absolute;
   }
-  .unit {
-    border: solid 3px;
-    border-color: #cccccc #666666 #666666 #cccccc;
-  }
-}
-.rel-unit{
-  position:relative;
-}
-#gameImages .a-unit-wrapper{
-  position: absolute;
 }

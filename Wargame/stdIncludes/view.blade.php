@@ -265,7 +265,7 @@
 
                         @section('units')
                             @foreach ($units as $unit)
-                                <div class="unit {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
+                                <div class="unit {{ $unit['class'] }} {{$unit['nationality']}}" id="{{$unit['id']}}" alt="0">
                                     <div class="shadow-mask"></div>
                                     <div class="unitSize">{{$unit['unitSize']}}</div>
                                     <img class="arrow" src="{{asset('assets/unit-images/short-red-arrow-md.png')}}"
