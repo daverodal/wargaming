@@ -328,6 +328,11 @@
                 "nationalities": ["soviet", "prc"],
                 "description": "Standard scenario.",
                 "supply": true
+            },
+            "NewMap": {
+                "nationalities": ["soviet", "prc"],
+                "description": "New Map.",
+                "supply": true
             }
         }
     },
