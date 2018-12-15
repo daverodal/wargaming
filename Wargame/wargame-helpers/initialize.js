@@ -26,6 +26,7 @@
 import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "./global-funcs";
 import "./jquery.panzoom";
 import "jquery-ui-bundle";
+import {DR} from "../global-header";
 export default function initialize() {
     var zoomed = window.zoomed;
 
@@ -78,7 +79,7 @@ export default function initialize() {
         $('#arrow-svg').attr('viewBox', "0 0 " + width + " " + height);
     });
 
-    $(".unit").on('click touch', counterClick);
+    $(".unit").on('click', counterClick);
 
 
     $("#crt #odds span").on('click touchstart', function (event) {
@@ -88,15 +89,17 @@ export default function initialize() {
             doitCRT(col, event);
         }
     });
-    // $("#gameImages").on("click touchend", ".specialHexes", mapClick);
     $("#gameImages").on("click touchend", "svg", mapClick);
     $("#choose-option-button").on("click", doitOption);
 
     $("#nextPhaseButton").on('click', nextPhaseMouseDown);
-//    $("#gameImages" ).draggable({stop:mapStop, distance:15});
-//     $("#gameImages #map").on("click touchend", mapClick);
 
-    $("#header, #deadpile, #deployWrapper, #exitWrapper, #combinedWrapper").on('touchmove', function (event) {
+
+    $("#header, #deadpile, #exitWrapper, #combinedWrapper").on('touchmove', function (event) {
+
+        if (event.target.id === 'Time' || $(event.target).parents('#Time').length > 0) {
+            return;
+        }
         if ($(event.target).parents('#crt').length > 0) {
             return;
         }
@@ -114,49 +117,116 @@ export default function initialize() {
         }
     });
 
-    $("#Time").draggable();
+
+    DR.$time = $('#Time').panzoom({
+        cursor: "move", disableZoom: true, onPan: function (e, panzoom) {
+        },
+        onEnd: (e, panzoom) => {
+
+            let clientX = e.clientX;
+            let clientY = e.clientY;
+            if(e.originalEvent.changedTouches) {
+                clientX = e.originalEvent.changedTouches[0].clientX;
+                clientY = e.originalEvent.changedTouches[0].clientY;
+            }
+
+            var xDrag = Math.abs(clientX - DR.clickX);
+            var yDrag = Math.abs(clientY - DR.clickY);
+
+            if (xDrag > 4 || yDrag > 4) {
+                DR.dragged = true;
+            }else {
+                if (e.changedTouches && e.originalEvent && e.originalEvent.path && e.originalEvent.path[0]) {
+                    switch (e.originalEvent.path[0].id) {
+                        case 'timeBranch':
+                            timeBranch();
+                            break;
+                        case 'phase-surge':
+                            phaseSurge();
+                            break;
+                        case 'click-surge':
+                            clickSurge();
+                            break;
+                        case 'player-turn-surge':
+                            playerTurnSurge();
+                            break;
+                        case 'click-back':
+                            clickBack();
+                            break;
+                        case 'phase-back':
+                            phaseBack();
+                            break;
+                        case 'player-turn-back':
+                            playerTurnBack();
+                            break;
+                        case 'timeLive':
+                            timeLive();
+                            break;
+                    }
+                }
+            }
+        },
+        onStart: function(a,b,c,d,e){
+
+            DR.doingZoom = false;
+
+            DR.dragged = false;
+            if(c.changedTouches){
+                DR.clickX = c.changedTouches[0].clientX;
+                DR.clickY = c.changedTouches[0].clientY;
+            }else{
+                DR.clickX = c.clientX;
+                DR.clickY = c.clientY;
+            }
+        }
+    });
     DR.$crtPanZoom = $('#crt').panzoom({
         cursor: "move", disableZoom: true, onPan: function (e, panzoom) {
+        }
+    });
+
+    $('#deployBox').width(3000);
+    DR.$deployBoxZoom = $('#deployBox').panzoom({
+        cursor: "move", disableYAxis: true, duration: 2000, disableZoom: true, onPan: function (e, panzoom) {
             return;
-            var xDrag;
-            var yDrag;
-            if (event.type === 'touchmove') {
-                xDrag = Math.abs(event.touches[0].clientX - DR.clickX);
-                yDrag = Math.abs(event.touches[0].clientY - DR.clickY);
-                if (xDrag > 40 || yDrag > 40) {
-                    // DR.dragged = true;
-                }
-            } else {
-                xDrag = Math.abs(event.clientX - DR.clickX);
-                yDrag = Math.abs(event.clientY - DR.clickY);
-                if (xDrag > 4 || yDrag > 4) {
-                    // DR.dragged = true;
+        },
+        onStart: function(a,b,c,d,e){
+
+            DR.dragged = false;
+            if(c.changedTouches){
+                DR.clickX = c.changedTouches[0].clientX;
+                DR.clickY = c.changedTouches[0].clientY;
+            }else{
+                DR.clickX = c.clientX;
+                DR.clickY = c.clientY;
+            }
+
+
+
+
+        },
+        onEnd: function(a,b,c,d,e){
+            let clientX = a.clientX;
+            let clientY = a.clientY;
+            if(a.originalEvent.changedTouches) {
+                clientX = a.originalEvent.changedTouches[0].clientX;
+                clientY = a.originalEvent.changedTouches[0].clientY;
+            }
+
+            var xDrag = Math.abs(clientX - DR.clickX);
+            var yDrag = Math.abs(clientY - DR.clickY);
+
+            if (xDrag > 4 || yDrag > 4) {
+                DR.dragged = true;
+            }else{
+                if(DR.doingZoom !== true && a.originalEvent.changedTouches){
+                    counterClick(a);
                 }
             }
 
-            // DR.dragged = true;
+            DR.doingZoom = false;
         }
     });
-//
-//    DR.$crtPanZoom = $('#Time').panzoom({cursor: "move", disableZoom: true, onPan: function(e, panzoom){
-//        var xDrag;
-//        var yDrag;
-//        if(event.type === 'touchmove'){
-//            xDrag = Math.abs(event.touches[0].clientX - DR.clickX);
-//            yDrag = Math.abs(event.touches[0].clientY - DR.clickY);
-//            if(xDrag > 40 || yDrag > 40){
-//                DR.dragged = true;
-//            }
-//        }else {
-//            xDrag = Math.abs(event.clientX - DR.clickX);
-//            yDrag = Math.abs(event.clientY - DR.clickY);
-//            if(xDrag > 4 || yDrag > 4){
-//                DR.dragged = true;
-//            }
-//        }
-//
-//        DR.dragged = true;
-//    }});
 
     $("#muteButton").click(function () {
         if (!mute) {
@@ -446,7 +516,8 @@ export default function initialize() {
         DR.currentClick = click;
         x.fetch(click);
     });
-    $("#click-back").click(function () {
+
+    function clickBack(){
         let x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
@@ -455,8 +526,37 @@ export default function initialize() {
         var click = DR.currentClick;
         click--;
         x.fetch(click);
+    }
+    $("#click-back").click(function () {
+        clickBack();
     });
+    function phaseBack(){
+        let x = DR.sync;
+        x.timeTravel = true;
+        if (x.current) {
+            x.current.abort();
+        }
+        var click = DR.currentClick - 0;
+        var clicks = DR.clicks;
+        var backSearch = clicks.length - 1;
+        while (backSearch >= 0) {
+            if (clicks[backSearch] <= click) {
+                break;
+            }
+            backSearch--;
+        }
+        var gotoClick = clicks[backSearch] - 1;
+        if (gotoClick < 2) {
+            gotoClick = 2;
+        }
+        x.fetch(gotoClick);
+
+    }
     $("#phase-back").click(function () {
+        phaseBack();
+    });
+
+    function phaseSurge(){
         let x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
@@ -464,46 +564,25 @@ export default function initialize() {
         }
         var click = DR.currentClick - 0;
         var clicks = DR.clicks;
-        var backSearch = clicks.length - 1;
-        while (backSearch >= 0) {
-            if (clicks[backSearch] <= click) {
+        var forwardSearch = 0;
+
+        while (forwardSearch < clicks.length) {
+            if (clicks[forwardSearch] > (click + 1)) {
                 break;
             }
-            backSearch--;
+            forwardSearch++;
         }
-        var gotoClick = clicks[backSearch] - 1;
+        var gotoClick = clicks[forwardSearch] - 1;
         if (gotoClick < 2) {
             gotoClick = 2;
         }
         x.fetch(gotoClick);
-
-    });
-
+    }
     $("#phase-surge").click(function () {
-        let x = DR.sync;
-        x.timeTravel = true;
-        if (x.current) {
-            x.current.abort();
-        }
-        var click = DR.currentClick - 0;
-        var clicks = DR.clicks;
-        var forwardSearch = 0;
-
-        while (forwardSearch < clicks.length) {
-            if (clicks[forwardSearch] > (click + 1)) {
-                break;
-            }
-            forwardSearch++;
-        }
-        var gotoClick = clicks[forwardSearch] - 1;
-        if (gotoClick < 2) {
-            gotoClick = 2;
-        }
-        x.fetch(gotoClick);
-
+        phaseSurge();
     });
 
-    $("#player-turn-back").click(function () {
+    function playerTurnBack(){
         let x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
@@ -524,9 +603,12 @@ export default function initialize() {
         }
         x.fetch(gotoClick);
 
+    }
+    $("#player-turn-back").click(function () {
+        playerTurnSurge();
     });
 
-    $("#player-turn-surge").click(function () {
+    function playerTurnSurge(){
         let x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
@@ -547,17 +629,26 @@ export default function initialize() {
             gotoClick = 2;
         }
         x.fetch(gotoClick);
-
+    }
+    $("#player-turn-surge").click(function () {
+        playerTurnSurge();
     });
 
-    $("#click-surge").click(function () {
+    function clickSurge(){
         let x = DR.sync;
         var click = DR.currentClick;
         click++;
         x.fetch(click);
+    }
+    $("#click-surge").click(function () {
+        clickSurge();
     });
 
+
     $("#timeBranch").click(function () {
+       timeBranch();
+    });
+    function timeBranch(){
         let x = DR.sync;
         x.timeTravel = true;
         x.timeBranch = true;
@@ -567,8 +658,7 @@ export default function initialize() {
         var click = DR.currentClick;
         x.fetch(click);
         $("#TimeWrapper .WrapperLabel").click();
-    });
-
+    }
     $("#timeFork").click(function () {
         let x = DR.sync;
         x.timeTravel = true;
@@ -585,12 +675,15 @@ export default function initialize() {
         let x = DR.sync;
         x.timeTravel = false;
         x.fetch(0);
-    })
-    $("#timeLive").click(function () {
+    });
+    function timeLive(){
         let x = DR.sync;
         $("#TimeWrapper .WrapperLabel").click();
         x.timeTravel = false;
         x.fetch(0);
+    }
+    $("#timeLive").click(function () {
+        timeLive();
     });
     $("#showHexNums").on('click', function () {
         var src = $("#map").attr('src');

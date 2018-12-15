@@ -1,0 +1,21 @@
+#gameturnContainer {
+  height: 38px;
+  position: relative;
+  float: left;
+}
+
+#gameturnContainer div {
+  float: left;
+  height: 36px;
+  width: 36px;
+  border: solid black;
+  border-width: 1px 1px 1px 0;
+  font-size: 18px;
+  text-indent: 2px;
+}
+
+
+
+#gameturnContainer #turn1 {
+  border-width: 1px;
+}

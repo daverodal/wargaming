@@ -1,0 +1,103 @@
+.unit {
+  &.pushed .shadow-mask {
+    background-color: rgba(0, 0, 0, .5) !important;
+
+  }
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 32px;
+  height: 32px;
+  border: solid 3px black;
+  .shadow-mask {
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: transparent;
+    z-index: 1;
+    &.red-shadowy{
+      height:50%;
+    }
+  }
+  .unit-numbers {
+    text-align: center;
+    color: black;
+  }
+  .unitSize {
+    font-size: 9px;
+    text-align: center;
+    color: black;
+  }
+  .unit-numbers {
+    height: 12px;
+    font-size: 11px;
+  }
+  .unitOdds {
+    position: absolute;
+    background: white;
+    color:black;
+    border-radius: 10px;
+    text-align: center;
+    letter-spacing: -1px;
+    font-size: 70%;
+    z-index: 26;
+    border: 1px solid #999;
+    padding: 0 5px;
+    top: 5px;
+    left: 5px;
+    &:hover {
+      background: transparent;
+      color: transparent;
+      border-color: transparent;
+    }
+    &.altColor {
+      background: #00ec00;
+      &:hover {
+        background: transparent;
+      }
+    }
+    &.determinedColor {
+      background: red;
+      color: white;
+
+    }
+    &.pinnedColor {
+      background: #ff00ff;
+      color: white;
+      &:hover {
+        background: transparent;
+        color: transparent;
+      }
+    }
+  }
+  .shadowy {
+    background-color: rgba(0, 0, 0, .3) !important;
+
+  }
+  .red-shadowy {
+    background-color: rgba(255, 0, 0, .8) !important;
+    font-size:9px;
+    color:white;
+    height:50%;
+  }
+  .red-shadowy:hover{
+    background-color: transparent !important;
+    color:transparent;
+  }
+}
+.arrowClone, .arrow , .heading{
+  position: absolute;
+  pointer-events: none;
+  z-index: 25;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+
+.occupied {
+  display: none;
+}

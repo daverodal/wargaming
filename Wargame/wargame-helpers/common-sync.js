@@ -86,7 +86,15 @@ x.register("mapUnits", function (mapUnits, data) {
         DR.stackModel.ids[i] = {x: x, y: y};
 
         if (mapUnits[i].parent != $("#" + i).parent().attr("id")) {
-            $("#" + i).appendTo($("#" + mapUnits[i].parent));
+
+            let target;
+            if(mapUnits[i].parent === 'deployBox'){
+                 target = $("#" + mapUnits[i].parent + " .deploy-" + mapUnits[i].forceId);
+
+            }else{
+                 target = $("#" + mapUnits[i].parent);
+            }
+            $("#" + i).appendTo(target);
             if (mapUnits[i].parent != "gameImages") {
                 $("#" + i).css({top: "0"});
                 $("#" + i).css({left: "0"});

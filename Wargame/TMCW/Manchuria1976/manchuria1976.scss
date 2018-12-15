@@ -24,17 +24,38 @@
 
 @include headerColor(PRC, rgb(247, 206, 0),rgb(247, 206, 0));
 @include headerColor(Soviet, rgb(223, 88, 66),rgb(223, 88, 66));
-
+#main-viewer header#header #headerContent{
+  font-family: Montserrat, sans-serif;
+  .top-menu {
+    font-size:28px;
+    font-weight: 500;
+    .WrapperLabel {
+      font-weight: 500;
+    }
+  }
+  .dropDown .subMenu .dropDown{
+    font-weight:500;
+    font-size:22px;
+  }
+  #statusWrapper{
+    font-size:14px;
+  }
+}
 #tecImage{
   width:500px;
 }
-#crt{
-  width:500px;
+#crtWrapper #crt{
+  font-weight:600;
+  width:450px;
   span{
-    width:38px;
+    width:44px;
   }
   .crt-table-name{
     display:none;
+  }
+
+  .roll span, #odds span {
+    width: 44px;
   }
 }
 .prcVictoryPoints{
@@ -63,12 +84,6 @@
   .reduced {
     color: white;
   }
-  //@import "../commonPlay";
-
-
-
-  /* RULES OVERRIDES */
-
   .gameLength{
     color:transparent;
     font-size:0px;
@@ -95,8 +110,5 @@
   }
   .rel-unit{
     position:relative;
-  }
-  #gameImages .a-unit-wrapper{
-    position: absolute;
   }
 }

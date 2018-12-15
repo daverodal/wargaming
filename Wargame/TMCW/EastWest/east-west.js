@@ -171,9 +171,6 @@ export class NorthVsSouthCtlr extends GameController {
                 Object.keys(mapUnits[i]).forEach(function (cur, index, arr) {
                     newUnit[cur] = mapUnits[i][cur];
                 });
-                if(i == 4){
-                    console.log(mapUnits[i].x);
-                }
                 newUnit.hq = mapUnits[i].class === "hq";
                 newUnit.commandRadius = 0;
                 var range = 0;
@@ -224,10 +221,6 @@ export class NorthVsSouthCtlr extends GameController {
                     newUnit.wrapperstyle.transform = "rotate(" + mapUnits[i].facing * 60 + "deg)";
                     newUnit.wrapperstyle.top = newUnit.shift + mapUnits[i].y - 20 + "px";
                     newUnit.wrapperstyle.left = newUnit.shift + mapUnits[i].x - 20 + "px";
-                    if(i == 4){
-                        console.log(newUnit.shift);
-                        console.log(newUnit.wrapperstyle.left);
-                    }
                     /*
                      * Blaaaaaa Very non angular way to live one's life.........
                      * Should not be removed and reinserted every mouse click.

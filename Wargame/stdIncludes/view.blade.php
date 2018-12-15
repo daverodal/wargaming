@@ -60,7 +60,7 @@
             </div>
             <div id="mouseMove">mouse</div>
 
-            <div class="dropDown alpha" id="menuWrapper">
+            <div class="top-menu dropDown alpha" id="menuWrapper">
                 <h4 class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i><span
                             class="desktop">Menu</span></h4>
 
@@ -80,7 +80,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="dropDown" id="infoWrapper">
+            <div class="top-menu dropDown" id="infoWrapper">
                 <h4 class="WrapperLabel" title="Game Information"><i class="tablet">i</i><span
                             class="desktop">Info</span></h4>
                 <div id="info">
@@ -115,7 +115,7 @@
             </div>
             <?php global $results_name; ?>
 
-            <div id="crtWrapper">
+            <div class="top-menu" id="crtWrapper">
                 <h4 class="WrapperLabel" title='Combat Results Table'>
                     <span>CRT</span></h4>
 
@@ -133,12 +133,12 @@
             </div>
             @include("wargame::stdIncludes.timeTravel")
 
-            <div id="zoomWrapper">
+            <div class="top-menu" id="zoomWrapper">
                     <span id="zoom">
                         <span class="defaultZoom">1.0</span>
                     </span>
             </div>
-            <div class="dropDown">
+            <div class="top-menu dropDown">
                 <h4 class="WrapperLabel"><span class="tablet">?</span><span class="desktop">Rules</span></h4>
                 <div class="subMenu">
 
@@ -149,25 +149,25 @@
                     @show
                     @section('obc')
                     @show
+                    @section('tec')
+                        @include("wargame::Mollwitz.tec")
+                    @show
                 </div>
             </div>
 
-            <div class="dropDown">
+            <div class="top-menu dropDown">
                 <h4 class="WrapperLabel"><span class="tablet">Log</span><span class="desktop">Log</span></h4>
                 <div class="subMenu">
                     <ol id="logWrapper"></ol>
                 </div>
             </div>
 
-            @section('tec')
-                @include("wargame::Mollwitz.tec")
-            @show
 
             @section('casualty')
             @show
 
             @section('outer-units-menu')
-                <div class="dropDown" id="unitsWrapper">
+                <div class="top-menu dropDown" id="unitsWrapper">
                     <h4 class="WrapperLabel" title="Offmap Units">Units</h4>
 
                     <div id="units" class="subMenu">
@@ -194,7 +194,12 @@
                     <div class="close">X</div>
                     <div style="margin-right:3px;" class="left">Deploy/Staging area</div>
                     @section('deploy-box')
-                    <div id="deployBox"></div>
+                    <div id="deployBox">
+                        <div class="deploy-1"></div>
+                        <div class="clear"></div>
+                        <div class="deploy-2"></div>
+                        <div class="clear"></div>
+                    </div>
                     @show()
                     <div style="clear:both;"></div>
                 </div>

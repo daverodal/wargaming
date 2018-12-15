@@ -173,7 +173,7 @@
     </div>
 
     <div ng-mouseover="hoverThis(unit)" ng-mouseleave="unHoverThis(unit)" ng-click="clickMe(unit.id, $event)"
-         ng-style="unit.style" ng-repeat="unit in moveUnits track by $index" class="unit ghost-unit"
+         ng-style="unit.style" ng-repeat="unit in moveUnits track by $index" id="@{{unit.id}}" class="unit ghost-unit"
          ng-class="[unit.nationality, unit.class]">
         <ghost-unit unit="unit"></ghost-unit>
     </div>

@@ -31,6 +31,7 @@
 
 @include player(soviet,Two,$sovietColor);
 #options-pane{
+  top: 10%;
   position: absolute;
   background: lightgray;
   left:50%;
@@ -80,7 +81,7 @@
   width:auto;
 }
 
-#crt {
+#crtWrapper #crt {
   width:800px;
   #odds, .roll{
     span{

@@ -34,17 +34,18 @@
 #map {
   width:auto;
 }
-
-#crt {
-  width:800px;
-  #odds, .roll{
-    span{
-      font-size:14px;
-      width:52px;
+#crtWrapper {
+  #crt {
+    width: 800px;
+    #odds, .roll {
+      span {
+        font-size: 14px;
+        width: 52px;
+      }
     }
-  }
-  .crt-table-name{
-    display:none;
+    .crt-table-name {
+      display: none;
+    }
   }
 }
 

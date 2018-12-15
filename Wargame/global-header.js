@@ -53,24 +53,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
     var $panzoom = $('#gameContainer').panzoom({
         cursor: "normal", animate: true, maxScale: 2.0, minScale: .3, onPan: function (e, panzoom, e2, e3, e4) {
-
-            var event = e;
-            var xDrag;
-            var yDrag;
-            if (event.type === 'touchmove') {
-                // xDrag = Math.abs(event.touches[0].clientX - DR.clickX);
-                // yDrag = Math.abs(event.touches[0].clientY - DR.clickY);
-                // if (xDrag > 40 || yDrag > 40) {
-                //     // DR.dragged = true;
-                // }
-            } else {
-                // xDrag = Math.abs(event.clientX - DR.clickX);
-                // yDrag = Math.abs(event.clientY - DR.clickY);
-                // if (xDrag > 4 || yDrag > 4) {
-                //     // DR.dragged = true;
-                // }
-            }
-            // DR.dragged = true;
         },
         onZoom: function (e, p, q) {
             DR.globalZoom = q;
@@ -113,10 +95,6 @@ document.addEventListener("DOMContentLoaded",function(){
                 DR.clickX = c.clientX;
                 DR.clickY = c.clientY;
             }
-
-
-
-
         }
     });
 

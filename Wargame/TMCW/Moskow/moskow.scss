@@ -26,8 +26,13 @@
 @include player(sovietguard, Four, red);
 @include headerColor(Soviet, $sovietColor, $sovietColor);
 @include headerColor(German, $germanColor, $germanColor);
+#crtWrapper #crt{
 
-#map {
+
+  .roll span, #odds span{
+    width:44px;
+  }
+  width: 400px;
 }
 .reduced {
   color: white;
@@ -37,9 +42,6 @@
   width: auto;
 }
 
-#gameTurn6 .unit {
-  float: left;
-}
 
 .specialHexesVP .rebelVictoryPoints {
   @include victoryPoints(orange)

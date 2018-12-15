@@ -1,0 +1,35 @@
+
+.close {
+  position: absolute;
+  border: 1px solid #ccc;
+  right: 3px;
+  top: 3px;
+  color: #ccc;
+  font-size: 11px;
+  line-height: 12px;
+  cursor: pointer;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both !important;
+  float: none !important;
+}
+
+.negative{
+  color:#ECECEC;
+  background:black;
+}
+
+.big {
+  font-size: 19px;
+  font-weight: bold;
+
+}

@@ -53,7 +53,7 @@
 @endif
 
 @section('casualty')
-    <div class="dropDown"  id="CASWrapper">
+    <div class="top-menu dropDown"  id="CASWrapper">
         <h4 class="WrapperLabel" title='Casualities'>Cas</h4>
         <div id="TEC" style="display:none;">
             <div class="close">X</div>

@@ -1,0 +1,146 @@
+
+#crtWrapper {
+  float: left;
+  .WrapperLabel {
+    font-size: 30px;
+
+    margin: 0;
+    border: none;
+    -webkit-touch-callout: none;
+    cursor: pointer;
+    /*width:3em;*/
+  }
+  -webkit-touch-callout: none;
+
+
+
+  border-right: 1px solid black;
+  padding-right: 10px;
+  margin-right: 10px;
+  @media(max-width: 800px) {
+    border-right: none;
+  }
+  #crt {
+    width: 508px;
+    z-index: 40;
+    border-radius: 15px;
+    border-width: 10px;
+    border-style: solid;
+    background: #fff;
+    color: black;
+    font-weight: bold;
+    padding: 1px 5px 10px 15px;
+    box-shadow: 10px 10px 10px rgba(30, 30, 30, .85);
+    .crt-table-name {
+      color: #aaa;
+      font-style: italic;
+      margin-top: -15px;
+      font-size: 13px;
+    }
+    #crt-buttons {
+      cursor: pointer;
+      .switch-crt {
+        position: absolute;
+        right: 19px;
+        top: 3px;
+      }
+    }
+    .crt-odds {
+      font-size: 16px;
+    }
+    #crtDetails {
+      text-align: right;
+      float: left;
+      display: none;
+    }
+    h3 {
+      vertical-align: bottom;
+    }
+    span {
+      width: 32px;
+    }
+
+    #crtDetailsButton {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    font-size: 16px;
+    .col1 {
+      left: 20px;
+    }
+
+    .col2 {
+      left: 60px;
+    }
+
+    .col3 {
+      left: 100px;
+    }
+
+    .col4 {
+      left: 140px;
+    }
+
+    .col5 {
+      left: 180px;
+    }
+
+    .col6 {
+      left: 220px;
+    }
+
+    .roll, #odds {
+      padding-top: 3px;
+      margin-right: 14px
+    }
+
+    #odds {
+      background: white;
+    }
+
+    .even {
+      color: black;
+    }
+
+    .odd {
+      color: black;
+    }
+
+    .row1 {
+      top: 80px;
+
+    }
+
+    .row2 {
+      top: 100px;
+      background: white;
+    }
+
+    .row3 {
+      top: 120px;
+    }
+
+    .row4 {
+      top: 140px;
+      background: white;
+    }
+
+    .row5 {
+      top: 160px;
+    }
+
+    .row6 {
+      top: 180px;
+      background: white;
+    }
+
+    .roll span, #odds span {
+      margin-right: 10px;
+      float: left;
+      display: block;
+      width: 32px;
+    }
+  }
+}
+
+
