@@ -19,7 +19,7 @@ namespace Wargame;
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class ReinforceZone
+class ReinforceZone implements \JsonSerializable
 {
     public $hexagon;
     public $name;
@@ -29,5 +29,12 @@ class ReinforceZone
 
         $this->hexagon = new Hexagon($zoneHexagonName);
         $this->name = $zoneName;
+    }
+
+    public function jsonSerialize(){
+        $ret = new \stdClass();
+        $ret->hex = $this->hexagon->name;
+        $ret->name = $this->name;
+        return $ret;
     }
 }

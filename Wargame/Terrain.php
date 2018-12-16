@@ -37,7 +37,7 @@ class Town
     }
 }
 
-class Terrain
+class Terrain implements \JsonSerializable
 {
     public $mapUrl = false;
     public $maxCol = false;
@@ -51,6 +51,19 @@ class Terrain
     public $allAreAttackingAcrossRiverCombatEffect;
     public $specialHexes;
 
+    function jsonSerialize()
+    {
+        foreach($this->terrainArray as $topId => $top){
+            foreach($top as $id => $value){
+                if(count((array)$value) === 1 && isset($value->clear)){
+                    unset($this->terrainArray[$topId][$id]);
+                }
+            }
+        }
+        return $this;
+    }
+
+
     function __construct($data = null)
     {
 
@@ -59,7 +72,11 @@ class Terrain
                 if ($k == "reinforceZones") {
                     $this->reinforceZones = array();
                     foreach ($v as $reinforceZone) {
-                        $this->reinforceZones[] = new ReinforceZone($reinforceZone->hexagon->name, $reinforceZone->name);
+                        $hexName = $reinforceZone->hex ?? false;
+                        if($hexName === false){
+                            $hexName = $reinforceZone->hexagon->name;
+                        }
+                        $this->reinforceZones[] = new ReinforceZone($hexName, $reinforceZone->name);
                     }
                     continue;
                 }
@@ -225,9 +242,9 @@ class Terrain
                     }
                 }
             }
-            $this->terrainArray[$y][$x]->$terrainName = $terrainName;
+            $this->terrainArray[$y][$x]->$terrainName = 1;
             if($feature->blocksRanged){
-                $this->terrainArray[$y][$x]->blocksRanged = "blocksRanged";
+                $this->terrainArray[$y][$x]->blocksRanged = 1;
             }
         }
 
@@ -278,7 +295,7 @@ class Terrain
             }
             $this->terrainArray->$y->$x->$terrainName = $terrainName;
             if($feature->blocksRanged){
-                $this->terrainArray->$y->$x->blocksRanged = "blocksRanged";
+                $this->terrainArray->$y->$x->blocksRanged = 1;
             }
         }
 
@@ -313,12 +330,14 @@ class Terrain
                 $terrainCode = $this->terrainArray->$y->$x;
             }else{
                 $terrainCode = new stdClass();
+                $terrainCode->clear = 1;
             }
         }else{
             $terrainCode = 0;
         }
         if(!$terrainCode){
             $terrainCode = new stdClass();
+            $terrainCode->clear = 1;
         }
         return $terrainCode;
     }
@@ -475,7 +494,7 @@ class Terrain
         $hexpart = new Hexpart($hexsideX, $hexsideY);
         $terrainCode = $this->getTerrainCodeXY($hexsideX,$hexsideY);
         $traverseCost = 0;
-        foreach ($terrainCode as $code) {
+        foreach ($terrainCode as $code => $val) {
             $traverseCost += $this->terrainFeatures->$code->traverseCost;
         }
         return $traverseCost;
@@ -486,7 +505,7 @@ class Terrain
         $terrains = $this->getTerrainCodeXY($endX, $endY);
         $entranceCost = 0;
 
-        foreach ($terrains as $terrainFeature) {
+        foreach ($terrains as $terrainFeature => $val) {
             /* @var TerrainFeature $feature */
             if ($terrainFeature == "road" || $terrainFeature == "trail" || $terrainFeature == "secondaryroad") {
                 continue;
@@ -533,7 +552,7 @@ class Terrain
     private function getTerrainXYCost($x,$y){
         $terrainCode = $this->getTerrainCodeXY($x,$y);
         $traverseCost = 0;
-        foreach ($terrainCode as $code) {
+        foreach ($terrainCode as $code => $val) {
             $traverseCost += $this->terrainFeatures->$code->traverseCost;
         }
         return $traverseCost;
@@ -542,7 +561,7 @@ class Terrain
 
     private function getTerrainTraverseCost($terrainCode, $unit){
         $traverseCost = 0;
-        foreach ($terrainCode as $code) {
+        foreach ($terrainCode as $code => $val) {
             if(isset($this->terrainFeatures->$code)) {
 
                 $feature = $this->terrainFeatures->$code;
@@ -678,7 +697,7 @@ class Terrain
 
 
         $terrains = $this->getTerrainCodeXY($hexagon->getx(),$hexagon->getY());
-        foreach ($terrains as $terrainFeature) {
+        foreach ($terrains as $terrainFeature => $val) {
             $combatEffect += $this->terrainFeatures->$terrainFeature->combatEffect;
         }
         return $combatEffect;
@@ -697,7 +716,7 @@ class Terrain
         $hexpart = new Hexpart($hexsideX, $hexsideY);
 
         $terrains = $this->getTerrainCodeXY($hexpart->getX(),$hexpart->getY());
-        foreach ($terrains as $terrainFeature) {
+        foreach ($terrains as $terrainFeature => $val) {
 
             $combatEffect += $this->terrainFeatures->$terrainFeature->combatEffect;
         }
