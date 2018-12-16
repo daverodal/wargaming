@@ -53,8 +53,8 @@ You should have received a copy of the GNU General Public License
         DR.playerThree = "{{$forceName[3] or ''}}";
         DR.playerFour = "{{$forceName[4] or ''}}";
     </script>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">

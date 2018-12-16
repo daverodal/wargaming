@@ -27,7 +27,7 @@
         background-size:100%;
     }
 </style>
-<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
 <h2 style="text-align:center;font-size:30px;font-family:'Great Vibes'"> Welcome to</h2>
 <h1 style="text-align:center;font-size:90px;font-family:'Lobster'">Uit de Hemel</h1>

@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
    */
 ?><head>
     <meta charset="UTF-8">
-    <link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
     <style>
         body{
             background:#000;
