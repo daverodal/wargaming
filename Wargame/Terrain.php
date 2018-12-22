@@ -102,12 +102,6 @@ class Terrain implements \JsonSerializable
             $this->maxTerrainX = $x;
             $this->specialHexes = new stdClass();
 
-//            for ($x = 0; $x <= $this->maxTerrainX; $x++) {
-//                for ($y = 0; $y <= $this->maxTerrainY; $y++) {
-//                    $this->terrainArray[$y][$x] = new stdClass();
-//                }
-//
-//            }
         }
         $this->additionalRules = [];
         $rule = new stdClass();
@@ -176,13 +170,6 @@ class Terrain implements \JsonSerializable
         $this->maxTerrainY = $y + 4;/* for bottom and even odd columns */
         $this->maxTerrainX = $x;
 
-
-//        for ($x = 0; $x < $this->maxTerrainX; $x++) {
-//            for ($y = 0; $y <= $this->maxTerrainY; $y++) {
-//                $this->terrainArray[$y][$x] = new stdClass();
-//            }
-//
-//        }
     }
 
     /*
@@ -293,7 +280,7 @@ class Terrain implements \JsonSerializable
                     }
                 }
             }
-            $this->terrainArray->$y->$x->$terrainName = $terrainName;
+            $this->terrainArray->$y->$x->$terrainName = 1;
             if($feature->blocksRanged){
                 $this->terrainArray->$y->$x->blocksRanged = 1;
             }
@@ -436,69 +423,6 @@ class Terrain implements \JsonSerializable
         return $moveIsInto;
     }
 
-    /*
-     * can be private
-     */
-    private function moveIsTraverse($startHexagon, $endHexagon, $name)
-    {
-        $moveIsTraverse = false;
-        $hexsideX = ($startHexagon->getX() + $endHexagon->getX()) / 2;
-        $hexsideY = ($startHexagon->getY() + $endHexagon->getY()) / 2;
-
-        $hexpart = new Hexpart($hexsideX, $hexsideY);
-        $endHexpart = new Hexpart();
-        $endHexpart->setXY($endHexagon->getX(), $endHexagon->getY());
-
-        if (($this->terrainIs($hexpart, $name) == true)
-            && ($this->terrainIs($hexpart, $name) == true)
-            && ($this->terrainIs($endHexpart, $name) == true)
-        ) {
-            $moveIsTraverse = true;
-        }
-
-        return $moveIsTraverse;
-    }
-
-
-    private function isHexpart($hexpart, $name){
-        return $this->terrainIs($hexpart,$name);
-    }
-    /*
-     * can be private
-     */
-    private function getTerrainTraverseCostFor($name)
-    {
-
-        $traverseCost = 0;
-        if ($this->terrainFeatures->$name) {
-            return $this->terrainFeatures->$name->traverseCost;
-        }
-        return 0;
-        /*for (  $i = 0; $i < count($this->terrainFeatures); $i++ )
-        {
-            $terrainFeature = $this->terrainFeatures->$i;
-            if ($terrainFeature->name == $name)
-            {
-                $traverseCost = $terrainFeature->traverseCost;
-            }
-        }
-
-        return $traverseCost;*/
-    }
-
-    private function getTerrainTraverseMoveCost($startHexagon, $endHexagon)
-    {
-        $hexsideX = ($startHexagon->getX() + $endHexagon->getX()) / 2;
-        $hexsideY = ($startHexagon->getY() + $endHexagon->getY()) / 2;
-
-        $hexpart = new Hexpart($hexsideX, $hexsideY);
-        $terrainCode = $this->getTerrainCodeXY($hexsideX,$hexsideY);
-        $traverseCost = 0;
-        foreach ($terrainCode as $code => $val) {
-            $traverseCost += $this->terrainFeatures->$code->traverseCost;
-        }
-        return $traverseCost;
-    }
 
     private function  getTerrainEntranceMoveCostXY($endX, $endY, MovableUnit $unit)
     {
@@ -536,27 +460,6 @@ class Terrain implements \JsonSerializable
             }
         }
         return $entranceCost;
-    }
-    /*
-     * can be private
-     */
-    private function  getTerrainEntranceMoveCost($hexagon, MovableUnit $unit)
-    {
-
-        list($endX, $endY) = Hexagon::getHexPartXY($hexagon);
-        return $this->getTerrainEntranceMoveCostXY($endX, $endY, $unit);
-
-
-    }
-
-    private function getTerrainXYCost($x,$y){
-        $terrainCode = $this->getTerrainCodeXY($x,$y);
-        $traverseCost = 0;
-        foreach ($terrainCode as $code => $val) {
-            $traverseCost += $this->terrainFeatures->$code->traverseCost;
-        }
-        return $traverseCost;
-
     }
 
     private function getTerrainTraverseCost($terrainCode, $unit){

@@ -605,7 +605,7 @@ export default function initialize() {
 
     }
     $("#player-turn-back").click(function () {
-        playerTurnSurge();
+        playerTurnBack();
     });
 
     function playerTurnSurge(){

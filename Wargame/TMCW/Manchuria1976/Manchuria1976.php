@@ -72,14 +72,24 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
 
         $scenario = $this->scenario;
 
+
+
+        $cities = [703, 510, 609, 610, 519, 411, 1220, 1722, 2223, 2812];
+
+
+        foreach($cities as $city){
+            UnitFactory::create("milita", self::PRC_FORCE, $city, "Milita.svg", 1, 1, 0, true, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "milita");
+
+        }
+
         for($i = 0; $i < 30; $i++){
             UnitFactory::create("xxxx", self::PRC_FORCE, "deployBox", "Infantry.svg", 3, 1, 3, false, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "inf");
         }
         UnitFactory::create("xxx", self::PRC_FORCE, "deployBox", "Armor.svg", 6, 3, 6, false, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "mech");
         for($i = 2; $i <= 12;$i++){
-            UnitFactory::create("x", self::PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
-            UnitFactory::create("x", self::PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
-            UnitFactory::create("x", self::PRC_FORCE, "gameTurn$i", "multiGor.png", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
         }
 
 
@@ -146,5 +156,15 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
         $this->combatRules->injectCrt($crt);
         $this->moveRules->noZocZocOneHex = false;
 
+        $this->moveRules->stacking = function($mapHex, $forceId, $unit){
+
+            $nonMilitaCnt = 0;
+            foreach($mapHex->forces[$forceId] as $mKey => $mVal){
+                if($this->force->units[$mKey]->class !== "milita"){
+                    $nonMilitaCnt++;
+                }
+            }
+            return $nonMilitaCnt >= 1;
+        };
     }
 }

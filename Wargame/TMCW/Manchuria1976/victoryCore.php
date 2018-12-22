@@ -33,6 +33,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 {
     public $sovietGoal;
     public $supplyUnits;
+    public $chineseCasualities;
 
     function __construct($data)
     {
@@ -43,6 +44,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         } else {
             $this->sovietGoal = [];
             $this->supplyUnits = [];
+            $this->chineseCasualities = 0;
         }
     }
 
@@ -51,7 +53,18 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         $ret = parent::save();
         $ret->sovietGoal = $this->sovietGoal;
         $ret->supplyUnits = $this->supplyUnits;
+        $ret->chineseCasualities = $this->chineseCasualities;
         return $ret;
+    }
+
+    public function isDeterminedAble($args){
+        list($cd, $combat) = $args;
+        $b = Battle::getBattle();
+        $prc = $b->force->attackingForceId === Manchuria1976::PRC_FORCE;
+        if($prc){
+            return true;
+        }
+        return false;
     }
 
     public function specialHexChange($args)
@@ -129,11 +142,10 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($unit->forceId == Manchuria1976::PRC_FORCE) {
             $victorId = Manchuria1976::SOVIET_FORCE;
-            $vp /= 2;
-            $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
+            $this->chineseCasualities += $vp;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='sovietVictoryPoints'>+$vp vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='sovietVictoryPoints'>+$vp Casualities</span>";
         } else {
             $victorId = Manchuria1976::PRC_FORCE;
             $this->victoryPoints[$victorId] += $vp * 1.5;

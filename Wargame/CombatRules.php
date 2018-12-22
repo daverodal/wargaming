@@ -640,9 +640,12 @@ class CombatRules
 
     function useDetermined(){
         $cd = $this->currentDefender;
+        $b = Battle::getBattle();
+        $v = $b->victory;
         if($cd !== false){
-            if($this->combats->$cd->useAlt === false && $this->combats->$cd->isArtilleryOnly === false){
+            if($v->isDeterminedAble($cd, $this->combats->$cd)){
                 $this->combats->$cd->useDetermined = $this->combats->$cd->useDetermined ? false : true;
+                $this->recalcCurrentCombat();
                 return true;
             }
         }

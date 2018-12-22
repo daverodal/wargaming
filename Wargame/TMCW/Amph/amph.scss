@@ -29,6 +29,12 @@
 @include player(loyalist,Two,$loyalistColor);
 @include player(loyalGuards,Three,$loyalistGuardColor);
 
+.ranger .counterWrapper .counter{
+  width: 22px;
+  margin-left: 6px;
+  display:block;
+  margin-top: 5px;
+}
 #map {
 }
 

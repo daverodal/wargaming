@@ -352,7 +352,6 @@ class LandBattle extends \Wargame\Battle{
         $data->players = $this->players;
         $data->victory = $this->victory->save();
         $data->terrainName = $this->terrainName;
-        $data->clickHistory = $this->clickHistory;
         return $data;
     }
 
@@ -361,8 +360,6 @@ class LandBattle extends \Wargame\Battle{
 
 
         $playerId = $this->gameRules->attackingForceId;
-        $clickClass = new Click(false, $event, $id, $x, $y, $user, $playerId, $click);
-        $this->clickHistory[] = $clickClass;
 
         if ($this->players[$this->gameRules->attackingForceId] != $user) {
             if($event !== SELECT_ALT_COUNTER_EVENT && $event !== SELECT_ALT_MAP_EVENT){
@@ -414,7 +411,6 @@ class LandBattle extends \Wargame\Battle{
                 break;
 
         }
-        $clickClass->dieRoll = $this->dieRolls->getEvents();
         return $retVal;
     }
 }

@@ -28,7 +28,7 @@ use stdClass;
 
 class CombatResultsTable
 {
-    use \Wargame\DivMCWCombatShiftTerrain;
+    use DivMCWCombatShiftTerrain;
 
 //    use crtTraits
     public $combatIndexCount;
@@ -57,6 +57,15 @@ class CombatResultsTable
             array(AL,  AL,  DR2, DR2, EX, DE),
         );
 
+        $this->crts->determined = array(
+            array(AE, AE,DE,  DE, DE, DE),
+            array(AE, AE, AE, DE, DE, DE),
+            array(AE, AE, AE, AE, DE, DE),
+            array(AE, AE, AE, AE, DE, DE),
+            array(AE,  AE, AE, AE, AE, DE),
+            array(AE,  AE,  AE, AE, AE, AE),
+        );
+        
         $this->combatIndexCount = 6;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
@@ -69,6 +78,9 @@ class CombatResultsTable
 
     function getCombatResults($Die, $index, $combat)
     {
+        if($combat->useDetermined){
+            return $this->crts->determined[$Die][$index];
+        }
         return $this->crts->normal[$Die][$index];
     }
 

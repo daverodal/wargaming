@@ -73,6 +73,12 @@ class victoryCore extends \Wargame\VictoryCore
         return $ret;
     }
 
+    public function isDeterminedAble($args){
+        list($cd, $combat) = $args;
+        if($combat->useAlt === false && $combat->isArtilleryOnly === false){
+            return true;
+        }
+    }
     public function reduceUnit($args)
     {
         $unit = $args[0];

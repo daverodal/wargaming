@@ -276,4 +276,8 @@ class chawinda1965VictoryCore extends \Wargame\TMCW\victoryCore
         /*only get special VPs' at end of first Movement Phase */
         $this->victoryPoints = $vp;
     }
+
+    public function isDeterminedAble($cd, $combat){
+        return true;
+    }
 }
