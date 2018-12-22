@@ -36,7 +36,6 @@ export class Manchuria1976Ctlr extends GameController {
 
         super($scope, $http, sync, $sce);
         this.$scope = $scope;
-        debugger;
     }
 
     mapSymbols(){
@@ -68,7 +67,6 @@ export class Manchuria1976Ctlr extends GameController {
     }
 }
 
-debugger;
 var gameApp = angular.module('gameApp', ['ngRightClick', 'ngSanitize']);
 gameApp.controller('GameController',  Manchuria1976Ctlr);
 

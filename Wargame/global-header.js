@@ -23,7 +23,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import {counterClick} from "./wargame-helpers/global-funcs";
+import {counterClick, rotateUnits} from "./wargame-helpers/global-funcs";
 import {initialize, x} from "./wargame-helpers";
 var DR = window.DR;
 var zoomed = false;
@@ -73,11 +73,20 @@ document.addEventListener("DOMContentLoaded",function(){
             var xDrag = Math.abs(clientX - DR.clickX);
             var yDrag = Math.abs(clientY - DR.clickY);
 
-            if (xDrag > 4 || yDrag > 4) {
+            if (xDrag > 20 || yDrag > 20) {
                 DR.dragged = true;
             }else{
                 if(DR.doingZoom !== true && a.originalEvent.changedTouches){
-                    counterClick(a);
+                    const now = Date.now() - 0;
+                    const time = now - DR.startTime;
+                    console.log(time)
+                    if(time > 600){
+                        a.ctrlKey = false;
+                        rotateUnits(a, a.target.parentElement);
+                    }else{
+                        counterClick(a);
+
+                    }
                 }
             }
 
@@ -88,6 +97,7 @@ document.addEventListener("DOMContentLoaded",function(){
             DR.doingZoom = false;
 
             DR.dragged = false;
+            DR.startTime = Date.now() - 0;
             if(c.changedTouches){
                 DR.clickX = c.changedTouches[0].clientX;
                 DR.clickY = c.changedTouches[0].clientY;
