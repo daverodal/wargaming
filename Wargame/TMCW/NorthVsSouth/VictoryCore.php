@@ -167,23 +167,20 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $gameRules->flashMessages[] = "@show deployWrapper";
         }
 
+        if($gameRules->mode === REPLACING_MODE){
+            $gameRules->flashMessages[] = "@show deadpile";
+            $gameRules->flashMessages[] = "@hide deployWrapper";
+        }else{
+            $gameRules->flashMessages[] = "@hide deadpile";
+        }
         if ($gameRules->phase == RED_COMBAT_PHASE || $gameRules->phase == BLUE_COMBAT_PHASE) {
             $gameRules->flashMessages[] = "@hide deployWrapper";
         } else {
             $gameRules->flashMessages[] = "@hide crt";
-
-            /* Restore all un-supplied strengths */
-            $force = $battle->force;
-//            $this->restoreAllCombatEffects($force);
         }
 
         if ($gameRules->phase == BLUE_MOVE_PHASE || $gameRules->phase == RED_MOVE_PHASE) {
             $gameRules->flashMessages[] = "@hide deployWrapper";
-            if (isset($battle->force->reinforceTurns->$turn->$forceId)) {
-                $gameRules->flashMessages[] = "@show deployWrapper";
-                $gameRules->flashMessages[] = "Reinforcements have been moved to the Deploy/Staging Area";
-            }
-
 
             foreach ($theUnits as $id => $unit) {
                 $unit->railMove(false);

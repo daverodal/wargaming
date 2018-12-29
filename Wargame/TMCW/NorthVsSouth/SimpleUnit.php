@@ -150,6 +150,12 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $this->exchangeAmount = $this->getUnmodifiedStrength();
         $this->defExchangeAmount = $this->getUnmodifiedDefStrength();
         $this->tried = false;
+        if($this->reinforceZone === 'A'){
+            $this->reinforceZone = 'B';
+        }
+        if($this->reinforceZone === 'D'){
+            $this->reinforceZone = 'C';
+        }
         return true;
     }
 

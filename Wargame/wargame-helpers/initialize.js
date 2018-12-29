@@ -27,6 +27,7 @@ import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOpti
 import "./jquery.panzoom";
 import "jquery-ui-bundle";
 import {DR} from "../global-header";
+import fixHeader from './fix-header';
 export default function initialize() {
     var zoomed = window.zoomed;
 

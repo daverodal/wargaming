@@ -48,7 +48,7 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
         $this->terrain->addTerrainFeature("swamp", "swamp", "s", 1, 0, 1, true);
         $this->terrain->addAltEntranceCost("forest", 'mech', 2);
         $this->terrain->addAltEntranceCost("swamp", 'mech', 2);
-        $this->terrain->addTerrainFeature("river", "river", "v", 0, 0, 1, true);
+        $this->terrain->addTerrainFeature("river", "river", "v", 0, 1, 1, true);
 
         $this->terrain->addAltEntranceCost("clear", 'railhead', "blocked");
         $this->terrain->addAltEntranceCost("forest", 'railhead', "blocked");

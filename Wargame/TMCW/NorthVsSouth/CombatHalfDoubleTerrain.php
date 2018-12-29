@@ -54,7 +54,7 @@ trait CombatHalfDoubleTerrain
 
 
         $defenders = $combats->defenders;
-        $isForest = $isSwamp  = false;
+        $isRoughOne = $isForest = $isSwamp  = false;
 
         foreach ($defenders as $defId => $defender) {
             $hexagon = $battle->force->units[$defId]->hexagon;
@@ -62,6 +62,8 @@ trait CombatHalfDoubleTerrain
             $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
             $isForest |= $battle->terrain->terrainIs($hexpart, 'forest');
             $isSwamp |= $battle->terrain->terrainIs($hexpart, 'swamp');
+            $isRoughOne |= $battle->terrain->terrainIs($hexpart, 'roughone');
+
         }
 
         $attackStrength = 0;
@@ -107,6 +109,10 @@ trait CombatHalfDoubleTerrain
             if($isFortA && $unit->forceId === NorthVsSouth::NORTHERN_FORCE){
                 $unitDefenseStrength *= 2;
                 $combatLog .= "In Defense Zone doubled $unitDefenseStrength<br>";
+            }
+            if($isRoughOne){
+                $unitDefenseStrength *= 2;
+                $combatLog .= "In Rough Terrain doubled $unitDefenseStrength<br>";
             }
             $defenseStrength += $unitDefenseStrength;
 
