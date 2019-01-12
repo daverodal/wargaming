@@ -22,4 +22,8 @@ namespace Wargame\TMCW;
  */
 class Unit extends \Wargame\Unit implements \JsonSerializable
 {
+    public function resetUnit(){
+        parent::resetUnit();
+        $this->forceMarch = true;
+    }
 }
