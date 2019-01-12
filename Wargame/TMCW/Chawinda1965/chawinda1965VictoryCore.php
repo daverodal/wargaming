@@ -144,11 +144,14 @@ class chawinda1965VictoryCore extends \Wargame\TMCW\victoryCore
         $battle = Battle::getBattle();
         $pakistaniVP = $this->victoryPoints[PAKISTANI_FORCE];
         $indianVP = $this->victoryPoints[INDIAN_FORCE];
+        $this->winner = 0;
         if($pakistaniVP > $indianVP){
             $battle->gameRules->flashMessages[] = "Pakistani Player Wins";
+            $this->winner = PAKISTANI_FORCE;
         }
         if($pakistaniVP < $indianVP){
             $battle->gameRules->flashMessages[] = "Indian Player Wins";
+            $this->winner = INDIAN_FORCE;
         }
         if($pakistaniVP == $indianVP){
             $battle->gameRules->flashMessages[] = "Tie Game";
