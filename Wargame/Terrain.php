@@ -429,7 +429,7 @@ class Terrain implements \JsonSerializable
 
         foreach ($terrains as $terrainFeature => $val) {
             /* @var TerrainFeature $feature */
-            if ($terrainFeature == "road" || $terrainFeature == "trail" || $terrainFeature == "secondaryroad") {
+            if ($terrainFeature == "road" || $terrainFeature == "trail" || $terrainFeature == "secondaryroad" || $terrainFeature == "rr") {
                 continue;
             }
 
@@ -551,13 +551,17 @@ class Terrain implements \JsonSerializable
 
         // if road, or trail,override terrain,  add fordCost where needed
         $terrainCode = $this->getTerrainCodeXY($hexsideX,$hexsideY);
-        if($railMove && (!empty($terrainCode->road) || !empty($terrainCode->trail) || !empty($terrainCode->ford) || !empty($terrainCode->secondaryroad))){
+        if($railMove && (!empty($terrainCode->road) || !empty($terrainCode->trail) || !empty($terrainCode->ford) || !empty($terrainCode->rr) || !empty($terrainCode->secondaryroad))){
             $roadCost = $this->getTerrainCodeUnitCost('road',$unit);
             $trailCost = $this->getTerrainCodeUnitCost('trail',$unit);
             $fordCost = $this->getTerrainCodeUnitCost('ford',$unit);
             $secondaryroad = $this->getTerrainCodeUnitCost('secondaryroad',$unit);
+            $rrCost = $this->getTerrainCodeUnitCost('rr',$unit);
 
             $moveCost = $roadCost;
+            if(!empty($terrainCode->rr)){
+                $moveCost = $rrCost;
+            }
             if(!empty($terrainCode->trail)){
                 $moveCost = $trailCost;
             }

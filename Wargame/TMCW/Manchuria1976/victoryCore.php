@@ -336,6 +336,11 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 $battle->moveRules->exitZoc = 1;
                 $battle->moveRules->noZocZoc = false;
             }
+            if($unit->railMode){
+                $battle->moveRules->oneHex = false;
+            }else{
+                $battle->moveRules->oneHex = true;
+            }
         }
     }
 

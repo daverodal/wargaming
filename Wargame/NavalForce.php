@@ -114,6 +114,7 @@ class NavalForce extends Force
         $battle = Battle::getBattle();
         $victory = $battle->victory;
         $victory->preRecoverUnits();
+        $this->anyCombatsPossible = false;
         for ($id = 0; $id < count($this->units); $id++) {
             /* @var $unit NavalUnit */
             $unit = $this->units[$id];
@@ -160,6 +161,7 @@ class NavalForce extends Force
                             }
                             $status = STATUS_UNAVAIL_THIS_PHASE;
                             if ($unit->forceId == $this->attackingForceId && ($this->unitIsInRange($id))) {
+                                $this->anyCombatsPossible = true;
                                 $status = STATUS_READY;
                             }
                         }

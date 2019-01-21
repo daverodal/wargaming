@@ -29,6 +29,25 @@
 #options-pane{
   display:none;
 }
+
+#main-viewer header#header #headerContent{
+  font-family: Montserrat, sans-serif;
+  .top-menu {
+    font-size:28px;
+    font-weight: 500;
+    .WrapperLabel {
+      font-weight: 500;
+    }
+  }
+  .dropDown .subMenu .dropDown{
+    font-weight:500;
+    font-size:22px;
+  }
+  #statusWrapper{
+    font-size:14px;
+  }
+}
+
 .cool-header {
   font-size: 22px;
   background: rgba(255, 255, 255, .9);
@@ -45,13 +64,8 @@
 }
 .cool-box {
   font-size: 22px;
-  background: rgba(255, 255, 255, .9);
-  border: 1px solid #333;
-  border-radius: 15px;
-  margin: 40px;
-  padding: 20px;
-  box-shadow: 10px 10px 10px rgba(20, 20, 20, .7);
-  margin: 0 auto;
+  background: white;
+  padding: 10px;
 }
 #floatMessage{
   display:block;

@@ -24,6 +24,25 @@
 @include player(pakistani, Pakistani, $pakistaniColor);
 @include headerColor(Indian, $indianColor, $indianColor);
 @include headerColor(Pakistani, $pakistaniColor, $pakistaniColor);
+
+#main-viewer header#header #headerContent{
+  font-family: Montserrat, sans-serif;
+  .top-menu {
+    font-size:28px;
+    font-weight: 500;
+    .WrapperLabel {
+      font-weight: 500;
+    }
+  }
+  .dropDown .subMenu .dropDown{
+    font-weight:500;
+    font-size:22px;
+  }
+  #statusWrapper{
+    font-size:14px;
+  }
+}
+
 #crtWrapper #crt{
   width: 310px;
 }
