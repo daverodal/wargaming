@@ -46,7 +46,7 @@ class PhaseChange
     }
 }
 
-class GameRules
+class GameRules extends GameRulesAbs
 {
     // class references
     /* @var MoveRules $moveRules */
@@ -91,13 +91,13 @@ class GameRules
         return $data;
     }
 
-    public function inject($MoveRules, $CombatRules, $Force){
+    public function inject(MoveRules $MoveRules,CombatRules $CombatRules,Force $Force){
         $this->moveRules = $MoveRules;
         $this->combatRules = $CombatRules;
         $this->force = $Force;
     }
 
-    function __construct($MoveRules, $CombatRules, $Force, $data = null)
+    function __construct(MoveRules $MoveRules, CombatRules $CombatRules, Force $Force, $data = null)
     {
         if ($data) {
             foreach ($data as $k => $v) {
@@ -202,6 +202,17 @@ class GameRules
                     $this->flashMessages[] = "@hex ".$hex->name;
                 }
             }
+            return true;
+        }
+
+
+        if($event === SURRENDER_EVENT){
+            if($id == $battle->players[$this->attackingForceId]){
+                $player = $this->attackingForceId;
+            }else{
+                $player = $this->defendingForceId;
+            }
+            $battle->victory->surrender($player);
             return true;
         }
 

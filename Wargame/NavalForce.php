@@ -20,7 +20,7 @@ namespace Wargame;
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class NavalForce extends SimpleForce
+class NavalForce extends Force
 {
 
     function applyCRTResults($defenderId, $attackers, $combatResults, $dieRoll)

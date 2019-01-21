@@ -320,12 +320,10 @@ class Terrain implements \JsonSerializable
                 $terrainCode->clear = 1;
             }
         }else{
-            $terrainCode = 0;
+                $terrainCode = new stdClass();
+                $terrainCode->offmap = 1;
         }
-        if(!$terrainCode){
-            $terrainCode = new stdClass();
-            $terrainCode->clear = 1;
-        }
+
         return $terrainCode;
     }
 

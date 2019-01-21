@@ -75,7 +75,7 @@ class JagCore extends \Wargame\LandBattle{
                 $this->terrain = new Terrain($data->terrain);
 
             }else{
-                $this->terrain = new \stdClass();
+                $this->terrain = new Terrain();
             }
             $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
             $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);

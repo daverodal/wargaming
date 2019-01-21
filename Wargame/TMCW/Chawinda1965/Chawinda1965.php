@@ -38,20 +38,6 @@ class Chawinda1965 extends \Wargame\ModernLandBattle
 
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>2];
 
-    /* @var MapData $mapData */
-    public $mapData;
-    public $mapViewer;
-    public $force;
-    public $terrain;
-    public $moveRules;
-    public $combatRules;
-    public $gameRules;
-    public $victory;
-    public $arg;
-    public $scenario;
-
-    public $players;
-
     static function getHeader($name, $playerData, $arg = false)
     {
         global $force_name;
@@ -134,7 +120,13 @@ class Chawinda1965 extends \Wargame\ModernLandBattle
             $halfDefStrength = 5;
         }
 
-
+        if(!empty($scenario->mediumPakistani)){
+            $numPakistaniInf += 3;
+            $infStrength = 2;
+            $halfInfStrength = 2;
+            $defStrength = 5;
+            $halfDefStrength = 5;
+        }
 
 
 

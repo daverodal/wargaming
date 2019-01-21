@@ -1,9 +1,6 @@
 <?php
-namespace Wargame\Mollwitz;
+namespace Wargame;
 use \stdClass;
-use Wargame\MoveRules;
-use Wargame\CombatRules;
-use Wargame\Force;
 // gameRules.js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -24,9 +21,8 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 use \Wargame\Battle;
-use Wargame\GameRulesAbs;
 
-class HorseMusketPhaseChange
+class PhaseChange
 {
 
     public $currentPhase, $nextPhase, $nextMode, $nextAttackerId, $nextDefenderId, $phaseWillIncrementTurn;
@@ -50,7 +46,7 @@ class HorseMusketPhaseChange
     }
 }
 
-class HorseMusketGameRules extends GameRulesAbs
+class NavalGameRules
 {
     // class references
     /* @var MoveRules $moveRules */
@@ -95,20 +91,20 @@ class HorseMusketGameRules extends GameRulesAbs
         return $data;
     }
 
-    public function inject(MoveRules $MoveRules, CombatRules $CombatRules, Force $Force){
+    public function inject(MoveRules $MoveRules,CombatRules $CombatRules,Force $Force){
         $this->moveRules = $MoveRules;
         $this->combatRules = $CombatRules;
         $this->force = $Force;
     }
 
-    function __construct(MoveRules $MoveRules, CombatRules $CombatRules, Force $Force, $data = null)
+    function __construct(NavalMoveRules $MoveRules, NavalCombatRules $CombatRules, NavalForce $Force, $data = null)
     {
         if ($data) {
             foreach ($data as $k => $v) {
                 if ($k == "phaseChanges") {
                     $this->phaseChanges = array();
                     foreach ($v as $phaseChange) {
-                        $this->phaseChanges[] = new HorseMusketPhaseChange($phaseChange);
+                        $this->phaseChanges[] = new PhaseChange($phaseChange);
                     }
                     continue;
                 }
@@ -166,7 +162,7 @@ class HorseMusketGameRules extends GameRulesAbs
     function addPhaseChange($currentPhase, $nextPhase, $nextMode, $nextAttackerId, $nextDefenderId, $phaseWillIncrementTurn)
     {
 
-        $phaseChange = new HorseMusketPhaseChange();
+        $phaseChange = new PhaseChange();
         $phaseChange->set($currentPhase, $nextPhase, $nextMode, $nextAttackerId, $nextDefenderId, $phaseWillIncrementTurn);
         array_push($this->phaseChanges, $phaseChange);
     }
@@ -209,6 +205,7 @@ class HorseMusketGameRules extends GameRulesAbs
             return true;
         }
 
+
         if($event === SURRENDER_EVENT){
             if($id == $battle->players[$this->attackingForceId]){
                 $player = $this->attackingForceId;
@@ -247,7 +244,67 @@ class HorseMusketGameRules extends GameRulesAbs
 
 
 
-                case DEPLOY_MODE:
+
+
+
+            case REPLACING_MODE:
+                switch ($event) {
+
+                    case SELECT_MAP_EVENT:
+                    case SELECT_COUNTER_EVENT:
+                        if ($this->replacementsAvail <= 0) {
+                            break;
+                        }
+
+                        if($this->currentReplacement !== false && $location){
+                            $unit = $this->force->getUnit($this->currentReplacement);
+
+                            if ($unit->getReplacing($location) !== false) {
+                                $this->moveRules->stopReplacing();
+                                $this->currentReplacement = false;
+                                $this->replacementsAvail--;
+                            }
+                        }
+
+
+                        if ($this->force->attackingForceId == $this->force->units[$id]->forceId) {
+                            $unit = $this->force->getUnit($id);
+                            if ($unit->setStatus(STATUS_CAN_REPLACE)) {
+                                $this->currentReplacement = false;
+                                $this->moveRules->stopReplacing();
+                                break;
+                            }
+
+                            if ($this->force->units[$id]->status == STATUS_CAN_REPLACE) {
+                                if ($this->currentReplacement !== false && $this->currentReplacement != $id) {
+                                    $unit = $this->force->getUnit($this->currentReplacement);
+                                    $unit->setStatus(STATUS_CAN_REPLACE);
+                                }
+//                                $this->force->units[$id]->status = STATUS_CAN_REPLACE;
+                                $this->currentReplacement = $id;
+                                $this->moveRules->startReplacing($id);
+                                break;
+                            }
+                            if (isset($this->force->landForce) && $this->force->landForce && $this->force->units[$id]->status != STATUS_REPLACING && $this->force->units[$id]->status != STATUS_CAN_REINFORCE && $this->force->replace($id)) {
+                                $this->replacementsAvail--;
+                                if ($this->currentReplacement !== false) {
+                                    $this->force->units[$this->currentReplacement]->status = STATUS_REPLACED;
+                                    $this->moveRules->stopReplacing();
+
+                                    $this->currentReplacement = false;
+                                }
+                            }
+                        }
+                        break;
+
+                    case SELECT_BUTTON_EVENT:
+                        if ($this->selectNextPhase($click)) {
+                            $this->replacementsAvail = false;
+                        }
+                        break;
+                }
+                break;
+            case DEPLOY_MODE:
                 switch ($event) {
                     case KEYPRESS_EVENT:
                         $bad = true;
@@ -373,7 +430,184 @@ class HorseMusketGameRules extends GameRulesAbs
                 }
                 break;
 
-                case MOVING_MODE:
+
+            case REBASE_MODE:
+                switch ($event) {
+                    case KEYPRESS_EVENT:
+                        $c = chr($id);
+                        $bad = true;
+
+                        if($c == 'i' || $c == 'I'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                            $unit->enterImproved(true);
+                            $bad = false;
+
+                        }
+
+                        if($c == 'u' || $c == 'U'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                            $unit->exitImproved(true);
+                            $bad = false;
+
+                        }
+                        if($c == 's' || $c == 'S'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+
+                            if($unit->split() === false){
+                                return false;
+                            }
+                            $bad = false;
+
+                        }
+                        if($c == 'c' || $c == 'C'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                            $ret = $this->force->findSimilarInHex($unit);
+
+                            if(is_array($ret) && count($ret) > 0){
+                                if($unit->combine($ret[0]) === false){
+                                    return false;
+                                }
+                            }else{
+                                return false;
+
+                            }
+                            $bad = false;
+
+                        }
+                        if($bad === true){
+                            return false;
+                        }
+                    case SELECT_MAP_EVENT:
+                    case SELECT_COUNTER_EVENT:
+
+
+
+                        return $this->moveRules->moveUnit($event, $id, $location, $this->turn);
+                        break;
+
+                    case SELECT_BUTTON_EVENT:
+
+                        $this->selectNextPhase($click);
+                        break;
+                }
+                break;
+
+            case SUPPLY_MODE:
+                switch ($event) {
+                    case KEYPRESS_EVENT:
+                        $c = chr($id);
+                        $bad = true;
+
+                        if($c == 'i' || $c == 'I'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                            $unit->enterImproved(true);
+                            $bad = false;
+                        }
+
+                        if($c == 'u' || $c == 'U'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                            $unit->exitImproved(true);
+                            $bad = false;
+                        }
+                        if($c == 's' || $c == 'S'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+
+                            if($unit->split() === false){
+                                return false;
+                            }
+                            $bad = false;
+
+                        }
+                        if($c == 'c' || $c == 'C'){
+                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                            $ret = $this->force->findSimilarInHex($unit);
+
+                            if(is_array($ret) && count($ret) > 0){
+                                if($unit->combine($ret[0]) === false){
+                                    return false;
+                                }
+                            }else{
+                                return false;
+
+                            }
+                            $bad = false;
+
+                        }
+                        if($bad === true){
+                            return false;
+                        }
+                    case SELECT_MAP_EVENT:
+                    case SELECT_COUNTER_EVENT:
+
+
+
+                        return $this->moveRules->moveUnit($event, $id, $location, $this->turn);
+                        break;
+
+                    case SELECT_BUTTON_EVENT:
+
+                        $this->selectNextPhase($click);
+                        break;
+                }
+                break;
+
+
+            case COMBINING_MODE:
+
+                switch ($event) {
+
+                    case KEYPRESS_EVENT:
+                        if ($this->moveRules->anyUnitIsMoving) {
+                            $c = chr($id);
+
+                            if($c == 'c' || $c == 'C'){
+                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+
+                                $ret = $this->force->findSimilarInHex($unit);
+
+                                if(is_array($ret) && count($ret) > 0){
+                                    if($unit->combine($ret[0]) === false){
+                                        return false;
+                                    }else{
+                                        $this->moveRules->stopMove($unit, true);
+                                        return true;
+                                    }
+                                }else{
+                                    return false;
+
+                                }
+                            }
+
+                        }
+                        return false;
+
+                    case SELECT_MAP_EVENT:
+                    case SELECT_COUNTER_EVENT:
+                        if ($id === false) {
+                            return false;
+                        }
+
+                        $ret = $this->moveRules->selectUnit($event, $id, $location, $this->turn);
+                        return $ret;
+                        break;
+
+                    case SELECT_BUTTON_EVENT:
+
+//                        $this->force->getCombine();
+
+                        return $this->selectNextPhase($click);
+                        break;
+                }
+                break;
+            case MOVING_MODE:
 
                 switch ($event) {
 
@@ -553,26 +787,57 @@ class HorseMusketGameRules extends GameRulesAbs
                         }
 
                         $ret =  $this->selectNextPhase($click);
-                        if($ret === true && $this->mode === COMBINING_MODE && $numCombines === 0){
-                            $this->flashMessages[] = "No Combines Possible. Skipping to Next Phase.";
-                            $ret =  $this->selectNextPhase($click);
-                        }
-                        if($ret === true &&
-                            (($this->mode === COMBAT_SETUP_MODE && ($this->phase === BLUE_COMBAT_PHASE || $this->phase === RED_COMBAT_PHASE))
-                                || ($this->mode === FIRE_COMBAT_SETUP_MODE)
-                            ) &&
-                            $this->force->anyCombatsPossible === false){
-                            $this->flashMessages[] = "No Combats Possible.";
-                            $ret =  $this->selectNextPhase($click);
-                        }
+
                         return $ret;
                         break;
                 }
                 break;
 
 
+            case SPEED_MODE:
+
+                switch ($event) {
+
+                    /** @noinspection PhpMissingBreakStatementInspection */
+                    case KEYPRESS_EVENT:
+                        if ($this->moveRules->anyUnitIsMoving) {
+
+                            if($id == 37){
+                                if(method_exists($this->moveRules, 'slower')){
+                                    $ret = $this->moveRules->slower();
+                                    return $ret;
+                                }
+                            }
+
+
+                            if($id == 39){
+                                if(method_exists($this->moveRules, 'faster')){
+                                    $ret = $this->moveRules->faster();
+                                    return $ret;
+                                }
+                            }
+
+                        }
+                    // Fall-through
+                    case SELECT_MAP_EVENT:
+                    case SELECT_COUNTER_EVENT:
+                        if ($id === false) {
+                            return false;
+                        }
+
+                        $ret = $this->moveRules->selectUnit($event, $id, $location, $this->turn);
+                        return $ret;
+                        break;
+
+                    case SELECT_BUTTON_EVENT:
+
+                        $this->selectNextPhase($click);
+                        break;
+                }
+                break;
 
             case COMBAT_SETUP_MODE:
+            case FIRE_COMBAT_SETUP_MODE:
                 $shift = false;
                 switch ($event) {
 
@@ -656,6 +921,7 @@ class HorseMusketGameRules extends GameRulesAbs
                 break;
 
             case COMBAT_RESOLUTION_MODE:
+            case FIRE_COMBAT_RESOLUTION_MODE:
 
                 switch ($event) {
                     case KEYPRESS_EVENT:
@@ -953,7 +1219,36 @@ class HorseMusketGameRules extends GameRulesAbs
         $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
     }
 
-    function selectNextPhase($click)
+    function selectNextPhase($click){
+        $ret = $this->endPhase($click);
+
+        $numCombines = 0;
+        if (method_exists($this->force, 'getCombine')) {
+            $numCombines = $this->force->getCombine();
+        }
+
+        if ($ret === true && $this->mode === COMBINING_MODE && $numCombines === 0) {
+            $this->flashMessages[] = "No Combines Possible. Skipping to Next Phase.";
+            $ret = $this->endPhase($click);
+        }
+        do {
+            $didOne = false;
+
+            if ($ret === true &&
+                (($this->mode === COMBAT_SETUP_MODE &&
+                        ($this->phase === BLUE_COMBAT_PHASE || $this->phase === RED_COMBAT_PHASE))
+                    || ($this->mode === FIRE_COMBAT_SETUP_MODE)
+                ) &&
+                $this->force->anyCombatsPossible === false) {
+                $didOne = true;
+                $this->flashMessages[] = "No Combats Possible.";
+                $ret = $this->endPhase($click);
+            }
+        }while($didOne === true);
+        return $ret;
+
+    }
+    function endPhase($click)
     {
         global $phase_name;
         /* @var Battle $battle */

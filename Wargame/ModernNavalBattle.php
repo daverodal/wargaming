@@ -69,7 +69,7 @@ class ModernNavalBattle extends LandBattle
             if(isset($data->terrain)){
                 $this->terrain = new Terrain($data->terrain);
             }else{
-                $this->terrain = new \stdClass();
+                $this->terrain = new Terrain();
             }
             $this->moveRules = new NavalMoveRules($this->force, $this->terrain, $data->moveRules);
             $this->combatRules = new NavalCombatRules($this->force, $this->terrain, $data->combatRules);

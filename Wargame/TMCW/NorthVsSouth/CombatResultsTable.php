@@ -45,37 +45,30 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
         $this->combatIndexCount = 10;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
-        $this->combatResultCount = 5;
 
 
         $this->crts = new stdClass();
-        $this->crts->normal = new stdClass();
-        $this->crts->normal->header = array("1:4", "1:3", "1:2", "1:1","2:1","3:1","4:1","5:1","6:1", "7:1");
-        $this->crts->normal->next = '';
-        $this->crts->normal->combatIndexCount = 10;
-        $this->crts->normal->maxCombatIndex = $this->crts->normal->combatIndexCount - 1;
-        $this->crts->normal->dieOffsetHelper = -1;
-        $this->rowNum = 1;
-
-
+        $this->crts->normal = new \Wargame\CRT(array("1:4", "1:3", "1:2", "1:1","2:1","3:1","4:1","5:1","6:1", "7:1"),
+            '',10,0);
         $this->crts->normal->table = array(
-            array(AR1, DR1, DR1, EX, DE, DE, DE, DE, DE, DE),
-            array(AR2, AR1, DR1, DR1, EX, EX, DE, DE, DE, DE),
-            array(AR3, AR2, AR1, DR1, DR2, EX, EX, DE, DE, DE),
-            array(AE, AR3, AR2, DR1, DR1, DR2, EX, EX, DE, DE),
-            array(AE, AE, AX, AR1, DR1, DR2, DR3, DR3, EX, DE),
+            array(AE, AE, AE, AE, AX, AR2, DR1, DR2, DR3, DR3),
             array(AE, AE, AE, AX, AR2, DR1, DR2, DR3, DR3, EX),
+            array(AE, AE, AX, AR1, DR1, DR2, DR3, DR3, EX, DE),
+            array(AE, AR3, AR2, DR1, DR1, DR2, EX, EX, DE, DE),
+            array(AR3, AR2, AR1, DR1, DR2, EX, EX, DE, DE, DE),
+            array(AR2, AR1, DR1, DR1, EX, EX, DE, DE, DE, DE),
+            array(AR1, DR1, DR1, EX, DE, DE, DE, DE, DE, DE),
         );
 
-
-            $this->maxCombatIndex = 9;
+        $this->rowNum = 0;
+        $this->maxCombatIndex = 9;
         $this->dieSideCount = 6;
     }
 
 
     function getCombatResults($Die, $index, $combat)
     {
-        return $this->crts->normal->table[(int)$Die + $combat->dieOffset][$index];
+        return $this->crts->normal->table[(int)$Die + $combat->dieOffset  + 1][$index];
     }
 
     function getCombatIndex($attackStrength, $defenseStrength)

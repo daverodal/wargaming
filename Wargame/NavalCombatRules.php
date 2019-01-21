@@ -22,7 +22,7 @@ use \stdClass;
 
 
 
-class NavalCombatRules
+class NavalCombatRules extends CombatRules
 {
     // Class references
     /* @var Force */
@@ -597,7 +597,7 @@ class NavalCombatRules
         return $allAttackingAcrossRiver;
     }
 
-    function thisAttackAcrossRiver($defenderId, $attackerId)
+    function thisAttackAcrossRiver($defenderId, $attackerId, &$reason = '')
     {
 
 

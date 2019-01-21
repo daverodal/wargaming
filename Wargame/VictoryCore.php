@@ -55,4 +55,24 @@ class VictoryCore
             $this->saveDeploy = true;
         }
     }
+    public function surrender($args){
+        if(!$this->gameOver){
+            list($player) = $args;
+            $b = Battle::getBattle();
+            $playerData = $b::getPlayerData($b->scenario);
+            if($player === 1){
+                $this->winner = 2;
+            }else{
+                $this->winner = 1;
+            }
+            $winningPlayer = $playerData['forceName'][$this->winner];
+            $surrenderingPlayer = $playerData['forceName'][$player];
+            $this->gameOver = true;
+            $b = Battle::getBattle();
+
+            $b->gameRules->flashMessages[] = "$winningPlayer wins";
+            $b->gameRules->flashMessages[] = "$surrenderingPlayer surrenders";
+            $b->gameRules->flashMessages[] = "Game Over";
+        }
+    }
 }

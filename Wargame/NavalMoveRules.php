@@ -22,7 +22,7 @@ You should have received a copy of the GNU General Public License
    */
 
 $numWalks = 0;
-class NavalMoveRules
+class NavalMoveRules extends MoveRules
 {
 
 
@@ -36,9 +36,9 @@ class NavalMoveRules
     // local variables
     public $movingUnitId;
     public $anyUnitIsMoving;
-    protected $moves;
-    protected $path;
-    protected $moveQueue;
+    public $moves;
+    public $path;
+    public $moveQueue;
 
     /* usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
      * so 1 means you can't stack with even 1 enemy. Use a closure here to allow for air units stacking with
@@ -46,7 +46,7 @@ class NavalMoveRules
      */
     public $enemyStackingLimit = 1;
 
-    function save()
+    public function save()
     {
         $data = new stdClass();
         foreach ($this as $k => $v) {
@@ -295,7 +295,7 @@ class NavalMoveRules
                         $dirty = true;
                     }
                     if ($movingUnit->unitIsDeploying() == true) {
-                        $this->stopDeploying($id);
+                        $this->stopDeploying($movingUnit);
                         $dirty = true;
                     }
                 } else {
@@ -337,7 +337,7 @@ class NavalMoveRules
     }
 
 
-    function calcMove($id)
+    function calcMove($id, $firstHex = true)
     {
         global $numWalks;
         global $numBangs;
@@ -694,7 +694,7 @@ class NavalMoveRules
         $victory->preStopMovingUnit($movingUnit);
     }
 
-    function stopMove(MovableUnit $movingUnit)
+    function stopMove(MovableUnit $movingUnit, $force = false)
     {
         $battle = Battle::getBattle();
         $victory = $battle->victory;
@@ -1007,13 +1007,10 @@ class NavalMoveRules
         }
     }
 
-    function stopDeploying($id)
+    function stopDeploying(MovableUnit $unit)
     {
-        /* @var Unit $unit */
-        $unit = $this->force->getUnit($id);
 
         if ($unit->unitIsDeploying() == true) {
-            $unit = $this->force->getUnit($id);
             if ($unit->setStatus(STATUS_CAN_DEPLOY) == true) {
                 $this->anyUnitIsMoving = false;
                 $this->movingUnitId = NONE;

@@ -122,6 +122,7 @@ interface Cnst {
     const SELECT_ALT_COUNTER_EVENT =  10;
     const SAVE_GAME_EVENT =  11;
     const SELECT_ALT_MAP_EVENT = 12;
+    const SURRENDER_EVENT = 13;
 
 
 // unit status

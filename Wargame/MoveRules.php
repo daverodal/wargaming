@@ -78,7 +78,7 @@ class MoveRules
         return $data;
     }
 
-    function __construct($Force, $Terrain, $data = null)
+    function __construct(Force $Force, Terrain $Terrain, $data = null)
     {
         // Class references
 

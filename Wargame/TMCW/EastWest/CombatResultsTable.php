@@ -36,11 +36,8 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
         $results_name[DRL] = "DLR";
 
         $this->crts = new stdClass();
-        $this->crts->normal = new stdClass();
-        $this->crts->normal->header = array("1:3", "1:2", "1:1","2:1","3:1","4:1","5:1","6:1", "7:1", "8:1");
-        $this->crts->normal->next = '';
-        $this->crts->normal->maxCombatIndex = 10;
-        $this->rowNum = 1;
+        $this->crts->normal = new \Wargame\CRT(array("1:3", "1:2", "1:1","2:1","3:1","4:1","5:1","6:1", "7:1", "8:1"),
+            '', 10, -1);
 
         $this->crts->normal->table = array(
             array(DR1, DR1, DR4,  DR4,  DE,    DE,    DE,    DE,    DE, DE),
@@ -51,6 +48,7 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
             array(AE, AE, AR1, DR1, DR1,  DR1,       DR1,   DR2,   DR3,   DE),
         );
 
+        $this->rowNum = 1;
         $this->combatIndexCount = 10;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;

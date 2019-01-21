@@ -449,7 +449,7 @@ class Area1
                 $this->terrain = new AreaTerrain($data->terrain);
 
             }else{
-                $this->terrain = new \stdClass();
+                $this->terrain = new AreaTerrain();
             }
 
 

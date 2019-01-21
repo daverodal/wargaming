@@ -1,6 +1,6 @@
 
 
-#floatMessage {
+#floatMessage, #surrender {
   white-space: nowrap;
   position: absolute;
   display: none;
@@ -11,6 +11,24 @@
   z-index: 4;
   padding: 0 5px;
   cursor: move;
+}
+#surrender{
+  top: 100px;
+  left: 40%;
+  padding: 30px;
+  .header{
+    font-size: 30px;
+  }
+}
+
+.fancy-button{
+  font-size:16px;
+  display: inline-block;
+  border: 5px solid gray;
+  padding: 3px 5px;
+  margin: 0 5px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 #floatMessage header {

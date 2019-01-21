@@ -361,6 +361,10 @@ class LandBattle extends \Wargame\Battle{
 
         $playerId = $this->gameRules->attackingForceId;
 
+        if($event === SURRENDER_EVENT){
+            $retVal =  $this->gameRules->processEvent($event, $user, false, $click);
+            return $retVal;
+        }
         if ($this->players[$this->gameRules->attackingForceId] != $user) {
             if($event !== SELECT_ALT_COUNTER_EVENT && $event !== SELECT_ALT_MAP_EVENT){
                 return false;

@@ -64,7 +64,6 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
         $this->combatIndexCount = 6;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
-        $this->combatResultCount = 5;
     }
 
     function getCombatResults($Die, $index, $combat)

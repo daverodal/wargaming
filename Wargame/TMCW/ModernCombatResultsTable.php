@@ -28,7 +28,7 @@ use stdClass;
  */
 
 
-class ModernCombatResultsTable
+class ModernCombatResultsTable  extends \Wargame\CombatResultsTable
 {
     use \Wargame\DivMCWCombatShiftTerrain;
 
@@ -37,7 +37,6 @@ class ModernCombatResultsTable
     public $maxCombatIndex;
     public $dieSideCount;
     public $dieMaxValue;
-    public $combatResultCount;
 
     public $combatResultsTable;
     public $combatResultsHeader;
@@ -62,7 +61,6 @@ class ModernCombatResultsTable
         $this->combatIndexCount = 6;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
-        $this->combatResultCount = 5;
         /* TODO: object oriented :( */
         global $results_name;
         $results_name[DRL2] = "DRL";

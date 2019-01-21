@@ -94,7 +94,7 @@ class CombatRules
         return $data;
     }
 
-    function __construct($Force, $Terrain, $data = null)
+    function __construct(Force $Force,Terrain $Terrain, $data = null)
     {
         $this->force = $Force;
         $this->terrain = $Terrain;
@@ -130,7 +130,7 @@ class CombatRules
         }
     }
 
-    public function injectCrt($crt){
+    public function injectCrt(CombatResultsTable $crt){
         $this->crt = $crt;
     }
 

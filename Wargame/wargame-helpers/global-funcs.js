@@ -506,9 +506,63 @@ export function seeUnits() {
 export function seeBoth() {
     $(".unit").css("opacity", .3);
 }
+export function showSurrender(){
+    $("#surrender").toggle();
+}
+export function surrender(){
+    showSurrender();
+    playAudio();
+    var obj;
+    $('body').css({cursor: "wait"});
+    $(this).css({cursor: "wait"});
+//    $("#"+id+"").addClass("pushed");
+
+    $("#comlink").html('r');
+    $("#comlinkWrapper").css({background: 'red'})
+    $.ajax({
+        url: pokeUrl,
+        type: "POST",
+        data: {id: 83, wargame: wargame, event: SURRENDER_EVENT},
+        error: function (data, text, third) {
+            try {
+                obj = jQuery.parseJSON(data.responseText);
+            } catch (e) {
+//                alert(data);
+            }
+            if (obj.emsg) {
+                alert(obj.emsg);
+            }
+            playAudioBuzz();
+            $('body').css({cursor: "auto"});
+            $(this).css({cursor: "auto"});
+            $("#" + id + "").removeClass("pushed");
+            $("#comlink").html('Working');
+        },
+        success: function (data, textstatus) {
+            try {
+                var success = data.success;
+            } catch (e) {
+//                alert(data);
+            }
+            if (success) {
+                playAudioLow();
+
+            } else {
+                playAudioBuzz();
+            }
+            $('body').css({cursor: "auto"});
+            $(this).css({cursor: "auto"});
+//            $("#"+id+"").removeClass("pushed");
+
+
+        }
+    });
+    $("#mychat").attr("value", "");
+}
 
 export function doitSaveGame(msg){
     var mychat = $("#mychat").attr("value");
+    var obj;
     playAudio();
     $('body').css({cursor: "wait"});
     $(this).css({cursor: "wait"});
@@ -635,3 +689,5 @@ export function toggleFullScreen() {
 window.seeMap = seeMap;
 window.seeUnits = seeUnits;
 window.seeBoth = seeBoth;
+window.surrender = surrender;
+window.showSurrender = showSurrender;
