@@ -38,12 +38,12 @@ class Unit extends \Wargame\Unit implements \JsonSerializable
         $b = Battle::getBattle();
         $turn = $b->gameRules->turn;
                 if($this->railMode === false){
-                    if($b->terrain->terrainIsHex($this->hexagon->name, 'rr') && $this->forceId === Manchuria1976::PRC_FORCE){
+                    if($b->terrain->terrainIsHex($this->hexagon->name, 'rrp') && $this->forceId === Manchuria1976::PRC_FORCE){
                         $this->saveMaxMove = $this->maxMove;
                         $this->maxMove = 30;
                         $this->forceMarch = true;
                         $this->saveClass = $this->class;
-                        $this->class = "rrp";
+                        $this->class = "rr";
                         $this->railMode = true;
                         $b->moveRules->oneHex = false;
                         return;
