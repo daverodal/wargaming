@@ -49,7 +49,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
 
 
     function terrainGen($mapDoc, $terrainDoc){
-        $this->terrain->addTerrainFeature("rr", "rr", "r", .5, 0, 0, false);
+        $this->terrain->addTerrainFeature("rrp", "rrp", "r", .5, 0, 0, false);
 
         parent::TerrainGen($mapDoc, $terrainDoc);
         $this->terrain->addTerrainFeature("offmap", "offmap", "o", 1, 0, 0, true);
@@ -65,7 +65,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
         $this->terrain->addAltEntranceCost("clear", 'rr', "blocked");
         $this->terrain->addAltEntranceCost("mountain", 'rr', "blocked");
         $this->terrain->addAltEntranceCost('road', 'rr', 100);
-        $this->terrain->addAltEntranceCost('rr', 'rr', 1);
+        $this->terrain->addAltEntranceCost('rrp', 'rr', 1);
 
     }
 

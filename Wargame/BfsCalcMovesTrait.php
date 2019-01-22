@@ -704,7 +704,7 @@ trait BfsCalcMovesTrait
                     continue;
                 }
                 if (!($this->terrain->terrainIsHexSide($hexNum, $newHexNum, "road") || $this->terrain->terrainIsHexSide($hexNum, $newHexNum, "trail")
-                    || $this->terrain->terrainIsHexSide($hexNum, $newHexNum, "rr") || $this->terrain->terrainIsHexSide($hexNum, $newHexNum, "secondaryroad"))) {
+                    || $this->terrain->terrainIsHexSide($hexNum, $newHexNum, "rrp") || $this->terrain->terrainIsHexSide($hexNum, $newHexNum, "secondaryroad"))) {
                     continue;
                 }
 
