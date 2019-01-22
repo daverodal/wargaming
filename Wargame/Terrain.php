@@ -50,6 +50,7 @@ class Terrain implements \JsonSerializable
     public $reinforceZones;
     public $allAreAttackingAcrossRiverCombatEffect;
     public $specialHexes;
+    public $thruways;
 
     function jsonSerialize()
     {
@@ -87,6 +88,7 @@ class Terrain implements \JsonSerializable
             $this->towns = array();
             $this->terrainFeatures = new stdClass();
             $this->reinforceZones = array();
+            $this->thruways = ['road', 'secondaryroad', 'trail', 'ford', 'rr'];
 
             $this->allAreAttackingAcrossRiverCombatEffect = 1;
 
@@ -429,7 +431,7 @@ class Terrain implements \JsonSerializable
 
         foreach ($terrains as $terrainFeature => $val) {
             /* @var TerrainFeature $feature */
-            if ($terrainFeature == "road" || $terrainFeature == "trail" || $terrainFeature == "secondaryroad" || $terrainFeature == "rrp") {
+            if (in_array($terrainFeature, $this->thruways)) {
                 continue;
             }
 
@@ -559,7 +561,7 @@ class Terrain implements \JsonSerializable
             $rrCost = $this->getTerrainCodeUnitCost('rrp',$unit);
 
             $moveCost = $roadCost;
-            if(!empty($terrainCode->rr)){
+            if(!empty($terrainCode->rrp)){
                 $moveCost = $rrCost;
             }
             if(!empty($terrainCode->trail)){

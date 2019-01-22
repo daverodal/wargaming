@@ -703,8 +703,14 @@ trait BfsCalcMovesTrait
                 if (!$gnuHex) {
                     continue;
                 }
-                if (!($this->terrain->terrainIsHexSide($hexNum, $newHexNum, "road") || $this->terrain->terrainIsHexSide($hexNum, $newHexNum, "trail")
-                    || $this->terrain->terrainIsHexSide($hexNum, $newHexNum, "rrp") || $this->terrain->terrainIsHexSide($hexNum, $newHexNum, "secondaryroad"))) {
+                $good = false;
+                foreach($this->terrain->thruways as $thruway){
+                    if($this->terrain->terrainIsHexSide($hexNum, $newHexNum, $thruway)){
+                        $good = true;
+                        break;
+                    }
+                }
+                if(!$good){
                     continue;
                 }
 
