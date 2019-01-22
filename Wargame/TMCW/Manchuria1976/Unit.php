@@ -43,7 +43,7 @@ class Unit extends \Wargame\Unit implements \JsonSerializable
                         $this->maxMove = 30;
                         $this->forceMarch = true;
                         $this->saveClass = $this->class;
-                        $this->class = "rr";
+                        $this->class = "rrp";
                         $this->railMode = true;
                         $b->moveRules->oneHex = false;
                         return;
