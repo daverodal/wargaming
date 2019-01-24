@@ -88,7 +88,6 @@ class Terrain implements \JsonSerializable
             $this->towns = array();
             $this->terrainFeatures = new stdClass();
             $this->reinforceZones = array();
-            $this->thruways = ['road', 'secondaryroad', 'trail', 'ford', 'rr'];
 
             $this->allAreAttackingAcrossRiverCombatEffect = 1;
 
@@ -105,6 +104,8 @@ class Terrain implements \JsonSerializable
             $this->specialHexes = new stdClass();
 
         }
+        $this->thruways = ['road', 'secondaryroad', 'trail', 'ford', 'rr'];
+
         $this->additionalRules = [];
         $rule = new stdClass();
         $rule->startHex = "elevation1";
