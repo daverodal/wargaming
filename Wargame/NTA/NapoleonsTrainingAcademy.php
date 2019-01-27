@@ -63,22 +63,6 @@ class NapoleonsTrainingAcademy extends \Wargame\ModernLandBattle{
     function save()
     {
         $data = parent::save();
-        $data->mapData = $this->mapData;
-        $data->mapViewer = $this->mapViewer;
-        $data->moveRules = $this->moveRules->save();
-        $data->force = $this->force;
-        $data->terrain = $this->terrain;
-        $data->gameRules = $this->gameRules->save();
-        $data->combatRules = $this->combatRules->save();
-        $data->players = $this->players;
-        $data->victory = $this->victory->save();
-        $data->terrainName = $this->terrainName;
-        $data->genTerrain = $this->genTerrain;
-        $data->arg = $this->arg;
-        $data->scenario = $this->scenario;
-        if($this->genTerrain){
-            $data->terrain = $this->terrain;
-        }
         return $data;
     }
 
