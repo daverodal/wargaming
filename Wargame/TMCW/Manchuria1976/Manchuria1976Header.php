@@ -31,7 +31,7 @@ move = move.toFixed(2);
 move = move.replace(/\.00$/, '');
 move = move.replace(/(\.[1-9])0$/, '$1');
 var str = unit.strength;
-var reduced = unit.isReduced && unit.class !== 'gorilla' && unit.class !== 'supply' && unit.class !== 'milita';
+var reduced = unit.isReduced && unit.class !== 'gorilla' && unit.class !== 'supply' && unit.class !== 'militia';
 var reduceDisp = "<span class='unit-info'>";
     if (reduced) {
         reduceDisp = "<span class='unit-info reduced'>";

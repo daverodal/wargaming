@@ -44,6 +44,8 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
     {
         $data = parent::save();
         $data->specialHexA = $this->specialHexA;
+        $data->specialHexB = $this->specialHexB;
+        $data->specialHexC = $this->specialHexC;
         return $data;
     }
 
@@ -85,7 +87,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
 
 
         foreach($cities as $city){
-            UnitFactory::create("milita", self::PRC_FORCE, $city, "Milita.svg", 1, 1, 0, true, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "milita");
+            UnitFactory::create("Militia", self::PRC_FORCE, $city, "Militia.svg", 1, 1, 0, true, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "militia");
 
         }
 
@@ -126,6 +128,8 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
 
         if ($data) {
             $this->specialHexA = $data->specialHexA;
+            $this->specialHexB = $data->specialHexB;
+            $this->specialHexC = $data->specialHexC;
         } else {
             $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\Manchuria1976\\victoryCore");
 
@@ -167,13 +171,13 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
 
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){
 
-            $nonMilitaCnt = 0;
+            $nonMilitiaCnt = 0;
             foreach($mapHex->forces[$forceId] as $mKey => $mVal){
-                if($this->force->units[$mKey]->class !== "milita"){
-                    $nonMilitaCnt++;
+                if($this->force->units[$mKey]->class !== "militia"){
+                    $nonMilitiaCnt++;
                 }
             }
-            return $nonMilitaCnt >= 1;
+            return $nonMilitiaCnt >= 1;
         };
     }
 }
