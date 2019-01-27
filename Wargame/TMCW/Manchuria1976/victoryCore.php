@@ -89,6 +89,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 $this->victoryPoints[Manchuria1976::SOVIET_FORCE] -= 10;
                 $this->victoryPoints[Manchuria1976::PRC_FORCE] += 10;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='prcVictoryPoints'>-10 Soviet +10 PRC vp</span>";
+                $this->resurrectMilitia($mapHexName);
             }
         }
         if(in_array($mapHexName, $battle->specialHexB)){
@@ -121,7 +122,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 
     public function postEliminated($args){
         list($unit) = $args;
-        if($unit->class === "gorilla"){
+        if($unit->class === "gorilla" || $unit->class === "militia"){
             $unit->hexagon->parent = "undeadpile";
         }
     }
@@ -129,7 +130,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
     public function resurrectMilitia($city){
         $b = Battle::getBattle();
         foreach($b->force->units as $k => $unit){
-            if($unit->status === STATUS_ELIMINATED){
+            if($unit->hexagon->parent === 'undeadpile'){
                 if($unit->forceId === Manchuria1976::PRC_FORCE){
                     if($unit->class === 'militia'){
                         $unit->status = STATUS_READY;
@@ -151,9 +152,8 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 if (!$mapHex->isOccupied(Manchuria1976::SOVIET_FORCE)) {
                     $victory = $b->victory;
                     $m->specialHexesChanges->$city = true;
-                    $victory->specialHexChange($city, Manchuria1976::PRC_FORCE);
                     $m->alterSpecialHex($city, Manchuria1976::PRC_FORCE);
-                    $this->resurrectMilitia($city);
+                    $victory->specialHexChange($city, Manchuria1976::PRC_FORCE);
                 }
             }
         }

@@ -30,7 +30,7 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
 {
     use DivMCWCombatShiftTerrain;
 
-//    use crtTraits
+    use CRTResults;
     public $combatIndexCount;
     public $maxCombatIndex;
     public $dieSideCount;

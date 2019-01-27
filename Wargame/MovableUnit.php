@@ -197,8 +197,8 @@ class MovableUnit{
                 if ($mapData->specialHexes->$mapHexName >= 0 && $mapData->specialHexes->$mapHexName != $this->forceId) {
                     $victory = $battle->victory;
                     $mapData->specialHexesChanges->$mapHexName = true;
-                    $victory->specialHexChange($mapHexName, $this->forceId);
                     $mapData->alterSpecialHex($mapHexName, $this->forceId);
+                    $victory->specialHexChange($mapHexName, $this->forceId);
                 }
             }
             if ($mapData->getMapSymbols($mapHexName) !== false) {
