@@ -303,7 +303,7 @@
         "path": "TMCW",
         "genre": "20'th Century Games",
         "fileName": "\\Wargame\\TMCW\\RetreatOne\\RetreatOne",
-        "description":"Hypothetical battle taking place in Northern Hemisphere of Mars, 10,000 years before intelligent life developed on Earth",
+        "description":"Hypothetical battle",
         "params":{
             "commandControl":true
         },
