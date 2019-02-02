@@ -396,7 +396,7 @@ be moved into that hex. This must be done before the next attack is resolved. Ar
     <h4>Game Design:</h4>
     Lance Runolfsson
     <h4>Graphics and Rules:</h4>
-    <site>Lance Runolfsson</site>
+    Lance Runolfsson
     <h4>HTML 5 Version:</h4>
     David M. Rodal
 </div>

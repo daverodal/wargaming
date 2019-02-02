@@ -1,0 +1,347 @@
+/**
+ *
+ * Copyright 2012-2015 David Rodal
+ * User: David Markarian Rodal
+ * Date: 3/8/15
+ * Time: 5:48 PM
+ *
+ *  This program is free software; you can redistribute it
+ *  and/or modify it under the terms of the GNU General Public License
+ *  as published by the Free Software Foundation;
+ *  either version 2 of the License, or (at your option) any later version
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#unitsWrapper{
+}
+.blueUnit, .blue, .playerBlue {
+  background-color: rgb(132, 181, 255);
+  border-color: rgb(132, 181, 255);
+}
+
+.blueVP, .playerBlueFace{
+  color: rgb(132, 181, 255);
+  background: transparent;
+  opacity: 1.0;
+}
+
+.redVP, .playerRedFace {
+  color: rgb(239, 115, 74);
+  background: transparent;
+}
+
+.russian {
+  background-color: gold;
+}
+
+.armyGreen, .russian {
+  background-color: rgb(148, 189, 74);
+}
+
+.red {
+  background-color: rgb(239, 115, 74);
+}
+
+.lightYellow {
+  background-color: rgb(255, 239, 156);
+  border-color: rgb(255, 239, 156);
+}
+
+.flesh {
+  background-color: rgb(239, 198, 156);
+}
+
+.brightRed, .british, .playerRed {
+  background-color: rgb(223, 88, 66);
+  border-color: rgb(223, 88, 66);
+}
+.unit .counterWrapper{
+  height:16px;
+  margin-top:-5px
+}
+.unit .counter{
+  width:32px;
+  margin-top:0px;
+}
+.unit .unit-numbers{
+  font-size:12px;
+  font-weight:bold;
+  margin-top:-3px;
+}
+#OBC {
+}
+
+#OBC {
+  background: white;
+  width: 514px;
+}
+
+
+#crt {
+  width: 476px;
+}
+
+.tableWrapper.alt {
+  display: none;
+}
+
+.red div {
+  color: black;
+}
+
+.russian div {
+  color: black;
+}
+
+#GR {
+  width: 600px;
+}
+
+
+#requiredCombats {
+  background: white;
+  padding: 0 0px;
+  font-family: sans-serif;
+}
+
+#altTable, #mainTable {
+  position: absolute;
+  right: 18px;
+  text-decoration: underline;
+}
+#clock{
+  margin-left:.2em;
+}
+#crt-wrapper {
+  .wrapper-label {
+    margin: 0;
+    border: none;
+    -webkit-touch-callout: none;
+    cursor: pointer;
+    /*width:3em;*/
+  }
+  -webkit-touch-callout: none;
+  padding-right: 10px;
+  margin-right: 10px;
+  @media(max-width: 800px) {
+    border-right: none;
+  }
+  #crt {
+    width: 508px;
+    z-index: 40;
+    border-radius: 15px;
+    border-width: 10px;
+    border-style: solid;
+    background: #fff;
+    color: black;
+    font-weight: bold;
+    padding: 1px 5px 10px 15px;
+    box-shadow: 10px 10px 10px rgba(30, 30, 30, .85);
+    .crt-table-name {
+      color: #aaa;
+      font-style: italic;
+      margin-top: -15px;
+      font-size: 13px;
+    }
+    #crt-buttons {
+      cursor: pointer;
+      .switch-crt {
+        position: absolute;
+        right: 19px;
+        top: 3px;
+      }
+    }
+    .crt-odds {
+      font-size: 16px;
+    }
+    #crtDetails {
+      text-align: right;
+      float: left;
+      display: none;
+    }
+    h3 {
+      vertical-align: bottom;
+    }
+    span {
+      width: 32px;
+    }
+
+    #crtDetailsButton {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    font-size: 16px;
+    .col1 {
+      left: 20px;
+    }
+
+    .col2 {
+      left: 60px;
+    }
+
+    .col3 {
+      left: 100px;
+    }
+
+    .col4 {
+      left: 140px;
+    }
+
+    .col5 {
+      left: 180px;
+    }
+
+    .col6 {
+      left: 220px;
+    }
+
+    .roll, #odds {
+      padding-top: 3px;
+      margin-right: 14px
+    }
+
+    #odds {
+      background: white;
+    }
+
+    .even {
+      color: black;
+    }
+
+    .odd {
+      color: black;
+    }
+
+    .row1 {
+      top: 80px;
+
+    }
+
+    .row2 {
+      top: 100px;
+      background: white;
+    }
+
+    .row3 {
+      top: 120px;
+    }
+
+    .row4 {
+      top: 140px;
+      background: white;
+    }
+
+    .row5 {
+      top: 160px;
+    }
+
+    .row6 {
+      top: 180px;
+      background: white;
+    }
+
+    .roll span, #odds span {
+      margin-right: 10px;
+      float: left;
+      display: block;
+      width: 32px;
+    }
+  }
+}
+
+
+#time-wrapper {
+  -webkit-touch-callout: none;
+  .WrapperLabel {
+    .small {
+      font-size: 10px;
+    }
+    margin: 0;
+    border: none;
+    -webkit-touch-callout: none;
+    cursor: pointer;
+    /*width:3em;*/
+  }
+
+  #Time {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    padding: 10px;
+    font-weight: 500;
+    .go-buttons{
+      margin-bottom:20px;
+    }
+    .timetime-button-wrapper{
+      &.alpha{
+        border-right: 1px solid #333;
+      }
+      @extend .text-center;
+    }
+    background: white;
+    width: 600px;
+    cursor: move;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 10px 10px 10px rgba(30, 30, 30, .85);
+    position: absolute !important;
+    z-index: 30;
+    display: none;
+    #phaseClicks {
+      display: none;
+      cursor: pointer;
+      .newPhase {
+        min-width: 10px;
+        height: 40px;
+        border-left: 1px solid red;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+      .newTick {
+        text-align: center;
+        margin-top: 10px;
+        width: 15px;
+        height: 10px;
+        border-left: 1px solid black;
+        display: inline-block;
+        font-size: 10px;
+        &.tickShim {
+          width: 0px;
+        }
+        &:hover {
+          background: #999;
+          color: #fff;
+        }
+        &.activeTick {
+          background-color: #666;
+          a {
+            background-color: #666;
+            color: white;
+          }
+        }
+
+      }
+    }
+    .time-button{
+      min-width:50px;
+    }
+    .fancy-time-button{
+      font-size:16px;
+      display: inline-block;
+      border: 5px solid gray;
+      padding: 3px 5px;
+      margin: 0 5px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+}
+@import "vue-unit";

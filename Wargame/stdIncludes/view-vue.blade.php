@@ -32,10 +32,9 @@
     <header id="header">
         <div id="preHeaderContent"></div>
         <div id="headerContent">
-            <div id="mouseMove">mouse</div>
 
-            <div class="dropDown alpha" id="menuWrapper">
-                <h4 class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i><span class="desktop">Menu</span></h4>
+            <div class=" btn-group dropDown alpha" id="menuWrapper">
+                <button class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i><span class="desktop">Menu</span></button>
 
                 <div id="menu">
                     <div class="close">X</div>
@@ -53,8 +52,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="dropDown" id="infoWrapper">
-                <h4 class="WrapperLabel" title="Game Information"><i class="tablet">i</i><span class="desktop">Info</span></h4>
+            <div class="btn-group dropDown" id="infoWrapper">
+                <button class="WrapperLabel" title="Game Information"><i class="tablet">i</i><span class="desktop">Info</span></button>
                 <div id="info">
                     <div class="close">X</div>
                     <ul>
@@ -87,9 +86,9 @@
             </div>
             <?php global $results_name; ?>
 
-            <div id="crtWrapper">
-                <h4 class="WrapperLabel" title='Combat Results Table'>
-                    <span>CRT</span></h4>
+            <div class="btn" id="crt-wrapper">
+                <button class="wrapper-label" title='Combat Results Table'>
+                    <span>CRT</span></button>
 
                 <div id="crt">
                     <div class="close">X</div>
@@ -103,7 +102,7 @@
                     <div id="crtOddsExp"></div>
                 </div>
             </div>
-            @include("wargame::stdIncludes.timeTravel")
+            @include("wargame::stdIncludes.vue-time-travel")
             <?php //include "timeTravel.php"; ?>
             <div id="nextPhaseWrapper">
                 @section('innerNextPhaseWrapper')
@@ -129,14 +128,15 @@
                     <span id="victory"></span>
                 </div>
             </div>
-            <div id="zoomWrapper">
-                    <span id="zoom">
+            <div class="btn" id="zoomWrapper">
+                    <button id="zoom">
                         <span class="defaultZoom">1.0</span>
-                    </span>
+                    </button>
             </div>
-            <div class="dropDown">
-                <h4 class="WrapperLabel"><span class="tablet">?</span><span class="desktop">Rules</span></h4>
+            <div class="btn-group dropDown">
+                <button class="btn dropdown-button"><span class="tablet">?</span><span class="desktop">Rules</span></button>
                 <div class="subMenu">
+
 
                     @section('commonRules')
                     @show
@@ -145,11 +145,14 @@
                     @show
                     @section('obc')
                     @show
+                    @section('tec')
+                        @include("wargame::Mollwitz.tec")
+                    @show
                 </div>
             </div>
 
-            <div class="dropDown">
-                <h4 class="WrapperLabel"><span class="tablet">Log</span><span class="desktop">Log</span></h4>
+            <div class="btn-group dropDown">
+                <button class="dropdown-button btn"><span class="tablet">Log</span><span class="desktop">Log</span></button>
                 <div class="subMenu">
                     <ol id="logWrapper"></ol>
                 </div>
@@ -163,16 +166,14 @@
             @show
 
             @section('outer-units-menu')
-            <div class="dropdown dropDown" @click="submenu = !submenu" id="unitsWrapper">
-                <h4 class="WrapperLabel" title="Offmap Units">Units</h4>
-                <transition name="units-menu">
-                <ul v-if="submenu" id="units" class="dropdown-menu sub-menu">
+            <div class=" btn-group dropdown dropDown" :class="{open: submenu}" @click="submenu = !submenu" id="unitsWrapper">
+                <button class="btn dropdown-button WrapperLabel" title="Offmap Units">Units</button>
+                <ul  id="units" class="dropdown-menu sub-menu">
                     <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
                     <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>
                     <li><a @click="menuClick('deployBox')" id="showDeploy">Deploy/Staging Box</a></li>
                     <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
                 </ul>
-                </transition>
             </div>
             @show
             @section('outer-aux-menu')

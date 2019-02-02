@@ -1,0 +1,14 @@
+{
+  "Vu": {
+    "name": "Room with a view",
+    "path": "Vu",
+    "genre": "Training",
+    "fileName": "\\Wargame\\Vu\\Vu",
+    "production": true,
+    "scenarios": {
+      "main": {
+        "description":"Introductory Game "
+      }
+    }
+  }
+}

@@ -270,8 +270,12 @@ export default function initialize() {
     $("#TimeWrapper .WrapperLabel").click(function () {
         $("#TimeWrapper").css('overflow', 'visible');
     });
+    $("#time-wrapper .WrapperLabel").click(function () {
+        $("#time-wrapper").css('overflow', 'visible');
+    });
     $(".dropDown .WrapperLabel").click(function () {
 
+        $(this).parent().siblings(".dropDown, #crt-wrapper").children('div').hide();
         $(this).parent().siblings(".dropDown, #crtWrapper").children('div').hide();
         $('.dropDownSelected').removeClass('dropDownSelected');
 
@@ -326,6 +330,15 @@ export default function initialize() {
     $(".close").on('click touchstart', function () {
         $(this).parent().hide({effect: "blind", direction: "up"});
     })
+
+    $("#crt-wrapper .wrapper-label").click(function () {
+        debugger;
+        $("#crt-wrapper").css('overflow', 'visible');
+        DR.$crtPanZoom.panzoom('reset');
+
+        $("#crt").toggle({effect: "blind", direction: "up"});
+    });
+
     $("#crtWrapper .WrapperLabel").click(function () {
         $("#crtWrapper").css('overflow', 'visible');
         DR.$crtPanZoom.panzoom('reset');
@@ -490,6 +503,7 @@ export default function initialize() {
     });
 
     $("#zoom .defaultZoom").on('click', function () {
+        debugger;
         DR.globalZoom = 1.0;
         $("#zoom .defaultZoom").html(DR.globalZoom.toFixed(1));
         DR.$panzoom.panzoom('reset');

@@ -45,7 +45,7 @@
         <h4>Game Design:</h4>
         Lance Runolfsson & David M. Rodal
         <h4>Graphics:</h4>
-        <site>Lance Runolfsson</site>
+        Lance Runolfsson
         <h4>HTML 5 Version:</h4>
         David M. Rodal
     </div>

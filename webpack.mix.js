@@ -60,6 +60,7 @@ mix.sass('Wargame/TMCW/NorthVsSouth/all.scss', 'css/wargame/northvssouth.css');
 mix.sass('Wargame/TMCW/Moskow/all.scss', 'css/wargame/moskow.css');
 
 mix.sass('Wargame/NTA/all.scss', 'css/wargame/nta.css');
+mix.sass('Wargame/Vu/all.scss', 'css/wargame/vu.css');
 
 
 
@@ -69,6 +70,7 @@ mix.js('Wargame/wargame.js', 'javascripts/wargame/wargame.js');
 // mix.js('Wargame/TMCW/KievCorps/kievCorps.js', 'javascripts/wargame/kievCoprs.js');
 mix.js('Wargame/TMCW/Amph/amph.js', 'javascripts/wargame/amph.js');
 // mix.js('Wargame/TMCW/Airborne/airborne.js', 'javascripts/wargame/airborne.js');
+mix.js('Wargame/Vu/vu.js', 'javascripts/wargame/vu.js');
 mix.js('Wargame/TMCW/Moskow/moskow.js', 'javascripts/wargame/moskow.js');
 mix.js('Wargame/TMCW/Collapse/collapse.js', 'javascripts/wargame/collapse.js');
 mix.js('Wargame/TMCW/NorthVsSouth/northvssouth.js', 'javascripts/wargame/northvssouth.js');
