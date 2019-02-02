@@ -12,7 +12,7 @@
     @include("wargame::Vu.victoryConditions")
 @endsection
 @section('inner-crt')
-    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\VU\CombatResultsTable()])
+    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\Vu\CombatResultsTable()])
 @endsection
 @section('commonRules')
     @include("wargame::Vu.commonRules")
