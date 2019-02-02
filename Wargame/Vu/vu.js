@@ -21,7 +21,6 @@ Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 Vue.component('unit-component', require('./UnitComponent.vue'));
 Vue.component('units-component', require('./UnitsComponent.vue'));
-Vue.component('menu-bar', require('./MenuBar.vue'));
 Vue.component('map-symbol', require('./MapSymbol.vue'));
 
 Vue.component('special-event', require('./SpecialEvent.vue'));
