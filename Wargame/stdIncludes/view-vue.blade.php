@@ -33,87 +33,70 @@
         <div id="preHeaderContent"></div>
         <div id="headerContent">
 
-            <div class=" btn-group dropDown alpha" id="menuWrapper">
+            <div @click="menu = !menu" class=" btn-group"  :class="{open: menu}" @click="menu = !menu">
                 <button class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i><span class="desktop">Menu</span></button>
 
-                <div id="menu">
-                    <div class="close">X</div>
-                    <ul>
+                    <ul class="dropdown-menu">
                         @section('inner-menu')
-                        <li><a id="muteButton">mute</a></li>
+                        <li><a id="mute-button">mute</a></li>
                         <li><a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a></li>
                         <li><a href="<?= url("logout"); ?>">logout</a></li>
-                        <li><a id="arrowButton">show arrows</a></li>
+                        <li><a id="arrow-button" @click="showArrows()">show arrows</a></li>
                         <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
                         <li><a href="#" onclick="seeBoth();return false;">See Both</a></li>
                         <li><a href="#" onclick="seeMap();return false;">See Map</a></li>
                         @show
                         <li class="closer"></li>
                     </ul>
-                </div>
             </div>
-            <div class="btn-group dropDown" id="infoWrapper">
+            <div class="btn-group info-dropdown"  :class="{open: info}" @click="info = !info">
                 <button class="WrapperLabel" title="Game Information"><i class="tablet">i</i><span class="desktop">Info</span></button>
-                <div id="info">
-                    <div class="close">X</div>
-                    <ul>
-                        <li> Welcome {{$user}}</li>
+                <ul class="dropdown-menu">
+                    <li> Welcome {{$user}}</li>
 
-                        @if($playersData[0] != '')
-                            <li>
-                                {{ $playersData[0] }} as {{ $playDat["forceName"][0] }}
-                            </li>
-                        @endif
+                    @if($playersData[0] != '')
                         <li>
-                            {{ $playersData[1] }} as {{ $playDat["forceName"][1] }}
+                            {{ $playersData[0] }} as {{ $playDat["forceName"][0] }}
                         </li>
-                        <li>
-                            {{ $playersData[2] }} as {{ $playDat["forceName"][2] }}
-                        </li>
+                    @endif
+                    <li>
+                        {{ $playersData[1] }} as {{ $playDat["forceName"][1] }}
+                    </li>
+                    <li>
+                        {{ $playersData[2] }} as {{ $playDat["forceName"][2] }}
+                    </li>
 
-                        <li>
-                            in <span class="game-name">{{$gameName}}-{{$arg}}</span></li>
-                        <li>
-                            name is {{ $docName }}
-                        </li>
+                    <li>
+                        in <span class="game-name">{{$gameName}}-{{$arg}}</span></li>
+                    <li>
+                        name is {{ $docName }}
+                    </li>
 
-                        <li class="game-id">
-                            {{ $wargame }}
-                        </li>
-                        <li class="closer"></li>
-                    </ul>
-                </div>
+                    <li class="game-id">
+                        {{ $wargame }}
+                    </li>
+                    <li class="closer"></li>
+                </ul>
             </div>
-            <?php global $results_name; ?>
-
-            <div class="btn" id="crt-wrapper">
-                <button class="wrapper-label" title='Combat Results Table'>
+            <div :class="{open: crt}" class="btn-group" id="crt-wrapper">
+                <button @click="changeCrt()"  class="wrapper-label" title='Combat Results Table'>
                     <span>CRT</span></button>
-
-                <div id="crt">
-                    <div class="close">X</div>
-                    <h3>Combat Odds</h3>
-
-                    @section('inner-crt')
-                        @include('wargame::stdIncludes.inner-crt',['topCrt'=> $top_crt = new \Wargame\TMCW\CombatResultsTable()])
-                    @show
-
-                    <div id="crtDetailsButton">details</div>
-                    <div id="crtOddsExp"></div>
-                </div>
+                <?php global $results_name;  ?>
+                <vue-draggable-resizable v-show="crt" style="z-index: 100;">
+                    <vue-crt :crt-options="crtOptions" :results-name="'{{ json_encode($results_name) }}'" :crt="'{{ json_encode(new \Wargame\Vu\CombatResultsTable()) }}'"></vue-crt>
+                </vue-draggable-resizable>
             </div>
-            @include("wargame::stdIncludes.vue-time-travel")
             <?php //include "timeTravel.php"; ?>
             <div id="nextPhaseWrapper">
                 @section('innerNextPhaseWrapper')
-                <button id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
-                <button class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
-                <button class="dynamicButton movementButton" id="forceMarchEvent">m</button>
-                <button class="dynamicButton combatButton" id="clearCombatEvent">c</button>
-                <button class="dynamicButton combatButton" id="shiftKey">+</button>
-                <button class="dynamicButton hexButton" id="showHexes">H</button>
+                <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
+                <button :class="{'inline-show': dynamicButtons.determined}" class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
+                <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton movementButton" id="forceMarchEvent">m</button>
+                <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+                <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton combatButton" id="shiftKey">+</button>
+                <button :class="{'inline-show': dynamicButtons.showHexes}" class="dynamicButton hexButton" id="showHexes">H</button>
                 <button class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
-                <button id="nextPhaseButton">Next Phase</button>
+                <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
                 <div id="comlinkWrapper">
                     <div id="comlink"></div>
                 </div>
@@ -123,19 +106,19 @@
             <div id="statusWrapper">
 
                 <div id="topStatus"></div>
-                <div class="clear">
+                <div>
                     <span id="status"></span>
                     <span id="victory"></span>
                 </div>
             </div>
-            <div class="btn" id="zoomWrapper">
+            <div @click="zoom()" class="btn-group" id="zoomWrapper">
                     <button id="zoom">
                         <span class="defaultZoom">1.0</span>
                     </button>
             </div>
-            <div class="btn-group dropDown">
-                <button class="btn dropdown-button"><span class="tablet">?</span><span class="desktop">Rules</span></button>
-                <div class="subMenu">
+            <div class="btn-group"  :class="{open: rules}" @click="rules = !rules">
+                <button class=""><span class="tablet">?</span><span class="desktop">Rules</span></button>
+                <div class="dropdown-menu">
 
 
                     @section('commonRules')
@@ -151,10 +134,10 @@
                 </div>
             </div>
 
-            <div class="btn-group dropDown">
-                <button class="dropdown-button btn"><span class="tablet">Log</span><span class="desktop">Log</span></button>
-                <div class="subMenu">
-                    <ol id="logWrapper"></ol>
+            <div class="btn-group" :class="{open: log}" @click="log = !log" >
+                <button class=""><span class="tablet">Log</span><span class="desktop">Log</span></button>
+                <div class="dropdown-menu">
+                    <ol id="logWrapper">logs man</ol>
                 </div>
             </div>
 
@@ -166,8 +149,8 @@
             @show
 
             @section('outer-units-menu')
-            <div class=" btn-group dropdown dropDown" :class="{open: submenu}" @click="submenu = !submenu" id="unitsWrapper">
-                <button class="btn dropdown-button WrapperLabel" title="Offmap Units">Units</button>
+            <div class=" btn-group" :class="{open: submenu}" @click="submenu = !submenu" id="unitsWrapper">
+                <button class="" title="Offmap Units">Units</button>
                 <ul  id="units" class="dropdown-menu sub-menu">
                     <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
                     <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>

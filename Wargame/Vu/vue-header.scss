@@ -1,0 +1,299 @@
+#main-viewer header#header {
+  position: static;
+  width: 100%;
+  padding-bottom: 0px;
+  z-index: 2000;
+  #headerContent {
+
+
+
+    #zoomWrapper {
+      #zoom {
+        .defaultZoom {
+          cursor: pointer;
+        }
+      }
+    }
+
+
+    #phaseDiv, #statusDiv, #chatsDiv, #victoryDiv {
+      display: inline;
+      vertical-align: top;
+      /*float:left;*/
+    }
+
+    #TimeWrapper {
+      float: left;
+      -webkit-touch-callout: none;
+      .WrapperLabel {
+        .small {
+          font-size: 10px;
+        }
+        margin: 0;
+        border: none;
+        -webkit-touch-callout: none;
+        cursor: pointer;
+        /*width:3em;*/
+      }
+
+      #Time {
+        ul {
+          margin: 0;
+          padding: 0;
+        }
+        padding: 10px;
+        font-weight: 500;
+        .go-buttons{
+          margin-bottom:20px;
+        }
+        .timetime-button-wrapper{
+          &.alpha{
+            border-right: 1px solid #333;
+          }
+          @extend .text-center;
+        }
+        background: white;
+        width: 600px;
+        cursor: move;
+        background: rgb(255, 255, 255);
+        border-radius: 10px;
+        border: 2px solid black;
+        box-shadow: 10px 10px 10px rgba(30, 30, 30, .85);
+        position: absolute !important;
+        z-index: 30;
+        display: none;
+        #phaseClicks {
+          display: none;
+          cursor: pointer;
+          .newPhase {
+            min-width: 10px;
+            height: 40px;
+            border-left: 1px solid red;
+            display: inline-block;
+            margin-bottom: 10px;
+          }
+          .newTick {
+            text-align: center;
+            margin-top: 10px;
+            width: 15px;
+            height: 10px;
+            border-left: 1px solid black;
+            display: inline-block;
+            font-size: 10px;
+            &.tickShim {
+              width: 0px;
+            }
+            &:hover {
+              background: #999;
+              color: #fff;
+            }
+            &.activeTick {
+              background-color: #666;
+              a {
+                background-color: #666;
+                color: white;
+              }
+            }
+
+          }
+        }
+        .time-button{
+          min-width:50px;
+        }
+        .fancy-time-button{
+          font-size:16px;
+          display: inline-block;
+          border: 5px solid gray;
+          padding: 3px 5px;
+          margin: 0 5px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+
+    #nextPhaseWrapper {
+      float: right;
+      .dynamicButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey, #debug {
+        font-size: 28px;
+        position: static;
+      }
+    }
+
+
+
+
+  }
+
+  a {
+    color: #333;
+  }
+  a:hover {
+    color: #999 !important;
+  }
+
+  h2 {
+    margin: 10px 0 5px;
+  }
+
+
+  #TEC {
+    max-height: 500px;
+    overflow: auto;
+  }
+  #victory {
+    padding: 0;
+  }
+}
+
+
+
+#turnCounter, #gameTurnCounter {
+  width: 32px;
+  height: 32px;
+  font-size: 11px;
+  text-indent: 0px;
+  top: 2px;
+  left: 2px;
+  text-align: center;
+  border: 2px solid;
+  border-color: #ccc #666 #666 #ccc;
+  background-color: rgb(0,128,0);
+  color:white;
+
+}
+
+.unit-wrapper {
+  padding: 4px 7px 4px 7px;
+  text-align: left;
+  font-family: sans-serif;
+  font-size: 1.2em;
+  color: white;
+  border-radius: 10px;
+  border: 10px solid #555;
+  background: #999;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+#deadpile {
+  border-radius: 10px;
+  border: 10px solid #555;
+  height: 70px;
+  background: pink;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 5px;
+}
+#deadpile-wrapper{
+  border-radius: 10px;
+  border: 10px solid #555;
+  background: #333;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 5px;
+}
+#deployBox {
+  position: relative;
+  font-family: serif;
+}
+
+
+.bug-report{
+  display:none;
+  position:absolute;
+  left:33%;
+  top:33%;
+  z-index: 1000;
+  background: rgba(255,255,255,.9);
+  padding:25px;
+  text-align:center;
+}
+
+.cool-box {
+  font-size: 22px;
+  background: rgb(255, 255, 255);
+  padding: 10px;
+}
+.text-center{
+  text-align: center;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.time-left{
+  float:left;
+}
+.time-right{
+  float:right;
+}
+
+#statusWrapper {
+  float: right;
+  background: white;
+}
+
+#comlinkWrapper {
+  border: 1px solid black;
+  border-radius: 10px;
+  background: white;
+  padding: 0 2px 0 2px;
+  font-style: italic;
+  font-size: 10px;
+  float: right;
+}
+
+
+#muteButton, #arrowButton {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+fieldset {
+  background: white;
+  border-radius: 9px;
+}
+
+#OBC fieldset {
+  float: left;
+  min-height: 100px;
+}
+
+.swooshy {
+  background: black;
+  color: #eee;
+}
+
+.status-corner, #turn, #phase, #status, #victory {
+  background: white;
+  padding: 0 3px;
+  font-family: sans-serif;
+}
+
+.game-name {
+  word-break: break-all;
+}
+
+
+.closer {
+  height: 0px;
+  padding: 0px !important;
+}
+
+.ruleComment {
+  font-style: italic;
+  margin-left: 10px;
+  color: #999;
+}
+
+.dynamicButton{
+  display:none;
+  &.inline-show{
+    display: inline-block;
+  }
+}

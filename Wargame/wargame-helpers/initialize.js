@@ -502,7 +502,7 @@ export default function initialize() {
         $("#shiftKey").toggleClass('swooshy', DR.shiftKey);
     });
 
-    $("#zoom .defaultZoom").on('click', function () {
+    $("#zoom").on('click', function () {
         debugger;
         DR.globalZoom = 1.0;
         $("#zoom .defaultZoom").html(DR.globalZoom.toFixed(1));

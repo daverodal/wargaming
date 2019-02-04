@@ -3,13 +3,16 @@ import '../wargame';
 window._ = require('lodash');
 var chattyCrt;
 import Vue from "vue";
-import {counterClick, showCrtTable} from "../wargame-helpers/global-funcs";
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
+import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "../wargame-helpers/global-funcs";
+
 import VueDraggableResizable from 'vue-draggable-resizable'
 import FloatMessage from './FloatMessage';
-
-
+import VueCrt    from './VueCrt';
+import {DR} from "../global-header";
+import x from "../wargame-helpers/common-sync";
+Vue.component('vue-crt', VueCrt);
 
 Vue.component('float-message', FloatMessage);
 Vue.component('vue-draggable-resizable', VueDraggableResizable)
@@ -67,15 +70,69 @@ document.addEventListener("DOMContentLoaded",function(){
     // });
 
     window.clickThrough = new Vue({
-        el: "#unitsWrapper",
+        el: "#headerContent",
         data:{
-            submenu: false
+            submenu: false,
+            log: false,
+            rules: false,
+            menu: false,
+            info: false,
+            crt: false,
+            crtClass: 'normalCrt',
+            crtOptions: {roll: 3,
+            pinIndex: 5},
+            dynamicButtons:{
+                move: false,
+                showHexes: false,
+                determined: false
+            }
         },
         methods:{
+            fullScreen(){
+                toggleFullScreen()
+            },
+            bugReport(){
+              bug
+            },
+            nextPhase(){
+                nextPhaseMouseDown();
+            },
             menuClick(id){
-                debugger;
                 headerVue.menuClick(id);
+            },
+            showArrows(){
+                if (!DR.showArrows) {
+                    $("#arrowButton").html("hide arrows");
+                    DR.showArrows = true;
+                    $('#arrow-svg .unit-path').show();
+                } else {
+                    $("#arrowButton").html("show arrows");
+                    DR.showArrows = false;
+                    $('#arrow-svg .unit-path').hide();
+                }
+            },
+            mute(){
+                if (!mute) {
+                    $("#muteButton").html("un-mute");
+                    muteMe();
+
+                } else {
+                    $("#muteButton").html("mute");
+                    unMuteMe();
+                    playAudio();
+                }
+            },
+            zoom(){
+                DR.globalZoom = 1.0;
+                $("#zoom .defaultZoom").html(DR.globalZoom.toFixed(1));
+                DR.$panzoom.panzoom('reset');
+            },
+            changeCrt(){
+                this.crt = !this.crt;
+            },
+            clickCrt(){
             }
+
         }
     })
     window.headerVue = new Vue({
@@ -267,7 +324,6 @@ document.addEventListener("DOMContentLoaded",function(){
                     if (data.gameRules.mode == ADVANCING_MODE) {
                         var unit = moveRules.movingUnitId;
 
-                        debugger;
                         var thetas = data.combatRules.resolvedCombats[data.combatRules.currentDefender].thetas[unit]
                         for (var k in thetas) {
                             $("#" + unit + " .arrow").clone().addClass('arrowClone').addClass('arrow' + k).insertAfter("#" + unit + " .arrow").removeClass('arrow');
@@ -751,7 +807,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
             }
             if (status) {
-                debugger;
                 showStatus = true;
 
                 var x = $("#" + i).position().left;
@@ -1182,6 +1237,7 @@ document.addEventListener("DOMContentLoaded",function(){
                         if (combatRules.combats[cD].pinCRT !== false) {
                             combatCol = combatRules.combats[cD].pinCRT + 1;
                             if (combatCol >= 1) {
+                                Vue.set(clickThrough.crtOptions,'index', combatCol-1);
                                 $(".col" + combatCol).css('background-color', "rgba(255,0,255,.6)");
                                 if (combatRules.combats[cD].Die !== false) {
                                     $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('font-size', "110%");
@@ -1201,6 +1257,8 @@ document.addEventListener("DOMContentLoaded",function(){
                             combatCol = combatCols[index];
                             if (combatCol >= 1) {
                                 $(".col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
+                                Vue.set(clickThrough.crtOptions,'index', combatCol-1);
+
                                 if (combatRules.combats[cD].Die !== false) {
                                     $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('font-size', "110%");
                                     $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('background', "#eee");
@@ -1643,4 +1701,154 @@ document.addEventListener("DOMContentLoaded",function(){
                 break;
         }
     }
+
+    x.register("gameRules",  (gameRules, data) => {
+
+        if (gameRules.options && gameRules.options.length > 0) {
+            var inputs = "";
+            for (var i in gameRules.options) {
+                inputs += "<input type='radio' name='options' value='" + i + "'>" + gameRules.options[i] + "<br>"
+            }
+            $("#options-box").html(inputs);
+            $("#options-pane").show();
+        } else {
+            $("#options-pane").hide();
+        }
+        // $(".dynamicButton").hide();
+        if (gameRules.mode ===  MOVING_MODE) {
+           clickThrough.dynamicButtons.move = true;
+        }
+
+        if(DR.hasHq){
+            clickThrough.dynamicButtons.showHexes = true;
+            $('#showHexes').show();
+        }
+        if (gameRules.mode ===  COMBAT_SETUP_MODE) {
+            clickThrough.dynamicButtons.determined = true;
+            $(".combatButton").show();
+        }
+        if (gameRules.display) {
+            if (gameRules.display.currentMessage) {
+                $("#display").html(gameRules.display.currentMessage + "<button onclick='doitNext()'>Next</button>").show();
+            } else {
+                $("#display").html("").hide();
+            }
+        }
+        var status = "";
+        var turn = gameRules.turn;
+        var maxTurn = gameRules.maxTurn
+        if ("gameTurn" + turn != $("#turnCounter").parent().attr("id")) {
+            $("#gameTurn" + turn).prepend($("#turnCounter"));
+        }
+
+        var pix = turn + (turn - 1) * 36 + 1;
+        var playerName = "player" + (DR.players[gameRules.attackingForceId].replace(/ /g, '-').replace(/\//gi, '_'));
+        ;
+        Vue.set(clickThrough.crtOptions, 'playerName', playerName);
+        // clickThrough.crtOptions.playerName = playerName;
+        var removeThese = "";
+        $("#header").removeClass().addClass(playerName);
+        $("#turnCounter").css("background", "rgb(0,128,0)");
+        $("#turnCounter").css("color", "white");
+
+        var alsoRemoveThese = DR.players.join('@@@').trim();
+        alsoRemoveThese = alsoRemoveThese.replace(/ /g, '-');
+        alsoRemoveThese = alsoRemoveThese.replace(/\//g, '_');
+        alsoRemoveThese = alsoRemoveThese.replace(/@@@/g, ' ');
+        alsoRemoveThese = alsoRemoveThese.replace(/([^ ]+)/g, "player$1");
+        removeThese += " " + alsoRemoveThese;
+        $("#crt").removeClass(removeThese).addClass(playerName);
+        $(".row1,.row3,.row5").removeClass(removeThese).addClass(playerName);
+        $("#revolt-table").removeClass(removeThese).addClass(playerName);
+
+        var html = "<span id='turn'>Turn " + turn + " of " + maxTurn + "</span> ";
+        var phase = gameRules.phase_name[gameRules.phase];
+        phase = phase.replace(/fNameOne/, DR.playerOne);
+        phase = phase.replace(/playerOneFace/, "player" + DR.playerOne.replace(/ /g, '-') + "Face");
+        phase = phase.replace(/playerTwoFace/, "player" + DR.playerTwo.replace(/ /g, '-') + "Face");
+        phase = phase.replace(/playerThreeFace/, "player" + DR.playerThree.replace(/ /g, '-') + "Face");
+        phase = phase.replace(/playerFourFace/, "player" + DR.playerFour.replace(/ /g, '-') + "Face");
+
+        phase = phase.replace(/fNameTwo/, DR.playerTwo);
+        phase = phase.replace(/fNameThree/, DR.playerThree);
+        phase = phase.replace(/fNameFour/, DR.playerFour);
+        html += "<span id='phase'>" + phase;
+        if (gameRules.mode_name[gameRules.mode]) {
+            html += " " + gameRules.mode_name[gameRules.mode];
+        }
+        html += "</span>";
+
+        switch (gameRules.phase) {
+            case BLUE_REPLACEMENT_PHASE:
+            case RED_REPLACEMENT_PHASE:
+            case TEAL_REPLACEMENT_PHASE:
+            case PURPLE_REPLACEMENT_PHASE:
+                if (gameRules.replacementsAvail !== false && gameRules.replacementsAvail != null) {
+                    status = "There are " + gameRules.replacementsAvail + " available";
+                }
+                break;
+        }
+        switch (gameRules.mode) {
+            case EXCHANGING_MODE:
+                var result = data.combatRules.lastResolvedCombat.combatResult;
+
+                $("#floatMessage header").html(result + ": Exchanging Mode");
+
+            case DEFENDER_LOSING_MODE:
+                var result = data.combatRules.lastResolvedCombat.combatResult;
+
+                $("#floatMessage header").html(result + ": Defender Loss Mode.");
+                var floatStat = $("#floatMessage p").html();
+
+                floatStat = "Lose at least " + data.force.exchangeAmount + " strength points<br>" + floatStat;
+                $("#floatMessage p").html(floatStat);
+
+//            html += "<br>Lose at least "+gameRules.exchangeAmount+" strength points from the units outlined in red";
+                break;
+
+            case ATTACKER_LOSING_MODE:
+                var result = data.combatRules.lastResolvedCombat.combatResult;
+
+                $("#floatMessage header").html(result + ": Attacker Loss Mode.");
+                var floatStat = $("#floatMessage p").html();
+
+                floatStat = "Lose at least " + data.force.exchangeAmount + " strength points<br>" + floatStat;
+                $("#floatMessage p").html(floatStat);
+
+//            html += "<br>Lose at least "+gameRules.exchangeAmount+" strength points from the units outlined in red";
+                break;
+            case ADVANCING_MODE:
+//            html += "<br>Click on one of the black units to advance it.<br>then  click on a hex to advance, or the unit to stay put.";
+                var result = data.combatRules.lastResolvedCombat.combatResult;
+
+                $("#floatMessage header").html(result + ": Advancing Mode");
+                break;
+            case RETREATING_MODE:
+                var result = data.combatRules.lastResolvedCombat.combatResult;
+
+                $("#floatMessage header").html(result + ": Retreating Mode");
+                break;
+        }
+        var log = "";
+        for(var i in gameRules.flashLog){
+            var message = gameRules.flashLog[i];
+            if(message.match(/^@/)){
+                continue;
+            }
+            log += "<li>"+gameRules.flashLog[i]+"</li>";
+
+        }
+        $("#logWrapper").html(log);
+        $("#topStatus").html(html);
+        if (status) {
+            $("#status").html(status);
+            $("#status").show();
+
+        } else {
+            $("#status").html(status);
+            $("#status").hide();
+
+        }
+    });
+
 });
