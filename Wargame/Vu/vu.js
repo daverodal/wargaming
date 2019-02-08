@@ -1193,7 +1193,8 @@ document.addEventListener("DOMContentLoaded",function(){
 
     }
     x.register("combatRules", function (combatRules, data) {
-        const crtHeader = clickThrough.$store.state.crtData.combatResultsHeader;
+        const selectedTable = clickThrough.$store.state.crt.selectedTable;
+        const crtHeader = clickThrough.$store.state.crtData.crts[selectedTable].header;
         _.forEach(topVue.units, (mapUnit) => {
             mapUnit.thetas = [];
         })
@@ -1493,6 +1494,12 @@ document.addEventListener("DOMContentLoaded",function(){
         // }
         debugger;
         const selectedTable = clickThrough.$store.state.crt.selectedTable;
+        oddsDisp = "";
+        if(!combat.index) {
+            var html = "<div id='crtDetails'>No attackers selected</div>"
+            return html;
+
+        }
         oddsDisp = clickThrough.$store.state.crtData.crts[selectedTable].header[combat.index];
         div = div.toFixed(2);
         var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + oddsDisp + "</div>"

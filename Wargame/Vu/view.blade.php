@@ -1,4 +1,4 @@
-@include('wargame::export-global-header')
+@include('wargame::export-global-header', ['topCrt'=> new \Wargame\Vu\CombatResultsTable()])
 
 
 <script src="{{mix('vendor/javascripts/wargame/vu.js')}}"></script>

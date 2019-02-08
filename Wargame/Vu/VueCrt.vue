@@ -59,9 +59,9 @@
             }
         },
         mounted(){
-            debugger;
-            this.crtData = JSON.parse(this.crt);
-            this.$store.state.crtData = this.crtData;
+            this.crtData = this.$store.state.crtData;
+            // this.crtData = JSON.parse(this.crt);
+            // this.$store.state.crtData = this.crtData;
             /* global constant resultsNames */
             this.resultsNameData = resultsNames;
         },
