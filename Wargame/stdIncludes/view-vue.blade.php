@@ -50,7 +50,7 @@
                     </ul>
             </div>
             <div class="btn-group info-dropdown"  :class="{open: info}" @click="info = !info">
-                <button class="WrapperLabel" title="Game Information"><i class="tablet">i</i><span class="desktop">Info</span></button>
+                <button class="WrapperLabel" title="Game Information"><i class="fa fa-info-circle"></i></button>
                 <ul class="dropdown-menu">
                     <li> Welcome {{$user}}</li>
 
@@ -81,9 +81,8 @@
             <div :class="{open: crt}" class="btn-group" id="crt-wrapper">
                 <button @click="changeCrt()"  class="wrapper-label" title='Combat Results Table'>
                     <span>CRT</span></button>
-                <?php global $results_name;  ?>
                 <vue-draggable-resizable v-show="crt" style="z-index: 100;">
-                    <vue-crt :crt-options="crtOptions" :results-name="'{{ json_encode($results_name) }}'" :crt="'{{ json_encode(new \Wargame\Vu\CombatResultsTable()) }}'"></vue-crt>
+                    <vue-crt :crt-options="crtOptions" :crt="'{{ json_encode(new \Wargame\Vu\CombatResultsTable()) }}'"></vue-crt>
                 </vue-draggable-resizable>
             </div>
             <?php //include "timeTravel.php"; ?>

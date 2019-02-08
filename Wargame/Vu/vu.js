@@ -13,7 +13,7 @@ import VueCrt    from './VueCrt';
 import {DR} from "../global-header";
 import x from "../wargame-helpers/common-sync";
 Vue.component('vue-crt', VueCrt);
-
+import {store} from "./store/store";
 Vue.component('float-message', FloatMessage);
 Vue.component('vue-draggable-resizable', VueDraggableResizable)
 /**
@@ -50,6 +50,14 @@ document.addEventListener("DOMContentLoaded",function(){
             },
             unitClick(e){
                 counterClick(e);
+            },
+            getUnit(id){
+                _.forEach(this.units, (mapUnit) =>{
+                    if(mapUnit.id == id){
+                        return mapUnit;
+                    }
+                })
+                return {};
             }
         }
 
@@ -71,6 +79,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
     window.clickThrough = new Vue({
         el: "#headerContent",
+        store,
         data:{
             submenu: false,
             log: false,
@@ -79,8 +88,7 @@ document.addEventListener("DOMContentLoaded",function(){
             info: false,
             crt: false,
             crtClass: 'normalCrt',
-            crtOptions: {roll: 3,
-            pinIndex: 5},
+            crtOptions: {},
             dynamicButtons:{
                 move: false,
                 showHexes: false,
@@ -1185,6 +1193,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
     }
     x.register("combatRules", function (combatRules, data) {
+        const crtHeader = clickThrough.$store.state.crtData.combatResultsHeader;
         _.forEach(topVue.units, (mapUnit) => {
             mapUnit.thetas = [];
         })
@@ -1198,8 +1207,9 @@ document.addEventListener("DOMContentLoaded",function(){
         var activeCombatLine = "";
         str = "";
         var toResolveLog = "";
-        $('.unit .unitOdds').remove();
+        // $('.unit .unitOdds').remove();
 
+        clickThrough.$store.state.crt.index = false;
         if (combatRules) {
             var cD = combatRules.currentDefender;
             if (combatRules.combats && Object.keys(combatRules.combats).length > 0) {
@@ -1214,74 +1224,42 @@ document.addEventListener("DOMContentLoaded",function(){
                             showCrtTable($('#normalTable'));
                         }
                     }
-                    if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
-                        showCrtTable($('#torpedoTable'));
-                        $('.torpedoHitOneTable').show();
-                        $('.torpedoHitTwoTable').show();
-
-                    }
                     for (var loop in defenders) {
-
                         _.forEach(topVue.units, (mapUnit) =>{
                             if(mapUnit.id == loop){
                                 mapUnit.borderColor = 'yellow';
                             }
                         })
                     }
-                    if (!chattyCrt) {
-                        $("#crt").show({effect: "blind", direction: "up"});
-                        $("#crtWrapper").css('overflow', 'visible');
-                        chattyCrt = true;
-                    }
                     if (Object.keys(combatRules.combats[cD].attackers).length != 0) {
                         if (combatRules.combats[cD].pinCRT !== false) {
                             combatCol = combatRules.combats[cD].pinCRT + 1;
                             if (combatCol >= 1) {
-                                Vue.set(clickThrough.crtOptions,'index', combatCol-1);
-                                $(".col" + combatCol).css('background-color', "rgba(255,0,255,.6)");
-                                if (combatRules.combats[cD].Die !== false) {
-                                    $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('font-size', "110%");
-                                    $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('background', "#eee");
-                                }
+                                clickThrough.$store.state.crt.pinned = combatCol - 1;
                             }
                         }
                         var combatCols;
-                        if (typeof combatRules.combats[cD].index === 'object') {
-                            combatCols = combatRules.combats[cD].index.map(function (val) {
-                                return val + 4;
-                            });
-                        } else {
-                            combatCols = [combatRules.combats[cD].index + 1];
-                        }
-                        for (var index in combatCols) {
-                            combatCol = combatCols[index];
-                            if (combatCol >= 1) {
-                                $(".col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
-                                Vue.set(clickThrough.crtOptions,'index', combatCol-1);
 
-                                if (combatRules.combats[cD].Die !== false) {
-                                    $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('font-size', "110%");
-                                    $(".row" + combatRules.combats[cD].Die + " .col" + combatCol).css('background', "#eee");
-                                }
-                                $(".torpedoHitOneTable .col" + combatCol).css({background: "transparent"});
-                                $(".torpedoHitTwoTable .col" + combatCol).css({background: "transparent"});
+                        debugger;
+                        combatCol = combatRules.combats[cD].index + 1;
 
-                                if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
-                                    var oneHitCol = combatRules.combats[cD].oneHitCol + 1;
-                                    var twoHitCol = combatRules.combats[cD].twoHitCol + 1;
-
-                                    $(".torpedoHitOneTable .col" + oneHitCol).css('background-color', "rgba(255,255,1,.6)");
-                                    $(".torpedoHitTwoTable .col" + twoHitCol).css('background-color', "rgba(255,255,1,.6)");
-                                }
+                        if (combatCol >= 1) {
+                            clickThrough.$store.state.crt.index = combatCol - 1;
+                            if (combatRules.combats[cD].Die !== false) {
+                                clickThrough.$store.state.crt.roll = combatRules.combats[cD].Die;
                             }
                         }
                     }
+                    var details = renderCrtDetails(combatRules.combats[cD]);
+                    var newLine = "<h5>odds = " + crtHeader[combatCol-1] + " </h5>" + details;
+
+                    clickThrough.$store.state.crt.details = newLine;
                 }
                 var str = "";
                 cdLine = "";
                 var combatIndex = 0;
                 $('.unit').removeAttr('title');
-                $('.unit .unitOdds').remove();
+                // $('.unit .unitOdds').remove();
                 for (var i in combatRules.combats) {
                     if (combatRules.combats[i].index !== null) {
 
@@ -1307,140 +1285,91 @@ document.addEventListener("DOMContentLoaded",function(){
                             }
                         }
 
-                        var atk = combatRules.combats[i].attackStrength;
-                        var atkDisp = atk;
 
-                        var def = combatRules.combats[i].defenseStrength;
-                        var ter = combatRules.combats[i].terrainCombatEffect;
-                        var idx = combatRules.combats[i].index + 1;
+
                         var useAltColor = combatRules.combats[i].useAlt ? " altColor" : "";
                         if (combatRules.combats[i].useDetermined) {
                             useAltColor = " determinedColor";
                         }
-                        var odds = Math.floor(atk / def);
-                        var oddsDisp;
+
                         var currentCombatCol;
                         var currentOddsDisp;
 
-                        if (typeof combatRules.combats[i].index === "object") {
-                            currentCombatCol = combatRules.combats[i].index + '';
-                            currentOddsDisp = currentCombatCol;
-                            oddsDisp = currentCombatCol;
-                        } else {
-                            currentCombatCol = combatRules.combats[i].index + 1;
-                            if(currentCombatCol <= 0){
-                                currentOddsDisp =  '<' + $(".col" + 1).html();
-                            }else{
-                                currentOddsDisp = $(".col" + currentCombatCol).html();
-                            }
-                            if(combatCol <= 0){
-                                oddsDisp = '< ' +  $(".col" + 1).html();
 
-                            }else{
-                                oddsDisp = $(".col" + combatCol).html();
-                            }
+                        currentCombatCol = combatRules.combats[i].index + 1;
+                        if(currentCombatCol <= 0){
+                            currentOddsDisp =  '<' + crtHeader[0];
+                        }
+
+                        if(currentCombatCol > 0){
+                            currentOddsDisp = crtHeader[currentCombatCol - 1];
                         }
                         if (combatRules.combats[i].pinCRT !== false) {
                             currentCombatCol = combatRules.combats[i].pinCRT + 1;
-                            currentOddsDisp = $(".col" + currentCombatCol).html();
+                            currentOddsDisp = crtHeader[currentCombatCol - 1];
                             useAltColor = " pinnedColor";
                         }
-                        $("#" + i).attr('title', currentOddsDisp).prepend('<div class="unitOdds' + useAltColor + '">' + currentOddsDisp + '</div>');
-                        ;
 
-                        var details = renderCrtDetails(combatRules.combats[i]);
-                        var newLine = "<h5>odds = " + oddsDisp + " </h5>" + details;
-                        if (cD !== false && cD == i) {
-                            activeCombat = combatIndex;
-                            activeCombatLine = newLine;
-                            /*cdLine = "<fieldset><legend>Current Combat</legend><strong>"+newLine+"</strong></fieldset>";
-                             newLine = "";*/
-                        }
+                        _.forEach(topVue.units, (mapUnit) =>{
+                            if(mapUnit.id == i){
+                                mapUnit.odds = currentOddsDisp;
+                                mapUnit.oddsColor = useAltColor;
+                            }
+                        })
+
                         combatIndex++;
 //                            str += newLine;
                     }
 
                 }
                 str += "There are " + combatIndex + " Combats";
-                if (cD !== false) {
-                    var attackers = combatRules.combats[cD].attackers;
-//                    var theta = 0;
-//                    for(var i in attackers){
-//                                      theta = attackers[i];
-//                        theta *= 15;
-//                        theta += 180;
-//                        $("#"+i+ " .arrow").css({display: "block"});
-//                        $("#"+i+ " .arrow").css({opacity: "1.0"});
-//                        $("#"+i+ " .arrow").css({webkitTransform: 'scale(.55,.55) rotate('+theta+"deg) translateY(45px)"});
-//
-//
-//                    }
-                }
                 str += "";
-                $("#crtOddsExp").html(activeCombatLine);
                 $("#status").html(cdLine + str);
                 if (DR.crtDetails) {
                     $("#crtDetails").toggle();
                 }
                 $("#status").show();
 
-            } else {
-                chattyCrt = false;
             }
-
 
             var lastCombat = "";
             if (combatRules.combatsToResolve) {
-                $('.unit').removeAttr('title');
-                $('.unit .unitOdds').remove();
+                // $('.unit .unitOdds').remove();
                 if (combatRules.lastResolvedCombat) {
+                    debugger;
                     toResolveLog = "Current Combat or Last Combat<br>";
                     title += "<strong style='margin-left:20px;font-size:150%'>" + combatRules.lastResolvedCombat.Die + " " + combatRules.lastResolvedCombat.combatResult + "</strong>";
-                    combatCol = combatRules.lastResolvedCombat.index + 1;
+                    combatCol = combatRules.lastResolvedCombat.index;
 
                     var combatRoll = combatRules.lastResolvedCombat.Die;
-                    if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
-                        $(".torpedoTable .col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
-                        $(".torpedoTable .row" + combatRoll + " .col" + combatCol).css('background-color', "cyan");
+                    clickThrough.$store.state.crt.combatResult = combatRules.lastResolvedCombat.combatResult
 
-                    } else {
-                        $(".col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
+                    clickThrough.$store.state.crt.index = combatCol;
                         var pin = combatRules.lastResolvedCombat.pinCRT;
                         if (pin !== false) {
                             pin++;
                             if (pin < combatCol) {
                                 combatCol = pin;
-                                $(".col" + combatCol).css('background-color', "rgba(255, 0, 255, .6)");
+                                clickThrouth.$store.status.crt.pinned = pin;
                             }
+                        }else {
+                            clickThrough.$store.state.crt.pinned = false;
                         }
 
-                        $(".row" + combatRoll + " .col" + combatCol).css('background-color', "cyan");
-                    }
+                    clickThrough.$store.state.crt.roll = combatRoll - 1;
+
                     if (combatRules.lastResolvedCombat.useAlt) {
-                        showCrtTable($('#cavalryTable'));
+                        clickThrough.$store.state.crt.selectedTable = 'cavalry'
                     } else {
                         if (combatRules.lastResolvedCombat.useDetermined) {
-                            showCrtTable($('#determinedTable'));
-                        } else {
-                            showCrtTable($('#normalTable'));
-                        }
-                    }
-                    if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
-                        showCrtTable($('#torpedoTable'));
-                        var hitRoll = combatRules.lastResolvedCombat.hitDie;
-                        var hitCol = combatRules.lastResolvedCombat.hitCol;
+                            clickThrough.$store.state.crt.selectedTable = 'determined'
 
-                        if (combatRules.lastResolvedCombat.hits ===  'H' ) {
-                            $('.torpedoHitOneTable').show();
-                            $(".torpedoHitOneTable .col" + hitCol).css('background-color', "rgba(255,255,1,.6)");
-                            $(".torpedoHitOneTable .row" + hitRoll + " .col" + hitCol).css('background-color', "cyan");
-                        }
-                        if (combatRules.lastResolvedCombat.hits ===  'HH' ) {
-                            $('.torpedoHitTwoTable').show();
-                            $(".torpedoHitTwoTable .col" + hitCol).css('background-color', "rgba(255,255,1,.6)");
-                            $(".torpedoHitTwoTable .row" + hitRoll + " .col" + hitCol).css('background-color', "cyan");
+                        } else {
+                            clickThrough.$store.state.crt.selectedTable = 'normal'
+
                         }
                     }
+
                     var atk = combatRules.lastResolvedCombat.attackStrength;
                     var atkDisp = atk;
                     ;
@@ -1453,11 +1382,12 @@ document.addEventListener("DOMContentLoaded",function(){
                     var details = renderCrtDetails(combatRules.lastResolvedCombat);
 
                     newLine = "<h5>odds = " + oddsDisp + "</h5>" + details;
+                    clickThrough.$store.state.crt.details = newLine;
 
                     toResolveLog += newLine;
                     toResolveLog += "Roll: " + combatRules.lastResolvedCombat.Die + " result: " + combatRules.lastResolvedCombat.combatResult + "<br><br>";
 
-                    $("#crtOddsExp").html(newLine);
+                    // $("#crtOddsExp").html(newLine);
 //                    $(".row"+combatRoll+" .col"+combatCol).css('color',"white");
                 }
                 str += "";
@@ -1498,8 +1428,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
                             useAltColor = " pinnedColor";
                         }
-                        $("#" + i).attr('title', oddsDisp).prepend('<div class="unitOdds' + useAltColor + '">' + oddsDisp + '</div>');
-                        ;
+
                         var details = renderCrtDetails(combatRules.combatsToResolve[i]);
 
                         newLine = "<h5>odds = " + oddsDisp + "</h5>" + details;
@@ -1557,11 +1486,14 @@ document.addEventListener("DOMContentLoaded",function(){
         var ter = combat.terrainCombatEffect;
         var combatCol = combat.index + 1;
         var oddsDisp;
-        if(combatCol <= 0){
-            oddsDisp = '< '+$(".col" + 1).html();
-        }else{
-            oddsDisp = $(".col" + combatCol).html();
-        }
+        // if(combatCol <= 0){
+        //     oddsDisp = '< '+$(".col" + 1).html();
+        // }else{
+        //     oddsDisp = $(".col" + combatCol).html();
+        // }
+        debugger;
+        const selectedTable = clickThrough.$store.state.crt.selectedTable;
+        oddsDisp = clickThrough.$store.state.crtData.crts[selectedTable].header[combat.index];
         div = div.toFixed(2);
         var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + oddsDisp + "</div>"
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/

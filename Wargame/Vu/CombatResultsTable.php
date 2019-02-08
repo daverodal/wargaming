@@ -46,9 +46,11 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
 	//     index is 0 to 5;  dieSidesCount = 6
     
     function __construct(){
-        $this->combatResultsHeader = array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1");
 	    $this->crts = new stdClass();
-        $this->crts->normal = array(
+
+        $this->crts->normal = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
+            '', 10, 0);
+        $this->crts->normal->table = array(
             array(AE, AR, AR, DR, DR, DR, DE, DE, DE, DE),
             array(AE, AE, AR, AR, DR, DR, DR, DE, DE, DE),
             array(AE, AE, AE, AR, DR, DR, DR, DR, DE, DE),
@@ -56,36 +58,41 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
             array(AE, AE, AE, AR, AR, EX, DR, EX, EX, DE),
             array(AE, AE, AE, AE, AR, AR, EX, EX, EX, DE),
         );
-        $this->crts->cavalry = array(
+        $this->rowNum = 0;
+        $this->maxCombatIndex = 10;
+        $this->dieSideCount = 6;
+
+        $this->combatIndexCount = 10;
+        $this->maxCombatIndex = $this->combatIndexCount - 1;
+        $this->dieSideCount = 6;
+
+        $this->crts->cavalry = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
+            '', 10, 0);
+
+
+        $this->crts->cavalry->table = array(
             array(AE, AR, AR, DR, DR, DR, DR, DR, DR, DR),
             array(AE, AE, AR, AR, DR, DR, DR, DR, DR, DR),
             array(AE, AE, AE, AR, DR, DR, DR, DR, DR, DR),
             array(AE, AE, AE, AR, AR, DR, DR, DR, DR, DR),
             array(AE, AE, AE, AR, AR, DR, DR, DR, DR, DR),
-            array(AE, AE, AE, AE, AR, AR, DR, DR, DR, DR),
+            array(AE, AE, AE, AE, AR, AR, DR, DR, DR, DR)
         );
-        $this->crts->determined = array(
+
+        $this->crts->determined = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
+            '', 10, 0);
+
+
+        $this->crts->determined->table = [
             array(AE, AR, AR, DR, DR, DR, DE, DE, DE, DE),
             array(AE, AE, AR, AR, DR, DR, DR, DE, DE, DE),
             array(AE, AE, AE, AR, EX, DR, DR, DR, DE, DE),
             array(AE, AE, AE, AR, AR, EX, DR, EX, DE, DE),
             array(AE, AE, AE, AR, AR, EX, EX, EX, EX, DE),
             array(AE, AE, AE, AE, AR, AR, EX, EX, EX, DE),
-        );
-        $this->combatOddsTable = array(
-            array(),
-            array(),
-            array(),
-            array(),
-            array(),
-            array()
-        );
+          ];
 
-        $this->combatIndexCount = 10;
-        $this->maxCombatIndex = $this->combatIndexCount - 1;
-        $this->dieSideCount = 6;
-
-    }
+      }
 
         function getCombatResults($Die, $index, $combat)
         {
