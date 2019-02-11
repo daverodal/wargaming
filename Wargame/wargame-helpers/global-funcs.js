@@ -256,6 +256,7 @@ export function counterClick(event, unitId = null) {
 }
 
 export function mapClick(event) {
+    console.log("mapclick");
 
     var zoomed = window.zoomed;
     if (DR.dragged) {
@@ -263,15 +264,9 @@ export function mapClick(event) {
         return;
     }
 
-    var didDrag = $("#map").data('did-drag');
-    $("#map").data('did-drag', false);
-    if (didDrag) {
-        return;
-    }
-
     var pixelX, pixelY;
     if(event.type === "touchend"){
-        let page = event.originalEvent.changedTouches[0];
+        let page = event.changedTouches[0];
         pixelX = page.pageX;
         pixelY = page.pageY;
         var p;

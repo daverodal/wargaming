@@ -6,14 +6,20 @@ import Vue from "vue";
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
 import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "../wargame-helpers/global-funcs";
-
+import FlashHexagon from './FlashHexagon';
 import VueDraggableResizable from 'vue-draggable-resizable'
 import FloatMessage from './FloatMessage';
+import FlashMessages from './FlashMessages';
+Vue.component('flash-messages', FlashMessages);
+Vue.component('flash-hexagon', FlashHexagon);
 import VueCrt    from './VueCrt';
+import Undo from './Undo';
+Vue.component('undo', Undo);
 import {DR} from "../global-header";
 import x from "../wargame-helpers/common-sync";
 Vue.component('vue-crt', VueCrt);
 import {store} from "./store/store";
+import fixHeader from "../wargame-helpers/fix-header";
 Vue.component('float-message', FloatMessage);
 Vue.component('vue-draggable-resizable', VueDraggableResizable)
 /**
@@ -43,7 +49,8 @@ document.addEventListener("DOMContentLoaded",function(){
             units:[],
             moveUnits: [],
             mapSymbols: [],
-            specialEvents: []
+            specialEvents: [],
+            rowSvg: {x: 0, y: 0},
         },
         methods:{
             wheelo(e){
@@ -58,9 +65,20 @@ document.addEventListener("DOMContentLoaded",function(){
                     }
                 })
                 return {};
+            },
+            mapClick(event){
+                console.log("I map Click");
+                mapClick(event);
             }
         }
 
+    });
+
+    window.floatersMessages = new Vue({
+        el: "#floatMessageContainer",
+        data:{
+            messages:[]
+        }
     });
 
     window.floaters = new Vue({
@@ -78,8 +96,13 @@ document.addEventListener("DOMContentLoaded",function(){
     // });
 
     window.clickThrough = new Vue({
-        el: "#headerContent",
+        el: "#header",
         store,
+        computed:{
+          selectedTable(){
+              return this.$store.state.getters.currentTable;
+          }
+        },
         data:{
             submenu: false,
             log: false,
@@ -87,12 +110,25 @@ document.addEventListener("DOMContentLoaded",function(){
             menu: false,
             info: false,
             crt: false,
+            undo: false,
             crtClass: 'normalCrt',
             crtOptions: {},
             dynamicButtons:{
                 move: false,
                 showHexes: false,
                 determined: false
+            },
+            deployBox: [],
+            deadpile: [],
+            exitBox: [],
+            notUsed: [],
+            show:{
+                units:{
+                    submenu:false,
+                    deployBox: false,
+                    deadpile: false,
+                    exitBox: false
+                }
             }
         },
         methods:{
@@ -105,9 +141,9 @@ document.addEventListener("DOMContentLoaded",function(){
             nextPhase(){
                 nextPhaseMouseDown();
             },
-            menuClick(id){
-                headerVue.menuClick(id);
-            },
+            // menuClick(id){
+            //     headerVue.menuClick(id);
+            // },
             showArrows(){
                 if (!DR.showArrows) {
                     $("#arrowButton").html("hide arrows");
@@ -139,12 +175,27 @@ document.addEventListener("DOMContentLoaded",function(){
                 this.crt = !this.crt;
             },
             clickCrt(){
+            },  wheelo(e){
+            },
+            unitClick(e){
+                counterClick(e);
+            },
+            menuClick(id){
+                if(id === 'all'){
+                    this.show.units.submenu = false;
+                    this.show.units.deployBox = false;
+                    this.show.units.deadpile = false;
+                    this.show.units.exitBox = false;
+                    return;
+                }
+                this.show.units[id] = !this.show.units[id];
+                this.show.units.submenu = false;
             }
 
         }
     })
     window.headerVue = new Vue({
-        el: '#secondHeader',
+        el: '#secondHeaderr',
         data:{
             deployBox: [],
             deadpile: [],
@@ -182,9 +233,8 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 
-    const x = DR.sync;
     x.register("victory", function(vp, data){
-        $ = DR.$;
+        let $ = DR.$;
         var ownerObj = data.specialHexes;
         var owner;
         let i;
@@ -418,9 +468,12 @@ document.addEventListener("DOMContentLoaded",function(){
         DR.stackModel = {};
         DR.stackModel.ids = {};
         // clearHexes();
-        headerVue.deployBox = [];
+        clickThrough.deployBox = [];
+        clickThrough.deadpile = [];
+        clickThrough.exitBox = [];
+        clickThrough.notUsed = [];
         topVue.units = [];
-        topVue.moveUnits = [];
+
 
 
         var phasingForceId = data.gameRules.attackingForceId;
@@ -461,14 +514,14 @@ document.addEventListener("DOMContentLoaded",function(){
                 mapUnits[i].id = i - 0;
                 mapUnits[i].shadow = false;
                 let slot = mapUnits[i].parent;
-                if(!headerVue[slot]){
-                    headerVue[slot] = [];
+                if(!clickThrough[slot]){
+                    clickThrough[slot] = [];
                 }
                 // if(!DR.units[slot]){
                 //     DR.units[slot] = [];
                 // }
                 unitDecorate(mapUnits[i], data);
-                headerVue[slot].push(mapUnits[i]);
+                clickThrough[slot].push(mapUnits[i]);
                 // DR.units[slot].push(mapUnits[i]);
                 continue;
             }
@@ -553,67 +606,6 @@ document.addEventListener("DOMContentLoaded",function(){
     });
 
 
-    x.register("specialHexes", function(specialHexes, data) {
-        $('.specialHexes').remove();
-        var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
-        for(var i in specialHexes){
-            var newHtml = lab[specialHexes[i]];
-            var curHtml = $("#special"+i).html();
-
-            if(true || newHtml != curHtml){
-                var hexPos = i.replace(/\.\d*/g,'');
-                var x = hexPos.match(/x(\d*)y/)[1];
-                var y = hexPos.match(/y(\d*)\D*/)[1];
-                $("#special"+hexPos).remove();
-                if(data.specialHexesChanges[i]){
-                    $("#gameImages").append('<div id="special'+hexPos+'" style="border-radius:30px;border:10px solid black;top:'+y+'px;left:'+x+'px;font-size:205px;z-index:1000;" class="'+lab[specialHexes[i]]+' specialHexes">'+lab[specialHexes[i]]+'</div>');
-                    $('#special'+hexPos).animate({fontSize:"16px",zIndex:0,borderWidth:"0px",borderRadius:"0px"},1900,function(){
-                        var id = $(this).attr('id');
-                        id = id.replace(/special/,'');
-
-
-                        if(data.specialHexesVictory[id]){
-                            var hexPos = id.replace(/\.\d*/g,'');
-
-                            var x = hexPos.match(/x(\d*)y/)[1];
-                            var y = hexPos.match(/y(\d*)\D*/)[1];
-                            var newVP = $('<div style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').insertAfter('#special'+i);
-                            $(newVP).animate({top:y-30,opacity:0.0},1900,function(){
-                                $(this).remove();
-                            });
-                        }
-                    });
-
-                }else{
-                    if(specialHexes[i] == 1 && i != 'x416y357'){
-                        $("#gameImages").append('<div id="special'+i+'" class="specialHexes fa fa-adjust supply"></div>');
-                        $("#special"+i).css({top:y+"px", left:x+"px"}).addClass(lab[specialHexes[i]]);
-                    }else{
-                        $("#gameImages").append('<div id="special'+i+'" class="specialHexes">'+lab[specialHexes[i]]+'</div>');
-                        $("#special"+i).css({top:y+"px", left:x+"px"}).addClass(lab[specialHexes[i]]);                    }
-                }
-
-            }
-        }
-
-        for(var id in data.specialHexesVictory)
-        {
-            if(data.specialHexesChanges[id]){
-                continue;
-            }
-            var hexPos = id.replace(/\.\d*/g,'');
-            var x = hexPos.match(/x(\d*)y/)[1];
-            var y = hexPos.match(/y(\d*)\D*/)[1];
-            var newVP = $('<div  style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').appendTo('#gameImages');
-            $(newVP).animate({top:y-30,opacity:0.0},1900,function(){
-                var id = $(this).attr('id');
-
-                $(this).remove();
-            });
-        }
-
-
-    });
     x.register("force", function (force, data) {
 
         return;
@@ -1241,7 +1233,6 @@ document.addEventListener("DOMContentLoaded",function(){
                         }
                         var combatCols;
 
-                        debugger;
                         combatCol = combatRules.combats[cD].index + 1;
 
                         if (combatCol >= 1) {
@@ -1337,7 +1328,6 @@ document.addEventListener("DOMContentLoaded",function(){
             if (combatRules.combatsToResolve) {
                 // $('.unit .unitOdds').remove();
                 if (combatRules.lastResolvedCombat) {
-                    debugger;
                     toResolveLog = "Current Combat or Last Combat<br>";
                     title += "<strong style='margin-left:20px;font-size:150%'>" + combatRules.lastResolvedCombat.Die + " " + combatRules.lastResolvedCombat.combatResult + "</strong>";
                     combatCol = combatRules.lastResolvedCombat.index;
@@ -1357,7 +1347,7 @@ document.addEventListener("DOMContentLoaded",function(){
                             clickThrough.$store.state.crt.pinned = false;
                         }
 
-                    clickThrough.$store.state.crt.roll = combatRoll - 1;
+                    clickThrough.$store.state.crt.roll = combatRoll;
 
                     if (combatRules.lastResolvedCombat.useAlt) {
                         clickThrough.$store.state.crt.selectedTable = 'cavalry'
@@ -1492,7 +1482,7 @@ document.addEventListener("DOMContentLoaded",function(){
         // }else{
         //     oddsDisp = $(".col" + combatCol).html();
         // }
-        debugger;
+        let xyz = clickThrough.$store.getters.currentTable;
         const selectedTable = clickThrough.$store.state.crt.selectedTable;
         oddsDisp = "";
         if(!combat.index) {
@@ -1500,7 +1490,7 @@ document.addEventListener("DOMContentLoaded",function(){
             return html;
 
         }
-        oddsDisp = clickThrough.$store.state.crtData.crts[selectedTable].header[combat.index];
+        oddsDisp = clickThrough.$store.getters.currentTable.header[combat.index];
         div = div.toFixed(2);
         var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + oddsDisp + "</div>"
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
@@ -1533,10 +1523,11 @@ document.addEventListener("DOMContentLoaded",function(){
         }
     });
     x.register("specialHexes", function(specialHexes, data) {
+        debugger;
         topVue.mapSymbols = [];
         topVue.specialEvents = [];
         topVue.specialEvents.splice(0,topVue.specialEvents.length)
-        $('.specialHexes').remove();
+        // $('.specialHexes').remove();
         var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
         for(var i in specialHexes){
             var newHtml = lab[specialHexes[i]];
@@ -1546,35 +1537,37 @@ document.addEventListener("DOMContentLoaded",function(){
                 var hexPos = i.replace(/\.\d*/g,'');
                 var x = hexPos.match(/x(\d*)y/)[1];
                 var y = hexPos.match(/y(\d*)\D*/)[1];
-                $("#special"+hexPos).remove();
-                if(data.specialHexesChanges[i]){
-                    $("#gameImages").append('<div id="special'+hexPos+'" style="border-radius:30px;border:10px solid black;top:'+y+'px;left:'+x+'px;font-size:205px;z-index:1000;" class="'+lab[specialHexes[i]]+' specialHexes">'+lab[specialHexes[i]]+'</div>');
-                    $('#special'+hexPos).animate({fontSize:"16px",zIndex:0,borderWidth:"0px",borderRadius:"0px"},1900,function(){
-                        var id = $(this).attr('id');
-                        id = id.replace(/special/,'');
-
-
-                        if(data.specialHexesVictory[id]){
-                            var hexPos = id.replace(/\.\d*/g,'');
-
-                            var x = hexPos.match(/x(\d*)y/)[1];
-                            var y = hexPos.match(/y(\d*)\D*/)[1];
-                            var newVP = $('<div style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').insertAfter('#special'+i);
-                            $(newVP).animate({top:y-30,opacity:0.0},1900,function(){
-                                $(this).remove();
-                            });
-                        }
-                    });
-
-                }else{
+                // $("#special"+hexPos).remove();
+                // if(data.specialHexesChanges[i]){
+                //     $("#gameImages").append('<div id="special'+hexPos+'" style="border-radius:30px;border:10px solid black;top:'+y+'px;left:'+x+'px;font-size:205px;z-index:1000;" class="'+lab[specialHexes[i]]+' specialHexes">'+lab[specialHexes[i]]+'</div>');
+                //     $('#special'+hexPos).animate({fontSize:"16px",zIndex:0,borderWidth:"0px",borderRadius:"0px"},1900,function(){
+                //         var id = $(this).attr('id');
+                //         id = id.replace(/special/,'');
+                //
+                //
+                //         if(data.specialHexesVictory[id]){
+                //             var hexPos = id.replace(/\.\d*/g,'');
+                //
+                //             var x = hexPos.match(/x(\d*)y/)[1];
+                //             var y = hexPos.match(/y(\d*)\D*/)[1];
+                //             var newVP = $('<div style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').insertAfter('#special'+i);
+                //             $(newVP).animate({top:y-30,opacity:0.0},1900,function(){
+                //                 $(this).remove();
+                //             });
+                //         }
+                //     });
+                //
+                // }else{
+                    debugger;
                     /* i didn't do it */
-                    if(specialHexes[i] == 1 && i != 'x416y357'){
-                        topVue.mapSymbols.push({x: x, y: y})
-                    }else{
-                        topVue.mapSymbols.push({x: x, y: y, text: "bad guys"})
-
-                    }
+                let mapSymbol = {x: x, y: y, text: DR.players[specialHexes[i]], class: DR.players[specialHexes[i]].replace(/ /g,'-'), change: false};
+                if(data.specialHexesChanges[i]){
+                    mapSymbol.change = true;
                 }
+                topVue.mapSymbols.push(mapSymbol)
+
+
+                // }
 
             }
         }
@@ -1789,5 +1782,134 @@ document.addEventListener("DOMContentLoaded",function(){
 
         }
     });
+    x.register("click", function (click) {
+        if (x.timeTravel) {
+            clickThrough.$store.state.timeTravel.currentClick = 'time travel dude ' + click
+        } else {
+            clickThrough.$store.state.timeTravel.currentClick = 'realtime dude ' + click
+        }
+        DR.currentClick = click;
+    });
+
+    let messageQueue = [];
+    x.register("flashMessages", function (messages, data) {
+        let msgQueue = [];
+        while(messages.length> 0){
+            let msg = messages.shift();
+            if (msg.match(/^@/)){
+                if (msg.match(/^@hex/)) {
+                    var hexPos = msg.replace(/\.\d*/g, '');
+                    var x = hexPos.match(/x(\d*)y/)[1] - 0;
+                    var y = hexPos.match(/y(\d*)\D*/)[1] - 0;
+                    topVue.rowSvg = {x,y}
+                }
+                if (msg.match(/^@show/)) {
+                    let matches =  msg.match(/^@show ([^,]*)/);
+                    let id = matches[1];
+                    if(id === 'crt'){
+                        clickThrough[id] = true;
+                    }else{
+                        clickThrough.show.units[id] = true;
+                    }
+                    continue;
+                }
+                if (msg.match(/^@hide/)) {
+                    let game = msg.match(/^@hide ([^,]*)/);
+                    let id = game[1];
+                    if(id === 'crt'){
+                        clickThrough[id] = false;
+                    }else{
+                        clickThrough.show.units[id] = false;
+                    }
+                    continue;
+                }
+            }else{
+                msgQueue.push(msg);
+            }
+
+        }
+        floatersMessages.messages = msgQueue;
+        return;
+        messageQueue = messages;
+        flashMessage( data.gameRules.playerStatus);
+    });
+
+    function flashMessage( playerStatus) {
+
+        if(messageQueue.length === 0){
+            return;
+        }
+        var x = 100;
+        var y = 200;
+        var game;
+        var id;
+        fixHeader();
+        var mess = messageQueue.shift();
+//    var mess = flashMessages.shift();
+        $("#FlashMessage").remove();
+        var fadeOut = 2800;
+        while (mess) {
+
+            if (mess.match(/^@/)) {
+                if (mess.match(/^@hex/)) {
+
+                    var hexPos = mess.replace(/\.\d*/g, '');
+                    var x = hexPos.match(/x(\d*)y/)[1] - 0;
+                    var y = hexPos.match(/y(\d*)\D*/)[1] - 0;
+
+                    var newHtml;
+                    newHtml = '<img src="'+rowSvg+'" class="row-hex">';
+                    $("#gameImages").append('<div id="FlashMessage" class="mapFlashSymbols">' + newHtml + '</div>');
+                    $("#FlashMessage").css({top: y + "px", left: x + "px"});
+                    $("#FlashMessage img").animate({
+                        opacity: 0.2,
+                        width: 190,
+                        marginLeft: (190 - 71) / -2 + "px",
+                        marginTop: (190 - 71) / -2 + "px"
+                    }, fadeOut)
+                        .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
+                        opacity: 0.2,
+                        width: 190,
+                        marginLeft: (190 - 71) / -2 + "px",
+                        marginTop: (190 - 71) / -2 + "px"
+                    }, fadeOut)
+                        .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
+                        opacity: 0.2,
+                        width: 190,
+                        marginLeft: (190 - 71) / -2 + "px",
+                        marginTop: (190 - 71) / -2 + "px"
+                    }, fadeOut)
+                        .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
+                        opacity: 0.2,
+                        width: 190,
+                        marginLeft: (190 - 71) / -2 + "px",
+                        marginTop: (190 - 71) / -2 + "px"
+                    }, fadeOut, flashMessage);
+                    return;
+                }
+                if (mess.match(/^@show/)) {
+                    game = mess.match(/^@show ([^,]*)/);
+                    id = game[1];
+                    $("#" + id).show({effect: "blind", direction: "up", complete: flashMessage});
+                    return;
+                }
+                if (mess.match(/^@hide/)) {
+                    game = mess.match(/^@hide ([^,]*)/);
+                    id = game[1];
+                    $("#" + id).hide({effect: "blind", direction: "up", complete: flashMessage});
+                    return;
+                }
+                if (mess.match(/^@gameover/)) {
+                    $("#gameViewer").append('<div id="FlashMessage" style="top:' + y + 'px;left:' + x + 'px;" class="flashMessage">' + "Game Over" + '</div>');
+                    $("#FlashMessage").animate({opacity: 0}, fadeOut, flashMessage);
+                    return;
+                }
+            }
+            $("#main-viewer").append('<div id="FlashMessage" style="top:' + y + 'px;left:' + x + 'px;" class="flashMessage">' + mess + '</div>');
+            $("#FlashMessage").animate({opacity: 0}, fadeOut, flashMessage);
+            return;
+        }
+    }
+
 
 });

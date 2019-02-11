@@ -86,6 +86,7 @@
                 </vue-draggable-resizable>
             </div>
             <?php //include "timeTravel.php"; ?>
+            @include('wargame::stdIncludes.vue-time-travel')
             <div id="nextPhaseWrapper">
                 @section('innerNextPhaseWrapper')
                 <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
@@ -212,7 +213,7 @@
                 </div>
 
                 <div id="gameContainer" >
-                    <div id="gameImages">
+                    <div id="gameImages" @click="mapClick">
                         @section('game-images')
                         <div id="svgWrapper">
                             <svg id="arrow-svg" style="opacity:.6;position:absolute;" xmlns="http://www.w3.org/2000/svg">
@@ -257,6 +258,8 @@
 
                         @section('units')
                         @show
+                            <flash-hexagon :position="rowSvg"></flash-hexagon>
+
                     </div>
                     @show
                 </div>
@@ -269,5 +272,8 @@
         </div>
     </div>
     <div id="display"></div>
+    <div id="floatMessageContainer">
+        <flash-messages :messages="messages"></flash-messages>
+    </div>
 </div>
 </body></html>

@@ -30,12 +30,12 @@ class CRT
     public $maxCombatIndex;
     public $dieCount;
     public $table;
-    public function __construct($header = false, $next = false, $combatIndexCount = 0, $dieOffsetHelper = -1, $table = null){
+    public function __construct($header = false, $next = false, $combatIndexCount = 0, $minDieRoll = 1, $table = null){
         $this->header = $header;
         $this->next = $next;
         $this->combatIndexCount = $combatIndexCount;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
-        $this->dieOffsetHelper = $dieOffsetHelper;
+        $this->dieOffsetHelper = 0 - $minDieRoll;
         $this->table = $table;
     }
 }

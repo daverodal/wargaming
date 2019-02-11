@@ -24,6 +24,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "./global-funcs";
+import {clickBack, phaseBack, playerTurnBack, clickSurge,phaseSurge, playerTurnSurge, timeLive, timeBranch} from "./time-funcs";
 import "./jquery.panzoom";
 import "jquery-ui-bundle";
 import {DR} from "../global-header";
@@ -90,7 +91,11 @@ export default function initialize() {
             doitCRT(col, event);
         }
     });
-    $("#gameImages").on("click touchend", "svg", mapClick);
+    $("#gameImages").on("click touchend", "svg",(event) =>{
+
+        mapClick(event);
+        return false;
+    } );
     $("#choose-option-button").on("click", doitOption);
 
     $("#nextPhaseButton").on('click', nextPhaseMouseDown);
@@ -332,7 +337,6 @@ export default function initialize() {
     })
 
     $("#crt-wrapper .wrapper-label").click(function () {
-        debugger;
         $("#crt-wrapper").css('overflow', 'visible');
         DR.$crtPanZoom.panzoom('reset');
 
@@ -503,7 +507,6 @@ export default function initialize() {
     });
 
     $("#zoom").on('click', function () {
-        debugger;
         DR.globalZoom = 1.0;
         $("#zoom .defaultZoom").html(DR.globalZoom.toFixed(1));
         DR.$panzoom.panzoom('reset');
@@ -532,129 +535,25 @@ export default function initialize() {
         x.fetch(click);
     });
 
-    function clickBack(){
-        let x = DR.sync;
-        x.timeTravel = true;
-        if (x.current) {
-            x.current.abort();
-        }
-        var click = DR.currentClick;
-        click--;
-        x.fetch(click);
-    }
     $("#click-back").click(function () {
         clickBack();
     });
-    function phaseBack(){
-        let x = DR.sync;
-        x.timeTravel = true;
-        if (x.current) {
-            x.current.abort();
-        }
-        var click = DR.currentClick - 0;
-        var clicks = DR.clicks;
-        var backSearch = clicks.length - 1;
-        while (backSearch >= 0) {
-            if (clicks[backSearch] <= click) {
-                break;
-            }
-            backSearch--;
-        }
-        var gotoClick = clicks[backSearch] - 1;
-        if (gotoClick < 2) {
-            gotoClick = 2;
-        }
-        x.fetch(gotoClick);
-
-    }
     $("#phase-back").click(function () {
         phaseBack();
     });
 
-    function phaseSurge(){
-        let x = DR.sync;
-        x.timeTravel = true;
-        if (x.current) {
-            x.current.abort();
-        }
-        var click = DR.currentClick - 0;
-        var clicks = DR.clicks;
-        var forwardSearch = 0;
-
-        while (forwardSearch < clicks.length) {
-            if (clicks[forwardSearch] > (click + 1)) {
-                break;
-            }
-            forwardSearch++;
-        }
-        var gotoClick = clicks[forwardSearch] - 1;
-        if (gotoClick < 2) {
-            gotoClick = 2;
-        }
-        x.fetch(gotoClick);
-    }
     $("#phase-surge").click(function () {
         phaseSurge();
     });
 
-    function playerTurnBack(){
-        let x = DR.sync;
-        x.timeTravel = true;
-        if (x.current) {
-            x.current.abort();
-        }
-        var click = DR.currentClick - 0;
-        var clicks = DR.playTurnClicks;
-        var backSearch = clicks.length - 1;
-        while (backSearch >= 0) {
-            if (clicks[backSearch] <= click) {
-                break;
-            }
-            backSearch--;
-        }
-        var gotoClick = clicks[backSearch] - 1;
-        if (gotoClick < 2) {
-            gotoClick = 2;
-        }
-        x.fetch(gotoClick);
-
-    }
     $("#player-turn-back").click(function () {
         playerTurnBack();
     });
 
-    function playerTurnSurge(){
-        let x = DR.sync;
-        x.timeTravel = true;
-        if (x.current) {
-            x.current.abort();
-        }
-        var click = DR.currentClick - 0;
-        var clicks = DR.playTurnClicks;
-        var forwardSearch = 0;
-
-        while (forwardSearch < clicks.length) {
-            if (clicks[forwardSearch] > (click + 1)) {
-                break;
-            }
-            forwardSearch++;
-        }
-        var gotoClick = clicks[forwardSearch] - 1;
-        if (gotoClick < 2) {
-            gotoClick = 2;
-        }
-        x.fetch(gotoClick);
-    }
     $("#player-turn-surge").click(function () {
         playerTurnSurge();
     });
 
-    function clickSurge(){
-        let x = DR.sync;
-        var click = DR.currentClick;
-        click++;
-        x.fetch(click);
-    }
     $("#click-surge").click(function () {
         clickSurge();
     });
@@ -663,17 +562,6 @@ export default function initialize() {
     $("#timeBranch").click(function () {
        timeBranch();
     });
-    function timeBranch(){
-        let x = DR.sync;
-        x.timeTravel = true;
-        x.timeBranch = true;
-        if (x.current) {
-            x.current.abort();
-        }
-        var click = DR.currentClick;
-        x.fetch(click);
-        $("#TimeWrapper .WrapperLabel").click();
-    }
     $("#timeFork").click(function () {
         let x = DR.sync;
         x.timeTravel = true;
@@ -691,12 +579,6 @@ export default function initialize() {
         x.timeTravel = false;
         x.fetch(0);
     });
-    function timeLive(){
-        let x = DR.sync;
-        $("#TimeWrapper .WrapperLabel").click();
-        x.timeTravel = false;
-        x.fetch(0);
-    }
     $("#timeLive").click(function () {
         timeLive();
     });

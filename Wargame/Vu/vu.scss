@@ -234,5 +234,38 @@
   background: rgba(255,255,0,.6);
 }
 
+.row-hex{
+  width:71px;
+}
+.mapFlashSymbols{
+  position:absolute;
+  color:white;
+  background-color: transparent;
+  margin-top:-31px;
+  margin-left:-36px;
+}
 
+.flashMessage {
+  position: fixed;
+  width: 80%;
+  background: rgba(255, 255, 255, .9);
+  text-align: center;
+  border-radius: 30px;
+  border: 10px solid black;
+  font-size: 100px;
+  z-index: 1000;
+  pointer-events: none;
+}
 
+#floatMessageContainer{
+  position: absolute;
+  top:200px;
+  left: 100px;
+}
+
+.Red{
+  background: #ef7e4a;
+}
+.Blue {
+  background: #84b5ff;
+}

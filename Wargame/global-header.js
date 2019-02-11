@@ -23,7 +23,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import {counterClick, rotateUnits} from "./wargame-helpers/global-funcs";
+import {mapClick, counterClick, rotateUnits} from "./wargame-helpers/global-funcs";
 import {initialize, x} from "./wargame-helpers";
 var DR = window.DR;
 var zoomed = false;
@@ -77,15 +77,19 @@ document.addEventListener("DOMContentLoaded",function(){
                 DR.dragged = true;
             }else{
                 if(DR.doingZoom !== true && a.originalEvent.changedTouches){
-                    const now = Date.now() - 0;
-                    const time = now - DR.startTime;
-                    console.log(time)
-                    if(time > 600){
-                        a.ctrlKey = false;
-                        rotateUnits(a, a.target.parentElement);
+                    if(a.target.id === 'arrow-svg'){
+                        console.log("Forin mapClick");
+                        mapClick(a.originalEvent);
                     }else{
-                        counterClick(a);
-
+                        const now = Date.now() - 0;
+                        const time = now - DR.startTime;
+                        console.log(time)
+                        if(time > 600){
+                            a.ctrlKey = false;
+                            rotateUnits(a, a.target.parentElement);
+                        }else{
+                            counterClick(a);
+                        }
                     }
                 }
             }

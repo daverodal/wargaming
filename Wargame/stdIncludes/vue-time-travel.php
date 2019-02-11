@@ -19,9 +19,18 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><div class="btn-group dropDown"  id="time-wrapper">
-    <button class="WrapperLabel" title='Time Travel'>U<small>ndo</small></button>
-    <div id="Time" style="display:none;"><div class="close">X</div>
+?><div class="btn-group dropDown" :class="{open: undo}" id="time-wrapper">
+    <button @click="undo = !undo" class="WrapperLabel" title='Time Travel'>U<small>ndo</small></button>
+    <vue-draggable-resizable v-show="undo" style="z-index: 100;">
+        <undo class=""></undo>
+    </vue-draggable-resizable>
+</div>
+
+
+
+<?php
+/*
+ *    <div id="Time"><div class="close">X</div>
         Time you are viewing:
         <div id="clickCnt"></div>
         <div id="phaseClicks"></div><br>
@@ -60,4 +69,4 @@
 
 
     </div>
-</div>
+ */

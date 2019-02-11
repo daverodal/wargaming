@@ -3,7 +3,7 @@
             <div class="close">X</div>
             <button class="next-table-button btn btn-sm" @click="showNext">Show Next Table</button>
             {{ currentTableName }}
-            <h3>Combat Odds <span v-if="highlightIndex">{{currentTable.header[highlightIndex]}}</span> <span>{{combatResult}}</span></h3>
+            <h3>Combat Odds <span v-if="highlightIndex">{{currentTable.header[highlightIndex]}}</span> <span>{{combatResult}}</span> <span>{{dieRoll}}</span></h3>
             <div v-if="crtData.crts"  v-for="(table,tableName) in crtData.crts">
                 <div v-if="tableName === currentTableName">
                 {{ tableName }} table
@@ -13,8 +13,8 @@
                 </div>
                 <div v-if="crtData.crts">
                 <div v-for="(resultsRow, index) in table.table" :class="index & 1 ? '' : crtOptions.playerName" class="roll">
-                    <span class="col0">{{index+1}}</span>
-                    <span  :class="rowHighlight(index, colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
+                    <span class="col0">{{index - table.dieOffsetHelper}}</span>
+                    <span  :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
                 </div>
                 </div>
                 </div>
@@ -45,10 +45,13 @@
                 return this.$store.state.crt.combatResult;
             },
             currentTable(){
-                return this.crtData.crts[this.$store.state.crt.selectedTable];
+                return this.$store.getters.currentTable;
             },
             currentTableName(){
-               return this.$store.state.crt.selectedTable;
+               return this.$store.getters.currentTableName;
+            },
+            dieRoll(){
+                return this.$store.state.crt.roll;
             }
         },
         data: ()=>{

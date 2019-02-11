@@ -883,30 +883,31 @@ function flashMessage(playerStatus) {
                 newHtml = '<img src="'+rowSvg+'" class="row-hex">';
                 $("#gameImages").append('<div id="FlashMessage" class="mapFlashSymbols">' + newHtml + '</div>');
                 $("#FlashMessage").css({top: y + "px", left: x + "px"});
-                $("#FlashMessage img").animate({
-                    opacity: 0.2,
-                    width: 190,
-                    marginLeft: (190 - 71) / -2 + "px",
-                    marginTop: (190 - 71) / -2 + "px"
-                }, fadeOut)
-                    .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
-                    opacity: 0.2,
-                    width: 190,
-                    marginLeft: (190 - 71) / -2 + "px",
-                    marginTop: (190 - 71) / -2 + "px"
-                }, fadeOut)
-                    .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
-                    opacity: 0.2,
-                    width: 190,
-                    marginLeft: (190 - 71) / -2 + "px",
-                    marginTop: (190 - 71) / -2 + "px"
-                }, fadeOut)
-                    .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
-                    opacity: 0.2,
-                    width: 190,
-                    marginLeft: (190 - 71) / -2 + "px",
-                    marginTop: (190 - 71) / -2 + "px"
-                }, fadeOut, flashMessage);
+                $("#FlashMessage img")
+                //     .animate({
+                //     opacity: 0.2,
+                //     width: 190,
+                //     marginLeft: (190 - 71) / -2 + "px",
+                //     marginTop: (190 - 71) / -2 + "px"
+                // }, fadeOut)
+                //     .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
+                //     opacity: 0.2,
+                //     width: 190,
+                //     marginLeft: (190 - 71) / -2 + "px",
+                //     marginTop: (190 - 71) / -2 + "px"
+                // }, fadeOut)
+                //     .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
+                //     opacity: 0.2,
+                //     width: 190,
+                //     marginLeft: (190 - 71) / -2 + "px",
+                //     marginTop: (190 - 71) / -2 + "px"
+                // }, fadeOut)
+                //     .animate({opacity: 1, width: 71, marginLeft: 0, marginTop: 0}, 0).animate({
+                //     opacity: 0.2,
+                //     width: 190,
+                //     marginLeft: (190 - 71) / -2 + "px",
+                //     marginTop: (190 - 71) / -2 + "px"
+                // }, fadeOut, flashMessage);
                 return;
             }
             if (mess.match(/^@show/)) {
