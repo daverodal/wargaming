@@ -1,8 +1,7 @@
 <template>
         <div id="vue-crt" :class="crtOptions.playerName">
-            <div class="close">X</div>
-            <button class="next-table-button btn btn-sm" @click="showNext">Show Next Table</button>
-            {{ currentTableName }}
+            <div class="close" @click="closeMe">X</div>
+            <button v-if="numTables > 1" class="next-table-button btn btn-sm" @click="showNext">Show {{ nextTableName }} Table</button>
             <h3>Combat Odds <span v-if="highlightIndex">{{currentTable.header[highlightIndex]}}</span> <span>{{combatResult}}</span> <span>{{dieRoll}}</span></h3>
             <div v-if="crtData.crts"  v-for="(table,tableName) in crtData.crts">
                 <div v-if="tableName === currentTableName">
@@ -52,6 +51,12 @@
             },
             dieRoll(){
                 return this.$store.state.crt.roll;
+            },
+            nextTableName(){
+                return this.$store.getters.currentTable.next;
+            },
+            numTables(){
+                return this.$store.state.crtData.crts.length;
             }
         },
         data: ()=>{
@@ -69,19 +74,11 @@
             this.resultsNameData = resultsNames;
         },
         methods:{
+            closeMe(){
+                clickThrough.crt = false
+            },
             showNext(){
-              if(this.$store.state.crt.selectedTable === 'normal'){
-                  this.$store.state.crt.selectedTable = 'cavalry';
-                  return;
-              }
-              if(this.$store.state.crt.selectedTable === 'cavalry'){
-                  this.$store.state.crt.selectedTable = 'determined';
-                  return;
-              }
-              if(this.$store.state.crt.selectedTable === 'determined'){
-                  this.$store.state.crt.selectedTable = 'normal';
-                  return;
-              }
+                this.$store.state.crt.selectedTable = this.$store.getters.currentTable.next;
             },
             headerHighlight(index){
                 return index === this.highlightIndex ? 'highlighted': index === this.highlightPinned ? 'pin-highlighted': ''

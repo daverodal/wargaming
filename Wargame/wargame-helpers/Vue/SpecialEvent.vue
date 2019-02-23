@@ -1,7 +1,6 @@
 <template>
         <div :style="{top:specialEvent.y + 'px', left: specialEvent.x + 'px'}" class="special-events specialHexesVP">
-            <div v-if="specialEvent.text"><span v-html="specialEvent.text"></span></div>
-            <i class="fa fa-adjust" v-else></i>
+            <div class="s-e-container" v-if="specialEvent.text" v-html="specialEvent.text"></div>
         </div>
 </template>
 
@@ -18,37 +17,47 @@
 <style  lang="scss">
 
 
-    .social-events-move{
-        transition: all 1s;
-        display:block !important;
-    }
     .social-events-enter-active{
-        transition: all 1.5s;
-        opacity: 0;
+        transition: all 9.5s;
         margin-top:-40px;
-        display: block !important;
+        opacity: 0;
     }
 
 
     .special-events {
-        display:none;
+        opacity: 0;
+        z-index: 100;
         font-size:60px;
         position: absolute;
         color: white;
         background-color: transparent;
-        background-color: #59cb5e;
         pointer-events:none;
         i {
             font-size: 25px;
             transform: rotate(180deg);
             z-index: 1000;
         }
+        .s-e-container{
+            display:block;
+            border:10px solid black;
+            border-radius: 40px;
+            span{
+                padding: 5px;
+                display:block;
+                border-radius: 30px;
+            }
+        }
+        &.specialHexesVP{
+            .s-e-container{
+                border:none;
+            }
+
+        }
 
     }
     .social-events-enter{
         opacity: 1;
         margin-top:0px;
-        display:block !important;
     }
 
 

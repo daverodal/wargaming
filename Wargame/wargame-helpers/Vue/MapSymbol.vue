@@ -1,6 +1,6 @@
 <template>
     <transition name="fade">
-        <div v-if="showSymbol" :style="{top:mapsymbol.y + 'px', left: mapsymbol.x + 'px'}" class="map-symbols" :class="mapsymbol.class">
+        <div v-if="showSymbol" :style="{top:mapsymbol.y + 'px', left: mapsymbol.x + 'px'}" class="map-symbols" :class="[mapsymbol.class, firstOne]">
             <div v-if="mapsymbol.text"> {{ mapsymbol.text }} </div>
         </div>
     </transition>
@@ -13,10 +13,10 @@
             mapsymbol:{
                 handler(newVal, oldVal){
                     if(newVal.change){
+                        this.firstOne = false;
                         this.showSymbol = false;
                         setTimeout(this.showAgain, 30)
                     }
-                    debugger
                 },
                 deep: true
             }
@@ -26,8 +26,10 @@
               this.showSymbol = true;
           }
         },
+        mounted(){
+        },
         data: () => {
-            return {copyMapSymbol:{},showSymbol: true}
+            return {copyMapSymbol:{},showSymbol: true, firstOne: 'first-one'}
         }
     }
 </script>
@@ -39,13 +41,17 @@
         transition: font-size 3s;
     }
     .map-symbols {
+        padding: 0px 5px;
+        border: 3px solid #001825;
+        border-radius: 10px;
         position: absolute;
         color: black;
-        background-color: transparent;
-        background-color: #59cb5e;
         i {
             font-size: 14px;
             transform: rotate(180deg);
+        }
+        &.first-one.fade-enter{
+            font-size:14px;
         }
     }
     .Red{

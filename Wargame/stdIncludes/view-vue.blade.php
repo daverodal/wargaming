@@ -21,18 +21,18 @@
  */
 ?>
 <body xmlns="http://www.w3.org/1999/html">
-<div class="bug-report"  style="display:none;">
-    <form id="bug-report-form">
-        <textarea id="bug-report-message" rows="10" cols="50"></textarea><br>
-        <button id="submit-bug-report">Submit Report</button>
-        <button id="cancel-bug-report">Cancel</button>
-    </form>
-</div>
+
 <div id="main-viewer">
-    <header id="header">
+    <header id="header" :class="headerPlayer">
         <div id="preHeaderContent"></div>
         <div id="headerContent">
-
+            <div :class="{open: debug}" class="bug-report">
+                <form id="bug-report-form">
+                    <textarea v-model="bugMessage" id="bug-report-message" rows="10" cols="50"></textarea><br>
+                    <button @click.stop.prevent="saveBugReport" id="submit-bug-report">Submit Report</button>
+                    <button @click.stop.prevent="bugReport">Cancel</button>
+                </form>
+            </div>
             <div @click="menu = !menu" class=" btn-group"  :class="{open: menu}" @click="menu = !menu">
                 <button class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i><span class="desktop">Menu</span></button>
 
@@ -81,7 +81,7 @@
             <div :class="{open: crt}" class="btn-group" id="crt-wrapper">
                 <button @click="changeCrt()"  class="wrapper-label" title='Combat Results Table'>
                     <span>CRT</span></button>
-                <vue-draggable-resizable v-show="crt" style="z-index: 100;">
+                <vue-draggable-resizable :y="100"  v-show="crt" style="z-index: 100;">
                     <vue-crt :crt-options="crtOptions" :crt="'{{ json_encode(new \Wargame\Vu\CombatResultsTable()) }}'"></vue-crt>
                 </vue-draggable-resizable>
             </div>
@@ -92,10 +92,10 @@
                 <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
                 <button :class="{'inline-show': dynamicButtons.determined}" class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
                 <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton movementButton" id="forceMarchEvent">m</button>
-                <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
-                <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton combatButton" id="shiftKey">+</button>
+                <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+                <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
                 <button :class="{'inline-show': dynamicButtons.showHexes}" class="dynamicButton hexButton" id="showHexes">H</button>
-                <button class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
+                <button @click="nextPhase" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
                 <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
                 <div id="comlinkWrapper">
                     <div id="comlink"></div>
@@ -105,10 +105,10 @@
             </div>
             <div id="statusWrapper">
 
-                <div id="topStatus"></div>
+                <div id="topStatus" v-html="headerTopStatus"></div>
                 <div>
-                    <span id="status"></span>
-                    <span id="victory"></span>
+                    <span id="status" v-html="headerStatus"></span>
+                    <span id="victory" v-html="headerVictory"></span>
                 </div>
             </div>
             <div @click="zoom()" class="btn-group" id="zoomWrapper">
@@ -137,7 +137,7 @@
             <div class="btn-group" :class="{open: log}" @click="log = !log" >
                 <button class=""><span class="tablet">Log</span><span class="desktop">Log</span></button>
                 <div class="dropdown-menu">
-                    <ol id="logWrapper">logs man</ol>
+                    <ol id="logWrapper" v-html="headerLog"></ol>
                 </div>
             </div>
 
@@ -173,7 +173,13 @@
                         <div @click="show.units.deployBox = false" class="close">X</div>
                         <div style="margin-right:24px;" class="left">Deploy/Staging area</div>
                         <div id="deployBox">
-                            <units-component :myunits="deployBox"></units-component>
+                            <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
+                                    <units-component :myfilter="1" :myunits="deployBox"></units-component>
+                                <div class="clear"></div>
+                                    <units-component :myfilter="2" :myunits="deployBox"></units-component>
+                                <div class="clear"></div>
+                            </vue-draggable-resizable>
+
                             <div class="clear"></div>
                         </div>
                         <div style="clear:both;"></div>
@@ -184,7 +190,12 @@
                 <div style="font-size:50px;font-family:sans-serif;float:right;color:#666;">
                     Retired Units
                 </div>
-                <units-component :myunits="deadpile"></units-component>
+                <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
+                    <units-component :myfilter="1" :myunits="deadpile"></units-component>
+                    <div class="clear"></div>
+                    <units-component :myfilter="2" :myunits="deadpile"></units-component>
+                    <div class="clear"></div>
+                </vue-draggable-resizable>
                 <div class="clear"></div>
 
             </div>
@@ -214,6 +225,8 @@
 
                 <div id="gameContainer" >
                     <div id="gameImages" @click="mapClick">
+                        <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
+                        </float-message>
                         @section('game-images')
                         <div id="svgWrapper">
                             <svg id="arrow-svg" style="opacity:.6;position:absolute;" xmlns="http://www.w3.org/2000/svg">
@@ -251,7 +264,7 @@
                         <?php $id = 0; ?>
                         <units-component :myghosts="moveUnits" :myunits="units"></units-component>
 
-                        <map-symbol v-for="mapSymbol in mapSymbols"  :mapsymbol="mapSymbol"></map-symbol>
+                        <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index" :mapsymbol="mapSymbol"></map-symbol>
                         <transition-group name="social-events" appear>
                             <special-event  v-for="(specialEvent,key) in specialEvents" :key="specialEvent.id" :special-event="specialEvent"></special-event>
                         </transition-group>
@@ -271,7 +284,6 @@
 
         </div>
     </div>
-    <div id="display"></div>
     <div id="floatMessageContainer">
         <flash-messages :messages="messages"></flash-messages>
     </div>

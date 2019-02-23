@@ -1,5 +1,3 @@
-import {DR} from "../global-header";
-
 export function clickBack(){
     let x = DR.sync;
     x.timeTravel = true;

@@ -1,7 +1,9 @@
 <template>
-    <div class="unit-components">
-        <unit-component v-for="(unit,key) in myunits" :key="key" :unit="unit"></unit-component>
+    <div class="unit-components">this is reall
+        <unit-component v-if="!myfilter || unit.forceId === myfilter" v-for="(unit,key) in myunits" :key="key" :unit="unit"></unit-component>
+        not fake
         <unit-component class="ghost" v-for="(unit,key) in myghosts" :key="'ghost'+key" :unit="unit"></unit-component>
+        true
     </div>
 </template>
 
@@ -10,7 +12,7 @@
         directives:{
 
         },
-        props:['myunits','myghosts'],
+        props:['myunits','myghosts','myfilter'],
         data:()=>{
             return{
                 units: [],

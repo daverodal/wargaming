@@ -20,16 +20,16 @@
         <div class="cool-box">
             <div class="time-button-wrapper alpha col-xs-6">
                 Back 1<br>
-                <div class="fancy-time-button" @click="clickBack()" id="click-back">click</div>
-                <div class="fancy-time-button" @click="phaseBack()" id="phase-back">phase</div>
-                <div class="fancy-time-button" @click="playerTurnBack()" id="player-turn-back">player turn</div>
+                <div class="fancy-time-button" @click="clickBack" id="click-back">click</div>
+                <div class="fancy-time-button" @click="phaseBack" id="phase-back">phase</div>
+                <div class="fancy-time-button" @click="playerTurnBack" id="player-turn-back">player turn</div>
 
             </div>
             <div class="time-button-wrapper col-xs-6">
                 Forward 1<br>
-                <div class="fancy-time-button"  @click="clickSurge()" id="click-surge">click</div>
-                <div class="fancy-time-button" @click="phaseSurge()" id="phase-surge">phase</div>
-                <div class="fancy-time-button" @click="playerTurnSurge()" id="player-turn-surge">player turn</div>
+                <div class="fancy-time-button"  @click="clickSurge" id="click-surge">click</div>
+                <div class="fancy-time-button" @click="phaseSurge" id="phase-surge">phase</div>
+                <div class="fancy-time-button" @click="playerTurnSurge" id="player-turn-surge">player turn</div>
 
             </div>
             <div class="clear"></div>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import {clickBack,phaseBack,playerTurnBack, clickSurge, phaseSurge, playerTurnSurge, timeBranch, timeLive} from "../wargame-helpers/time-funcs";
+    import {clickBack,phaseBack,playerTurnBack, clickSurge, phaseSurge, playerTurnSurge, timeBranch, timeLive} from "../time-funcs";
 
     export default {
         name: "Undo",

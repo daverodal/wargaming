@@ -105,7 +105,6 @@ trait CRTResults
                         $attUnit->damageUnit(true);
                         $defUnit->retreatCountRequired = 0;
                         $force->defenderLoseAmount += $attUnit->exchangeAmount;
-                        echo "\n ".$force->defenderLoseAmount. " " . $attUnit->id;
                         $defUnit->moveCount = 0;
                         break;
 

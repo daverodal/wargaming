@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?><div class="btn-group dropDown" :class="{open: undo}" id="time-wrapper">
-    <button @click="undo = !undo" class="WrapperLabel" title='Time Travel'>U<small>ndo</small></button>
+    <button @click="undo = !undo" class="wrapper-label" title='Time Travel'>U<small>ndo</small></button>
     <vue-draggable-resizable v-show="undo" style="z-index: 100;">
         <undo class=""></undo>
     </vue-draggable-resizable>

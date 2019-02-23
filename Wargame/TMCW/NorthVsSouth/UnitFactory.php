@@ -1,5 +1,7 @@
 <?php
 namespace Wargame\TMCW\NorthVsSouth;
+use Wargame\Battle;
+
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal
@@ -55,7 +57,19 @@ class UnitFactory {
         static::$randomInjector[] = $unit;
     }
 
+    public static function doShuffle($units){
+        $gnuArray = [];
+        while(count($units) > 0){
+            $cnt = count($units);
+            $b = Battle::getBattle();
+            $key = $b->dieRolls->getEvent(0, $cnt - 1);
+            array_push($gnuArray, $units[$key]);
+            array_splice($units, $key, 1);
+        }
+        return $gnuArray;
+    }
     public static function flush(){
+//        static::$randomInjector = self::doShuffle(static::$randomInjector);
         shuffle(static::$randomInjector);
         foreach(static::$randomInjector as $unit){
             self::$injector->injectUnit($unit);

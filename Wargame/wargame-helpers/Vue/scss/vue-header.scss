@@ -4,8 +4,9 @@
   padding-bottom: 0px;
   z-index: 2000;
   #headerContent {
-
-
+    .btn-group button{
+      font-size:25px;
+    }
 
     #zoomWrapper {
       #zoom {
@@ -116,7 +117,7 @@
     #nextPhaseWrapper {
       float: right;
       .dynamicButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey, #debug {
-        font-size: 28px;
+        font-size: 25px;
         position: static;
       }
     }
@@ -197,6 +198,7 @@
 #deployBox {
   position: relative;
   font-family: serif;
+  min-height:80px;
 }
 
 

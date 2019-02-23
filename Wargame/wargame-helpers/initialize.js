@@ -421,6 +421,7 @@ export default function initialize() {
 
 
     $("#cancel-bug-report").click(function(event){
+        debugger;
         $(".bug-report").toggle();
         event.stopPropagation();
         return false;

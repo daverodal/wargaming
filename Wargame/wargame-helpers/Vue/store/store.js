@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import {DR} from "../global-vue-header";
 Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
@@ -13,16 +14,25 @@ export const store = new Vuex.Store({
             selectedTable: 'normal',
             roll: null
         },
+        headerData:{
+            victory: '',
+            status: '',
+            topStatus: '',
+            log: ''
+        },
         timeTravel:{
            currentClick: ''
         },
         crtData: {...combatResultsTable
+        },
+        mapData:{
+            unitsMap:{},
+            hexesMap:{}
         }
     },
     getters:{
         currentTableName: (state) => {
-            console.log("CurrentTableName");
-            console.log(state.crt.selectedTable);
+
             return state.crt.selectedTable;
         },
         currentTable: (state) => {

@@ -31,7 +31,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+import fixHeader from './fix-header';
 export var mute = false;
 
 export function playAudio() {
@@ -256,7 +256,6 @@ export function counterClick(event, unitId = null) {
 }
 
 export function mapClick(event) {
-    console.log("mapclick");
 
     var zoomed = window.zoomed;
     if (DR.dragged) {

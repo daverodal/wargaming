@@ -6,10 +6,6 @@
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/vu.css')}}">
 </head>
 
-@section('inner-crt')
-    @include('wargame::stdIncludes.inner-crt', ['topCrt'=> new \Wargame\Vu\CombatResultsTable()])
-@endsection
-
 @section('tec')
 @endsection
 

@@ -1,7 +1,13 @@
 <template>
+    <div>
+
     <transition name="fade">
-        <div id="MyFlashMessage" class="flashMessage" v-if="message !== null">  {{message}} </div>
+        <div id="MyFlashMessage" class="flashMessage" v-if="message !== null" v-html="message"></div>
     </transition>
+        <div v-for="msg in messageQueue">
+            <div v-html="msg"></div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -30,16 +36,13 @@
         },
         methods:{
             startPulseOn(){
-                console.log("start tick");
                 setTimeout(this.endPulseOn, 30);
             },
             endPulseOn(){
               this.message = null;
-              console.log("Ticked");
               setTimeout(this.fadeCompleted, 3000);
             },
             fadeCompleted(){
-                console.log("Tocked");
                 if(this.messageQueue.length > 0){
                     this.message = this.messageQueue.shift();
                     console.log(this.message);

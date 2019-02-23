@@ -49,7 +49,7 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
 	    $this->crts = new stdClass();
 
         $this->crts->normal = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
-            '', 10, 1);
+            'cavalry', 10, 1);
         $this->crts->normal->table = array(
             array(AE, AR, AR, DR, DR, DR, DE, DE, DE, DE),
             array(AE, AE, AR, AR, DR, DR, DR, DE, DE, DE),
@@ -65,7 +65,7 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
         $this->dieSideCount = 6;
 
         $this->crts->cavalry = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
-            '', 10, 1);
+            'determined', 10, 1);
 
 
         $this->crts->cavalry->table = array(
@@ -78,7 +78,7 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
         );
 
         $this->crts->determined = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
-            '', 10, 1);
+            'normal', 10, 1);
 
 
         $this->crts->determined->table = [

@@ -18,7 +18,39 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+/**
+ *
+ * Copyright 2012-2015 David Rodal
+ * User: David Markarian Rodal
+ * Date: 3/8/15
+ * Time: 5:48 PM
+ *
+ *  This program is free software; you can redistribute it
+ *  and/or modify it under the terms of the GNU General Public License
+ *  as published by the Free Software Foundation;
+ *  either version 2 of the License, or (at your option) any later version
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@import '../../wargame-helpers/Vue/scss/vue';
+@import 'localColors';
 
-@import "../../commonStyle";
-@import "../tmcw";
-@import "local";
+@include header('Northern-States', $northernColor);
+@include header('Southern-States', $southernColor);
+@include player(southern, Southern-States, $southernColor)
+@include player(northern, Northern-States, $northernColor)
+.map-symbols.Northern-States{
+  background-color:$northernColor;
+}
+.specialHexesVP .northernVictoryPoints {
+  @include victoryPoints($northernColor);
+}
+.specialHexesVP .southernVictoryPoints {
+  @include victoryPoints($southernColor);
+}
