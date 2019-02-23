@@ -150,6 +150,7 @@ abstract class SimpleForce{
     function unitCanDeploy($id)
     {
         $canDeploy = false;
+
         if ($this->units[$id]->status == STATUS_CAN_DEPLOY
             && $this->units[$id]->forceId == $this->attackingForceId
         ) {

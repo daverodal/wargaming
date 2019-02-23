@@ -883,7 +883,8 @@ function flashMessage(playerStatus) {
                 newHtml = '<img src="'+rowSvg+'" class="row-hex">';
                 $("#gameImages").append('<div id="FlashMessage" class="mapFlashSymbols">' + newHtml + '</div>');
                 $("#FlashMessage").css({top: y + "px", left: x + "px"});
-                $("#FlashMessage img").animate({
+                $("#FlashMessage img")
+                    .animate({
                     opacity: 0.2,
                     width: 190,
                     marginLeft: (190 - 71) / -2 + "px",

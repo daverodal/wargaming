@@ -23,8 +23,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import {mapClick, counterClick, rotateUnits} from "./wargame-helpers/global-funcs";
-import {initialize, x} from "./wargame-helpers";
+/* globl-vue-header */
+import { syncObj } from "./syncObj";
+import {counterClick, fixItAll, mapClick} from "../global-funcs";
+
 var DR = window.DR;
 var zoomed = false;
 // $.ajaxSetup({
@@ -33,15 +35,11 @@ var zoomed = false;
 //     }
 // });
 window.zoomed = zoomed;
+import "../jquery.panzoom";
 
+/* global-vue-header 2 */
 document.addEventListener("DOMContentLoaded",function(){
 
-
-    var DR = window.DR;
-
-    if (!DR) {
-        DR = {};
-    }
     DR.$ = $;
     DR.globalZoom = 1;
     DR.playerNameMap = ["Zero", "One", "Two", "Three", "Four"];
@@ -76,6 +74,7 @@ document.addEventListener("DOMContentLoaded",function(){
             if (xDrag > 20 || yDrag > 20) {
                 DR.dragged = true;
             }else{
+
                 if(DR.doingZoom !== true && a.originalEvent.changedTouches){
                     if(a.target.id === 'arrow-svg'){
                         mapClick(a.originalEvent);
@@ -96,6 +95,7 @@ document.addEventListener("DOMContentLoaded",function(){
             return false;
         },
         onStart: function(a,b,c,d,e){
+
 
             DR.doingZoom = false;
 
@@ -126,8 +126,27 @@ document.addEventListener("DOMContentLoaded",function(){
 
     DR.$panzoom = $panzoom;
 
+
+    DR.sync = syncObj;
     /* Sync object, well named as x don't start fetching till everything is ready.*/
-    x.fetch(0);
+    syncObj.fetch(0);
+    if ($('#image_id').prop('complete')) {
+        var width = $("#gameImages #map").width();
+        var height = $("#gameImages #map").height();
+        $('#arrow-svg').width(width);
+        $('#arrow-svg').height(height);
+        $('#arrow-svg').attr('viewBox', "0 0 " + width + " " + height);
+    }
+    $("#map").on("load", function () {
+        var width = $("#gameImages #map").width();
+        var height = $("#gameImages #map").height();
+        $('#arrow-svg').width(width);
+        $('#arrow-svg').height(height);
+        $('#arrow-svg').attr('viewBox', "0 0 " + width + " " + height);
+    });
+
+    fixItAll();
+    $(window).resize(fixItAll);
 
 
 });
@@ -139,8 +158,6 @@ var state = {
 };
 var oX, oY;
 
-document.addEventListener("DOMContentLoaded",initialize);
-
 // Copyright (c) 2009-2011 Mark Butler
 // This program is free software; you can redistribute it
 // and/or modify it under the terms of the GNU General Public License
@@ -150,3 +167,22 @@ document.addEventListener("DOMContentLoaded",initialize);
 // main classes for wargame
 
 export {DR}
+export function rotateUnits(e, that) {
+    /* hi */
+    if (e.ctrlKey) {
+        return true;
+    }
+    let id = that.id;
+    var hex = topVue.$store.state.mapData.unitsMap[id];
+    var hexesMap = topVue.$store.state.mapData.hexesMap;
+    if (hexesMap[hex] && hexesMap[hex].length > 0) {
+        var tmp = hexesMap[hex].shift();
+        hexesMap[hex].push(tmp);
+
+        for (var i in hexesMap[hex]) {
+            topVue.unitsMap[hexesMap[hex][i]].zIndex = 3 - i - 0 + 1;
+        }
+        return false;
+    }
+    return false;
+}

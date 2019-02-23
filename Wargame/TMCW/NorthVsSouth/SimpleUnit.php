@@ -193,6 +193,8 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $mapUnit->unitDesig = $this->unitDesig;
         $mapUnit->name = $this->name;
         $mapUnit->tried = $this->tried;
+        $mapUnit->nationality = $this->nationality;
+        $mapUnit->image = $this->image;
         return $mapUnit;
     }
 

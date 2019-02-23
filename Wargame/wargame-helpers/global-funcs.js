@@ -31,7 +31,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+import fixHeader from './fix-header';
 export var mute = false;
 
 export function playAudio() {
@@ -263,15 +263,9 @@ export function mapClick(event) {
         return;
     }
 
-    var didDrag = $("#map").data('did-drag');
-    $("#map").data('did-drag', false);
-    if (didDrag) {
-        return;
-    }
-
     var pixelX, pixelY;
     if(event.type === "touchend"){
-        let page = event.originalEvent.changedTouches[0];
+        let page = event.changedTouches[0];
         pixelX = page.pageX;
         pixelY = page.pageY;
         var p;

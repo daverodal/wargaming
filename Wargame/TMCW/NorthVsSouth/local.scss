@@ -18,6 +18,34 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+@mixin player($nationality, $player, $color, $faceColor: $color, $desigColor: white){
+  .player#{$nationality}{
+    background:$color;
+    border-color:$color !important;
+  }
+
+  .player#{$player}{
+    background:$color;
+    border-color:$color !important;
+  }
+
+  .#{$nationality}Face, .player#{$nationality}Face{
+    color:$faceColor;
+  }
+
+  .#{$player}.combatants{
+    color:$faceColor;
+  }
+
+  .#{$nationality} {
+    background-color: $color;
+    .unit-desig{
+      color: $desigColor;
+    }
+  }
+
+}
+
 @import "localColors";
 
 @include player(southern, One, $southernColor);

@@ -49,7 +49,7 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
 	    $this->crts = new stdClass();
 
         $this->crts->normal = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
-            '', 10, 0);
+            'cavalry', 10, 1);
         $this->crts->normal->table = array(
             array(AE, AR, AR, DR, DR, DR, DE, DE, DE, DE),
             array(AE, AE, AR, AR, DR, DR, DR, DE, DE, DE),
@@ -59,15 +59,13 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
             array(AE, AE, AE, AE, AR, AR, EX, EX, EX, DE),
         );
         $this->rowNum = 0;
-        $this->maxCombatIndex = 10;
-        $this->dieSideCount = 6;
 
         $this->combatIndexCount = 10;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
 
         $this->crts->cavalry = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
-            '', 10, 0);
+            'determined', 10, 1);
 
 
         $this->crts->cavalry->table = array(
@@ -80,7 +78,7 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
         );
 
         $this->crts->determined = new \Wargame\CRT(array("1:5","1:4","1:3","1:2","1:1","2:1","3:1","4:1","5:1","6:1"),
-            '', 10, 0);
+            'normal', 10, 1);
 
 
         $this->crts->determined->table = [
@@ -97,12 +95,12 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
         function getCombatResults($Die, $index, $combat)
         {
             if($combat->useAlt){
-                return $this->crts->cavalry[$Die][$index];
+                return $this->crts->cavalry->table[$Die][$index];
             }else{
                 if($combat->useDetermined){
-                    return $this->crts->determined[$Die][$index];
+                    return $this->crts->determined->table[$Die][$index];
                 }
-                return $this->crts->normal[$Die][$index];
+                return $this->crts->normal->table[$Die][$index];
             }
         }
 

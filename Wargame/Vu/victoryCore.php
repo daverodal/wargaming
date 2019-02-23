@@ -60,6 +60,10 @@ class victoryCore extends \Wargame\VictoryCore
 
     public function phaseChange()
     {
+        $battle = Battle::getBattle();
+        $hex = 909;
+        $battle->mapData->specialHexesVictory->$hex = "<span class='red'>+102 vp for me!</span>";
+
     }
 
     public function playerTurnChange($arg){

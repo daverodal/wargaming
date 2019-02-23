@@ -1,8 +1,7 @@
-debugger;
 import Vue from "vue";
 import Vuex from "vuex";
+import {DR} from "../global-vue-header";
 Vue.use(Vuex);
-debugger;
 export const store = new Vuex.Store({
     state: {
         crt:{
@@ -12,19 +11,32 @@ export const store = new Vuex.Store({
             player: "",
             details: "",
             combatResult: "",
-            selectedTable: 'normal'
+            selectedTable: 'normal',
+            roll: null
+        },
+        headerData:{
+            victory: '',
+            status: '',
+            topStatus: '',
+            log: ''
+        },
+        timeTravel:{
+           currentClick: ''
         },
         crtData: {...combatResultsTable
+        },
+        mapData:{
+            unitsMap:{},
+            hexesMap:{}
         }
     },
     getters:{
-        currentTableHame: (state) => {
-            console.log("CurrentTableName");
-            console.log(state.crt.selectedTable);
+        currentTableName: (state) => {
+
             return state.crt.selectedTable;
         },
         currentTable: (state) => {
-            return combatResultsTable.crts[state.crt.selectedTable];
+            return state.crtData.crts[state.crt.selectedTable];
         }
     }
 })

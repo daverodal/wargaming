@@ -1,5 +1,5 @@
 <template>
-    <div @mouseover="mOver" @mouseleave="mouseleave" :id="unit.id" @click="unitClick" class="unit" :class="unit.nationality" :style="unitStyle">
+    <div @mouseover="mOver" @mouseleave="mouseleave" :id="unit.id" @click.stop="unitClick" class="unit" :class="unit.nationality" :style="unitStyle">
         <div class="unitOdds" :class="this.unit.oddsColor? this.unit.oddsColor: ''">{{unitOdds}}</div>
         <div class="shadow-mask" :class="{shadowy: unit.shadow}"></div>
         <div class="unit-size">xx</div>

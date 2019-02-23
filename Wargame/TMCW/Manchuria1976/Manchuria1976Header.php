@@ -69,7 +69,7 @@ x.register("vp", function (vp, data) {
     var p1 = 'player' + p1.replace(/\//ig, '_') + 'Face';
     var p2 = 'player' + p2.replace(/\//ig, '_') + 'Face';
 
-    $("#victory").html(" Victory: <span class='" + p1 + "'>" + DR.playerOne + " </span>" + vp[1] + " <span class='" + p2 + "'>" + DR.playerTwo + " </span>" + vp[2] + "" + " Chinese Casualities " + data.victory.chineseCasualities);
+    $("#victory").html(" Victory: <span class='" + p1 + "'>" + DR.playerOne + " </span>" + vp[1] + " <span class='" + p2 + "'>" + DR.playerTwo + " </span>" + vp[2]);
     if (typeof victoryExtend === 'function') {
         victoryExtend(vp, data);
     }

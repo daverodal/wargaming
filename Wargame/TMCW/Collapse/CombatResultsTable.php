@@ -38,7 +38,7 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 
         $this->crts = new stdClass();
         $this->crts->normal = new \Wargame\CRT(array("1:3", "1:2", "1:1","2:1","3:1","4:1","5:1","6:1", "7:1", "8:1", "9:1"),
-            '', 10, 0);
+            '', 11, 0);
         $this->crts->normal->table = array(
             array(AE, AE, AE, AE, AR, AR, BR, BR, BR, DR, DR),
             array(AE, AE, AE, AE, AR, AR, BR, BR, EX, EX, EX2),

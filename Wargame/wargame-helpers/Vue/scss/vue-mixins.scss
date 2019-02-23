@@ -1,0 +1,152 @@
+@mixin unitColor($nationality, $color) {
+  .#{$nationality} {
+    background-color: $color;
+  }
+  .#{$nationality} .counterWrapper {
+    background-color: $color;
+  }
+}
+
+@mixin header($player,$color){
+  .header-#{$player}{
+    background: $color;
+  }
+  #header.header-#{$player} , #vue-crt.header-#{$player}{
+    background: $color;
+    border-color: $color !important;
+  }
+  .map-symbols.#{player}{
+    background-color: $color;
+  }
+}
+@mixin player($nationality, $player, $color, $faceColor: $color, $desigColor: white){
+  .map-symbols.#{$player}{
+    background:$color;
+  }
+  .player#{$nationality}{
+    background:$color;
+    border-color:$color !important;
+  }
+
+  .player#{$player}{
+    background:$color;
+    border-color:$color !important;
+  }
+
+  .#{$nationality}Face, .player#{$nationality}Face, .player#{$player}Face{
+    color:$faceColor;
+  }
+
+  .#{$player}.combatants{
+    color:$faceColor;
+  }
+
+  .#{$nationality} {
+    background-color: $color;
+    .unit-desig{
+      color: $desigColor;
+    }
+  }
+
+}
+@mixin specialColor($nationality, $background,  $foreground) {
+
+  /*
+   * these are for the +5 vps when you kill a unit
+   */
+  .specialHexesVP .#{$nationality}VictoryPoints {
+    @include victoryPoints($background);
+    color:$foreground;
+  }
+
+  /*
+   * These are for when you capture a town
+   * the vps aquired
+   */
+  .specialHexesVP .#{$nationality}{
+    color:$foreground;
+    background:$background;
+  }
+  /*
+   * These are the static state of a town
+   * and for the change message
+   */
+  .specialHexes.#{$nationality}{
+    background:$background;
+    color:$foreground;
+  }
+
+}
+@mixin unitColor($nationality, $color) {
+  .#{$nationality} {
+    background-color: $color;
+  }
+  .#{$nationality} .counterWrapper {
+    background-color: $color;
+  }
+}
+
+@mixin victoryPoints($color){
+  text-shadow:
+          0px 0px 1px $color,
+          0px 0px 1px $color,
+          0px 0px 1px $color,
+          0px 0px 2px $color,
+          0px 0px 2px $color,
+          0px 0px 2px $color,
+          0px 0px 3px $color,
+          0px 0px 3px $color,
+          0px 0px 3px $color,
+          0px 0px 4px $color,
+          0px 0px 4px $color,
+          0px 0px 4px $color,
+          0px 0px 5px $color,
+          0px 0px 5px $color,
+          0px 0px 5px $color,
+          0px 0px 6px $color,
+          0px 0px 6px $color,
+          0px 0px 6px $color,
+          0px 0px 7px $color,
+          0px 0px 7px $color,
+          0px 0px 7px $color,
+          0px 0px 8px $color,
+          0px 0px 8px $color,
+          0px 0px 8px $color,
+          0px 0px 9px $color,
+          0px 0px 9px $color,
+          0px 0px 9px $color,
+          0px 0px 10px $color,
+          0px 0px 10px $color,
+          0px 0px 10px $color,
+
+          0px 0px 1px $color,
+          0px 0px 1px $color,
+          0px 0px 1px $color,
+          0px 0px 2px $color,
+          0px 0px 2px $color,
+          0px 0px 2px $color,
+          0px 0px 3px $color,
+          0px 0px 3px $color,
+          0px 0px 3px $color,
+          0px 0px 4px $color,
+          0px 0px 4px $color,
+          0px 0px 4px $color,
+          0px 0px 5px $color,
+          0px 0px 5px $color,
+          0px 0px 5px $color,
+          0px 0px 6px $color,
+          0px 0px 6px $color,
+          0px 0px 6px $color,
+          0px 0px 7px $color,
+          0px 0px 7px $color,
+          0px 0px 7px $color,
+          0px 0px 8px $color,
+          0px 0px 8px $color,
+          0px 0px 8px $color,
+          0px 0px 9px $color,
+          0px 0px 9px $color,
+          0px 0px 9px $color,
+          0px 0px 10px $color,
+          0px 0px 10px $color,
+          0px 0px 10px $color;
+}

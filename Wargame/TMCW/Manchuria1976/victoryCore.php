@@ -34,7 +34,6 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 {
     public $sovietGoal;
     public $supplyUnits;
-    public $chineseCasualities;
 
     function __construct($data)
     {
@@ -42,11 +41,9 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         if ($data) {
             $this->sovietGoal = $data->victory->sovietGoal;
             $this->supplyUnits = $data->victory->supplyUnits;
-            $this->chineseCasualities = $data->victory->chineseCasualities;
         } else {
             $this->sovietGoal = [];
             $this->supplyUnits = [];
-            $this->chineseCasualities = 0;
             $this->victoryPoints[Manchuria1976::PRC_FORCE] = 100;
         }
     }
@@ -56,7 +53,6 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         $ret = parent::save();
         $ret->sovietGoal = $this->sovietGoal;
         $ret->supplyUnits = $this->supplyUnits;
-        $ret->chineseCasualities = $this->chineseCasualities;
         return $ret;
     }
 
@@ -136,6 +132,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                         $unit->status = STATUS_READY;
                         $hexagon = new Hexagon($city);
                         $unit->updateMoveStatus($hexagon, 0);
+                        break;
                     }
                 }
             }
@@ -211,15 +208,15 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         if ($unit->forceId == Manchuria1976::PRC_FORCE) {
             $victorId = Manchuria1976::SOVIET_FORCE;
             $hex = $unit->hexagon;
-            $this->chineseCasualities += $vp;
+            $this->victoryPoints[$victorId] += $vp;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='sovietVictoryPoints'>+$vp Casualities</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='sovietVictoryPoints'>+$vp Vp</span>";
         } else {
             $victorId = Manchuria1976::PRC_FORCE;
             $this->victoryPoints[$victorId] += $vp * 1.5;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
-            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='prcVictoryPoints'>+$vp vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='prcVictoryPoints'>+$vp Vpp</span>";
         }
     }
 
@@ -283,6 +280,8 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 if($unit->class === 'supply'){
                     $supplyUnits[] = $unit->hexagon->name;
                 }
+                $unit->recover();
+
             }
             $this->supplyUnits = $supplyUnits;
         }
@@ -299,6 +298,14 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
+
+        if ($b->gameRules->mode == REPLACING_MODE) {
+            if ($unit->status == STATUS_CAN_UPGRADE) {
+                if($unit->class === 'militia'){
+                    $unit->status = STATUS_STOPPED;
+                }
+            }
+        }
         $goal = $this->sovietGoal;
         if (!empty($b->scenario->supply) === true) {
             if ($unit->forceId == Manchuria1976::PRC_FORCE) {
@@ -310,6 +317,9 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 
             if ($b->gameRules->mode == REPLACING_MODE) {
                 if ($unit->status == STATUS_CAN_UPGRADE) {
+                    if($unit->class === 'militia'){
+                        $unit->status === STATUS_STOPPED;
+                    }
                     $unit->supplied = $this->calcSupply($unit->id, $goal, $bias, $supplyLen);
                     /* unsupplied units cannot receive replacements */
                     if (!$unit->supplied) {
@@ -415,6 +425,15 @@ class victoryCore extends \Wargame\TMCW\victoryCore
 
     public function playerTurnChange($arg)
     {
+
+        $attackingId = $arg[0];
+        $battle = Battle::getBattle();
+
+        /* @var GameRules $gameRules */
+        $gameRules = $battle->gameRules;
+
+        $this->checkVictory($attackingId,$battle);
+
         $attackingId = $arg[0];
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
@@ -452,5 +471,36 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 }
             }
         }
+    }
+    protected function checkVictory($attackingId, $battle){
+        $gameRules = $battle->gameRules;
+        $scenario = $battle->scenario;
+        $turn = $gameRules->turn;
+        $prcWin = $sovietWin = false;
+
+        if (!$this->gameOver) {
+            if ($turn == $gameRules->maxTurn + 1) {
+                if($this->victoryPoints[Manchuria1976::PRC_FORCE] > $this->victoryPoints[Manchuria1976::SOVIET_FORCE]){
+                    $prcWin = true;
+                    $this->winner = Manchuria1976::PRC_FORCE;
+                    $gameRules->flashMessages[] = "PRC Win";
+                }
+                if($this->victoryPoints[Manchuria1976::PRC_FORCE] < $this->victoryPoints[Manchuria1976::SOVIET_FORCE]){
+                    $sovietWin = true;
+                    $this->winner = Manchuria1976::SOVIET_FORCE;
+                    $gameRules->flashMessages[] = "Soviet Win";
+                }
+
+                if (!$prcWin && !$sovietWin) {
+                    $this->winner = 0;
+                    $gameRules->flashMessages[] = "Tie Game";
+
+                    $this->gameOver = true;
+                }
+                $this->gameOver = true;
+                return true;
+            }
+        }
+        return false;
     }
 }

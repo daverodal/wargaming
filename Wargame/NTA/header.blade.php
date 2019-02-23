@@ -23,9 +23,9 @@ x.register("victory", function(vp, data){
 
 x.register("vp", function(vp, data){
     });
-
-    DR.$(document).ready(function(){
-        $("#altTable").on('click', function(){
+document.addEventListener("DOMContentLoaded",function(){
+    $ = DR.$;
+     $("#altTable").on('click', function(){
             $(this).hide();
             $("#mainTable").show();
             $('.tableWrapper.main').hide();
