@@ -40,3 +40,4 @@
     <div class="attribution">
         By Chief Photographer's Mate (CPHOM) Robert F. Sargent, U.S. Coast Guard [Public domain], <a target="_blank" href="http://commons.wikimedia.org/wiki/File%3A1944_NormandyLST_clean.jpg">via Wikimedia Commons</a>    </div>
 </fieldset>
+@extends("wargame::playAs")

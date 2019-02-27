@@ -15,12 +15,18 @@
     background: $color;
     border-color: $color !important;
   }
-  .map-symbols.#{player}{
+  .special-hex.#{$player}{
+    background-color: $color;
+  }
+  .map-symbols.#{$player}, .map-symbols .#{$player}{
     background-color: $color;
   }
 }
 @mixin player($nationality, $player, $color, $faceColor: $color, $desigColor: white){
-  .map-symbols.#{$player}{
+  .special-hex.#{$player}{
+    background:$color;
+  }
+  .map-symbols.#{$player}, .map-symbols .#{$player}{
     background:$color;
   }
   .player#{$nationality}{

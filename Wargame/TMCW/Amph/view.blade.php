@@ -1,85 +1,70 @@
-   @include('wargame::global-header')
-@include('wargame::TMCW.Amph.amph-header')
+@include('wargame::export-global-header', ['topCrt'=> new \Wargame\TMCW\CombatResultsTable()])
+
+
+<script src="{{mix('vendor/javascripts/wargame/amph.js')}}"></script>
+
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/amph.css')}}">
 </head>
-@extends('wargame::stdIncludes.view')
 
-@section('inner-crt')
-    @include('wargame::stdIncludes.inner-crt',['topCrt'=> $top_crt = new \Wargame\TMCW\CombatResultsTable()])
-@endsection
 @section('tec')
-    @include("wargame::TMCW.Amph.tec")
 @endsection
-@section('zoc-rules')
-    @include('wargame::TMCW.Amph.zoc-rules')
+
+@section('commonRules')
 @endsection
+@section('exclusiveRulesWrapper')
+@endsection
+@section('obc')
+@endsection
+
+@extends('wargame::stdIncludes.view-vue' )
+
+@section('innerNextPhaseWrapper')
+    <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
+    <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+    <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
+    <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
+    <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
+    <div id="comlinkWrapper">
+        <div id="comlink"></div>
+    </div>
+@endsection
+
+<vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
+    <units-component :myfilter="1" :myunits="deployBox"></units-component>
+    <div class="clear"></div>
+    <units-component :myfilter="2" :myunits="deployBox"></units-component>
+    <div class="clear"></div>
+</vue-draggable-resizable>
 
 @section('deploy-box')
        <div id="deployBox">
 
            <div id="beach-landing" class="deploy-zone-wrapper">
                <div>Rebel Beach Landing</div>
-               <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)" ng-repeat="unit in deployUnits | filter:{reinforceZone: 'B'}"
-                    ng-style="unit.wrapperstyle">
-                   <offmap-unit unit="unit"></offmap-unit>
-               </div>
+               <units-component  :myunits="allBoxes.beachlanding"></units-component>
                <div class="clear"></div>
            </div>
 
            <div id="airdrop" class="deploy-zone-wrapper">
                <div>Rebel Airdrop Zone</div>
-               <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'A'}"
-                    ng-style="unit.wrapperstyle">
-                   <offmap-unit unit="unit"></offmap-unit>
-               </div>
+               <units-component :myunits="allBoxes.airdrop"></units-component>
                <div class="clear"></div>
            </div>
            <div id="west" class="deploy-zone-wrapper">
                <div>Loyalist West</div>
-               <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'C'}"
-                    ng-style="unit.wrapperstyle">
-                   <offmap-unit unit="unit"></offmap-unit>
-               </div>
+               <units-component :myunits="allBoxes.west"></units-component>
+
                <div class="clear"></div>
            </div>
            <div id="south" class="deploy-zone-wrapper">
                <div>Loyalist South</div>
-               <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'D'}"
-                    ng-style="unit.wrapperstyle">
-                   <offmap-unit unit="unit"></offmap-unit>
-               </div>
+               <units-component :myunits="allBoxes.south"></units-component>
                <div class="clear"></div>
            </div>
            <div id="east" class="deploy-zone-wrapper">
                <div>Loyalist East</div>
-               <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'E'}"
-                    ng-style="unit.wrapperstyle">
-                   <offmap-unit unit="unit"></offmap-unit>
-               </div>
+               <units-component :myunits="allBoxes.east"></units-component>
                <div class="clear"></div>
            </div>
        </div>
    @endsection
-
-@section('unitRules')
-    @parent
-    <li class="exclusive">No units may be receive replacements in this game.
-    </li>
-@endsection
-
-@section('victoryConditions')
-    @include('wargame::TMCW.Amph.victoryConditions')
-@endsection
-
-@section('commonRules')
-    @include('wargame::TMCW.commonRules')
-@endsection
-
-@section('exclusiveRules')
-    @include('wargame::TMCW.exclusiveRules')
-@endsection
-
-@section('obc')
-    @include('wargame::TMCW.obc')
-@endsection
-

@@ -41,7 +41,8 @@ You should have received a copy of the GNU General Public License
         const rowSvg = "<?php echo asset('vendor/wargame/genre/images/rowHex.svg');?>";
         const imagesBase = "<?php echo asset('vendor/wargame/genre/images/');?>";
 
-        const mapSymbolsBefore = "<?php echo asset('assets/unit-images/');?>/";
+        const mapUrl = '{{ $mapUrl }}';
+        const mapSymbolsBefore = "<?php echo asset('assets/map-symbols/');?>/";
 
 
         var DR = window.DR;

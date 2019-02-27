@@ -27,7 +27,12 @@ export const store = new Vuex.Store({
         },
         mapData:{
             unitsMap:{},
-            hexesMap:{}
+            hexesMap:{},
+            mapUrl: mapUrl,
+            trueRows: false
+        },
+        gameRules:{
+            prevPhase: null
         }
     },
     getters:{

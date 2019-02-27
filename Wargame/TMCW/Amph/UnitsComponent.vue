@@ -1,13 +1,16 @@
 <template>
     <div class="unit-components">
-        <unit-component v-for="(unit,key) in myunits" :key="key" :unit="unit"></unit-component>
-        <unit-component class="ghost" v-for="(unit,key) in myghosts" :key="key" :unit="unit"></unit-component>
+        <unit-component v-if="!myfilter || myfilter === unit.reinforceZone" v-for="(unit,key) in myunits" :key="key" :unit="unit"></unit-component>
+        <unit-component class="ghost" v-for="(unit,key) in myghosts" :key="'ghost'+key" :unit="unit"></unit-component>
     </div>
 </template>
 
 <script type="text/javascript">
     export default{
-        props:['myunits','myghosts'],
+        directives:{
+
+        },
+        props:['myunits','myghosts','myfilter'],
         data:()=>{
             return{
                 units: [],

@@ -141,21 +141,7 @@ class LandBattle extends \Wargame\Battle{
             $mapUnits[] = $mapUnit;
         }
         $turn = $doc->wargame->gameRules->turn;
-//        foreach ($units as $i => $unit) {
-//            $u = new StdClass();
-//            $u->status = $unit->status;
-//            $u->moveAmountUsed = $unit->moveAmountUsed;
-//            $u->maxMove = $unit->maxMove;
-//            $u->forceId = $unit->forceId;
-//            $u->forceMarch = $unit->forceMarch;
-//            $u->isDisrupted = $unit->isDisrupted;
-//            $u->disruptLen = $unit->disruptLen;
-//            $u->isImproved = $unit->isImproved;
-//            if ($unit->reinforceTurn > $turn) {
-//                $u->reinforceTurn = $unit->reinforceTurn;
-//            }
-//            $units[$i] = $u;
-//        }
+
         if($fogDeploy) {
             if ($gameRules->phase == BLUE_DEPLOY_PHASE && $player === RED_FORCE) {
                 $moveRules->moves = new stdClass();
@@ -177,17 +163,6 @@ class LandBattle extends \Wargame\Battle{
                 $pointsLeft = preg_replace("/(\.[1-9]*)0*/","$1",$pointsLeft);
                 $moveRules->moves->{$k}->pointsLeft = $pointsLeft;
                 unset($moveRules->moves->$k->isValid);
-            }
-            if (false && $moveRules->path) {
-                foreach ($moveRules->path as $hexName) {
-                    $hex = new Hexagon($hexName);
-                    $mapGrid->setHexagonXY($hex->x, $hex->y);
-
-                    $path = new stdClass();
-                    $path->pixX = $mapGrid->getPixelX();
-                    $path->pixY = $mapGrid->getPixelY();
-                    $moveRules->hexPath[] = $path;
-                }
             }
         }
         $force->units = [];

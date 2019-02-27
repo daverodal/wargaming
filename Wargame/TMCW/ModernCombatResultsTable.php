@@ -49,7 +49,10 @@ class ModernCombatResultsTable  extends \Wargame\CombatResultsTable
     function __construct(){
         $this->combatResultsHeader = array("1:1","2:1","3:1","4:1","5:1","6:1");
         $this->crts = new stdClass();
-        $this->crts->normal = array(
+
+        $this->crts->normal = new \Wargame\CRT(array("1:1","2:1","3:1","4:1","5:1","6:1"),
+            '', 6, 1);
+        $this->crts->normal->table = array(
             array(DR2, DRL2, DE, DE, DE, DE),
             array(DR2, EX2, DRL2, DE, DE, DE),
             array(EX2, EX2, DRL2, DRL2, DE, DE),
@@ -69,7 +72,7 @@ class ModernCombatResultsTable  extends \Wargame\CombatResultsTable
 
     function getCombatResults($Die, $index, $combat)
     {
-        return $this->crts->normal[$Die][$index];
+        return $this->crts->normal->table[$Die][$index];
     }
     
     function getCombatIndex($attackStrength, $defenseStrength){

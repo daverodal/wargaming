@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="18px" viewBox="0 0 32 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Para</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Para" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-6" fill-rule="nonzero" stroke="#000000">
+            <rect id="Rectangle-5" x="0.5" y="0.5" width="31" height="17"></rect>
+            <path d="M0.5,0.5 L31.5,17.5" id="Line" stroke-linecap="square"></path>
+            <path d="M0.5,17.5 L31.5,0.5" id="Line-2" stroke-linecap="square"></path>
+            <g id="Group-5" transform="translate(11.000000, 14.000000)">
+                <path d="M4.96124031,1.82851865 C5.79610031,0.609506218 6.63096031,2.48471315e-17 7.46582031,0 C8.30068031,0 9.13554031,0.609506218 9.97040031,1.82851865" id="Path-5"></path>
+                <path d="M0,1.82851865 C0.834860001,0.609506218 1.66972,2.48471315e-17 2.50458,0 C3.33944,0 4.1743,0.609506218 5.00916,1.82851865" id="Path-5-Copy"></path>
+            </g>
+        </g>
+    </g>
+</svg>

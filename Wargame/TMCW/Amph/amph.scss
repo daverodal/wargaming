@@ -21,13 +21,23 @@
 @import "amphColors";
 
 
+@include header(Rebel, $rebelColor);
+@include header(Loyalist, $loyalistColor);
+@include unitColor(rebel, $rebelColor);
+@include unitColor(loyalist,$loyalistColor);
+@include unitColor(loyalGuards, $loyalistGuardColor);
 
-@include player(Rebel, One, $rebelColor);
-@include player(Loyalist,Two,$loyalistColor);
-@include player(LoyalGuards,Three,$loyalistGuardColor);
-@include player(rebel, One, $rebelColor);
-@include player(loyalist,Two,$loyalistColor);
-@include player(loyalGuards,Three,$loyalistGuardColor);
+.reduced {
+  color: white;
+}
+#vue-crt {
+  #odds, .roll {
+    span{
+      width: 40px !important;
+    }
+  }
+  width: 415px !important;
+}
 
 .ranger .counterWrapper .counter{
   width: 22px;
@@ -43,107 +53,6 @@
   margin:0 15px;
 }
 
-#crtWrapper #crt {
-  width: 508px;
-  .crt-table-name{
-    display:none;
-  }
-  .roll span, #odds span {
-    margin-right: 10px;
-    float: left;
-    display: block;
-    width: 52px;
-  }
-}
-#options-pane {
-  display:none;
-  position: absolute;
-  background: white;
-  left: 25%;
-  width: 50%;
-  z-index:30;
-  padding:25px;
-  box-shadow: 15px 15px 15px #333;
-  #options-box {
-    margin-top:15px;
-
-  }
-}
-
-.reduced {
-  color: white;
-}
-
-#TECWrapper #TEC {
-  padding-bottom:15px;
-  width:700px;
-  ul {
-    width: 600px;
-    margin-left: 10px;
-    li {
-      clear:both;
-      padding: 20px 5px 34px 0px;
-
-      &.row-one .column-image {
-        background-position: 0px 0px;
-      }
-      &.row-two .column-image {
-        background-position: 0px -55px;
-      }
-      &.row-three .column-image {
-        background-position: 0px -110px;
-      }
-      &.row-four .column-image {
-        background-position: 0px -165px;
-      }
-      &.row-five .column-image {
-        background-position: 0px -220px;
-      }
-      &.row-six .column-image {
-        background-position: 0px -303px;
-      }
-      &.row-seven .column-image {
-        background-position: 0px -385px;
-      }
-      &.row-eight .column-image {
-        background-position: 0px -465px;
-      }
-      &.row-nine .column-image {
-        background-position: 0px -550px;
-      }
-    }
-    .column-image {
-      float: left;
-      width: 94px;
-      height: 56px;
-      background-repeat: no-repeat;
-      background-image: url("Images/AmphTEC.png");
-
-    }
-    .column-one {
-      float: left;
-      width: 24%;
-      padding-right: 4%;
-      padding-top: 10px;
-    }
-    .column-two {
-      float: left;
-      width: 24%;
-      padding-right: 4%;
-    }
-    .column-three {
-      float: left;
-      width: 24%;
-    }
-  }
-}
-#infoWrapper .WrapperLabel {
-  width: auto;
-}
-
-#gameTurn6 .unit {
-  float: left;
-}
 
 .specialHexesVP .rebelVictoryPoints {
   @include victoryPoints($rebelColor)
@@ -154,10 +63,14 @@
 }
 
 .supply{
-  font-size:25px !important;
+  font-size:0;
   z-index:0;
   border-radius:0px;
   border:0px;
-  transform: rotate(180deg);
 }
 
+
+.map-symbols .supply img{
+  width:25px;
+  font-size:0px;
+}

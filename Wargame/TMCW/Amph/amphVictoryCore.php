@@ -65,6 +65,43 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         return $ret;
     }
 
+    public function enterMapSymbol($args)
+    {
+        $battle = Battle::getBattle();
+        /* @var $mapData MapData */
+        $mapData = $battle->mapData;
+        /* @var $unit MovableUnit */
+        list($mapHexName, $unit) = $args;
+
+        if ($unit->forceId == Amph::LOYALIST_FORCE) {
+            $mapData->removeMapSymbol($mapHexName, "supply");
+            $newZones = [];
+            $removed = "";
+            foreach($this->airdropZones as $zone){
+                if($zone == $mapHexName){
+                    $removed = "Airdrop Zone ";
+                    continue;
+                }
+                $newZones[] = $zone;
+
+            }
+            $this->airdropZones = $newZones;
+            $newZones = [];
+            foreach($this->landingZones as $zone){
+                if($zone == $mapHexName){
+                    $removed = "Beach Landing Zone ";
+                    continue;
+                }
+                $newZones[] = $zone;
+
+            }
+            $this->landingZones = $newZones;
+            $mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>$removed Destroyed</span>";
+
+        }
+
+
+    }
     public function specialHexChange($args)
     {
         $battle = Battle::getBattle();
@@ -108,15 +145,15 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             $prevForceId = $battle->mapData->specialHexes->$mapHexName;
             if ($forceId == Amph::REBEL_FORCE) {
                 $this->victoryPoints[Amph::REBEL_FORCE]  += $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+$vp Rebel vp</span>";
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebelVictoryPoints'>+$vp Rebel vp</span>";
                 $this->victoryPoints[Amph::LOYALIST_FORCE] -= $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='rebel'> -$vp Loyalist vp</span>";
+                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='rebelVictoryPoints'> -$vp Loyalist vp</span>";
             }
             if ($forceId == Amph::LOYALIST_FORCE) {
                 $this->victoryPoints[Amph::LOYALIST_FORCE]  += $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+$vp Loyalist vp</span>";
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>+$vp Loyalist vp</span>";
                 $this->victoryPoints[Amph::REBEL_FORCE] -= $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='loyalist'> -$vp Rebel vp</span>";
+                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='loyalistVictoryPoints'> -$vp Rebel vp</span>";
             }
         }
 
@@ -178,7 +215,7 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
                     if($unit->class === 'para'){
                         $unit->hexagon->parent = 'airdrop';
                     }else{
-                        $unit->hexagon->parent = 'beach-landing';
+                        $unit->hexagon->parent = 'beachlanding';
                     }
                 }else{
                     if($unit->reinforceZone === 'B'){
@@ -272,7 +309,18 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
                     }
                 }
             }
-            $battle->mapData->setSpecialHexes($supply);
+            $symbol = new \stdClass();
+            $symbol->type = 'Supply';
+            $symbol->image = 'Supply.svg';
+            $symbol->class = 'Rebel supply';
+            $symbols = new \stdClass();
+            foreach($this->airdropZones as $id){
+                $symbols->$id = $symbol;
+            }
+            foreach($this->landingZones as $id){
+                $symbols->$id = $symbol;
+            }
+            $battle->mapData->setMapSymbols($symbols, "supply");
         }
         if ($gameRules->phase == RED_COMBAT_PHASE || $gameRules->phase == BLUE_COMBAT_PHASE) {
             $gameRules->flashMessages[] = "@hide deployWrapper";

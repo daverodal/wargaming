@@ -137,7 +137,7 @@
             <div class="btn-group" :class="{open: log}" @click="log = !log" >
                 <button class=""><span class="tablet">Log</span><span class="desktop">Log</span></button>
                 <div class="dropdown-menu">
-                    <ol id="logWrapper" v-html="headerLog"></ol>
+                    <ol id="log-wrapper" v-html="headerLog"></ol>
                 </div>
             </div>
 
@@ -149,7 +149,7 @@
             @show
 
             @section('outer-units-menu')
-            <div class=" btn-group" :class="{open: submenu}" @click="submenu = !submenu" id="unitsWrapper">
+            <div class=" btn-group" :class="{open: submenu}" @click="submenu = !submenu" id="units-wrapper">
                 <button class="" title="Offmap Units">Units</button>
                 <ul  id="units" class="dropdown-menu sub-menu">
                     <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
@@ -172,16 +172,17 @@
                     <div class="unit-wrapper" v-show="show.units.deployBox">
                         <div @click="show.units.deployBox = false" class="close">X</div>
                         <div style="margin-right:24px;" class="left">Deploy/Staging area</div>
+                        @section('deploy-box')
                         <div id="deployBox">
                             <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
-                                    <units-component :myfilter="1" :myunits="deployBox"></units-component>
+                                    <units-component :myfilter="1" :myunits="allBoxes.deployBox"></units-component>
                                 <div class="clear"></div>
-                                    <units-component :myfilter="2" :myunits="deployBox"></units-component>
+                                    <units-component :myfilter="2" :myunits="allBoxes.deployBox"></units-component>
                                 <div class="clear"></div>
                             </vue-draggable-resizable>
-
                             <div class="clear"></div>
                         </div>
+                        @show
                         <div style="clear:both;"></div>
                     </div>
 
@@ -191,9 +192,9 @@
                     Retired Units
                 </div>
                 <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
-                    <units-component :myfilter="1" :myunits="deadpile"></units-component>
+                    <units-component :myfilter="1" :myunits="allBoxes.deadpile"></units-component>
                     <div class="clear"></div>
-                    <units-component :myfilter="2" :myunits="deadpile"></units-component>
+                    <units-component :myfilter="2" :myunits="allBoxes.deadpile"></units-component>
                     <div class="clear"></div>
                 </vue-draggable-resizable>
                 <div class="clear"></div>
@@ -203,7 +204,7 @@
                 <div class="close">X</div>
                 <div style="margin-right:3px;" class="left">Exited Units</div>
                 <div id="exitBox">
-                    <units-component :myunits="exitBox"></units-component>
+                    <units-component :myunits="allBoxes.exitBox"></units-component>
                 </div>
                 <div style="clear:both;"></div>
             </div>
@@ -259,12 +260,15 @@
                                 </defs>
                             </svg>
                         </div>
-                        <img id="map" alt="map" src="<?php preg_match("/http/",$mapUrl) ?   $pre = '': $pre = url('.');echo "$pre$mapUrl";?>">
+
+                        <img id="map" alt="map" src="{{$mapUrl}}">
 
                         <?php $id = 0; ?>
                         <units-component :myghosts="moveUnits" :myunits="units"></units-component>
 
-                        <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index" :mapsymbol="mapSymbol"></map-symbol>
+                            <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index" :mapsymbol="mapSymbol"></map-symbol>
+
+                        <special-hex v-for="(specialHex, index) in specialHexes"  :key="'A' + index" :specialhex="specialHex"></special-hex>
                         <transition-group name="social-events" appear>
                             <special-event  v-for="(specialEvent,key) in specialEvents" :key="specialEvent.id" :special-event="specialEvent"></special-event>
                         </transition-group>

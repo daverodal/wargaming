@@ -4,6 +4,7 @@ import {showCrtTable} from "../global-funcs";
 import {syncObj} from './syncObj';
 import {DR} from "./global-vue-header";
 export class SyncController {
+    crtSelfOpened = false;
     gmRules(data) {
         switch (data.gameRules.mode) {
             case EXCHANGING_MODE:
@@ -285,30 +286,6 @@ export class SyncController {
         unit.shadow = shadow;
         unit.boxShadow = boxShadow;
 
-        // if (unit.isDisrupted || unit.pinned) {
-        //     var disp = '';
-        //     if (unit.pinned) {
-        //         disp = 'P'
-        //     }
-        //     if (unit.isDisrupted) {
-        //         disp = 'D';
-        //     }
-        //     if (unit.disruptLen > 1) {
-        //         disp = 'DD';
-        //     }
-        //     if (unit.disruptLevel) {
-        //         disp = 'D' + unit.disruptLevel;
-        //     }
-        //     if (unit.isDisrupted === true || unit.pinned === true) {
-        //         $("#" + i + " .shadow-mask").addClass("red-shadowy").html("<span class='disrupted'>" + disp + "</span>");
-        //     }
-        // } else {
-        //     // $("#" + i + " .shadow-mask").removeClass("red-shadowy").html('');
-        // }
-
-
-
-
     }
     flashMessages(){
         syncObj.register("flashMessages",  (messages, data) => {
@@ -366,7 +343,6 @@ export class SyncController {
             var str;
             var fudge;
             var x, y;
-            var beforeDeploy = $("#deployBox").children().length;
             DR.stackModel = {};
             DR.stackModel.ids = {};
             // clearHexes();
@@ -376,6 +352,7 @@ export class SyncController {
             clickThrough.notUsed = [];
             topVue.units = [];
             topVue.message = topVue.header = '';
+            clickThrough.allBoxes = {};
 
 
             var phasingForceId = data.gameRules.attackingForceId;
@@ -383,17 +360,11 @@ export class SyncController {
             var phasingUnitsLeft = 0;
 
             for (var i in mapUnits) {
-                if (typeof mapUnits[i].parent == "undefined") {
-                    $('#' + i).hide();
-                    continue;
-                } else {
-                    $('#' + i).css("display", "");
-                }
                 if (mapUnits[i].forceId === phasingForceId && mapUnits[i].parent === "deployBox") {
                     phasingUnitsLeft++;
                 }
-                var width = $("#" + i).width();
-                var height = $("#" + i).height();
+                var width = 38;
+                var height = 38;
 
                 x = mapUnits[i].x;
                 y = mapUnits[i].y;
@@ -416,36 +387,19 @@ export class SyncController {
                 if(mapUnits[i].parent !== "gameImages"){
                     mapUnits[i].id = i - 0;
                     mapUnits[i].shadow = false;
-                    let slot = mapUnits[i].parent;
-                    if(!clickThrough[slot]){
-                        clickThrough[slot] = [];
-                    }
-                    // if(!DR.units[slot]){
-                    //     DR.units[slot] = [];
-                    // }
+                    let slot = mapUnits[i].parent.replace(/-/,"");
+
                     this.unitDecorate(mapUnits[i], data);
-                    clickThrough[slot].push(mapUnits[i]);
-                    // DR.units[slot].push(mapUnits[i]);
+                    if(!Array.isArray(clickThrough.allBoxes[slot])){
+                        Vue.set(clickThrough.allBoxes, slot, []);
+                    }
+                    clickThrough.allBoxes[slot].push(mapUnits[i]);
                     continue;
                 }
-                // if (mapUnits[i].parent != $("#" + i).parent().attr("id")) {
-                //     $("#" + i).appendTo($("#" + mapUnits[i].parent));
-                //     if (mapUnits[i].parent != "gameImages") {
-                //         $("#" + i).css({top: "0"});
-                //         $("#" + i).css({left: "0"});
-                //         if (!mapUnits[i].parent.match(/^gameTurn/)) {
-                //             $("#" + i).css({float: "left"});
-                //         }
-                //         $("#" + i).css({position: "relative"});
-                //     } else {
-                //         $("#" + i).css({float: "none"});
-                //         $("#" + i).css({position: "absolute"});
-                //
-                //     }
-                // }
+
                 width += 6;
                 height += 6;
-                if (mapUnits[i].parent == "gameImages") {
+                if (mapUnits[i].parent === "gameImages") {
 
                     mapUnits[i].shift = 0;
                     if (unitsMap[i] === undefined) {
@@ -467,12 +421,10 @@ export class SyncController {
                             unitsMap[i] = mapUnits[i].hexagon;
                         }
                     }
-                    // let zIndex = 1;
                     if (Object.keys(hexesMap[mapUnits[i].hexagon]).length) {
                         let unitsHere = hexesMap[mapUnits[i].hexagon];
                         let sortedUnits = _.sortBy(unitsHere, o => o-0);
                         mapUnits[i].shift = sortedUnits.indexOf(i) * 5;
-                        // zIndex = 3 - unitsHere.indexOf(i);
                     } else {
                     }
 
@@ -481,6 +433,8 @@ export class SyncController {
                     mapUnits[i].id = i - 0;
                     mapUnits[i].x -= 18 - mapUnits[i].shift;
                     mapUnits[i].y -= 18 - mapUnits[i].shift;
+                    mapUnits[i].odds = "";
+                    mapUnits[i].oddsColor = '';
                     this.unitDecorate(mapUnits[i], data);
 
                     topVue.units.push(mapUnits[i]);
@@ -490,62 +444,54 @@ export class SyncController {
                     for (var i in hexesMap[hex]) {
                         topVue.unitsMap[hexesMap[hex][i]].zIndex = 3 - i - 0 + 1;
                     }
-                    // DR.units.units.push(mapUnits[i]);
 
                 }
 
 
 
-                // var str = mapUnits[i].strength;
-                // var symb = mapUnits[i].supplied !== false ? " - " : " <span class='reduced'>u</span> ";
-//        symb = "-"+mapUnits[i].defStrength+"-";
-//         var html = reduceDisp + str + symb + move + "</span>";
-                // renderOuterUnit(i, mapUnits[i]);
-                // if(window.renderUnitNumbers){
-                //     html = window.renderUnitNumbers(mapUnits[i]);
-                // }else{
-                //     html = renderUnitNumbers(mapUnits[i]);
-                // }
-                // if (html) {
-                //     $("#" + i + " .unit-numbers").html(html);
-                // }
-                // if(mapUnits[i].range > 1){
-                //     $("#" + i + " .range").html(mapUnits[i].range);
-                // }else{
-                //     $("#" + i + " .range").html('');
-                // }
-                // var len = $("#" + i + " .unit-numbers").text().length;
-                // $("#" + i + " div.unit-numbers span ").addClass("infoLen" + len);
-                // $("#" + i + " .counterWrapper .guard-unit ").addClass("infoLen" + len);
-                // $("#" + i).attr("src", img);
+
             }
             this.gmRules(data);
+            let emptyDeploy = true;
+            if(clickThrough.$store.state.gameRules.prevPhase !== data.gameRules.phase
+            && data.gameRules.mode === DEPLOY_MODE || data.gameRules.mode === MOVING_MODE){
+                let attackingForceId = data.gameRules.attackingForceId;
+                let boxes = clickThrough.allBoxes;
+                _.forEach(boxes, (box, key) => {
+                    if(key === 'deadpile'){
+                        return;
+                    }
+                    if(key.match(/^gameTurn/)){
+                        return;
+                    }
+                    if(box.length > 0){
+                        _.forEach(box, (unit)=>{
+                            if(unit.forceId === attackingForceId){
+                                emptyDeploy = false;
+                            }
+                        })
+                    }
+                })
 
-            var dpBox = $("#deployBox").children().length;
-            if (dpBox != beforeDeploy) {
-                fixHeader();
-                beforeDeploy = dpBox;
 
+                if(emptyDeploy){
+                    console.log("CLOSE");
+                    clickThrough.show.units.deployBox = false;
+                }else{
+                    clickThrough.show.units.deployBox = true;
+                }
             }
-            if(data.gameRules.mode ===  DEPLOY_MODE && clickThrough.deployBox.length > 0){
-                clickThrough.show.units.deployBox = true;
-            }else{
-                clickThrough.show.units.deployBox = false;
-
-            }
+            clickThrough.$store.state.gameRules.prevPhase = data.gameRules.phase;
 
 
-            // svgRefresh();
-            // if(DR.showHexes){
-            //     $("#showHexes").addClass('negative');
+
+                // if(data.gameRules.mode ===  DEPLOY_MODE && clickThrough.deployBox.length > 0){
+            //     clickThrough.show.units.deployBox = true;
             // }else{
-            //     $("#showHexes").removeClass('negative');
+            //     clickThrough.show.units.deployBox = false;
+            //
             // }
-            // if(DR.showHexes){
-            //     $('.range-hex').addClass('hovering');
-            // }else{
-            //     $('.range-hex').removeClass('hovering');
-            // }
+
         });
 
     }
@@ -606,9 +552,6 @@ export class SyncController {
             alsoRemoveThese = alsoRemoveThese.replace(/@@@/g, ' ');
             alsoRemoveThese = alsoRemoveThese.replace(/([^ ]+)/g, "player$1");
             removeThese += " " + alsoRemoveThese;
-            $("#crt").removeClass(removeThese).addClass(playerName);
-            $(".row1,.row3,.row5").removeClass(removeThese).addClass(playerName);
-            $("#revolt-table").removeClass(removeThese).addClass(playerName);
 
             var html = "<span id='turn'>Turn " + turn + " of " + maxTurn + "</span> ";
             var phase = gameRules.phase_name[gameRules.phase];
@@ -699,39 +642,24 @@ export class SyncController {
                 mapUnit.thetas = [];
             })
 
-            for (var combatCol = 1; combatCol <= 11; combatCol++) {
-                $(".col" + combatCol).css({background: "transparent"});
-            }
             var title = "Combat Results ";
             var cdLine = "";
             var activeCombat = false;
             var activeCombatLine = "";
-            let str = "";
-            clickThrough.$store.state.headerData.status = str;
-            var toResolveLog = "";
-            // $('.unit .unitOdds').remove();
-
+            clickThrough.$store.state.headerData.status = "";
+            clickThrough.$store.state.crt.details = "";
             clickThrough.$store.state.crt.index = false;
             if (combatRules) {
                 var cD = combatRules.currentDefender;
                 if (combatRules.combats && Object.keys(combatRules.combats).length > 0) {
                     if (cD !== false) {
                         var defenders = combatRules.combats[cD].defenders;
-                        if (combatRules.combats[cD].useAlt) {
-                            showCrtTable($('#cavalryTable'));
-                        } else {
-                            if (combatRules.combats[cD].useDetermined) {
-                                showCrtTable($('#determinedTable'));
-                            } else {
-                                showCrtTable($('#normalTable'));
-                            }
-                        }
                         for (var loop in defenders) {
-                            _.forEach(topVue.units, (mapUnit) =>{
-                                if(mapUnit.id == loop){
-                                    mapUnit.borderColor = 'yellow';
-                                }
-                            })
+                            topVue.unitsMap[loop].borderColor = 'yellow';
+                        }
+                        if(!this.crtSelfOpened){
+                            clickThrough.crt = true;
+                            this.crtSelfOpened = true;
                         }
                         if (Object.keys(combatRules.combats[cD].attackers).length != 0) {
                             if (combatRules.combats[cD].pinCRT !== false) {
@@ -740,7 +668,6 @@ export class SyncController {
                                     clickThrough.$store.state.crt.pinned = combatCol - 1;
                                 }
                             }
-                            var combatCols;
 
                             combatCol = combatRules.combats[cD].index + 1;
 
@@ -752,15 +679,12 @@ export class SyncController {
                             }
                         }
                         var details = this.renderCrtDetails(combatRules.combats[cD]);
-                        var newLine = "<h5>odds = " + crtHeader[combatCol-1] + " </h5>" + details;
+                        let newLine = "<h5>odds = " + crtHeader[combatCol-1] + " </h5>" + details;
 
                         clickThrough.$store.state.crt.details = newLine;
                     }
-                    str = "";
                     cdLine = "";
                     var combatIndex = 0;
-                    $('.unit').removeAttr('title');
-                    // $('.unit .unitOdds').remove();
                     for (var i in combatRules.combats) {
                         if (combatRules.combats[i].index !== null) {
 
@@ -778,15 +702,9 @@ export class SyncController {
                                     theta = thetas[j][k];
                                     theta *= 15;
                                     theta += 180;
-                                    _.forEach(topVue.units, (mapUnit) =>{
-                                        if(mapUnit.id == j){
-                                            mapUnit.thetas.push(theta);
-                                        }
-                                    })
+                                    topVue.unitsMap[j].thetas.push(theta);
                                 }
                             }
-
-
 
                             var useAltColor = combatRules.combats[i].useAlt ? " altColor" : "";
                             if (combatRules.combats[i].useDetermined) {
@@ -811,41 +729,29 @@ export class SyncController {
                                 useAltColor = " pinnedColor";
                             }
 
-                            _.forEach(topVue.units, (mapUnit) =>{
-                                if(mapUnit.id == i){
-                                    mapUnit.odds = currentOddsDisp;
-                                    mapUnit.oddsColor = useAltColor;
-                                }
-                            })
+                            topVue.unitsMap[i].odds = currentOddsDisp;
+                            topVue.unitsMap[i].oddsColor = useAltColor;
 
                             combatIndex++;
-//                            str += newLine;
                         }
 
                     }
-                    str += "There are " + combatIndex + " Combats";
-                    clickThrough.$store.state.headerData.status = str;
-                    // $("#status").html(cdLine + str);
-                    // if (DR.crtDetails) {
-                    //     $("#crtDetails").toggle();
-                    // }
-                    // $("#status").show();
-
+                    clickThrough.$store.state.headerData.status = "There are " + combatIndex + " Combats";
+                }else{
+                    this.crtSelfOpened = false;
                 }
 
-                var lastCombat = "";
                 if (combatRules.combatsToResolve) {
-                    // $('.unit .unitOdds').remove();
                     if (combatRules.lastResolvedCombat) {
-                        toResolveLog = "Current Combat or Last Combat<br>";
-                        title += "<strong style='margin-left:20px;font-size:150%'>" + combatRules.lastResolvedCombat.Die + " " + combatRules.lastResolvedCombat.combatResult + "</strong>";
-                        combatCol = combatRules.lastResolvedCombat.index;
+                        let thisCombat = combatRules.lastResolvedCombat;
+                        let toResolveLog = "Current Combat or Last Combat<br>";
+                        combatCol = thisCombat.index;
 
-                        var combatRoll = combatRules.lastResolvedCombat.Die;
-                        clickThrough.$store.state.crt.combatResult = combatRules.lastResolvedCombat.combatResult
+                        let combatRoll = thisCombat.Die;
+                        clickThrough.$store.state.crt.combatResult = thisCombat.combatResult
 
                         clickThrough.$store.state.crt.index = combatCol;
-                        var pin = combatRules.lastResolvedCombat.pinCRT;
+                        let pin = thisCombat.pinCRT;
                         if (pin !== false) {
                             pin++;
                             if (pin < combatCol) {
@@ -858,10 +764,10 @@ export class SyncController {
 
                         clickThrough.$store.state.crt.roll = combatRoll;
 
-                        if (combatRules.lastResolvedCombat.useAlt) {
+                        if (thisCombat.useAlt) {
                             clickThrough.$store.state.crt.selectedTable = 'cavalry'
                         } else {
-                            if (combatRules.lastResolvedCombat.useDetermined) {
+                            if (thisCombat.useDetermined) {
                                 clickThrough.$store.state.crt.selectedTable = 'determined'
 
                             } else {
@@ -870,34 +776,34 @@ export class SyncController {
                             }
                         }
 
-                        var atk = combatRules.lastResolvedCombat.attackStrength;
-                        var atkDisp = atk;
-                        ;
+                        let details = this.renderCrtDetails(thisCombat);
 
-                        var def = combatRules.lastResolvedCombat.defenseStrength;
-                        var ter = combatRules.lastResolvedCombat.terrainCombatEffect;
-                        var idx = combatRules.lastResolvedCombat.index + 1;
-                        var odds = Math.floor(atk / def);
-                        var oddsDisp = $(".col" + combatCol).html();
-                        var details = this.renderCrtDetails(combatRules.lastResolvedCombat);
+                        let currentCombatCol;
+                        let currentOddsDisp;
 
-                        newLine = "<h5>odds = " + oddsDisp + "</h5>" + details;
-                        clickThrough.$store.state.crt.details = newLine;
 
-                        toResolveLog += newLine;
-                        toResolveLog += "Roll: " + combatRules.lastResolvedCombat.Die + " result: " + combatRules.lastResolvedCombat.combatResult + "<br><br>";
+                        currentCombatCol = thisCombat.index + 1;
+                        if(currentCombatCol <= 0){
+                            currentOddsDisp =  '<' + crtHeader[0];
+                        }
 
-                        // $("#crtOddsExp").html(newLine);
-//                    $(".row"+combatRoll+" .col"+combatCol).css('color',"white");
+                        if(currentCombatCol > 0){
+                            currentOddsDisp = crtHeader[currentCombatCol - 1];
+                        }
+                        if (thisCombat.pinCRT !== false) {
+                            currentCombatCol = thisCombat.pinCRT + 1;
+                            currentOddsDisp = crtHeader[currentCombatCol - 1];
+                            useAltColor = " pinnedColor";
+                        }
+
+
+                        clickThrough.$store.state.crt.details = "<h5>odds = " + currentOddsDisp + "</h5>" + details;
                     }
-                    str += "";
-                    var noCombats = false;
+                    let noCombats = false;
                     if (Object.keys(combatRules.combatsToResolve) == 0) {
                         noCombats = true;
-                        str += "0 combats to resolve";
                     }
-                    var combatsToResolve = 0;
-                    toResolveLog += "Combats to Resolve<br>";
+                    let combatsToResolve = 0;
                     for (var i in combatRules.combatsToResolve) {
                         combatsToResolve++;
                         if (combatRules.combatsToResolve[i].index !== null) {
@@ -917,67 +823,39 @@ export class SyncController {
                                 combatCol = combatRules.combatsToResolve[i].pinCRT;
                             }
                             var odds = Math.floor(atk / def);
-                            var oddsDisp = $(".col" + combatCol).html();
-                            var useAltColor = combatRules.combatsToResolve[i].useAlt ? " altColor" : "";
-                            if (combatRules.combatsToResolve[i].useDetermined) {
-                                useAltColor = " determinedColor";
+
+                            currentCombatCol = combatRules.combatsToResolve[i].index + 1;
+                            if(currentCombatCol <= 0){
+                                currentOddsDisp =  '<' + crtHeader[0];
+                            }
+
+                            if(currentCombatCol > 0){
+                                currentOddsDisp = crtHeader[currentCombatCol - 1];
                             }
                             if (combatRules.combatsToResolve[i].pinCRT !== false) {
-                                oddsDisp = combatRules.combatsToResolve[i].pinCRT + 1;
-                                oddsDisp = $(".col" + oddsDisp).html();
-
+                                currentCombatCol = combatRules.combatsToResolve[i].pinCRT + 1;
+                                currentOddsDisp = crtHeader[currentCombatCol - 1];
                                 useAltColor = " pinnedColor";
                             }
 
-                            var details = this.renderCrtDetails(combatRules.combatsToResolve[i]);
-
-                            newLine = "<h5>odds = " + oddsDisp + "</h5>" + details;
-                            toResolveLog += newLine;
+                            topVue.unitsMap[i].odds = currentOddsDisp;
+                            topVue.unitsMap[i].oddsColor = useAltColor;
                         }
 
                     }
-                    if (combatsToResolve) {
-//                str += "Combats To Resolve: " + combatsToResolve;
-                    }
-                    var resolvedCombats = 0;
-                    toResolveLog += "<br>Resolved Combats <br>";
-                    for (var i in combatRules.resolvedCombats) {
-                        resolvedCombats++;
-                        if (combatRules.resolvedCombats[i].index !== null) {
-                            atk = combatRules.resolvedCombats[i].attackStrength;
-                            atkDisp = atk;
 
-                            def = combatRules.resolvedCombats[i].defenseStrength;
-                            ter = combatRules.resolvedCombats[i].terrainCombatEffect;
-                            idx = combatRules.resolvedCombats[i].index + 1;
-                            newLine = "";
-                            if (combatRules.resolvedCombats[i].Die) {
-                                // var x = $("#" + cD).css('left').replace(/px/, "");
-                                // var mapWidth = $("body").css('width').replace(/px/, "");
-                            }
-                            var oddsDisp = $(".col" + combatCol).html()
-
-                            newLine += " Attack = " + atkDisp + " / Defender " + def + atk / def + "<br>odds = " + Math.floor(atk / def) + " : 1<br>Combined Arms Shift " + ter + " = " + oddsDisp + "<br>";
-                            newLine += "Roll: " + combatRules.resolvedCombats[i].Die + " result: " + combatRules.resolvedCombats[i].combatResult + "<br><br>";
-                            if (cD === i) {
-                                newLine = "";
-                            }
-                            toResolveLog += newLine;
-                        }
-
+                    let resolvedCombats = 0;
+                    if(combatRules.resolvedCombats){
+                        resolvedCombats = Object.keys(combatRules.resolvedCombats).length;
                     }
                     if (!noCombats) {
-                        str += "Combats: " + resolvedCombats + " of " + (resolvedCombats + combatsToResolve);
+                        clickThrough.$store.state.headerData.status =
+                            "Combats: " + resolvedCombats + " of " + (resolvedCombats + combatsToResolve);
+                    }else{
+                        clickThrough.$store.state.headerData.status = "0 combats to resolve";
                     }
-                    clickThrough.$store.state.headerData.status = str;
-                    // $("#status").html(lastCombat + str);
-                    // $("#status").show();
-
                 }
             }
-            $("#CombatLog").html(toResolveLog);
-            $("#crt h3").html(title);
-
 
         });
     }
@@ -986,29 +864,7 @@ export class SyncController {
             topVue.moveUnits = [];
 
             var str;
-            $(".clone").remove();
             if (moveRules.movingUnitId >= 0) {
-                if (moveRules.hexPath) {
-                    var id = moveRules.movingUnitId;
-                    for (var i in moveRules.hexPath) {
-                        var newId = id + "Hex" + i;
-
-                        $("#" + id).clone(true).attr('id', newId).appendTo('#gameImages');
-                        $("#" + newId + " .arrow").hide();
-                        $("#" + newId).addClass("clone");
-                        $("#" + newId).css("top", 20);
-                        var width = $("#" + newId).width();
-                        var height = $("#" + newId).height();
-
-                        $("#" + newId).css("left", moveRules.hexPath[i].pixX - width / 2 + "px");
-                        $("#" + newId).css("top", moveRules.hexPath[i].pixY - height / 2 + "px");
-                        $("#" + newId + " div.unit-numbers span").html("24 - " + moveRules.hexPath[i].pointsLeft);
-                        $("#" + newId).css("opacity", .9);
-                        $("#" + newId).css("z-index", 101);
-
-
-                    }
-                }
                 var opacity = .4;
                 var borderColor = "#ccc #333 #333 #ccc";
                 if (moveRules.moves) {
@@ -1016,11 +872,6 @@ export class SyncController {
                     let newUnit = _.clone(data.mapUnits[id]);
                     let width = 32;
                     for (var i in moveRules.moves) {
-                        // console.log(moveRules.moves[i])
-                        // if(moveRules.moves[i].isOccupied){
-                        //     console.log('==========> Occupied <===========');
-                        //     continue;
-                        // }
 
                         if (data.gameRules.phase == RED_COMBAT_PHASE || data.gameRules.phase == BLUE_COMBAT_PHASE || data.gameRules.phase == TEAL_COMBAT_PHASE || data.gameRules.phase == PURPLE_COMBAT_PHASE) {
                             borderColor = 'turquoise';
@@ -1034,129 +885,10 @@ export class SyncController {
                         ghostUnit.moveAmountUsed = 0;
                         ghostUnit.isOccupied = moveRules.moves[i].isOccupied;
                         ghostUnit.showOff = false;
-                        // unitDecorate(ghostUnit, data)
                         ghostUnit.borderColor = borderColor;
                         topVue.moveUnits.push(ghostUnit);
                     }
-                    return;
-                    secondGenClone.appendTo('#gameImages').css({
-                        left: moveRules.moves[i].pixX - width / 2 + "px",
-                        top: moveRules.moves[i].pixY - height / 2 + "px"
-                    });
-
-                    var newId = "firstclone";
-                    width = $("#" + id).width();
-                    var height = $("#" + id).height();
-
-                    var MYCLONE = $("#" + id).clone(true).detach();
-                    MYCLONE.find(".arrow").hide();
-                    MYCLONE.addClass("clone");
-                    MYCLONE.find('.shadow-mask').css({backgroundColor: 'transparent'});
-                    MYCLONE.hover(function () {
-                            if (opacity != 1) {
-                                $(this).css("border-color", "#fff");
-                            }
-                            $(this).css("opacity", 1.0)
-                            var path = $(this).attr("path");
-                            var pathes = path.split(",");
-                            for (var i in pathes) {
-                                $("#" + id + "Hex" + pathes[i]).css("opacity", 1.0).css("border-color", "#fff")
-                                $("#" + id + "Hex" + pathes[i] + ".occupied").css("display", "block");
-
-                            }
-                        },
-                        function () {
-                            if (opacity != 1) {
-                                $(this).css("border-color", "#ccc #333 #333 #ccc");
-                            }
-                            $(this).css("opacity", opacity).css('box-shadow', 'none');
-                            var path = $(this).attr("path");
-                            var pathes = path.split(",");
-                            for (var i in pathes) {
-                                $("#" + id + "Hex" + pathes[i]).css("opacity", .4).css("border-color", "#ccc #333 #333 #ccc").css('box-shadow', 'none');
-                                $("#" + id + "Hex" + pathes[i] + ".occupied").css("display", "none");
-
-                            }
-
-                        });
-
-                    var label = MYCLONE.find("div.unit-numbers span").html();
-                    if (data.gameRules.phase == RED_COMBAT_PHASE || data.gameRules.phase == BLUE_COMBAT_PHASE || data.gameRules.phase == TEAL_COMBAT_PHASE || data.gameRules.phase == PURPLE_COMBAT_PHASE) {
-                        if (data.gameRules.mode == ADVANCING_MODE) {
-                            var unit = moveRules.movingUnitId;
-
-                            var thetas = data.combatRules.resolvedCombats[data.combatRules.currentDefender].thetas[unit]
-                            for (var k in thetas) {
-                                $("#" + unit + " .arrow").clone().addClass('arrowClone').addClass('arrow' + k).insertAfter("#" + unit + " .arrow").removeClass('arrow');
-                                var theta = thetas[k];
-                                theta *= 15;
-                                theta += 180;
-                                $("#" + unit + " .arrow" + k).css({opacity: "1.0"});
-                                $("#" + unit + " .arrow" + k).css({webkitTransform: ' scale(.55,.55) rotate(' + theta + "deg) translateY(45px)"});
-                                $("#" + unit + " .arrow" + k).css({transform: ' scale(.55,.55) rotate(' + theta + "deg) translateY(45px)"});
-
-                                _.forEach(topVue.units, (mapUnit) =>{
-                                    if(mapUnit.id == unit){
-                                        mapUnit.thetas.push(theta);
-                                    }
-                                })
-
-                            }
-                        }
-                        opacity = 1.;
-                        borderColor = "turquoise";
-                    }
-                    MYCLONE.css({
-                            opacity: opacity,
-                            zIndex: 102,
-                            borderColor: borderColor,
-                            boxShadow: "none",
-                            position: "absolute"
-                        }
-                    );
-                    var diff = 0;
-                    var counter = 0;
-                    for (var i in moveRules.moves) {
-                        counter++;
-                        newId = id + "Hex" + i;
-
-                        var secondGenClone = MYCLONE.clone(true).attr(
-                            {
-                                id: newId,
-                                path: moveRules.moves[i].pathToHere
-                            }
-                        );
-
-//                var newLabel = label.replace(/((?:<span[^>]*>)?[-+ru](?:<\/span>)?).*/,"$1 "+moveRules.moves[i].pointsLeft);
-                        var newLabel;
-                        // if(window.renderUnitNumbers){
-                        //     newLabel = window.renderUnitNumbers(data.mapUnits[id], moveRules.moves[i].pointsLeft, moveRules.moves[i], secondGenClone);
-                        //
-                        // }else{
-                        //     newLabel = renderUnitNumbers(data.mapUnits[id], moveRules.moves[i].pointsLeft, moveRules.moves[i], secondGenClone);
-                        //
-                        // }
-                        var txt = secondGenClone.find('div.unit-numbers .unit-info').html(newLabel).text();
-                        // secondGenClone.find('div.unit-numbers .unit-info').addClass('infoLen' + txt.length);
-                        // secondGenClone.find('.counterWrapper .guard-unit').addClass('infoLen' + newLabel.length);
-                        if (moveRules.moves[i].isOccupied) {
-                            secondGenClone.addClass("occupied");
-                            secondGenClone.css('display')
-
-
-                        }
-                        /* left and top need to be set after appendTo() */
-
-                        secondGenClone.appendTo('#gameImages').css({
-                            left: moveRules.moves[i].pixX - width / 2 + "px",
-                            top: moveRules.moves[i].pixY - height / 2 + "px"
-                        });
-                        /* apparently cloning attaches the mouse events */
-                    }
-
-                    $("#firstclone").remove();
                 }
-
             }
         });
 
@@ -1228,27 +960,6 @@ export class SyncController {
     }
     victory() {
         syncObj.register("victory", (vp, data) => {
-            return;
-            let $ = DR.$;
-            var ownerObj = data.specialHexes;
-            var owner;
-            let i;
-            for(i in ownerObj){
-                owner = ownerObj[i];
-                break;
-            }
-            var name;
-            if(owner == 0){
-                name = "Nobody Owns the tree";
-            }
-            if(owner == 1){
-                name = "<span class='playerRedFace'>Red owns the tree </span>";
-            }
-            if(owner == 2){
-                name = "<span class='playerBlueFace'>Blue owns the tree </span>";
-            }
-            $("#victory").html(name);
-
         });
 
     }
@@ -1268,93 +979,51 @@ export class SyncController {
     }
     mapSymbols() {
         syncObj.register("mapSymbols",  (mapSymbols, data) => {
-            $(".mapSymbols").remove();
+            topVue.mapSymbols = [];
             for (var i in mapSymbols) {
-
-                var hexPos = i.replace(/\.\d*/g, '');
-                var x = hexPos.match(/x(\d*)y/)[1];
-                var y = hexPos.match(/y(\d*)\D*/)[1];
-                $("#mapSymbol" + i).remove();
-
                 for (var symbolName in mapSymbols[i]) {
                     var newHtml;
-
-                    var c = mapSymbols[i][symbolName].class
-                    $("#mapSymbol" + hexPos + " " + c).remove();
-                    newHtml = '<i class="' + c + '"></i>';
-                    if (mapSymbols[i][symbolName].image) {
-                        newHtml = '<img src="'+mapSymbolsBefore + mapSymbols[i][symbolName].image + '" class="' + c + '">';
-                    }
-                    $("#gameImages").append('<div id="mapSymbol' + i + '" class="mapSymbols">' + newHtml + '</div>');
-                    $("#mapSymbol" + i).css({top: y + "px", left: x + "px"});
+                    var hexPos = i.replace(/\.\d*/g, '');
+                    var x = hexPos.match(/x(\d*)y/)[1];
+                    var y = hexPos.match(/y(\d*)\D*/)[1];
+                    let mapSymbol = {
+                        ...mapSymbols[i][symbolName],
+                        x: x, y: y,
+                        id: i+'x'+symbolName};
+                    topVue.mapSymbols.push(mapSymbol);
 
                 }
-
             }
         });
     }
     specialHexes() {
         syncObj.register("specialHexes", (specialHexes, data) => {
-            topVue.mapSymbols = [];
             topVue.specialEvents = [];
-            // topVue.specialEvents.splice(0,topVue.specialEvents.length);
-            // $('.specialHexes').remove();
+            topVue.specialHexes = [];
             var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
             for(var i in specialHexes){
-                var newHtml = lab[specialHexes[i]];
-                var curHtml = $("#special"+i).html();
 
-                if(true || newHtml != curHtml){
                     var hexPos = i.replace(/\.\d*/g,'');
                     var x = hexPos.match(/x(\d*)y/)[1];
                     var y = hexPos.match(/y(\d*)\D*/)[1];
-                    // $("#special"+hexPos).remove();
-                    // if(data.specialHexesChanges[i]){
-                    //     $("#gameImages").append('<div id="special'+hexPos+'" style="border-radius:30px;border:10px solid black;top:'+y+'px;left:'+x+'px;font-size:205px;z-index:1000;" class="'+lab[specialHexes[i]]+' specialHexes">'+lab[specialHexes[i]]+'</div>');
-                    //     $('#special'+hexPos).animate({fontSize:"16px",zIndex:0,borderWidth:"0px",borderRadius:"0px"},1900,function(){
-                    //         var id = $(this).attr('id');
-                    //         id = id.replace(/special/,'');
-                    //
-                    //
-                    //         if(data.specialHexesVictory[id]){
-                    //             var hexPos = id.replace(/\.\d*/g,'');
-                    //
-                    //             var x = hexPos.match(/x(\d*)y/)[1];
-                    //             var y = hexPos.match(/y(\d*)\D*/)[1];
-                    //             var newVP = $('<div style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').insertAfter('#special'+i);
-                    //             $(newVP).animate({top:y-30,opacity:0.0},1900,function(){
-                    //                 $(this).remove();
-                    //             });
-                    //         }
-                    //     });
-                    //
-                    // }else{
-                    /* i didn't do it */
+
                     let mapSymbol = {x: x, y: y, text: DR.players[specialHexes[i]], class: DR.players[specialHexes[i]].replace(/ /g,'-'), change: false};
                     if(data.specialHexesChanges[i]){
                         mapSymbol.change = true;
                     }
-                    topVue.mapSymbols.push(mapSymbol)
-
-
-                    // }
-
-                }
+                    topVue.specialHexes.push(mapSymbol);
             }
 
             for(var id in data.specialHexesVictory)
             {
-                if(data.specialHexesChanges[id]){
-                    continue;
-                }
+                // if(data.specialHexesChanges[id]){
+                //     continue;
+                // }
+
                 var hexPos = id.replace(/\.\d*/g,'');
                 var x = hexPos.match(/x(\d*)y/)[1];
                 var y = hexPos.match(/y(\d*)\D*/)[1];
                 topVue.specialEvents.push({x: x, y: y, text:data.specialHexesVictory[id], id: hexPos});
-                // var newVP = $('<div  style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').appendTo('#gameImages');
-                // $(newVP).animate({top:y-30,opacity:0.0},6900,function(){
-                //     var id = $(this).attr('id');
-                // });
             }
 
             if(topVue.specialEvents.length > 0){
@@ -1365,14 +1034,7 @@ export class SyncController {
         });
     }
     mapViewer(){
-        syncObj.register('mapViewer',  (mapViewer) => {
-            var src = $('#map').attr('src');
-            src = src.replace(/Left.png$/, '.png');
-            if (mapViewer.trueRows) {
-                src = src.replace(/.png$/, 'Left.png');
-            }
-            $('#map').attr('src', src);
-        });
+
     }
     constructor() {
 

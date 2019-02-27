@@ -1,5 +1,4 @@
 window._ = require('lodash');
-import {SyncController} from "./sync-controller";
 import Vue from "vue";
 import {counterClick, doitSaveGame, mapClick, nextPhaseMouseDown, playAudio, toggleFullScreen} from "../global-funcs";
 import {store} from "./store/store";
@@ -9,7 +8,6 @@ import "../jquery.panzoom";
 Vue.use(VueResource);
 document.addEventListener("DOMContentLoaded",function(){
 
-    const syncController = new SyncController();
     window.topVue = new Vue({
         el: '#gameImages',
         store,
@@ -19,12 +17,18 @@ document.addEventListener("DOMContentLoaded",function(){
             moveUnits: [],
             mapSymbols: [],
             specialEvents: [],
+            specialHexes: [],
             rowSvg: {x: 0, y: 0},
             why: "Why not!",
             header: "",
             message: "",
             x: 200,
             y: 900
+        },
+        computed: {
+            mapUrl(){
+                return this.$store.state.mapData.mapUrl;
+            }
         },
         methods:{
             wheelo(e){
@@ -103,10 +107,17 @@ document.addEventListener("DOMContentLoaded",function(){
                 showHexes: false,
                 determined: false
             },
-            deployBox: [],
-            deadpile: [],
-            exitBox: [],
-            notUsed: [],
+            allBoxes:{
+                deployBox: [],
+                deadpile: [],
+                exitBox: [],
+                notUsed: [],
+                beachlanding: [],
+                airdrop:[],
+                south: [],
+                west: [],
+                east: [],
+            },
             show:{
                 units:{
                     submenu:false,
@@ -122,7 +133,6 @@ document.addEventListener("DOMContentLoaded",function(){
             },
             bugReport(){
                 this.debug = !this.debug;
-                debugger;
             },
             saveBugReport(){
                 doitSaveGame(this.bugMessage);

@@ -1,63 +1,46 @@
 <template>
-    <transition name="fade">
-        <div v-if="showSymbol" :style="{top:mapsymbol.y + 'px', left: mapsymbol.x + 'px'}" class="map-symbols" :class="[mapsymbol.class, firstOne]">
-            <div v-if="mapsymbol.text"> {{ mapsymbol.text }} </div>
+    <div :style="{top:mapsymbol.y + 'px', left: mapsymbol.x + 'px'}" class="map-symbols">
+        <div v-if="mapsymbol.type === 'Spotted'" class="spotted" :class="mapsymbol.class" >
+            <img :src="mapSymbolsBefore +'spotted.svg'" ></img>
         </div>
-    </transition>
+        <div v-else-if="mapsymbol.image" :class="mapsymbol.class" >
+            <img :src="mapSymbolsBefore + mapsymbol.image" ></img>
+        </div>
+
+    </div>
 </template>
 
 <script type="text/javascript">
     export default {
         props: ['mapsymbol'],
-        watch:{
-            mapsymbol:{
-                handler(newVal, oldVal){
-                    if(newVal.change){
-                        this.firstOne = false;
-                        this.showSymbol = false;
-                        setTimeout(this.showAgain, 30)
-                    }
-                },
-                deep: true
+        computed:{
+            mapSymbolsBefore(){
+                return mapSymbolsBefore;
             }
         },
-        methods:{
-          showAgain(){
-              this.showSymbol = true;
-          }
-        },
-        mounted(){
-        },
         data: () => {
-            return {copyMapSymbol:{},showSymbol: true, firstOne: 'first-one'}
+            return {}
+        },
+        mounted() {
         }
     }
 </script>
 <style scoped lang="scss">
-    .fade-enter{
-        font-size:300px;
-    }
-    .fade-enter-active{
-        transition: font-size 3s;
-    }
     .map-symbols {
-        padding: 0px 5px;
-        border: 3px solid #001825;
-        border-radius: 10px;
         position: absolute;
-        color: black;
+        font-size:25px;
+
+        .spotted{
+            img{
+                width:64px;
+                margin-top:-32px;
+                margin-left:-32px;
+            }
+        }
+        color: black;;
         i {
-            font-size: 14px;
+            font-size: 25px;
             transform: rotate(180deg);
         }
-        &.first-one.fade-enter{
-            font-size:14px;
-        }
-    }
-    .Red{
-        background-color:#ef7e4a;
-    }
-    .Blue{
-        background-color: #84b5ff;
     }
 </style>

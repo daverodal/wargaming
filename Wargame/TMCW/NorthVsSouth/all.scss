@@ -45,9 +45,6 @@
 @include header('Southern-States', $southernColor);
 @include player(southern, Southern-States, $southernColor)
 @include player(northern, Northern-States, $northernColor)
-.map-symbols.Northern-States{
-  background-color:$northernColor;
-}
 .specialHexesVP .northernVictoryPoints {
   @include victoryPoints($northernColor);
 }

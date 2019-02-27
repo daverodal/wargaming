@@ -175,6 +175,7 @@ class Unit extends BaseUnit implements \JsonSerializable
         $mapUnit->image = $this->image;
         $mapUnit->nationality = $this->nationality;
         $mapUnit->name = $this->name;
+        $mapUnit->hexagon = $this->hexagon->name;
         return $mapUnit;
     }
 

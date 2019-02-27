@@ -1,22 +1,26 @@
 <template>
-    <div @mouseover="mOver" @mouseleave="mouseleave" :id="unit.id" @click="unitClick" class="unit" :class="unit.nationality" :style="unitStyle">
+    <div @mouseover="mOver" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="unit" :class="unit.nationality" :style="unitStyle">
+        <div class="unitOdds" :class="this.unit.oddsColor? this.unit.oddsColor: ''">{{unitOdds}}</div>
         <div class="shadow-mask" :class="{shadowy: unit.shadow}"></div>
-        <div class="unitSize"> {{unit.name}} </div>
+        <div class="unit-size">{{ unit.name }}</div>
         <img v-for="theta in thetas" :style="{transform: theta}" class="counter arrow" src="/assets/unit-images/short-red-arrow-md.png">
-        <div class="counterWrapper">
+        <div class="counter-wrapper">
             <img class="counter" :src="'/assets/unit-images/'+unit.image" alt="">
         </div>
-        <div class="unit-numbers" :class="infoLen">
-            {{ unitNumbers }}
-
+        <div class="unit-numbers" v-html="unitNumbers" :class="infoLen">
         </div>
+
+
     </div>
+
 </template>
 
-<script type="text/javascript">
+<script>
     import {counterClick} from "../../wargame-helpers/global-funcs";
+    import {rotateUnits} from "../../wargame-helpers/Vue/global-vue-header";
 
-    export default{
+    export default {
+        name: "UnitComponent",
         props:["unit"],
         computed:{
             unitStyle(){
@@ -27,42 +31,73 @@
                     borderStyle: this.unit.borderStyle,
                     left:this.unit.x + 'px',
                     top:this.unit.y + 'px',
-                    boxShadow: this.cBoxShadow
+                    boxShadow: this.cBoxShadow,
+                    zIndex: this.unit.zIndex
                 }
             },
+            rawUnitNumbers(){
+                var move = this.unit.maxMove - this.unit.moveAmountUsed;
+                move = move.toFixed(2);
+                move = move.replace(/\.00$/, '');
+                move = move.replace(/(\.[1  -9])0$/, '$1');
+                var str = this.unit.strength;
+                var symb = " - ";
+                return str + symb + move;
+            },
+
             unitNumbers(){
                 var move = this.unit.maxMove - this.unit.moveAmountUsed;
                 move = move.toFixed(2);
                 move = move.replace(/\.00$/, '');
-                move = move.replace(/(\.[1-9])0$/, '$1');
+                move = move.replace(/(\.[1  -9])0$/, '$1');
                 var str = this.unit.strength;
 
 
-                return str + " - " + move;
+                var reduced = this.unit.isReduced;
+                var reduceDisp = "<span class='unit-info'>";
+                if (reduced) {
+                    reduceDisp = "<span class='unit-info reduced'>";
+                }
+                var symb = this.unit.supplied !== false ? " - " : " <span class='reduced'>u</span> ";
+//        symb = "-"+unit.defStrength+"-";
+                var html = reduceDisp + str + symb + move + "</span>";
+                return html;
+
+
+
+
+
+
+                let center = ' ? ';
+                if(this.unit.tried){
+                    center = ' - ';
+                }
+                return str + center + move;
+            },
+            unitOdds(){
+                return this.unit.odds;
             },
             thetas(){
                 let thetas = [];
                 for(var i in this.unit.thetas){
                     thetas.push("rotate("+this.unit.thetas[i]+"deg)  scale(.55,.55) translateY(45px)")
                 }
-              return thetas
+                return thetas
             },
-          showMe(){
-              if(this.unit.showOff){
-                  console.log("show off ");
-                  return 'block';
-              }
-              if(this.unit.isOccupied){
-                  console.log("occupied ");
-                  return 'none';
-              }
-              return 'block';
-          },
+            showMe(){
+                if(this.unit.showOff){
+                    return 'block';
+                }
+                if(this.unit.isOccupied){
+                    return 'none';
+                }
+                return 'block';
+            },
             cBorderColor(){
-              if(this.unit.showOff){
-                  return 'white';
-              }
-              return this.unit.borderColor;
+                if(this.unit.showOff){
+                    return 'white';
+                }
+                return this.unit.borderColor;
             },
             cBoxShadow(){
                 if(this.unit.showOff){
@@ -71,78 +106,67 @@
                 return this.unit.boxShadow;
             },
             infoLen(){
-                let len = this.unitNumbers.length;
+                let len = this.rawUnitNumbers.length;
                 return 'infoLen'+len;
             }
         },
+        data:()=>{
+            return {zIndex: 3}
+        },
         methods:{
-            unitClick(e){
+            rightClick(e, a,b, c,d){
+                if(e.metaKey){
+                    return;
+                }
+                e.preventDefault();
+                rotateUnits(e, a);
 
-                console.log(this.unit);
+            },
+            unitClick(e){
                 counterClick(e, this.unit.id);
             },
             mOver(){
-                console.log(this.unit.id);
-              console.log('over');
-              let locId = this.unit.id;
-              if(typeof locId === 'string'){
-                locId = locId.replace(/Hex.*/,'Hex')
-              }else{
-                  return;
-              }
-              this.unit.showOff = true;
-              this.unit.opac = 1;
+                let locId = this.unit.id;
+                if(typeof locId === 'string'){
+                    locId = locId.replace(/Hex.*/,'Hex')
+                }else{
+                    return;
+                }
+                this.unit.showOff = true;
+                this.unit.opac = 1;
                 _.forEach(this.unit.pathToHere,(path)=>{
-                   _.forEach(topVue.moveUnits, (unit)=>{
-                       if(unit.id === locId+path){
-                           unit.opac = 1;
-                           unit.showOff = true;
-                       }
-                   })
+                    _.forEach(topVue.moveUnits, (unit)=>{
+                        if(unit.id === locId+path){
+                            unit.opac = 1;
+                            unit.showOff = true;
+                        }
+                    })
                 });
             },
             mouseleave(){
                 _.forEach(topVue.moveUnits, (unit)=>{
-                        unit.showOff = false;
-                        delete unit.opac;
+                    unit.showOff = false;
+                    delete unit.opac;
                 })
             }
         }
     }
 </script>
 
-<style scoped lang="scss">
-    .unit{
-        height:32px;
-        width:32px;
-        position:absolute;
-        .unit-numbers{
-            &.infoLen8{
-                letter-spacing:-.7px;
-            }
+<style scoped  lang="scss">
+    @import "../../wargame-helpers/Vue/scss/vue-unit";
+    @import "../../wargame-helpers/Vue/scss/vue-mixins";
+    @import "amphColors";
+    @include unitColor(rebel, $rebelColor)
+    @include unitColor(loyalist, $loyalistColor);
+    @include unitColor(loyalGuard, $loyalistGuardColor);
+    .unit .unit-numbers{
+        &.infoLen7{
+            letter-spacing: -.4px;
         }
-
-    }
-    .ghost{
-        opacity:.6;
-        border-color: #ccc #333 #333 #ccc;
-
-        &:hover{
-            opacity: 1;
-            border-color:white !important;
+        &.infoLen8{
+            font-size: 10px;
+            letter-spacing: -.6px;
         }
-    }
-
-    #boxes-wrapper .unit{
-        float:left;
-        position:static;
-        border-color: #ccc #333 #333 #ccc;
-        .shadow-mask{
-            display:none;
-        }
-
-    }
-    .unit .unitSize{
-        font-family: sans-serif;
     }
 </style>
