@@ -128,9 +128,6 @@
                     @show
                     @section('obc')
                     @show
-                    @section('tec')
-                        @include("wargame::Mollwitz.tec")
-                    @show
                 </div>
             </div>
 
@@ -142,7 +139,6 @@
             </div>
 
             @section('tec')
-                @include("wargame::Mollwitz.tec")
             @show
 
             @section('casualty')

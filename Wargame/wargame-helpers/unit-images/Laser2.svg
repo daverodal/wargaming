@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="10px" viewBox="0 0 34 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Laser2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-12.5%" y="-71.4%" width="125.0%" height="228.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Laser2" transform="translate(1.000000, 1.000000)" fill-rule="nonzero">
+            <g id="LaserRifle-Copy" filter="url(#filter-1)" stroke-width="0.5">
+                <rect id="Rectangle" stroke="#979797" fill="#000000" x="8.25" y="1.93421053" width="23.5" height="1.18421053" rx="0.592105263"></rect>
+                <ellipse id="Oval" stroke="#F70303" fill="#F80202" cx="23.1367419" cy="2.63157895" rx="1" ry="2.63157895"></ellipse>
+                <ellipse id="Oval-Copy" stroke="#FA0303" fill="#FA0303" cx="26.3038229" cy="2.63157895" rx="1" ry="2.63157895"></ellipse>
+                <ellipse id="Oval-Copy-3" stroke="#F70303" fill="#F70303" cx="29.4709039" cy="2.63157895" rx="1" ry="2.63157895"></ellipse>
+                <rect id="Rectangle" stroke="#05FC1E" fill="#05FC1E" x="10.9166667" y="0.881578947" width="7.94444444" height="1" rx="0.5"></rect>
+                <polygon id="Triangle" stroke="#000000" fill="#000000" points="11.7777778 1.26315789 12 1.68421053 11.5555556 1.68421053"></polygon>
+                <polygon id="Triangle-Copy" stroke="#000000" fill="#000000" points="18.2222222 1.26315789 18.4444444 1.68421053 18 1.68421053"></polygon>
+                <path d="M0.64128982,1.79659113 L0.68282754,4.63036172 L9.47281857,4.35343433 L9.45473853,3.11998452 L0.64128982,1.79659113 Z" id="Rectangle" stroke="#000000" fill="#000000" transform="translate(5.056696, 3.196924) rotate(-16.000000) translate(-5.056696, -3.196924) "></path>
+            </g>
+            <path d="M14.1131888,7.55975234 C13.4087802,6.38961971 13,4.99595757 13,3.5 C13,3.33198572 13.0051564,3.16526181 13.0153088,3 L15.4189044,3 C15.3627903,3.29618411 15.3333333,3.60273965 15.3333333,3.91666667 C15.3333333,5.13463641 15.7767419,6.24164512 16.5000384,7.062492 L14.1131888,7.55975234 Z" id="Combined-Shape" stroke="#000000" fill="#000000"></path>
+        </g>
+    </g>
+</svg>

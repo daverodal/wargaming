@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="8px" viewBox="0 0 32 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>FunnyTank</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="FunnyTank" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="0.551724138">
+            <path d="M9.02426372,4.27586207 L7.83520308,7.72413793 L31.7241379,7.72413793 L31.7241379,4.27586207 L9.02426372,4.27586207 Z" id="Rectangle"></path>
+            <path d="M0.290260927,1.65943077 L0.290971852,2.25051453 L13.5329499,2.2670087 L13.532239,1.67592494 L0.290260927,1.65943077 Z" id="Rectangle" transform="translate(6.911605, 1.963220) rotate(2.000000) translate(-6.911605, -1.963220) "></path>
+            <path d="M12.8515813,3.72413793 L28.4619668,3.72413793 L28.9165119,1.37024357 L25.647849,0.847193414 L14.8965517,0.561576355 C14.273397,0.561576355 13.7111316,0.97753799 13.2042179,1.8525675 C12.7429721,2.64876576 12.6367584,3.26587583 12.8515813,3.72413793 Z" id="Rectangle-Copy"></path>
+        </g>
+    </g>
+</svg>

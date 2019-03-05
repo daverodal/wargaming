@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="11px" viewBox="0 0 35 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>AntiTank</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="AntiTank" fill-rule="nonzero">
+            <rect id="Rectangle" stroke="#000000" stroke-width="0.5" fill="#000000" x="0.25" y="0.25" width="34.5" height="4.5" rx="1.77285319"></rect>
+            <path d="M16.1131888,9.55975234 C15.4087802,8.38961971 15,6.99595757 15,5.5 C15,5.33198572 15.0051564,5.16526181 15.0153088,5 L17.4189044,5 C17.3627903,5.29618411 17.3333333,5.60273965 17.3333333,5.91666667 C17.3333333,7.13463641 17.7767419,8.24164512 18.5000384,9.062492 L16.1131888,9.55975234 Z" id="Combined-Shape" stroke="#000000" fill="#000000"></path>
+            <rect id="Rectangle" stroke="#E2DD4A" x="18.5" y="1.5" width="15" height="1"></rect>
+        </g>
+    </g>
+</svg>

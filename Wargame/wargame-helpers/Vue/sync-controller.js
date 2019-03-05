@@ -711,17 +711,30 @@ export class SyncController {
                                 useAltColor = " determinedColor";
                             }
 
+                            var odds = Math.floor(atk / def);
+                            var oddsDisp;
                             var currentCombatCol;
                             var currentOddsDisp;
 
+                            if (typeof combatRules.combats[i].index === "object") {
+                                currentCombatCol = combatRules.combats[i].index + '';
+                                currentOddsDisp = currentCombatCol;
+                                oddsDisp = currentCombatCol;
+                            } else {
 
-                            currentCombatCol = combatRules.combats[i].index + 1;
-                            if(currentCombatCol <= 0){
-                                currentOddsDisp =  '<' + crtHeader[0];
-                            }
+                                var currentCombatCol;
+                                var currentOddsDisp;
 
-                            if(currentCombatCol > 0){
-                                currentOddsDisp = crtHeader[currentCombatCol - 1];
+
+                                currentCombatCol = combatRules.combats[i].index + 1;
+                                if (currentCombatCol <= 0) {
+                                    currentOddsDisp = '<' + crtHeader[0];
+                                }
+
+                                debugger;
+                                if (currentCombatCol > 0) {
+                                    currentOddsDisp = crtHeader[currentCombatCol - 1];
+                                }
                             }
                             if (combatRules.combats[i].pinCRT !== false) {
                                 currentCombatCol = combatRules.combats[i].pinCRT + 1;

@@ -137,9 +137,13 @@
 
 #boxes-wrapper .unit {
   float: left;
-  position: static;
+  position: relative;
   border-color: #ccc #333 #333 #ccc;
   .shadow-mask {
     display: none;
   }
+  top:0px !important;
+  left: 0px !important;
+  margin-right:4px;
+  margin-bottom:4px;
 }

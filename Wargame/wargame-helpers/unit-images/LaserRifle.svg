@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="11px" viewBox="0 0 34 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>LaserRifle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-12.5%" y="-62.5%" width="125.0%" height="212.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LaserRifle" filter="url(#filter-1)" transform="translate(1.000000, 1.000000)" fill-rule="nonzero" stroke-width="0.5">
+            <rect id="Rectangle" stroke="#979797" fill="#000000" x="8.25" y="1.93421053" width="23.5" height="1.18421053" rx="0.592105263"></rect>
+            <ellipse id="Oval-Copy" stroke="#FA0303" fill="#FA0303" cx="26.4855932" cy="2.63157895" rx="1" ry="2.63157895"></ellipse>
+            <ellipse id="Oval-Copy-3" stroke="#F70303" fill="#F70303" cx="29.6526742" cy="2.63157895" rx="1" ry="2.63157895"></ellipse>
+            <rect id="Rectangle" stroke="#05FC1E" fill="#05FC1E" x="10.9166667" y="0.881578947" width="7.94444444" height="1" rx="0.5"></rect>
+            <polygon id="Triangle" stroke="#000000" fill="#000000" points="11.7777778 1.26315789 12 1.68421053 11.5555556 1.68421053"></polygon>
+            <polygon id="Triangle-Copy" stroke="#000000" fill="#000000" points="18.2222222 1.26315789 18.4444444 1.68421053 18 1.68421053"></polygon>
+            <path d="M0.64128982,1.79659113 L0.68282754,4.63036172 L9.47281857,4.35343433 L9.45473853,3.11998452 L0.64128982,1.79659113 Z" id="Rectangle" stroke="#000000" fill="#000000" transform="translate(5.056696, 3.196924) rotate(-16.000000) translate(-5.056696, -3.196924) "></path>
+            <rect id="Rectangle" stroke="#000000" fill="#000000" x="13.8055556" y="3.40789474" width="2.38888889" height="4.34210526"></rect>
+        </g>
+    </g>
+</svg>

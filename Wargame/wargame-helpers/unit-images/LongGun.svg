@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="12px" viewBox="0 0 32 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>LongGun</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LongGun" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="0.688172043">
+            <rect id="Rectangle" x="0.344086022" y="10.2488479" width="17.8924731" height="1.40706605"></rect>
+            <rect id="Rectangle-Copy" x="5.84946237" y="8.85202253" width="7.56989247" height="1"></rect>
+            <rect id="Rectangle-Copy-2" x="5.11827957" y="4.59805428" width="9.03225806" height="3.56579621"></rect>
+            <path d="M2.85060693,3.50769651 L2.84915457,4.21545165 L31.5230548,4.08935525 L31.5245071,3.38160011 L2.85060693,3.50769651 Z" id="Rectangle" transform="translate(17.186831, 3.798526) rotate(-12.000000) translate(-17.186831, -3.798526) "></path>
+        </g>
+    </g>
+</svg>

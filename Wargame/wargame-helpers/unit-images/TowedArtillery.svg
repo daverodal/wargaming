@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="22px" viewBox="0 0 32 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>TowedArtillery</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="TowedArtillery" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="0.695652174">
+            <ellipse id="Oval" cx="19.4782609" cy="16.8" rx="4.17391304" ry="4.2"></ellipse>
+            <path d="M14.1019361,7.25112612 L14.0975815,8.64894208 L33.6388757,8.58806578 L33.6432303,7.19024982 L14.1019361,7.25112612 Z" id="Rectangle" transform="translate(23.870406, 7.919596) rotate(-45.000000) translate(-23.870406, -7.919596) "></path>
+            <path d="M0.410364907,17.5513041 L0.409689809,19.6309083 L15.0189727,18.6238799 L15.0193224,17.5465322 L0.410364907,17.5513041 Z" id="Rectangle" transform="translate(7.714502, 18.601068) rotate(-3.000000) translate(-7.714502, -18.601068) "></path>
+        </g>
+    </g>
+</svg>

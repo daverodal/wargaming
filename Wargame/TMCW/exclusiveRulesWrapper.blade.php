@@ -25,17 +25,6 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<style type="text/css">
-    #GR ul li{
-        list-style:none;
-    }
-    #GR ol li{
-        list-style:inherit;
-    }
-    #GR li {
-        margin: 10px 0;
-    }
-</style>
 <div class="dropDown" id="GRWrapper">
     <h4 class="WrapperLabel" title="Game Rules">Ex Rules</h4>
 
