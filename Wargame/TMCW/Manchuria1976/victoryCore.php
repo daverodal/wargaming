@@ -186,7 +186,10 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 return array($newZones);
             }
 
-            return $args;
+            $unit->reinforceZone = 'D';
+            $zones = $battle->terrain->getReinforceZonesByName('D');
+
+            return [$zones];
             /* @var MapData $mapData */
             $mapData = $battle->mapData;
             $specialHexes = $battle->specialHexA;
