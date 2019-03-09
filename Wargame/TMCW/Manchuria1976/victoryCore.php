@@ -179,6 +179,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 return array($newZones);
             }
 
+            return $args;
             /* @var MapData $mapData */
             $mapData = $battle->mapData;
             $specialHexes = $battle->specialHexA;
