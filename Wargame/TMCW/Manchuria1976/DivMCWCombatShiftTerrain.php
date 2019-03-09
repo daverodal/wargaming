@@ -123,6 +123,11 @@ trait DivMCWCombatShiftTerrain
 
         /* @var $combatRules CombatRules */
         $terrainCombatEffect = $combatRules->getDefenderTerrainCombatEffect($defenderId);
+        if($attackingForceId === Manchuria1976::PRC_FORCE){
+            if($isMountain){
+                $terrainCombatEffect--;
+            }
+        }
         if($terrainCombatEffect !== 0){
             $combatLog .= "Shift $terrainCombatEffect left for Terrain<br>";
         }
