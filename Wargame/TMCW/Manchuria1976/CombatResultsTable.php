@@ -51,7 +51,7 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
             array(DRL, DRL,DE,  DE, DE, DE),
             array(DRL, EX, DRL, DE, DE, DE),
             array(EX, EX, DRL, DRL, DE, DE),
-            array(EX2, DRL, EX, EX, DE, DE),
+            array(EX, DRL, EX, EX, DE, DE),
             array(AL,  DRL, DRL, DRL, DRL, DE),
             array(AL,  AL,  DRL, DRL, EX, DE),
         );
