@@ -155,6 +155,13 @@ class victoryCore extends \Wargame\TMCW\victoryCore
             }
         }
     }
+    public function isExit($args){
+        list($unit) = $args;
+        if($unit->class === 'gorilla'){
+            return true;
+        }
+        return false;
+    }
     public function postReinforceZones($args)
     {
         $battle = Battle::getBattle();
