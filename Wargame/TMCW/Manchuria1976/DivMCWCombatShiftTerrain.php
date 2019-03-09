@@ -93,10 +93,6 @@ trait DivMCWCombatShiftTerrain
                 $isShock = true;
             }
             $attackStrength += $unit->strength;
-            if($useDetermined && $attackingForceId === Manchuria1976::PRC_FORCE){
-                $attackStrength += $unit->strength;
-                $combatLog .= "Doubled for determined attack<br>";
-            }
             $integrity = $unit->integrity ?? false;
             if($integrity){
                 $isAIntegrity = true;
