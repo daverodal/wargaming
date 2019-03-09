@@ -48,21 +48,21 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
         $this->combatResultsHeader = array("1:1","2:1","3:1","4:1","5:1","6:1");
         $this->crts = new stdClass();
         $this->crts->normal = array(
-            array(DR2, DRL2,DE,  DE, DE, DE),
-            array(DR2, EX2, DRL2, DE, DE, DE),
-            array(EX2, EX2, DRL2, DRL2, DE, DE),
-            array(EX2, DR2, EX2, EX2, DE, DE),
-            array(AL,  DR2, DR2, DR2, DRL2, DE),
-            array(AL,  AL,  DR2, DR2, EX, DE),
+            array(DR, DRL, DE,  DE, DE, DE),
+            array(DR, EX, DRL, DE, DE, DE),
+            array(EX, EX, DRL, DRL, DE, DE),
+            array(EX, DR, EX, EX, DE, DE),
+            array(AL,  DR, DR, DR, DRL, DE),
+            array(AL,  AL,  DR, DR, EX, DE),
         );
 
         $this->crts->determined = array(
-            array(AE, AE,DE,  DE, DE, DE),
-            array(AE, AE, AE, DE, DE, DE),
-            array(AE, AE, AE, AE, DE, DE),
-            array(AE, AE, AE, AE, DE, DE),
-            array(AE,  AE, AE, AE, AE, DE),
-            array(AE,  AE,  AE, AE, AE, AE),
+            array(DR, DRL,DE,  DE, DE, DE),
+            array(EX, EX, DRL, DE, DE, DE),
+            array(EX, EX, DRL, EX, DE, DE),
+            array(EX, EX, EX, EX, DE, DE),
+            array(AL,  DR, EX, DR, EX, DE),
+            array(AL,  AL,  DR, DR, EX, DE),
         );
         
         $this->combatIndexCount = 6;
