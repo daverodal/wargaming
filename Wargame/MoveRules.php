@@ -446,7 +446,7 @@ class MoveRules
                 /* TODO: awful. probably don't need to set $id for Hexagon name */
                 $hexagon = new Hexagon($id);
                 $hexagon->parent = 'exitBox';
-                $this->force->updateMoveStatus($unit->id, $hexagon, 1);
+                $unit->updateMoveStatus($hexagon, 1);
                 $this->anyUnitIsMoving = false;
                 $this->movingUnitId = NONE;
                 $this->moves = new stdClass();
@@ -629,7 +629,7 @@ class MoveRules
         $unit = $this->force->getUnit($id);
         if ($unit->setStatus(STATUS_REPLACING) == true) {
             $movesLeft = 0;
-            $zones = $this->terrain->getReinforceZonesByName($unit->getUnitReinforceZone($id));
+            $zones = $this->terrain->getReinforceZonesByName($unit->getUnitReinforceZone());
             list($zones) = $battle->victory->postReinforceZones($zones, $unit);
             foreach ($zones as $zone) {
                 if ($this->force->hexagonIsOccupied($zone->hexagon, $this->stacking, $unit)) {
