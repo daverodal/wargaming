@@ -73,9 +73,9 @@
                 <?php //include "commonUnitsRules.php" ?>
                 </li>
                 <li id="sopRules">
-                    @include('wargame::TMCW.commonSequenceOfPlay')
-
-                <?php //include "commonSequenceOfPlay.php" ?>
+                    @section('SOP')
+                        @include('wargame::TMCW.commonSequenceOfPlay')
+                    @show
                 </li>
                 <li id="stackingRules">
                     @section('commonStacking')
@@ -93,12 +93,15 @@
                         @include('wargame::TMCW.commonZocRules')
                     @show
                 </li>
+                <li id="supply-rules">
+                    @section('supply-rules')
+                    @show
+                </li>
                 <li id="combatRules">
                     @include('wargame::TMCW.commonCombatRules')
                 </li>
 
                 <li id="exclusiveRules" class="exclusive">
-                    <span class="big">Exclusive Rules</span>
                     @section('exclusiveRules')
                         @include('wargame::TMCW.exclusiveRules')
                     @show

@@ -7,8 +7,8 @@
 </head>
 
 @section('tec')
+    @include("wargame::TMCW.Amph.tec")
 @endsection
-
 @section('commonRules')
 @endsection
 @section('exclusiveRulesWrapper')
@@ -20,8 +20,8 @@
 
 @section('innerNextPhaseWrapper')
     <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
-    <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
-    <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
+    <button @click="clearCombat" :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+    <button @click="shiftClick" :class="{'inline-show': dynamicButtons.combat, dark: dynamicButtons.shiftKey }" class="dynamicButton combatButton" id="shiftKey">+</button>
     <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
     <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
     <div id="comlinkWrapper">

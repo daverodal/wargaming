@@ -1,6 +1,14 @@
 window._ = require('lodash');
 import Vue from "vue";
-import {counterClick, doitSaveGame, mapClick, nextPhaseMouseDown, playAudio, toggleFullScreen} from "../global-funcs";
+import {
+    counterClick,
+    doitKeypress,
+    doitSaveGame,
+    mapClick,
+    nextPhaseMouseDown,
+    playAudio,
+    toggleFullScreen
+} from "../global-funcs";
 import {store} from "./store/store";
 import {DR} from "./global-vue-header";
 import VueResource from 'vue-resource';
@@ -31,8 +39,6 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         },
         methods:{
-            wheelo(e){
-            },
             unitClick(e){
                 counterClick(e);
             },
@@ -46,6 +52,9 @@ document.addEventListener("DOMContentLoaded",function(){
             },
             mapClick(event){
                 mapClick(event);
+            },
+            pushedKey(e,a,b){
+                debugger;
             }
         }
 
@@ -105,7 +114,8 @@ document.addEventListener("DOMContentLoaded",function(){
             dynamicButtons:{
                 move: false,
                 showHexes: false,
-                determined: false
+                determined: false,
+                shiftKey: false
             },
             allBoxes:{
                 deployBox: [],
@@ -128,6 +138,15 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         },
         methods:{
+            shiftClick(){
+                this.dynamicButtons.shiftKey = !this.dynamicButtons.shiftKey;
+                DR.shiftKey = !DR.shiftKey;
+            },
+            clearCombat(){
+                debugger;
+
+                doitKeypress(67);
+            },
             fullScreen(){
                 toggleFullScreen()
             },
@@ -234,4 +253,11 @@ document.addEventListener("DOMContentLoaded",function(){
     //     }
     //
     // });
+    document.addEventListener('keyup', function(evt) {
+        debugger;
+        if(evt.key === 'c'){
+            window.clickThrough.clearCombat();
+        }
+        debugger;
+    });
 });

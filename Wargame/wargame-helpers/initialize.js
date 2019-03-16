@@ -434,6 +434,10 @@ export default function initialize() {
         doitKeypress(code);
     });
 
+    $("#exitEvent").on('click', function () {
+        doitKeypress(88);
+    });
+
     $("#forceMarchEvent").on('click', function () {
         doitKeypress(77);
     });

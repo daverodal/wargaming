@@ -60,7 +60,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
         $this->terrain->addTerrainFeature("road", "road", "r", .5, 0, 0, false);
         $this->terrain->addTerrainFeature("trail", "trail", "r", 1, 0, 0, false);
         $this->terrain->addTerrainFeature("town", "town", "t", 0, 0, 2, false);
-        $this->terrain->addTerrainFeature("river", "Martian River", "v", 0, 1, 1, true);
+        $this->terrain->addTerrainFeature("river", "Martian River", "v", 0, 1, 1, false);
         $this->terrain->addTerrainFeature("mountain", "mountain", "g", 1.5, 0, 2, true);
         $this->terrain->addAltEntranceCost('mountain', 'mech', 6);
 
@@ -111,7 +111,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
             UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "MechInf.svg", 6, 3, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
         }
         for($i = 0;$i < 15;$i++){
-            UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "MotInf.svg", 4, 2, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
+            UnitFactory::create("xxx", self::SOVIET_FORCE, "deployBox", "MoterizedInfantry.svg", 4, 2, 6, false, STATUS_CAN_DEPLOY, "B", 1, 1, "soviet", true, "mech");
         }
 
         for($i = 0;$i < 4;$i++){

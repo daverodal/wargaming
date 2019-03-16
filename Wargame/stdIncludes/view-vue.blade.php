@@ -92,10 +92,10 @@
                 <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
                 <button :class="{'inline-show': dynamicButtons.determined}" class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
                 <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton movementButton" id="forceMarchEvent">m</button>
-                <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+                <button @click="clearCombat" :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
                 <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
                 <button :class="{'inline-show': dynamicButtons.showHexes}" class="dynamicButton hexButton" id="showHexes">H</button>
-                <button @click="nextPhase" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
+                <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
                 <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
                 <div id="comlinkWrapper">
                     <div id="comlink"></div>
@@ -221,7 +221,7 @@
                 </div>
 
                 <div id="gameContainer" >
-                    <div id="gameImages" @click="mapClick">
+                    <div id="gameImages" @keyup.native="pushedKey" @click="mapClick">
                         <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
                         </float-message>
                         @section('game-images')

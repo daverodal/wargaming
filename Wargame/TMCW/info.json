@@ -331,12 +331,14 @@
             "standard": {
                 "nationalities": ["soviet", "prc"],
                 "description": "Standard scenario.",
-                "supply": true
+                "supply": true,
+                "newmap": false
             },
             "NewMap": {
                 "nationalities": ["soviet", "prc"],
                 "description": "New Map.",
-                "supply": true
+                "supply": true,
+                "newmap": true
             }
         }
     },

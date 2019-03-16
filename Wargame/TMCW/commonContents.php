@@ -25,6 +25,7 @@
     <li><a href="#stackingRules">Stacking.</a></li>
     <li><a href="#moveRules">Movement.</a></li>
     <li><a href="#zocRules">Zones of Control.</a></li>
+    <li><a href="#supply-rules">Supply.</a></li>
     <li><a href="#combatRules">Combat.</a></li>
     <li><a href="#exclusiveRules">Exclusive Rules.</a></li>
     <li><a href="#victoryConditions">Victory Conditions.</a></li>

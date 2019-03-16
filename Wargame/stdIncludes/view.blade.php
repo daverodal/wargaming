@@ -37,6 +37,7 @@
                         <button id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
                         <button class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
                         <button class="dynamicButton movementButton" id="forceMarchEvent">m</button>
+                        <button class="dynamicButton movementButton" id="exitEvent">x</button>
                         <button class="dynamicButton combatButton" id="clearCombatEvent">c</button>
                         <button class="dynamicButton combatButton" id="shiftKey">+</button>
                         <button class="dynamicButton hexButton" id="showHexes">H</button>
