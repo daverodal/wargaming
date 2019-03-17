@@ -327,6 +327,91 @@
         "genre": "20'th Century Games",
         "fileName": "\\Wargame\\TMCW\\Manchuria1976\\Manchuria1976",
         "description": "Peoples Republic of China vs Soviet Union, circa 1975",
+        "params":{
+            "unitComponent": "modern-unit",
+            "units":[
+                {
+                    "num": 5,
+                    "unitSize": "xxx",
+                    "forceId": 1,
+                    "maxCombat": 9,
+                    "minCombat": 4,
+                    "movement": 6,
+                    "range": 1,
+                    "nationality": "soviet",
+                    "class": "mech",
+                    "reinforce": "B",
+                    "image": "Armor.svg"
+                },
+                {
+                    "num": 10,
+                    "unitSize": "xxx",
+                    "forceId": 1,
+                    "maxCombat": 6,
+                    "minCombat": 3,
+                    "movement": 6,
+                    "range": 1,
+                    "nationality": "soviet",
+                    "class": "mech",
+                    "reinforce": "B",
+                    "image": "MechInf.svg"
+                },
+                {
+                    "num": 15,
+                    "unitSize": "xxx",
+                    "forceId": 1,
+                    "maxCombat": 4,
+                    "minCombat": 2,
+                    "movement": 6,
+                    "range": 1,
+                    "nationality": "soviet",
+                    "class": "mech",
+                    "reinforce": "B",
+                    "image": "MoterizedInfantry.svg"
+                },
+                {
+                    "num": 4,
+                    "unitSize": "xxx",
+                    "forceId": 1,
+                    "maxCombat": 6,
+                    "minCombat": 3,
+                    "movement": 6,
+                    "range": 2,
+                    "nationality": "soviet",
+                    "class": "mech",
+                    "reinforce": "B",
+                    "image": "Artillery.svg"
+                },
+                {
+                    "num": 3,
+                    "unitSize": "xxx",
+                    "forceId": 1,
+                    "maxCombat": 1,
+                    "minCombat": 1,
+                    "movement": 3,
+                    "range": 1,
+                    "nationality": "soviet",
+                    "class": "mech",
+                    "reinforce": "B",
+                    "image": "Supply.svg",
+                    "reduced": true
+                },
+                {
+                    "num": 30,
+                    "unitSize": "xxxx",
+                    "forceId": 2,
+                    "maxCombat": 3,
+                    "minCombat": 1,
+                    "movement": 3,
+                    "range": 1,
+                    "nationality": "prc",
+                    "class": "inf",
+                    "reinforce": "C",
+                    "image": "Infantry.svg"
+                }
+            ]
+
+        },
         "scenarios": {
             "standard": {
                 "nationalities": ["soviet", "prc"],

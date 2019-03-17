@@ -74,6 +74,37 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
     public static function buildUnit($data = false){
         return UnitFactory::build($data);
     }
+    public function scenInit(){
+
+        $scenario = $this->scenario;
+        $unitSets = $scenario->units;
+
+        foreach($unitSets as $unitSet) {
+            if($unitSet->forceId !== Manchuria1976::SOVIET_FORCE){
+                continue;
+            }
+            $isReduced = false;
+            if(isset($unitSet->reduced) && $unitSet->reduced){
+                $isReduced = true;
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                UnitFactory::create($unitSet->unitSize, $unitSet->forceId, "deployBox", $unitSet->image, $unitSet->maxCombat, $unitSet->minCombat, $unitSet->movement, $isReduced, STATUS_CAN_REINFORCE,  $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, true, $unitSet->class);
+
+            }
+        }
+        foreach($unitSets as $unitSet) {
+            if($unitSet->forceId !== Manchuria1976::PRC_FORCE){
+                continue;
+            }
+            $isReduced = false;
+            if(isset($unitSet->reduced) && $unitSet->reduced){
+                $isReduced = true;
+            }
+            for ($i = 0; $i < $unitSet->num; $i++) {
+                UnitFactory::create($unitSet->unitSize, $unitSet->forceId, "deployBox", $unitSet->image, $unitSet->maxCombat, $unitSet->minCombat,  $unitSet->movement, $isReduced, STATUS_CAN_DEPLOY,  $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, true, $unitSet->class);
+            }
+        }
+    }
 
     public function init(){
 
@@ -89,6 +120,10 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
         foreach($cities as $city){
             UnitFactory::create("Militia", self::PRC_FORCE, $city, "Militia.svg", 1, 1, 0, true, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "militia");
 
+        }
+
+        if(isset($scenario->units)){
+            return $this->scenInit();
         }
 
         for($i = 0; $i < 30; $i++){

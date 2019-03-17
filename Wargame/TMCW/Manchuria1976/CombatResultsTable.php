@@ -48,12 +48,12 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
         $this->combatResultsHeader = array("1:1","2:1","3:1","4:1","5:1","6:1");
         $this->crts = new stdClass();
         $this->crts->normal = array(
-            array(DRL, DRL, DE,  DE,  DE, DE),
-            array(DRL, DRL, DRL, DE,  DE, DE),
-            array(EX,  DRL, DRL, DRL, DE, DE),
-            array(EX,  EX,  DRL, DRL, DE, DE),
-            array(AL,  EX,  DRL, DRL, DRL, DE),
-            array(AL,  AL,  EX,  EX,  EX, DE),
+            array(DR, DRL,DE,  DE, DE, DE),
+            array(DR, EX, DRL, DE, DE, DE),
+            array(EX, EX, DRL, DRL, DE, DE),
+            array(EX, DR, EX, EX, DE, DE),
+            array(AL,  DR, DR, DR, DRL, DE),
+            array(AL,  AL,  DR, DR, EX, DE)
         );
 
         $this->crts->determined = array(
