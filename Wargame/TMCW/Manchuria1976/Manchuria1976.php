@@ -121,6 +121,11 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
             UnitFactory::create("Militia", self::PRC_FORCE, $city, "Militia.svg", 1, 1, 0, true, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "militia");
 
         }
+        for($i = 2; $i <= 12;$i++){
+            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
+        }
 
         if(isset($scenario->units)){
             return $this->scenInit();
@@ -130,13 +135,6 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
             UnitFactory::create("xxxx", self::PRC_FORCE, "deployBox", "Infantry.svg", 3, 1, 3, false, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "inf");
         }
         UnitFactory::create("xxx", self::PRC_FORCE, "deployBox", "Armor.svg", 6, 3, 6, false, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "mech");
-        for($i = 2; $i <= 12;$i++){
-            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
-            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
-            UnitFactory::create("gorilla", self::PRC_FORCE, "gameTurn$i", "Gorilla.svg", 1, 1, 1, true, STATUS_CAN_REINFORCE, "A", $i, 1, "prc", true, "gorilla");
-        }
-
-
 
 
         for($i = 0;$i < 5;$i++){

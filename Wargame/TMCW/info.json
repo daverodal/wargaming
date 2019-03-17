@@ -384,14 +384,14 @@
                 },
                 {
                     "num": 3,
-                    "unitSize": "xxx",
+                    "unitSize": "",
                     "forceId": 1,
                     "maxCombat": 1,
                     "minCombat": 1,
                     "movement": 3,
                     "range": 1,
                     "nationality": "soviet",
-                    "class": "mech",
+                    "class": "supply",
                     "reinforce": "B",
                     "image": "Supply.svg",
                     "reduced": true
@@ -408,6 +408,19 @@
                     "class": "inf",
                     "reinforce": "C",
                     "image": "Infantry.svg"
+                },
+                {
+                    "num": 1,
+                    "unitSize": "xxxx",
+                    "forceId": 2,
+                    "maxCombat": 6,
+                    "minCombat": 3,
+                    "movement": 6,
+                    "range": 1,
+                    "nationality": "prc",
+                    "class": "mech",
+                    "reinforce": "C",
+                    "image": "Armor.svg"
                 }
             ]
 
