@@ -47,7 +47,7 @@ class IndiaVictoryCore extends victoryCore
     {
         $unit = $args[0];
         $mult = 1;
-        if ($unit->nationality == "British") {
+        if ($unit->nationality === "Royal") {
             $mult = 2;
         }
         $this->scoreKills($unit, $mult);
