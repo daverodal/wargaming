@@ -88,7 +88,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
                 $isReduced = true;
             }
             for ($i = 0; $i < $unitSet->num; $i++) {
-                UnitFactory::create($unitSet->unitSize, $unitSet->forceId, "deployBox", $unitSet->image, $unitSet->maxCombat, $unitSet->minCombat, $unitSet->movement, $isReduced, STATUS_CAN_REINFORCE,  $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, true, $unitSet->class);
+                UnitFactory::create($unitSet->unitSize, $unitSet->forceId, "deployBox", $unitSet->image, $unitSet->maxCombat, $unitSet->minCombat, $unitSet->movement, $isReduced, STATUS_CAN_DEPLOY,  $unitSet->reinforce, 1, $unitSet->range, $unitSet->nationality, true, $unitSet->class);
 
             }
         }
