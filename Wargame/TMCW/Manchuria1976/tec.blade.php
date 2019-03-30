@@ -50,7 +50,7 @@
                                     City
                                 </div>
                                 <div class="column-two">1 MP number is VP's awarded</div>
-                                <div class="column-three">Shift one</div>
+                                <div class="column-three">Shift two</div>
                             </li>
                             <li class="row-four">
                                 <div class="column-image"></div>
