@@ -186,10 +186,6 @@ class victoryCore extends \Wargame\TMCW\victoryCore
                 return array($newZones);
             }
 
-            $unit->reinforceZone = 'D';
-            $zones = $battle->terrain->getReinforceZonesByName('D');
-
-            return [$zones];
             /* @var MapData $mapData */
             $mapData = $battle->mapData;
             $specialHexes = $battle->specialHexA;
@@ -198,6 +194,19 @@ class victoryCore extends \Wargame\TMCW\victoryCore
             foreach ($specialHexes as $specialHex) {
                 if ($mapData->getSpecialHex($specialHex) == Manchuria1976::PRC_FORCE) {
                     $zones[] = new \Wargame\ReinforceZone($specialHex, $specialHex);
+                    $mapHex = $mapData->getHex($specialHex);
+                    $neighbors = $mapHex->neighbors;
+                    foreach($neighbors as $neighbor){
+                        $newHexNum = $neighbor;
+                        if(is_object($neighbor)){
+                            $newHexNum = $neighbor->hexNum;
+                        }
+                        if ($battle->terrain->terrainIsHex($newHexNum, "blocked")) {
+                            continue;
+                        }
+                        $zones[] = new \Wargame\ReinforceZone($newHexNum, $newHexNum);
+                    }
+
                 }
             }
         }
