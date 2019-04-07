@@ -51,3 +51,7 @@
 .specialHexesVP .southernVictoryPoints {
   @include victoryPoints($southernColor);
 }
+
+/deep/ .ghost{
+  opacity: 0 !important;
+}

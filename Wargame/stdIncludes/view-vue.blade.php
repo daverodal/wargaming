@@ -33,110 +33,131 @@
                     <button @click.stop.prevent="bugReport">Cancel</button>
                 </form>
             </div>
-            <div @click="menu = !menu" class=" btn-group"  :class="{open: menu}" @click="menu = !menu">
-                <button class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i><span class="desktop">Menu</span></button>
+            <div class="left-header">
+                <div @click="menu = !menu" class=" btn-group"  :class="{open: menu}" @click="menu = !menu">
+                    <button class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i></button>
 
                     <ul class="dropdown-menu">
                         @section('inner-menu')
-                        <li><a id="mute-button">mute</a></li>
-                        <li><a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a></li>
-                        <li><a href="<?= url("logout"); ?>">logout</a></li>
-                        <li><a id="arrow-button" @click="showArrows()">show arrows</a></li>
-                        <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
-                        <li><a href="#" onclick="seeBoth();return false;">See Both</a></li>
-                        <li><a href="#" onclick="seeMap();return false;">See Map</a></li>
+                            <li><a id="mute-button">mute</a></li>
+                            <li><a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a></li>
+                            <li><a href="<?= url("logout"); ?>">logout</a></li>
+                            <li><a id="arrow-button" @click="showArrows()">show arrows</a></li>
+                            <li><a href="#" onclick="seeUnits();return false;">See Units</a></li>
+                            <li><a href="#" onclick="seeBoth();return false;">See Both</a></li>
+                            <li><a href="#" onclick="seeMap();return false;">See Map</a></li>
                         @show
                         <li class="closer"></li>
                     </ul>
-            </div>
-            <div class="btn-group info-dropdown"  :class="{open: info}" @click="info = !info">
-                <button class="WrapperLabel" title="Game Information"><i class="fa fa-info-circle"></i></button>
-                <ul class="dropdown-menu">
-                    <li> Welcome {{$user}}</li>
+                </div>
 
-                    @if($playersData[0] != '')
+                <div class="btn-group info-dropdown"  :class="{open: info}" @click="info = !info">
+                    <button class="WrapperLabel" title="Game Information"><i class="fa fa-info-circle"></i></button>
+                    <ul class="dropdown-menu">
+                        <li> Welcome {{$user}}</li>
+
+                        @if($playersData[0] != '')
+                            <li>
+                                {{ $playersData[0] }} as {{ $playDat["forceName"][0] }}
+                            </li>
+                        @endif
                         <li>
-                            {{ $playersData[0] }} as {{ $playDat["forceName"][0] }}
+                            {{ $playersData[1] }} as {{ $playDat["forceName"][1] }}
                         </li>
-                    @endif
-                    <li>
-                        {{ $playersData[1] }} as {{ $playDat["forceName"][1] }}
-                    </li>
-                    <li>
-                        {{ $playersData[2] }} as {{ $playDat["forceName"][2] }}
-                    </li>
+                        <li>
+                            {{ $playersData[2] }} as {{ $playDat["forceName"][2] }}
+                        </li>
 
-                    <li>
-                        in <span class="game-name">{{$gameName}}-{{$arg}}</span></li>
-                    <li>
-                        name is {{ $docName }}
-                    </li>
+                        <li>
+                            in <span class="game-name">{{$gameName}}-{{$arg}}</span></li>
+                        <li>
+                            name is {{ $docName }}
+                        </li>
 
-                    <li class="game-id">
-                        {{ $wargame }}
-                    </li>
-                    <li class="closer"></li>
-                </ul>
-            </div>
-            <div :class="{open: crt}" class="btn-group" id="crt-wrapper">
-                <button @click="changeCrt()"  class="wrapper-label" title='Combat Results Table'>
-                    <span>CRT</span></button>
-                <vue-draggable-resizable :y="100"  v-show="crt" style="z-index: 100;">
-                    <vue-crt :crt-options="crtOptions" :crt="'{{ json_encode(new \Wargame\Vu\CombatResultsTable()) }}'"></vue-crt>
-                </vue-draggable-resizable>
-            </div>
-            <?php //include "timeTravel.php"; ?>
-            @include('wargame::stdIncludes.vue-time-travel')
-            <div id="nextPhaseWrapper">
-                @section('innerNextPhaseWrapper')
-                <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
-                <button :class="{'inline-show': dynamicButtons.determined}" class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
-                <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton movementButton" id="forceMarchEvent">m</button>
-                <button @click="clearCombat" :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
-                <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
-                <button :class="{'inline-show': dynamicButtons.showHexes}" class="dynamicButton hexButton" id="showHexes">H</button>
-                <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
-                <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
-                <div id="comlinkWrapper">
-                    <div id="comlink"></div>
+                        <li class="game-id">
+                            {{ $wargame }}
+                        </li>
+                        <li class="closer"></li>
+                    </ul>
                 </div>
-                @show
-
-            </div>
-            <div id="statusWrapper">
-
-                <div id="topStatus" v-html="headerTopStatus"></div>
-                <div>
-                    <span id="status" v-html="headerStatus"></span>
-                    <span id="victory" v-html="headerVictory"></span>
+                <div :class="{open: crt}" class="btn-group" id="crt-wrapper">
+                    <button @click="changeCrt()"  class="wrapper-label" title='Combat Results Table'>
+                        <span>CRT</span></button>
+                    <vue-draggable-resizable :y="100"  v-show="crt" style="z-index: 100;">
+                        <vue-crt :crt-options="crtOptions" :crt="'{{ json_encode(new \Wargame\Vu\CombatResultsTable()) }}'"></vue-crt>
+                    </vue-draggable-resizable>
                 </div>
-            </div>
-            <div @click="zoom()" class="btn-group" id="zoomWrapper">
+                @include('wargame::stdIncludes.vue-time-travel')
+
+                <div @click="zoom()" class="btn-group" id="zoomWrapper">
                     <button id="zoom">
                         <span class="defaultZoom">1.0</span>
                     </button>
-            </div>
-            <div class="btn-group"  :class="{open: rules}" @click="rules = !rules">
-                <button class=""><span class="tablet">?</span><span class="desktop">Rules</span></button>
-                <div class="dropdown-menu">
-
-
-                    @section('commonRules')
-                    @show
-                    @section('exclusiveRulesWrapper')
-                        @include('wargame::TMCW.exclusiveRulesWrapper')
-                    @show
-                    @section('obc')
-                    @show
                 </div>
+                <div class="btn-group"  :class="{open: rules}" @click="rules = !rules">
+                    <button class=""><span class="tablet">?</span></button>
+                    <ul class="dropdown-menu">
+
+
+                        @section('commonRules')
+                        @show
+                        @section('exclusiveRulesWrapper')
+                            @include('wargame::TMCW.exclusiveRulesWrapper')
+                        @show
+                        @section('obc')
+                        @show
+                    </ul>
+                </div>
+
+                <div class="btn-group" :class="{open: log}" @click="log = !log" >
+                    <button class=""><span>Log</span></button>
+                    <div class="dropdown-menu">
+                        <ol id="log-wrapper" v-html="headerLog"></ol>
+                    </div>
+                </div>
+
+                @section('outer-units-menu')
+                    <div class=" btn-group" :class="{open: submenu}" @click="submenu = !submenu" id="units-wrapper">
+                        <button class="" title="Offmap Units">Units</button>
+                        <ul  id="units" class="dropdown-menu sub-menu">
+                            <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
+                            <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>
+                            <li><a @click="menuClick('deployBox')" id="showDeploy">Deploy/Staging Box</a></li>
+                            <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
+                        </ul>
+                    </div>
+                @show
+            </div>
+            <div class="right-header">
+                <div id="statusWrapper">
+
+                    <div id="topStatus" v-html="headerTopStatus"></div>
+                    <div>
+                        <span id="status" v-html="headerStatus"></span>
+                        <span id="combatStatus" v-html="combatStatus"></span>
+                        <span id="victory" v-html="headerVictory"></span>
+                    </div>
+                </div>
+                <div id="nextPhaseWrapper">
+                    @section('innerNextPhaseWrapper')
+                        <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
+                        <button :class="{'inline-show': dynamicButtons.determined}" class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
+                        <button :class="{'inline-show': dynamicButtons.move}" class="dynamicButton movementButton" id="forceMarchEvent">m</button>
+                        <button @click="clearCombat" :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+                        <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
+                        <button :class="{'inline-show': dynamicButtons.showHexes}" class="dynamicButton hexButton" id="showHexes">H</button>
+                        <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
+                        <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
+
+                    @show
+                        <div id="comlinkWrapper">
+                            <div id="comlink"></div>
+                        </div>
+                </div>
+
             </div>
 
-            <div class="btn-group" :class="{open: log}" @click="log = !log" >
-                <button class=""><span class="tablet">Log</span><span class="desktop">Log</span></button>
-                <div class="dropdown-menu">
-                    <ol id="log-wrapper" v-html="headerLog"></ol>
-                </div>
-            </div>
+
 
             @section('tec')
             @show
@@ -144,23 +165,9 @@
             @section('casualty')
             @show
 
-            @section('outer-units-menu')
-            <div class=" btn-group" :class="{open: submenu}" @click="submenu = !submenu" id="units-wrapper">
-                <button class="" title="Offmap Units">Units</button>
-                <ul  id="units" class="dropdown-menu sub-menu">
-                    <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
-                    <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>
-                    <li><a @click="menuClick('deployBox')" id="showDeploy">Deploy/Staging Box</a></li>
-                    <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
-                </ul>
-            </div>
-            @show
+
             @section('outer-aux-menu')
             @show
-
-
-
-            <div style="clear:both;"></div>
 
         </div>
         <div id="secondHeader">

@@ -3,7 +3,11 @@ import Vue from "vue";
 import {showCrtTable} from "../global-funcs";
 import {syncObj} from './syncObj';
 import {DR} from "./global-vue-header";
+import {mapGetters, mapMutations} from "vuex";
+
 export class SyncController {
+
+    mapData = {};
     crtSelfOpened = false;
     gmRules(data) {
         switch (data.gameRules.mode) {
@@ -56,15 +60,15 @@ export class SyncController {
         var combatCol = combat.index + 1;
         var oddsDisp;
 
-        let xyz = clickThrough.$store.getters.currentTable;
-        const selectedTable = clickThrough.$store.state.crt.selectedTable;
+        let xyz = vueStore.getters.currentTable;
+        const selectedTable = vueStore.state.crt.selectedTable;
         oddsDisp = "";
         if(!combat.index) {
             var html = "<div id='crtDetails'>No attackers selected</div>"
             return html;
 
         }
-        oddsDisp = clickThrough.$store.getters.currentTable.header[combat.index];
+        oddsDisp = vueStore.getters.currentTable.header[combat.index];
         div = div.toFixed(2);
         var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + oddsDisp + "</div>"
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
@@ -336,16 +340,14 @@ export class SyncController {
 
     mapUnits(){
         syncObj.register("mapUnits",  (mapUnits, data) => {
-            let unitsMap = topVue.$store.state.mapData.unitsMap;
-            let hexesMap = topVue.$store.state.mapData.hexesMap;
-            const somethingelse = this.something;
+            const { unitsMap, hexesMap } = vueStore.getters['mD/getUnitsMaps'];
+
             floaters.message = '';
             var str;
             var fudge;
             var x, y;
             DR.stackModel = {};
             DR.stackModel.ids = {};
-            // clearHexes();
             clickThrough.deployBox = [];
             clickThrough.deadpile = [];
             clickThrough.exitBox = [];
@@ -453,7 +455,7 @@ export class SyncController {
             }
             this.gmRules(data);
             let emptyDeploy = true;
-            if(clickThrough.$store.state.gameRules.prevPhase !== data.gameRules.phase
+            if(vueStore.state.gameRules.prevPhase !== data.gameRules.phase
             && data.gameRules.mode === DEPLOY_MODE || data.gameRules.mode === MOVING_MODE){
                 let attackingForceId = data.gameRules.attackingForceId;
                 let boxes = clickThrough.allBoxes;
@@ -481,7 +483,7 @@ export class SyncController {
                     clickThrough.show.units.deployBox = true;
                 }
             }
-            clickThrough.$store.state.gameRules.prevPhase = data.gameRules.phase;
+            vueStore.state.gameRules.prevPhase = data.gameRules.phase;
 
 
 
@@ -629,15 +631,16 @@ export class SyncController {
                 log += "<li>"+gameRules.flashLog[i]+"</li>";
 
             }
-            clickThrough.$store.state.headerData.log = log;
-            clickThrough.$store.state.headerData.topStatus = html;
+            vueStore.commit('headerData/log',log);
+            vueStore.commit('headerData/topStatus', html);
+            vueStore.commit('headerData/status', status);
         });
 
     }
     combatRules(){
         syncObj.register("combatRules",  (combatRules, data) => {
-            const selectedTable = clickThrough.$store.state.crt.selectedTable;
-            const crtHeader = clickThrough.$store.state.crtData.crts[selectedTable].header;
+            const selectedTable = vueStore.state.crt.selectedTable;
+            const crtHeader = vueStore.state.crtData.crts[selectedTable].header;
             _.forEach(topVue.units, (mapUnit) => {
                 mapUnit.thetas = [];
             })
@@ -646,9 +649,9 @@ export class SyncController {
             var cdLine = "";
             var activeCombat = false;
             var activeCombatLine = "";
-            clickThrough.$store.state.headerData.status = "";
-            clickThrough.$store.state.crt.details = "";
-            clickThrough.$store.state.crt.index = false;
+            vueStore.commit('headerData/combatStatus',  "");
+            vueStore.state.crt.details = "";
+            vueStore.state.crt.index = false;
             if (combatRules) {
                 var cD = combatRules.currentDefender;
                 if (combatRules.combats && Object.keys(combatRules.combats).length > 0) {
@@ -665,23 +668,23 @@ export class SyncController {
                             if (combatRules.combats[cD].pinCRT !== false) {
                                 combatCol = combatRules.combats[cD].pinCRT + 1;
                                 if (combatCol >= 1) {
-                                    clickThrough.$store.state.crt.pinned = combatCol - 1;
+                                    vueStore.state.crt.pinned = combatCol - 1;
                                 }
                             }
 
                             combatCol = combatRules.combats[cD].index + 1;
 
                             if (combatCol >= 1) {
-                                clickThrough.$store.state.crt.index = combatCol - 1;
+                                vueStore.state.crt.index = combatCol - 1;
                                 if (combatRules.combats[cD].Die !== false) {
-                                    clickThrough.$store.state.crt.roll = combatRules.combats[cD].Die;
+                                    vueStore.state.crt.roll = combatRules.combats[cD].Die;
                                 }
                             }
                         }
                         var details = this.renderCrtDetails(combatRules.combats[cD]);
                         let newLine = "<h5>odds = " + crtHeader[combatCol-1] + " </h5>" + details;
 
-                        clickThrough.$store.state.crt.details = newLine;
+                        vueStore.state.crt.details = newLine;
                     }
                     cdLine = "";
                     var combatIndex = 0;
@@ -731,7 +734,6 @@ export class SyncController {
                                     currentOddsDisp = '<' + crtHeader[0];
                                 }
 
-                                debugger;
                                 if (currentCombatCol > 0) {
                                     currentOddsDisp = crtHeader[currentCombatCol - 1];
                                 }
@@ -749,7 +751,7 @@ export class SyncController {
                         }
 
                     }
-                    clickThrough.$store.state.headerData.status = "There are " + combatIndex + " Combats";
+                    vueStore.commit('headerData/combatStatus', "There are " + combatIndex + " Combats");
                 }else{
                     this.crtSelfOpened = false;
                 }
@@ -761,30 +763,30 @@ export class SyncController {
                         combatCol = thisCombat.index;
 
                         let combatRoll = thisCombat.Die;
-                        clickThrough.$store.state.crt.combatResult = thisCombat.combatResult
+                        vueStore.state.crt.combatResult = thisCombat.combatResult
 
-                        clickThrough.$store.state.crt.index = combatCol;
+                        vueStore.state.crt.index = combatCol;
                         let pin = thisCombat.pinCRT;
                         if (pin !== false) {
                             pin++;
                             if (pin < combatCol) {
                                 combatCol = pin;
-                                clickThrouth.$store.status.crt.pinned = pin;
+                                vueStore.status.crt.pinned = pin;
                             }
                         }else {
-                            clickThrough.$store.state.crt.pinned = false;
+                            vueStore.state.crt.pinned = false;
                         }
 
-                        clickThrough.$store.state.crt.roll = combatRoll;
+                        vueStore.state.crt.roll = combatRoll;
 
                         if (thisCombat.useAlt) {
-                            clickThrough.$store.state.crt.selectedTable = 'cavalry'
+                            vueStore.state.crt.selectedTable = 'cavalry'
                         } else {
                             if (thisCombat.useDetermined) {
-                                clickThrough.$store.state.crt.selectedTable = 'determined'
+                                vueStore.state.crt.selectedTable = 'determined'
 
                             } else {
-                                clickThrough.$store.state.crt.selectedTable = 'normal'
+                                vueStore.state.crt.selectedTable = 'normal'
 
                             }
                         }
@@ -810,7 +812,7 @@ export class SyncController {
                         }
 
 
-                        clickThrough.$store.state.crt.details = "<h5>odds = " + currentOddsDisp + "</h5>" + details;
+                        vueStore.state.crt.details = "<h5>odds = " + currentOddsDisp + "</h5>" + details;
                     }
                     let noCombats = false;
                     if (Object.keys(combatRules.combatsToResolve) == 0) {
@@ -862,10 +864,10 @@ export class SyncController {
                         resolvedCombats = Object.keys(combatRules.resolvedCombats).length;
                     }
                     if (!noCombats) {
-                        clickThrough.$store.state.headerData.status =
-                            "Combats: " + resolvedCombats + " of " + (resolvedCombats + combatsToResolve);
+                        vueStore.commit('headerData/combatStatus',
+                            "Combats: " + resolvedCombats + " of " + (resolvedCombats + combatsToResolve));
                     }else{
-                        clickThrough.$store.state.headerData.status = "0 combats to resolve";
+                        vueStore.commit('headerData/combatStatus',"0 combats to resolve");
                     }
                 }
             }
@@ -873,8 +875,9 @@ export class SyncController {
         });
     }
     moveRules(){
+        const mapData = this.mapData;
         syncObj.register("moveRules",  (moveRules, data) => {
-            topVue.moveUnits = [];
+            vueStore.commit('mD/clearMoves');
 
             var str;
             if (moveRules.movingUnitId >= 0) {
@@ -899,7 +902,7 @@ export class SyncController {
                         ghostUnit.isOccupied = moveRules.moves[i].isOccupied;
                         ghostUnit.showOff = false;
                         ghostUnit.borderColor = borderColor;
-                        topVue.moveUnits.push(ghostUnit);
+                        vueStore.commit('mD/addUnit', {hex: i, unit: ghostUnit});
                     }
                 }
             }
@@ -961,9 +964,9 @@ export class SyncController {
     click() {
         syncObj.register("click",  (click) => {
             if (syncObj.timeTravel) {
-                clickThrough.$store.state.timeTravel.currentClick = 'time travel dude ' + click
+                vueStore.state.timeTravel.currentClick = 'time travel dude ' + click
             } else {
-                clickThrough.$store.state.timeTravel.currentClick = 'realtime dude ' + click
+                vueStore.state.timeTravel.currentClick = 'realtime dude ' + click
             }
             DR.currentClick = click;
         });
@@ -987,7 +990,7 @@ export class SyncController {
             p2Class = 'player' + p2Class.replace(/\//ig, '_') + 'Face';
             let victory = "Victory: <span class='" + p1Class + "'>" + p1 + " </span>" + vp[1];
             victory += " <span class='" + p2Class + "'>" + p2 + " </span>" + vp[2];
-            clickThrough.$store.state.headerData.victory = victory;
+            vueStore.commit('headerData/victory',victory);
         });
     }
     mapSymbols() {

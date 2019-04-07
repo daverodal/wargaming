@@ -896,7 +896,7 @@ class MoveRules
     function startAdvancing($id)
     {
         /* @var Hexagon[] $hexes */
-        $hexes = $this->force->getAllFirstRetreatHexes($id);
+        $hexes = $this->force->getAllRetreatHexes($id);
         $uniqueHexes = [];
         foreach ($hexes as $hexagon) {
             $uniqueHexes[$hexagon->name] = $hexagon;
@@ -967,7 +967,7 @@ class MoveRules
 
 
         $startHexagon = $unit->getUnitHexagon();
-        if ($this->force->advanceIsOnRetreatList($unit->id, $hexagon) == true && $this->rangeIsOneHexagon($startHexagon, $hexagon) == true) {
+        if ($this->force->advanceIsOnRetreatList($unit->id, $hexagon) == true) {
             $isValid = true;
         } else {
         }

@@ -17,7 +17,7 @@
 
 <script>
     import {counterClick} from "../../wargame-helpers/global-funcs";
-    import {rotateUnits} from "../../wargame-helpers/Vue/global-vue-header";
+    import {rotateUnits} from "../../wargame-helpers/Vue/global-vue-helper";
 
     export default {
         name: "UnitComponent",
@@ -135,7 +135,7 @@
                 this.unit.showOff = true;
                 this.unit.opac = 1;
                 _.forEach(this.unit.pathToHere,(path)=>{
-                    _.forEach(topVue.moveUnits, (unit)=>{
+                    _.forEach(this.$store.state.mD.moveUnits, (unit)=>{
                         if(unit.id === locId+path){
                             unit.opac = 1;
                             unit.showOff = true;

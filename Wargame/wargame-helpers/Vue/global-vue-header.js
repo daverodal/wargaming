@@ -24,6 +24,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* globl-vue-header */
+import {rotateUnits} from './global-vue-helper';
 import { syncObj } from "./syncObj";
 import {counterClick, fixItAll, mapClick} from "../global-funcs";
 
@@ -167,22 +168,3 @@ var oX, oY;
 // main classes for wargame
 
 export {DR}
-export function rotateUnits(e, that) {
-    /* hi */
-    if (e.ctrlKey) {
-        return true;
-    }
-    let id = that.id;
-    var hex = topVue.$store.state.mapData.unitsMap[id];
-    var hexesMap = topVue.$store.state.mapData.hexesMap;
-    if (hexesMap[hex] && hexesMap[hex].length > 0) {
-        var tmp = hexesMap[hex].shift();
-        hexesMap[hex].push(tmp);
-
-        for (var i in hexesMap[hex]) {
-            topVue.unitsMap[hexesMap[hex][i]].zIndex = 3 - i - 0 + 1;
-        }
-        return false;
-    }
-    return false;
-}

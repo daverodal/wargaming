@@ -13,6 +13,7 @@ import {store} from "./store/store";
 import {DR} from "./global-vue-header";
 import VueResource from 'vue-resource';
 import "../jquery.panzoom";
+window.vueStore = store;
 Vue.use(VueResource);
 document.addEventListener("DOMContentLoaded",function(){
 
@@ -22,7 +23,6 @@ document.addEventListener("DOMContentLoaded",function(){
         data:{
             units:[],
             unitsMap: {},
-            moveUnits: [],
             mapSymbols: [],
             specialEvents: [],
             specialHexes: [],
@@ -35,7 +35,10 @@ document.addEventListener("DOMContentLoaded",function(){
         },
         computed: {
             mapUrl(){
-                return this.$store.state.mapData.mapUrl;
+                return this.$store.state.mD.mapUrl;
+            },
+            moveUnits(){
+                return this.$store.state.mD.moveUnits;
             }
         },
         methods:{
@@ -54,7 +57,6 @@ document.addEventListener("DOMContentLoaded",function(){
                 mapClick(event);
             },
             pushedKey(e,a,b){
-                debugger;
             }
         }
 
@@ -91,10 +93,16 @@ document.addEventListener("DOMContentLoaded",function(){
             headerStatus(){
                 return this.$store.state.headerData.status;
             },
+            combatStatus(){
+                return this.$store.state.headerData.combatStatus;
+            },
             headerTopStatus(){
                 return this.$store.state.headerData.topStatus;
             },
             headerLog(){
+                if(this.$store.state.headerData.log.length === 0){
+                    return "<li>No Log Events</li>";
+                }
                 return this.$store.state.headerData.log;
             }
         },
@@ -143,7 +151,6 @@ document.addEventListener("DOMContentLoaded",function(){
                 DR.shiftKey = !DR.shiftKey;
             },
             clearCombat(){
-                debugger;
 
                 doitKeypress(67);
             },
@@ -254,10 +261,8 @@ document.addEventListener("DOMContentLoaded",function(){
     //
     // });
     document.addEventListener('keyup', function(evt) {
-        debugger;
         if(evt.key === 'c'){
             window.clickThrough.clearCombat();
         }
-        debugger;
     });
 });

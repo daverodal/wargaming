@@ -150,6 +150,66 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         return true;
     }
 
+    public function postReinforceZones($args)
+    {
+        $battle = Battle::getBattle();
+
+        list($zones, $unit) = $args;
+        if ($unit->nationality === "southern") {
+            $battle = Battle::getBattle();
+            /* @var MapData $mapData */
+            $mapData = $battle->mapData;
+            $specialHexes = $battle->specialHexB;
+
+            $zones = [];
+            foreach ($specialHexes as $specialHex) {
+                if ($mapData->getSpecialHex($specialHex) == NorthVsSouth::SOUTHERN_FORCE) {
+                    $zones[] = new \Wargame\ReinforceZone($specialHex, $specialHex);
+                    $mapHex = $mapData->getHex($specialHex);
+                    $neighbors = $mapHex->neighbors;
+                    foreach($neighbors as $neighbor){
+                        $newHexNum = $neighbor;
+                        if(is_object($neighbor)){
+                            $newHexNum = $neighbor->hexNum;
+                        }
+                        if ($battle->terrain->terrainIsHex($newHexNum, "blocked")) {
+                            continue;
+                        }
+                        $zones[] = new \Wargame\ReinforceZone($newHexNum, $newHexNum);
+                    }
+
+                }
+            }
+        }
+        if ($unit->nationality === "northern") {
+            $battle = Battle::getBattle();
+            /* @var MapData $mapData */
+            $mapData = $battle->mapData;
+            $specialHexes = $battle->specialHexA;
+
+            $zones = [];
+            foreach ($specialHexes as $specialHex) {
+                if ($mapData->getSpecialHex($specialHex) == NorthVsSouth::NORTHERN_FORCE) {
+                    $zones[] = new \Wargame\ReinforceZone($specialHex, $specialHex);
+                    $mapHex = $mapData->getHex($specialHex);
+                    $neighbors = $mapHex->neighbors;
+                    foreach($neighbors as $neighbor){
+                        $newHexNum = $neighbor;
+                        if(is_object($neighbor)){
+                            $newHexNum = $neighbor->hexNum;
+                        }
+                        if ($battle->terrain->terrainIsHex($newHexNum, "blocked")) {
+                            continue;
+                        }
+                        $zones[] = new \Wargame\ReinforceZone($newHexNum, $newHexNum);
+                    }
+
+                }
+            }
+        }
+        return array($zones);
+    }
+
 
     public function phaseChange()
     {

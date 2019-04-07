@@ -2,7 +2,15 @@ import Vue from "vue";
 import Vuex from "vuex";
 import {DR} from "../global-vue-header";
 Vue.use(Vuex);
+
+import {mapData} from "./mapData";
+import {headerData} from "./headerData";
+
 export const store = new Vuex.Store({
+    modules:{
+      mD: mapData,
+      headerData: headerData
+    },
     state: {
         crt:{
             index: false,
@@ -14,30 +22,18 @@ export const store = new Vuex.Store({
             selectedTable: 'normal',
             roll: null
         },
-        headerData:{
-            victory: '',
-            status: '',
-            topStatus: '',
-            log: ''
-        },
         timeTravel:{
            currentClick: ''
         },
         crtData: {...combatResultsTable
         },
-        mapData:{
-            unitsMap:{},
-            hexesMap:{},
-            mapUrl: mapUrl,
-            trueRows: false
-        },
+
         gameRules:{
             prevPhase: null
         }
     },
     getters:{
         currentTableName: (state) => {
-
             return state.crt.selectedTable;
         },
         currentTable: (state) => {

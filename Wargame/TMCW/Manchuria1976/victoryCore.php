@@ -470,7 +470,7 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($attackingId == Manchuria1976::PRC_FORCE) {
             $gameRules->flashMessages[] = "PRC Player Turn";
-            $gameRules->replacementsAvail = 5;
+            $gameRules->replacementsAvail = 6;
         }
 
         $gorillaCnt = 0;

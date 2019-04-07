@@ -4,10 +4,21 @@
   padding-bottom: 0px;
   z-index: 2000;
   #headerContent {
+    display:flex;
+    justify-content: space-between;
     .btn-group button{
       font-size:25px;
     }
-
+    .left-header{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content: flex-start;
+    }
+    .right-header{
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
     #zoomWrapper {
       #zoom {
         .defaultZoom {
@@ -115,7 +126,6 @@
 
 
     #nextPhaseWrapper {
-      float: right;
       .dynamicButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey, #debug {
         font-size: 25px;
         position: static;
@@ -242,7 +252,6 @@
 }
 
 #statusWrapper {
-  float: right;
   background: white;
 }
 
@@ -253,7 +262,8 @@
   padding: 0 2px 0 2px;
   font-style: italic;
   font-size: 10px;
-  float: right;
+  height: 20px;
+  display:inline-block;
 }
 
 

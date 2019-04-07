@@ -1,5 +1,5 @@
 <template>
-    <div @mouseover="mOver" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="unit" :class="unit.nationality" :style="unitStyle">
+    <div @mouseover="showPath(unit)" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="unit" :class="unit.nationality" :style="unitStyle">
         <div class="unitOdds" :class="this.unit.oddsColor? this.unit.oddsColor: ''">{{unitOdds}}</div>
         <div class="shadow-mask" :class="{shadowy: unit.shadow}"></div>
         <div class="unit-size">{{ unit.name }}</div>
@@ -17,9 +17,9 @@
 </template>
 
 <script>
+    import {mapMutations} from "vuex"
     import {counterClick} from "../../wargame-helpers/global-funcs";
-    import {rotateUnits} from "../../wargame-helpers/Vue/global-vue-header";
-
+    import {rotateUnits} from "../../wargame-helpers/Vue/global-vue-helper";
     export default {
         name: "NorthSouthUnitComponent",
         props:["unit"],
@@ -88,6 +88,22 @@
             return {zIndex: 3}
         },
         methods:{
+            ...mapMutations('mD', ['showPath','clearPath']),
+            mOver(){
+
+                let locId = this.unit.id;
+                if(typeof locId === 'string'){
+                    locId = locId.replace(/Hex.*/,'Hex')
+                }else{
+                    return;
+                }
+                this.unit.showOff = true;
+                this.unit.opac = 1;
+                this.showPath(this.unit.pathToHere);
+            },
+            mouseleave(){
+                this.clearPath();
+            },
             rightClick(e, a,b, c,d){
                 if(e.metaKey){
                     return;
@@ -98,30 +114,6 @@
             },
             unitClick(e){
                 counterClick(e, this.unit.id);
-            },
-            mOver(){
-                let locId = this.unit.id;
-                if(typeof locId === 'string'){
-                    locId = locId.replace(/Hex.*/,'Hex')
-                }else{
-                    return;
-                }
-                this.unit.showOff = true;
-                this.unit.opac = 1;
-                _.forEach(this.unit.pathToHere,(path)=>{
-                    _.forEach(topVue.moveUnits, (unit)=>{
-                        if(unit.id === locId+path){
-                            unit.opac = 1;
-                            unit.showOff = true;
-                        }
-                    })
-                });
-            },
-            mouseleave(){
-                _.forEach(topVue.moveUnits, (unit)=>{
-                    unit.showOff = false;
-                    delete unit.opac;
-                })
             }
         }
     }
@@ -133,4 +125,7 @@
     @import "localColors";
     @include unitColor(southern, $southernColor)
     @include unitColor(northern, $northernColor);
+    .ghost{
+        opacity: 0;
+    }
 </style>

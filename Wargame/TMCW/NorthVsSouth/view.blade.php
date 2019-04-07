@@ -24,7 +24,4 @@
     <button :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
     <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
     <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
-    <div id="comlinkWrapper">
-        <div id="comlink"></div>
-    </div>
 @endsection

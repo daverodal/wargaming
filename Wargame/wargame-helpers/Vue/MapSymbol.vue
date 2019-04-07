@@ -42,5 +42,8 @@
             font-size: 25px;
             transform: rotate(180deg);
         }
+        img{
+            width:64px;
+        }
     }
 </style>

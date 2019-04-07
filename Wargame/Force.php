@@ -135,6 +135,18 @@ class Force extends SimpleForce
         return $hexes;
     }
 
+    function getAllRetreatHexes($id)
+    {
+        if (count($this->retreatHexagonList) == 0) {
+            throw new Exception("Cannot get reatreat hex");
+        }
+        $hexes = array();
+        foreach ($this->retreatHexagonList as $hexList) {
+                $hexes[] = $hexList->hexagon;
+        }
+        return $hexes;
+    }
+
     function advanceIsOnRetreatList($id, $hexagon)
     {
         $isOnList = false;
@@ -146,9 +158,7 @@ class Force extends SimpleForce
             //  when advancing unit.moveCount will be 0 which will match 1st step retreat number
 
             //alert("function .prototype. checkingt: " + id + " hexagon: " + hexagon.getName() + " with array " + $this->retreatHexagonList[i].hexagon.getName());
-            if ($this->retreatHexagonList[$i]->stepNumber == $unit->moveCount
-                && $this->retreatHexagonList[$i]->hexagon->equals($hexagon)
-            ) {
+            if ($this->retreatHexagonList[$i]->hexagon->equals($hexagon)) {
                 $isOnList = true;
             }
         }
