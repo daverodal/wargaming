@@ -3,7 +3,7 @@
         <unit-component v-if="!myfilter || unit.forceId === myfilter" v-for="(unit,key) in myunits" :key="key" :unit="unit"></unit-component>
         <unit-component class="ghost" v-for="(unit,key) in myghosts" :key="'ghost'+key" :unit="unit"></unit-component>
 
-        <map-symbol v-for="(unit,key) in myghosts" :key="'ghost-hex'+key" :mapsymbol="{x: unit.x - 16, y:unit.y - 17, image: 'whiteRowHex.svg'}"></map-symbol>
+        <map-symbol v-for="(unit,key) in myghosts" :key="'ghost-hex'+key" :mapsymbol="{x: unit.x - 16, y:unit.y - 17, image: 'WhiteRowHex.svg'}"></map-symbol>
     </div>
 </template>
 
