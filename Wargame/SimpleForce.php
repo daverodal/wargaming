@@ -231,6 +231,37 @@ abstract class SimpleForce{
         return $isInRange;
     }
 
+    function unitsInRange($id, $argRange = false)
+    {
+        $b = Battle::getBattle();
+        $isInRange = false;
+        $firingUnit = $this->units[$id];
+
+        $range = $firingUnit->getRange();
+        if($argRange !== false){
+            $range = $argRange;
+        }
+        $unitsInRange = [];
+            $los = new Los();
+            $los->setOrigin($firingUnit->hexagon);
+
+            foreach ($this->units as $targetId => $targetUnit) {
+                /* hexagons without names are off map */
+                if(!$targetUnit->isOnMap()){
+                    continue;
+                }
+                $los->setEndPoint($targetUnit->hexagon);
+                $losRange = $los->getRange();
+                if ($losRange <= $range
+                    && $firingUnit->forceId != $targetUnit->forceId) {
+                    if($b->combatRules->checkBlocked($los, $id))
+                    {
+                        $unitsInRange[] = $targetId;
+                    }
+                }
+            }
+        return $unitsInRange;
+    }
 
 
 

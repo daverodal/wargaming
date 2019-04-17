@@ -540,7 +540,7 @@ export class SyncController {
             var pix = turn + (turn - 1) * 36 + 1;
             var playerName = "header-" + (DR.players[gameRules.attackingForceId].replace(/ /g, '-').replace(/\//gi, '_'));
             ;
-            Vue.set(clickThrough.crtOptions, 'playerName', playerName);
+            Vue.set(crt.crtOptions, 'playerName', playerName);
             // clickThrough.crtOptions.playerName = playerName;
             var removeThese = "";
             clickThrough.headerPlayer = playerName;
@@ -670,6 +670,8 @@ export class SyncController {
                                 if (combatCol >= 1) {
                                     vueStore.state.crt.pinned = combatCol - 1;
                                 }
+                            }else{
+                                vueStore.state.crt.pinned = false;
                             }
 
                             combatCol = combatRules.combats[cD].index + 1;
@@ -964,9 +966,9 @@ export class SyncController {
     click() {
         syncObj.register("click",  (click) => {
             if (syncObj.timeTravel) {
-                vueStore.state.timeTravel.currentClick = 'time travel dude ' + click
+                vueStore.state.timeTravel.currentClick = 'time travel ' + click
             } else {
-                vueStore.state.timeTravel.currentClick = 'realtime dude ' + click
+                vueStore.state.timeTravel.currentClick = 'realtime ' + click
             }
             DR.currentClick = click;
         });

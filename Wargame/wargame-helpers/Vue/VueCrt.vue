@@ -8,12 +8,12 @@
                 {{ tableName }} table
                 <div id="odds">
                     <span class="col0">&nbsp;</span>
-                    <span :class="headerHighlight(index)" v-for=" (odds, index) in table.header">{{odds}}</span>
+                    <span :id="'crt-col-'+index" :class="headerHighlight(index)" v-for=" (odds, index) in table.header">{{odds}}</span>
                 </div>
                 <div v-if="crtData.crts">
                 <div v-for="(resultsRow, index) in table.table" :class="index & 1 ? '' : crtOptions.playerName" class="roll">
                     <span class="col0">{{index - table.dieOffsetHelper}}</span>
-                    <span  :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
+                    <span   :id="'crt-col-'+colIndex" :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" @click="pinCombat(colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
                 </div>
                 </div>
                 </div>
@@ -75,7 +75,7 @@
         },
         methods:{
             closeMe(){
-                clickThrough.crt = false
+                this.$store.state.crt.showCrt = false;
             },
             showNext(){
                 this.$store.state.crt.selectedTable = this.$store.getters.currentTable.next;
@@ -107,7 +107,6 @@
         width: 600px;
         font-size: 16px;
 
-        display: none;
         z-index: 40;
         border-radius: 15px;
         border-width: 10px;

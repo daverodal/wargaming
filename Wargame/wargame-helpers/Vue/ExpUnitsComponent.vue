@@ -1,6 +1,7 @@
 <template>
-    <div class="unit-components">
-        <unit-component v-if="!myfilter || unit.forceId === myfilter" v-for="(unit,key) in myunits" :key="key" :unit="unit"></unit-component>
+    <div class="units-component">
+        <unit-component v-if="!myfilter || unit.forceId === myfilter"
+                        v-for="(unit,key) in myunits" :key="key" :unit="unit"></unit-component>
         <unit-component class="ghost" v-for="(unit,key) in myghosts" :key="'ghost'+key" :unit="unit"></unit-component>
 
         <map-symbol v-for="(unit,key) in myghosts" :key="'ghost-hex'+key" :mapsymbol="{x: unit.x - 16, y:unit.y - 17, image: 'WhiteRowHex.svg'}"></map-symbol>
@@ -26,7 +27,7 @@
     }
 </script>
 <style scoped lang="scss">
-    .unit-components{
+    .units-component{
         &:after{
             clear:both;
         }

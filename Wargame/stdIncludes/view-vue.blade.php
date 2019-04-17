@@ -80,27 +80,27 @@
                         <li class="closer"></li>
                     </ul>
                 </div>
-                <div :class="{open: crt}" class="btn-group" id="crt-wrapper">
+                <div :class="{open: crtOpen}" class="btn-group" id="crt-wrapper">
                     <button @click="changeCrt()"  class="wrapper-label" title='Combat Results Table'>
                         <span>CRT</span></button>
-                    <vue-draggable-resizable :y="100"  v-show="crt" style="z-index: 100;">
-                        <vue-crt :crt-options="crtOptions" :crt="'{{ json_encode(new \Wargame\Vu\CombatResultsTable()) }}'"></vue-crt>
-                    </vue-draggable-resizable>
                 </div>
-                @include('wargame::stdIncludes.vue-time-travel')
-
+                <div class="btn-group dropDown" :class="{open: undo}" id="time-wrapper">
+                    <button @click="toggleUndo()" class="wrapper-label" title='Time Travel'>U<small>ndo</small></button>
+                </div>
                 <div @click="zoom()" class="btn-group" id="zoomWrapper">
                     <button id="zoom">
                         <span class="defaultZoom">1.0</span>
                     </button>
                 </div>
-                <div class="btn-group"  :class="{open: rules}" @click="rules = !rules">
-                    <button class=""><span class="tablet">?</span></button>
+                <div class="btn-group"  :class="{open: rules}" >
+                    <button @click="rules = !rules" class=""><span class="tablet">?</span></button>
                     <ul class="dropdown-menu">
+                        <li><a @click="menuClick('rules')" id="rules">Rules</a></li>
+                        <li><a @click="menuClick('showTec')" id="hideShow">TEC</a></li>
+                        <li><a @click="menuClick('deployBox')" id="showDeploy">Deploy/Staging Box</a></li>
+                        <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
 
 
-                        @section('commonRules')
-                        @show
                         @section('exclusiveRulesWrapper')
                             @include('wargame::TMCW.exclusiveRulesWrapper')
                         @show
@@ -108,6 +108,22 @@
                         @show
                     </ul>
                 </div>
+                <div class="rules-wrapper" style="position:relative">
+                    <div style="position:absolute;z-index:10;background:white;margin-top:3em;" v-if="commonRules">
+                        @section('commonRules')
+                        @show
+                    </div>
+
+                    <template v-if="showTec">
+                        <div style="position:absolute;z-index:10;background:white;margin-top:3em;">
+                        @section('tec')
+                        @show
+                        </div>
+                    </template>
+
+                </div>
+
+
 
                 <div class="btn-group" :class="{open: log}" @click="log = !log" >
                     <button class=""><span>Log</span></button>
@@ -159,8 +175,6 @@
 
 
 
-            @section('tec')
-            @show
 
             @section('casualty')
             @show
@@ -218,78 +232,84 @@
 
     </header>
 
-    <div id="content">
-        <div id="rightCol">
-
-            <div id="gameViewer">
-                <div id="floaters" style="position:absolute; width:100%; height:100%;">
-                    <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
-                    </float-message>
-                </div>
-
-                <div id="gameContainer" >
-                    <div id="gameImages" @keyup.native="pushedKey" @click="mapClick">
-                        <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
-                        </float-message>
-                        @section('game-images')
-                        <div id="svgWrapper">
-                            <svg id="arrow-svg" style="opacity:.6;position:absolute;" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <marker id="comar" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-                                        <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
-                                    </marker>
-                                    <marker id='heead' orient="auto" fill="red"
-                                            markerWidth='2.5' markerHeight='5'
-                                            refX='0.1' refY='2.5'>
-                                        <!-- triangle pointing right (+x) -->
-                                        <path d='M0,0 V5 L2.5,2.5 Z' />
-                                    </marker>
-
-
-                                    <marker
-                                        inkscape:stockid="Arrow1Lend"
-                                        orient="auto"
-                                        refY="0.0"
-                                        refX="0.0"
-                                        id="head"
-                                        fill="red"
-                                        style="overflow:visible;">
-                                        <path
-                                            id="path3762"
-                                            d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-                                            style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
-                                            transform="scale(0.15) rotate(180) translate(12.5,0)" ></path>
-                                    </marker>
-                                </defs>
-                            </svg>
-                        </div>
-
-                        <img id="map" alt="map" src="{{$mapUrl}}">
-
-                        <?php $id = 0; ?>
-                        <units-component :myghosts="moveUnits" :myunits="units"></units-component>
-
-                            <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index" :mapsymbol="mapSymbol"></map-symbol>
-
-                        <special-hex v-for="(specialHex, index) in specialHexes"  :key="'A' + index" :specialhex="specialHex"></special-hex>
-                        <transition-group name="social-events" appear>
-                            <special-event  v-for="(specialEvent,key) in specialEvents" :key="specialEvent.id" :special-event="specialEvent"></special-event>
-                        </transition-group>
-
-                        @section('units')
-                        @show
-                            <flash-hexagon :position="rowSvg"></flash-hexagon>
-
-                    </div>
-                    @show
-                </div>
+    <div class='doody' id="content">
+        <div  id="crt-drag-wrapper" style="position:absolute;z-index:1000;">
+            <div v-show="showCrt" class="vue-wrapper">
+                <vue-crt :crt-options="crtOptions" :crt="'{{ json_encode(new \Wargame\Vu\CombatResultsTable()) }}'"></vue-crt>
+            </div>
+        </div>
+        <div  id="undo-drag-wrapper">
+            <div v-show="showUndo" class="vue-wrapper">
+                <undo></undo>
+            </div>
+        </div>
+        <div id="gameViewer">
+            <div id="floaters" style="position:absolute; width:100%; height:100%;">
+                <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
+                </float-message>
             </div>
 
-            <audio class="pop" src="{{asset('assets/audio/pop.m4a')}}"></audio>
-            <audio class="poop" src="{{asset('assets/audio/lowpop.m4a')}}"></audio>
-            <audio class="buzz" src="{{asset('assets/audio/buzz.m4a')}}"></audio>
+            <div id="gameContainer" >
+                <div id="gameImages" @keyup.native="pushedKey" @click="mapClick">
+                    <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
+                    </float-message>
+                    @section('game-images')
+                    <div id="svgWrapper">
+                        <svg id="arrow-svg" style="opacity:.6;position:absolute;" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <marker id="comar" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
+                                </marker>
+                                <marker id='heead' orient="auto" fill="red"
+                                        markerWidth='2.5' markerHeight='5'
+                                        refX='0.1' refY='2.5'>
+                                    <!-- triangle pointing right (+x) -->
+                                    <path d='M0,0 V5 L2.5,2.5 Z' />
+                                </marker>
 
+
+                                <marker
+                                    inkscape:stockid="Arrow1Lend"
+                                    orient="auto"
+                                    refY="0.0"
+                                    refX="0.0"
+                                    id="head"
+                                    fill="red"
+                                    style="overflow:visible;">
+                                    <path
+                                        id="path3762"
+                                        d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+                                        style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+                                        transform="scale(0.15) rotate(180) translate(12.5,0)" ></path>
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+
+                    <img id="map" alt="map" src="{{$mapUrl}}">
+
+                    <?php $id = 0; ?>
+                    <units-component :myghosts="moveUnits" :myunits="units"></units-component>
+
+                        <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index" :mapsymbol="mapSymbol"></map-symbol>
+
+                    <special-hex v-for="(specialHex, index) in specialHexes"  :key="'A' + index" :specialhex="specialHex"></special-hex>
+                    <transition-group name="social-events" appear>
+                        <special-event  v-for="(specialEvent,key) in specialEvents" :key="specialEvent.id" :special-event="specialEvent"></special-event>
+                    </transition-group>
+
+                    @section('units')
+                    @show
+                        <flash-hexagon :position="rowSvg"></flash-hexagon>
+
+                </div>
+                @show
+            </div>
         </div>
+
+        <audio class="pop" src="{{asset('assets/audio/pop.m4a')}}"></audio>
+        <audio class="poop" src="{{asset('assets/audio/lowpop.m4a')}}"></audio>
+        <audio class="buzz" src="{{asset('assets/audio/buzz.m4a')}}"></audio>
     </div>
     <div id="floatMessageContainer">
         <flash-messages :messages="messages"></flash-messages>

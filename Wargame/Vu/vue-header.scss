@@ -300,3 +300,8 @@ fieldset {
     display: inline-block;
   }
 }
+
+#crt-drag-wrapper{
+
+  position:absolute;z-index:1000;
+}

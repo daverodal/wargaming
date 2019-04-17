@@ -1,17 +1,16 @@
 <template>
     <div id="VueTime">
         Time you are viewing:
-        <div id="clickCnt">{{currentClick}}</div>
-        <div id="phaseClicks"></div><br>
+        <div id="clickCnt">{{ currentClick }}</div>
         <div class="cool-box go-buttons">
             <div class="time-left col-xs-6">
                 Cancel Undo<br>
-                <div class="fancy-time-button " @click="timeLive()" id="timeLive">Go to present - cancel</div>
+                <div class="fancy-time-button " id="time-live">Go to present - cancel</div>
 
             </div>
             <div class="time-right col-xs-6">
                 Perform Undo<br>
-                <div class="fancy-time-button right" @click="timeBranch()"  id="timeBranch">Branch viewed time to present</div><br>
+                <div class="fancy-time-button right" id="time-branch">Branch viewed time to present</div><br>
             </div>
             <div class="clear"></div>
         </div>
@@ -20,22 +19,20 @@
         <div class="cool-box">
             <div class="time-button-wrapper alpha col-xs-6">
                 Back 1<br>
-                <div class="fancy-time-button" @click="clickBack" id="click-back">click</div>
-                <div class="fancy-time-button" @click="phaseBack" id="phase-back">phase</div>
-                <div class="fancy-time-button" @click="playerTurnBack" id="player-turn-back">player turn</div>
+                <div class="fancy-time-button" id="click-back">click</div>
+                <div class="fancy-time-button"  id="phase-back">phase</div>
+                <div class="fancy-time-button"  id="player-turn-back">player turn</div>
 
             </div>
             <div class="time-button-wrapper col-xs-6">
                 Forward 1<br>
-                <div class="fancy-time-button"  @click="clickSurge" id="click-surge">click</div>
-                <div class="fancy-time-button" @click="phaseSurge" id="phase-surge">phase</div>
-                <div class="fancy-time-button" @click="playerTurnSurge" id="player-turn-surge">player turn</div>
+                <div class="fancy-time-button" id="click-surge">click</div>
+                <div class="fancy-time-button"  id="phase-surge">phase</div>
+                <div class="fancy-time-button" id="player-turn-surge">player turn</div>
 
             </div>
             <div class="clear"></div>
-
         </div>
-
     </div>
 </template>
 

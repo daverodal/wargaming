@@ -320,3 +320,96 @@ fieldset {
   width: 40%;
   overflow:scroll;
 }
+
+
+.text-center{
+  text-align: center;
+}
+
+#undo-drag-wrapper{
+  position:absolute;
+  z-index: 20;
+}
+#VueTime {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  padding: 10px;
+  font-weight: 500;
+  .go-buttons{
+    margin-bottom:20px;
+  }
+  .timetime-button-wrapper{
+    &.alpha{
+      border-right: 1px solid #333;
+    }
+    @extend .text-center;
+  }
+  background: white;
+  width: 660px;
+  cursor: move;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 10px 10px 10px rgba(30, 30, 30, .85);
+  position: absolute !important;
+  z-index: 30;
+  #phaseClicks {
+    display: none;
+    cursor: pointer;
+    .newPhase {
+      min-width: 10px;
+      height: 40px;
+      border-left: 1px solid red;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .newTick {
+      text-align: center;
+      margin-top: 10px;
+      width: 15px;
+      height: 10px;
+      border-left: 1px solid black;
+      display: inline-block;
+      font-size: 10px;
+      &.tickShim {
+        width: 0px;
+      }
+      &:hover {
+        background: #999;
+        color: #fff;
+      }
+      &.activeTick {
+        background-color: #666;
+        a {
+          background-color: #666;
+          color: white;
+        }
+      }
+
+    }
+  }
+  .time-button{
+    min-width:50px;
+  }
+  .fancy-time-button{
+    font-size:16px;
+    display: inline-block;
+    border: 5px solid gray;
+    padding: 3px 5px;
+    margin: 0 5px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+#crt-drag-wrapper{
+  position:absolute;
+  z-index: 1000;
+}
+#GR{
+  display:block;
+  height:70vh;
+  widtH: 50vw;
+  overflow:scroll;
+}

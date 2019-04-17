@@ -20,10 +20,12 @@ export const store = new Vuex.Store({
             details: "",
             combatResult: "",
             selectedTable: 'normal',
-            roll: null
+            roll: null,
+            showCrt: false
         },
         timeTravel:{
-           currentClick: ''
+           currentClick: '',
+            showUndo: false
         },
         crtData: {...combatResultsTable
         },

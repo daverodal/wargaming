@@ -19,17 +19,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><style type="text/css">
-
-    #TECWrapper #TECImage {
-        float: left;
-    }
-</style>
-<div class="dropDown" id="TECWrapper">
-    <h4 class="WrapperLabel" title='Terrain Effects Chart'>TEC</h4>
-
-    <DIV id="TEC" style="display:none;">
-        <div class="close">X</div>
+?>
+<div class="" id="TECWrapper">
+    <DIV id="TEC">
+        <div @click="showTec = false" class="close">X</div>
         <div class="left">
             <ul>
                 <li class="row-one">

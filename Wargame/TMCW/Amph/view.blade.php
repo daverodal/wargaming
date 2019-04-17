@@ -10,6 +10,14 @@
     @include("wargame::TMCW.Amph.tec")
 @endsection
 @section('commonRules')
+
+    <div class="dropDown" id="GRWrapper" style="font-weight:normal">
+
+        <div id="GR">
+            <div @click="commonRules = false" class="close">X</div>
+            @include("wargame::TMCW.commonRulesCore")
+        </div>
+    </div>
 @endsection
 @section('exclusiveRulesWrapper')
 @endsection
@@ -28,13 +36,6 @@
         <div id="comlink"></div>
     </div>
 @endsection
-
-<vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
-    <units-component :myfilter="1" :myunits="deployBox"></units-component>
-    <div class="clear"></div>
-    <units-component :myfilter="2" :myunits="deployBox"></units-component>
-    <div class="clear"></div>
-</vue-draggable-resizable>
 
 @section('deploy-box')
        <div id="deployBox">

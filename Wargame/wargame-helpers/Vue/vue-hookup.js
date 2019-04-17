@@ -17,6 +17,45 @@ window.vueStore = store;
 Vue.use(VueResource);
 document.addEventListener("DOMContentLoaded",function(){
 
+    window.crt = new Vue({
+        el: '#crt-drag-wrapper .vue-wrapper',
+        store,
+        computed:{
+            currentClick(){
+                return this.$store.state.timeTravel.currentClick;
+            },
+            showCrt(){
+                return this.$store.state.crt.showCrt;
+            }
+        },
+        methods:{
+            myFirstOne(){
+            }
+        },
+        data:{
+            crtOptions: {}
+        }
+    })
+
+    window.undo = new Vue({
+        el: '#undo-drag-wrapper .vue-wrapper',
+    store,
+        computed:{
+            currentClick(){
+                return this.$store.state.timeTravel.currentClick;
+            },
+            showUndo(){
+               return this.$store.state.timeTravel.showUndo;
+             }
+        },
+        methods:{
+            myFirstOne(){
+            }
+        },
+        data:{
+            myName: 'david'
+        }
+    })
     window.topVue = new Vue({
         el: '#gameImages',
         store,
@@ -84,6 +123,9 @@ document.addEventListener("DOMContentLoaded",function(){
         el: "#header",
         store,
         computed:{
+            crtOpen(){
+              return this.$store.state.crt.showCrt;
+            },
             selectedTable(){
                 return this.$store.state.getters.currentTable;
             },
@@ -111,9 +153,10 @@ document.addEventListener("DOMContentLoaded",function(){
             submenu: false,
             log: false,
             rules: false,
+            commonRules: false,
+            showTec: false,
             menu: false,
             info: false,
-            crt: false,
             undo: false,
             debug: false,
             bugMessage: '',
@@ -146,6 +189,9 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         },
         methods:{
+            toggleUndo(){
+              this.$store.state.timeTravel.showUndo = !this.$store.state.timeTravel.showUndo;
+            },
             shiftClick(){
                 this.dynamicButtons.shiftKey = !this.dynamicButtons.shiftKey;
                 DR.shiftKey = !DR.shiftKey;
@@ -202,7 +248,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 DR.$panzoom.panzoom('reset');
             },
             changeCrt(){
-                this.crt = !this.crt;
+                this.$store.state.crt.showCrt = !this.$store.state.crt.showCrt;
             },
             clickCrt(){
             },  wheelo(e){
@@ -211,6 +257,18 @@ document.addEventListener("DOMContentLoaded",function(){
                 counterClick(e);
             },
             menuClick(id){
+                if(id === 'rules'){
+                    this.commonRules = !this.commonRules;
+                    this.rules = false;
+                    this.showTec = false;
+                    return;
+                }
+                if(id === 'showTec'){
+                    this.showTec = !this.showTec;
+                    this.rules = false;
+                    this.commonRules = false;
+                    return;
+                }
                 if(id === 'all'){
                     this.show.units.submenu = false;
                     this.show.units.deployBox = false;

@@ -64,7 +64,7 @@ export function playAudioBuzz() {
 
 }
 
-export function doitCRT(id, event) {
+export function doitCRT(id) {
     var mychat = $("#mychat").attr("value");
     playAudio();
     $('body').css({cursor: "wait"});
@@ -77,7 +77,7 @@ export function doitCRT(id, event) {
         url: pokeUrl,
         type: "POST",
         data: {id: id, wargame: wargame,
-            event: (event.shiftKey || DR.shiftKey) ? COMBAT_PIN_EVENT : COMBAT_PIN_EVENT},
+            event:  COMBAT_PIN_EVENT },
         error: function (data, text, third) {
             var obj = {};
             try {

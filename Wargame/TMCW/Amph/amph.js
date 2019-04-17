@@ -6,7 +6,7 @@ import FloatMessage from '../../wargame-helpers/Vue/FloatMessage';
 import FlashMessages from '../../wargame-helpers/Vue/FlashMessages';
 import VueCrt    from '../../wargame-helpers/Vue/VueCrt';
 import UnitComponent from './UnitComponent';
-import UnitsComponent from './UnitsComponent'
+import UnitsComponent from '../../wargame-helpers/Vue/ExpUnitsComponent'
 import Undo from '../../wargame-helpers/Vue/Undo';
 import MapSymbol from '../../wargame-helpers/Vue/MapSymbol';
 import SpecialHex from '../../wargame-helpers/Vue/SpecialHex';

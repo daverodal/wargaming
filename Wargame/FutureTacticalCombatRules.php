@@ -28,6 +28,7 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
 {
     public $currentAttacker = false;
     public $unitsBlock = false;
+    public $targets = [];
 
     public function isAttacking($defender){
         $cA = $this->currentAttacker;
@@ -177,18 +178,23 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
             if ($this->force->units[$id]->status != STATUS_UNAVAIL_THIS_PHASE) {
                 if($this->currentAttacker === false){
                     $this->currentAttacker = $id;
+                    $this->getTargets();
                     $this->cleanUpAttacklessDefenders();
                     return;
                 }
                 if($this->currentAttacker === $id){
                     $this->currentAttacker = false;
                     $this->currentDefender = false;
+                    $this->getTargets();
+
                     $this->cleanUpAttacklessDefenders();
                     return;
                 }
                 if($this->currentAttacker !== $id){
                     $this->currentAttacker = $id;
                     $this->currentDefender = false;
+                    $this->getTargets();
+
                     $this->cleanUpAttacklessDefenders();
                     return;
                 }
@@ -198,6 +204,38 @@ class FutureTacticalCombatRules extends ModernTacticalCombatRules
         $this->cleanUpAttacklessDefenders();
     }
 
+    function isVisible($unitId)
+    {
+        $b = Battle::getBattle();
+
+        $isHidden = 0;
+        $hexagon = $this->force->getUnitHexagon($unitId);
+        $hexpart = new Hexpart();
+        $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
+        $isHidden |= $b->terrain->terrainIs($hexpart, 'town');
+        $isHidden |= $b->terrain->terrainIs($hexpart, 'forest');
+        if ($isHidden && !$this->isSighted($this->force->units[$unitId]->hexagon->name, $unitId)) {
+            return false;
+        }
+        return true;
+    }
+    function getTargets(){
+
+        if($this->currentAttacker === false){
+            $this->targets = [];
+            return;
+        }
+        $unitInRange = $this->force->unitsInRange($this->currentAttacker);
+        $this->targets = [];
+        foreach($unitInRange as $unitId){
+
+            if($this->isVisible($unitId)){
+                $this->targets[] = $unitId;
+
+            }
+        }
+        return;
+    }
     function cleanUpAttacklessDefenders(){
 
     }

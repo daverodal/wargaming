@@ -1,9 +1,15 @@
 body{
   overflow:hidden;
 }
+#main-viewer{
+  position:fixed;
+  width:100vw;
+}
+#content{
+}
 #gameViewer{
   background-color: black;
-  position:fixed;
+  position:relative;
 }
 .clear{
   clear:both;
@@ -19,7 +25,6 @@ body{
 }
 
 #vue-crt {
-  display:none;
 }
 
 #crt-wrapper.open  #vue-crt{

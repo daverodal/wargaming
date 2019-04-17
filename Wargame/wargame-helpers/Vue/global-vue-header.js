@@ -26,7 +26,7 @@
 /* globl-vue-header */
 import {rotateUnits} from './global-vue-helper';
 import { syncObj } from "./syncObj";
-import {counterClick, fixItAll, mapClick} from "../global-funcs";
+import {counterClick, fixItAll, mapClick, doitCRT} from "../global-funcs";
 
 var DR = window.DR;
 var zoomed = false;
@@ -37,6 +37,7 @@ var zoomed = false;
 // });
 window.zoomed = zoomed;
 import "../jquery.panzoom";
+import {clickBack,phaseBack,playerTurnBack, clickSurge, phaseSurge, playerTurnSurge, timeBranch, timeLive} from "../time-funcs";
 
 /* global-vue-header 2 */
 document.addEventListener("DOMContentLoaded",function(){
@@ -50,6 +51,117 @@ document.addEventListener("DOMContentLoaded",function(){
     DR.showArrows = false;
     DR.doingZoom = false;
 
+    let crtPanzoom = $('#crt-drag-wrapper').panzoom({
+            onPan: function (e, panzoom, e2, e3, e4) {
+                console.log('i pan');
+            },
+            onEnd(a,b,c,d,e,f){
+
+                let clientX = a.clientX;
+                let clientY = a.clientY;
+                if(a.originalEvent.changedTouches) {
+                    clientX = a.originalEvent.changedTouches[0].clientX;
+                    clientY = a.originalEvent.changedTouches[0].clientY;
+                }
+
+                var xDrag = Math.abs(clientX - DR.clickX);
+                var yDrag = Math.abs(clientY - DR.clickY);
+                if (xDrag > 20 || yDrag > 20) {
+                    DR.dragged = true;
+                }else{
+                    let matches;
+                    if(a.target.id.match(/^crt-col-/)){
+                        matches = [...a.target.id.matchAll(/^crt-col-(\d+)/)];
+                        const index = matches[0][1] - 0;
+                        doitCRT(index + 1);
+                        return false;
+                    }
+
+                }
+            },
+            onStart(a,b,c,d,e,f,g){
+                DR.doingZoom = false;
+
+                DR.dragged = false;
+                DR.startTime = Date.now() - 0;
+                if(c.changedTouches){
+                    DR.clickX = c.changedTouches[0].clientX;
+                    DR.clickY = c.changedTouches[0].clientY;
+                }else{
+                    DR.clickX = c.clientX;
+                    DR.clickY = c.clientY;
+                }
+
+
+            }
+        }
+    );
+    let undoPanzoom = $('#undo-drag-wrapper').panzoom({
+        onPan: function (e, panzoom, e2, e3, e4) {
+            console.log('i pan');
+        },
+        onEnd(a,b,c,d,e,f){
+
+            let clientX = a.clientX;
+            let clientY = a.clientY;
+            if(a.originalEvent.changedTouches) {
+                clientX = a.originalEvent.changedTouches[0].clientX;
+                clientY = a.originalEvent.changedTouches[0].clientY;
+            }
+
+            var xDrag = Math.abs(clientX - DR.clickX);
+            var yDrag = Math.abs(clientY - DR.clickY);
+            if (xDrag > 20 || yDrag > 20) {
+                DR.dragged = true;
+            }else{
+
+                switch(a.target.id){
+                    case 'click-back':
+                        clickBack();
+                        return;
+                    case 'phase-back':
+                        phaseBack();
+                        return;
+                    case 'player-turn-back':
+                        playerTurnBack();
+                        return;
+                    case 'click-surge':
+                        clickSurge();
+                        return;
+                    case 'phase-surge':
+                        phaseSurge();
+                        return;
+                    case 'player-turn-surge':
+                        playerTurnSurge();
+                        return;
+                    case 'time-live':
+                        timeLive();
+                        vueStore.state.timeTravel.showUndo = false;
+                        return;
+                    case 'time-branch':
+                        timeBranch();
+                        vueStore.state.timeTravel.showUndo = false;
+                        return;
+                }
+            }
+        },
+        onStart(a,b,c,d,e,f,g){
+            DR.doingZoom = false;
+
+            DR.dragged = false;
+            DR.startTime = Date.now() - 0;
+            if(c.changedTouches){
+                DR.clickX = c.changedTouches[0].clientX;
+                DR.clickY = c.changedTouches[0].clientY;
+            }else{
+                DR.clickX = c.clientX;
+                DR.clickY = c.clientY;
+            }
+
+
+        }
+        }
+    );
     var $panzoom = $('#gameContainer').panzoom({
         cursor: "normal", animate: true, maxScale: 2.0, minScale: .3, onPan: function (e, panzoom, e2, e3, e4) {
         },
