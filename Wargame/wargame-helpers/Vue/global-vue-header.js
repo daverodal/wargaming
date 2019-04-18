@@ -28,10 +28,8 @@ import {rotateUnits} from './global-vue-helper';
 import { syncObj } from "./syncObj";
 import {counterClick, fixItAll, mapClick, doitCRT} from "../global-funcs";
 import {DR} from '../DR'
-const theDR = DR;
 debugger;
 
-var DR = window.DR;
 var zoomed = false;
 // $.ajaxSetup({
 //     headers: {
