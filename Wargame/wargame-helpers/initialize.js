@@ -26,8 +26,7 @@
 import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "./global-funcs";
 import {clickBack, phaseBack, playerTurnBack, clickSurge,phaseSurge, playerTurnSurge, timeLive, timeBranch} from "./time-funcs";
 import "./jquery.panzoom";
-import "jquery-ui-bundle";
-import {DR} from "../global-header";
+import {DR} from "./DR";
 import fixHeader from './fix-header';
 export default function initialize() {
     var zoomed = window.zoomed;

@@ -10,7 +10,8 @@ import {
     toggleFullScreen
 } from "../global-funcs";
 import {store} from "./store/store";
-import {DR} from "./global-vue-header";
+import "./global-vue-header";
+import {DR} from '../DR'
 import VueResource from 'vue-resource';
 import "../jquery.panzoom";
 window.vueStore = store;

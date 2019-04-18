@@ -23,18 +23,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import {DR} from "./DR";
+
 
 import { Sync } from './Sync';
 import fixHeader from './fix-header';
 import * as globalFuncs from './global-funcs';
-
 function clearHexes() {
     $('#arrow-svg path.range-hex').remove();
 }
 
-window.x = new Sync(fetchUrl);
-var x = window.x;
-DR.sync = window.x;
+export const x = new Sync(fetchUrl);
+DR.sync = x;
 window.fixHeader = fixHeader;
 
 function svgRefresh(){
@@ -1540,6 +1540,3 @@ x.register('mapViewer', function (mapViewer) {
 
 
 });
-
-export default x;
-window.x = x;

@@ -2,7 +2,7 @@ import fixHeader from "../fix-header";
 import Vue from "vue";
 import {showCrtTable} from "../global-funcs";
 import {syncObj} from './syncObj';
-import {DR} from "./global-vue-header";
+import {DR} from "../DR";
 import {mapGetters, mapMutations} from "vuex";
 
 export class SyncController {
@@ -339,7 +339,9 @@ export class SyncController {
 
 
     mapUnits(){
+        debugger;
         syncObj.register("mapUnits",  (mapUnits, data) => {
+            debugger;
             const { unitsMap, hexesMap } = vueStore.getters['mD/getUnitsMaps'];
 
             floaters.message = '';

@@ -27,8 +27,9 @@
 import {rotateUnits} from './global-vue-helper';
 import { syncObj } from "./syncObj";
 import {counterClick, fixItAll, mapClick, doitCRT} from "../global-funcs";
+import {DR} from '../DR'
+debugger;
 
-var DR = window.DR;
 var zoomed = false;
 // $.ajaxSetup({
 //     headers: {
@@ -39,9 +40,11 @@ window.zoomed = zoomed;
 import "../jquery.panzoom";
 import {clickBack,phaseBack,playerTurnBack, clickSurge, phaseSurge, playerTurnSurge, timeBranch, timeLive} from "../time-funcs";
 
+debugger;
 /* global-vue-header 2 */
 document.addEventListener("DOMContentLoaded",function(){
 
+    debugger;
     DR.$ = $;
     DR.globalZoom = 1;
     DR.playerNameMap = ["Zero", "One", "Two", "Three", "Four"];
@@ -239,7 +242,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
     DR.$panzoom = $panzoom;
 
-
+debugger;
     DR.sync = syncObj;
     /* Sync object, well named as x don't start fetching till everything is ready.*/
     syncObj.fetch(0);
