@@ -24,8 +24,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import {mapClick, counterClick, rotateUnits} from "./wargame-helpers/global-funcs";
-import {initialize, x} from "./wargame-helpers";
-var DR = window.DR;
+import {initialize, x, DR} from "./wargame-helpers/index";
+
 var zoomed = false;
 // $.ajaxSetup({
 //     headers: {
@@ -34,14 +34,8 @@ var zoomed = false;
 // });
 window.zoomed = zoomed;
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded",() => {
 
-
-    var DR = window.DR;
-
-    if (!DR) {
-        DR = {};
-    }
     DR.$ = $;
     DR.globalZoom = 1;
     DR.playerNameMap = ["Zero", "One", "Two", "Three", "Four"];
@@ -149,4 +143,3 @@ document.addEventListener("DOMContentLoaded",initialize);
 
 // main classes for wargame
 
-export {DR}

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import {DR} from "../global-vue-header";
+import {DR} from "../../DR";
 Vue.use(Vuex);
 
 import {mapData} from "./mapData";

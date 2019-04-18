@@ -44,18 +44,15 @@ You should have received a copy of the GNU General Public License
         const mapUrl = '{{ $mapUrl }}';
         const mapSymbolsBefore = "<?php echo asset('assets/map-symbols/');?>/";
 
-
-        var DR = window.DR;
-
-        if (!DR) {
-            DR = {};
+        if (!window.PHP_INIT_VARS) {
+            window.PHP_INIT_VARS = {};
         }
 
 
-        DR.playerOne = "{{$forceName[1]}}";
-        DR.playerTwo = "{{$forceName[2]}}";
-        DR.playerThree = "{{$forceName[3] or ''}}";
-        DR.playerFour = "{{$forceName[4] or ''}}";
+        window.PHP_INIT_VARS.playerOne = "{{$forceName[1]}}";
+        window.PHP_INIT_VARS.playerTwo = "{{$forceName[2]}}";
+        window.PHP_INIT_VARS.playerThree = "{{$forceName[3] or ''}}";
+        window.PHP_INIT_VARS.playerFour = "{{$forceName[4] or ''}}";
     </script>
         <link href='//fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>

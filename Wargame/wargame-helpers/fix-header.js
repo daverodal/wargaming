@@ -23,9 +23,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import {DR} from "./DR";
+let myDR = DR;
 export default function fixHeader() {
 
-    var DR = window.DR;
     var winHeight = $(window).height();
     var winWidth = $(window).width();
     var mapHeight = $("#map").height();
