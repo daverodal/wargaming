@@ -1,4 +1,4 @@
-@include('wargame::ng-global-header')
+@include('wargame::ng-global-header',['topCrt'=> $top_crt = new \Wargame\TMCW\EastWest\CombatResultsTable(\Wargame\TMCW\EastWest\EastWest::GERMAN_FORCE)])
 <script src="{{mix('vendor/javascripts/wargame/east-west.js')}}"></script>
 @extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\EastWest\CombatResultsTable(\Wargame\TMCW\EastWest\EastWest::GERMAN_FORCE)] )
 @include('wargame::TMCW.EastWest.kievHeader')

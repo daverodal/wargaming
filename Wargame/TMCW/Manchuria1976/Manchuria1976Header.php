@@ -43,7 +43,8 @@ var reduceDisp = "<span class='unit-info'>";
 
 }
 /* Victory */
-x.register("victory", function(victory){
+window.legacy.x.register("victory", function(victory){
+    var DR = window.legacy.DR;
     $ = DR.$;
     if(victory.histogram) {
         $('.cas-container').empty();
@@ -60,7 +61,8 @@ x.register("victory", function(victory){
     }
 });
 
-x.register("vp", function (vp, data) {
+window.legacy.x.register("vp", function (vp, data) {
+    var DR = window.legacy.DR;
 
 
     var p1 = DR.playerOne.replace(/ /g, '-');

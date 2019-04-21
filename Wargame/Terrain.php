@@ -269,8 +269,11 @@ class Terrain implements \JsonSerializable
                 break;
 
         }
-        if(!$this->terrainArray->$y->$x){
-            $this->terrainArray->$y->$x = new stdClass();
+        if(!$this->terrainArray->$y) {
+            $this->terrainArray->$y = new stdClass();
+            if (!$this->terrainArray->$y->$x) {
+                $this->terrainArray->$y->$x = new stdClass();
+            }
         }
         if ($feature = $this->terrainFeatures->$terrainName) {
             /* new feature is exclusive */

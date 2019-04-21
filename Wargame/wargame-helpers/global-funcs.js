@@ -211,7 +211,6 @@ export function doitUnit(id, event) {
     $("#mychat").attr("value", "");
 }
 export function counterClick(event, unitId = null) {
-    var zoomed = window.zoomed;
 
     if (event.type == 'touchend') {
         event.stopPropagation();
@@ -224,10 +223,6 @@ export function counterClick(event, unitId = null) {
         return;
     }
     if (event.which === 3) {
-        return;
-    }
-    if (zoomed) {
-        doZoom(event);
         return;
     }
 
@@ -258,7 +253,6 @@ export function counterClick(event, unitId = null) {
 
 export function mapClick(event) {
 
-    var zoomed = window.zoomed;
     if (DR.dragged) {
         DR.dragged = false;
         return;
@@ -286,11 +280,6 @@ export function mapClick(event) {
     // pixelX -= p.left;
     // pixelY -= p.top;
 
-    if (zoomed) {
-        doZoom(event);
-        zoomed = false;
-        return;
-    }
     doitMap(pixelX, pixelY);
 }
 
@@ -443,32 +432,6 @@ export function doitKeypress(key) {
     $("#mychat").attr("value", "");
 }
 
-export function doZoom(event) {
-
-    var pixelX, pixelY;
-    pixelX = event.pageX;
-    pixelY = event.pageY;
-    var p;
-    p = $("#gameViewer").offset();
-    pixelX -= p.left;
-    pixelY -= p.top;
-
-    zoomed = false;
-    width = $("body").width();
-    var left = (pixelX / -.3) + (width / 2);
-    var viewerHeight = $("#gameViewer").height() / 2;
-    var top = (pixelY / -.3) + (viewerHeight);
-
-    if (left > 0) {
-        left = 0;
-    }
-    if (top > 0) {
-        top = 0;
-    }
-    // TODO: make this more modern
-    $("#gameImages").css({MozTransform: "translate(0,0) scale(1.0)"});
-    $("#gameImages").animate({zoom: 1.0, left: left, top: top}, 1500);
-}
 
 export function showCrtTable(mySelf) {
     if ($("#crt .switch-crt").length <= 1) {

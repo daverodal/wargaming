@@ -99,7 +99,7 @@ class Holowczyn1708 extends \Wargame\Mollwitz\JagCore
             if($data->pontoons) {
                 $this->pontoons = $data->pontoons;
                 foreach ($this->pontoons as $pontoon) {
-                    if(isset($this->terrain) && is_object($this->terrain) && method_exists($this->terrain,'changeTerrain')) {
+                    if(isset($this->terrain) && is_object($this->terrain) && is_object($this->terrain->terrainArray) && method_exists($this->terrain,'changeTerrain')) {
                         $this->terrain->changeTerrain($pontoon, HEXAGON_CENTER, "clear");
                     }
                 }

@@ -26,8 +26,6 @@ class Germantown1777 extends \Wargame\Mollwitz\JagCore
     const LOYALIST_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>2, 'SpecialHexB'=>1, 'SpecialHexC'=>0];
 
-    public $pontoons;
-
 
     public function isRebel($forceId){
         return $forceId === self::REBEL_FORCE;
@@ -65,7 +63,6 @@ class Germantown1777 extends \Wargame\Mollwitz\JagCore
 
         $data->specialHexA = $this->specialHexA;
         $data->specialHexB = $this->specialHexB;
-        $data->pontoons = $this->pontoons;
 
         return $data;
     }
@@ -97,14 +94,6 @@ class Germantown1777 extends \Wargame\Mollwitz\JagCore
         if ($data) {
             $this->specialHexA = $data->specialHexA;
             $this->specialHexB = $data->specialHexB;
-            if($data->pontoons) {
-                $this->pontoons = $data->pontoons;
-                foreach ($this->pontoons as $pontoon) {
-                    if(isset($this->terrain) && is_object($this->terrain) && method_exists($this->terrain,'changeTerrain')) {
-                        $this->terrain->changeTerrain($pontoon, HEXAGON_CENTER, "clear");
-                    }
-                }
-            }
         } else {
             $this->victory = new \Wargame\Victory("\\Wargame\\Mollwitz\\Germantown1777\\germantown1777VictoryCore");
 

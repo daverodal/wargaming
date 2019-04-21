@@ -49,6 +49,7 @@ You should have received a copy of the GNU General Public License
         }
 
 
+        window.legacy = {};
         window.PHP_INIT_VARS.playerOne = "{{$forceName[1]}}";
         window.PHP_INIT_VARS.playerTwo = "{{$forceName[2]}}";
         window.PHP_INIT_VARS.playerThree = "{{$forceName[3] or ''}}";

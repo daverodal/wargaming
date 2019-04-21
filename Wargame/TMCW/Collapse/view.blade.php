@@ -1,4 +1,4 @@
-@include('wargame::ng-global-header')
+@include('wargame::ng-global-header',['topCrt'=> $top_crt = new \Wargame\TMCW\Collapse\CombatResultsTable(\Wargame\TMCW\Collapse\Collapse::GERMAN_FORCE)])
 <script src="{{mix("vendor/javascripts/wargame/collapse.js")}}"></script>
 @extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\Collapse\CombatResultsTable(\Wargame\TMCW\Collapse\Collapse::GERMAN_FORCE)] )
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/collapse.css')}}">

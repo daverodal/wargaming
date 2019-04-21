@@ -74,7 +74,7 @@ class KievCorps extends \Wargame\ModernLandBattle
                     $cnt++;
                     if ($cnt & 1) {
                         $isReduced = $unitsDeployed & 1;
-                        UnitFactory::create("xxxx", KievCorps::SOVIET_FORCE, $item->hexagon->number, "multiInf.png", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 3 , 3);
+                        UnitFactory::create("xxxx", KievCorps::SOVIET_FORCE, $item->hex, "multiInf.png", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 3 , 3);
                         $unitsDeployed++;
                     }
                     if ($unitsDeployed >= 20) {
@@ -91,7 +91,7 @@ class KievCorps extends \Wargame\ModernLandBattle
             $A = $B = $C = $D = $E = $F = $G = [];
             $cnt = 0;
             foreach ($list as $item) {
-                ${$item->name}[] = $item->hexagon->number;
+                ${$item->name}[] = $item->hex;
             }
             $i = 0;
             /* Second panzer army */

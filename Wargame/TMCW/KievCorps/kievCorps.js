@@ -24,10 +24,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var love = true;
-    x.register("vp", function(vp){
+
+    window.legacy.x.register("vp", function(vp){
     });
-x.register("victory", function(victory){
+window.legacy.x.register("victory", function(victory){
     var vp = victory.victoryPoints;
     var dismissed = victory.dismissed ? " dismissed" : "";
     $("#victory").html(" Victory: <span class='playerOneFace'><?=$forceName[1]?> </span>"+vp[1]+ " <span class='playerTwoFace'><?=$forceName[2];?> </span>"+vp[2]+" Surrounded Soviets "+vp[3] + dismissed);

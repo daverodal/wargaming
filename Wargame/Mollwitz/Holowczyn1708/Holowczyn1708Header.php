@@ -17,7 +17,8 @@ You should have received a copy of the GNU General Public License
    */
 ?>
 <script type="text/javascript">
-    x.register("specialHexes", function(specialHexes, data) {
+    window.legacy.x.register("specialHexes", function(specialHexes, data) {
+        var DR = window.legacy.DR;
         var lab = ['pontoon','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
         DR.$('#gameImages .specialHexes').remove();
         for(var i in specialHexes){

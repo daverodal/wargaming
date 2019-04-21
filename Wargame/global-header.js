@@ -24,15 +24,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import {mapClick, counterClick, rotateUnits} from "./wargame-helpers/global-funcs";
-import {initialize, x, DR} from "./wargame-helpers/index";
-
-var zoomed = false;
-// $.ajaxSetup({
-//     headers: {
-//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//     }
-// });
-window.zoomed = zoomed;
+import initialize from "./wargame-helpers/initialize";
+import {DR} from "./wargame-helpers/DR"
+import {syncObj as x} from './wargame-helpers/Vue/syncObj'
+import './wargame-helpers/common-sync';
 
 document.addEventListener("DOMContentLoaded",() => {
 

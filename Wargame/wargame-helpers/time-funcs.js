@@ -1,5 +1,6 @@
+import {DR} from './DR'
+import {syncObj as x } from './Vue/syncObj';
 export function clickBack(){
-    let x = DR.sync;
     x.timeTravel = true;
     if (x.current) {
         x.current.abort();
@@ -10,7 +11,6 @@ export function clickBack(){
 }
 
 export function phaseBack(){
-    let x = DR.sync;
     x.timeTravel = true;
     if (x.current) {
         x.current.abort();
@@ -34,7 +34,6 @@ export function phaseBack(){
 
 
 export function phaseSurge(){
-    let x = DR.sync;
     x.timeTravel = true;
     if (x.current) {
         x.current.abort();
@@ -57,7 +56,6 @@ export function phaseSurge(){
 }
 
 export function playerTurnBack(){
-    let x = DR.sync;
     x.timeTravel = true;
     if (x.current) {
         x.current.abort();
@@ -80,7 +78,6 @@ export function playerTurnBack(){
 }
 
 export function playerTurnSurge(){
-    let x = DR.sync;
     x.timeTravel = true;
     if (x.current) {
         x.current.abort();
@@ -104,14 +101,12 @@ export function playerTurnSurge(){
 
 
 export function clickSurge(){
-    let x = DR.sync;
     var click = DR.currentClick;
     click++;
     x.fetch(click);
 }
 
 export function timeBranch(){
-    let x = DR.sync;
     x.timeTravel = true;
     x.timeBranch = true;
     if (x.current) {
@@ -124,7 +119,6 @@ export function timeBranch(){
 
 
 export function timeLive(){
-    let x = DR.sync;
     $("#TimeWrapper .WrapperLabel").click();
     x.timeTravel = false;
     x.fetch(0);

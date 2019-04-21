@@ -17,7 +17,8 @@ You should have received a copy of the GNU General Public License
    */
 ?>
 <script type="text/javascript">
-x.register("vp", function (vp, data) {
+window.legacy.x.register("vp", function (vp, data) {
+    var DR = window.legacy.DR;
 
 
 var p1 = DR.playerOne.replace(/ /g, '-');

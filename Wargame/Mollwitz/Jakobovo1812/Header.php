@@ -17,14 +17,14 @@ You should have received a copy of the GNU General Public License
    */
 ?>
 <script type="text/javascript">
-var DR;
+var x = window.legacy.x;
     document.addEventListener("DOMContentLoaded",function() {
         x.register("vp", function (vp) {
             var bridge = "<span class='playerFrenchFace'>French</span> ";
             if (vp[0]) {
                 bridge = "<span class='playerRussianFace'>Russians</span> ";
             }
-            DR.$("#victory").html(bridge + "Own bridge Hex, <span class='playerFrenchFace' >French Hexes " + vp[2] + "</span> <span class='playerRussianFace'>Russian Hexes " + vp[1] + "</span>");
+            window.legacy.DR.$("#victory").html(bridge + "Own bridge Hex, <span class='playerFrenchFace' >French Hexes " + vp[2] + "</span> <span class='playerRussianFace'>Russian Hexes " + vp[1] + "</span>");
 
 
         });

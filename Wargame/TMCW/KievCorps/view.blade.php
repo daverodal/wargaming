@@ -1,5 +1,5 @@
-@include('wargame::ng-global-header')
-@extends('wargame::Medieval.angular-view',['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\KievCorps\KievCorps::GERMAN_FORCE)] )
+@include('wargame::ng-global-header', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\KievCorps\KievCorps::GERMAN_FORCE)] )
+@extends('wargame::Medieval.angular-view', ['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\KievCorps\KievCorps::GERMAN_FORCE)] )
 @include('wargame::TMCW.KievCorps.kievHeader')
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/kievCorps.css')}}">
 

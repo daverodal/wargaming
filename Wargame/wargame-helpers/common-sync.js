@@ -27,14 +27,15 @@ import {DR} from "./DR";
 
 
 import { Sync } from './Sync';
+import {syncObj} from './Vue/syncObj'
 import fixHeader from './fix-header';
 import * as globalFuncs from './global-funcs';
 function clearHexes() {
     $('#arrow-svg path.range-hex').remove();
 }
 
-export const x = new Sync(fetchUrl);
-DR.sync = x;
+export const x = syncObj;
+window.legacy.x = x;
 window.fixHeader = fixHeader;
 
 function svgRefresh(){

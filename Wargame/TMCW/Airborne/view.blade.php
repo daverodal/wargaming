@@ -1,7 +1,5 @@
-@include('wargame::ng-global-header')
-@include('wargame::TMCW.Airborne.airborneHeader')
+@include('wargame::ng-global-header',['topCrt'=> $top_crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(1)])
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/airborne.css')}}">
-<script src="{{mix("vendor/javascripts/medieval/medieval.js")}}"></script>
 <script src="{{mix('vendor/javascripts/wargame/airborne.js')}}"></script>
 </head>
 

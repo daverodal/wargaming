@@ -1,5 +1,6 @@
 <script type="text/javascript">
-x.register("victory", function(vp, data){
+window.legacy.x.register("victory", function(vp, data){
+    var DR = window.legacy.DR;
     $ = DR.$;
     var ownerObj = data.specialHexes;
     var owner;
@@ -21,9 +22,10 @@ x.register("victory", function(vp, data){
 
 });
 
-x.register("vp", function(vp, data){
+window.legacy.x.register("vp", function(vp, data){
     });
 document.addEventListener("DOMContentLoaded",function(){
+    var DR = window.legacy.DR;
     $ = DR.$;
      $("#altTable").on('click', function(){
             $(this).hide();

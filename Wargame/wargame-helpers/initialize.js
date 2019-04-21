@@ -27,9 +27,9 @@ import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOpti
 import {clickBack, phaseBack, playerTurnBack, clickSurge,phaseSurge, playerTurnSurge, timeLive, timeBranch} from "./time-funcs";
 import "./jquery.panzoom";
 import {DR} from "./DR";
+import {syncObj as x } from './Vue/syncObj'
 import fixHeader from './fix-header';
 export default function initialize() {
-    var zoomed = window.zoomed;
 
     /* yuck */
     if (navigator.userAgent.match(/Android/)) {
@@ -310,7 +310,6 @@ export default function initialize() {
 
         $("#gameImages").css('left', 0);
         $("#gameImages").css('top', 0);
-        zoomed = true;
     });
     $("#crtWrapper .WrapperLabel .goLeft").click(function () {
         $("#crtWrapper").animate({left: 0}, 300);
@@ -528,7 +527,6 @@ export default function initialize() {
     });
 
     $("#phaseClicks").on("click", ".phaseClick", function () {
-        let x = DR.sync;
         x.timeTravel = true;
         if (x.current) {
             x.current.abort();
@@ -566,7 +564,6 @@ export default function initialize() {
        timeBranch();
     });
     $("#timeFork").click(function () {
-        let x = DR.sync;
         x.timeTravel = true;
         x.timeFork = true;
         if (x.current) {
@@ -578,7 +575,6 @@ export default function initialize() {
     });
 
     $("#phaseClicks").on("click", ".realtime", function () {
-        let x = DR.sync;
         x.timeTravel = false;
         x.fetch(0);
     });

@@ -33,17 +33,36 @@ You should have received a copy of the GNU General Public License
         const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
 
 
-        var DR = window.DR;
-
-        if (!DR) {
-            DR = {};
+        if (!window.PHP_INIT_VARS) {
+            window.PHP_INIT_VARS = {};
         }
 
 
-        DR.playerOne = "{{$forceName[1]}}";
-        DR.playerTwo = "{{$forceName[2]}}";
-        DR.playerThree = "{{$forceName[3] or ''}}";
-        DR.playerFour = "{{$forceName[4] or ''}}";
+        window.legacy = {};
+        window.PHP_INIT_VARS.playerOne = "{{$forceName[1]}}";
+        window.PHP_INIT_VARS.playerTwo = "{{$forceName[2]}}";
+        window.PHP_INIT_VARS.playerThree = "{{$forceName[3] or ''}}";
+        window.PHP_INIT_VARS.playerFour = "{{$forceName[4] or ''}}";
+
+        @isset($topCrt)
+            const combatResultsTable = JSON.parse('<?=json_encode($topCrt)?>');
+            const topCrtJson = '{!!json_encode($topCrt)!!}';
+            const unitsJson = '{!!json_encode($units)!!}';
+        @endif
+
+        const addUrl = "<?=url("wargame/add/");?>";
+        const pokeUrl = "<?=url("wargame/poke/");?>";
+        if(!fetchUrl){
+            const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
+        }
+        const wargame = "<?=$wargame?>";
+        const rowSvg = "<?php echo asset('vendor/wargame/genre/images/rowHex.svg');?>";
+        const imagesBase = "<?php echo asset('vendor/wargame/genre/images/');?>";
+
+        const mapSymbolsBefore = "<?php echo asset('js');?>/";
+        const mapSymbolsSpotted = "<?php echo asset('vendor/wargame/tactical/images/spotted.svg');?>";
+
+
     </script>
 
     <meta charset="utf-8">
