@@ -151,7 +151,9 @@
                     <div>
                         <span id="status" v-html="headerStatus"></span>
                         <span id="combatStatus" v-html="combatStatus"></span>
-                        <span id="victory" v-html="headerVictory"></span>
+                        @section('victory')
+                            <span id="victory" v-html="headerVictory"></span>
+                        @show
                     </div>
                 </div>
                 <div id="nextPhaseWrapper">
@@ -186,46 +188,48 @@
         </div>
         <div id="secondHeader">
             <div id="boxes-wrapper">
+                @section('unit-boxes')
                     <div class="unit-wrapper" v-show="show.units.deployBox">
                         <div @click="show.units.deployBox = false" class="close">X</div>
                         <div style="margin-right:24px;" class="left">Deploy/Staging area</div>
                         @section('deploy-box')
-                        <div id="deployBox">
-                            <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
+                            <div id="deployBox">
+                                <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
                                     <units-component :myfilter="1" :myunits="allBoxes.deployBox"></units-component>
-                                <div class="clear"></div>
+                                    <div class="clear"></div>
                                     <units-component :myfilter="2" :myunits="allBoxes.deployBox"></units-component>
+                                    <div class="clear"></div>
+                                </vue-draggable-resizable>
                                 <div class="clear"></div>
-                            </vue-draggable-resizable>
-                            <div class="clear"></div>
-                        </div>
+                            </div>
                         @show
                         <div style="clear:both;"></div>
                     </div>
 
-            <div class="unit-wrapper" id="deadpile-wrapper" v-show="show.units.deadpile">
-                <div class="close">X</div>
-                <div style="font-size:50px;font-family:sans-serif;float:right;color:#666;">
-                    Retired Units
-                </div>
-                <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
-                    <units-component :myfilter="1" :myunits="allBoxes.deadpile"></units-component>
-                    <div class="clear"></div>
-                    <units-component :myfilter="2" :myunits="allBoxes.deadpile"></units-component>
-                    <div class="clear"></div>
-                </vue-draggable-resizable>
-                <div class="clear"></div>
+                    <div class="unit-wrapper" id="deadpile-wrapper" v-show="show.units.deadpile">
+                        <div class="close">X</div>
+                        <div style="font-size:50px;font-family:sans-serif;float:right;color:#666;">
+                            Retired Units
+                        </div>
+                        <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
+                            <units-component :myfilter="1" :myunits="allBoxes.deadpile"></units-component>
+                            <div class="clear"></div>
+                            <units-component :myfilter="2" :myunits="allBoxes.deadpile"></units-component>
+                            <div class="clear"></div>
+                        </vue-draggable-resizable>
+                        <div class="clear"></div>
 
+                    </div>
+                    <div class="unit-wrapper" v-show="show.units.exitBox" id="exitWrapper">
+                        <div class="close">X</div>
+                        <div style="margin-right:3px;" class="left">Exited Units</div>
+                        <div id="exitBox">
+                            <units-component :myunits="allBoxes.exitBox"></units-component>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                @show
             </div>
-            <div class="unit-wrapper" v-show="show.units.exitBox" id="exitWrapper">
-                <div class="close">X</div>
-                <div style="margin-right:3px;" class="left">Exited Units</div>
-                <div id="exitBox">
-                    <units-component :myunits="allBoxes.exitBox"></units-component>
-                </div>
-                <div style="clear:both;"></div>
-            </div>
-        </div>
             <div class="clear"></div>
         </div>
 
@@ -291,7 +295,7 @@
                     <?php $id = 0; ?>
                     <units-component :myghosts="moveUnits" :myunits="units"></units-component>
 
-                        <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index" :mapsymbol="mapSymbol"></map-symbol>
+                        <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index":mapsymbol="{x: mapSymbol.x - 34, y:mapSymbol.y - 31, image: mapSymbol.image}"></map-symbol>
 
                     <special-hex v-for="(specialHex, index) in specialHexes"  :key="'A' + index" :specialhex="specialHex"></special-hex>
                     <transition-group name="social-events" appear>

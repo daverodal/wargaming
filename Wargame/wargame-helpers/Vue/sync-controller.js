@@ -984,7 +984,7 @@ export class SyncController {
             let p1 = DR.playerOne;
             let p2 = DR.playerTwo;
             let p1Class = p1.replace(/ /g, '-');
-            let p2Class = p1.replace(/ /g, '-');
+            let p2Class = p2.replace(/ /g, '-');
 
             p1Class = 'player' + p1Class.replace(/\//ig, '_') + 'Face';
             p2Class = 'player' + p2Class.replace(/\//ig, '_') + 'Face';

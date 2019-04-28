@@ -140,6 +140,142 @@ trait AirMoveRulesTrait
         return true;
     }
 
+    function airBfsMoves()
+    {
+        $hist = array();
+        $cnt = 0;
+        $unit = $this->force->units[$this->movingUnitId];
+
+        while (count($this->moveQueue) > 0) {
+            $cnt++;
+            $hexPath = array_shift($this->moveQueue);
+            $hexNum = $hexPath->name;
+            $movePoints = $hexPath->pointsLeft;
+            if (!$hexNum) {
+                continue;
+            }
+            if (!isset($this->moves->$hexNum)) {
+                /* first time here */
+                $this->moves->$hexNum = $hexPath;
+            } else {
+                /* invalid hex */
+                if ($this->moves->$hexNum->isValid === false) {
+                    continue;
+                }
+                /* already been here with more points */
+                if ($this->moves->$hexNum->pointsLeft >= $movePoints) {
+                    continue;
+
+                }
+            }
+            /* @var MapHex $mapHex */
+            $mapHex = $this->mapData->getHex($hexNum);
+
+            if ($mapHex->isOccupied($this->force->attackingForceId, $this->stacking, $unit)) {
+                $this->moves->$hexNum->isOccupied = true;
+            }
+
+            if ($mapHex->isOccupied($this->force->defendingForceId,$this->enemyStackingLimit, $unit)) {
+                $this->moves->$hexNum->isValid = false;
+                continue;
+            }
+            $this->moves->$hexNum->pointsLeft = $movePoints;
+            $this->moves->$hexNum->pathToHere = $hexPath->pathToHere;
+            if(isset($hexPath->facing)){
+                $this->moves->$hexNum->facing = $hexPath->facing;
+            }
+
+            if ($this->moves->$hexNum->isZoc == NULL) {
+                $this->moves->$hexNum->isZoc = $this->force->mapHexIsZOC($mapHex);
+            }
+            $exitCost = 0;
+            $exitZoc = $this->exitZoc;
+            if ($this->moves->$hexNum->isZoc) {
+                if(is_callable($exitZoc)){
+                    $exitZoc = $exitZoc($mapHex, $hexNum, $unit);
+                }
+                if (is_numeric($exitZoc)) {
+                    $exitCost += $exitZoc;
+                }
+                if (!$hexPath->firstHex) {
+                    if ($this->enterZoc === "stop") {
+                        continue;
+                    }
+                }
+
+            }
+            $path = $hexPath->pathToHere;
+            $path[] = $hexNum;
+
+            $neighbors = $mapHex->neighbors;
+            $backupHexNum = false;
+            $behind = false;
+            if(isset($hexPath->facing)){
+                list($neighbors, $backupHexNum, $behind) = $this->calcNeighbors($neighbors, $hexPath);
+            }
+            $curHex = Hexagon::getHexPartXY($hexNum);
+
+            foreach ($neighbors as $neighbor) {
+                $newHexNum = $neighbor;
+                if(is_object($neighbor)){
+                    $newHexNum = $neighbor->hexNum;
+                    $newFacing = $neighbor->facing;
+
+                }
+                $gnuHex = Hexagon::getHexPartXY($newHexNum);
+                if (!$gnuHex) {
+                    continue;
+                }
+
+                /* This can and should be dealt with by the "blocked" moveAmount below
+                 * History, can't live with it can't live with it
+                 */
+
+
+                if ($this->terrain->terrainIsXY($gnuHex[0], $gnuHex[1], "offmap")) {
+
+                    continue;
+                }
+                $moveAmount = 1;
+                $newMapHex = $this->mapData->getHex($newHexNum);
+
+                if ($newMapHex->isOccupied($this->force->defendingForceId, $this->enemyStackingLimit, $unit)) {
+                    continue;
+                }
+
+                if ($this->moveCannotOverstack  && $newMapHex->isOccupied($this->force->attackingForceId, $this->transitStacking, $unit)) {
+                    continue;
+                }
+
+                if ($movePoints - $moveAmount >= 0 ) {
+                    $head = false;
+                    if (isset($this->moves->$newHexNum)) {
+                        if ($this->moves->$newHexNum->pointsLeft > ($movePoints - $moveAmount)) {
+                            continue;
+                        }
+                        $head = true;
+                    }
+                    $newPath = new HexPath();
+                    $newPath->name = $newHexNum;
+                    $newPath->pathToHere = $path;
+                    $newPath->pointsLeft = $movePoints - $moveAmount;
+
+                    if ($newPath->pointsLeft < 0) {
+                        $newPath->pointsLeft = 0;
+                    }
+
+                    if ($head) {
+                        array_unshift($this->moveQueue, $newPath);
+                    } else {
+                        $this->moveQueue[] = $newPath;
+                    }
+                }
+            }
+
+        }
+        return;
+    }
+
     function limitedMoves()
     {
 

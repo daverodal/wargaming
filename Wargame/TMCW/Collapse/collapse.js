@@ -23,10 +23,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import "../../../../Medieval/Medieval/ngGameMain";
 import { doitNext} from "../../wargame-helpers/global-funcs";
 
-import { GameController } from "../../../../Medieval/Medieval/game-controller";
+import {GameController} from '../../wargame-helpers/ng-global-imports';
 import { Sync } from "../../wargame-helpers/Sync";
 import "lodash";
 

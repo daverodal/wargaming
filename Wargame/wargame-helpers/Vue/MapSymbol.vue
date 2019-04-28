@@ -32,7 +32,7 @@
 
         .spotted{
             img{
-                width:64px;
+                width:68px;
                 margin-top:-32px;
                 margin-left:-32px;
             }
@@ -43,7 +43,7 @@
             transform: rotate(180deg);
         }
         img{
-            width:64px;
+            width:68px;
         }
     }
 </style>

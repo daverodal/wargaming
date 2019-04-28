@@ -64,8 +64,11 @@ class AirMoveRules extends MoveRules
             }
 
         }
+        if($unit->class === 'air'){
+            return $this->airBfsMoves();
+        }
         return parent::bfsMoves();
-    }
 
+    }
 
 }

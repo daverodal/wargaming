@@ -1,4 +1,19 @@
 {
+    "ClashOverCrude": {
+        "name": "Clash Over Crude",
+        "path": "TMCW",
+        "genre": "SPI Clones",
+        "fileName": "\\Wargame\\TMCW\\ClashOverCrude\\ClashOverCrude",
+        "description": "Attack from above.",
+        "options":[
+        ],
+        "scenarios": {
+            "main": {
+                "description": "Standard",
+                "longDescription":"Standard scenario, balanced for both sides."
+            }
+        }
+    },
     "MartianCivilWar": {
         "name": "The Martian Civil War",
         "path": "TMCW",
