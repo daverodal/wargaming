@@ -295,7 +295,7 @@
                     <?php $id = 0; ?>
                     <units-component :myghosts="moveUnits" :myunits="units"></units-component>
 
-                        <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index":mapsymbol="{x: mapSymbol.x - 34, y:mapSymbol.y - 31, image: mapSymbol.image}"></map-symbol>
+                        <map-symbol v-for="(mapSymbol, index) in mapSymbols"  :key="index":mapsymbol="mapSymbol"></map-symbol>
 
                     <special-hex v-for="(specialHex, index) in specialHexes"  :key="'A' + index" :specialhex="specialHex"></special-hex>
                     <transition-group name="social-events" appear>

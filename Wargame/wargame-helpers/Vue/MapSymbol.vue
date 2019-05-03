@@ -1,9 +1,9 @@
 <template>
-    <div :style="{top:mapsymbol.y + 'px', left: mapsymbol.x + 'px'}" class="map-symbols">
-        <div v-if="mapsymbol.type === 'Spotted'" class="spotted" :class="mapsymbol.class" >
+    <div :style="{top:mapsymbol.y + 'px', left: mapsymbol.x + 'px'}" :class="mapsymbol.class" class="map-symbols">
+        <div v-if="mapsymbol.type === 'Spotted'" class="spotted">
             <img :src="mapSymbolsBefore +'spotted.svg'" ></img>
         </div>
-        <div v-else-if="mapsymbol.image" :class="mapsymbol.class" >
+        <div v-else-if="mapsymbol.image">
             <img :src="mapSymbolsBefore + mapsymbol.image" ></img>
         </div>
 
