@@ -43,7 +43,6 @@
             transform: rotate(180deg);
         }
         img{
-            width:68px;
         }
     }
 </style>

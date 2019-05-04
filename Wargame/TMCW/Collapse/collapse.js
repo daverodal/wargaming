@@ -26,7 +26,7 @@
 import { doitNext} from "../../wargame-helpers/global-funcs";
 
 import {GameController} from '../../wargame-helpers/ng-global-imports';
-import { Sync } from "../../wargame-helpers/Sync";
+import { syncObj } from "../../wargame-helpers/Vue/syncObj";
 import "lodash";
 
 export class CollapseCtlr extends GameController {
@@ -188,7 +188,6 @@ gameApp.directive('ghostUnit', () => {
 
 gameApp.factory('sync', () => {
     /* fetchUrl is defined in ng-global-header.blade.php */
-    var sync = new Sync(fetchUrl);
-    return sync;
+    return syncObj;
 });
 
