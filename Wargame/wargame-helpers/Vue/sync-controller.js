@@ -6,7 +6,6 @@ import {mapGetters, mapMutations} from "vuex";
 export class SyncController {
 
     mapData = {};
-    crtSelfOpened = false;
     gmRules(data) {
         switch (data.gameRules.mode) {
             case EXCHANGING_MODE:
@@ -338,7 +337,6 @@ export class SyncController {
 
     mapUnits(){
         syncObj.register("mapUnits",  (mapUnits, data) => {
-            const { unitsMap, hexesMap } = vueStore.getters['mD/getUnitsMaps'];
 
             floaters.message = '';
             var str;
@@ -350,15 +348,19 @@ export class SyncController {
             clickThrough.deadpile = [];
             clickThrough.exitBox = [];
             clickThrough.notUsed = [];
-            topVue.units = [];
+            // topVue.units = [];
             topVue.message = topVue.header = '';
-            clickThrough.allBoxes = {};
+            // clickThrough.allBoxes = {};
+            vueStore.commit('bd/clearBoxes')
+            vueStore.commit('mD/clearUnitsMaps')
 
+            const { unitsMap, hexesMap } = vueStore.getters['mD/getUnitsMaps'];
 
             var phasingForceId = data.gameRules.attackingForceId;
 
             var phasingUnitsLeft = 0;
 
+            let dispUnits = [];
             for (var i in mapUnits) {
                 if (mapUnits[i].forceId === phasingForceId && mapUnits[i].parent === "deployBox") {
                     phasingUnitsLeft++;
@@ -390,10 +392,12 @@ export class SyncController {
                     let slot = mapUnits[i].parent.replace(/-/,"");
 
                     this.unitDecorate(mapUnits[i], data);
-                    if(!Array.isArray(clickThrough.allBoxes[slot])){
-                        Vue.set(clickThrough.allBoxes, slot, []);
-                    }
-                    clickThrough.allBoxes[slot].push(mapUnits[i]);
+                    vueStore.commit('bd/putUnit', {slot: slot, unit: mapUnits[i]})
+
+                    // if(!Array.isArray(clickThrough.allBoxes[slot])){
+                    //     Vue.set(clickThrough.allBoxes, slot, []);
+                    // }
+                    // clickThrough.allBoxes[slot].push(mapUnits[i]);
                     continue;
                 }
 
@@ -401,32 +405,35 @@ export class SyncController {
                 height += 6;
                 if (mapUnits[i].parent === "gameImages") {
 
-                    mapUnits[i].shift = 0;
-                    if (unitsMap[i] === undefined) {
-                        unitsMap[i] = mapUnits[i].hexagon;
-                        if (hexesMap[mapUnits[i].hexagon] === undefined) {
-                            hexesMap[mapUnits[i].hexagon] = [];
-                        }
-                        hexesMap[mapUnits[i].hexagon].push(i);
-                    } else {
 
-                        if (unitsMap[i] !== mapUnits[i].hexagon) {
-                            /* unit moved */
-                            var dead = hexesMap[unitsMap[i]].indexOf(i);
-                            hexesMap[unitsMap[i]].splice(dead, 1);
-                            if (hexesMap[mapUnits[i].hexagon] === undefined) {
-                                hexesMap[mapUnits[i].hexagon] = [];
-                            }
-                            hexesMap[mapUnits[i].hexagon].push(i);
-                            unitsMap[i] = mapUnits[i].hexagon;
-                        }
-                    }
-                    if (Object.keys(hexesMap[mapUnits[i].hexagon]).length) {
-                        let unitsHere = hexesMap[mapUnits[i].hexagon];
-                        let sortedUnits = _.sortBy(unitsHere, o => o-0);
-                        mapUnits[i].shift = sortedUnits.indexOf(i) * 5;
-                    } else {
-                    }
+
+                    mapUnits[i].shift = 0;
+                    vueStore.commit('mD/unitHexMapper',{i: i, unit: mapUnits[i]})
+                    // if (unitsMap[i] === undefined) {
+                    //     unitsMap[i] = mapUnits[i].hexagon;
+                    //     if (hexesMap[mapUnits[i].hexagon] === undefined) {
+                    //         hexesMap[mapUnits[i].hexagon] = [];
+                    //     }
+                    //     hexesMap[mapUnits[i].hexagon].push(i);
+                    // } else {
+                    //
+                    //     if (unitsMap[i] !== mapUnits[i].hexagon) {
+                    //         /* unit moved */
+                    //         var dead = hexesMap[unitsMap[i]].indexOf(i);
+                    //         hexesMap[unitsMap[i]].splice(dead, 1);
+                    //         if (hexesMap[mapUnits[i].hexagon] === undefined) {
+                    //             hexesMap[mapUnits[i].hexagon] = [];
+                    //         }
+                    //         hexesMap[mapUnits[i].hexagon].push(i);
+                    //         unitsMap[i] = mapUnits[i].hexagon;
+                    //     }
+                    // }
+                    // if (Object.keys(hexesMap[mapUnits[i].hexagon]).length) {
+                    //     let unitsHere = hexesMap[mapUnits[i].hexagon];
+                    //     let sortedUnits = _.sortBy(unitsHere, o => o-0);
+                    //     mapUnits[i].shift = sortedUnits.indexOf(i) * 5;
+                    // } else {
+                    // }
 
 
                     mapUnits[i].zIndex = zIndex;
@@ -437,13 +444,14 @@ export class SyncController {
                     mapUnits[i].oddsColor = '';
                     this.unitDecorate(mapUnits[i], data);
 
-                    topVue.units.push(mapUnits[i]);
-                    Vue.set(topVue.unitsMap,  mapUnits[i].id, mapUnits[i] );
-                    var hex = unitsMap[i];
-
-                    for (var i in hexesMap[hex]) {
-                        topVue.unitsMap[hexesMap[hex][i]].zIndex = 3 - i - 0 + 1;
-                    }
+                    dispUnits.push(mapUnits[i]);
+                    // topVue.units.push(mapUnits[i]);
+                    // Vue.set(topVue.unitsMap,  mapUnits[i].id, mapUnits[i] );
+                    // var hex = unitsMap[i];
+                    //
+                    // for (var i in hexesMap[hex]) {
+                    //     topVue.unitsMap[hexesMap[hex][i]].zIndex = 3 - i - 0 + 1;
+                    // }
 
                 }
 
@@ -451,12 +459,13 @@ export class SyncController {
 
 
             }
+            vueStore.commit('mD/dispUnits', dispUnits);
             this.gmRules(data);
             let emptyDeploy = true;
             if(vueStore.state.gameRules.prevPhase !== data.gameRules.phase
             && data.gameRules.mode === DEPLOY_MODE || data.gameRules.mode === MOVING_MODE){
                 let attackingForceId = data.gameRules.attackingForceId;
-                let boxes = clickThrough.allBoxes;
+                let boxes = vueStore.getters['bd/allBoxes'];
                 _.forEach(boxes, (box, key) => {
                     if(key === 'deadpile'){
                         return;
@@ -481,7 +490,8 @@ export class SyncController {
                     clickThrough.show.units.deployBox = true;
                 }
             }
-            vueStore.state.gameRules.prevPhase = data.gameRules.phase;
+            vueStore.commit('setPrevPhase', data.gameRules.phase)
+            // vueStore.state.gameRules.prevPhase = data.gameRules.phase;
 
 
 
@@ -629,6 +639,8 @@ export class SyncController {
                 log += "<li>"+gameRules.flashLog[i]+"</li>";
 
             }
+            vueStore.commit('headerData/setTurn', turn);
+            vueStore.commit('headerData/setMaxTurn', maxTurn);
             vueStore.commit('headerData/log',log);
             vueStore.commit('headerData/topStatus', html);
             vueStore.commit('headerData/status', status);
@@ -648,43 +660,42 @@ export class SyncController {
             var activeCombat = false;
             var activeCombatLine = "";
             vueStore.commit('headerData/combatStatus',  "");
-            vueStore.state.crt.details = "";
-            vueStore.state.crt.index = false;
+            let crt = {};
+            crt.details = "";
+            crt.index = false;
             if (combatRules) {
                 var cD = combatRules.currentDefender;
                 if (combatRules.combats && Object.keys(combatRules.combats).length > 0) {
                     if (cD !== false) {
                         var defenders = combatRules.combats[cD].defenders;
                         for (var loop in defenders) {
-                            topVue.unitsMap[loop].borderColor = 'yellow';
+                            // topVue.unitsMap[loop].borderColor = 'yellow';
+                            vueStore.commit('mD/decorateUnit', {id: loop, key: 'borderColor', value: 'yellow'})
                         }
-                        if(!this.crtSelfOpened){
-                            clickThrough.crt = true;
-                            this.crtSelfOpened = true;
-                        }
+                        vueStore.commit('crtSelfOpened', true);
                         if (Object.keys(combatRules.combats[cD].attackers).length != 0) {
                             if (combatRules.combats[cD].pinCRT !== false) {
                                 combatCol = combatRules.combats[cD].pinCRT + 1;
                                 if (combatCol >= 1) {
-                                    vueStore.state.crt.pinned = combatCol - 1;
+                                    crt.pinned = combatCol - 1;
                                 }
                             }else{
-                                vueStore.state.crt.pinned = false;
+                                crt.pinned = false;
                             }
 
                             combatCol = combatRules.combats[cD].index + 1;
 
                             if (combatCol >= 1) {
-                                vueStore.state.crt.index = combatCol - 1;
+                                crt.index = combatCol - 1;
                                 if (combatRules.combats[cD].Die !== false) {
-                                    vueStore.state.crt.roll = combatRules.combats[cD].Die;
+                                    crt.roll = combatRules.combats[cD].Die;
                                 }
                             }
                         }
                         var details = this.renderCrtDetails(combatRules.combats[cD]);
                         let newLine = "<h5>odds = " + crtHeader[combatCol-1] + " </h5>" + details;
 
-                        vueStore.state.crt.details = newLine;
+                        crt.details = newLine;
                     }
                     cdLine = "";
                     var combatIndex = 0;
@@ -699,15 +710,18 @@ export class SyncController {
                             var theta = 0;
 
                             for (var j in attackers) {
+                                let thetasList = [];
 
                                 var numDef = Object.keys(defenders).length;
                                 for (var k in defenders) {
                                     theta = thetas[j][k];
                                     theta *= 15;
                                     theta += 180;
-                                    topVue.unitsMap[j].thetas.push(theta);
+                                    thetasList.push(theta)
                                 }
+                                vueStore.commit('mD/decorateUnit', {id: j, key: 'thetas', value: thetasList})
                             }
+                            // topVue.unitsMap[j].thetas.push(theta);
 
                             var useAltColor = combatRules.combats[i].useAlt ? " altColor" : "";
                             if (combatRules.combats[i].useDetermined) {
@@ -744,8 +758,10 @@ export class SyncController {
                                 useAltColor = " pinnedColor";
                             }
 
-                            topVue.unitsMap[i].odds = currentOddsDisp;
-                            topVue.unitsMap[i].oddsColor = useAltColor;
+                            vueStore.commit('mD/decorateUnit', {id: i, key: 'odds', value: currentOddsDisp})
+                            vueStore.commit('mD/decorateUnit', {id: i, key: 'oddsColor', value: useAltColor})
+                            // topVue.unitsMap[i].odds = currentOddsDisp;
+                            // topVue.unitsMap[i].oddsColor = useAltColor;
 
                             combatIndex++;
                         }
@@ -753,7 +769,7 @@ export class SyncController {
                     }
                     vueStore.commit('headerData/combatStatus', "There are " + combatIndex + " Combats");
                 }else{
-                    this.crtSelfOpened = false;
+                    vueStore.commit('crtSelfOpened', false);
                 }
 
                 if (combatRules.combatsToResolve) {
@@ -763,9 +779,9 @@ export class SyncController {
                         combatCol = thisCombat.index;
 
                         let combatRoll = thisCombat.Die;
-                        vueStore.state.crt.combatResult = thisCombat.combatResult
+                        crt.combatResult = thisCombat.combatResult
 
-                        vueStore.state.crt.index = combatCol;
+                        crt.index = combatCol;
                         let pin = thisCombat.pinCRT;
                         if (pin !== false) {
                             pin++;
@@ -774,19 +790,19 @@ export class SyncController {
                                 vueStore.status.crt.pinned = pin;
                             }
                         }else {
-                            vueStore.state.crt.pinned = false;
+                            crt.pinned = false;
                         }
 
-                        vueStore.state.crt.roll = combatRoll;
+                        crt.roll = combatRoll;
 
                         if (thisCombat.useAlt) {
-                            vueStore.state.crt.selectedTable = 'cavalry'
+                            crt.selectedTable = 'cavalry'
                         } else {
                             if (thisCombat.useDetermined) {
-                                vueStore.state.crt.selectedTable = 'determined'
+                                crt.selectedTable = 'determined'
 
                             } else {
-                                vueStore.state.crt.selectedTable = 'normal'
+                                crt.selectedTable = 'normal'
 
                             }
                         }
@@ -812,7 +828,7 @@ export class SyncController {
                         }
 
 
-                        vueStore.state.crt.details = "<h5>odds = " + currentOddsDisp + "</h5>" + details;
+                        crt.details = "<h5>odds = " + currentOddsDisp + "</h5>" + details;
                     }
                     let noCombats = false;
                     if (Object.keys(combatRules.combatsToResolve) == 0) {
@@ -853,8 +869,10 @@ export class SyncController {
                                 useAltColor = " pinnedColor";
                             }
 
-                            topVue.unitsMap[i].odds = currentOddsDisp;
-                            topVue.unitsMap[i].oddsColor = useAltColor;
+                            vueStore.commit('mD/decorateUnit',{ id: i, key: 'odds', value: currentOddsDisp})
+                            vueStore.commit('mD/decorateUnit',{ id: i, key: 'oddsColor', value: useAltColor})
+                            // topVue.unitsMap[i].odds = currentOddsDisp;
+                            // topVue.unitsMap[i].oddsColor = useAltColor;
                         }
 
                     }
@@ -871,6 +889,7 @@ export class SyncController {
                     }
                 }
             }
+            vueStore.commit('setCrt', crt)
 
         });
     }
@@ -964,9 +983,12 @@ export class SyncController {
     click() {
         syncObj.register("click",  (click) => {
             if (syncObj.timeTravel) {
-                vueStore.state.timeTravel.currentClick = 'time travel ' + click
+                vueStore.commit('setCurrentClick', 'time travel ' + click)
+                // vueStore.state.timeTravel.currentClick = 'time travel ' + click
             } else {
-                vueStore.state.timeTravel.currentClick = 'realtime ' + click
+                vueStore.commit('setCurrentClick', 'realtime ' + click)
+
+                // vueStore.state.timeTravel.currentClick = 'realtime ' + click
             }
             DR.currentClick = click;
         });

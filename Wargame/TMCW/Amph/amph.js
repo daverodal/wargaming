@@ -11,6 +11,8 @@ import Undo from '../../wargame-helpers/Vue/Undo';
 import MapSymbol from '../../wargame-helpers/Vue/MapSymbol';
 import SpecialHex from '../../wargame-helpers/Vue/SpecialHex';
 import SpecialEvent from '../../wargame-helpers/Vue/SpecialEvent';
+import OptionsComponent from './OptionsComponent';
+import OBCComponent from './OBCComponent';
 Vue.component('flash-messages', FlashMessages);
 Vue.component('flash-hexagon', FlashHexagon);
 Vue.component('vue-crt', VueCrt);
@@ -22,6 +24,8 @@ Vue.component('unit-component', UnitComponent);
 Vue.component('units-component', UnitsComponent);
 Vue.component('special-hex', SpecialHex);
 Vue.component('map-symbol', MapSymbol);
+Vue.component('options-component', OptionsComponent);
+Vue.component('obc-component', OBCComponent);
 
 Vue.component('special-event', SpecialEvent);
 import {SyncController} from "../../wargame-helpers/Vue/sync-controller";

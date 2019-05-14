@@ -74,15 +74,15 @@ class Amph extends ModernLandBattle
 
 
         $scenario = $this->scenario;
-        $baseValue = 6;
-        $reducedBaseValue = 3;
-        if(!empty($scenario->weakerLoyalist)){
-            $baseValue = 5;
-            $reducedBaseValue = 2;
-        }
-        if(!empty($scenario->strongerLoyalist)){
-            $baseValue = 7;
-        }
+        $baseValue = 4;
+        $reducedBaseValue = 2;
+//        if(!empty($scenario->weakerLoyalist)){
+//            $baseValue = 5;
+//            $reducedBaseValue = 2;
+//        }
+//        if(!empty($scenario->strongerLoyalist)){
+//            $baseValue = 7;
+//        }
         /* Loyalists units */
 
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 305, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');

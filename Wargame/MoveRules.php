@@ -899,6 +899,10 @@ class MoveRules
         $hexes = $this->force->getAllRetreatHexes($id);
         $uniqueHexes = [];
         foreach ($hexes as $hexagon) {
+            $mapHex = $this->mapData->getHex($hexagon->name);
+            if ($mapHex->isOccupied($this->force->attackingForceId, $this->stacking, $this->force->units[$id])) {
+                continue;
+            }
             $uniqueHexes[$hexagon->name] = $hexagon;
             $startHex = $hexagon->name;
             $hexPath = new HexPath();

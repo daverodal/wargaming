@@ -209,7 +209,15 @@ class Force extends SimpleForce
         $mapHex = $b->mapData->getHex($hexNum);
 
         foreach($advancingQueue as $advancingProspect) {
-            if ($mapHex->isOccupied($this->attackingForceId, $b->moveRules->stacking, $advancingProspect)) {
+            $retreatHexes = $this->retreatHexagonList;
+            $vacantHex = false;
+            foreach($this->retreatHexagonList as $retreatHex){
+                $mapHex = $b->mapData->getHex($retreatHex->hexagon->name);
+                if (!$mapHex->isOccupied($this->attackingForceId, $b->moveRules->stacking, $advancingProspect)) {
+                    $vacantHex = true;
+                }
+            }
+            if(!$vacantHex){
                 $advancingProspect->status = STATUS_ATTACKED;
             }
         }

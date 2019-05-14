@@ -90,16 +90,7 @@
         methods:{
             ...mapMutations('mD', ['showPath','clearPath']),
             mOver(){
-
-                let locId = this.unit.id;
-                if(typeof locId === 'string'){
-                    locId = locId.replace(/Hex.*/,'Hex')
-                }else{
-                    return;
-                }
-                this.unit.showOff = true;
-                this.unit.opac = 1;
-                this.showPath(this.unit.pathToHere);
+                this.showPath(this.unit);
             },
             mouseleave(){
                 this.clearPath();

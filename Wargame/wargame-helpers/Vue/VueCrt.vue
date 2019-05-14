@@ -75,10 +75,12 @@
         },
         methods:{
             closeMe(){
-                this.$store.state.crt.showCrt = false;
+                this.$store.commit('setCrt', {showCrt: false});
+                // this.$store.state.crt.showCrt = false;
             },
             showNext(){
-                this.$store.state.crt.selectedTable = this.$store.getters.currentTable.next;
+                this.$store.commit('setCrt', {selectedTable: this.$store.getters.currentTable.next})
+                // this.$store.state.crt.selectedTable = this.$store.getters.currentTable.next;
             },
             headerHighlight(index){
                 return index === this.highlightIndex ? 'highlighted': index === this.highlightPinned ? 'pin-highlighted': ''

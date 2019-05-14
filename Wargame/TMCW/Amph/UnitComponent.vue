@@ -9,8 +9,6 @@
         </div>
         <div class="unit-numbers" v-html="unitNumbers" :class="infoLen">
         </div>
-
-
     </div>
 
 </template>
@@ -18,7 +16,7 @@
 <script>
     import {counterClick} from "../../wargame-helpers/global-funcs";
     import {rotateUnits} from "../../wargame-helpers/Vue/global-vue-helper";
-
+    import {mapMutations} from 'vuex';
     export default {
         name: "UnitComponent",
         props:["unit"],
@@ -114,40 +112,22 @@
             return {zIndex: 3}
         },
         methods:{
+            ...mapMutations('mD',['clearPath','showPath']),
             rightClick(e, a,b, c,d){
                 if(e.metaKey){
                     return;
                 }
                 e.preventDefault();
                 rotateUnits(e, a);
-
             },
             unitClick(e){
                 counterClick(e, this.unit.id);
             },
             mOver(){
-                let locId = this.unit.id;
-                if(typeof locId === 'string'){
-                    locId = locId.replace(/Hex.*/,'Hex')
-                }else{
-                    return;
-                }
-                this.unit.showOff = true;
-                this.unit.opac = 1;
-                _.forEach(this.unit.pathToHere,(path)=>{
-                    _.forEach(this.$store.state.mD.moveUnits, (unit)=>{
-                        if(unit.id === locId+path){
-                            unit.opac = 1;
-                            unit.showOff = true;
-                        }
-                    })
-                });
+                this.showPath(this.unit)
             },
             mouseleave(){
-                _.forEach(topVue.moveUnits, (unit)=>{
-                    unit.showOff = false;
-                    delete unit.opac;
-                })
+                this.clearPath();
             }
         }
     }

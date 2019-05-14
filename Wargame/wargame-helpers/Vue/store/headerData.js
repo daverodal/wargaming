@@ -5,7 +5,9 @@ export const headerData = {
         status: '',
         combatStatus: '',
         topStatus: '',
-        log: ''
+        log: '',
+        turn: false,
+        maxTurn: false
     },
     mutations:{
         victory(state, p){
@@ -22,6 +24,12 @@ export const headerData = {
         },
         log(state, p){
             state.log = p;
+        },
+        setTurn(state, turn){
+            state.turn = turn;
+        },
+        setMaxTurn(state, maxTurn){
+            state.maxTurn = maxTurn;
         }
     }
 }

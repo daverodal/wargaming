@@ -81,14 +81,16 @@
                 counterClick(e, this.unit.id);
             },
             mOver(){
-              let locId = this.unit.id;
-              if(typeof locId === 'string'){
+                let locId = this.unit.id;
+                if(typeof locId === 'string'){
                 locId = locId.replace(/Hex.*/,'Hex')
-              }else{
+                }else{
                   return;
-              }
-              this.unit.showOff = true;
-              this.unit.opac = 1;
+                }
+                this.decorateUnit({id: locId, key: 'showOff', value: true})
+                this.decorateUnit({id: locId, key: 'opac', value: 1})
+              // this.unit.showOff = true;
+              // this.unit.opac = 1;
                 _.forEach(this.unit.pathToHere,(path)=>{
                    _.forEach(topVue.moveUnits, (unit)=>{
                        if(unit.id === locId+path){
@@ -100,6 +102,8 @@
             },
             mouseleave(){
                 _.forEach(topVue.moveUnits, (unit)=>{
+                    this.decorateUnit({id: unit.id, key: 'showOff', value: true})
+                    this.decorateUnit({id: unit.id, key: 'opac', value: undefined})
                         unit.showOff = false;
                         delete unit.opac;
                 })

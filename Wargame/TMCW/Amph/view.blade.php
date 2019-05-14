@@ -22,6 +22,7 @@
 @section('exclusiveRulesWrapper')
 @endsection
 @section('obc')
+    <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
 @endsection
 
 @extends('wargame::stdIncludes.view-vue' )
@@ -36,35 +37,38 @@
         <div id="comlink"></div>
     </div>
 @endsection
-
+@section('options')
+    <options-component>
+    </options-component>
+@show
 @section('deploy-box')
        <div id="deployBox">
 
            <div id="beach-landing" class="deploy-zone-wrapper">
                <div>Rebel Beach Landing</div>
-               <units-component  :myunits="allBoxes.beachlanding"></units-component>
+               <units-component  :myunits="allMyBoxes.beachlanding"></units-component>
                <div class="clear"></div>
            </div>
 
            <div id="airdrop" class="deploy-zone-wrapper">
                <div>Rebel Airdrop Zone</div>
-               <units-component :myunits="allBoxes.airdrop"></units-component>
+               <units-component :myunits="allMyBoxes.airdrop"></units-component>
                <div class="clear"></div>
            </div>
            <div id="west" class="deploy-zone-wrapper">
                <div>Loyalist West</div>
-               <units-component :myunits="allBoxes.west"></units-component>
+               <units-component :myunits="allMyBoxes.west"></units-component>
 
                <div class="clear"></div>
            </div>
            <div id="south" class="deploy-zone-wrapper">
                <div>Loyalist South</div>
-               <units-component :myunits="allBoxes.south"></units-component>
+               <units-component :myunits="allMyBoxes.south"></units-component>
                <div class="clear"></div>
            </div>
            <div id="east" class="deploy-zone-wrapper">
                <div>Loyalist East</div>
-               <units-component :myunits="allBoxes.east"></units-component>
+               <units-component :myunits="allMyBoxes.east"></units-component>
                <div class="clear"></div>
            </div>
        </div>

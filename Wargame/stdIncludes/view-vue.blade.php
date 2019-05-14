@@ -97,14 +97,11 @@
                     <ul class="dropdown-menu">
                         <li><a @click="menuClick('rules')" id="rules">Rules</a></li>
                         <li><a @click="menuClick('showTec')" id="hideShow">TEC</a></li>
-                        <li><a @click="menuClick('deployBox')" id="showDeploy">Deploy/Staging Box</a></li>
-                        <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
-
-
                         @section('exclusiveRulesWrapper')
                             @include('wargame::TMCW.exclusiveRulesWrapper')
                         @show
                         @section('obc')
+                            <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
                         @show
                     </ul>
                 </div>
@@ -121,6 +118,9 @@
                         </div>
                     </template>
 
+                    <template v-if="showObc">
+                        <obc-component :obc="allMyBoxes"></obc-component>
+                    </template>
                 </div>
 
 
@@ -195,9 +195,9 @@
                         @section('deploy-box')
                             <div id="deployBox">
                                 <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
-                                    <units-component :myfilter="1" :myunits="allBoxes.deployBox"></units-component>
+                                    <units-component :myfilter="1" :myunits="allMyBoxes.deployBox"></units-component>
                                     <div class="clear"></div>
-                                    <units-component :myfilter="2" :myunits="allBoxes.deployBox"></units-component>
+                                    <units-component :myfilter="2" :myunits="allMyBoxes.deployBox"></units-component>
                                     <div class="clear"></div>
                                 </vue-draggable-resizable>
                                 <div class="clear"></div>
@@ -212,9 +212,9 @@
                             Retired Units
                         </div>
                         <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
-                            <units-component :myfilter="1" :myunits="allBoxes.deadpile"></units-component>
+                            <units-component :myfilter="1" :myunits="allMyBoxes.deadpile"></units-component>
                             <div class="clear"></div>
-                            <units-component :myfilter="2" :myunits="allBoxes.deadpile"></units-component>
+                            <units-component :myfilter="2" :myunits="allMyBoxes.deadpile"></units-component>
                             <div class="clear"></div>
                         </vue-draggable-resizable>
                         <div class="clear"></div>
@@ -224,7 +224,7 @@
                         <div class="close">X</div>
                         <div style="margin-right:3px;" class="left">Exited Units</div>
                         <div id="exitBox">
-                            <units-component :myunits="allBoxes.exitBox"></units-component>
+                            <units-component :myunits="allMyBoxes.exitBox"></units-component>
                         </div>
                         <div style="clear:both;"></div>
                     </div>
@@ -317,6 +317,8 @@
     </div>
     <div id="floatMessageContainer">
         <flash-messages :messages="messages"></flash-messages>
+        @section('options')
+        @show
     </div>
 </div>
 </body></html>

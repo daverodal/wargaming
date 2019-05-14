@@ -129,11 +129,14 @@ document.addEventListener("DOMContentLoaded",function(){
                         return;
                     case 'time-live':
                         timeLive();
-                        vueStore.state.timeTravel.showUndo = false;
+                        vueStore.commit('setShowUndo', false)
+                        // vueStore.state.timeTravel.showUndo = false;
                         return;
                     case 'time-branch':
                         timeBranch();
-                        vueStore.state.timeTravel.showUndo = false;
+                        vueStore.commit('setShowUndo', false)
+
+                        // vueStore.state.timeTravel.showUndo = false;
                         return;
                 }
             }

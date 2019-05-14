@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded",function(){
         el: '#gameImages',
         store,
         data:{
-            units:[],
-            unitsMap: {},
+            xunits:[],
+            xunitsMap: {},
             mapSymbols: [],
             specialEvents: [],
             specialHexes: [],
@@ -74,6 +74,12 @@ document.addEventListener("DOMContentLoaded",function(){
             y: 900
         },
         computed: {
+            units(){
+              return this.$store.state.mD.dispUnits;
+            },
+            untisMap(){
+                return this.$store.state.mD.dispUnitsMap;
+            },
             mapUrl(){
                 return this.$store.state.mD.mapUrl;
             },
@@ -104,6 +110,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
     window.floatersMessages = new Vue({
         el: "#floatMessageContainer",
+        store,
         data:{
             messages:[]
         }
@@ -112,7 +119,6 @@ document.addEventListener("DOMContentLoaded",function(){
     window.floaters = new Vue({
         el: "#floaters",
         data:{
-            why: "Why not!",
             header: "",
             message: "",
             x: 0,
@@ -147,6 +153,9 @@ document.addEventListener("DOMContentLoaded",function(){
                     return "<li>No Log Events</li>";
                 }
                 return this.$store.state.headerData.log;
+            },
+            allMyBoxes(){
+                return this.$store.getters['bd/allBoxes'];
             }
         },
         data:{
@@ -156,6 +165,7 @@ document.addEventListener("DOMContentLoaded",function(){
             rules: false,
             commonRules: false,
             showTec: false,
+            showObc: false,
             menu: false,
             info: false,
             undo: false,
@@ -169,17 +179,6 @@ document.addEventListener("DOMContentLoaded",function(){
                 determined: false,
                 shiftKey: false
             },
-            allBoxes:{
-                deployBox: [],
-                deadpile: [],
-                exitBox: [],
-                notUsed: [],
-                beachlanding: [],
-                airdrop:[],
-                south: [],
-                west: [],
-                east: [],
-            },
             show:{
                 units:{
                     submenu:false,
@@ -191,7 +190,7 @@ document.addEventListener("DOMContentLoaded",function(){
         },
         methods:{
             toggleUndo(){
-              this.$store.state.timeTravel.showUndo = !this.$store.state.timeTravel.showUndo;
+              this.$store.commit('toggleShowUndo');
             },
             shiftClick(){
                 this.dynamicButtons.shiftKey = !this.dynamicButtons.shiftKey;
@@ -249,7 +248,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 DR.$panzoom.panzoom('reset');
             },
             changeCrt(){
-                this.$store.state.crt.showCrt = !this.$store.state.crt.showCrt;
+                this.$store.commit('setCrt',{showCrt: !this.$store.state.crt.showCrt})
             },
             clickCrt(){
             },  wheelo(e){
@@ -262,12 +261,21 @@ document.addEventListener("DOMContentLoaded",function(){
                     this.commonRules = !this.commonRules;
                     this.rules = false;
                     this.showTec = false;
+                    this.showObc = false;
+                    return;
+                }
+                if(id === 'showObc'){
+                    this.showObc = !this.showObc;
+                    this.commonRules = false;
+                    this.showTec = false;
+                    this.rules = false;
                     return;
                 }
                 if(id === 'showTec'){
                     this.showTec = !this.showTec;
                     this.rules = false;
                     this.commonRules = false;
+                    this.showObc = false;
                     return;
                 }
                 if(id === 'all'){
