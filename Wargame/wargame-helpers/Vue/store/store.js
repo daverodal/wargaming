@@ -25,7 +25,8 @@ export const store = new Vuex.Store({
             selectedTable: 'normal',
             roll: null,
             showCrt: false,
-            crtSelfOpened: false
+            crtSelfOpened: false,
+            showDetails: false
         },
         timeTravel:{
            currentClick: '',
@@ -50,6 +51,9 @@ export const store = new Vuex.Store({
         }
     },
     mutations:{
+        toggleShowDetails(state){
+          state.crt.showDetails = !state.crt.showDetails;
+        },
         setShowUndo({timeTravel}, value){
           timeTravel.showUndo = value;
         },

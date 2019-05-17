@@ -13,18 +13,19 @@
                 <div v-if="crtData.crts">
                 <div v-for="(resultsRow, index) in table.table" :class="index & 1 ? '' : crtOptions.playerName" class="roll">
                     <span class="col0">{{index - table.dieOffsetHelper}}</span>
-                    <span   :id="'crt-col-'+colIndex" :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" @click="pinCombat(colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
+                    <span   :id="'crt-col-'+colIndex" :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
                 </div>
                 </div>
                 </div>
             </div>
-            <button class="btn" @click="showDetails = !showDetails">Details</button>
+            <button id="crt-details-button" class="btn">Details</button>
             <div v-if="showDetails" v-html="details"></div>
          </div>
 </template>
 
 <script>
     import {store} from "./store/store";
+    import {mapMutations} from "vuex";
     export default {
         props: ['crt','crtOptions'],
         computed: {
@@ -57,13 +58,15 @@
             },
             numTables(){
                 return this.$store.state.crtData.crts.length;
+            },
+            showDetails(){
+                return this.$store.state.crt.showDetails
             }
         },
         data: ()=>{
             return {
                 crtData:{},
-                resultsNameData: [],
-                showDetails: false,
+                resultsNameData: []
             }
         },
         mounted(){
@@ -74,6 +77,7 @@
             this.resultsNameData = resultsNames;
         },
         methods:{
+            ...mapMutations(['toggleShowDetails']),
             closeMe(){
                 this.$store.commit('setCrt', {showCrt: false});
                 // this.$store.state.crt.showCrt = false;

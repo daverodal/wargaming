@@ -63,6 +63,9 @@ document.addEventListener("DOMContentLoaded",function(){
                     DR.dragged = true;
                 }else{
                     let matches;
+                    if(a.target.id === 'crt-details-button'){
+                        vueStore.commit('toggleShowDetails')
+                    }
                     if(a.target.id.match(/^crt-col-/)){
                         matches = [...a.target.id.matchAll(/^crt-col-(\d+)/)];
                         const index = matches[0][1] - 0;
