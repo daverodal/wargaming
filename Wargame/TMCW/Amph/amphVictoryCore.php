@@ -34,8 +34,9 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
 {
     private $landingZones;
     private $airdropZones;
-    private $scienceCenterDestroyed = false;
+//    private $scienceCenterDestroyed = false;
 
+    const GOAL_VP = 12;
 
     function __construct($data)
     {
@@ -43,11 +44,11 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         if ($data) {
             $this->landingZones = $data->victory->landingZones;
             $this->airdropZones = $data->victory->airdropZones;
-            $this->scienceCenterDestroyed = $data->victory->scienceCenterDestroyed;
+//            $this->scienceCenterDestroyed = $data->victory->scienceCenterDestroyed;
         } else {
             $this->landingZones = [];
             $this->airdropZones = [];
-            $this->victoryPoints[Amph::LOYALIST_FORCE] = 25;
+            $this->victoryPoints[Amph::LOYALIST_FORCE] = self::GOAL_VP;
         }
     }
 
@@ -61,7 +62,7 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         $ret = parent::save();
         $ret->landingZones = $this->landingZones;
         $ret->airdropZones = $this->airdropZones;
-        $ret->scienceCenterDestroyed = $this->scienceCenterDestroyed;
+//        $ret->scienceCenterDestroyed = $this->scienceCenterDestroyed;
         return $ret;
     }
 
@@ -140,7 +141,7 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         }
 
         if(in_array($mapHexName,$battle->specialHexA)){
-            $vp = 25;
+            $vp = self::GOAL_VP;
 
             $prevForceId = $battle->mapData->specialHexes->$mapHexName;
             if ($forceId == Amph::REBEL_FORCE) {
@@ -236,36 +237,36 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
     {
         $battle = Battle::getBattle();
 
-        $rebelOption = (int)$battle->gameRules->option;
-
-        if($rebelOption === 0){
-            if($battle->mapData->getSpecialHex($battle->specialHexA[0]) === Amph::REBEL_FORCE){
-                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
-                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
-            }else{
-                $battle->mapData->getSpecialHex($battle->specialHexA[0]);
-                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
-
-            }
-        }
-        if($rebelOption === 1){
-            if($battle->mapData->getSpecialHex($battle->specialHexB[0]) === Amph::REBEL_FORCE){
-                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
-                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
-            }else{
-                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
-
-            }
-        }
-        if($rebelOption === 2){
-            if($battle->mapData->getSpecialHex($battle->specialHexC[0]) === Amph::REBEL_FORCE){
-                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
-                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
-            }else{
-                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
-
-            }
-        }
+//        $rebelOption = (int)$battle->gameRules->option;
+//
+//        if($rebelOption === 0){
+//            if($battle->mapData->getSpecialHex($battle->specialHexA[0]) === Amph::REBEL_FORCE){
+//                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
+//                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
+//            }else{
+//                $battle->mapData->getSpecialHex($battle->specialHexA[0]);
+//                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
+//
+//            }
+//        }
+//        if($rebelOption === 1){
+//            if($battle->mapData->getSpecialHex($battle->specialHexB[0]) === Amph::REBEL_FORCE){
+//                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
+//                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
+//            }else{
+//                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
+//
+//            }
+//        }
+//        if($rebelOption === 2){
+//            if($battle->mapData->getSpecialHex($battle->specialHexC[0]) === Amph::REBEL_FORCE){
+//                $this->victoryPoints[Amph::REBEL_FORCE] += 25;
+//                $battle->gameRules->flashMessages[] = "Rebel Player Completes Goal";
+//            }else{
+//                $battle->gameRules->flashMessages[] = "Rebel Player FAILS Goal";
+//
+//            }
+//        }
         if ($this->victoryPoints[Amph::LOYALIST_FORCE] > $this->victoryPoints[Amph::REBEL_FORCE]) {
             $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
             $this->winner = Amph::LOYALIST_FORCE;

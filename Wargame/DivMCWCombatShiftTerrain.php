@@ -82,7 +82,9 @@ trait DivMCWCombatShiftTerrain
             $combatLog .= $unit->class." ".$unit->strength."<br>";
 
             if($unit->class == "mountain" && $isMountain){
-                $combatLog .= "+1 shift Mountain Inf in Mountain<br>";
+                $isMountainInf = true;
+            }
+            if($unit->class == "ranger" && $isMountain){
                 $isMountainInf = true;
             }
             if($unit->class == "shock"){
@@ -121,13 +123,13 @@ trait DivMCWCombatShiftTerrain
         /* @var $combatRules CombatRules */
         $terrainCombatEffect = $combatRules->getDefenderTerrainCombatEffect($defenderId);
         if($terrainCombatEffect !== 0){
-            $combatLog .= "Shift $terrainCombatEffect left for Terrain<br>";
+            $combatLog .= "Shift -$terrainCombatEffect for Terrain<br>";
         }
 
         if($isMountainInf && $isMountain){
             /* Mountain Inf helps combat agains Mountain hexes */
             $terrainCombatEffect--;
-            $combatLog .= "Shift 1 right for mountain inf attacking into mountain<br>";
+            $combatLog .= "Shift +1 for Mountain Inf or Ranger attacking into mountain<br>";
         }
         if($isDIntegrity){
             $combatLog .= "Shift 1 left for defender having integrity<br>";
@@ -154,12 +156,16 @@ trait DivMCWCombatShiftTerrain
         }
         $dispShift = $terrainCombatEffect * -1;
 
-        $combatLog .= "Total Shift $dispShift<br>";
         $combatIndex -= $terrainCombatEffect;
 
-        if($isShock && $combatIndex >= 0){
+        $plusShift = 0;
+        if($isShock){
             $combatIndex++;
+            $plusShift = 1;
         }
+        $totalShift = $dispShift + $plusShift;
+        $combatLog .= "Total Shift $totalShift<br>";
+
         $combats->attackStrength = $attackStrength;
         $combats->defenseStrength = $defenseStrength;
         $combats->terrainCombatEffect = $terrainCombatEffect;

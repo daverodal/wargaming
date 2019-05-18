@@ -74,24 +74,23 @@ class Amph extends ModernLandBattle
 
 
         $scenario = $this->scenario;
-        $baseValue = 4;
+        $baseValue = 5;
         $reducedBaseValue = 2;
-//        if(!empty($scenario->weakerLoyalist)){
-//            $baseValue = 5;
-//            $reducedBaseValue = 2;
-//        }
-//        if(!empty($scenario->strongerLoyalist)){
-//            $baseValue = 7;
-//        }
+        if(!empty($scenario->weakerLoyalist)){
+            $baseValue = 4;
+            $reducedBaseValue = 2;
+        }
+        if(!empty($scenario->strongerLoyalist)){
+            $baseValue = 6;
+            $reducedBaseValue = 3;
+        }
         /* Loyalists units */
 
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 305, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 306, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 309, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 803, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, 208, "Heavy.svg", 10, 5, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'inf');
         UnitFactory::create("x", Amph::LOYALIST_FORCE, 907, "Heavy.svg", 10, 5, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'inf');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, 1807, "Heavy.svg", 10, 5, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 1205, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 1405, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
 
@@ -100,15 +99,15 @@ class Amph extends ModernLandBattle
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 1809, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 1004, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 604, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, 1810, "Mountain.svg", $baseValue+1, $reducedBaseValue+1, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'mountain');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, 1810, "Mountain.svg", 7, 3, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'mountain');
 
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn2", "Infantry.svg", $baseValue+1, $reducedBaseValue+1, 5, false, STATUS_CAN_REINFORCE, "B", 2, 1, "loyalist", true, 'inf');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn2", "Infantry.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "B", 2, 1, "loyalGuards", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "D", 2, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "D", 2, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "E", 2, 1, "loyalist", true, 'inf');
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "E", 2, 1, "loyalist", true, 'inf');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn3", "Mountain.svg", $baseValue+1, $reducedBaseValue+1, 5, false, STATUS_CAN_REINFORCE, "B", 3, 1, "loyalGuards", true, 'mountain');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn3", "Mountain.svg", $baseValue+1, $reducedBaseValue+1, 5, false, STATUS_CAN_REINFORCE, "D", 3, 1, "loyalGuards", true, 'mountain');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn3", "Mountain.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "B", 3, 1, "loyalGuards", true, 'mountain');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn3", "Mountain.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "D", 3, 1, "loyalGuards", true, 'mountain');
         UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "B", 4, 1, "loyalGuards", true, 'shock');
         UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "B", 4, 1, "loyalGuards", true, 'shock');
         UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "E", 4, 1, "loyalGuards", true, 'shock');

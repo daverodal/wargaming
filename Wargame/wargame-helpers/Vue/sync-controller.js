@@ -60,12 +60,13 @@ export class SyncController {
         let xyz = vueStore.getters.currentTable;
         const selectedTable = vueStore.state.crt.selectedTable;
         oddsDisp = "";
-        if(!combat.index) {
+        if(!Number.isInteger(combat.index)) {
             var html = "<div id='crtDetails'>No attackers selected</div>"
             return html;
 
         }
-        oddsDisp = vueStore.getters.currentTable.header[combat.index];
+        const crtHeader = vueStore.getters.currentTable.header;
+        oddsDisp = crtHeader[combat.index] || "< " + crtHeader[0];
         div = div.toFixed(2);
         var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + oddsDisp + "</div>"
         /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
@@ -693,8 +694,10 @@ export class SyncController {
                             }
                         }
                         var details = this.renderCrtDetails(combatRules.combats[cD]);
-                        let newLine = "<h5>odds = " + crtHeader[combatCol-1] + " </h5>" + details;
-
+                        const oddsCol = combatCol -1;
+                        let oddsDisplay = crtHeader[combatCol-1] || "< "+ crtHeader[0];
+                        let newLine = isNaN(oddsCol)? '' : "<h5>odds = " + oddsDisplay + " </h5>";
+                        newLine += details;
                         crt.details = newLine;
                     }
                     cdLine = "";

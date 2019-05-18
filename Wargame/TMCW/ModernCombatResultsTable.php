@@ -58,7 +58,7 @@ class ModernCombatResultsTable  extends \Wargame\CombatResultsTable
             array(EX2, EX2, DRL2, DRL2, DE, DE),
             array(EX2, DR2, EX2, EX2, DE, DE),
             array(AL, DR2, DR2, DR2, DRL2, DE),
-            array(AL, AL, DR2, DR2, EX, DE),
+            array(AL, AL, DR2, DR2, EX2, DE),
         );
 
         $this->combatIndexCount = 6;
