@@ -20,6 +20,10 @@
     "lodash": "^4.17.11"
   },
   "dependencies": {
+    "angular": "^1.7.8",
+    "angular-modal-service": "^0.15.2",
+    "angular-right-click": "^0.1.1",
+    "angular-sanitize": "^1.7.8",
     "font-awesome": "^4.7.0",
     "hoek": "^5.0.4",
     "jquery-ui-bundle": "^1.12.1",

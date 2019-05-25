@@ -452,6 +452,107 @@
                 "description": "New Map.",
                 "supply": true,
                 "newmap": true
+            },
+            "LessSovietNewMap": {
+                "nationalities": ["soviet", "prc"],
+                "description": "New Map. 2 less soviet artillery units.",
+                "supply": true,
+                "newmap": true,
+                "units":[
+                    {
+                        "num": 5,
+                        "unitSize": "xxx",
+                        "forceId": 1,
+                        "maxCombat": 9,
+                        "minCombat": 4,
+                        "movement": 6,
+                        "range": 1,
+                        "nationality": "soviet",
+                        "class": "mech",
+                        "reinforce": "B",
+                        "image": "Armor.svg"
+                    },
+                    {
+                        "num": 10,
+                        "unitSize": "xxx",
+                        "forceId": 1,
+                        "maxCombat": 6,
+                        "minCombat": 3,
+                        "movement": 6,
+                        "range": 1,
+                        "nationality": "soviet",
+                        "class": "mech",
+                        "reinforce": "B",
+                        "image": "MechInf.svg"
+                    },
+                    {
+                        "num": 15,
+                        "unitSize": "xxx",
+                        "forceId": 1,
+                        "maxCombat": 4,
+                        "minCombat": 2,
+                        "movement": 6,
+                        "range": 1,
+                        "nationality": "soviet",
+                        "class": "mech",
+                        "reinforce": "B",
+                        "image": "MoterizedInfantry.svg"
+                    },
+                    {
+                        "num": 2,
+                        "unitSize": "xxx",
+                        "forceId": 1,
+                        "maxCombat": 6,
+                        "minCombat": 3,
+                        "movement": 6,
+                        "range": 2,
+                        "nationality": "soviet",
+                        "class": "mech",
+                        "reinforce": "B",
+                        "image": "Artillery.svg"
+                    },
+                    {
+                        "num": 3,
+                        "unitSize": "",
+                        "forceId": 1,
+                        "maxCombat": 1,
+                        "minCombat": 1,
+                        "movement": 3,
+                        "range": 1,
+                        "nationality": "soviet",
+                        "class": "supply",
+                        "reinforce": "B",
+                        "image": "Supply.svg",
+                        "reduced": true
+                    },
+                    {
+                        "num": 30,
+                        "unitSize": "xxxx",
+                        "forceId": 2,
+                        "maxCombat": 3,
+                        "minCombat": 1,
+                        "movement": 3,
+                        "range": 1,
+                        "nationality": "prc",
+                        "class": "inf",
+                        "reinforce": "C",
+                        "image": "Infantry.svg"
+                    },
+                    {
+                        "num": 1,
+                        "unitSize": "xxxx",
+                        "forceId": 2,
+                        "maxCombat": 6,
+                        "minCombat": 3,
+                        "movement": 6,
+                        "range": 1,
+                        "nationality": "prc",
+                        "class": "mech",
+                        "reinforce": "C",
+                        "image": "Armor.svg"
+                    }
+                ]
+
             }
         }
     },

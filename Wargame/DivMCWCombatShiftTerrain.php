@@ -85,6 +85,7 @@ trait DivMCWCombatShiftTerrain
                 $isMountainInf = true;
             }
             if($unit->class == "ranger" && $isMountain){
+                $combatLog .= "+1 shift Ranger in Mountain<br>";
                 $isMountainInf = true;
             }
             if($unit->class == "shock"){
