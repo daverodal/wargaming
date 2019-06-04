@@ -44,7 +44,7 @@ You should have received a copy of the GNU General Public License
         <span class="lessBig">Special Units</span>
         <ol>
             <li><span class="lessBig">Morgan</span>
-                The <?= $forceName[2] ?> has a special unit, Morgan. This unit represents the sharp
+                The <?= $forceName[2] ?> player has a special unit, Morgan. This unit represents the sharp
                 shooter associated with Morgans troops. To this end, they have a range of two, and can
                 hit units 2 hexes away. The only restriction is they may NOT shoot over units friendly or enemy, Nor
                 may shoot along the hexside between two units. They MAY shoot along the hexside of just one unit.
