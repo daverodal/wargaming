@@ -65,7 +65,7 @@ You should have received a copy of the GNU General Public License
                 <span class="lessBig">Small units</span>
                 Several of the <?= $forceName[1] ?> are considered Small units and have an S on them between the two numbers
                 These units MAY stack with other units, they DO NOT contribute to a combat shift for artillery UNLESS there
-                are 3 attack strength point of artiller.
+                are 3 attack strength point of artillery.
             </li>
         </ol>
     </li>
