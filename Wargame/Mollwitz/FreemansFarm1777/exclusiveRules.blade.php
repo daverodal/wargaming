@@ -36,22 +36,37 @@ You should have received a copy of the GNU General Public License
             <li><?= $forceName[1] ?>: player moves first.</li>
             <li><?= $forceName[2] ?>: player moves second.
             </li>
-
+            <li> On turn one the <?= $forceName[1] ?> may not move.</li>
+            <li>The Hessian units deployed along the Hudson river may not move till turn 4.</li>
         </ol>
     </li>
-    <li><span class="lessBig">Combat</span>
+    <li>
+        <span class="lessBig">Special Units</span>
         <ol>
-            <li><?= $forceName[1] ?>: Units: Add 1 to their combat factor when defending in or attacking into clear
-                terrain.
+            <li><span class="lessBig">Morgan</span>
+                The <?= $forceName[2] ?> has a special unit, Morgan. This unit represents the sharp
+                shooter associated with Morgans troops. To this end, they have a range of two, and can
+                hit units 2 hexes away. The only restriction is they may NOT shoot over units friendly or enemy, Nor
+                may shoot along the hexside between two units. They MAY shoot along the hexside of just one unit.
             </li>
-            <li><?= $forceName[2] ?>: Units: Add 1 to their combat factor when defending in Hexes or all opponents are
-                attacking across (hex sides) other than clear.
-
+            <li> <span class="lessBig">Arnold</span>
+                The HQ units represents Arnold, arnold may stack with, attack with and defend with Another unit.
+                adding 3 to any attack.
             </li>
             <li>
-                Attacks across Fords: The Hessians were able to force the fords with little difficulty. Do not half
-                units attacking across the fords (Trail Bridges).
+                <span class="lessBig">
+                    Combat Bonus
+                </span>
+                If Morgan or Arnold participate in an attack there is a +1 shift for the attacker.
+                These cannot be combined for greater than +1 shift, but you may have two seperate attacks with
+                a +1 shift.
             </li>
-
+            <li>
+                <span class="lessBig">Small units</span>
+                Several of the <?= $forceName[1] ?> are considered Small units and have an S on them between the two numbers
+                These units MAY stack with other units, they DO NOT contribute to a combat shift for artillery UNLESS there
+                are 3 attack strength point of artiller.
+            </li>
         </ol>
     </li>
+
