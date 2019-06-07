@@ -79,11 +79,11 @@ class EastWest extends \Wargame\ModernLandBattle
 
         $i = 0;
         for($i = 0; $i < 4; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiArmor.png", 11, 8, 8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", "");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "Armor.svg", 11, 8, 8,STATUS_CAN_DEPLOY, "A", 1, "german", "mech", "");
 
         }
         for($i = 0; $i < 7; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiInf.png", 5, 7, 3,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "Infantry.svg", 5, 7, 3,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "");
 
         }
         for($i = 0; $i < 3; $i++){
@@ -91,98 +91,98 @@ class EastWest extends \Wargame\ModernLandBattle
 
         }
         for($i = 0; $i < 2; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiInf.png", 2, 4, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "R");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "Infantry.svg", 2, 4, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "inf", "R");
 
         }
         for($i = 0; $i < 2; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiInf.png", 2, 4, 2,STATUS_CAN_DEPLOY, "F", 1, "german", "inf", "F");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "Infantry.svg", 2, 4, 2,STATUS_CAN_DEPLOY, "F", 1, "german", "inf", "F");
 
         }
         for($i = 0; $i < 4; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "multiSupply.png", 0, 2, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "supply", "S");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "SupplyBox.svg", 0, 2, 2,STATUS_CAN_DEPLOY, "A", 1, "german", "supply", "S");
 
         }
 
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn2", "multiInf.png", 5, 7, 3,STATUS_CAN_REINFORCE, "G", 2, "german", "inf", "");
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn2", "Infantry.svg", 5, 7, 3,STATUS_CAN_REINFORCE, "G", 2, "german", "inf", "");
 
         }
 
         for($i = 2; $i <= 8; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "multiSupply.png",
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "SupplyBox.svg",
                 0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "$i S");
 
         }
 
         for($i = 0; $i < 11; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "Infantry.svg",
                 2, 4, 2,STATUS_CAN_DEPLOY, "B", 1, "soviet", "inf", "$i i");
 
         }
         for($i = 0; $i < 8; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "multiArmor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "Armor.svg",
                 2, 1, 5,STATUS_CAN_DEPLOY, "C", 1, "soviet", "mech", "$i a");
 
         }
 
         for($i = 0; $i < 4; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "multiSupply.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "SupplyBox.svg",
                 0, 1, 2,STATUS_CAN_DEPLOY, "C", 1, "soviet", "supply", "$i S");
 
         }
 
 
         for($i = 2; $i <= 8; $i += 2){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$i", "multiSupply.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$i", "SupplyBox.svg",
                 0, 1, 2,STATUS_CAN_REINFORCE, "E", $i, "soviet", "supply", "$i S");
 
         }
         for($i = 0; $i < 2; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2214 + $i, "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2214 + $i, "Infantry.svg",
                 2, 4, 2,STATUS_CAN_DEPLOY, "C", 1, "soviet", "inf", "$i i");
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2215, "multiArmor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2215, "Armor.svg",
                 2, 1, 5,STATUS_READY, "C", 1, "soviet", "mech", "$i a");
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2215, "multiMech.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2215, "MechInf.svg",
                 1, 2, 5,STATUS_READY, "C", 1, "soviet", "mech", "$i m");
 
         }
 
 
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 717, "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 717, "Infantry.svg",
                 2, 4, 2,STATUS_READY, "C", 1, "soviet", "inf", $i);
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 718, "multiArmor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 718, "Armor.svg",
                 2, 1, 5,STATUS_READY, "C", 1, "soviet", "mech", $i);
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 716, "multiMech.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 716, "MechInf.svg",
                 1, 2, 5,STATUS_READY, "C", 1, "soviet", "mech", $i);
 
         }
 
 
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2121, "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2121, "Infantry.svg",
                 2, 4, 2,STATUS_READY, "C", 1, "soviet", "inf", $i);
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2121, "multiArmor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2121, "Armor.svg",
                 2, 1, 5,STATUS_READY, "C", 1, "soviet", "mech", $i);
 
         }
         for($i = 0; $i < 1; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2122, "multiMech.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2122, "MechInf.svg",
                 1, 2, 5,STATUS_READY, "C", 1, "soviet", "mech", $i);
 
         }
@@ -190,64 +190,64 @@ class EastWest extends \Wargame\ModernLandBattle
 
         /* turn 2 */
         for($i = 0; $i < 6; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn2", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn2", "Infantry.svg",
                 2, 4, 2,STATUS_CAN_REINFORCE, "D", 2, "soviet", "inf", "$i i");
 
         }
         /* turn 3 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "Infantry.svg",
                 2, 4, 2, STATUS_CAN_REINFORCE, "D", 3, "soviet", "inf", "$i i");
         }
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "multiInf.png",
+        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "Infantry.svg",
             2, 4, 2, STATUS_CAN_REINFORCE, "E", 3, "soviet", "inf", "$i i");
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "multiArmor.png",
+        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "Armor.svg",
             2, 1, 5,STATUS_CAN_REINFORCE, "E", 3, "soviet", "mech", "$i a");
         
         /* turn 4 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn4", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn4", "Infantry.svg",
                 2, 4, 2, STATUS_CAN_REINFORCE, "D", 4, "soviet", "inf", "$i i");
         }
 
         /* turn 5 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn5", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn5", "Infantry.svg",
                 2, 4, 2, STATUS_CAN_REINFORCE, "D", 5, "soviet", "inf", "$i i");
         }
 
         /* turn 6 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "Infantry.svg",
                 2, 4, 2, STATUS_CAN_REINFORCE, "D", 6, "soviet", "inf", "$i i");
         }
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "Infantry.svg",
                 2, 4, 2, STATUS_CAN_REINFORCE, "E", 6, "soviet", "inf", "$i i");
         }
         for($i = 0; $i < 4; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "multiArmor.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "Armor.svg",
                 2, 1, 5, STATUS_CAN_REINFORCE, "E", 6, "soviet", "mech", "$i a");
         }
         /* turn 7 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn7", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn7", "Infantry.svg",
                 2, 4, 2, STATUS_CAN_REINFORCE, "D", 7, "soviet", "inf", "$i i");
         }
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn7", "multiArmor.png",
+        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn7", "Armor.svg",
             2, 1, 5,STATUS_CAN_REINFORCE, "E", 7, "soviet", "mech", "$i a");
 
         /* turn 8 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn8", "multiInf.png",
+            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn8", "Infantry.svg",
                 2, 4, 2, STATUS_CAN_REINFORCE, "D", 8, "soviet", "inf", "$i i");
         }
     }

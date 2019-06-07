@@ -68,7 +68,7 @@ mix.sass('Wargame/Vu/all.scss', 'css/wargame/vu.css');
 
 mix.js('Wargame/wargame.js', 'javascripts/wargame/wargame.js');
 // mix.js('Wargame/TMCW/RetreatOne/retreatOne.js', 'javascripts/wargame/retreatOne.js');
-mix.js('Wargame/TMCW/KievCorps/kievCorps.js', 'javascripts/wargame/kievCoprs.js');
+mix.js('Wargame/TMCW/KievCorps/kiev-corps.js', 'javascripts/wargame/kievCoprs.js');
 mix.js('Wargame/TMCW/Amph/amph.js', 'javascripts/wargame/amph.js');
 mix.js('Wargame/TMCW/Airborne/airborne.js', 'javascripts/wargame/airborne.js');
 mix.js('Wargame/Vu/vu.js', 'javascripts/wargame/vu.js');

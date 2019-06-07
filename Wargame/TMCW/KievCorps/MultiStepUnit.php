@@ -220,6 +220,8 @@ class MultiStepUnit extends \Wargame\MovableUnit  implements \JsonSerializable
         $mapUnit->hexagon = $this->hexagon->name;
         $mapUnit->image = $this->image;
         $mapUnit->unitDesig = $this->unitDesig;
+        $mapUnit->nationality = $this->nationality;
+        $mapUnit->name = $this->name;
         return $mapUnit;
     }
 

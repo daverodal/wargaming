@@ -20,182 +20,19 @@
  */
 @import "localColors";
 
-@include player(german, One, $germanColor);
-@include player(secondArmy, Four, $secondArmyColor);
-@include player(firstPanzerArmy, Five, $firstPanzerArmyColor);
-@include player(sixthArmy, Five, $sixthArmyColor);
-@include player(seventeenthArmy, Five, $seventeenthArmyColor, $germanColor, black);
-@include headerColor(Soviet, $sovietColor, $sovietColor);
-@include headerColor(German, $germanColor, $germanColor);
-
-@include player(soviet,Two,$sovietColor);
-
-#map {
-  width:auto;
+@import "../../wargame-helpers/Vue/scss/vue-unit";
+@import "../../wargame-helpers/Vue/scss/vue-mixins";
+#vue-crt .roll span, #vue-crt #odds span{
+  width: 39px;
 }
-
-#crtWrapper #crt {
-  width:800px;
-  #odds, .roll{
-    span{
-      font-size:14px;
-      width:52px;
-    }
+@include header(Soviet, $sovietColor);
+@include header(German, $germanColor);
+.unit .unit-numbers{
+  &.infoLen7{
+    letter-spacing: -.4px;
   }
-  .crt-table-name{
-    display:none;
-  }
-}
-
-.reduced {
-  color: white;
-}
-
-#infoWrapper .WrapperLabel {
-  width: auto;
-}
-
-#gameTurn6 .unit {
-  float: left;
-}
-
-.specialHexesVP .rebelVictoryPoints {
-  @include victoryPoints(orange)
-}
-
-.specialHexes {
-  border: 3px solid white;
-  border-radius: 11px;
-  padding: 3px;
-  color: white;
-}
-
-#deadpile{
-  .retired-unit-wrapper{
-    position:static;
-    float:left;
-    margin:0 3px 3px 0;
-    .unit{
-      position:relative;
-    }
-  }
-}
-.specialHexesVP .germanVictoryPoints {
- @include victoryPoints(gray);
-}
-
-.specialHexesVP .sovietVictoryPoints {
-  @include victoryPoints(brown);
-}
-/* RULES OVERRIDES */
-.german .unit-desig{
-  color:black;
-}
-.gameLength{
-  color:transparent;
-  font-size:0px;
-  &::before{
-    content:"11";
-    color:rgb(51,51,51);
-    color:$darkBlack;
-    font-size:$stdFont;
-  }
-}
-
-.player-one-replacements{
-  color:transparent;
-  font-size:0px;
-  &::before{
-    content:"1";
-    color:rgb(51,51,51);
-    color:$darkBlack;
-    font-size:$stdFont;
-  }
-}
-
-.player-two-replacements{
-  color:transparent;
-  font-size:0px;
-  &::before{
-    content:"6";
-    color:rgb(51,51,51);
-    color:$darkBlack;
-    font-size:$stdFont;
-  }
-}
-.unit {
-  &.ghost-unit{
-    z-index:30;
-  }
-  .steps {
-    position: absolute;
+  &.infoLen8{
     font-size: 10px;
-    left: 2px;
-    .step {
-      background: #333;
-      border: 1px solid #333;
-      border-radius: 100%;
-      width: 1px;
-      height: 1px;
-      margin-top: 3px;
-      &.white {
-        background: white;
-        border-color: white;
-      }
-    }
-  }
-  .integrity{
-    position: absolute;
-    right:  0px;
-    top:  0px;
-    color: white;
-    font-size: 9px;
-    i{
-      background:black;
-    }
-  }
-  &.art{
-    .counter{
-      display:block;
-      margin-top: 0px;
-      width: 20px;
-      margin-left: 6px;
-    }
-  }
-}
-.white-color{
-  color:white;
-}
-.unit{
-  .unit-numbers{
-    &.infoLen7{
-      letter-spacing:-1px;
-    }
-  }
-}
-#deployWrapper{
-}
-#crtDetails {
-  display:block !important;
-}
-#gameImages .a-unit-wrapper{
-  position: absolute;
-}
-#deployBox{
-  .a-unit-wrapper{
-    position:relative;
-    float:left;
-    margin:3px 3px 0 0;
-  }
-}
-.rel-unit{
-  position:relative;
-}
-
-
-#deployBox{
-  .unit {
-    border: solid 3px;
-    border-color: #cccccc #666666 #666666 #cccccc;
+    letter-spacing: -.6px;
   }
 }

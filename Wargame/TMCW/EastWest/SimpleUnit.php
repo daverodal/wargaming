@@ -212,6 +212,9 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $mapUnit->hexagon = $this->hexagon->name;
         $mapUnit->unitDesig = $this->unitDesig;
         $mapUnit->supplyUsed = $this->supplyUsed;
+        $mapUnit->nationality = $this->nationality;
+        $mapUnit->image = $this->image;
+        $mapUnit->name = $this->name;
         if ($this->supplyRadius !== false) {
             $mapUnit->supplyRadius = $this->supplyRadius;
         }

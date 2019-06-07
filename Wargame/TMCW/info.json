@@ -1,19 +1,4 @@
 {
-    "ClashOverCrude": {
-        "name": "Clash Over Crude",
-        "path": "TMCW",
-        "genre": "SPI Clones",
-        "fileName": "\\Wargame\\TMCW\\ClashOverCrude\\ClashOverCrude",
-        "description": "Attack from above.",
-        "options":[
-        ],
-        "scenarios": {
-            "main": {
-                "description": "Standard",
-                "longDescription":"Standard scenario, balanced for both sides."
-            }
-        }
-    },
     "MartianCivilWar": {
         "name": "The Martian Civil War",
         "path": "TMCW",
@@ -55,7 +40,6 @@
             }
         }
     },
-
     "Amph": {
         "name": "Sur La Mer",
         "path": "TMCW",
@@ -120,6 +104,7 @@
         }
     },
     "Moskow": {
+        "disabled": true,
         "name": "Moskow...",
         "path": "TMCW",
         "genre": "20'th Century Games",
@@ -207,6 +192,7 @@
         }
     },
     "EastWest": {
+        "disabled": false,
         "production": false,
         "name": "East vs West",
         "path": "TMCW",
@@ -230,6 +216,7 @@
         }
     },
     "Collapse": {
+        "disabled": true,
         "production": false,
         "name": "Collapse in the east",
         "path": "TMCW",
@@ -253,6 +240,7 @@
         }
     },
     "NorthVsSouth": {
+        "disabled": true,
         "production": false,
         "name": "The North Shall Rise Again",
         "path": "TMCW",
@@ -275,7 +263,6 @@
             }
         }
     },
-
     "Chawinda1965": {
         "production": false,
         "name": "Chawinda 1965",
@@ -335,7 +322,6 @@
             }
         }
     },
-
     "Manchuria1976": {
         "name": "Manchuria 1976",
         "path": "TMCW",

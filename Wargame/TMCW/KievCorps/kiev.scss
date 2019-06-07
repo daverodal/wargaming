@@ -25,22 +25,28 @@
 @include player(firstPanzerArmy, Five, $firstPanzerArmyColor);
 @include player(sixthArmy, Five, $sixthArmyColor);
 @include player(seventeenthArmy, Five, $seventeenthArmyColor, $germanColor, black);
-@include headerColor(Soviet, $sovietColor, $sovietColor);
-@include headerColor(German, $germanColor, $germanColor);
-
-
-@include player(soviet,Two,$sovietColor);
-
+@include header(Soviet, $sovietColor);
+@include header(German, $germanColor);
+@include unitColor(first-panzer-army, $firstPanzerArmyColor);
+@include unitColor(soviet, $sovietColor);
+//@include unitColor(rebel, $rebelColor);
+//@include unitColor(loyalist,$loyalistColor);
+//@include unitColor(loyalGuards, $loyalistGuardColor);
 #map {
   width:auto;
 }
-#crtWrapper {
-  #crt {
+.vue-wrapper {
+  #vue-crt {
     width: 800px;
+      .roll , #odds {
+        span{
+          width: 50px;
+        }
+      }
     #odds, .roll {
       span {
         font-size: 14px;
-        width: 52px;
+        width: 50px;
       }
     }
     .crt-table-name {
@@ -93,7 +99,6 @@
     content:"11";
     color:rgb(51,51,51);
     color:$darkBlack;
-    font-size:$stdFont;
   }
 }
 
@@ -104,7 +109,6 @@
     content:"1";
     color:rgb(51,51,51);
     color:$darkBlack;
-    font-size:$stdFont;
   }
 }
 
@@ -115,7 +119,6 @@
     content:"6";
     color:rgb(51,51,51);
     color:$darkBlack;
-    font-size:$stdFont;
   }
 }
 .unit {
@@ -130,9 +133,12 @@
       background: #333;
       border: 1px solid #333;
       border-radius: 100%;
-      width: 1px;
-      height: 1px;
+      width: 3px;
+      height: 3px;
       margin-top: 3px;
+      &.empty{
+        background: transparent;
+      }
       &.white {
         background: white;
         border-color: white;

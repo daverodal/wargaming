@@ -591,7 +591,7 @@
                             </p>
                         </li>
                         <li>
-                            <span class="lessBig">Retreat Before Combat</span> To simmulate retreat before combat, when
+                            <span class="lessBig">Retreat Before Combat</span> To simulate retreat before combat, when
                             only non cavalry units are attacking only
                             cavalry units
                             the cavalry can do a "retreat before combat" this is reflected in the 'cavalry combat

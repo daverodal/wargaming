@@ -290,12 +290,12 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 
         }else{
             /* German goal is west Edge */
-            for($i = 1; $i <= 20;$i++){
+            for($i = 1; $i <= 15;$i++){
                 $germanGoal[] = 100 + $i;
             }
             /* Soviet goal is west Edge */
-            for($i = 1; $i <= 20    ;$i++){
-                $sovietGoal[] = 2100 + $i;
+            for($i = 1; $i <= 15    ;$i++){
+                $sovietGoal[] = 1700 + $i;
             }
         }
 

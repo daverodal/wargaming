@@ -1,0 +1,84 @@
+#vue-crt{
+  width: 600px;
+  font-size: 16px;
+
+  z-index: 40;
+  border-radius: 15px;
+  border-width: 10px;
+  border-style: solid;
+  background: #fff;
+  color: black;
+  font-weight: bold;
+  padding: 1px 5px 10px 15px;
+  box-shadow: 10px 10px 10px rgba(30, 30, 30, .85);
+
+
+  .next-table-button{
+    margin-top: 20px;
+    margin-right: 10px;
+    float:right;
+    font-size: 12px;
+  }
+
+
+  .roll , #odds {
+    span{
+      display: inline-block;
+      margin-right: 10px;
+      width: 28px;
+    }
+  }
+
+
+
+  .tableWrapper {
+    display: none;
+  }
+
+  .crt-table-name {
+    color: #aaa;
+    font-style: italic;
+    margin-top: -15px;
+    font-size: 13px;
+  }
+
+  #crt-buttons {
+    cursor: pointer;
+
+    .switch-crt {
+      position: absolute;
+      right: 19px;
+      top: 3px;
+    }
+
+  }
+  .crt-odds {
+    font-size: 16px;
+  }
+
+
+
+  h3 {
+    vertical-align: bottom;
+  }
+
+  span {
+    width: 32px;
+  }
+
+  .roll, #odds {
+    padding-top: 3px;
+    margin-right: 14px
+  }
+
+  #odds {
+    background: white;
+  }
+
+  .roll-highlighted{
+    background-color:cyan;
+  }
+  .pin-highlighted{
+    background:#ff00ff;
+  }
+}

@@ -273,7 +273,6 @@ trait CRTResults
                         $attUnit->retreatCountRequired = $distance;
                         break;
 
-                    case DRL2:
                     case DR2:
                     case DLR:
                     case DRL:

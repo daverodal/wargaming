@@ -11,8 +11,11 @@
   .header-#{$player}{
     background: $color;
   }
-  #header.header-#{$player} , #vue-crt.header-#{$player}{
+  #header.header-#{$player} {
     background: $color;
+    border-color: $color !important;
+  }
+  #vue-crt.header-#{$player}{
     border-color: $color !important;
   }
   .special-hex.#{$player}{

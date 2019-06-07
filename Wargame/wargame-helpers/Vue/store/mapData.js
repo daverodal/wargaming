@@ -20,8 +20,10 @@ export const mapData = {
     },
     mutations:{
         showPath(state, unit){
+            console.log("Show me the path");
             // hovered unit is decorated via css
             _.forEach(unit.pathToHere,(path)=>{
+                console.log("Pa "+ path);
                 let pathUnit = state.moveMap[path]
                 if(pathUnit){
                     pathUnit.opac = 1
@@ -47,8 +49,17 @@ export const mapData = {
             state.moveMap[payload.hex] = payload.unit;
         },
         clearUnitsMaps(state){
-            state.unitsMap = {}
-            state.hexesMap = {}
+            // state.unitsMap = {}
+            // state.hexesMap = {}
+        },
+        clearUnitMap({unitsMap, hexesMap}, id){
+            if(unitsMap[id]){
+                if(hexesMap[unitsMap[id]]){
+                    debugger;
+                    hexesMap[unitsMap[id]] = hexesMap[unitsMap[id]].filter(element => element != id);
+                }
+                delete unitsMap[id];
+            }
         },
         unitHexMapper({unitsMap, hexesMap}, {i, unit}){
             if (unitsMap[i] === undefined) {
@@ -56,7 +67,9 @@ export const mapData = {
                 if (hexesMap[unit.hexagon] === undefined) {
                     hexesMap[unit.hexagon] = [];
                 }
-                hexesMap[unit.hexagon].push(i);
+                if(!hexesMap[unit.hexagon].includes(i)){
+                    hexesMap[unit.hexagon].push(i);
+                }
             } else {
 
                 if (unitsMap[i] !== unit.hexagon) {

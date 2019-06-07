@@ -393,6 +393,7 @@ export class SyncController {
                     let slot = mapUnits[i].parent.replace(/-/,"");
 
                     this.unitDecorate(mapUnits[i], data);
+                    vueStore.commit('mD/clearUnitMap', i - 0)
                     vueStore.commit('bd/putUnit', {slot: slot, unit: mapUnits[i]})
 
                     // if(!Array.isArray(clickThrough.allBoxes[slot])){
@@ -643,6 +644,7 @@ export class SyncController {
             vueStore.commit('headerData/setTurn', turn);
             vueStore.commit('headerData/setMaxTurn', maxTurn);
             vueStore.commit('headerData/log',log);
+            debugger;
             vueStore.commit('headerData/topStatus', html);
             vueStore.commit('headerData/status', status);
         });
