@@ -7,29 +7,39 @@ export const headerData = {
         topStatus: '',
         log: '',
         turn: false,
-        maxTurn: false
+        maxTurn: false,
+        dynamicButtons:{
+            move: false,
+            showHexes: false,
+            determined: false,
+            shiftKey: false
+        }
+
     },
-    mutations:{
-        victory(state, p){
+    mutations: {
+        victory(state, p) {
             state.victory = p;
         },
-        status(state, p){
+        status(state, p) {
             state.status = p;
         },
-        combatStatus(state, p){
-          state.combatStatus = p;
+        combatStatus(state, p) {
+            state.combatStatus = p;
         },
-        topStatus(state,p){
+        topStatus(state, p) {
             state.topStatus = p;
         },
-        log(state, p){
+        log(state, p) {
             state.log = p;
         },
-        setTurn(state, turn){
+        setTurn(state, turn) {
             state.turn = turn;
         },
-        setMaxTurn(state, maxTurn){
+        setMaxTurn(state, maxTurn) {
             state.maxTurn = maxTurn;
+        },
+        setDynamicButton(state, {id: id, value: value}) {
+            state.dynamicButtons[id] = value;
         }
     }
 }

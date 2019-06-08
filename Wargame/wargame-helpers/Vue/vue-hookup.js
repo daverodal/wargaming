@@ -156,6 +156,9 @@ document.addEventListener("DOMContentLoaded",function(){
             },
             allMyBoxes(){
                 return this.$store.getters['bd/allBoxes'];
+            },
+            dynamic(){
+                return this.$store.state.headerData.dynamicButtons;
             }
         },
         data:{
@@ -174,10 +177,6 @@ document.addEventListener("DOMContentLoaded",function(){
             crtClass: 'normalCrt',
             crtOptions: {},
             dynamicButtons:{
-                move: false,
-                showHexes: false,
-                determined: false,
-                shiftKey: false
             },
             show:{
                 units:{

@@ -521,23 +521,21 @@ export class SyncController {
                 $("#options-pane").hide();
             }
             if (gameRules.mode ===  MOVING_MODE) {
-                clickThrough.dynamicButtons.move = true;
+                vueStore.commit('headerData/setDynamicButton', {id: 'move', value: true})
             }else{
-                clickThrough.dynamicButtons.move = false;
+                vueStore.commit('headerData/setDynamicButton', {id: 'move', value: false})
             }
-
             if(DR.hasHq){
-                clickThrough.dynamicButtons.showHexes = true;
+                vueStore.commit('headerData/setDynamicButton', {id: 'showHexes', value: true})
             }else{
-                clickThrough.dynamicButtons.showHexes = false;
-
+                vueStore.commit('headerData/setDynamicButton', {id: 'showHexes', value: false})
             }
             if (gameRules.mode ===  COMBAT_SETUP_MODE) {
-                clickThrough.dynamicButtons.determined = true;
-                clickThrough.dynamicButtons.combat = true;
+                vueStore.commit('headerData/setDynamicButton', {id: 'determined', value: true})
+                vueStore.commit('headerData/setDynamicButton', {id: 'combat', value: true})
             }else{
-                clickThrough.dynamicButtons.determined = false;
-                clickThrough.dynamicButtons.combat = false;
+                vueStore.commit('headerData/setDynamicButton', {id: 'determined', value: false})
+                vueStore.commit('headerData/setDynamicButton', {id: 'combat', value: false})
             }
 
             var status = "";
