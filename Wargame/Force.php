@@ -888,6 +888,7 @@ class Force extends SimpleForce
     {
         $areAdvancing = false;
         $b = Battle::getBattle();
+        $this->groomRetreatList();
         /*
          * Todo should not assign to status, should set status
          */
