@@ -564,6 +564,7 @@ export class SyncController {
             removeThese += " " + alsoRemoveThese;
 
             var html = "<span id='turn'>Turn " + turn + " of " + maxTurn + "</span> ";
+            debugger;
             var phase = phase_name[gameRules.phase];
             phase = phase.replace(/fNameOne/, DR.playerOne);
             phase = phase.replace(/playerOneFace/, "player" + DR.playerOne.replace(/ /g, '-') + "Face");
@@ -575,8 +576,8 @@ export class SyncController {
             phase = phase.replace(/fNameThree/, DR.playerThree);
             phase = phase.replace(/fNameFour/, DR.playerFour);
             html += "<span id='phase'>" + phase;
-            if (gameRules.mode_name[gameRules.mode]) {
-                html += " " + gameRules.mode_name[gameRules.mode];
+            if (mode_name[gameRules.mode]) {
+                html += " " + mode_name[gameRules.mode];
             }
             html += "</span>";
 

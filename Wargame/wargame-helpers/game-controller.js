@@ -1192,7 +1192,7 @@ export class GameController {
             $("#revolt-table").removeClass(removeThese).addClass(playerName);
 
             var html = "";
-            var phase = gameRules.phase_name[gameRules.phase];
+            var phase = phase_name[gameRules.phase];
             var strippedPhase = phase.replace(/<span.*\/span> */,'');
             this.$scope.phase = strippedPhase;
             this.$scope.mode = "";
@@ -1208,9 +1208,9 @@ export class GameController {
             phase = phase.replace(/fNameThree/, DR.playerThree);
             phase = phase.replace(/fNameFour/, DR.playerFour);
             html += phase;
-            if (gameRules.mode_name[gameRules.mode]) {
-                html += " " + gameRules.mode_name[gameRules.mode];
-                this.$scope.mode = gameRules.mode_name[gameRules.mode];
+            if (mode_name[gameRules.mode]) {
+                html += " " + mode_name[gameRules.mode];
+                this.$scope.mode = mode_name[gameRules.mode];
             }
 
             switch (gameRules.phase) {
