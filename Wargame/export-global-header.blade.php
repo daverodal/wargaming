@@ -22,7 +22,7 @@ You should have received a copy of the GNU General Public License
     <?php
     $oClass = new ReflectionClass('Wargame\Cnst');
     $constants = $oClass->getConstants();
-    global $results_name;
+    global $results_name, $phase_name;
     ?>
     <script>
 
@@ -34,6 +34,7 @@ You should have received a copy of the GNU General Public License
 @endif
 
         const resultsNames = JSON.parse('<?=json_encode($results_name)?>');
+        const phase_names = JSON.parse('<?=json_encode($phase_name)?>');
         const addUrl = "<?=url("wargame/add/");?>";
         const pokeUrl = "<?=url("wargame/poke/");?>";
         const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";

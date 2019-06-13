@@ -167,7 +167,7 @@ class LandBattle extends \Wargame\Battle{
         }
         $force->units = [];
         $gameRules = $wargame->gameRules;
-        $gameRules->phase_name = $phase_name;
+//        $gameRules->phase_name = $phase_name;
         $gameRules->mode_name = $mode_name;
         if(isset($force->exchangeAmount)){
             $gameRules->exchangeAmount = $force->exchangeAmount;

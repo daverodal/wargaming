@@ -88,6 +88,7 @@ define("RED_FIRE_COMBAT_PHASE_TWO", 47);
 define("BLUE_FIRE_COMBAT_PHASE_TWO", 48);
 
 $phase_name = array();
+$phase_name[0] = "";
 $phase_name[1] = "<span class='playerOneFace'>fNameOne</span> Move";
 $phase_name[2] = "<span class='playerOneFace'>fNameOne</span>";
 $phase_name[3] = "<span class='playerOneFace'>fNameOne</span> Off Fire";
