@@ -150,4 +150,7 @@
             letter-spacing: -.6px;
         }
     }
+    .ghost{
+        opacity: 0;
+    }
 </style>
