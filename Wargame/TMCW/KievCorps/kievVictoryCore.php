@@ -289,9 +289,15 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 
 
         }else{
-            /* German goal is west Edge */
+            /* German goal is west Edge north and south edge cols 1-12 */
             for($i = 1; $i <= 15;$i++){
                 $germanGoal[] = 100 + $i;
+            }
+            for($i = 1; $i <= 12;$i++){
+                $germanGoal[] = 15 + $i * 100;
+            }
+            for($i = 1; $i <= 12    ;$i++){
+                $germanGoal[] = 1 + $i * 100;
             }
             /* Soviet goal is west Edge */
             for($i = 1; $i <= 15    ;$i++){
@@ -318,6 +324,13 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         $unit = $args[0];
 
         $b = Battle::getBattle();
+
+        if($unit->nationality === "first-panzer-army"){
+            if($b->gameRules->turn < 3){
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                return;
+            }
+        }
         $id = $unit->id;
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
