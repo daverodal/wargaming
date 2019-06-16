@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="18px" viewBox="0 0 32 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Truck</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Truck" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-7-Copy" transform="translate(2.000000, 3.000000)">
+            <path d="M23,1.5 L26.4112285,1.5" id="Line" stroke="#000000" stroke-linecap="square"></path>
+            <path d="M26.4112285,1.5 L26.4112285,4.5" id="Line-2" stroke="#040404" stroke-linecap="square"></path>
+            <rect id="Combined-Shape" stroke="#000000" fill="#000000" fill-rule="nonzero" x="0.5" y="0.5" width="22" height="9"></rect>
+            <rect id="Rectangle" stroke="#000000" fill="#000000" fill-rule="nonzero" x="21.5" y="4.5" width="6" height="5"></rect>
+            <ellipse id="Oval" stroke="#000000" fill="#000000" fill-rule="nonzero" cx="3.66394757" cy="9.74446116" rx="1.66394757" ry="1.74446116"></ellipse>
+            <ellipse id="Oval-Copy" stroke="#000000" fill="#000000" fill-rule="nonzero" cx="8.66394757" cy="9.74446116" rx="1.66394757" ry="1.74446116"></ellipse>
+            <ellipse id="Oval-Copy-4" stroke="#000000" fill="#000000" fill-rule="nonzero" cx="24.7472809" cy="10.0148866" rx="1.66394757" ry="1.74446116"></ellipse>
+        </g>
+    </g>
+</svg>
