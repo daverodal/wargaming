@@ -564,7 +564,6 @@ export class SyncController {
             removeThese += " " + alsoRemoveThese;
 
             var html = "<span id='turn'>Turn " + turn + " of " + maxTurn + "</span> ";
-            debugger;
             var phase = phase_name[gameRules.phase];
             phase = phase.replace(/fNameOne/, DR.playerOne);
             phase = phase.replace(/playerOneFace/, "player" + DR.playerOne.replace(/ /g, '-') + "Face");
@@ -643,7 +642,6 @@ export class SyncController {
             vueStore.commit('headerData/setTurn', turn);
             vueStore.commit('headerData/setMaxTurn', maxTurn);
             vueStore.commit('headerData/log',log);
-            debugger;
             vueStore.commit('headerData/topStatus', html);
             vueStore.commit('headerData/status', status);
         });

@@ -55,7 +55,6 @@ export const mapData = {
         clearUnitMap({unitsMap, hexesMap}, id){
             if(unitsMap[id]){
                 if(hexesMap[unitsMap[id]]){
-                    debugger;
                     hexesMap[unitsMap[id]] = hexesMap[unitsMap[id]].filter(element => element != id);
                 }
                 delete unitsMap[id];

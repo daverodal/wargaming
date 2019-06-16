@@ -146,7 +146,6 @@ export class KievCorpsSyncController extends SyncController{
             vueStore.commit('headerData/setTurn', turn);
             vueStore.commit('headerData/setMaxTurn', maxTurn);
             vueStore.commit('headerData/log',log);
-            debugger;
             vueStore.commit('headerData/topStatus', html);
             vueStore.commit('headerData/status', status);
         });

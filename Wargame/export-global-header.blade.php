@@ -34,14 +34,11 @@ You should have received a copy of the GNU General Public License
 @endif
 
         const resultsNames = JSON.parse('<?=json_encode($results_name)?>');
-        debugger;
         const mode_name = JSON.parse('<?=json_encode($mode_name)?>');
-        debugger;
         const phase_name = []
             <?php foreach($phase_name as $k => $v){
                 echo "phase_name[$k] = \"$v\";\n";
             }?>
-        debugger;
         const addUrl = "<?=url("wargame/add/");?>";
         const pokeUrl = "<?=url("wargame/poke/");?>";
         const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
