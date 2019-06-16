@@ -3,6 +3,7 @@
         "name": "The Martian Civil War",
         "path": "TMCW",
         "genre": "20'th Century Games",
+        "production": false,
         "fileName": "\\Wargame\\TMCW\\MartianCivilWar\\MartianCivilWar",
         "description":"Rebels strike from the northwest, trying to capture or isolate cuneiform.",
         "params":{
@@ -44,6 +45,7 @@
         "name": "Sur La Mer",
         "path": "TMCW",
         "genre": "20'th Century Games",
+        "production": false,
         "fileName": "\\Wargame\\TMCW\\Amph\\Amph.php",
         "description": "Hypothetical amphibious invasion. The goal is the castle town, Chateau Sur Mer.",
         "options":[
@@ -90,6 +92,7 @@
         "name": "Uit de Hemel",
         "path": "TMCW",
         "genre": "20'th Century Games",
+        "production": false,
         "fileName": "\\Wargame\\TMCW\\Airborne\\Airborne",
         "description": "Airborne Assault Game",
         "scenarios": {
@@ -105,6 +108,7 @@
     },
     "Moskow": {
         "disabled": true,
+        "production": false,
         "name": "Moskow...",
         "path": "TMCW",
         "genre": "20'th Century Games",
@@ -156,6 +160,7 @@
         "name": "Kiev...",
         "path": "TMCW",
         "genre": "20'th Century Games",
+        "production": false,
         "fileName": "\\Wargame\\TMCW\\Kiev\\Kiev",
         "scenarios": {
             "Main": {
@@ -301,6 +306,7 @@
         }
     },
     "RetreatOne": {
+        "production": false,
         "name": "Retreat One",
         "path": "TMCW",
         "genre": "20'th Century Games",
@@ -323,6 +329,7 @@
         }
     },
     "Manchuria1976": {
+        "production": true,
         "name": "Manchuria 1976",
         "path": "TMCW",
         "genre": "20'th Century Games",
@@ -427,21 +434,10 @@
 
         },
         "scenarios": {
-            "standard": {
-                "nationalities": ["soviet", "prc"],
-                "description": "Standard scenario.",
-                "supply": true,
-                "newmap": false
-            },
-            "NewMap": {
-                "nationalities": ["soviet", "prc"],
-                "description": "New Map.",
-                "supply": true,
-                "newmap": true
-            },
+
             "LessSovietNewMap": {
                 "nationalities": ["soviet", "prc"],
-                "description": "New Map. 2 less soviet artillery units.",
+                "description": "Balanced Scenario, best chance for PRC to win.",
                 "supply": true,
                 "newmap": true,
                 "units":[
@@ -539,11 +535,18 @@
                     }
                 ]
 
+            },
+            "NewMap": {
+                "nationalities": ["soviet", "prc"],
+                "description": "Favors Soviet player, harder for PRC to win.",
+                "supply": true,
+                "newmap": true
             }
         }
     },
     "Nomonhan": {
         "disabled": false,
+        "production": false,
         "name": "The Nomonhan Incident",
         "path": "TMCW",
         "fileName": "\\Wargame\\TMCW\\Nomonhan\\Nomonhan",
