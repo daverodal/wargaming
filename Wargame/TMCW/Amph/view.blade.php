@@ -5,7 +5,9 @@
 
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/amph.css')}}">
 </head>
-
+@section('unitRules')
+@include ("wargame::TMCW.amph.commonUnitsRules")
+@endsection
 @section('tec')
     @include("wargame::TMCW.Amph.tec")
 @endsection

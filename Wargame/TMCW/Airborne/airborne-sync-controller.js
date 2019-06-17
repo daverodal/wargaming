@@ -1,59 +1,7 @@
-/**
- * Created by david on 10/14/17.
- */
-/**
- * Created by PhpStorm.
- * User: david
- * Date: 10/14/17
- * Time: 1:46 PM
-
- /*
- * Copyright 2012-2017 David Rodal
-
- * This program is free software; you can redistribute it
- * and/or modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation;
- * either version 2 of the License, or (at your option) any later version
-
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
-
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-import Vue from "vue";
-
-import FlashHexagon from '../../wargame-helpers/Vue/FlashHexagon';
-import VueDraggableResizable from 'vue-draggable-resizable'
-import FloatMessage from '../../wargame-helpers/Vue/FloatMessage';
-import FlashMessages from '../../wargame-helpers/Vue/FlashMessages';
-import VueCrt    from '../../wargame-helpers/Vue/VueCrt';
-import UnitComponent from './UnitComponent';
-import UnitsComponent from '../../wargame-helpers/Vue/ExpUnitsComponent'
-import Undo from '../../wargame-helpers/Vue/Undo';
-import MapSymbol from '../../wargame-helpers/Vue/MapSymbol';
-import SpecialHex from '../../wargame-helpers/Vue/SpecialHex';
-import SpecialEvent from '../../wargame-helpers/Vue/SpecialEvent';
-import OBCComponent from './OBCComponent';
-Vue.component('flash-messages', FlashMessages);
-Vue.component('flash-hexagon', FlashHexagon);
-Vue.component('vue-crt', VueCrt);
-Vue.component('undo', Undo);
-Vue.component('float-message', FloatMessage);
-Vue.component('vue-draggable-resizable', VueDraggableResizable)
-
-Vue.component('unit-component', UnitComponent);
-Vue.component('units-component', UnitsComponent);
-Vue.component('special-hex', SpecialHex);
-Vue.component('map-symbol', MapSymbol);
-Vue.component('obc-component', OBCComponent);
-
-Vue.component('special-event', SpecialEvent);
 import {SyncController} from "../../wargame-helpers/Vue/sync-controller";
 import {syncObj} from "../../wargame-helpers/Vue/syncObj";
 import {DR} from "../../wargame-helpers/DR";
+import Vue from "vue";
 export class AirborneSyncController extends SyncController{
 
     constructor(){
@@ -62,8 +10,7 @@ export class AirborneSyncController extends SyncController{
 
 
     specialHexes(){
-        debugger;
-        syncObj.register("specialHexes", function(specialHexes, data) {
+        this.sync.register("specialHexes", function(specialHexes, data) {
             $('.specialHexes').remove();
             var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
             for(var i in specialHexes){
@@ -127,7 +74,3 @@ export class AirborneSyncController extends SyncController{
     }
 
 }
-
-
-const syncController = new AirborneSyncController();
-import '../../wargame-helpers/Vue/vue-hookup';
