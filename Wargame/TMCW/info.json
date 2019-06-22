@@ -58,7 +58,7 @@
                 "loyalExtraInf": true,
                 "supplyLen": 12,
                 "hardCuneiform": true,
-                "longDescription":"Standard scenario, balanced for both sides."
+                "longDescription":"Standard scenario, balanced for both sides. Garrison Forces have a strength of 5"
             },
             "Weaker": {
                 "description": "Weaker Loyalists",
@@ -68,7 +68,7 @@
                 "supplyLen": 12,
                 "hardCuneiform": true,
                 "weakerLoyalist": true,
-                "longDescription":"Weaker Loyalists, best for a weaker player to play rebels here."
+                "longDescription":"Weaker Loyalists, best for a weaker player to play rebels here.  Garrison Forces have a strength of 4"
             },
             "Stronger": {
                 "description": "Stronger Loyalists",
@@ -78,7 +78,7 @@
                 "supplyLen": 12,
                 "hardCuneiform": true,
                 "strongerLoyalist": true,
-                "longDescription":"Stronger Loyalists, best for a weaker player to play loyalists here. Extra road for loyalists"
+                "longDescription":"Stronger Loyalists, best for a weaker player to play loyalists here.  Garrison Forces have a strength of 6. In addition, a vital road is added to aid in troop movements of the loyalists"
 
             }
         }
