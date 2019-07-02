@@ -465,6 +465,9 @@ export function seeBoth() {
     $(".unit").css("opacity", .3);
 }
 export function showSurrender(){
+    DR.globalZoom = 1.0;
+    $("#zoom .defaultZoom").html(DR.globalZoom.toFixed(1));
+    DR.$panzoom.panzoom('reset');
     $("#surrender").toggle();
 }
 export function surrender(){

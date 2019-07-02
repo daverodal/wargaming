@@ -322,9 +322,14 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         if ($b->gameRules->mode == REPLACING_MODE) {
             if ($unit->status == STATUS_CAN_UPGRADE) {
                 if($unit->class === 'militia'){
-                    $unit->status = STATUS_STOPPED;
+                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
                 }
             }
+        }
+        if ($b->gameRules->mode == MOVING_MODE) {
+                if($unit->class === 'militia'){
+                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                }
         }
         $goal = $this->sovietGoal;
         if (!empty($b->scenario->supply) === true) {

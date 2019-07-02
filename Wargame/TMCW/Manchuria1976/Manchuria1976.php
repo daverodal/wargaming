@@ -118,7 +118,7 @@ class Manchuria1976 extends \Wargame\ModernLandBattle
 
 
         foreach($cities as $city){
-            UnitFactory::create("Militia", self::PRC_FORCE, $city, "Militia.svg", 1, 1, 0, true, STATUS_CAN_DEPLOY, "C", 1, 1, "prc", true, "militia");
+            UnitFactory::create("Militia", self::PRC_FORCE, $city, "Militia.svg", 1, 1, 0, true, STATUS_UNAVAIL_THIS_PHASE, "C", 1, 1, "prc", true, "militia");
 
         }
         for($i = 2; $i <= 12;$i++){
