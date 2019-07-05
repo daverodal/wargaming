@@ -343,7 +343,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
                 $bias = array(2 => true, 3 => true);
                 $goal = $this->sovietGoal;
             }
-            $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
+//            $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
         }
         $this->checkSurrounded();
         if($this->dismissed){

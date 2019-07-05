@@ -135,14 +135,14 @@ class KievCorps extends \Wargame\ModernLandBattle
             $i = 0;
 
             /* First panzer army */
-             UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i++], "Armor.svg", 6, 8, STATUS_UNAVAIL_THIS_PHASE, "B", 1, "first-panzer-army", "mech", "9", 2, 2);
+             UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i], "Armor.svg", 6, 8, STATUS_UNAVAIL_THIS_PHASE, "B", 1, "first-panzer-army", "mech", "9", 2, 2);
             UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i ], "Armor.svg", 6, 8, STATUS_UNAVAIL_THIS_PHASE, "B", 1, "first-panzer-army", "mech", "16", 2, 2 );
-            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i ++], "Armor.svg", 6, 8, STATUS_UNAVAIL_THIS_PHASE, "B", 1, "first-panzer-army", "mech", "14", 2, 2 );
+            UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i++], "Armor.svg", 6, 8, STATUS_UNAVAIL_THIS_PHASE, "B", 1, "first-panzer-army", "mech", "14", 2, 2 );
             UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i ], "MechInf.svg", 5, 8, STATUS_UNAVAIL_THIS_PHASE, "B", 1, "first-panzer-army", "mech", "25", 2, 2 );
             UnitFactory::create("xx", KievCorps::GERMAN_FORCE, $F[$i ++], "MechInf.svg", 5, 8, STATUS_UNAVAIL_THIS_PHASE, "B", 1, "first-panzer-army", "mech", "16", 2, 2 );
 
-             UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i], "Infantry.svg", 6, 5,  STATUS_UNAVAIL_THIS_PHASE, "B", 1,  "first-panzer-army",  "inf", "67", 3);
-            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i++], "Infantry.svg", 6, 5,  STATUS_UNAVAIL_THIS_PHASE, "B", 1,  "first-panzer-army",  "inf", "11", 3);
+             UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i++], "Infantry.svg", 6, 5,  STATUS_UNAVAIL_THIS_PHASE, "B", 1,  "first-panzer-army",  "inf", "67", 3);
+            UnitFactory::create("xxx", KievCorps::GERMAN_FORCE, $F[$i], "Infantry.svg", 6, 5,  STATUS_UNAVAIL_THIS_PHASE, "B", 1,  "first-panzer-army",  "inf", "11", 3);
 
 
 

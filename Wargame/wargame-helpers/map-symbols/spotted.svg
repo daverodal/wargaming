@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="500px" width="500px" viewBox="-18 -18 536 536" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <path d="M 0 216 L 125 0 L 375 0 L 500 216 L 375 432 L 125 432 Z" stroke-width="30" stroke="lightblue" fill="transparent"></path>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="68px" height="64px" viewBox="0 0 68 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>spotted</title>
+    <desc>Created with Sketch.</desc>
+    <g id="spotted" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0">
+        <polygon id="Polygon" stroke="#ADD8E6" stroke-width="3.5" fill="#000000" transform="translate(34.000000, 32.000000) rotate(90.000000) translate(-34.000000, -32.000000) " points="34 0 61.7128129 16 61.7128129 48 34 64 6.28718708 48 6.28718708 16"></polygon>
+    </g>
 </svg>

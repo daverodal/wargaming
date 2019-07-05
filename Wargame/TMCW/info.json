@@ -240,7 +240,7 @@
         }
     },
     "NorthVsSouth": {
-        "disabled": true,
+        "disabled": false,
         "production": false,
         "name": "The North Shall Rise Again",
         "path": "TMCW",
