@@ -185,8 +185,7 @@ document.addEventListener("DOMContentLoaded",function(){
                     deadpile: false,
                     exitBox: false
                 }
-            },
-            lastNextPhase: 0
+            }
         },
         methods:{
             toggleUndo(){
@@ -213,10 +212,6 @@ document.addEventListener("DOMContentLoaded",function(){
             },
             nextPhase(evt){
                 console.log(evt);
-                if(evt.timeStamp - this.lastNextPhase  < 100){
-                    return;
-                }
-                this.lastNextPhase = evt.timeStamp;
                 nextPhaseMouseDown();
             },
             // menuClick(id){

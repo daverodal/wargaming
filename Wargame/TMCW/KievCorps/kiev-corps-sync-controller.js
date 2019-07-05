@@ -166,6 +166,7 @@ export class KievCorpsSyncController extends SyncController{
 
             let vlabel = " Victory: <span class='" + p1Class + "'>" + p1 + " </span>" + vp[1];
             vlabel += " <span class='" + p2Class + "'>" + p2 + " </span>" + vp[2];
+            vlabel += " Surrounded " + vp[3];
             vueStore.commit('headerData/victory',vlabel);
         });
     }

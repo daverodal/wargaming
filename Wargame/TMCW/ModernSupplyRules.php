@@ -44,7 +44,7 @@ trait ModernSupplyRules
             }
             return;
         }
-        if ($unit->status == STATUS_READY || $unit->status == STATUS_UNAVAIL_THIS_PHASE) {
+        if ($unit->isOnMap()) {
             $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
         } else {
             return;
@@ -55,13 +55,6 @@ trait ModernSupplyRules
         }
         if ($unit->supplied) {
             $unit->removeAdjustment('movement');
-        }
-
-        if ($unit->status == STATUS_READY || $unit->status == STATUS_DEFENDING || $unit->status == STATUS_UNAVAIL_THIS_PHASE) {
-
-            $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
-        } else {
-            return;
         }
         if ((!empty($this->unsuppliedDefenderHalved) || $unit->forceId == $b->gameRules->attackingForceId) && !$unit->supplied) {
             $unit->addAdjustment('supply','half');

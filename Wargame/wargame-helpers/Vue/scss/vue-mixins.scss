@@ -24,6 +24,9 @@
   .map-symbols.#{$player}, .map-symbols .#{$player}{
     background-color: $color;
   }
+  .player#{$player}Face,.#{$player}Face{
+    color: $color;
+  }
 }
 @mixin player($nationality, $player, $color, $faceColor: $color, $desigColor: white){
   .special-hex.#{$player}{

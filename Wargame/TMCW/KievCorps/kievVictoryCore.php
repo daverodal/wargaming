@@ -42,20 +42,31 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
     {
         parent::__construct($data);
         if ($data) {
-            $this->germanGoal = $data->victory->germanGoal;
-            $this->sovietGoal = $data->victory->sovietGoal;
             $this->dismissed = $data->victory->dismissed;
         } else {
-            $this->germanGoal = $this->sovietGoal = [];
             $this->victoryPoints[3] = 0;
+        }
+        $this->germanGoal = $this->sovietGoal = [];
+
+        /* German goal is west Edge north and south edge cols 1-12 */
+        for($i = 1; $i <= 15;$i++){
+            $this->germanGoal[] = 100 + $i;
+        }
+        for($i = 1; $i <= 12;$i++){
+            $this->germanGoal[] = 15 + $i * 100;
+        }
+        for($i = 1; $i <= 12    ;$i++){
+            $this->germanGoal[] = 1 + $i * 100;
+        }
+        /* Soviet goal is west Edge */
+        for($i = 1; $i <= 15    ;$i++){
+            $this->sovietGoal[] = 1700 + $i;
         }
     }
 
     public function save()
     {
         $ret = parent::save();
-        $ret->germanGoal = $this->germanGoal;
-        $ret->sovietGoal = $this->sovietGoal;
         $ret->dismissed = $this->dismissed;
         return $ret;
     }
@@ -263,53 +274,6 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
     public function preRecoverUnits()
     {
 
-        $germanGoal = $sovietGoal = [];
-
-
-        $b = Battle::getBattle();
-
-
-        if (!empty($b->scenario->supplyRailroads) === true) {
-            $germanBias = array(5 => true, 6 => true);
-            $sovietBias = array(2 => true, 3 => true);
-            $germanGoal = array_merge($b->moveRules->calcRoadSupply(KievCorps::GERMAN_FORCE, 112, $germanBias),
-            $b->moveRules->calcRoadSupply(KievCorps::GERMAN_FORCE, 121, $germanBias),
-            $b->moveRules->calcRoadSupply(KievCorps::GERMAN_FORCE, 125, $germanBias),
-            $b->moveRules->calcRoadSupply(KievCorps::GERMAN_FORCE, 1901, $germanBias));
-            /* Magic to remove dups then remove holes created by removal */
-//            $germanGoal = array_merge(array_unique($germanGoal));
-
-            $sovietGoal = array_merge($b->moveRules->calcRoadSupply(KievCorps::SOVIET_FORCE, 4201, $sovietBias),
-            $b->moveRules->calcRoadSupply(KievCorps::SOVIET_FORCE, 4612, $sovietBias),
-            $b->moveRules->calcRoadSupply(KievCorps::SOVIET_FORCE, 4622, $sovietBias),
-            $b->moveRules->calcRoadSupply(KievCorps::SOVIET_FORCE, 4626, $sovietBias));
-
-            /* Magic to remove dups then remove holes created by removal */
-//            $sovietGoal = array_merge(array_unique($sovietGoal));
-
-
-        }else{
-            /* German goal is west Edge north and south edge cols 1-12 */
-            for($i = 1; $i <= 15;$i++){
-                $germanGoal[] = 100 + $i;
-            }
-            for($i = 1; $i <= 12;$i++){
-                $germanGoal[] = 15 + $i * 100;
-            }
-            for($i = 1; $i <= 12    ;$i++){
-                $germanGoal[] = 1 + $i * 100;
-            }
-            /* Soviet goal is west Edge */
-            for($i = 1; $i <= 15    ;$i++){
-                $sovietGoal[] = 1700 + $i;
-            }
-        }
-
-        $this->germanGoal = $germanGoal;
-
-
-        $this->sovietGoal = $sovietGoal;
-
     }
 
     function isExit($args)
@@ -343,7 +307,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
                 $bias = array(2 => true, 3 => true);
                 $goal = $this->sovietGoal;
             }
-//            $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
+            $this->unitSupplyEffects($unit, $goal, $bias, $this->supplyLen);
         }
         $this->checkSurrounded();
         if($this->dismissed){
