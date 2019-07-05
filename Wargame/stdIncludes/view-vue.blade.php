@@ -162,7 +162,7 @@
                         <button :class="{'inline-show': dynamic.determined}" class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
                         <button :class="{'inline-show': dynamic.move}" class="dynamicButton movementButton" id="forceMarchEvent">m</button>
                         <button @click="clearCombat" :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
-                        <button :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
+                        <button @click="shiftClick" :class="{'inline-show': dynamic.combat, dark: dynamic.shiftKey }" class="dynamicButton combatButton" id="shiftKey">+</button>
                         <button :class="{'inline-show': dynamic.showHexes}" class="dynamicButton hexButton" id="showHexes">H</button>
                         <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
                         <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
