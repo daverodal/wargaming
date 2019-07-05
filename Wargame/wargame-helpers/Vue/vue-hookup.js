@@ -194,6 +194,7 @@ document.addEventListener("DOMContentLoaded",function(){
             shiftClick(){
                 this.dynamicButtons.shiftKey = !this.dynamicButtons.shiftKey;
                 DR.shiftKey = !DR.shiftKey;
+                this.$store.commit('headerData/setDynamicButton', {id: 'shiftKey', value: DR.shiftKey});
             },
             clearCombat(){
 
