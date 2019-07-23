@@ -329,8 +329,13 @@ document.addEventListener("DOMContentLoaded",function(){
     //
     // });
     document.addEventListener('keyup', function(evt) {
-        if(evt.key === 'c'){
-            window.clickThrough.clearCombat();
+        const indx = "xdcms".indexOf(evt.key);
+        if(indx >= 0){
+            doitKeypress(event.keyCode);
+            return;
+        }
+        if(evt.key === 'Escape'){
+            doitKeypress(evt.keyCode)
         }
     });
 });

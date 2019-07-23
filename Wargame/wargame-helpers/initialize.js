@@ -454,7 +454,7 @@ export default function initialize() {
     });
 
     $("#combineEvent").on('click', function () {
-        doitKeypress(99);
+        doitKeypress(67);
     });
 
     $("#clearCombatEvent").on('click', function () {

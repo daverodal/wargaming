@@ -59,6 +59,7 @@ mix.sass('Wargame/TMCW/EastWest/all.scss', 'css/wargame/eastwest.css');
 mix.sass('Wargame/TMCW/Collapse/all.scss', 'css/wargame/collapse.css');
 mix.sass('Wargame/TMCW/NorthVsSouth/all.scss', 'css/wargame/northvssouth.css');
 mix.sass('Wargame/TMCW/Moskow/all.scss', 'css/wargame/moskow.css');
+mix.sass('Wargame/Area/AreaOne/areaone.scss', 'css/wargame/areaone.css');
 
 mix.sass('Wargame/NTA/all.scss', 'css/wargame/nta.css');
 mix.sass('Wargame/Vu/all.scss', 'css/wargame/vu.css');
@@ -77,6 +78,7 @@ mix.js('Wargame/TMCW/Collapse/collapse.js', 'javascripts/wargame/collapse.js');
 mix.js('Wargame/TMCW/NorthVsSouth/northvssouth.js', 'javascripts/wargame/northvssouth.js');
 mix.js('Wargame/TMCW/EastWest/east-west.js', 'javascripts/wargame/east-west.js');
 mix.js('Wargame/TMCW/Manchuria1976/manchuria1976.js', 'javascripts/wargame/manchuria1976.js');
+mix.js('Wargame/Area/AreaOne/area-one.js', 'javascripts/wargame/area-one.js');
 
 
 mix.setResourceRoot("/vendor/").sass('Wargame/Mollwitz/horse-musket.scss', 'css/wargame/horse-musket.css')

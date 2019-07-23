@@ -74,7 +74,7 @@ class KievCorps extends \Wargame\ModernLandBattle
                     $cnt++;
                     $isReduced = false;
                     if ($cnt%2 == 0) {
-//                        $isReduced = true;
+                        $isReduced = true;
 
                     }
                     UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, $item->hex, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, $isReduced ? 1 : 2,3 , 3);

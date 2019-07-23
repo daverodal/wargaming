@@ -338,7 +338,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($attackingId == KievCorps::SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
-            $gameRules->replacementsAvail = 6;
+            $gameRules->replacementsAvail = 3;
         }
 
         /*only get special VPs' at end of first Movement Phase */
