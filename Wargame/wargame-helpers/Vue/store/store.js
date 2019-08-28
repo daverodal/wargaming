@@ -6,13 +6,15 @@ Vue.use(Vuex);
 import {mapData} from "./mapData";
 import {headerData} from "./headerData";
 import {boxesData} from "./boxesData";
+import {floatersData} from "./floatersData";
 
 export const store = new Vuex.Store({
     strict: true,
     modules:{
       mD: mapData,
       headerData: headerData,
-        bd: boxesData
+        bd: boxesData,
+        floaters: floatersData
     },
     state: {
         crt:{
@@ -22,7 +24,8 @@ export const store = new Vuex.Store({
             player: "",
             details: "",
             combatResult: "",
-            selectedTable: 'normal',
+            selectedTable: Object.keys(combatResultsTable.crts)[0],
+            defaultTable: Object.keys(combatResultsTable.crts)[0],
             roll: null,
             showCrt: false,
             crtSelfOpened: false,

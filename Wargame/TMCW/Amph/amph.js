@@ -12,7 +12,7 @@ import MapSymbol from '../../wargame-helpers/Vue/MapSymbol';
 import SpecialHex from '../../wargame-helpers/Vue/SpecialHex';
 import SpecialEvent from '../../wargame-helpers/Vue/SpecialEvent';
 import OptionsComponent from './OptionsComponent';
-import OBCComponent from './OBCComponent';
+import OBCComponent from '../Airborne/OBCComponent';
 Vue.component('flash-messages', FlashMessages);
 Vue.component('flash-hexagon', FlashHexagon);
 Vue.component('vue-crt', VueCrt);

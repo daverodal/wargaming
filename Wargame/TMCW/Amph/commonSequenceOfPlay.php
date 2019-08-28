@@ -40,7 +40,7 @@
         </ol>
     </li>
     <li>
-        <?= $playerTwo ?> Player Turn
+        <?= $forceName[2] ?> Player Turn
         <ol>
             <li>
                 Movement Phase
@@ -56,8 +56,11 @@
                 The phasing player may move any or all of their <strong>Armored</strong> or
                 <strong>mechinized
                     infantry</strong> units. Infantry units may <strong>not</strong> move in the
-                second
-                movement phase.
+                second movement phase.
+                <p class="ruleComment">
+                    Only the Loyalist player has a second movement phase, and they do no have any units
+                    that can move in this phase till later in the game.
+                </p>
             </li>
         </ol>
     </li>

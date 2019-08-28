@@ -11,9 +11,9 @@
     @include('wargame::TMCW.Chawinda1965.commonZocRules')
 @endsection
 @section('innerNextPhaseWrapper')
-    @parent
     <button class="dynamicButton movementButton" id="splitEvent">s</button>
     <button class="dynamicButton movementButton" id="combineEvent">c</button>
+    @parent
 @endsection
 @section('unitRules')
     @parent

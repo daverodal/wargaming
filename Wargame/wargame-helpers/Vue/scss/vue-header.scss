@@ -126,7 +126,7 @@
 
 
     #nextPhaseWrapper {
-      .dynamicButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey, #debug {
+      .dynamicButton, #eventButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey, #debug {
         font-size: 25px;
         position: static;
       }
@@ -215,7 +215,9 @@
   min-height:80px;
 }
 
-
+.big{
+  font-size:16px;
+}
 .bug-report{
   display:none;
   &.open{

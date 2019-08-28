@@ -62,7 +62,6 @@ export class AirborneSyncController extends SyncController{
 
 
     specialHexes(){
-        debugger;
         syncObj.register("specialHexes", function(specialHexes, data) {
             $('.specialHexes').remove();
             var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];

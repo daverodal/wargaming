@@ -11,10 +11,11 @@
 @section('tec')
     @include("wargame::TMCW.Amph.tec")
 @endsection
+@section('SOP')
+    @include('wargame::TMCW.Amph.commonSequenceOfPlay')
+@endsection
 @section('commonRules')
-
-    <div class="dropDown" id="GRWrapper" style="font-weight:normal">
-
+    <div class="dropDown" id="GRWrapper">
         <div id="GR">
             <div @click="commonRules = false" class="close">X</div>
             @include("wargame::TMCW.commonRulesCore")
@@ -29,15 +30,9 @@
 
 @extends('wargame::stdIncludes.view-vue' )
 
-@section('innerNextPhaseWrapper')
-    <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
-    <button @click="clearCombat" :class="{'inline-show': dynamicButtons.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
-    <button @click="shiftClick" :class="{'inline-show': dynamicButtons.combat, dark: dynamicButtons.shiftKey }" class="dynamicButton combatButton" id="shiftKey">+</button>
-    <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
-    <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
-    <div id="comlinkWrapper">
-        <div id="comlink"></div>
-    </div>
+@section('dynamic-buttons')
+    <button @click="clearCombat" :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+    <button @click="shiftClick" :class="{'inline-show': dynamic.combat, dark: dynamic.shiftKey }" class="dynamicButton combatButton" id="shiftKey">+</button>
 @endsection
 @section('options')
     <options-component>

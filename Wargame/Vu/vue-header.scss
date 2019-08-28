@@ -115,7 +115,7 @@
 
     #nextPhaseWrapper {
       float: right;
-      .dynamicButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey, #debug {
+      .dynamicButton, #eventButton, #nextPhaseButton, #fullScreenButton, #forceMarchEvent, #determinedAttackEvent, #clearCombatEvent, #shiftKey, #debug {
         font-size: 28px;
         position: static;
       }

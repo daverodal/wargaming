@@ -650,6 +650,7 @@ export class SyncController {
     combatRules(){
         syncObj.register("combatRules",  (combatRules, data) => {
             const selectedTable = vueStore.state.crt.selectedTable;
+            const defaultTable = vueStore.state.crt.defaultTable;
             const crtHeader = vueStore.state.crtData.crts[selectedTable].header;
             _.forEach(topVue.units, (mapUnit) => {
                 mapUnit.thetas = [];
@@ -804,8 +805,7 @@ export class SyncController {
                                 crt.selectedTable = 'determined'
 
                             } else {
-                                crt.selectedTable = 'normal'
-
+                                crt.selectedTable = defaultTable
                             }
                         }
 

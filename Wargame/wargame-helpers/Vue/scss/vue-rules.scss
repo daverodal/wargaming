@@ -1,0 +1,209 @@
+.rules-wrapper{
+  position: relative;
+  .rules-container{
+    position: absolute;
+    z-index: 10;
+    margin-top: 3em;
+  }
+}
+.game-rules {
+  font-family: Montserrat, sans-serif;
+}
+
+.game-rules table, .game-rules th, .game-rules td {
+  border: 1px solid black;
+}
+
+.game-rules h1 {
+  color: #338833;
+  font-size: 60px;
+
+}
+#header #GR a {
+  color: black;
+}
+
+#GR {
+  width: 600px;
+}
+
+#GR #credits h2 {
+  color: #338833;
+}
+
+#GR li {
+  margin: 15px 0;
+}
+
+#GR h4 {
+  margin-bottom: 5px;
+}
+
+#GR #credits h4 {
+  margin-bottom: 0px;
+}
+
+.game-rules h4:hover {
+  text-decoration: none;
+}
+
+.exclusive {
+  color: green;
+}
+
+#GR {
+  left: -200px;
+}
+
+#GR OL {
+  counter-reset: item;
+  padding-left: 10px;
+}
+
+#GR LI {
+  display: block;
+}
+
+#GR LI:before {
+  content: "[" counters(item, ".") "] ";
+  counter-increment: item;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.big {
+  font-size: 19px;
+  font-weight: 500;
+
+}
+
+.lessBig {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#GR OL.topNumbers {
+  counter-reset: item -1;
+}
+
+.game-rules .unit .p.range{
+  font-size: 15px;
+}
+
+
+
+.ruleComment {
+  font-style: italic;
+  margin-left: 10px;
+  margin-top:10px;
+  color: #999;
+}
+
+.crtDetailComment{
+  @extend .ruleComment;
+  font-size:13px;
+}
+
+#GR ol.ExclusiveRules {
+  counter-reset: item 6;
+}
+
+
+
+#TEC {
+  width: 780px;
+  margin-left:-400px;
+}
+
+
+
+#tecImage {
+  width: 760px;
+}
+
+#TECWrapper .closer {
+  height: 0px;
+  padding: 0px;
+}
+
+#VCWrapper .closer {
+  height: 0px;
+  padding: 0px;
+}
+
+#GR {
+  ol {
+    counter-reset: item;
+    padding-left: 10px;
+  }
+  li {
+
+    &:before {
+      content: "[" counters(item, ".") "] ";
+      counter-increment: item;
+      font-weight: 500;
+    }
+
+    margin: 3px 0;
+    display: block;
+    font-size: 16px !important;
+    font-weight: normal !important;
+  }
+  .topNumbers {
+    counter-reset: item -1;
+    & > li {
+      border-top:silver 2px solid;
+      padding-top:10px;
+      margin-top:30px;
+      &:before {
+        content: "[" counters(item, ".") ".0] ";
+        font-size: 19px;
+      }
+      li {
+        margin-top:20px;
+
+        &:before {
+          font-size: 18px;
+        }
+        li {
+          margin-top:15px;
+          padding-top:0px;
+          border:none;
+          &:before {
+            font-size: 16px;
+          }
+          li{
+            margin-top:10px;
+            &:before {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  h4 {
+    margin-bottom: 5px;
+  }
+  #credits {
+    font-size:16px;
+    font-weight:normal;
+    h2 {
+      color: #338833;
+      font-weight:500;
+    }
+    h4 {
+      margin-bottom: 0px;
+      font-size:16px;
+      font-weight:500;
+    }
+  }
+
+  background: white;
+  max-height: 500px;
+  min-height: 100px;
+  overflow-y: auto;
+  padding: 0 20px 10px;
+
+}

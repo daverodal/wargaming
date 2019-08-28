@@ -80,7 +80,6 @@ class GameRules extends GameRulesAbs
 
     function save()
     {
-        array_splice($this->flashLog, count($this->flashLog),0, $this->flashMessages);
         $data = new stdClass();
         foreach ($this as $k => $v) {
             if (is_object($v)) {
@@ -140,6 +139,8 @@ class GameRules extends GameRulesAbs
         if(!isset($this->flashLog)){
             $this->flashLog = [];
         }
+        array_splice($this->flashLog, count($this->flashLog),0, $this->flashMessages);
+
         if($this->legacyExchangeRule !== false){
             $this->legacyExchangeRule = true;
         }

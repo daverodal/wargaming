@@ -1,8 +1,8 @@
 <template>
-    <div @mouseover="mOver" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="unit" :class="unit.nationality" :style="unitStyle">
+    <div @mouseover="mOver" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="unit" :class="[unit.nationality, unit.class]" :style="unitStyle">
         <div class="unitOdds" :class="this.unit.oddsColor? this.unit.oddsColor: ''">{{unitOdds}}</div>
         <div class="shadow-mask" :class="{shadowy: unit.shadow}"></div>
-        <div class="unit-size">{{ unit.name }}</div>
+        <div class="unit-size">{{ unitSize }}</div>
         <img v-for="theta in thetas" :style="{transform: theta}" class="counter arrow" src="/assets/unit-images/short-red-arrow-md.png">
         <div class="counter-wrapper">
             <img class="counter" :src="'/assets/unit-images/'+unit.image" alt="">
@@ -21,6 +21,12 @@
         name: "UnitComponent",
         props:["unit"],
         computed:{
+            unitSize(){
+                if(this.unit.class === 'supply' || this.unit.class === 'truck'){
+                    return '';
+                }
+                return this.unit.name;
+            },
             unitStyle(){
                 return  {
                     display:this.showMe,
@@ -140,13 +146,32 @@
     @include unitColor(rebel, $rebelColor)
     @include unitColor(loyalist, $loyalistColor);
     @include unitColor(loyalGuard, $loyalistGuardColor);
-    .unit .unit-numbers{
-        &.infoLen7{
-            letter-spacing: -.4px;
+    .ghost{
+        opacity: 0;
+    }
+    .unit {
+        .unit-numbers {
+            &.infoLen7 {
+                letter-spacing: -.4px;
+            }
+            &.infoLen8 {
+                font-size: 10px;
+                letter-spacing: -.6px;
+            }
+
         }
-        &.infoLen8{
-            font-size: 10px;
-            letter-spacing: -.6px;
+        &.truck, &.supply{
+            .unit-size{
+
+            }
+            .counter-wrapper{
+                img.counter{
+                    width:100%;
+                    margin-left: 0%;
+                    margin-top: -6px;
+                }
+            }
         }
     }
+
 </style>

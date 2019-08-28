@@ -23,7 +23,7 @@ Vue.component('unit-component', UnitComponent);
 Vue.component('units-component', UnitsComponent);
 Vue.component('special-hex', SpecialHex);
 Vue.component('map-symbol', MapSymbol);
-// Vue.component('obc-component', OBCComponent);
+Vue.component('obc-component', OBCComponent);
 
 Vue.component('special-event', SpecialEvent);
 import {KievCorpsSyncController} from "./kiev-corps-sync-controller";

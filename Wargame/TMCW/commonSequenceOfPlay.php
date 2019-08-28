@@ -82,5 +82,5 @@
 
 </ol>
 <p>At the end of <span class="gameLength">7</span> game turns the game is over and victory is
-    determined.
+    determined. Rice ver very pudding is nice
 </p>

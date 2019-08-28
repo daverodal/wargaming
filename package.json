@@ -27,7 +27,6 @@
     "font-awesome": "^4.7.0",
     "hoek": "^5.0.4",
     "jquery-ui-bundle": "^1.12.1",
-    "jquery.panzoom": "^3.2.2",
     "marked": "^0.6.1",
     "ssri": "^6.0.1",
     "ts-loader": "^3.5.0",

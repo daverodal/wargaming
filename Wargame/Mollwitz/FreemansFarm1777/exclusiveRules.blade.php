@@ -35,7 +35,7 @@ You should have received a copy of the GNU General Public License
                 Stackable units may (and in fact must) deploy stacked.
             </li>
             <li>
-                <?= $deployName[1] ?> Deploy second move second deploy on L hexes.
+                <?= $deployName[1] ?> Deploy second move second deploy on R hexes.
             </li>
         </ol>
     </li>

@@ -211,6 +211,9 @@ document.addEventListener("DOMContentLoaded",function(){
                 this.bugMessage = '';
                 this.bugReport();
             },
+            events(){
+              this.$store.commit('floaters/toggle');
+            },
             nextPhase(evt){
                 console.log(evt);
                 nextPhaseMouseDown();
@@ -331,6 +334,10 @@ document.addEventListener("DOMContentLoaded",function(){
     document.addEventListener('keyup', function(evt) {
         const indx = "xdcms".indexOf(evt.key);
         if(indx >= 0){
+            doitKeypress(event.keyCode);
+            return;
+        }
+        if(evt.key.match(/^Arrow/)){
             doitKeypress(event.keyCode);
             return;
         }

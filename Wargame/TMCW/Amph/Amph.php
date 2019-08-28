@@ -101,27 +101,27 @@ class Amph extends ModernLandBattle
         UnitFactory::create("lll", Amph::LOYALIST_FORCE, 604, "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_DEPLOY, "F", 1, 1, "loyalist", true, 'inf');
         UnitFactory::create("x", Amph::LOYALIST_FORCE, 1810, "Mountain.svg", 7, 3, 5, false, STATUS_UNAVAIL_THIS_PHASE, "F", 1, 1, "loyalGuards", true, 'mountain');
 
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn2", "Infantry.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "B", 2, 1, "loyalGuards", true, 'inf');
-        UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "D", 2, 1, "loyalist", true, 'inf');
-        UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "D", 2, 1, "loyalist", true, 'inf');
-        UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "E", 2, 1, "loyalist", true, 'inf');
-        UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "E", 2, 1, "loyalist", true, 'inf');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn3", "Mountain.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "B", 3, 1, "loyalGuards", true, 'mountain');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn3", "Mountain.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "D", 3, 1, "loyalGuards", true, 'mountain');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "B", 4, 1, "loyalGuards", true, 'shock');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "B", 4, 1, "loyalGuards", true, 'shock');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "E", 4, 1, "loyalGuards", true, 'shock');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn2South", "Infantry.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "B", 2, 1, "loyalGuards", true, 'inf');
+        UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2West", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "D", 2, 1, "loyalist", true, 'inf');
+        UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2West", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "D", 2, 1, "loyalist", true, 'inf');
+        UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2East", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "E", 2, 1, "loyalist", true, 'inf');
+        UnitFactory::create("lll", Amph::LOYALIST_FORCE, "gameTurn2East", "Gorilla.svg", $baseValue, $reducedBaseValue, 4, false, STATUS_CAN_REINFORCE, "E", 2, 1, "loyalist", true, 'inf');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn3West", "Mountain.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "B", 3, 1, "loyalGuards", true, 'mountain');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn3South", "Mountain.svg", 7, 3, 5, false, STATUS_CAN_REINFORCE, "D", 3, 1, "loyalGuards", true, 'mountain');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4West", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "B", 4, 1, "loyalGuards", true, 'shock');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4South", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "B", 4, 1, "loyalGuards", true, 'shock');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn4East", "Shock.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "E", 4, 1, "loyalGuards", true, 'shock');
 
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn5", "Armor.svg", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'mech');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn5", "Armor.svg", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'mech');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn5", "MechInf.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'mech');
-        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn5", "Heavy.svg", 10, 5, 5, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'heavy');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn5West", "Armor.svg", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'mech');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn5South", "Armor.svg", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'mech');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn5South", "MechInf.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'mech');
+        UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn5South", "Heavy.svg", 10, 5, 5, false, STATUS_CAN_REINFORCE, "B", 5, 1, "loyalGuards", true, 'heavy');
 
         if(empty($scenario->weakerLoyalist)) {
-            UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn6", "Armor.svg", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');
-            UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn6", "Armor.svg", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');
-            UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn6", "MechInf.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');
-            UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn6", "Heavy.svg", 10, 5, 5, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'heavy');
+            UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn6South", "Armor.svg", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');
+            UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn6South", "Armor.svg", 13, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');
+            UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn6South", "MechInf.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'mech');
+            UnitFactory::create("x", Amph::LOYALIST_FORCE, "gameTurn6South", "Heavy.svg", 10, 5, 5, false, STATUS_CAN_REINFORCE, "B", 6, 1, "loyalGuards", true, 'heavy');
         }
 
         /* Rebel Units */
@@ -134,30 +134,30 @@ class Amph extends ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 8, 4, 5, false, STATUS_CAN_DEPLOY, "C", 1, 1, "rebel", true, "para");
         UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 8, 4, 5, false, STATUS_CAN_DEPLOY, "C", 1, 1, "rebel", true, "para");
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Para.svg", 8, 4, 5, false, STATUS_CAN_REINFORCE, "C", 2, 1, "rebel", true, "para");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Ranger.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 2, 1, "rebel", true, "ranger");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Ranger.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 2, 1, "rebel", true, "ranger");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 2, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2Airdrop", "Para.svg", 8, 4, 5, false, STATUS_CAN_REINFORCE, "C", 2, 1, "rebel", true, "para");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2Beach-Landing", "Ranger.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 2, 1, "rebel", true, "ranger");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2Beach-Landing", "Ranger.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 2, 1, "rebel", true, "ranger");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 2, 1, "rebel", true, "inf");
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 3, 1, "rebel", true, "inf");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 3, 1, "rebel", true, "inf");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 3, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 3, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 3, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 3, 1, "rebel", true, "inf");
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4", "MechInf.svg", 10, 5, 8, false, STATUS_CAN_REINFORCE, "A", 4, 1, "rebel", true, "mech");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 4, 1, "rebel", true, "inf");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 4, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4Beach-Landing", "MechInf.svg", 10, 5, 8, false, STATUS_CAN_REINFORCE, "A", 4, 1, "rebel", true, "mech");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 4, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 4, 1, "rebel", true, "inf");
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "Armor.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "A", 5, 1, "rebel", true, "mech");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "MechInf.svg", 10, 5, 8, false, STATUS_CAN_REINFORCE, "A", 5, 1, "rebel", true, "mech");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 5, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5Beach-Landing", "Armor.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "A", 5, 1, "rebel", true, "mech");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5Beach-Landing", "MechInf.svg", 10, 5, 8, false, STATUS_CAN_REINFORCE, "A", 5, 1, "rebel", true, "mech");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 5, 1, "rebel", true, "inf");
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6", "Armor.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "A", 6, 1, "rebel", true, "mech");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6", "MechInf.svg", 10, 5, 8, false, STATUS_CAN_REINFORCE, "A", 6, 1, "rebel", true, "mech");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 6, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6Beach-Landing", "Armor.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "A", 6, 1, "rebel", true, "mech");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6Beach-Landing", "MechInf.svg", 10, 5, 8, false, STATUS_CAN_REINFORCE, "A", 6, 1, "rebel", true, "mech");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn6Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 6, 1, "rebel", true, "inf");
 
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7", "Armor.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "A", 7, 1, "rebel", true, "mech");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7", "MechInf.svg", 10, 5, 8, false, STATUS_CAN_REINFORCE, "A", 7, 1, "rebel", true, "mech");
-        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 7, 1, "rebel", true, "inf");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7Beach-Landing", "Armor.svg", 12, 6, 8, false, STATUS_CAN_REINFORCE, "A", 7, 1, "rebel", true, "mech");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7Beach-Landing", "MechInf.svg", 10, 5, 8, false, STATUS_CAN_REINFORCE, "A", 7, 1, "rebel", true, "mech");
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7Beach-Landing", "Infantry.svg", 9, 4, 5, false, STATUS_CAN_REINFORCE, "A", 7, 1, "rebel", true, "inf");
     }
 
     public static function myName(){

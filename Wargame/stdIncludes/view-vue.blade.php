@@ -105,8 +105,8 @@
                         @show
                     </ul>
                 </div>
-                <div class="rules-wrapper" style="position:relative">
-                    <div style="position:absolute;z-index:10;background:white;margin-top:3em;" v-if="commonRules">
+                <div class="rules-wrapper">
+                    <div class="rules-container" v-if="commonRules">
                         @section('commonRules')
                         @show
                     </div>
@@ -157,14 +157,17 @@
                     </div>
                 </div>
                 <div id="nextPhaseWrapper">
-                    @section('innerNextPhaseWrapper')
-                        <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
+                    @section('dynamic-buttons')
                         <button :class="{'inline-show': dynamic.determined}" class="dynamicButton combatButton" id="determinedAttackEvent">d</button>
                         <button :class="{'inline-show': dynamic.move}" class="dynamicButton movementButton" id="forceMarchEvent">m</button>
                         <button @click="clearCombat" :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
                         <button @click="shiftClick" :class="{'inline-show': dynamic.combat, dark: dynamic.shiftKey }" class="dynamicButton combatButton" id="shiftKey">+</button>
                         <button :class="{'inline-show': dynamic.showHexes}" class="dynamicButton hexButton" id="showHexes">H</button>
+                    @show
+                    @section('innerNextPhaseWrapper')
+                        <button @click="fullScreen()" id="fullScreenButton"><i class="fa fa-arrows-alt"></i></button>
                         <button @click="bugReport" class="debugButton" id="debug"><i class="fa fa-bug"></i></button>
+                        <button @click="events" id="eventButton"><i class="fa fa-list-alt"></i></button>
                         <button @click="nextPhase" id="nextPhaseButton">Next Phase</button>
 
                     @show

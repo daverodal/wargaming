@@ -165,7 +165,7 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "Gorilla.svg", 1,  1,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "deployBox", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "supply", $i++);
 
 
         UnitFactory::create("lll", BLUE_FORCE, "deployBox", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
