@@ -188,6 +188,21 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         },
         methods:{
+            clearMenus(toggleMenu = false){
+
+                let save;
+                if(toggleMenu){
+                    save = this[toggleMenu];
+                }
+                this.menu = false;
+                this.rules = false;
+                this.info = false;
+                this.log = false;
+                this.submenu = false;
+                if(toggleMenu){
+                    this[toggleMenu] = !save;
+                }
+            },
             toggleUndo(){
               this.$store.commit('toggleShowUndo');
             },

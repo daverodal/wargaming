@@ -34,8 +34,8 @@
                 </form>
             </div>
             <div class="left-header">
-                <div @click="menu = !menu" class=" btn-group"  :class="{open: menu}" @click="menu = !menu">
-                    <button class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i></button>
+                <div class=" btn-group"  :class="{open: menu}">
+                    <button @click="clearMenus('menu'), rules = info = false"  class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i></button>
 
                     <ul class="dropdown-menu">
                         @section('inner-menu')
@@ -51,8 +51,8 @@
                     </ul>
                 </div>
 
-                <div class="btn-group info-dropdown"  :class="{open: info}" @click="info = !info">
-                    <button class="WrapperLabel" title="Game Information"><i class="fa fa-info-circle"></i></button>
+                <div class="btn-group info-dropdown"  :class="{open: info}" >
+                    <button @click="clearMenus('info'), menu = rules = false" class="WrapperLabel" title="Game Information"><i class="fa fa-info-circle"></i></button>
                     <ul class="dropdown-menu">
                         <li> Welcome {{$user}}</li>
 
@@ -81,19 +81,19 @@
                     </ul>
                 </div>
                 <div :class="{open: crtOpen}" class="btn-group" id="crt-wrapper">
-                    <button @click="changeCrt()"  class="wrapper-label" title='Combat Results Table'>
+                    <button @click="changeCrt(), clearMenus()"  class="wrapper-label" title='Combat Results Table'>
                         <span>CRT</span></button>
                 </div>
                 <div class="btn-group dropDown" :class="{open: undo}" id="time-wrapper">
-                    <button @click="toggleUndo()" class="wrapper-label" title='Time Travel'>U<small>ndo</small></button>
+                    <button @click="toggleUndo(), clearMenus()" class="wrapper-label" title='Time Travel'>U<small>ndo</small></button>
                 </div>
-                <div @click="zoom()" class="btn-group" id="zoomWrapper">
-                    <button id="zoom">
+                <div class="btn-group" id="zoomWrapper">
+                    <button @click="zoom(), clearMenus()" id="zoom">
                         <span class="defaultZoom">1.0</span>
                     </button>
                 </div>
                 <div class="btn-group"  :class="{open: rules}" >
-                    <button @click="rules = !rules" class=""><span class="tablet">?</span></button>
+                    <button @click="clearMenus('rules'), info = menu = false" class=""><span class="tablet">?</span></button>
                     <ul class="dropdown-menu">
                         <li><a @click="menuClick('rules')" id="rules">Rules</a></li>
                         <li><a @click="menuClick('showTec')" id="hideShow">TEC</a></li>
@@ -125,16 +125,16 @@
 
 
 
-                <div class="btn-group" :class="{open: log}" @click="log = !log" >
-                    <button class=""><span>Log</span></button>
+                <div class="btn-group" :class="{open: log}" >
+                    <button @click="clearMenus('log')"  class=""><span>Log</span></button>
                     <div class="dropdown-menu">
                         <ol id="log-wrapper" v-html="headerLog"></ol>
                     </div>
                 </div>
 
                 @section('outer-units-menu')
-                    <div class=" btn-group" :class="{open: submenu}" @click="submenu = !submenu" id="units-wrapper">
-                        <button class="" title="Offmap Units">Units</button>
+                    <div class=" btn-group" :class="{open: submenu}"id="units-wrapper">
+                        <button  @click="clearMenus('submenu')" class="" title="Offmap Units">Units</button>
                         <ul  id="units" class="dropdown-menu sub-menu">
                             <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
                             <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>
