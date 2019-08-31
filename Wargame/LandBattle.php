@@ -143,10 +143,10 @@ class LandBattle extends \Wargame\Battle{
         $turn = $doc->wargame->gameRules->turn;
 
         if($fogDeploy) {
-            if ($gameRules->phase == BLUE_DEPLOY_PHASE && $player === RED_FORCE) {
+            if ($gameRules->phase == BLUE_DEPLOY_PHASE && $player !== BLUE_FORCE) {
                 $moveRules->moves = new stdClass();
             }
-            if ($gameRules->phase == RED_DEPLOY_PHASE && $player === BLUE_FORCE) {
+            if ($gameRules->phase == RED_DEPLOY_PHASE && $player !== RED_FORCE) {
                 $moveRules->moves = new stdClass();
             }
         }

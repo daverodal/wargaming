@@ -8,6 +8,7 @@
                 <units-component :myunits="myObc"></units-component>
             </div>
         </div>
+        <div class="close" @click.stop="closeMe">X</div>
     </div>
 </template>
 
@@ -20,6 +21,9 @@
         methods:{
           getObcs(turn){
 
+          },
+          closeMe(){
+              clickThrough.menuClick('showObc')
           }
         },
         computed:{
@@ -58,6 +62,7 @@
             background-color:mediumaquamarine;
         }
         .unit {
+            pointer-events: none;
             position: static !important;
         }
     }

@@ -99,7 +99,7 @@ class Hexagon  {
 
         // Hexagon(name)
         if ( $a1 !== false && $a2 === false ) {
-          if(preg_match("/^[a-z]/",$a1)){
+          if(preg_match("/^[A-Za-z]/",$a1)){
               $this->name = "0000";
               $this->parent = $a1;
           }  else{

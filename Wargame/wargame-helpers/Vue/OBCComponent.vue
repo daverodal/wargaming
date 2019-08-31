@@ -50,6 +50,7 @@
             background-color:mediumaquamarine;
         }
         .unit {
+            pointer-events: none;
             position: static !important;
         }
     }

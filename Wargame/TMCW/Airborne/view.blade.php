@@ -66,49 +66,39 @@
 
 
 
-@section('outer-deploy-box')
+@section('deploy-box')
     <div class="clear"></div>
     <div id="deployBox">
 
         <div class="deploy-zone-wrapper">
             <div>Rebel Zone B</div>
-            <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)" ng-repeat="unit in deployUnits | filter:{reinforceZone: 'B'}"
-                 ng-style="unit.wrapperstyle">
-                <offmap-unit unit="unit"></offmap-unit>
-            </div>
+
+            <units-component  :myunits="allMyBoxes.northeast"></units-component>
+
             <div class="clear"></div>
         </div>
 
         <div class="deploy-zone-wrapper">
             <div>Airdrop Rebel Zone A</div>
-            <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'A'}"
-                 ng-style="unit.wrapperstyle">
-                <offmap-unit unit="unit"></offmap-unit>
-            </div>
+            <units-component  :myunits="allMyBoxes.airdrop"></units-component>
+
             <div class="clear"></div>
         </div>
-        <div class="deploy-zone-wrapper">
+        <div class="deploy-zone-wrapper"  v-if="allMyBoxes.C && allMyBoxes.C.length > 0" >
             <div>Loyalist Zone C</div>
-            <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'C'}"
-                 ng-style="unit.wrapperstyle">
-                <offmap-unit unit="unit"></offmap-unit>
-            </div>
+            <units-component :myunits="allMyBoxes.C"></units-component>
+
             <div class="clear"></div>
         </div>
-        <div class="deploy-zone-wrapper">
+        <div class="deploy-zone-wrapper" v-if="allMyBoxes.D && allMyBoxes.D.length > 0" >
             <div>Loyalist Zone D</div>
-            <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'D'}"
-                 ng-style="unit.wrapperstyle">
-                <offmap-unit unit="unit"></offmap-unit>
-            </div>
-            <div class="clear"></div>
+            <units-component  :myunits="allMyBoxes.D"></units-component>
+
         </div>
-        <div class="deploy-zone-wrapper">
+        <div class="deploy-zone-wrapper" v-if="allMyBoxes.D && allMyBoxes.D.length > 0" >
             <div>Loyalist Zone E</div>
-            <div class="a-unit-wrapper" ng-click="clickMe(unit.id, $event)"  ng-repeat="unit in deployUnits | filter:{reinforceZone: 'E'}"
-                 ng-style="unit.wrapperstyle">
-                <offmap-unit unit="unit"></offmap-unit>
-            </div>
+            <units-component  :myunits="allMyBoxes.E"></units-component>
+
             <div class="clear"></div>
         </div>
     </div>

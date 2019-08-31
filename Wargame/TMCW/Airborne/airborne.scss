@@ -169,13 +169,15 @@
 }
 
 #deployBox{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
   .unit {
     border: solid 3px;
     border-color: #cccccc #666666 #666666 #cccccc;
   }
   .deploy-zone-wrapper{
-    width:19%;
-    float:left;
     margin-right:5px;
     margin-left:5px;
   }

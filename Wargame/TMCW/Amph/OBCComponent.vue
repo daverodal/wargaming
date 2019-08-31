@@ -51,6 +51,7 @@
         }
         .unit {
             position: static !important;
+            pointer-events: none;
         }
     }
 </style>

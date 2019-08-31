@@ -148,7 +148,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
 
             if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
 //                $theUnits[$id]->status = STATUS_ELIMINATED;
-                $theUnits[$id]->hexagon->parent = "deployBox";
+                $theUnits[$id]->hexagon->parent = $unit->reinforceZone;
             }
         }
     }

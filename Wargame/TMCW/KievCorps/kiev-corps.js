@@ -11,7 +11,7 @@ import Undo from '../../wargame-helpers/Vue/Undo';
 import MapSymbol from '../../wargame-helpers/Vue/MapSymbol';
 import SpecialHex from '../../wargame-helpers/Vue/SpecialHex';
 import SpecialEvent from '../../wargame-helpers/Vue/SpecialEvent';
-// import OBCComponent from './OBCComponent';
+import OBCComponent from '../../wargame-helpers/Vue/OBCComponent';
 Vue.component('flash-messages', FlashMessages);
 Vue.component('flash-hexagon', FlashHexagon);
 Vue.component('vue-crt', VueCrt);
