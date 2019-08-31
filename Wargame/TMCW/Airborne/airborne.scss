@@ -50,6 +50,14 @@
   }
 }
 
+#vue-crt{
+  width:800px;
+  #odds, .roll {
+    span{
+      width: 50px;
+    }
+  }
+}
 #gameImages .a-unit-wrapper{
   position:absolute;
   z-index:1;
