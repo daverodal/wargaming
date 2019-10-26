@@ -8722,14 +8722,14 @@
     "genre": "Napoleonic",
     "fileName": "\\Wargame\\Mollwitz\\Heilsberg1807\\Heilsberg1807",
     "description": "The Battle of  Heilsberg 1807.",
-	"options": {
+	"options": [
       {
         "name": "Experimental Cavalry Rule",
         "keyName": "fluidZoc",
         "value": true
       }
 
-},
+    ],
     "params": {
       "unitComponent": "horse-musket-unit",
       "units": [
