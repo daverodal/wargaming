@@ -1625,7 +1625,8 @@
     "description": "Battle of Fraustadt, 13 February 1706. Swedish vs Saxon and Russian. Great Northern War",
     "params": {
       "unitComponent": "horse-musket-unit",
-      "weakRedoubts": true
+      "weakRedoubts": true,
+      "smallArtillery": true
     },
     "options": [
       {
@@ -1792,7 +1793,8 @@
     "description": "The Battle of Gemauerthof was a battle in the Great Northern War, fought south of Riga, in present-day Latvia in July 1705. The Swedish forces under Adam Ludwig Lewenhaupt fought a Russian army under Boris Sheremetyev.",
     "params": {
       "unitComponent": "horse-musket-unit",
-      "weakRedoubts": true
+      "weakRedoubts": true,
+      "smallArtillery": true
     },
     "options": [
       {
@@ -2030,7 +2032,8 @@
     "description": "Battle of Lesnaya 1708",
     "params": {
       "unitComponent": "horse-musket-unit",
-      "weakRedoubts": true
+      "weakRedoubts": true,
+      "smallArtillery": true
     },
     "options": [
       {
@@ -2189,7 +2192,8 @@
     "description": "The Battle of Klissow took place on July 8 (Julian calendar) / July 9 (Swedish calendar) / July 19, 1702 (Gregorian calendar) near Kliszów, Poland-Lithuania, during the Great Northern War.",
     "params": {
       "unitComponent": "horse-musket-unit",
-      "wimpySwamps": true
+      "wimpySwamps": true,
+      "smallArtillery": true
     },
     "options": [
       {
@@ -2439,6 +2443,7 @@
     "description": "Holowczyn 1708",
     "params": {
       "unitComponent": "horse-musket-unit",
+      "smallArtillery": true,
       "units": [
         {
           "num": 1,
@@ -2668,7 +2673,8 @@
     "description": "Germantown 1777",
     "params": {
       "unitComponent": "horse-musket-unit",
-      "americanRevolution": true
+      "americanRevolution": true,
+      "smallArtillery": true
     },
     "options": [
       {
@@ -5400,6 +5406,7 @@
     ],
     "params": {
       "unitComponent": "horse-musket-unit",
+      "smallArtillery": true,
       "units": [
         {
           "num": 2,
@@ -5686,6 +5693,7 @@
     "params": {
       "unitComponent": "horse-musket-unit",
       "americanRevolution": true,
+      "smallArtillery": true,
       "units": [
         {
           "num": 1,
@@ -5851,6 +5859,7 @@
     ],
     "params": {
       "unitComponent": "horse-musket-unit",
+      "smallArtillery": true,
       "americanRevolution": true,
       "units": [
         {
@@ -6057,6 +6066,7 @@
     ],
     "params": {
       "unitComponent": "horse-musket-unit",
+      "smallArtillery": true,
       "units": [
         {
           "num": 4,
@@ -6224,6 +6234,7 @@
     ],
     "params": {
       "unitComponent": "horse-musket-unit",
+      "smallArtillery": true,
       "units": [
         {
           "num": 2,

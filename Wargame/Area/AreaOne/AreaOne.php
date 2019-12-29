@@ -13,8 +13,11 @@ use Wargame\AreaForce;
 use Wargame\AreaMoveRules;
 use Wargame\AreaTerrain;
 use Wargame\CombatRules;
-use Wargame\GameRules;
+use Wargame\AreaGameRules;
+use Wargame\Cnst;
 use stdClass;
+use Wargame\PlayersReady;
+
 class AreaOne extends AreaGame
 {
 
@@ -38,6 +41,13 @@ class AreaOne extends AreaGame
 //        $this->mapData->setSpecialHexes($mapHexes);
 
         $this->players = array("", "", "");
+        $count = count($this->players);
+        foreach($this->players as $id => $val){
+            if($id === 0){
+                continue;
+            }
+            $this->playersReady->addPlayer($id);
+        }
 //        for ($player = 0; $player <= 2; $player++) {
 //            $this->mapViewer[$player]->setData($terrainInfo->originX, $terrainInfo->originY, // originX, originY
 //                $terrainInfo->b, $terrainInfo->b, // top hexagon height, bottom hexagon height
@@ -120,6 +130,7 @@ class AreaOne extends AreaGame
             $this->victory = new Victory($data);
 
             $this->players = $data->players;
+            $this->playersReady = new PlayersReady($data);
         } else {
 
             $this->arg = $arg;
@@ -137,7 +148,11 @@ class AreaOne extends AreaGame
 
 //
 //            $this->combatRules = new CombatRules($this->force, $this->terrain);
-//            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
+            $this->gameRules = new AreaGameRules();
+            $this->gameRules->addPhaseChange(Cnst::COMMAND_PHASE, Cnst::COMMAND_MODE, false);
+            $this->gameRules->addPhaseChange(Cnst::RESULTS_PHASE, Cnst::RESULTS_MODE, true);
+            $this->gameRules->setInitialPhaseMode();
+            $this->playersReady = new PlayersReady();
         }
 
 

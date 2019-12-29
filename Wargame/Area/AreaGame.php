@@ -22,11 +22,12 @@ class AreaGame extends LandBattle
         $data->areaData = $this->areaData;
 //        $data->display = $this->display;
         $data->moveRules = $this->moveRules->save();
-//        $data->gameRules = $this->gameRules->save();
+        $data->gameRules = $this->gameRules->save();
         $data->force = $this->force;
         $data->players = $this->players;
         $data->scenario = $this->scenario;
         $data->mapData = $this->mapData;
+        $data->playersReady = $this->playersReady;
         return $data;
     }
 }

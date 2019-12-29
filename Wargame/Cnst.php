@@ -78,6 +78,8 @@ interface Cnst {
     const RED_OPTION_PHASE =  46;
     const RED_FIRE_COMBAT_PHASE_TWO =  47;
     const BLUE_FIRE_COMBAT_PHASE_TWO =  48;
+    const COMMAND_PHASE = 49;
+    const RESULTS_PHASE = 50;
 
 // game modes
     const SELECT_TO_MOVE_MODE =  1;
@@ -107,6 +109,8 @@ interface Cnst {
     const SUPPLY_MODE =  25;
     const DEFENDER_LOSING_MODE =  26;
     const OPTION_MODE =  27;
+    const COMMAND_MODE = 28;
+    const RESULTS_MODE = 29;
 
 
 // form event constants

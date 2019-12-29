@@ -25,8 +25,6 @@ namespace Wargame;
 abstract class GameRulesAbs
 {
 
-    abstract public function __construct(MoveRules $MoveRules,CombatRules $CombatRules,Force $Force, $data = null);
-
     abstract public function save();
     abstract public function inject(MoveRules $MoveRules,CombatRules $CombatRules,Force $Force);
     abstract public function setMaxTurn($max_Turn);

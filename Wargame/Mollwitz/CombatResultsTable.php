@@ -494,12 +494,12 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
         $combatLog .= "$defenseStrengths = $defenseStrength<br><br>";
         $armsShift = 0;
         $combinedLog = '';
-        $isAmericanRevolution = $scenario->americanRevolution ?? false;
+        $isSmallArtillery = $scenario->smallArtillery ?? false;
         if ($attackStrength >= $defenseStrength) {
             foreach($combinedArms as $key => $arms){
                 if($arms > 0){
                     if($key === "artillery"){
-                        if($arms >= 3 || !$isAmericanRevolution){
+                        if($arms >= 3 || !$isSmallArtillery){
                             if ($combinedLog) {
                                 $combinedLog .= " + $key";
                             } else {
