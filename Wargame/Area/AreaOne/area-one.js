@@ -1,9 +1,15 @@
+import AreaGame from "./vue/AreaGame";
+
+require('../area-js/bootstrap');
+
 import Vue from "vue";
-window._ = require('lodash');
 import VueResource from 'vue-resource';
 import {store} from "./store";
+import ClickBox from "./vue/components/ClickBox";
 window.vueStore = store;
 Vue.use(VueResource);
+Vue.component('area-game', AreaGame);
+Vue.component('click-box', ClickBox);
 
 document.addEventListener("DOMContentLoaded",() => {
     window.world = new Vue({

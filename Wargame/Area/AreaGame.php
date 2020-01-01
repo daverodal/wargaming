@@ -7,9 +7,9 @@
  */
 
 namespace Wargame\Area;
-use Wargame\LandBattle;
+use Wargame\AreaBattle;
 use stdClass;
-class AreaGame extends LandBattle
+class AreaGame extends AreaBattle
 {
 
 
@@ -28,6 +28,7 @@ class AreaGame extends LandBattle
         $data->scenario = $this->scenario;
         $data->mapData = $this->mapData;
         $data->playersReady = $this->playersReady;
+        $data->victory = $this->victory->save();
         return $data;
     }
 }

@@ -42,10 +42,7 @@ class AreaTerrain
     {
 
         if ($data) {
-            $this->areas = new stdClass();
-            foreach($data->areas as $areaName=>$area){
-                $this->areas->$areaName = new Area($area);
-            }
+
         } else {
 
 

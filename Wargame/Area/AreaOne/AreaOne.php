@@ -15,12 +15,15 @@ use Wargame\AreaTerrain;
 use Wargame\CombatRules;
 use Wargame\AreaGameRules;
 use Wargame\Cnst;
+use Wargame\Victory;
 use stdClass;
 use Wargame\PlayersReady;
 
 class AreaOne extends AreaGame
 {
 
+    public $gameRules;
+    public $moveRules;
     static function getPlayerData($scenario){
         $forceName = ["Neutral Observer", "Blue", "Red"];
         return \Wargame\Battle::register($forceName,
@@ -32,7 +35,6 @@ class AreaOne extends AreaGame
     {
         $terrainInfo = $terrainDoc->terrain;
 
-        $specialHexes = $terrainInfo->specialHexes ? $terrainInfo->specialHexes : [];
         $mapHexes = new stdClass();
 //        foreach ($specialHexes as $hexName => $specialHex) {
 //            $mapHexes->$hexName = $this->specialHexesMap[$specialHex];
@@ -126,6 +128,8 @@ class AreaOne extends AreaGame
 
 //            $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
             $this->moveRules = new AreaMoveRules($this->force, $this->terrain, $data->moveRules);
+            $this->gameRules = new AreaGameRules($data->gameRules);
+
 //            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force,  $data->gameRules);
             $this->victory = new Victory($data);
 
@@ -152,6 +156,7 @@ class AreaOne extends AreaGame
             $this->gameRules->addPhaseChange(Cnst::COMMAND_PHASE, Cnst::COMMAND_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::RESULTS_PHASE, Cnst::RESULTS_MODE, true);
             $this->gameRules->setInitialPhaseMode();
+            $this->gameRules->setMaxTurn(12);
             $this->playersReady = new PlayersReady();
         }
 
@@ -173,10 +178,9 @@ class AreaOne extends AreaGame
 
 
         if ($data) {
-            $this->specialHexA = $data->specialHexA;
 
         } else {
-//            $this->victory = new Victory("Wargame\TMCW/Area1/area1VictoryCore.php");
+            $this->victory = new Victory("\\Wargame\\Area\\AreaOne\\VictoryCore");
 //            if ($scenario->supplyLen) {
 //                $this->victory->setSupplyLen($scenario->supplyLen);
 //            }

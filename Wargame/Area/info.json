@@ -8,7 +8,8 @@
     "scenarios": {
       "main": {
         "description": "Standard Scenario",
-        "longDescription": "Whenever"
+        "longDescription": "Whenever",
+        "mapDataUrl": "e5e37875bb930dcf926f2fa86000af94"
       }
     }
   }

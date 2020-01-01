@@ -48,11 +48,17 @@ class PlayersReady implements JsonSerializable
             }
         }
     }
-
     function setReady(int $playerNumber){
         foreach($this->players as $player){
             if($playerNumber == $player->id){
                 $player->ready = true;
+            }
+        }
+    }
+    function toggleReady(int $playerNumber){
+        foreach($this->players as $player){
+            if($playerNumber == $player->id){
+                $player->ready = !$player->ready;
             }
         }
     }
@@ -71,5 +77,10 @@ class PlayersReady implements JsonSerializable
             }
         }
         return true;
+    }
+    function clearAllReady(){
+        foreach($this->players as $player){
+            $player->ready = false;
+            }
     }
 }
