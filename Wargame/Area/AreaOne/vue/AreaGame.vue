@@ -62,7 +62,7 @@
         },
     methods:{
             poke(){
-                const x = $.ajax({url:'http://localhost:8888/wargame/poke',type:'POST',
+                const x = $.ajax({url:'http://alpha.davidrodal.com/wargame/poke',type:'POST',
                 data: {wargame: this.wargame, event: 1, type: 'area-game'},
                 error: (err) => {
                     debugger;
