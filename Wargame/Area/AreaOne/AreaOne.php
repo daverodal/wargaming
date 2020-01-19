@@ -31,9 +31,9 @@ class AreaOne extends AreaGame
     }
 
 
-    function terrainInit($terrainDoc)
+    function areaMapInit($terrainDoc)
     {
-        $terrainInfo = $terrainDoc->terrain;
+//        $terrainInfo = $terrainDoc->terrain;
 
         $mapHexes = new stdClass();
 //        foreach ($specialHexes as $hexName => $specialHex) {
