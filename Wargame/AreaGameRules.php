@@ -139,8 +139,6 @@ class AreaGameRules
                 $battle->playersReady->toggleReady($id);
             }
         }
-        echo " I am her e";
-        echo $this->turn; echo 'll ';
         if($battle->playersReady->allReady()){
             $this->turn++;
             $battle->playersReady->clearAllReady();

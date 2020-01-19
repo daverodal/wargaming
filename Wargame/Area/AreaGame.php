@@ -20,6 +20,7 @@ class AreaGame extends AreaBattle
         $data->terrainName = "terrain-Area1";
         $data->terrain = $this->terrain;
         $data->areaData = $this->areaData;
+        $data->areaModel = $this->areaModel;
 //        $data->display = $this->display;
         $data->moveRules = $this->moveRules->save();
         $data->gameRules = $this->gameRules->save();

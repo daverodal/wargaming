@@ -8,6 +8,7 @@
 
 namespace Wargame\Area\AreaOne;
 use Wargame\Area\AreaGame;
+use Wargame\AreaModel;
 use Wargame\AreaData;
 use Wargame\AreaForce;
 use Wargame\AreaMoveRules;
@@ -24,6 +25,7 @@ class AreaOne extends AreaGame
 
     public $gameRules;
     public $moveRules;
+    public $areaModel;
     static function getPlayerData($scenario){
         $forceName = ["Neutral Observer", "Blue", "Red"];
         return \Wargame\Battle::register($forceName,
@@ -35,6 +37,20 @@ class AreaOne extends AreaGame
     {
 //        $terrainInfo = $terrainDoc->terrain;
 
+        $boxes = $terrainDoc->boxes;
+        foreach($boxes as $boxId=>$box){
+            $box->armies = [];
+            if($boxId < 8){
+                $box->owner = 1;
+                $box->armies[1] = 3;
+            }
+            if($boxId > 16){
+                $box->owner = 2;
+                $box->armies[2] = 3;
+
+            }
+            $this->areaModel->addArea($boxId, $box);
+        }
         $mapHexes = new stdClass();
 //        foreach ($specialHexes as $hexName => $specialHex) {
 //            $mapHexes->$hexName = $this->specialHexesMap[$specialHex];
@@ -113,14 +129,13 @@ class AreaOne extends AreaGame
         $this->areaData = AreaData::getInstance();
         $this->mapData = $this->areaData;
 
-
         if ($data) {
 
+            $this->areaModel = new AreaModel($data->areaModel);
             $this->scenario = $data->scenario;
             $this->force = new AreaForce($data->force);
             if(isset($data->terrain)){
                 $this->terrain = new AreaTerrain($data->terrain);
-
             }else{
                 $this->terrain = new AreaTerrain();
             }
@@ -139,6 +154,8 @@ class AreaOne extends AreaGame
 
             $this->arg = $arg;
             $this->scenario = $scenario;
+            $this->areaModel = new AreaModel();
+
 //            $this->game = $game;
 //            $this->display = new stdClass();
 
