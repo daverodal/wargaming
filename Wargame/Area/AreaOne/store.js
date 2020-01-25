@@ -9,7 +9,8 @@ export const store = new Vuex.Store({
     },
     state: {
         selected: null,
-        boxes: {}
+        boxes: {},
+        mode: 'select'
     },
     getters:{
         selectedBox(state){
@@ -17,6 +18,12 @@ export const store = new Vuex.Store({
                 return state.boxes[state.selected];
             }
             return {};
+        },
+        selectedNeighbors(state){
+            if(state.selected !== null){
+                return state.boxes[state.selected].neighbors;
+            }
+            return [];
         }
     },
     mutations:{
@@ -24,10 +31,15 @@ export const store = new Vuex.Store({
             state.selected = payload;
         },
         setBoxes(state, payload){
-            debugger;
             state.boxes = {...payload};
+        },
+        doMove(state){
+            state.mode = 'move';
+        },
+        doCancel(state){
+            state.mode = 'select';
         }
-    },
+        },
     actions: {
     }
 })

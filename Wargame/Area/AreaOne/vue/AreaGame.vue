@@ -10,14 +10,17 @@
 
 
        Turn is >>>. {{ turn }} <<<<<
-       <area-status></area-status>
        <button @click="poke">Ready</button>
 
        <div v-if="playersReady && playersReady[0]"> p {{playersReady[0].ready }} </div>
-       <div class="game-wrapper">
-           <img style="position:absolute;left:0;top:0;width: 1024px" :src="mapData.url" alt="">
+       <area-status></area-status>
+
+       <div style="width: 1024px"  class="game-wrapper">
+           <img style="width: 1024px" :src="mapData.url" alt="">
 
                <click-box v-for="(box,index) in boxes" :key="index" :box="box"></click-box>
+           <move-command v-if="$store.state.mode === 'move'"></move-command>
+
        </div>
    </div>
 </template>
@@ -58,7 +61,6 @@
           this.syncObj.register('doc', (item, data) => {
               this.playersReady = item.wargame.playersReady;
               console.log(item.wargame.playersReady);
-              debugger;
               this.$store.commit('setBoxes', item.wargame.areaModel.areas);
               // this.mapData.boxes = item.wargame.areaModel.areas;
               this.turn = item.wargame.gameRules.turn;
@@ -66,6 +68,9 @@
           this.syncObj.fetch(0);
         },
     methods:{
+            doCancel(){
+              this.$store.commit('doCancel');
+            },
             poke(){
                 const x = $.ajax({url:'https://alpha.davidrodal.com/wargame/poke',type:'POST',
                 data: {wargame: this.wargame, event: 1, type: 'area-game'},
@@ -97,5 +102,10 @@
         background: white;
         padding: 3px;
         position:absolute;
+    }
+    .move-wrapper{
+        position:absolute;
+        background:fuchsia;
+        width: 900px;
     }
 </style>
