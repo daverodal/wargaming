@@ -226,7 +226,7 @@ class LandBattle extends \Wargame\Battle{
                     switch($type){
                         case "move":
                             if($crumb->fromHex === "0000"){
-                                continue;
+                                break;
                             }
                             $fromHex = new Hexagon($crumb->fromHex);
                             $mapGrid->setHexagonXY($fromHex->x, $fromHex->y);

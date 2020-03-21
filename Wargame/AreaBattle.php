@@ -77,67 +77,11 @@ class AreaBattle extends \Wargame\Battle{
         return $data;
     }
 
-    function poke($event, $id, $x, $y, $user, $click)
+    function poke($event, $id, $commands,  $x, $y, $user, $click)
     {
+        /* @var $gameRules \Wargame\AreaGameRules */
 
-//        $playerId = $this->gameRules->attackingForceId;
-
-        $retVal = $this->gameRules->processEvent($event, $user, $id, $click);
-        return $retVal;
-        if($event === SURRENDER_EVENT){
-            $retVal =  $this->gameRules->processEvent($event, $user, false, $click);
-            return $retVal;
-        }
-//        if ($this->players[$this->gameRules->attackingForceId] != $user) {
-//            if($event !== SELECT_ALT_COUNTER_EVENT && $event !== SELECT_ALT_MAP_EVENT){
-//                return false;
-//            }
-//        }
-
-        $hexagon = null;
-
-        $retVal = true;
-        switch ($event) {
-            case SELECT_MAP_EVENT:
-            case SELECT_ALT_MAP_EVENT:
-                $mapGrid = new MapGrid($this->mapViewer[0]);
-                $mapGrid->setPixels($x, $y);
-                $retVal =  $this->gameRules->processEvent($event, MAP, $mapGrid->getHexagon(), $click);
-                break;
-
-            case SELECT_COUNTER_EVENT:
-            case SELECT_ALT_COUNTER_EVENT:
-
-                $hexagon = null;
-                if (strpos($id, "Hex")) {
-                    $matchId = array();
-                    preg_match("/^[^H]*/", $id, $matchId);
-                    $matchHex = array();
-                    preg_match("/Hex(.*)/", $id, $matchHex);
-                    $id = $matchId[0];
-                    $hexagon = $matchHex[1];
-                    if($event === SELECT_COUNTER_EVENT){
-                        $event = SELECT_MAP_EVENT;
-                    }
-                }
-                /* fall through */
-            case SELECT_SHIFT_COUNTER_EVENT:
-            /* fall through */
-            case COMBAT_PIN_EVENT:
-
-            $retVal =  $this->gameRules->processEvent($event, $id, $hexagon, $click);
-
-                break;
-
-            case SELECT_BUTTON_EVENT:
-                $retVal =  $this->gameRules->processEvent(SELECT_BUTTON_EVENT, $id, 0, $click);
-                break;
-
-            case KEYPRESS_EVENT:
-                $retVal =  $this->gameRules->processEvent(KEYPRESS_EVENT, $id, null, $click);
-                break;
-
-        }
+        $retVal = $this->gameRules->processEvent($event, $commands, $user, $id, $click);
         return $retVal;
     }
 }

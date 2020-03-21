@@ -47,6 +47,7 @@ class AreaGameRules
     public $playTurnClicks;
     public $options = false;
     public $option;
+    public $commands;
 
     function save()
     {
@@ -55,7 +56,7 @@ class AreaGameRules
         unset($this->combatRules);
         $data = new stdClass();
         foreach ($this as $k => $v) {
-            if (is_object($v)) {
+            if (is_object($v) && $k !== 'commands') {
                 continue;
             }
             $data->$k = $v;
@@ -100,6 +101,7 @@ class AreaGameRules
             $this->flashLog = [];
             $this->flashMessages = [];
             $this->currentPhaseIndex = 0;
+            $this->commands = new \stdClass();
         }
         if(!isset($this->flashLog)){
             $this->flashLog = [];
@@ -127,7 +129,42 @@ class AreaGameRules
         $this->phaseChanges[] = $phaseChange;
     }
 
-    function processEvent($event, $user, $location, $click)
+    function determineOwnership(){
+        $areas = Battle::getBattle()->areaModel->areas;
+        foreach($areas as $key => $area){
+            if(count((array)$area->armies) === 0){
+                continue;
+            }
+            if(count((array)$area->armies) === 1){
+                $area->owner = array_keys(get_object_vars($area->armies));
+                continue;
+            }
+            if(count((array)$area->armies) > 1){
+                $area->owner = 0;
+                continue;
+            }
+        }
+    }
+
+    function runCommands(){
+        $areas = Battle::getBattle()->areaModel->areas;
+
+        foreach($this->commands as $user => $commands){
+            foreach($commands as $command ) {
+                $from = $command['from'];
+                $to = $command['to'];
+                $playerId = $command['playerId'];
+                $amount = $command['amount'];
+                $prevAmount = $areas->$from->armies->$playerId ?? 0;
+                $areas->$from->armies->$playerId = $prevAmount - $amount;
+                $prevAmount = $areas->$to->armies->$playerId ?? 0;
+                $areas->$to->armies->$playerId = $prevAmount + $amount;
+            }
+        }
+        $this->commands = new \stdClass();
+        $this->determineOwnership();
+    }
+    function processEvent($event,  $commands, $user,$location, $click)
     {
 
         $battle = Battle::getBattle();
@@ -136,10 +173,12 @@ class AreaGameRules
 
         foreach($players as $id => $player){
             if($user === $player){
+                $this->commands->$user = $commands;
                 $battle->playersReady->toggleReady($id);
             }
         }
         if($battle->playersReady->allReady()){
+            $this->runCommands();
             $this->turn++;
             $battle->playersReady->clearAllReady();
         }

@@ -23,6 +23,7 @@ use Wargame\PlayersReady;
 class AreaOne extends AreaGame
 {
 
+    /* @var \Wargame\AreaGameRules */
     public $gameRules;
     public $moveRules;
     public $areaModel;
@@ -39,14 +40,14 @@ class AreaOne extends AreaGame
 
         $boxes = $terrainDoc->boxes;
         foreach($boxes as $boxId=>$box){
-            $box->armies = [];
+            $box->armies = new \stdClass();
             if($boxId < 8){
                 $box->owner = 1;
-                $box->armies[1] = 3;
+                $box->armies->{1} = 3;
             }
             if($boxId > 16){
                 $box->owner = 2;
-                $box->armies[2] = 3;
+                $box->armies->{2} = 3;
 
             }
             $this->areaModel->addArea($boxId, $box);

@@ -36,13 +36,25 @@
             },
             select(){
                 if(this.isNeighbor){
-                    this.$store.commit('doMove');
+                    this.$store.commit('doMove', this.box.id);
                     return;
                 }
                 if(this.isSelected){
-                    this.$store.commit('selected', null);
+                    this.$store.commit('selected', {id: null, playerId: null});
                 }else{
-                    this.$store.commit('selected', this.box.id);
+                    const user = this.$store.state.user;
+                    const players = this.$store.state.players;
+
+                    const armies = Object.keys(this.box.armies)
+                    .filter(armyId => players[armyId] === user)
+                    .map(id => id - 0);
+                    if(armies.length === 0){
+                        this.$store.commit('selected',{id: this.box.id, playerId: null});
+                    }
+                    if(armies.length === 1){
+                        const armyId = armies[0];
+                        this.$store.commit('selected',{id: this.box.id, playerId: armyId});
+                    }
                 }
             }
         }

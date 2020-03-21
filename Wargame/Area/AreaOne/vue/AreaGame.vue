@@ -1,18 +1,20 @@
 <template>
    <div>
-       <header><h1>my game all mighty</h1>
-       This is a turn.
+       <header>
+           <h1>Area One</h1>
+       Welcome {{ $store.state.user }}
        </header>
        <div class="ready-wrapper">
            <div :class="playerOne">one</div>
            <div :class="playerTwo">two</div>
        </div>
+        <command-box>
 
+        </command-box>
 
-       Turn is >>>. {{ turn }} <<<<<
+       Turn is turn {{ turn }}
        <button @click="poke">Ready</button>
 
-       <div v-if="playersReady && playersReady[0]"> p {{playersReady[0].ready }} </div>
        <area-status></area-status>
 
        <div style="width: 1024px"  class="game-wrapper">
@@ -30,7 +32,7 @@
     export default {
         name: "AreaGame",
         props:['mapData',
-        'wargame'],
+        'wargame', 'user'],
         data: () => {
             return {syncObj: null,
             playersReady: [],
@@ -62,18 +64,23 @@
               this.playersReady = item.wargame.playersReady;
               console.log(item.wargame.playersReady);
               this.$store.commit('setBoxes', item.wargame.areaModel.areas);
+              this.$store.commit('setPlayers', item.wargame.players);
               // this.mapData.boxes = item.wargame.areaModel.areas;
+              this.$store.commit('clearTurn');
               this.turn = item.wargame.gameRules.turn;
           });
           this.syncObj.fetch(0);
+          this.$store.commit('setUser', this.user);
         },
     methods:{
             doCancel(){
               this.$store.commit('doCancel');
             },
             poke(){
-                const x = $.ajax({url:'https://alpha.davidrodal.com/wargame/poke',type:'POST',
-                data: {wargame: this.wargame, event: 1, type: 'area-game'},
+                const data = {wargame: this.wargame, event: 1, type: 'area-game'}
+                data.commands = this.$store.state.commands;
+                const x = $.ajax({url:'http://localhost:8080/wargame/poke',type:'POST',
+                data: data,
                 error: (err) => {
                     debugger;
                 },

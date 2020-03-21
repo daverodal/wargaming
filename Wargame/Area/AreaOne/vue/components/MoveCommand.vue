@@ -3,7 +3,7 @@
         <div class="background">
         </div>
         <div class="move-command">
-            <button>Move</button>
+            <button @click="move">Move</button>
             <div># <button @click="dec">-</button> {{ moveCount}} <button @click="inc">+</button></div>
             <button @click="cancel">Cancel</button>
         </div>
@@ -17,21 +17,25 @@
             return {moveCount: 0};
         },
         mounted(){
-            const box = this.$store.getters.selectedBox
-            this.moveCount = box.armies[1];
+            const box = this.$store.getters.selectedBox;
+            const playerId = this.$store.state.selectedPlayer;
+            this.moveCount = box.armies[playerId];
         },
         methods:{
             cancel(){
                 this.$store.commit('doCancel');
             },
+            move(){
+              this.$store.commit('moveCommand', {amount: this.moveCount})
+            },
             inc(){
-                if(this.moveCount >= this.$store.getters.selectedBox.armies[1]){
+                const state = this.$store.state;
+                if(this.moveCount >= this.$store.getters.selectedBox.armies[state.selectedPlayer]){
                     return;
                 }
               this.moveCount++;
             },
             dec(){
-                debugger;
                 if(this.moveCount <= 0){
                     return;
                 }
