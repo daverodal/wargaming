@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="456px" viewBox="0 0 240 456" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>RedCircleArrow</title>
+    <desc>Created with Sketch.</desc>
+    <g id="RedCircleArrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" fill="#FF4500" stroke="#FF4500">
+            <circle id="Combined-Shape" cx="120" cy="221" r="120"></circle>
+            <g id="Group" transform="translate(36.000000, 0.000000)">
+                <polygon id="Triangle" points="84.8 0 169.6 138 0 138"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

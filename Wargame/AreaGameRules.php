@@ -151,10 +151,18 @@ class AreaGameRules
 
         foreach($this->commands as $user => $commands){
             foreach($commands as $command ) {
-                $from = $command['from'];
-                $to = $command['to'];
-                $playerId = $command['playerId'];
-                $amount = $command['amount'];
+                if(is_array($command)){
+                    $from = $command['from'];
+                    $to = $command['to'];
+                    $playerId = $command['playerId'];
+                    $amount = $command['amount'];
+                }else{
+                    $from = $command->from;
+                    $to = $command->to;
+                    $playerId = $command->playerId;
+                    $amount = $command->amount;
+                }
+
                 $prevAmount = $areas->$from->armies->$playerId ?? 0;
                 $areas->$from->armies->$playerId = $prevAmount - $amount;
                 $prevAmount = $areas->$to->armies->$playerId ?? 0;

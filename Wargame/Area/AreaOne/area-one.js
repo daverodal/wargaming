@@ -9,6 +9,7 @@ import ClickBox from "./vue/components/ClickBox";
 import AreaStatus from "./vue/components/AreaStatus";
 import MoveCommand from "./vue/components/MoveCommand";
 import CommandBox from "./vue/components/CommandBox";
+import MoveCircle from "./vue/components/MoveCircle";
 window.vueStore = store;
 Vue.use(VueResource);
 Vue.component('area-game', AreaGame);
@@ -16,6 +17,7 @@ Vue.component('click-box', ClickBox);
 Vue.component('area-status', AreaStatus);
 Vue.component('move-command', MoveCommand);
 Vue.component('command-box', CommandBox);
+Vue.component('move-circle', MoveCircle );
 
 document.addEventListener("DOMContentLoaded",() => {
     window.world = new Vue({

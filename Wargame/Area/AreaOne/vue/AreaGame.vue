@@ -21,6 +21,10 @@
            <img style="width: 1024px" :src="mapData.url" alt="">
 
                <click-box v-for="(box,index) in boxes" :key="index" :box="box"></click-box>
+           <div class="command-items" v-for="command in commands">
+               love you
+               <move-circle :command="command" :amount="command.amount"></move-circle>
+           </div>
            <move-command v-if="$store.state.mode === 'move'"></move-command>
 
        </div>
@@ -54,6 +58,9 @@
             },
             boxes(){
                 return this.$store.state.boxes;
+            },
+            commands() {
+                return this.$store.state.commands;
             }
         },
         mounted() {
