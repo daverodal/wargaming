@@ -672,10 +672,10 @@ class Force extends SimpleForce
                     break;
                 case STATUS_CAN_DEPLOY:
                     if($mode == DEPLOY_MODE){
-                        continue;
+                        break;
                     }
                     if ($unit->isDeploy()) {
-                        continue;
+                        break;
                     }
 
                 case STATUS_UNAVAIL_THIS_PHASE:
