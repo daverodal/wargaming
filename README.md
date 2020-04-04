@@ -4,7 +4,10 @@ WebWargaming Markup
 ===================
 
 This is a clone of the Javascript code found at
-http://www.webwargaming.org/
+~~http://www.webwargaming.org/~~
+
+now moved onto
+http://www.battleanalysis.org/
 
 It's being released under the license found in the code
 
