@@ -17,7 +17,6 @@
         props: ['amount', 'command'],
         computed: {
             circleUrl(){
-                debugger;
                 const color = this.command.playerId == 1 ? 'Green' : 'Red';
                 return '/assets/map-symbols/' + color + 'CircleArrow.svg';
             },
@@ -34,7 +33,6 @@
                 return this.$store.state.boxes[this.command.from].y - this.$store.state.boxes[this.command.to].y;
             },
             angle(){
-                debugger;
                 const ret =  90 - Math.atan2(this.diffY , this.diffX) * (180 / Math.PI) ;
                 return 'rotate('+ret+'deg)';
             }

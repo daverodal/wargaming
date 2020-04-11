@@ -1,5 +1,5 @@
 <template>
-    <div  @click="select" class="label-box" :class="{green: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: box.y, left: box.x}">
+    <div  @click="select" class="label-box" :class="{blue: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: box.y, left: box.x}">
         {{box.name}}
          <span> {{box.armies[1] || 0}} {{box.armies[2] || 0}}
          </span>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+
     export default {
         name: "ClickBox",
         props: ['box'],
@@ -25,7 +26,8 @@
             },
             isNeighbor(){
               const neighbors = this.$store.getters.selectedNeighbors;
-              if(this.$store.getters.selectedNeighbors.includes(this.box.id)){
+              const boxId = this.box.id - 0;
+              if(neighbors.includes(boxId)){
                   return true;
               }
               return false;
@@ -65,8 +67,8 @@
     div{
         border: 3px solid transparent;
     }
-    .green{
-        background:lime;
+    .blue{
+        background:#00e7ff;
     }
     .red{
         background: orangered;

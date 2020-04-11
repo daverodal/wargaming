@@ -8,12 +8,19 @@
            <div :class="playerOne">one</div>
            <div :class="playerTwo">two</div>
        </div>
-        <command-box>
-
-        </command-box>
+        <div  v-for="(resource, index) in $store.state.resources">
+            <div v-if="index != 0">
+                {{$store.state.combatants[index]}}
+                F: {{resource.food}} E: {{resource.energy}} M: {{resource.materials}} Cities: {{$store.getters.getCities[index].length}}
+            </div>
+        </div>
+       <div>{{getPhase}}</div>
+       <command-box></command-box>
+       <build-box></build-box>
 
        Turn is turn {{ turn }}
        <button @click="poke">Ready</button>
+
 
        <area-status></area-status>
 
@@ -33,6 +40,7 @@
 
 <script>
     import {Sync} from '../../../wargame-helpers/Sync'
+    import {mapGetters} from "vuex";
     export default {
         name: "AreaGame",
         props:['mapData',
@@ -44,6 +52,8 @@
             }
         },
         computed:{
+            ...mapGetters(["getPhase"]),
+
             playerOne(){
                 if(this.playersReady && this.playersReady[0] && this.playersReady[0].ready){
                     return 'blue';
@@ -75,6 +85,9 @@
               // this.mapData.boxes = item.wargame.areaModel.areas;
               this.$store.commit('clearTurn');
               this.turn = item.wargame.gameRules.turn;
+              this.$store.commit('setResources', item.wargame.gameRules.resources);
+              this.$store.commit('setPhase', item.wargame.gameRules.phase);
+              this.$store.commit('setCombatants', item.wargame.combatants);
           });
           this.syncObj.fetch(0);
           this.$store.commit('setUser', this.user);
@@ -84,9 +97,11 @@
               this.$store.commit('doCancel');
             },
             poke(){
+                debugger;
                 const data = {wargame: this.wargame, event: 1, type: 'area-game'}
                 data.commands = this.$store.state.commands;
-                const x = $.ajax({url:'http://localhost:8080/wargame/poke',type:'POST',
+                data.builds = this.$store.state.builds;
+                const x = $.ajax({url:'http://localhost:8888/wargame/poke',type:'POST',
                 data: data,
                 error: (err) => {
                     debugger;

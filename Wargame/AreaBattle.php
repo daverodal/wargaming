@@ -57,6 +57,7 @@ class AreaBattle extends \Wargame\Battle{
     }
 
     public function postTransform($battle, $transform){
+        $transform["doc"]->wargame->combatants = $battle->combatants;
         return $transform;
     }
 
@@ -77,11 +78,11 @@ class AreaBattle extends \Wargame\Battle{
         return $data;
     }
 
-    function poke($event, $id, $commands,  $x, $y, $user, $click)
+    function poke($event, $id, $commands, $builds, $x, $y, $user, $click)
     {
         /* @var $gameRules \Wargame\AreaGameRules */
 
-        $retVal = $this->gameRules->processEvent($event, $commands, $user, $id, $click);
+        $retVal = $this->gameRules->processEvent($event, $commands, $builds, $user, $id, $click);
         return $retVal;
     }
 }

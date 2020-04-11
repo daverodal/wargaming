@@ -48,6 +48,9 @@ class AreaGameRules
     public $options = false;
     public $option;
     public $commands;
+    public $builds;
+    public $resources;
+    public $cities = [];
 
     function save()
     {
@@ -56,7 +59,7 @@ class AreaGameRules
         unset($this->combatRules);
         $data = new stdClass();
         foreach ($this as $k => $v) {
-            if (is_object($v) && $k !== 'commands') {
+            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'resources')) {
                 continue;
             }
             $data->$k = $v;
@@ -102,6 +105,13 @@ class AreaGameRules
             $this->flashMessages = [];
             $this->currentPhaseIndex = 0;
             $this->commands = new \stdClass();
+            $this->builds = new \stdClass();
+
+            $this->resources = [];
+            $amount = new \stdClass();;
+            $amount->energy = $amount->materials = $amount->food = 3;
+
+            $this->resources = [$amount, $amount , $amount];
         }
         if(!isset($this->flashLog)){
             $this->flashLog = [];
@@ -130,23 +140,107 @@ class AreaGameRules
     }
 
     function determineOwnership(){
+        $this->cities = [0,0,0];
         $areas = Battle::getBattle()->areaModel->areas;
         foreach($areas as $key => $area){
             if(count((array)$area->armies) === 0){
                 continue;
             }
             if(count((array)$area->armies) === 1){
-                $area->owner = array_keys(get_object_vars($area->armies));
+                $area->owner = array_keys(get_object_vars($area->armies))[0];
+                if($area->isCity ?? false){
+                    $this->cities[$area->owner]++;
+                }
                 continue;
             }
             if(count((array)$area->armies) > 1){
-                $area->owner = 0;
+                $p1 = "1";
+                $p2 = "2";
+                if($area->armies->$p1 == $area->armies->$p2){
+                    unset($area->armies->$p1);
+                     unset($area->armies->$p2);
+                    $area->owner = 0;
+
+                }else{
+                    if($area->armies->$p1 > $area->armies->$p2){
+                        $area->armies->$p1 -= $area->armies->$p2;
+                        $area->owner = $p1;
+                        unset($area->armies->$p2);
+
+
+                    } else {
+                        $area->armies->$p2 -= $area->armies->$p1;
+                        $area->owner = $p2;
+                        unset($area->armies->$p1);
+
+
+                    }
+                }
                 continue;
             }
         }
     }
 
-    function runCommands(){
+    function collectResources($area){
+        $amount = $this->resources[$area->owner];
+        switch($area->terrainType){
+            case 'desert':
+                $amount->energy += 2;
+                break;
+            case 'field':
+                $amount->food += 2;
+                break;
+            case 'pasture':
+                $amount->food += 1;
+                break;
+            case 'forest':
+                $amount->materials += 1;
+                break;
+            case 'mountain':
+                $amount->materials += 2;
+                break;
+        }
+        $this->resources[$area->owner] = $amount;
+    }
+    function gatherResources(){
+        $areas = Battle::getBattle()->areaModel->areas;
+        foreach($areas as $key => $area){
+            if($area->isCity ?? false){
+                if($area->owner ?? 0 > 0){
+                    $this->collectResources($area);
+                    foreach($area->neighbors as $neighbor){
+                        if($areas->{$neighbor}->owner ?? 0 === $area->owner){
+                            $this->collectResources($areas->{$neighbor});
+                        }
+                    }
+                }
+            }
+        }
+    }
+    function executeBuilds(){
+        $areas = Battle::getBattle()->areaModel->areas;
+
+
+        foreach($this->builds as $user => $builds){
+            foreach($builds as $build ) {
+                if(is_array($build)){
+                    $selected = $build['selected'];
+                    $playerId = $build['playerId'];
+                }else{
+                    $selected = $build->selected;
+                    $playerId = $build->playerId;
+                }
+
+                $resourcePlayer = $this->resources[$playerId];
+                $resourcePlayer->food--;
+                $resourcePlayer->energy--;
+                $resourcePlayer->materials--;
+                $areas->$selected->armies->$playerId += 1;
+            }
+        }
+        $this->builds = new \stdClass();
+    }
+    function executeMoves(){
         $areas = Battle::getBattle()->areaModel->areas;
 
         foreach($this->commands as $user => $commands){
@@ -170,24 +264,46 @@ class AreaGameRules
             }
         }
         $this->commands = new \stdClass();
-        $this->determineOwnership();
     }
-    function processEvent($event,  $commands, $user,$location, $click)
+
+    function runCommands(){
+
+        $this->determineOwnership();
+        switch($this->phase){
+            case RESULTS_PHASE:
+                $this->determineOwnership();
+                $this->gatherResources();
+                $this->phase = PRODUCTION_PHASE;
+                $this->turn++;
+                break;
+            case PRODUCTION_PHASE:
+                $this->determineOwnership();
+                $this->executeBuilds();
+                $this->phase = COMMAND_PHASE;
+                break;
+            case COMMAND_PHASE:
+                $this->executeMoves();
+                $this->determineOwnership();
+                $this->phase = RESULTS_PHASE;
+        }
+
+    }
+    function processEvent($event,  $commands, $builds, $user,$location, $click)
     {
 
         $battle = Battle::getBattle();
         $players = $battle->players;
 
-
         foreach($players as $id => $player){
             if($user === $player){
+
                 $this->commands->$user = $commands;
+                $this->builds->$user = $builds;
                 $battle->playersReady->toggleReady($id);
             }
         }
         if($battle->playersReady->allReady()){
             $this->runCommands();
-            $this->turn++;
             $battle->playersReady->clearAllReady();
         }
 //        foreach($players as $id => $player) {

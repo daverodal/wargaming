@@ -86,6 +86,9 @@ define("BLUE_OPTION_PHASE", 45);
 define("RED_OPTION_PHASE", 46);
 define("RED_FIRE_COMBAT_PHASE_TWO", 47);
 define("BLUE_FIRE_COMBAT_PHASE_TWO", 48);
+define("COMMAND_PHASE", 49);
+define("RESULTS_PHASE", 50);
+define("PRODUCTION_PHASE", 51);
 
 $phase_name = array();
 $phase_name[0] = "";
@@ -167,7 +170,9 @@ define("REBASE_MODE", 24);
 define("SUPPLY_MODE", 25);
 define("DEFENDER_LOSING_MODE",26);
 define("OPTION_MODE",27);
-
+define("COMMAND_MODE", 28);
+define("RESULTS_MODE",29);
+define("PRODUCTION_MODE", 30);
 
 
 
@@ -200,6 +205,9 @@ $mode_name[24] = "rebase mode";
 $mode_name[25] = "supply mode";
 $mode_name[26] = "defender loss mode";
 $mode_name[27] = "option mode";
+$mode_name[28] = "command mode";
+$mode_name[29] = "results mode";
+$mode_name[30] = "production mode";
 
 // form event constants
 define("OVER_MAP_EVENT",1);

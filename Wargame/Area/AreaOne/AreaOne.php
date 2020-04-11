@@ -27,6 +27,7 @@ class AreaOne extends AreaGame
     public $gameRules;
     public $moveRules;
     public $areaModel;
+    public $combatants;
     static function getPlayerData($scenario){
         $forceName = ["Neutral Observer", "Blue", "Red"];
         return \Wargame\Battle::register($forceName,
@@ -41,13 +42,13 @@ class AreaOne extends AreaGame
         $boxes = $terrainDoc->boxes;
         foreach($boxes as $boxId=>$box){
             $box->armies = new \stdClass();
-            if($boxId < 8){
+            if($boxId == 3){
                 $box->owner = 1;
-                $box->armies->{1} = 3;
+                $box->armies->{1} = 1;
             }
-            if($boxId > 16){
+            if($boxId == 19){
                 $box->owner = 2;
-                $box->armies->{2} = 3;
+                $box->armies->{2} = 1;
 
             }
             $this->areaModel->addArea($boxId, $box);
@@ -129,7 +130,7 @@ class AreaOne extends AreaGame
     {
         $this->areaData = AreaData::getInstance();
         $this->mapData = $this->areaData;
-
+        $this->combatants = (self::getPlayerData($scenario))["forceName"] ?? [];
         if ($data) {
 
             $this->areaModel = new AreaModel($data->areaModel);
@@ -171,6 +172,7 @@ class AreaOne extends AreaGame
 //
 //            $this->combatRules = new CombatRules($this->force, $this->terrain);
             $this->gameRules = new AreaGameRules();
+            $this->gameRules->addPhaseChange(Cnst::PRODUCTION_PHASE, Cnst::PRODUCTION_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::COMMAND_PHASE, Cnst::COMMAND_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::RESULTS_PHASE, Cnst::RESULTS_MODE, true);
             $this->gameRules->setInitialPhaseMode();

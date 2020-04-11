@@ -80,6 +80,7 @@ interface Cnst {
     const BLUE_FIRE_COMBAT_PHASE_TWO =  48;
     const COMMAND_PHASE = 49;
     const RESULTS_PHASE = 50;
+    const PRODUCTION_PHASE = 51;
 
 // game modes
     const SELECT_TO_MOVE_MODE =  1;
@@ -111,6 +112,7 @@ interface Cnst {
     const OPTION_MODE =  27;
     const COMMAND_MODE = 28;
     const RESULTS_MODE = 29;
+    const PRODUCTION_MODE = 30;
 
 
 // form event constants
