@@ -101,7 +101,7 @@
                 const data = {wargame: this.wargame, event: 1, type: 'area-game'}
                 data.commands = this.$store.state.commands;
                 data.builds = this.$store.state.builds;
-                const x = $.ajax({url:'http://localhost:8888/wargame/poke',type:'POST',
+                const x = $.ajax({url:'/wargame/poke',type:'POST',
                 data: data,
                 error: (err) => {
                     debugger;
