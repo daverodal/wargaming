@@ -47,6 +47,10 @@ class AreaGameRules
     public $playTurnClicks;
     public $options = false;
     public $option;
+    public $commands;
+    public $builds;
+    public $resources;
+    public $cities = [];
 
     function save()
     {
@@ -55,7 +59,7 @@ class AreaGameRules
         unset($this->combatRules);
         $data = new stdClass();
         foreach ($this as $k => $v) {
-            if (is_object($v)) {
+            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'resources')) {
                 continue;
             }
             $data->$k = $v;
@@ -71,6 +75,7 @@ class AreaGameRules
 
     function __construct( $data = null)
     {
+
         if ($data) {
             foreach ($data as $k => $v) {
                 if ($k == "phaseChanges") {
@@ -99,6 +104,14 @@ class AreaGameRules
             $this->flashLog = [];
             $this->flashMessages = [];
             $this->currentPhaseIndex = 0;
+            $this->commands = new \stdClass();
+            $this->builds = new \stdClass();
+
+            $this->resources = [];
+            $amount = new \stdClass();;
+            $amount->energy = $amount->materials = $amount->food = 3;
+
+            $this->resources = [$amount, $amount , $amount];
         }
         if(!isset($this->flashLog)){
             $this->flashLog = [];
@@ -126,1020 +139,184 @@ class AreaGameRules
         $this->phaseChanges[] = $phaseChange;
     }
 
-    function processEvent($event, $id, $location, $click)
+    function determineOwnership(){
+        $this->cities = [0,0,0];
+        $areas = Battle::getBattle()->areaModel->areas;
+        foreach($areas as $key => $area){
+            if(count((array)$area->armies) === 0){
+                continue;
+            }
+            if(count((array)$area->armies) === 1){
+                $area->owner = array_keys(get_object_vars($area->armies))[0];
+                if($area->isCity ?? false){
+                    $this->cities[$area->owner]++;
+                }
+                continue;
+            }
+            if(count((array)$area->armies) > 1){
+                $p1 = "1";
+                $p2 = "2";
+                if($area->armies->$p1 == $area->armies->$p2){
+                    unset($area->armies->$p1);
+                     unset($area->armies->$p2);
+                    $area->owner = 0;
+
+                }else{
+                    if($area->armies->$p1 > $area->armies->$p2){
+                        $area->armies->$p1 -= $area->armies->$p2;
+                        $area->owner = $p1;
+                        unset($area->armies->$p2);
+
+
+                    } else {
+                        $area->armies->$p2 -= $area->armies->$p1;
+                        $area->owner = $p2;
+                        unset($area->armies->$p1);
+
+
+                    }
+                }
+                continue;
+            }
+        }
+    }
+
+    function collectResources($area){
+        $amount = $this->resources[$area->owner];
+        switch($area->terrainType){
+            case 'desert':
+                $amount->energy += 2;
+                break;
+            case 'field':
+                $amount->food += 2;
+                break;
+            case 'pasture':
+                $amount->food += 1;
+                break;
+            case 'forest':
+                $amount->materials += 1;
+                break;
+            case 'mountain':
+                $amount->materials += 2;
+                break;
+        }
+        $this->resources[$area->owner] = $amount;
+    }
+    function gatherResources(){
+        $areas = Battle::getBattle()->areaModel->areas;
+        foreach($areas as $key => $area){
+            if($area->isCity ?? false){
+                if($area->owner ?? 0 > 0){
+                    $this->collectResources($area);
+                    foreach($area->neighbors as $neighbor){
+                        if($areas->{$neighbor}->owner ?? 0 === $area->owner){
+                            $this->collectResources($areas->{$neighbor});
+                        }
+                    }
+                }
+            }
+        }
+    }
+    function executeBuilds(){
+        $areas = Battle::getBattle()->areaModel->areas;
+
+
+        foreach($this->builds as $user => $builds){
+            foreach($builds as $build ) {
+                if(is_array($build)){
+                    $selected = $build['selected'];
+                    $playerId = $build['playerId'];
+                }else{
+                    $selected = $build->selected;
+                    $playerId = $build->playerId;
+                }
+
+                $resourcePlayer = $this->resources[$playerId];
+                $resourcePlayer->food--;
+                $resourcePlayer->energy--;
+                $resourcePlayer->materials--;
+                $areas->$selected->armies->$playerId += 1;
+            }
+        }
+        $this->builds = new \stdClass();
+    }
+    function executeMoves(){
+        $areas = Battle::getBattle()->areaModel->areas;
+
+        foreach($this->commands as $user => $commands){
+            foreach($commands as $command ) {
+                if(is_array($command)){
+                    $from = $command['from'];
+                    $to = $command['to'];
+                    $playerId = $command['playerId'];
+                    $amount = $command['amount'];
+                }else{
+                    $from = $command->from;
+                    $to = $command->to;
+                    $playerId = $command->playerId;
+                    $amount = $command->amount;
+                }
+
+                $prevAmount = $areas->$from->armies->$playerId ?? 0;
+                $areas->$from->armies->$playerId = $prevAmount - $amount;
+                $prevAmount = $areas->$to->armies->$playerId ?? 0;
+                $areas->$to->armies->$playerId = $prevAmount + $amount;
+            }
+        }
+        $this->commands = new \stdClass();
+    }
+
+    function runCommands(){
+
+        $this->determineOwnership();
+        switch($this->phase){
+            case RESULTS_PHASE:
+                $this->determineOwnership();
+                $this->gatherResources();
+                $this->phase = PRODUCTION_PHASE;
+                $this->turn++;
+                break;
+            case PRODUCTION_PHASE:
+                $this->determineOwnership();
+                $this->executeBuilds();
+                $this->phase = COMMAND_PHASE;
+                break;
+            case COMMAND_PHASE:
+                $this->executeMoves();
+                $this->determineOwnership();
+                $this->phase = RESULTS_PHASE;
+        }
+
+    }
+    function processEvent($event,  $commands, $builds, $user,$location, $click)
     {
 
-        /* @var Hexagon $location */
-
-        $now = time();
-        $interaction = new stdClass();
-
-        $interaction->event = $event;
-        $interaction->id = $id;
-        $interaction->hexagon = $location;
-        $interaction->time = $now;
-
-        /* @var $battle Battle */
         $battle = Battle::getBattle();
-        $mapData = $battle->mapData;
+        $players = $battle->players;
 
-        //TODO Ugly Ugly Ugly Ugly
-        $mapData->specialHexesChanges = new stdClass();
-        $mapData->specialHexesVictory = new stdClass();
-        //TODO Ugly Ugly Ugly Ugly
+        foreach($players as $id => $player){
+            if($user === $player){
 
-        $this->flashMessages = [];
-
-
-
-        if($event === SELECT_ALT_COUNTER_EVENT || $event === SELECT_ALT_MAP_EVENT){
-            if($location !== null){
-                $this->flashMessages[] = "@hex ".$location->getName();
-            }else{
-                $hex = $battle->force->units[$id]->hexagon;
-                if($hex->parent == "gameImages"){
-                    $this->flashMessages[] = "@hex ".$hex->name;
-                }
+                $this->commands->$user = $commands;
+                $this->builds->$user = $builds;
+                $battle->playersReady->toggleReady($id);
             }
-            return true;
         }
-
-
-        if($event === SURRENDER_EVENT){
-            if($id == $battle->players[$this->attackingForceId]){
-                $player = $this->attackingForceId;
-            }else{
-                $player = $this->defendingForceId;
-            }
-            $battle->victory->surrender($player);
-            return true;
+        if($battle->playersReady->allReady()){
+            $this->runCommands();
+            $battle->playersReady->clearAllReady();
         }
+//        foreach($players as $id => $player) {
+//            if ($user === $player) {
+//                $battle->playersReady->toggleReady($id);
+//            }
+//        }
 
+        return true;
         switch ($this->mode) {
+            case Cnst::COMMAND_PHASE:
 
-
-
-            case OPTION_MODE:
-
-                switch ($event) {
-
-                    case SELECT_BUTTON_EVENT:
-
-                        $this->option = $id;
-                        $this->options = false;
-                        return $this->selectNextPhase($click);
-                        break;
-                }
-                break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            case REPLACING_MODE:
-                switch ($event) {
-
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-                        if ($this->replacementsAvail <= 0) {
-                            break;
-                        }
-
-                        if($this->currentReplacement !== false && $location){
-                            $unit = $this->force->getUnit($this->currentReplacement);
-
-                            if ($unit->getReplacing($location) !== false) {
-                                $this->moveRules->stopReplacing();
-                                $this->currentReplacement = false;
-                                $this->replacementsAvail--;
-                            }
-                        }
-
-
-                        if ($this->force->attackingForceId == $this->force->units[$id]->forceId) {
-                            $unit = $this->force->getUnit($id);
-                            if ($unit->setStatus(STATUS_CAN_REPLACE)) {
-                                $this->currentReplacement = false;
-                                $this->moveRules->stopReplacing();
-                                break;
-                            }
-
-                            if ($this->force->units[$id]->status == STATUS_CAN_REPLACE) {
-                                if ($this->currentReplacement !== false && $this->currentReplacement != $id) {
-                                    $unit = $this->force->getUnit($this->currentReplacement);
-                                    $unit->setStatus(STATUS_CAN_REPLACE);
-                                }
-//                                $this->force->units[$id]->status = STATUS_CAN_REPLACE;
-                                $this->currentReplacement = $id;
-                                $this->moveRules->startReplacing($id);
-                                break;
-                            }
-                            if (isset($this->force->landForce) && $this->force->landForce && $this->force->units[$id]->status != STATUS_REPLACING && $this->force->units[$id]->status != STATUS_CAN_REINFORCE && $this->force->replace($id)) {
-                                $this->replacementsAvail--;
-                                if ($this->currentReplacement !== false) {
-                                    $this->force->units[$this->currentReplacement]->status = STATUS_REPLACED;
-                                    $this->moveRules->stopReplacing();
-
-                                    $this->currentReplacement = false;
-                                }
-                            }
-                        }
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-                        if ($this->selectNextPhase($click)) {
-                            $this->replacementsAvail = false;
-                        }
-                        break;
-                }
-                break;
-            case DEPLOY_MODE:
-                switch ($event) {
-                    case KEYPRESS_EVENT:
-                        $bad = true;
-                        $c = chr($id);
-
-                        if($c == 'i' || $c == 'I'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $unit->enterImproved(true);
-                            $bad = false;
-                        }
-
-                        if($c == 'u' || $c == 'U'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $unit->exitImproved(true);
-                            $bad = false;
-
-                        }
-                        if($c == 'b' || $c == 'B'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            if(method_exists($unit, 'battleReadyOrgStatus')){
-                                if (!$unit->unitHasNotMoved()) {
-                                    return false;
-                                }
-                                if($unit->battleReadyOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            return false;
-                        }
-                        if($c == 'h' || $c == 'H'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            if(method_exists($unit, 'hedgeHogOrgStatus')){
-                                if (!$unit->unitHasNotMoved()) {
-                                    return false;
-                                }
-                                if($unit->hedgeHogOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            return false;
-                        }
-                        if($c == 's' || $c == 'S'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-
-                            if(method_exists($unit, 'split')){
-                                if($unit->split() === false){
-                                    return false;
-                                }
-                                $bad = false;
-                            }
-                            if(method_exists($unit, 'standOrgStatus')){
-                                if($unit->standOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            if($bad){
-                                return false;
-                            }
-
-                        }
-                        if($c == 'c' || $c == 'C'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $ret = $this->force->findSimilarInHex($unit);
-
-                            if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret[0]) === false){
-                                    return false;
-                                }
-                            }else{
-                                return false;
-
-                            }
-                            $bad = false;
-                        }
-
-                        if($id == 37){
-                            if(method_exists($this->moveRules, 'turnLeft')){
-                                $ret = $this->moveRules->turnLeft(true);
-                                return $ret;
-                            }
-
-                        }
-
-                        if($id == 40){
-                            if(method_exists($this->moveRules, 'turnAbout')){
-                                $ret = $this->moveRules->turnAbout(true);
-                                return $ret;
-                            }
-
-                        }
-
-                        if($id == 39){
-                            if(method_exists($this->moveRules, 'turnRight')){
-                                $ret = $this->moveRules->turnRight(true);
-                                return $ret;
-                            }
-                        }
-                        if($bad === true){
-                            return false;
-                        }
-
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-
-
-
-                        return $this->moveRules->moveUnit($event, $id, $location, $this->turn);
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-
-                        $this->selectNextPhase($click);
-                        break;
-                }
-                break;
-
-
-            case REBASE_MODE:
-                switch ($event) {
-                    case KEYPRESS_EVENT:
-                        $c = chr($id);
-                        $bad = true;
-
-                        if($c == 'i' || $c == 'I'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $unit->enterImproved(true);
-                            $bad = false;
-
-                        }
-
-                        if($c == 'u' || $c == 'U'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $unit->exitImproved(true);
-                            $bad = false;
-
-                        }
-                        if($c == 's' || $c == 'S'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-
-                            if($unit->split() === false){
-                                return false;
-                            }
-                            $bad = false;
-
-                        }
-                        if($c == 'c' || $c == 'C'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $ret = $this->force->findSimilarInHex($unit);
-
-                            if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret[0]) === false){
-                                    return false;
-                                }
-                            }else{
-                                return false;
-
-                            }
-                            $bad = false;
-
-                        }
-                        if($bad === true){
-                            return false;
-                        }
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-
-
-
-                        return $this->moveRules->moveUnit($event, $id, $location, $this->turn);
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-
-                        $this->selectNextPhase($click);
-                        break;
-                }
-                break;
-
-            case SUPPLY_MODE:
-                switch ($event) {
-                    case KEYPRESS_EVENT:
-                        $c = chr($id);
-                        $bad = true;
-
-                        if($c == 'i' || $c == 'I'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $unit->enterImproved(true);
-                            $bad = false;
-                        }
-
-                        if($c == 'u' || $c == 'U'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $unit->exitImproved(true);
-                            $bad = false;
-                        }
-                        if($c == 's' || $c == 'S'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-
-                            if($unit->split() === false){
-                                return false;
-                            }
-                            $bad = false;
-
-                        }
-                        if($c == 'c' || $c == 'C'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $ret = $this->force->findSimilarInHex($unit);
-
-                            if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret[0]) === false){
-                                    return false;
-                                }
-                            }else{
-                                return false;
-
-                            }
-                            $bad = false;
-
-                        }
-                        if($bad === true){
-                            return false;
-                        }
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-
-
-
-                        return $this->moveRules->moveUnit($event, $id, $location, $this->turn);
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-
-                        $this->selectNextPhase($click);
-                        break;
-                }
-                break;
-
-
-            case COMBINING_MODE:
-
-                switch ($event) {
-
-                    case KEYPRESS_EVENT:
-                        if ($this->moveRules->anyUnitIsMoving) {
-                            $c = chr($id);
-
-                            if($c == 'c' || $c == 'C'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                $ret = $this->force->findSimilarInHex($unit);
-
-                                if(is_array($ret) && count($ret) > 0){
-                                    if($unit->combine($ret[0]) === false){
-                                        return false;
-                                    }else{
-                                        $this->moveRules->stopMove($unit, true);
-                                        return true;
-                                    }
-                                }else{
-                                    return false;
-
-                                }
-                            }
-
-                        }
-                        return false;
-
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-                        if ($id === false) {
-                            return false;
-                        }
-
-                        $ret = $this->moveRules->selectUnit($event, $id, $location, $this->turn);
-                        return $ret;
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-
-//                        $this->force->getCombine();
-
-                        return $this->selectNextPhase($click);
-                        break;
-                }
-                break;
-            case MOVING_MODE:
-
-                switch ($event) {
-
-                    case KEYPRESS_EVENT:
-                        if ($this->moveRules->anyUnitIsMoving) {
-                            $bad = true;
-                            $c = chr($id);
-                            if ($c == 'm' || $c == 'M') {
-                                /* @var Unit $unit */
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-                                if (!$unit->unitHasNotMoved()) {
-                                    return false;
-                                }
-                                if ($unit->forceMarch === true) {
-                                    $unit->forceMarch = false;
-                                    $unit->railMove(false);
-                                } else {
-                                    $unit->forceMarch = true;
-                                    $unit->railMove(true);
-                                }
-                                $bad = false;
-                            }
-
-                            if($c == 'x' || $c == 'X'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if ($unit->hexagon->parent == "gameImages") {
-                                    return $this->moveRules->exitUnit($unit->id);
-
-                                }
-                                return false;
-                            }
-
-                            if($c == 'i' || $c == 'I'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-                                $ret = $unit->enterImproved();
-                                if($ret) {
-                                    $hexName = $unit->hexagon->name;
-                                    if ($unit->isImproved) {
-                                        $battle->mapData->specialHexesVictory->$hexName = "IP!";
-                                    } else {
-                                        $battle->mapData->specialHexesVictory->$hexName = "No IP";
-                                    }
-                                }
-                                return $ret;
-                            }
-
-                            if($c == 'u' || $c == 'U'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                return $unit->exitImproved();
-                            }
-
-                            if($c == 'l' || $c == 'L'){
-                                if($this->moveRules InstanceOf TransportMoveRules){
-                                    return $this->moveRules->loadUnit();
-                                }else {
-                                    return false;
-                                }
-                                /* is this finished? */
-//                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-                            }
-
-                            if($id == 37){
-                                if(method_exists($this->moveRules, 'turnLeft')){
-                                    $ret = $this->moveRules->turnLeft();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($id == 40){
-                                if(method_exists($this->moveRules, 'turnAbout')){
-                                    $ret = $this->moveRules->turnAbout();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($id == 39){
-                                if(method_exists($this->moveRules, 'turnRight')){
-                                    $ret = $this->moveRules->turnRight();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($c == 'b' || $c == 'B'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'battleReadyOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->battleReadyOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                }
-                                return false;
-                            }
-
-                            if($c == 'h' || $c == 'H'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'hedgeHogOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->hedgeHogOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                }
-                                return false;
-                            }
-
-                            if($c == 's' || $c == 'S'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'split')){
-                                    if($unit->split() === false){
-                                        return false;
-                                    }
-                                    $bad = false;
-                                }
-                                if(method_exists($unit, 'standOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->standOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                    $bad = false;
-                                }
-                                if($bad){
-                                    return false;
-                                }
-                            }
-                            if($c == 'c' || $c == 'C'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                $ret = $this->force->findSimilarInHex($unit);
-
-                                if(is_array($ret) && count($ret) > 0){
-                                    if($unit->combine($ret[0]) === false){
-                                        return false;
-                                    }
-                                }else{
-                                    return false;
-
-                                }
-                                $bad = false;
-                            }
-                            if($bad === true){
-                                return false;
-                            }
-                        }else{
-                            return false;
-                        }
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-                        if ($id === false) {
-                            return false;
-                        }
-
-                        $ret = $this->moveRules->moveUnit($event, $id, $location, $this->turn);
-                        return $ret;
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-
-                        $numCombines = 0;
-                        if(method_exists($this->force, 'getCombine')){
-                            $numCombines = $this->force->getCombine();
-                        }
-
-                        $ret =  $this->selectNextPhase($click);
-
-                        return $ret;
-                        break;
-                }
-                break;
-
-
-            case SPEED_MODE:
-
-                switch ($event) {
-
-                    /** @noinspection PhpMissingBreakStatementInspection */
-                    case KEYPRESS_EVENT:
-                        if ($this->moveRules->anyUnitIsMoving) {
-
-                            if($id == 37){
-                                if(method_exists($this->moveRules, 'slower')){
-                                    $ret = $this->moveRules->slower();
-                                    return $ret;
-                                }
-                            }
-
-
-                            if($id == 39){
-                                if(method_exists($this->moveRules, 'faster')){
-                                    $ret = $this->moveRules->faster();
-                                    return $ret;
-                                }
-                            }
-
-                        }
-                    // Fall-through
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-                        if ($id === false) {
-                            return false;
-                        }
-
-                        $ret = $this->moveRules->selectUnit($event, $id, $location, $this->turn);
-                        return $ret;
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-
-                        $this->selectNextPhase($click);
-                        break;
-                }
-                break;
-
-            case COMBAT_SETUP_MODE:
-            case FIRE_COMBAT_SETUP_MODE:
-                $shift = false;
-                switch ($event) {
-
-                    case KEYPRESS_EVENT:
-                        $c = chr($id);
-                        if ($c == 'd' || $c == 'D') {
-                            return $this->combatRules->useDetermined();
-                            return true;
-                        }
-                        if ($c == 'c' || $c == 'C') {
-                            return $this->combatRules->clearCurrentCombat();
-                        }
-                        return false;
-                        break;
-
-                    /** @noinspection PhpMissingBreakStatementInspection */
-                    case SELECT_SHIFT_COUNTER_EVENT:
-                        $shift = true;
-                    /* fall through */
-                    case SELECT_COUNTER_EVENT:
-                        $this->combatRules->setupCombat($id, $shift);
-
-                        break;
-                    case COMBAT_PIN_EVENT:
-                        $this->combatRules->pinCombat($id);
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-
-                        $this->combatRules->undoDefendersWithoutAttackers();
-                        if ($this->gameHasCombatResolutionMode == true) {
-                            if (!(isset($this->force->landForce) && $this->force->landForce && $this->force->requiredCombats())) {
-                                $this->combatRules->combatResolutionMode();
-
-                                if($this->mode == FIRE_COMBAT_SETUP_MODE){
-                                    $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
-
-                                }else{
-                                    $this->mode = COMBAT_RESOLUTION_MODE;
-                                }
-                                if(isset($this->force->landForce) && $this->force->landForce){
-                                    $this->force->clearRequiredCombats();
-                                }
-                                $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
-                                $this->phaseClicks[] = $click + 1;
-                                $this->phaseClickNames[] = "Combat Resolution ";
-                                if($this->force->moreCombatToResolve() === false){
-                                    $this->flashMessages[] = "No Combats to Resolve";
-                                    $this->combatRules->cleanUp();
-                                    $this->selectNextPhase($click);
-                                }
-                            } else {
-                                $this->flashMessages[] = "Required Combats Remain";
-                            }
-                        } else {
-                            $this->selectNextPhase($click);
-                            if($this->phase == BLUE_COMBAT_RES_PHASE || $this->phase == RED_COMBAT_RES_PHASE){
-                                $this->combatRules->combatResolutionMode();
-                                $defender = $this->force->defendingForceId;
-                                $attacker = $this->force->attackingForceId;
-                                if($this->combatRules->combatsToResolve) {
-                                    foreach ($this->combatRules->combatsToResolve as $key => $val) {
-                                        if ($this->force->units[$key]->forceId === $defender) {
-                                            $this->force->defendingForceId = $defender;
-                                            $this->force->attackingForceId = $attacker;
-                                        } else {
-                                            $this->force->defendingForceId = $attacker;
-                                            $this->force->attackingForceId = $defender;
-                                        }
-                                        $interaction->dieRoll = $this->combatRules->resolveCombat($key);
-                                    }
-                                    $this->force->defendingForceId = $defender;
-                                    $this->force->attackingForceId = $attacker;
-                                }
-                            }
-                        }
-                        break;
-                    default:
-                        return 0;
-                }
-                break;
-
-            case COMBAT_RESOLUTION_MODE:
-            case FIRE_COMBAT_RESOLUTION_MODE:
-
-                switch ($event) {
-                    case KEYPRESS_EVENT:
-                        return false;
-
-                    case SELECT_COUNTER_EVENT:
-
-                        $interaction->dieRoll = $this->combatRules->resolveCombat($id);
-                        if ($this->force->unitsAreBeingEliminated() == true) {
-                            $this->force->removeEliminatingUnits();
-                        }
-                        if(isset($this->force->landForce) && $this->force->landForce === true) {
-                            if ($this->force->unitsAreExchanging() == true) {
-                                $this->mode = EXCHANGING_MODE;
-                            }
-
-                            if ($this->force->unitsAreAttackerLosing() == true) {
-                                $this->mode = ATTACKER_LOSING_MODE;
-                            }
-
-                            /* Defender losses are taken before attacker losses */
-
-                            if ($this->force->unitsAreDefenderLosing() == true) {
-                                $this->mode = DEFENDER_LOSING_MODE;
-                                break;
-                            }
-
-                            if ($this->force->unitsAreRetreating() == true) {
-                                $this->force->clearRetreatHexagonList();
-                                $this->mode = RETREATING_MODE;
-                            } else { // check if advancing after eliminated unit
-                                if ($this->force->unitsAreAdvancing() == true) {
-                                    $this->mode = ADVANCING_MODE;
-                                }
-                            }
-                        }
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-                        if ($this->force->moreCombatToResolve() == false) {
-                            $this->combatRules->cleanUp();
-                            $this->selectNextPhase($click);
-                        }
-                        break;
-                }
-                break;
-
-
-            case RETREATING_MODE:
-
-                switch ($event) {
-
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-                        $this->moveRules->retreatUnit($event, $id, $location);
-                        if ($this->force->unitsAreRetreating() == false) {
-                            if ($this->force->unitsAreExchanging() == true) {
-                                $this->mode = EXCHANGING_MODE;
-                            } else {
-                                if($this->force->unitsAreAttackerLosing()){
-                                    $this->mode = ATTACKER_LOSING_MODE;
-
-                                }else {
-                                    if($this->force->unitsAreDefenderLosing()) {
-                                        $this->mode = DEFENDER_LOSING_MODE;
-                                    }else{
-                                        if ($this->force->unitsAreAdvancing() == true) {
-                                            $this->mode = ADVANCING_MODE;
-                                        } else { // melee
-
-                                            if ($this->combatModeType == COMBAT_SETUP_MODE) {
-                                                if ($this->gameHasCombatResolutionMode == true) {
-                                                    $this->mode = COMBAT_RESOLUTION_MODE;
-                                                } else {
-                                                    $this->mode = COMBAT_SETUP_MODE;
-                                                }
-                                            } else { // fire
-                                                if ($this->gameHasCombatResolutionMode == true) {
-                                                    $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
-                                                } else {
-                                                    $this->mode = FIRE_COMBAT_SETUP_MODE;
-                                                }
-                                            }
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        break;
-                }
-                break;
-
-            case ADVANCING_MODE:
-
-                switch ($event) {
-
-                    case KEYPRESS_EVENT:
-                        if ($id == 27) {
-                            if($this->moveRules->anyUnitIsMoving == false) {
-                                $this->force->resetRemainingAdvancingUnits();
-                                if ($this->combatModeType == COMBAT_SETUP_MODE) {
-                                    if ($this->gameHasCombatResolutionMode == true) {
-                                        $this->mode = COMBAT_RESOLUTION_MODE;
-                                    } else {
-                                        $this->mode = COMBAT_SETUP_MODE;
-                                    }
-                                } else {
-                                    if ($this->gameHasCombatResolutionMode == true) {
-                                        $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
-                                    } else {
-                                        $this->mode = FIRE_COMBAT_SETUP_MODE;
-                                    }
-                                }
-                            }else{
-                                $this->moveRules->endAdvancing($this->moveRules->movingUnitId);
-                                if ($this->combatModeType == COMBAT_SETUP_MODE) {
-                                    if ($this->gameHasCombatResolutionMode == true) {
-                                        $this->mode = COMBAT_RESOLUTION_MODE;
-                                    } else {
-                                        $this->mode = COMBAT_SETUP_MODE;
-                                    }
-                                } else {
-                                    if ($this->gameHasCombatResolutionMode == true) {
-                                        $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
-                                    } else {
-                                        $this->mode = FIRE_COMBAT_SETUP_MODE;
-                                    }
-                                }
-                            }
-                            return true;
-                        }
-                        return false;
-                        break;
-
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-                        $this->moveRules->advanceUnit($event, $id, $location);
-
-                        if ($this->force->unitsAreAdvancing() == false) { // melee
-                            if ($this->combatModeType == COMBAT_SETUP_MODE) {
-                                if ($this->gameHasCombatResolutionMode == true) {
-                                    $this->mode = COMBAT_RESOLUTION_MODE;
-                                } else {
-                                    $this->mode = COMBAT_SETUP_MODE;
-                                }
-                            } else {
-                                if ($this->gameHasCombatResolutionMode == true) {
-                                    $this->mode = FIRE_COMBAT_RESOLUTION_MODE;
-                                } else {
-                                    $this->mode = FIRE_COMBAT_SETUP_MODE;
-                                }
-                            }
-                        }
-                        break;
-                }
-                break;
-            case EXCHANGING_MODE:
-            case ATTACKER_LOSING_MODE:
-
-                switch ($event) {
-
-                    case SELECT_COUNTER_EVENT:
-
-                        $unit = $this->force->getUnit($id);
-                        if ($unit->setStatus(STATUS_EXCHANGED)) {
-                            $this->force->exchangeUnit($unit);
-                            if ($this->force->unitsAreBeingEliminated() == true) {
-                                $this->force->removeEliminatingUnits();
-                            }
-                            $outOfMen = false;
-
-                            if(($this->mode === ATTACKER_LOSING_MODE || $this->mode === EXCHANGING_MODE) && $this->combatRules->noMoreAttackers()){
-                                $outOfMen = true;
-                            }
-                            if($this->legacyExchangeRule || $this->force->getExchangeAmount() <= 0 || $outOfMen === true) {
-                                if ($this->force->exchangingAreAdvancing() == true ) { // melee
-                                    $this->mode = ADVANCING_MODE;
-                                } else {
-                                    if($this->force->defendingAreRetreating() === true){
-                                        $this->mode = RETREATING_MODE;
-                                    }else{
-                                        if($this->force->attackingAreRetreating() === true) {
-                                            $this->mode = RETREATING_MODE;
-                                        }else {
-                                            if ($this->force->attackingAreAdvancing() === true) {
-
-                                                $this->mode = ADVANCING_MODE;
-
-                                            } else {
-                                                if ($this->force->unitsAreRetreating() == true) {
-                                                    $this->force->clearRetreatHexagonList();
-                                                    $this->mode = RETREATING_MODE;
-                                                } else { // check if advancing after eliminated unit
-                                                    if ($this->force->unitsAreAdvancing() == true) {
-                                                        $this->mode = ADVANCING_MODE;
-                                                    } else {
-                                                        $this->mode = COMBAT_RESOLUTION_MODE;
-
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                }
-                break;
-            case DEFENDER_LOSING_MODE:
-
-                switch ($event) {
-
-                    case SELECT_COUNTER_EVENT:
-
-                        $unit = $this->force->getUnit($id);
-                        if ($unit->setStatus(STATUS_EXCHANGED)) {
-                            $this->force->defenderLoseUnit($unit);
-                            if ($this->force->unitsAreBeingEliminated() == true) {
-                                $this->force->removeEliminatingUnits();
-                            }
-                            $outOfMen = false;
-                            if($this->combatRules->noMoreDefenders()){
-                                $outOfMen = true;
-                            }
-
-                            if($this->force->getDefenderLosingAmount() <= 0 || $outOfMen === true) {
-                                if($this->force->defendingAreRetreating() === true){
-                                    $this->mode = RETREATING_MODE;
-                                }else{
-                                    if($this->force->attackingAreRetreating() === true) {
-                                        $this->mode = RETREATING_MODE;
-                                    }else {
-                                        if ($this->force->unitsAreAttackerLosing() == true) {
-                                            $this->mode = ATTACKER_LOSING_MODE;
-                                        }else{
-                                            if ($this->force->attackingAreAdvancing() === true) {
-                                                $this->mode = ADVANCING_MODE;
-
-                                            } else {
-                                                if ($this->force->unitsAreRetreating() == true) {
-                                                    $this->force->clearRetreatHexagonList();
-                                                    $this->mode = RETREATING_MODE;
-                                                } else { // check if advancing after eliminated unit
-                                                    if ($this->force->unitsAreAdvancing() == true) {
-                                                        $this->mode = ADVANCING_MODE;
-                                                    } else {
-                                                        $this->mode = COMBAT_RESOLUTION_MODE;
-
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                }
-                break;        }
+        }
 
 //        $this->interactions[] = $interaction;
 

@@ -8,6 +8,7 @@
 
 namespace Wargame\Area\AreaOne;
 use Wargame\Area\AreaGame;
+use Wargame\AreaModel;
 use Wargame\AreaData;
 use Wargame\AreaForce;
 use Wargame\AreaMoveRules;
@@ -15,12 +16,18 @@ use Wargame\AreaTerrain;
 use Wargame\CombatRules;
 use Wargame\AreaGameRules;
 use Wargame\Cnst;
+use Wargame\Victory;
 use stdClass;
 use Wargame\PlayersReady;
 
 class AreaOne extends AreaGame
 {
 
+    /* @var \Wargame\AreaGameRules */
+    public $gameRules;
+    public $moveRules;
+    public $areaModel;
+    public $combatants;
     static function getPlayerData($scenario){
         $forceName = ["Neutral Observer", "Blue", "Red"];
         return \Wargame\Battle::register($forceName,
@@ -28,11 +35,24 @@ class AreaOne extends AreaGame
     }
 
 
-    function terrainInit($terrainDoc)
+    function areaMapInit($terrainDoc)
     {
-        $terrainInfo = $terrainDoc->terrain;
+//        $terrainInfo = $terrainDoc->terrain;
 
-        $specialHexes = $terrainInfo->specialHexes ? $terrainInfo->specialHexes : [];
+        $boxes = $terrainDoc->boxes;
+        foreach($boxes as $boxId=>$box){
+            $box->armies = new \stdClass();
+            if($boxId == 3){
+                $box->owner = 1;
+                $box->armies->{1} = 1;
+            }
+            if($boxId == 19){
+                $box->owner = 2;
+                $box->armies->{2} = 1;
+
+            }
+            $this->areaModel->addArea($boxId, $box);
+        }
         $mapHexes = new stdClass();
 //        foreach ($specialHexes as $hexName => $specialHex) {
 //            $mapHexes->$hexName = $this->specialHexesMap[$specialHex];
@@ -110,15 +130,14 @@ class AreaOne extends AreaGame
     {
         $this->areaData = AreaData::getInstance();
         $this->mapData = $this->areaData;
-
-
+        $this->combatants = (self::getPlayerData($scenario))["forceName"] ?? [];
         if ($data) {
 
+            $this->areaModel = new AreaModel($data->areaModel);
             $this->scenario = $data->scenario;
             $this->force = new AreaForce($data->force);
             if(isset($data->terrain)){
                 $this->terrain = new AreaTerrain($data->terrain);
-
             }else{
                 $this->terrain = new AreaTerrain();
             }
@@ -126,6 +145,8 @@ class AreaOne extends AreaGame
 
 //            $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
             $this->moveRules = new AreaMoveRules($this->force, $this->terrain, $data->moveRules);
+            $this->gameRules = new AreaGameRules($data->gameRules);
+
 //            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force,  $data->gameRules);
             $this->victory = new Victory($data);
 
@@ -135,6 +156,8 @@ class AreaOne extends AreaGame
 
             $this->arg = $arg;
             $this->scenario = $scenario;
+            $this->areaModel = new AreaModel();
+
 //            $this->game = $game;
 //            $this->display = new stdClass();
 
@@ -149,9 +172,11 @@ class AreaOne extends AreaGame
 //
 //            $this->combatRules = new CombatRules($this->force, $this->terrain);
             $this->gameRules = new AreaGameRules();
+            $this->gameRules->addPhaseChange(Cnst::PRODUCTION_PHASE, Cnst::PRODUCTION_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::COMMAND_PHASE, Cnst::COMMAND_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::RESULTS_PHASE, Cnst::RESULTS_MODE, true);
             $this->gameRules->setInitialPhaseMode();
+            $this->gameRules->setMaxTurn(12);
             $this->playersReady = new PlayersReady();
         }
 
@@ -173,10 +198,9 @@ class AreaOne extends AreaGame
 
 
         if ($data) {
-            $this->specialHexA = $data->specialHexA;
 
         } else {
-//            $this->victory = new Victory("Wargame\TMCW/Area1/area1VictoryCore.php");
+            $this->victory = new Victory("\\Wargame\\Area\\AreaOne\\VictoryCore");
 //            if ($scenario->supplyLen) {
 //                $this->victory->setSupplyLen($scenario->supplyLen);
 //            }
