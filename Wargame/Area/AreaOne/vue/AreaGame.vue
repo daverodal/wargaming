@@ -32,7 +32,7 @@
 
        </div>
 
-       <button @click="poke">Ready</button>
+       <button class="geaux-button" @click="poke">GO</button>
 
 
 
@@ -132,6 +132,14 @@
 </script>
 
 <style lang="scss" scoped>
+    .geaux-button{
+        background: #35cd04;
+        width: 40px;
+        height: 40px;
+        border: 3px solid black;
+        border-radius: 100%;
+        font-size:15px;
+    }
     .display-wrapper{
        display: flex;
         min-height: 120px;
