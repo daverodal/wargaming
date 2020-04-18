@@ -38,6 +38,7 @@ mix.webpackConfig({
         ],
     },
     resolve: {
+        symlinks: false,
         extensions: ['*', '.js', '.jsx', '.vue', '.ts', '.tsx'],
     },
 });

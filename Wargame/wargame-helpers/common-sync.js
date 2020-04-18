@@ -23,13 +23,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import {DR} from "./DR";
+import {DR} from "@markarian/wargame-helpers";
 
 
-import { Sync } from './Sync';
-import {syncObj} from './Vue/syncObj'
-import fixHeader from './fix-header';
-import * as globalFuncs from './global-funcs';
+import {syncObj} from '@markarian/wargame-helpers'
+import {fixHeader} from '@markarian/wargame-helpers';
+import {globalFuncs}  from '@markarian/wargame-helpers';
 function clearHexes() {
     $('#arrow-svg path.range-hex').remove();
 }

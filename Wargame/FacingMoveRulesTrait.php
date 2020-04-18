@@ -25,6 +25,7 @@ namespace Wargame;
 trait FacingMoveRulesTrait
 {
     function turnLeft($isDeploy = false){
+
         if ($this->anyUnitIsMoving) {
             $movingUnit = $this->force->units[$this->movingUnitId];
             if($movingUnit->facing === false){

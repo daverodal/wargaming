@@ -3,6 +3,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
+<a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a>
 
     <area-game class="world" :wargame="'{{ $wargame }}'" :user="'{{$user}}'" :map-data="{{ json_encode($mapData) }}"></area-game>
 </body>
@@ -13,7 +14,12 @@ $constants = $oClass->getConstants();
 <script type="text/javascript">
     <?php foreach($constants as $k => $v){
         echo "const $k = $v;\n";
-    }?>
+    }
+    ?>
+        window.legacy = {};
+    debugger;
+    const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
+
 </script>
 <script type="text/javascript" src="{{mix('vendor/javascripts/wargame/area-one.js')}}"></script>
 </html>

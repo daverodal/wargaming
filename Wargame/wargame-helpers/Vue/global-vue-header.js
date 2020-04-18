@@ -25,12 +25,13 @@
  */
 /* globl-vue-header */
 import {rotateUnits} from './global-vue-helper';
-import { syncObj } from "./syncObj";
-import {counterClick, fixItAll, mapClick, doitCRT} from "../global-funcs";
-import {DR} from '../DR'
+import { syncObj } from "@markarian/wargame-helpers";
+import {counterClick, fixItAll, mapClick, doitCRT} from "@markarian/wargame-helpers";
+import {DR} from '@markarian/wargame-helpers'
+import {store} from "./store/store";
 
-import "../jquery.panzoom";
-import {clickBack,phaseBack,playerTurnBack, clickSurge, phaseSurge, playerTurnSurge, timeBranch, timeLive} from "../time-funcs";
+import "@markarian/wargame-helpers";
+import {clickBack,phaseBack,playerTurnBack, clickSurge, phaseSurge, playerTurnSurge, timeBranch, timeLive} from "@markarian/wargame-helpers";
 
 /* global-vue-header 2 */
 document.addEventListener("DOMContentLoaded",function(){
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 console.log('i pan');
             },
             onEnd(a,b,c,d,e,f){
+                let vueStore = store;
 
                 let clientX = a.clientX;
                 let clientY = a.clientY;
@@ -60,20 +62,24 @@ document.addEventListener("DOMContentLoaded",function(){
                 var xDrag = Math.abs(clientX - DR.clickX);
                 var yDrag = Math.abs(clientY - DR.clickY);
                 if (xDrag > 20 || yDrag > 20) {
+                    vueStore.commit('dragCrt')
                     DR.dragged = true;
                 }else{
+                    vueStore.commit('clearDragCrt')
+
                     let matches;
                     if(a.target.id === 'crt-details-button'){
                         vueStore.commit('toggleShowDetails')
                     }
                     if(a.target.id.match(/^crt-col-/)){
-                        matches = [...a.target.id.matchAll(/^crt-col-(\d+)/)];
-                        const index = matches[0][1] - 0;
-                        doitCRT(index + 1);
+                        // matches = [...a.target.id.matchAll(/^crt-col-(\d+)/)];
+                        // const index = matches[0][1] - 0;
+                        // doitCRT(index + 1);
                         return false;
                     }
 
                 }
+                return true;
             },
             onStart(a,b,c,d,e,f,g){
                 DR.doingZoom = false;

@@ -335,7 +335,6 @@ class LandBattle extends \Wargame\Battle{
     function poke($event, $id, $x, $y, $user, $click)
     {
 
-
         $playerId = $this->gameRules->attackingForceId;
 
         if($event === SURRENDER_EVENT){

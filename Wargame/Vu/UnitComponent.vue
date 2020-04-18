@@ -14,7 +14,7 @@
 </template>
 
 <script type="text/javascript">
-    import {counterClick} from "../wargame-helpers/global-funcs";
+    import {counterClick} from "@markarian/wargame-helpers";
 
     export default{
         props:["unit"],

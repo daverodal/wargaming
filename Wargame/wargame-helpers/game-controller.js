@@ -29,11 +29,14 @@
  * import {doitUnit} from "../../wargaming/Wargame/wargame-helpers/global-funcs";
  * import {fixHeader} from "../../wargaming/Wargame/wargame-helpers";
  */
-import {doitUnit, doitCRT} from "./global-funcs";
-import fixHeader from "./fix-header";
-import {DR} from './DR';
+import {doitUnit, doitCRT} from "@markarian/wargame-helpers";
+import {fixHeader} from "@markarian/wargame-helpers";
+import {DR} from '@markarian/wargame-helpers';
 export var flashMessages = [];
 import "lodash";
+import {doPostRequest} from "@markarian/wargame-helpers";
+
+DR.doPostRequest = doPostRequest;
 
 export class GameController {
     renderCrtDetails(combat) {

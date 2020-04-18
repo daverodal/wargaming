@@ -1,6 +1,6 @@
 import Vue from "vue";
-import {syncObj} from './syncObj';
-import {DR} from "../DR";
+import {syncObj} from '@markarian/wargame-helpers';
+import {DR} from "@markarian/wargame-helpers";
 import {mapGetters, mapMutations} from "vuex";
 
 export class SyncController {
@@ -649,6 +649,7 @@ export class SyncController {
     }
     combatRules(){
         syncObj.register("combatRules",  (combatRules, data) => {
+
             const selectedTable = vueStore.state.crt.selectedTable;
             const defaultTable = vueStore.state.crt.defaultTable;
             const crtHeader = vueStore.state.crtData.crts[selectedTable].header;
@@ -787,10 +788,9 @@ export class SyncController {
                         crt.index = combatCol;
                         let pin = thisCombat.pinCRT;
                         if (pin !== false) {
-                            pin++;
                             if (pin < combatCol) {
                                 combatCol = pin;
-                                vueStore.status.crt.pinned = pin;
+                                vueStore.commit('setCrt', {pinned: pin});
                             }
                         }else {
                             crt.pinned = false;

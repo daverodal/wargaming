@@ -52,8 +52,8 @@ Vue.component('obc-component', OBCComponent);
 
 Vue.component('special-event', SpecialEvent);
 import {SyncController} from "../../wargame-helpers/Vue/sync-controller";
-import {syncObj} from "../../wargame-helpers/Vue/syncObj";
-import {DR} from "../../wargame-helpers/DR";
+import {syncObj} from "@markarian/wargame-helpers";
+import {DR} from "@markarian/wargame-helpers";
 export class AirborneSyncController extends SyncController{
 
     constructor(){

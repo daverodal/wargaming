@@ -199,6 +199,9 @@ class AreaGameRules
             case 'mountain':
                 $amount->materials += 2;
                 break;
+            case 'water':
+                $amount->energy += 1;
+                break;
         }
         $this->resources[$area->owner] = $amount;
     }

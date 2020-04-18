@@ -5,7 +5,7 @@ import "angular-right-click"
 import 'jquery-ui-bundle';
 import { GameController } from "./game-controller";
 export { GameController }
-import {DR} from "./DR";
+import {DR} from "@markarian/wargame-helpers";
 import initialize from "./initialize";
 
 

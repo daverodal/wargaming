@@ -1,4 +1,4 @@
-<?php global $force_name;
+<?php
 /*
 Copyright 2012-2015 David Rodal
 
@@ -32,9 +32,6 @@ You should have received a copy of the GNU General Public License
 
         const mode_name = JSON.parse('<?=json_encode($mode_name)?>');
         const phase_name = []
-            <?php foreach($phase_name as $k => $v){
-                echo "phase_name[$k] = \"$v\";\n";
-            }?>
 
         const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
 

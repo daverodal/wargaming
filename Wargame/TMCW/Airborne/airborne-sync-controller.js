@@ -1,6 +1,4 @@
 import {SyncController} from "../../wargame-helpers/Vue/sync-controller";
-import {syncObj} from "../../wargame-helpers/Vue/syncObj";
-import {DR} from "../../wargame-helpers/DR";
 import Vue from "vue";
 export class AirborneSyncController extends SyncController{
 

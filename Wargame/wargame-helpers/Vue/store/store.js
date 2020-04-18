@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import {DR} from "../../DR";
 Vue.use(Vuex);
 
 import {mapData} from "./mapData";
@@ -29,7 +28,8 @@ export const store = new Vuex.Store({
             roll: null,
             showCrt: false,
             crtSelfOpened: false,
-            showDetails: false
+            showDetails: false,
+            crtDragged: false
         },
         timeTravel:{
            currentClick: '',
@@ -56,6 +56,12 @@ export const store = new Vuex.Store({
     mutations:{
         toggleShowDetails(state){
           state.crt.showDetails = !state.crt.showDetails;
+        },
+        dragCrt(state){
+            state.crt.crtDragged = true;
+        },
+        clearDragCrt(state){
+            state.crt.crtDragged = false;
         },
         setShowUndo({timeTravel}, value){
           timeTravel.showUndo = value;

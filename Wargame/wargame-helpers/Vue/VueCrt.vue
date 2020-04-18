@@ -8,12 +8,12 @@
                 {{ tableName }} table
                 <div id="odds">
                     <span class="col0">&nbsp;</span>
-                    <span :id="'crt-col-'+index" :class="headerHighlight(index)" v-for=" (odds, index) in table.header">{{odds}}</span>
+                    <span @click="pinCombat(index)" :id="'crt-col-'+index" :class="headerHighlight(index)" v-for=" (odds, index) in table.header">{{odds}}</span>
                 </div>
                 <div v-if="crtData.crts">
                 <div v-for="(resultsRow, index) in table.table" :class="index & 1 ? '' : crtOptions.playerName" class="roll">
                     <span class="col0">{{index - table.dieOffsetHelper}}</span>
-                    <span   :id="'crt-col-'+colIndex" :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
+                    <span   :id="'crt-col-'+colIndex" :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" @click="pinCombat(colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
                 </div>
                 </div>
                 </div>
@@ -26,6 +26,8 @@
 <script>
     import {store} from "./store/store";
     import {mapMutations} from "vuex";
+    import {DR} from '@markarian/wargame-helpers'
+    import {doitCRT} from "@markarian/wargame-helpers";
     export default {
         props: ['crt','crtOptions'],
         computed: {
@@ -91,6 +93,13 @@
             },
             rowHighlight(row, col){
                 return col === this.highlightIndex ? row === this.highlightRoll ? 'roll-highlighted': 'highlighted': col === this.highlightPinned ? 'pin-highlighted': ''
+            },
+            pinCombat(index){
+                const x = DR.dragged;
+                if(DR.dragged){
+                    return;
+                }
+                doitCRT(index+1);
             }
         }
     }

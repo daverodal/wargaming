@@ -39,7 +39,7 @@
 </template>
 
 <script>
-    import {Sync} from '../../../wargame-helpers/Sync'
+    import {syncObj} from '@markarian/wargame-helpers'
     import {mapGetters} from "vuex";
     export default {
         name: "AreaGame",
@@ -74,22 +74,26 @@
             }
         },
         mounted() {
-          this.syncObj = new Sync('/wargame/fetch/'+this.wargame);
-          this.syncObj.register('playerStatus', (obj) => {
+            debugger;
+          syncObj.register('playerStatus', (obj) => {
           });
-          this.syncObj.register('doc', (item, data) => {
+          syncObj.register('doc', (item, data) => {
               this.playersReady = item.wargame.playersReady;
               console.log(item.wargame.playersReady);
-              this.$store.commit('setBoxes', item.wargame.areaModel.areas);
               this.$store.commit('setPlayers', item.wargame.players);
+              debugger;
               // this.mapData.boxes = item.wargame.areaModel.areas;
-              this.$store.commit('clearTurn');
-              this.turn = item.wargame.gameRules.turn;
-              this.$store.commit('setResources', item.wargame.gameRules.resources);
-              this.$store.commit('setPhase', item.wargame.gameRules.phase);
+              if(this.$store.state.phase != item.wargame.gameRules.phase){
+                  this.$store.commit('setBoxes', item.wargame.areaModel.areas);
+                  this.$store.commit('clearTurn');
+                  this.turn = item.wargame.gameRules.turn;
+                  this.$store.commit('setResources', item.wargame.gameRules.resources);
+                  this.$store.commit('setPhase', item.wargame.gameRules.phase);
+              }
+
               this.$store.commit('setCombatants', item.wargame.combatants);
           });
-          this.syncObj.fetch(0);
+          syncObj.fetch(0);
           this.$store.commit('setUser', this.user);
         },
     methods:{
@@ -101,13 +105,18 @@
                 const data = {wargame: this.wargame, event: 1, type: 'area-game'}
                 data.commands = this.$store.state.commands;
                 data.builds = this.$store.state.builds;
-                const x = $.ajax({url:'/wargame/poke',type:'POST',
-                data: data,
-                error: (err) => {
-                    debugger;
-                },
-                success: (res) => {
-                }});
+                // const x = $.ajax({url:'/wargame/poke',type:'POST',
+                // data: data,
+                // error: (err) => {
+                //     debugger;
+                // },
+                // success: (res) => {
+                // }});
+                window.axios.post('/wargame/poke', data).then(response => {
+
+                }).catch(error => {
+
+                })
             }
     },
     }

@@ -300,15 +300,17 @@ class CombatRules
         $battle = Battle::getBattle();
         $victory = $battle->victory;
         $unit = $battle->force->units[$id];
+        $id = "$id";
 
         $cd = $this->currentDefender;
-
         if ($this->force->unitIsEnemy($id) == true) {
             // defender is already in combatRules, so make it currently selected
 //            if(isset($this->defenders->$id)){
 //                $id = $this->defenders->$id;
 //            }
+
             $combats = $combatId = false;
+
             if (isset($this->defenders->$id)) {
                 $combatId = $this->defenders->$id;
 //                $cd = $this->defenders->$id;

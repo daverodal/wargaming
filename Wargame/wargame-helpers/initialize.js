@@ -23,12 +23,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "./global-funcs";
-import {clickBack, phaseBack, playerTurnBack, clickSurge,phaseSurge, playerTurnSurge, timeLive, timeBranch} from "./time-funcs";
+import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "@markarian/wargame-helpers";
+import {clickBack, phaseBack, playerTurnBack, clickSurge,phaseSurge, playerTurnSurge, timeLive, timeBranch} from "@markarian/wargame-helpers";
 import "./jquery.panzoom";
-import {DR} from "./DR";
-import {syncObj as x } from './Vue/syncObj'
-import fixHeader from './fix-header';
+import {DR} from "@markarian/wargame-helpers";
+import {syncObj as x } from '@markarian/wargame-helpers'
+import {fixHeader} from '@markarian/wargame-helpers';
 export default function initialize() {
 
     /* yuck */

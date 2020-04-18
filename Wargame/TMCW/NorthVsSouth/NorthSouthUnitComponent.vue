@@ -18,7 +18,7 @@
 
 <script>
     import {mapMutations} from "vuex"
-    import {counterClick} from "../../wargame-helpers/global-funcs";
+    import {counterClick} from "@markarian/wargame-helpers";
     import {rotateUnits} from "../../wargame-helpers/Vue/global-vue-helper";
     export default {
         name: "NorthSouthUnitComponent",

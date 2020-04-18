@@ -23,17 +23,32 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import {mapClick, counterClick, rotateUnits} from "./wargame-helpers/global-funcs";
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+import {
+    mapClick,
+    counterClick,
+    rotateUnits,
+    playAudio,
+    playAudioBuzz,
+    playAudioLow
+} from "@markarian/wargame-helpers";
 import initialize from "./wargame-helpers/initialize";
-import {DR} from "./wargame-helpers/DR"
-import {syncObj as x} from './wargame-helpers/Vue/syncObj'
+import {DR} from "@markarian/wargame-helpers"
+import {syncObj as x} from "@markarian/wargame-helpers";
 import './wargame-helpers/common-sync';
+import { doPostRequest } from "@markarian/wargame-helpers";
+const q = DR;
 
 document.addEventListener("DOMContentLoaded",() => {
 
     DR.$ = $;
     DR.globalZoom = 1;
     DR.playerNameMap = ["Zero", "One", "Two", "Three", "Four"];
+    DR.doPostRequest = doPostRequest;
 
     DR.players = ["observer", DR.playerOne, DR.playerTwo, DR.playerThree, DR.playerFour];
     DR.crtDetails = false;

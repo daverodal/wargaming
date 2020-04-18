@@ -37,7 +37,7 @@
 </template>
 
 <script>
-    import {clickBack,phaseBack,playerTurnBack, clickSurge, phaseSurge, playerTurnSurge, timeBranch, timeLive} from "../time-funcs";
+    import {clickBack,phaseBack,playerTurnBack, clickSurge, phaseSurge, playerTurnSurge, timeBranch, timeLive} from "@markarian/wargame-helpers";
 
     export default {
         name: "Undo",
