@@ -19,7 +19,8 @@
         mounted(){
             const box = this.$store.getters.selectedBox;
             const playerId = this.$store.state.selectedPlayer;
-            this.moveCount = box.armies[playerId];
+            // this.moveCount = box.armies[playerId];
+            this.moveCount = 1;
         },
         methods:{
             cancel(){
