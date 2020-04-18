@@ -1,28 +1,40 @@
 <template>
    <div>
-       <header>
-           <h1>Area One</h1>
-       Welcome {{ $store.state.user }}
+       <h1>Area One</h1>
+
+       <header class="display-wrapper">
+           <div class="display-item">
+               <h2>Welcome {{ $store.state.user }}</h2>
+           Turn is turn {{ turn }}
+           {{getPhase}}
+           </div>
+            <area-status></area-status>
+           <production-status></production-status>
+           <command-box></command-box>
+           <build-box></build-box>
        </header>
        <div class="ready-wrapper">
            <div :class="playerOne">one</div>
            <div :class="playerTwo">two</div>
        </div>
+       <div>
+           <h2>Resources</h2>
         <div  v-for="(resource, index) in $store.state.resources">
             <div v-if="index != 0">
                 {{$store.state.combatants[index]}}
                 F: {{resource.food}} E: {{resource.energy}} M: {{resource.materials}} Cities: {{$store.getters.getCities[index].length}}
             </div>
         </div>
-       <div>{{getPhase}}</div>
-       <command-box></command-box>
-       <build-box></build-box>
+       </div>
+       <div class="ready-wrapper">
 
-       Turn is turn {{ turn }}
+
+
+       </div>
+
        <button @click="poke">Ready</button>
 
 
-       <area-status></area-status>
 
        <div style="width: 1024px"  class="game-wrapper">
            <img style="width: 1024px" :src="mapData.url" alt="">
@@ -74,14 +86,12 @@
             }
         },
         mounted() {
-            debugger;
           syncObj.register('playerStatus', (obj) => {
           });
           syncObj.register('doc', (item, data) => {
               this.playersReady = item.wargame.playersReady;
               console.log(item.wargame.playersReady);
               this.$store.commit('setPlayers', item.wargame.players);
-              debugger;
               // this.mapData.boxes = item.wargame.areaModel.areas;
               if(this.$store.state.phase != item.wargame.gameRules.phase){
                   this.$store.commit('setBoxes', item.wargame.areaModel.areas);
@@ -101,7 +111,6 @@
               this.$store.commit('doCancel');
             },
             poke(){
-                debugger;
                 const data = {wargame: this.wargame, event: 1, type: 'area-game'}
                 data.commands = this.$store.state.commands;
                 data.builds = this.$store.state.builds;
@@ -123,9 +132,22 @@
 </script>
 
 <style lang="scss" scoped>
+    .display-wrapper{
+       display: flex;
+        min-height: 120px;
+        border: 2px solid #999;
+        padding: 5px;
+
+    }
+    h2{
+        margin-top:0px;
+    }
     .ready-wrapper{
         display:flex;
-        justify-content: space-around;
+        justify-content: flex-start;
+        div{
+            margin: 10px;
+        }
     }
     .game-wrapper{
         position: relative;

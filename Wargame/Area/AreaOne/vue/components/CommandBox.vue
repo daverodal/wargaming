@@ -1,6 +1,6 @@
 <template>
-    <div class="command-wrapper">
-        Commands
+    <div class="command-wrapper" v-if="commands && commands.length > 0">
+        <h3>Commands</h3>
         <div class="command-items" v-for="command in commands">
             from {{$store.state.boxes[command.from].name}} to {{$store.state.boxes[command.to].name}} num {{command.amount}}
         </div>
@@ -20,8 +20,14 @@
 
 <style lang="scss" scoped>
 .command-wrapper{
-    .command-items{
-        padding-left:20px;
+        margin-left: 15px;
+
+        padding-left: 10px;
+        border-left: 2px solid #999;
     }
-}
+    h3{
+        margin-top:0px;
+    }
+
+
 </style>

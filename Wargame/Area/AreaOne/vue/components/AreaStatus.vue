@@ -1,12 +1,8 @@
 <template>
-    <div v-if="isSelected">
+    <div class="area-status-wrapper" v-if="isSelected">
         <h2>Name: {{selectedBox.name}}</h2>
-        <div v-if="isProduction && selectedBox.isCity">
-            <h3>production!
-                {{pfAvailable}}</h3>
-            <button v-if="pfAvailable  > 0" @click="$store.commit('produceUnit')">Add</button>
-        </div>
-        <h2>Armies</h2>
+
+        <h2>Armies Here</h2>
         <div class="armies-box">
             <div>blue
                 {{selectedBox.armies[1] || 0}}
@@ -33,8 +29,17 @@
 </script>
 
 <style lang="scss" scoped>
+    h2{
+        margin-top: 0px;
+    }
+    .area-status-wrapper{
+        margin-left: 15px;
+
+            padding-left: 10px;
+            border-left: 2px solid #999;
+
+    }
     .armies-box{
-        width:200px;
         display:flex;
         justify-content: space-between;
     }

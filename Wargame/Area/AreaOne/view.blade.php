@@ -17,7 +17,6 @@ $constants = $oClass->getConstants();
     }
     ?>
         window.legacy = {};
-    debugger;
     const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
 
 </script>
