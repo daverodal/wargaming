@@ -42,11 +42,11 @@ class AreaOne extends AreaGame
         $boxes = $terrainDoc->boxes;
         foreach($boxes as $boxId=>$box){
             $box->armies = new \stdClass();
-            if($boxId == 3){
+            if($boxId == 1){
                 $box->owner = 1;
                 $box->armies->{1} = 1;
             }
-            if($boxId == 19){
+            if($boxId == 24){
                 $box->owner = 2;
                 $box->armies->{2} = 1;
 
