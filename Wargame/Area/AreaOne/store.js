@@ -115,6 +115,21 @@ export const store = new Vuex.Store({
             state.resources[state.selectedPlayer].energy--;
             state.resources[state.selectedPlayer].materials--;
         },
+        deleteProduction(state, payload){
+            const builds = [...state.builds];
+            builds.splice(payload, 1);
+            state.builds = [...builds];
+            state.resources[state.selectedPlayer].food++;
+            state.resources[state.selectedPlayer].energy++;
+            state.resources[state.selectedPlayer].materials++;
+        },
+        deleteCommand(state, payload){
+            state.mode = 'select';
+            state.boxes[state.selected].armies[state.selectedPlayer] -= payload.amount;
+            state.commands = [...state.commands, {from: state.selected, to: state.selectedNeighbor, amount: payload.amount, playerId: state.selectedPlayer}];
+            state.selected = null;
+            state.selectedNeighbor = null;
+        },
         moveCommand(state, payload){
             state.mode = 'select';
             state.boxes[state.selected].armies[state.selectedPlayer] -= payload.amount;
