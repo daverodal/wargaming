@@ -1,8 +1,8 @@
 <template>
     <div class="command-wrapper" v-if="commands && commands.length > 0">
         <h3>Commands</h3>
-        <div class="command-items" v-for="command in commands">
-            from {{$store.state.boxes[command.from].name}} to {{$store.state.boxes[command.to].name}} num {{command.amount}}
+        <div class="command-items" v-for="(command, index) in commands">
+            from {{$store.state.boxes[command.from].name}} to {{$store.state.boxes[command.to].name}}<br> num {{command.amount}}<button @click="$store.commit('deleteCommand', index)">delete</button>
         </div>
     </div>
 </template>
@@ -20,10 +20,8 @@
 
 <style lang="scss" scoped>
 .command-wrapper{
-        margin-left: 15px;
-
-        padding-left: 10px;
-        border-left: 2px solid #999;
+    margin: 5px 0;
+    background: #eee;
     }
     h3{
         margin-top:0px;

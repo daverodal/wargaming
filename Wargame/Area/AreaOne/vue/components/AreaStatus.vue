@@ -1,8 +1,8 @@
 <template>
     <div class="area-status-wrapper" v-if="isSelected">
-        <h2>Name: {{selectedBox.name}}</h2>
+        <h2>{{selectedBox.name}}</h2>
 
-        <h2>Armies Here</h2>
+        <h3>Armies Here</h3>
         <div class="armies-box">
             <div>blue
                 {{selectedBox.armies[1] || 0}}
@@ -33,10 +33,9 @@
         margin-top: 0px;
     }
     .area-status-wrapper{
-        margin-left: 15px;
 
-            padding-left: 10px;
-            border-left: 2px solid #999;
+        margin: 5px 0;
+        background: #eee;
 
     }
     .armies-box{

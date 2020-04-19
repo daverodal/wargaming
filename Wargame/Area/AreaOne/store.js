@@ -19,11 +19,53 @@ export const store = new Vuex.Store({
         builds:[],
         resources: [],
         phase: null,
-        combatants: []
+        combatants: [],
+        battles: [],
+        playersReady: []
     },
     getters:{
+        playerIds(state){
+          if(state.user){
+              debugger;
+              let ids = [];
+              state.players.forEach((item, index) => {
+                  if(item == state.user){
+                      ids.push(index);
+                  }
+              })
+            return ids;
+          }  else {
+              return [];
+          }
+        },
+        showWait(state, getters){
+            let wait = false;
+            state.playersReady.forEach(item => {
+                const pIds = [...getters.playerIds]
+                debugger;
+                if(pIds.includes(item.id) && item.ready){
+                    wait = true;
+                }
+            });
+            return wait;
+        },
+        playersReady(state){
+            return state.playersReady;
+        },
+        battles(state){
+            return state.battles;
+        },
         isProduction(state){
           return state.phase == PRODUCTION_PHASE;
+        },
+        getPF(state){
+
+            const resources = state.resources;
+            const pf = resources.map((user, index) => {
+                    const min = Math.min(user.food, user.energy, user.materials);
+                    return {pf: min, food: user.food - min, energy: user.energy - min, materials: user.materials - min}
+            })
+            return pf;
         },
         isSelected(state){
             return state.selected !== null;
@@ -77,6 +119,12 @@ export const store = new Vuex.Store({
         }
     },
     mutations:{
+        setPlayersReady(state, payload){
+          state.playersReady = payload;
+        },
+        setBattles(state, payload){
+          state.battles = payload;
+        },
         setResources(state, payload){
           state.resources = payload;
         },
@@ -124,11 +172,12 @@ export const store = new Vuex.Store({
             state.resources[state.selectedPlayer].materials++;
         },
         deleteCommand(state, payload){
-            state.mode = 'select';
-            state.boxes[state.selected].armies[state.selectedPlayer] -= payload.amount;
-            state.commands = [...state.commands, {from: state.selected, to: state.selectedNeighbor, amount: payload.amount, playerId: state.selectedPlayer}];
-            state.selected = null;
-            state.selectedNeighbor = null;
+            const command = state.commands[payload];
+
+            state.boxes[command.from].armies[command.playerId] += command.amount;
+            const commands = [...state.commands];
+            commands.splice(payload, 1);
+            state.commands = [...commands];
         },
         moveCommand(state, payload){
             state.mode = 'select';

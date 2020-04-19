@@ -11,6 +11,7 @@ import MoveCommand from "./vue/components/MoveCommand";
 import CommandBox from "./vue/components/CommandBox";
 import MoveCircle from "./vue/components/MoveCircle";
 import BuildBox from "./vue/components/BuildBox";
+import BattleBox from "./vue/components/BattleBox";
 import ProductionStatus from "./vue/components/ProductionStatus";
 window.vueStore = store;
 Vue.use(VueResource);
@@ -20,6 +21,7 @@ Vue.component('area-status', AreaStatus);
 Vue.component('move-command', MoveCommand);
 Vue.component('command-box', CommandBox);
 Vue.component('build-box', BuildBox);
+Vue.component('battle-box', BattleBox);
 Vue.component('move-circle', MoveCircle );
 Vue.component('production-status', ProductionStatus );
 

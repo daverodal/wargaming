@@ -17,7 +17,7 @@ $constants = $oClass->getConstants();
     }
     ?>
         window.legacy = {};
-    const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
+        const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
 
 </script>
 <script type="text/javascript" src="{{mix('vendor/javascripts/wargame/area-one.js')}}"></script>

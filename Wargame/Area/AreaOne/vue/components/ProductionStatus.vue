@@ -19,10 +19,9 @@
 
 <style scoped lang="scss">
     .prod-status-wrapper{
-        margin-left: 15px;
+        margin: 5px 0;
+        background: #eee;
 
-        padding-left: 10px;
-        border-left: 2px solid #999;
     }
     h3{
         margin-top:0px;

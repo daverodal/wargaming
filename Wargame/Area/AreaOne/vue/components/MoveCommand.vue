@@ -4,7 +4,7 @@
         </div>
         <div class="move-command">
             <button @click="move">Move</button>
-            <div># <button @click="dec">-</button> {{ moveCount}} <button @click="inc">+</button></div>
+            <div># <button @click="dec">-</button> {{ moveCount}} <button @click="inc">+</button> of {{ armiesHere }} <button @click="all" >all</button></div>
             <button @click="cancel">Cancel</button>
         </div>
     </div>
@@ -22,6 +22,13 @@
             // this.moveCount = box.armies[playerId];
             this.moveCount = 1;
         },
+        computed: {
+          armiesHere(){
+              const box = this.$store.getters.selectedBox;
+              const playerId = this.$store.state.selectedPlayer;
+              return box.armies[playerId];
+          }
+        },
         methods:{
             cancel(){
                 this.$store.commit('doCancel');
@@ -31,16 +38,19 @@
             },
             inc(){
                 const state = this.$store.state;
-                if(this.moveCount >= this.$store.getters.selectedBox.armies[state.selectedPlayer]){
+                if(this.moveCount >= this.armiesHere){
                     return;
                 }
               this.moveCount++;
             },
             dec(){
-                if(this.moveCount <= 0){
+                if(this.moveCount <= 1){
                     return;
                 }
                 this.moveCount--;
+            },
+            all(){
+                this.moveCount = this.armiesHere;
             }
         }
     }
@@ -65,6 +75,8 @@
             border-radius: 15px;
             width: 200px;
             position: absolute;
+            left: 40%;
+            padding: 5px;
         }
 
     }

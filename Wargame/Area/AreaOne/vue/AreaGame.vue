@@ -1,38 +1,36 @@
 <template>
    <div>
        <h1>Area One</h1>
-
+        <div class="super-wrapper">
        <header class="display-wrapper">
            <div class="display-item">
                <h2>Welcome {{ $store.state.user }}</h2>
            Turn is turn {{ turn }}
            {{getPhase}}
+               <div class="ready-wrapper">
+                   <div :class="playerOne">one</div>
+                   <div :class="playerTwo">two</div>
+               </div>
+               <div>
+                   <h2>Resources</h2>
+                   <div  v-for="(resource, index) in getPF">
+                       <div class="resource-wrapper" v-if="index != 0">
+                           <div class="big">{{$store.state.combatants[index]}} PF: {{resource.pf }} Cities: {{$store.getters.getCities[index].length}}</div>
+                           <div> F: {{resource.food}} E: {{resource.energy}} M: {{resource.materials}}</div>
+                       </div>
+                   </div>
+               </div>
            </div>
+           <battle-box></battle-box>
             <area-status></area-status>
            <production-status></production-status>
            <command-box></command-box>
            <build-box></build-box>
+           <button v-if="!showWait" class="geaux-button" @click="poke">GO</button>
+           <button v-if="showWait" class="wait-button" @click="poke">Wait</button>
+
        </header>
-       <div class="ready-wrapper">
-           <div :class="playerOne">one</div>
-           <div :class="playerTwo">two</div>
-       </div>
-       <div>
-           <h2>Resources</h2>
-        <div  v-for="(resource, index) in $store.state.resources">
-            <div v-if="index != 0">
-                {{$store.state.combatants[index]}}
-                F: {{resource.food}} E: {{resource.energy}} M: {{resource.materials}} Cities: {{$store.getters.getCities[index].length}}
-            </div>
-        </div>
-       </div>
-       <div class="ready-wrapper">
 
-
-
-       </div>
-
-       <button class="geaux-button" @click="poke">GO</button>
 
 
 
@@ -41,12 +39,12 @@
 
                <click-box v-for="(box,index) in boxes" :key="index" :box="box"></click-box>
            <div class="command-items" v-for="command in commands">
-               love you
                <move-circle :command="command" :amount="command.amount"></move-circle>
            </div>
            <move-command v-if="$store.state.mode === 'move'"></move-command>
 
        </div>
+        </div>
    </div>
 </template>
 
@@ -58,13 +56,13 @@
         props:['mapData',
         'wargame', 'user'],
         data: () => {
-            return {syncObj: null,
-            playersReady: [],
+            return {
+                syncObj: null,
                 turn: 0
             }
         },
         computed:{
-            ...mapGetters(["getPhase"]),
+            ...mapGetters(["getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait']),
 
             playerOne(){
                 if(this.playersReady && this.playersReady[0] && this.playersReady[0].ready){
@@ -89,9 +87,13 @@
           syncObj.register('playerStatus', (obj) => {
           });
           syncObj.register('doc', (item, data) => {
-              this.playersReady = item.wargame.playersReady;
-              console.log(item.wargame.playersReady);
+              this.$store.commit('setPlayersReady', item.wargame.playersReady)
               this.$store.commit('setPlayers', item.wargame.players);
+              if(item.wargame.gameRules.battles && item.wargame.gameRules.battles.length > 0){
+                  this.$store.commit('setBattles', item.wargame.gameRules.battles);
+              }else{
+                  this.$store.commit('setBattles', []);
+              }
               // this.mapData.boxes = item.wargame.areaModel.areas;
               if(this.$store.state.phase != item.wargame.gameRules.phase){
                   this.$store.commit('setBoxes', item.wargame.areaModel.areas);
@@ -132,6 +134,17 @@
 </script>
 
 <style lang="scss" scoped>
+    .big{
+        font-size: 22px;
+    }
+    .resource-wrapper{
+        margin: 5px 0;
+        background: #eee;
+    }
+    .super-wrapper{
+        display:flex;
+        min-width:240px;
+    }
     .geaux-button{
         background: #35cd04;
         width: 40px;
@@ -140,8 +153,17 @@
         border-radius: 100%;
         font-size:15px;
     }
+    .wait-button{
+        background: red;
+        width: 40px;
+        height: 40px;
+        border: 3px solid black;
+        border-radius: 100%;
+        font-size:11px;
+    }
     .display-wrapper{
        display: flex;
+        flex-direction: column;
         min-height: 120px;
         border: 2px solid #999;
         padding: 5px;

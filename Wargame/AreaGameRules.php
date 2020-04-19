@@ -49,6 +49,7 @@ class AreaGameRules
     public $option;
     public $commands;
     public $builds;
+    public $battles = [];
     public $resources;
     public $cities = [];
 
@@ -106,6 +107,7 @@ class AreaGameRules
             $this->currentPhaseIndex = 0;
             $this->commands = new \stdClass();
             $this->builds = new \stdClass();
+            $this->battles = [];
 
             $this->resources = [];
             $amount = new \stdClass();;
@@ -140,6 +142,7 @@ class AreaGameRules
     }
 
     function determineOwnership(){
+        $this->battles = [];
         $this->cities = [0,0,0];
         $areas = Battle::getBattle()->areaModel->areas;
         foreach($areas as $key => $area){
@@ -156,19 +159,23 @@ class AreaGameRules
             if(count((array)$area->armies) > 1){
                 $p1 = "1";
                 $p2 = "2";
+                $report = "battle at ".$area->name;
                 if($area->armies->$p1 == $area->armies->$p2){
+                    $report .= " both sides lost ".$area->armies->$p1. " nobody controls the area";
                     unset($area->armies->$p1);
                      unset($area->armies->$p2);
                     $area->owner = 0;
 
                 }else{
                     if($area->armies->$p1 > $area->armies->$p2){
+                        $report .= " both sides lost ".$area->armies->$p2 . " 1 controls the area";
                         $area->armies->$p1 -= $area->armies->$p2;
                         $area->owner = $p1;
                         unset($area->armies->$p2);
 
 
                     } else {
+                        $report .= " both sides lost ".$area->armies->$p1 . " 2 controls the area";
                         $area->armies->$p2 -= $area->armies->$p1;
                         $area->owner = $p2;
                         unset($area->armies->$p1);
@@ -176,6 +183,7 @@ class AreaGameRules
 
                     }
                 }
+                $this->battles[] = $report;
                 continue;
             }
         }
