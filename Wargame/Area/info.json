@@ -9,7 +9,53 @@
       "main": {
         "description": "Standard Scenario",
         "longDescription": "Whenever",
-        "mapDataUrl": "e5e37875bb930dcf926f2fa86000af94"
+        "mapDataUrl": "e5e37875bb930dcf926f2fa86000af94",
+        "setup": {
+          "1": [
+            {
+              "mapId": 1,
+              "amount": 1
+            }
+          ],
+          "2": [
+            {
+              "mapId": 24,
+                "amount": 1
+            }
+          ]
+        }
+
+      },
+      "newmap": {
+        "description": "Alternate Map Scenario",
+        "longDescription": "Whenever",
+        "mapDataUrl": "01a70d006630285499e48beae19a55f8",
+        "setup": {
+          "1": [
+            {
+              "mapId": 4,
+              "amount": 6
+            },
+            {
+              "mapId": 7,
+              "amount": 6
+            }
+          ],
+          "2": [
+            {
+              "mapId": 41,
+              "amount": 4
+            },
+            {
+              "mapId": 43,
+              "amount": 4
+            },
+            {
+              "mapId": 32,
+              "amount": 4
+            }
+          ]
+        }
       }
     }
   }

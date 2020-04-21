@@ -40,15 +40,23 @@ class AreaOne extends AreaGame
 //        $terrainInfo = $terrainDoc->terrain;
 
         $boxes = $terrainDoc->boxes;
+        $p1 = 1;
+        $p2 = 24;
+        if($this->scenario->setup){
+            $p1Starting = $this->scenario->setup->{1};
+            $p1Xlated = array_column($p1Starting, 'amount', 'mapId');
+            $p2Starting = $this->scenario->setup->{2};
+            $p2Xlated = array_column($p2Starting, 'amount', 'mapId');
+        }
         foreach($boxes as $boxId=>$box){
             $box->armies = new \stdClass();
-            if($boxId == 1){
+            if($p1Xlated[$boxId] ?? false !== false){
                 $box->owner = 1;
-                $box->armies->{1} = 1;
+                $box->armies->{1} = $p1Xlated[$boxId];
             }
-            if($boxId == 24){
+            if($p2Xlated[$boxId] ?? false !== false){
                 $box->owner = 2;
-                $box->armies->{2} = 1;
+                $box->armies->{2} = $p2Xlated[$boxId];
 
             }
             $this->areaModel->addArea($boxId, $box);

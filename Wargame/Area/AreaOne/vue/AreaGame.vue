@@ -12,10 +12,11 @@
                    <div :class="playerTwo">two</div>
                </div>
                <div>
-                   <h2>Resources</h2>
+                   <h2>Assets</h2>
                    <div  v-for="(resource, index) in getPF">
                        <div class="resource-wrapper" v-if="index != 0">
                            <div class="big">{{$store.state.combatants[index]}} PF: {{resource.pf }} Cities: {{$store.getters.getCities[index].length}}</div>
+                           <div>Armies {{totalArmies[index]}}</div>
                            <div> F: {{resource.food}} E: {{resource.energy}} M: {{resource.materials}}</div>
                        </div>
                    </div>
@@ -31,11 +32,8 @@
 
        </header>
 
-
-
-
-       <div style="width: 1024px"  class="game-wrapper">
-           <img style="width: 1024px" :src="mapData.url" alt="">
+       <div class="game-wrapper">
+           <img :style="{width: mapData.width + 'px'}" :src="mapData.url" alt="">
 
                <click-box v-for="(box,index) in boxes" :key="index" :box="box"></click-box>
            <div class="command-items" v-for="command in commands">
@@ -62,7 +60,7 @@
             }
         },
         computed:{
-            ...mapGetters(["getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait']),
+            ...mapGetters(["getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait', 'totalArmies']),
 
             playerOne(){
                 if(this.playersReady && this.playersReady[0] && this.playersReady[0].ready){

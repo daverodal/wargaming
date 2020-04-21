@@ -38,6 +38,23 @@ export const store = new Vuex.Store({
               return [];
           }
         },
+        totalArmies(state){
+            let ret = [0,0,0]
+          for(let property in state.boxes){
+              if(state.boxes[property].armies[1]){
+                  console.log("Armies ");
+                  console.log(state.boxes[property].armies[1])
+                  ret [1] += state.boxes[property].armies[1]
+              }
+              if(state.boxes[property].armies[2]){
+                  console.log("Armies ");
+                  console.log(state.boxes[property].armies[1])
+                  ret [2] += state.boxes[property].armies[2]
+              }
+          }
+          console.log(ret);
+          return ret;
+        },
         showWait(state, getters){
             let wait = false;
             state.playersReady.forEach(item => {

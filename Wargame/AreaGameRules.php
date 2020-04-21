@@ -142,7 +142,6 @@ class AreaGameRules
     }
 
     function determineOwnership(){
-        $this->battles = [];
         $this->cities = [0,0,0];
         $areas = Battle::getBattle()->areaModel->areas;
         foreach($areas as $key => $area){
@@ -251,7 +250,7 @@ class AreaGameRules
         }
         $this->builds = new \stdClass();
     }
-    function executeMoves(){
+    function executeMoves($player){
         $areas = Battle::getBattle()->areaModel->areas;
 
         foreach($this->commands as $user => $commands){
@@ -268,13 +267,21 @@ class AreaGameRules
                     $amount = $command->amount;
                 }
 
+                if($playerId !== $player){
+                    continue;
+                }
                 $prevAmount = $areas->$from->armies->$playerId ?? 0;
+                if($amount > $prevAmount){
+                    $amount = $prevAmount;
+                    if($amount == 0){
+                        continue;
+                    }
+                }
                 $areas->$from->armies->$playerId = $prevAmount - $amount;
                 $prevAmount = $areas->$to->armies->$playerId ?? 0;
                 $areas->$to->armies->$playerId = $prevAmount + $amount;
             }
         }
-        $this->commands = new \stdClass();
     }
 
     function runCommands(){
@@ -285,6 +292,7 @@ class AreaGameRules
                 $this->determineOwnership();
                 $this->gatherResources();
                 $this->phase = PRODUCTION_PHASE;
+                $this->battles = [];
                 $this->turn++;
                 break;
             case PRODUCTION_PHASE:
@@ -293,8 +301,12 @@ class AreaGameRules
                 $this->phase = COMMAND_PHASE;
                 break;
             case COMMAND_PHASE:
-                $this->executeMoves();
+                $this->battles = [];
+                $this->executeMoves(1);
                 $this->determineOwnership();
+                $this->executeMoves(2);
+                $this->determineOwnership();
+                $this->commands = new \stdClass();
                 $this->phase = RESULTS_PHASE;
         }
 
