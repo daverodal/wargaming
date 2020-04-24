@@ -109,6 +109,12 @@ class AreaOne extends AreaGame
 
     function terrainGen($mapDoc, $terrainDoc)
     {
+        $map = $mapDoc->map;
+        $this->terrain->mapUrl = $mapUrl = $map->mapUrl;
+        $this->terrain->maxCol = $maxCol = $map->numX;
+        $this->terrain->maxRow = $maxRow = $map->numY;
+        $this->terrain->mapWidth = $map->mapWidth;
+
 //
 //        $terrainArr = json_decode($terrainDoc->hexStr->hexEncodedStr);
 //

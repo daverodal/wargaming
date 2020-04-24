@@ -46,6 +46,8 @@ mix.setPublicPath("../game-dispatcher/public/vendor/");
 mix.copyDirectory('Wargame/wargame-helpers/audio','../game-dispatcher/public/assets/audio')
     .copyDirectory('Wargame/wargame-helpers/unit-images', '../game-dispatcher/public/assets/unit-images')
     .copyDirectory('Wargame/wargame-helpers/map-symbols', '../game-dispatcher/public/assets/map-symbols')
+    .copyDirectory('Wargame/Genre', '../game-dispatcher/public/vendor/wargame/genre')
+    .copyDirectory('Wargame/Mollwitz/Images', '../game-dispatcher/public/vendor/wargame/mollwitz/images')
 mix.sass('Wargame/Mollwitz/all-nations-colors.scss', 'css/wargame/all-nations-colors.css')
 mix.sass('Wargame/TMCW/commonPlay.scss', 'css/wargame/common-play.css');
 mix.sass('Wargame/TMCW/Nomonhan/all.scss', 'css/wargame/nomonhan.css')
