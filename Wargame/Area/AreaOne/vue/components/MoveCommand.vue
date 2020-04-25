@@ -68,13 +68,13 @@
             bottom:0;
         }
         .move-command{
-            top: 250px;
+            top: 40%;
             opacity: 1;
             background: white;
             border: 10px solid #999;
             border-radius: 15px;
             width: 200px;
-            position: absolute;
+            position: fixed;
             left: 40%;
             padding: 5px;
         }
