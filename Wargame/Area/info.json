@@ -55,7 +55,37 @@
               "amount": 4
             }
           ]
-        }
+        },
+        "thirdmap": {
+          "description": "3rd Map Scenario",
+          "longDescription": "Whenever",
+          "mapDataUrl": "03311c120740696f64eba021c30087e1",
+          "setup": {
+            "1": [
+              {
+                "mapId": 4,
+                "amount": 6
+              },
+              {
+                "mapId": 7,
+                "amount": 6
+              }
+            ],
+            "2": [
+              {
+                "mapId": 41,
+                "amount": 4
+              },
+              {
+                "mapId": 43,
+                "amount": 4
+              },
+              {
+                "mapId": 32,
+                "amount": 4
+              }
+            ]
+          }
       }
     }
   }
