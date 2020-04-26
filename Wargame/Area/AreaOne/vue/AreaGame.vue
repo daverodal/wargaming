@@ -163,6 +163,7 @@
         font-size:11px;
     }
     .display-wrapper{
+        min-width:200px;
        display: flex;
         flex-direction: column;
         min-height: 120px;
