@@ -1,0 +1,101 @@
+{
+
+    "Moskow": {
+        "disabled": false,
+        "production": false,
+        "name": "Moskow...",
+        "path": "TMCW",
+        "genre": "20'th Century Games",
+        "fileName": "\\Wargame\\Additional\\Moskow\\Moskow.php",
+        "description": "Germans drive on Moscow in October 1941. Turns are 5 days. 11 Turns.",
+        "scenarios": {
+            "Main": {
+                "description": "Standard",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true,
+                "longDescription": "Historical, tends to favor Soviets"
+            },
+            "weakSoviets": {
+                "description": "Weaker Soviets",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true,
+                "weakSoviets": true,
+                "longDescription":"Only 6 instead of 8 replacements a turn for soviets."
+            },
+            "veryWeakSoviets": {
+                "description": "Very Weak Soviets",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true,
+                "veryWeakSoviets": true,
+                "longDescription":"Only 4 instead of 8 replacements a turn for soviets."
+            },
+            "weakGermans": {
+                "description": "Weaker Germans",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true,
+                "weakGermans": true,
+                "longDescription":"1 replacement on even turns only (as opposed to every turn)."
+            }
+        }
+    },
+    "EastWest": {
+        "disabled": false,
+        "production": false,
+        "name": "East vs West",
+        "path": "TMCW",
+        "genre": "20'th Century Games",
+        "fileName": "\\Wargame\\Additional\\EastWest\\EastWest.php",
+        "params": {
+            "unitComponent": "modern-at-def-unit",
+            "nationalities": ["indian", "pakistani"]
+
+        },
+        "scenarios": {
+            "Main": {
+                "description": "East Vs West",
+                "longDescription":"Whatever.",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true
+            }
+        }
+    },
+    "Collapse": {
+        "disabled": false,
+        "production": false,
+        "name": "Collapse in the east",
+        "path": "TMCW",
+        "genre": "20'th Century Games",
+        "fileName": "\\Wargame\\Additional\\Collapse\\Collapse.php",
+        "params": {
+            "unitComponent": "modern-at-def-unit",
+            "nationalities": ["indian", "pakistani"]
+
+        },
+        "scenarios": {
+            "Main": {
+                "description": "Summer of 44",
+                "longDescription":"not romantic.",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true
+            }
+        }
+    }
+}

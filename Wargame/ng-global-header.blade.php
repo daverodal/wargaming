@@ -20,6 +20,7 @@ You should have received a copy of the GNU General Public License
 
 <head>
     <?php
+        global $phase_name;
     $oClass = new ReflectionClass('Wargame\Cnst');
     $constants = $oClass->getConstants();
     global $results_name, $phase_name, $mode_name;
@@ -31,7 +32,10 @@ You should have received a copy of the GNU General Public License
         }?>
 
         const mode_name = JSON.parse('<?=json_encode($mode_name)?>');
-        const phase_name = []
+                    const phase_name = []
+            <?php foreach($phase_name as $k => $v){
+                echo "phase_name[$k] = \"$v\";\n";
+            }?>
 
         const fetchUrl = "<?=url("wargame/fetch/$wargame");?>";
 
@@ -44,8 +48,8 @@ You should have received a copy of the GNU General Public License
         window.legacy = {};
         window.PHP_INIT_VARS.playerOne = "{{$forceName[1]}}";
         window.PHP_INIT_VARS.playerTwo = "{{$forceName[2]}}";
-        window.PHP_INIT_VARS.playerThree = "{{$forceName[3] or ''}}";
-        window.PHP_INIT_VARS.playerFour = "{{$forceName[4] or ''}}";
+        window.PHP_INIT_VARS.playerThree = "{{$forceName[3] ?? ''}}";
+        window.PHP_INIT_VARS.playerFour = "{{$forceName[4] ?? ''}}";
 
         @isset($topCrt)
             const combatResultsTable = JSON.parse('<?=json_encode($topCrt)?>');

@@ -52,6 +52,7 @@ class AreaGameRules
     public $battles = [];
     public $resources;
     public $cities = [];
+    public $casualities;
 
     function save()
     {
@@ -60,7 +61,7 @@ class AreaGameRules
         unset($this->combatRules);
         $data = new stdClass();
         foreach ($this as $k => $v) {
-            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'resources')) {
+            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'casualities' && $k !== 'resources')) {
                 continue;
             }
             $data->$k = $v;
@@ -106,6 +107,7 @@ class AreaGameRules
             $this->flashMessages = [];
             $this->currentPhaseIndex = 0;
             $this->commands = new \stdClass();
+            $this->casualities = new \stdClass();
             $this->builds = new \stdClass();
             $this->battles = [];
 
@@ -156,10 +158,13 @@ class AreaGameRules
                 continue;
             }
             if(count((array)$area->armies) > 1){
+                $cas = $this->casualities->$key ?? 0;
+
                 $p1 = "1";
                 $p2 = "2";
                 $report = "battle at ".$area->name;
                 if($area->armies->$p1 == $area->armies->$p2){
+                    $cas += $area->armies->$p1;
                     $report .= " both sides lost ".$area->armies->$p1. " nobody controls the area";
                     unset($area->armies->$p1);
                      unset($area->armies->$p2);
@@ -168,6 +173,7 @@ class AreaGameRules
                 }else{
                     if($area->armies->$p1 > $area->armies->$p2){
                         $report .= " both sides lost ".$area->armies->$p2 . " 1 controls the area";
+                        $cas += $area->armies->$p2;
                         $area->armies->$p1 -= $area->armies->$p2;
                         $area->owner = $p1;
                         unset($area->armies->$p2);
@@ -175,14 +181,17 @@ class AreaGameRules
 
                     } else {
                         $report .= " both sides lost ".$area->armies->$p1 . " 2 controls the area";
+                        $cas += $area->armies->$p1;
                         $area->armies->$p2 -= $area->armies->$p1;
                         $area->owner = $p2;
                         unset($area->armies->$p1);
-
-
                     }
                 }
-                $this->battles[] = $report;
+                $this->casualities->$key = $cas;
+                $battleReport = new \stdClass();
+                $battleReport->report = $report;
+                $battleReport->location = $key;
+                $this->battles[] = $battleReport;
                 continue;
             }
         }
@@ -286,6 +295,7 @@ class AreaGameRules
 
     function runCommands(){
 
+        $this->casualities = new \stdClass();
         $this->determineOwnership();
         switch($this->phase){
             case RESULTS_PHASE:

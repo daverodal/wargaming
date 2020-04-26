@@ -1,8 +1,9 @@
 <template>
-    <div  @click="select" class="label-box" :class="{blue: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: box.y, left: box.x}">
+    <div  @mouseover="setHovered(box.id)"  @mouseout="unsetHovered" @click="select" class="label-box" :class="{ 'is-beacon': beacon && beacon == box.id ? true  : false, blue: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: box.y, left: box.x}">
         {{box.name}}
          <span> {{box.armies[1] || 0}} {{box.armies[2] || 0}}
          </span>
+        <div v-if="casualities[this.box.id]" class="cross">{{casualities[this.box.id]}}</div>
         <div v-if="open">
             This is the clickedy part
         </div>
@@ -11,6 +12,7 @@
 
 <script>
 
+    import {mapGetters, mapMutations} from "vuex";
     export default {
         name: "ClickBox",
         props: ['box'],
@@ -18,6 +20,7 @@
             return {open: false}
         },
         computed: {
+            ...mapGetters(['casualities','beacon']),
           isSelected(){
               if(this.box.id === this.$store.state.selected){
                   return true;
@@ -34,7 +37,13 @@
             }
         },
         methods:{
-            clicked(){
+            ...mapMutations(['setHovered', 'unsetHovered']),
+            hover(){
+                this.$store.commit('setHovered', this.box.id);
+
+            },
+            unhover(){
+                this.$store.commit('unSetHovered');
             },
             select(){
                 if(this.isNeighbor){
@@ -64,6 +73,13 @@
 </script>
 
 <style lang="scss" scoped>
+    .cross{
+        background-image: url('./cross.svg');
+        height:16px;
+        background-size:16px;
+        background-repeat: no-repeat;
+        padding-left: 20px;
+    }
     div{
         border: 3px solid transparent;
     }
@@ -79,4 +95,20 @@
     .neighbor{
         border-color: orange;
     }
+    @keyframes bigger{
+        0%{
+            border-width: 1px;
+        }
+        65%{
+        }
+        100%{
+            border-width:30px;
+            margin-top:-29px;
+            margin-left:-29px;
+
+        }
+    }
+    .is-beacon{
+        animation: 1.5s infinite forwards bigger;
+        }
 </style>

@@ -3,10 +3,12 @@
        <h1>Area One</h1>
         <div class="super-wrapper">
        <header class="display-wrapper">
+
            <div class="display-item">
                <h2>Welcome {{ $store.state.user }}</h2>
            Turn is turn {{ turn }}
            {{getPhase}}
+               Small Map?:<input type="checkbox" v-model="smallMap">
                <div class="ready-wrapper">
                    <div :class="playerOne">one</div>
                    <div :class="playerTwo">two</div>
@@ -32,7 +34,7 @@
 
        </header>
 
-       <div class="game-wrapper">
+       <div class="game-wrapper" :class="{'small-game': smallMap}">
            <img :style="{width: mapData.width + 'px'}" :src="mapData.url" alt="">
 
                <click-box v-for="(box,index) in boxes" :key="index" :box="box"></click-box>
@@ -60,8 +62,15 @@
             }
         },
         computed:{
-            ...mapGetters(["getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait', 'totalArmies']),
-
+            ...mapGetters(["getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait', 'totalArmies', 'isSmallMap']),
+            smallMap:{
+                get(){
+                    return  this.isSmallMap;
+                },
+                set(value){
+                    this.$store.commit('setSmallMap', value)
+                }
+            },
             playerOne(){
                 if(this.playersReady && this.playersReady[0] && this.playersReady[0].ready){
                     return 'blue';
@@ -102,6 +111,7 @@
               }
 
               this.$store.commit('setCombatants', item.wargame.combatants);
+              this.$store.commit('setCaualities', item.wargame.gameRules.casualities);
           });
           syncObj.fetch(0);
           this.$store.commit('setUser', this.user);
@@ -114,13 +124,6 @@
                 const data = {wargame: this.wargame, event: 1, type: 'area-game'}
                 data.commands = this.$store.state.commands;
                 data.builds = this.$store.state.builds;
-                // const x = $.ajax({url:'/wargame/poke',type:'POST',
-                // data: data,
-                // error: (err) => {
-                //     debugger;
-                // },
-                // success: (res) => {
-                // }});
                 window.axios.post('/wargame/poke', data).then(response => {
 
                 }).catch(error => {
@@ -178,7 +181,12 @@
         }
     }
     .game-wrapper{
+        &.small-game{
+            transform: scale(.7);
+            transform-origin: left top;
+        }
         position: relative;
+        margin-bottom:20px;
     }
     .red {
         background-color: palevioletred;

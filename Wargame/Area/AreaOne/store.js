@@ -21,12 +21,21 @@ export const store = new Vuex.Store({
         phase: null,
         combatants: [],
         battles: [],
-        playersReady: []
+        playersReady: [],
+        casualities: {},
+        smallMap: true,
+        hovered: null,
+        beacon: null
     },
     getters:{
+        beacon(state){
+            return state.beacon;
+        },
+        hovered(state){
+            return state.hovered;
+        },
         playerIds(state){
           if(state.user){
-              debugger;
               let ids = [];
               state.players.forEach((item, index) => {
                   if(item == state.user){
@@ -37,6 +46,9 @@ export const store = new Vuex.Store({
           }  else {
               return [];
           }
+        },
+        isSmallMap(state){
+            return state.smallMap
         },
         totalArmies(state){
             let ret = [0,0,0]
@@ -55,11 +67,13 @@ export const store = new Vuex.Store({
           console.log(ret);
           return ret;
         },
+        casualities(state){
+            return state.casualities;
+        },
         showWait(state, getters){
             let wait = false;
             state.playersReady.forEach(item => {
                 const pIds = [...getters.playerIds]
-                debugger;
                 if(pIds.includes(item.id) && item.ready){
                     wait = true;
                 }
@@ -136,8 +150,26 @@ export const store = new Vuex.Store({
         }
     },
     mutations:{
+        setHovered(state, payload){
+            state.hovered = payload;
+        },
+        unsetHovered(state){
+            state.hovered = null;
+        },
+        setBeacon(state, payload){
+            state.beacon = payload;
+        },
+        unsetBeacon(state){
+            state.beacon = null;
+        },
         setPlayersReady(state, payload){
           state.playersReady = payload;
+        },
+        setSmallMap(state, payload){
+            state.smallMap = payload;
+        },
+        setCaualities(state, payload){
+            state.casualities = payload;
         },
         setBattles(state, payload){
           state.battles = payload;
