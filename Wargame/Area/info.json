@@ -20,11 +20,10 @@
           "2": [
             {
               "mapId": 24,
-                "amount": 1
+              "amount": 1
             }
           ]
         }
-
       },
       "newmap": {
         "description": "Alternate Map Scenario",
@@ -86,6 +85,7 @@
               }
             ]
           }
+        }
       }
     }
   }
