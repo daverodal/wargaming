@@ -1,8 +1,8 @@
 <template>
    <div>
-       <h1>Area One</h1>
         <div class="super-wrapper">
        <header class="display-wrapper">
+           <a href="/wargame/leave-game">Go To Lobby</a>
 
            <div class="display-item">
                <h2>Welcome {{ $store.state.user }}</h2>
@@ -34,7 +34,8 @@
 
        </header>
 
-       <div class="game-wrapper" :class="{'small-game': smallMap}">
+       <div class="game-wrapper" >
+           <div :class="{'small-game': smallMap}">
            <img :style="{width: mapData.width + 'px'}" :src="mapData.url" alt="">
 
                <click-box v-for="(box,index) in boxes" :key="index" :box="box"></click-box>
@@ -42,7 +43,7 @@
                <move-circle :command="command" :amount="command.amount"></move-circle>
            </div>
            <move-command v-if="$store.state.mode === 'move'"></move-command>
-
+           </div>
        </div>
         </div>
    </div>
@@ -182,7 +183,7 @@
         }
     }
     .game-wrapper{
-        &.small-game{
+        .small-game{
             transform: scale(.7);
             transform-origin: left top;
         }

@@ -3,7 +3,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-<a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a>
 
     <area-game class="world" :wargame="'{{ $wargame }}'" :user="'{{$user}}'" :map-data="{{ json_encode($mapData) }}"></area-game>
 </body>

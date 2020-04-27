@@ -64,25 +64,29 @@
         "setup": {
           "1": [
             {
-              "mapId": 4,
-              "amount": 6
+              "mapId": 2,
+              "amount": 4
             },
             {
-              "mapId": 7,
-              "amount": 6
+              "mapId": 4,
+              "amount": 4
+            },
+            {
+              "mapId": 0,
+              "amount": 4
             }
           ],
           "2": [
             {
-              "mapId": 41,
+              "mapId": 31,
               "amount": 4
             },
             {
-              "mapId": 43,
+              "mapId": 35,
               "amount": 4
             },
             {
-              "mapId": 32,
+              "mapId": 39,
               "amount": 4
             }
           ]
