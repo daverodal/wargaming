@@ -59,10 +59,6 @@ class AreaOne extends AreaGame
                 $box->armies->{2} = $p2Xlated[$boxId];
 
             }
-            if($boxId === 35){
-                $box->owner = 1;
-                $box->armies->{1} = 5;
-            }
             $this->areaModel->addArea($boxId, $box);
         }
         $mapHexes = new stdClass();
