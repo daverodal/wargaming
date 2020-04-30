@@ -1,5 +1,5 @@
 <template>
-    <div  @mouseover="setHovered(box.id)"  @mouseout="unsetHovered" @click="select" class="label-box" :class="{ 'is-beacon': beacon && beacon == box.id ? true  : false, blue: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: box.y * .7, left: box.x * .7}">
+    <div  @mouseover="setHovered(box.id)"  @mouseout="unsetHovered" @click="select" class="label-box" :class="{ 'is-beacon': beacon && beacon == box.id ? true  : false, blue: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: boxY, left: boxX}">
         {{box.name}}
          <span> {{box.armies[1] || 0}} {{box.armies[2] || 0}}
          </span>
@@ -20,7 +20,15 @@
             return {open: false}
         },
         computed: {
-            ...mapGetters(['casualities','beacon']),
+            ...mapGetters(['casualities','beacon', 'isSmallMap']),
+            boxX(){
+                debugger;
+              return this.box.x * (this.isSmallMap ? .7 : 1);
+            },
+            boxY(){
+                debugger;
+                return this.box.y * (this.isSmallMap ? .7 : 1);
+            },
           isSelected(){
               if(this.box.id === this.$store.state.selected){
                   return true;
