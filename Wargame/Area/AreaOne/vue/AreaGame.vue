@@ -36,7 +36,7 @@
 
        <div class="game-wrapper" >
            <div :class="{'small-game': smallMap}">
-           <img :style="{width: mapData.width + 'px'}" :src="mapData.url" alt="">
+           <img :style="{width: !smallMap ? mapData.width : mapData.width * .7 + 'px'}" :src="mapData.url" alt="">
 
                <click-box v-for="(box,index) in boxes" :key="index" :box="box"></click-box>
            <div class="command-items" v-for="command in commands">
@@ -184,8 +184,6 @@
     }
     .game-wrapper{
         .small-game{
-            transform: scale(.7);
-            transform-origin: left top;
         }
         position: relative;
         margin-bottom:20px;

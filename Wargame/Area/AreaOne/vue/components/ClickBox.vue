@@ -1,5 +1,5 @@
 <template>
-    <div  @mouseover="setHovered(box.id)"  @mouseout="unsetHovered" @click="select" class="label-box" :class="{ 'is-beacon': beacon && beacon == box.id ? true  : false, blue: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: box.y, left: box.x}">
+    <div  @mouseover="setHovered(box.id)"  @mouseout="unsetHovered" @click="select" class="label-box" :class="{ 'is-beacon': beacon && beacon == box.id ? true  : false, blue: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: box.y * .7, left: box.x * .7}">
         {{box.name}}
          <span> {{box.armies[1] || 0}} {{box.armies[2] || 0}}
          </span>
