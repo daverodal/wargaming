@@ -58,7 +58,7 @@
         }
       },
 
-      "newmap": {
+      "balancednewmap": {
         "description": "More Balanced Alternate Map Scenario",
         "longDescription": "Whenever",
         "mapDataUrl": "cd39875e7a280484e1c9823a83000509",
