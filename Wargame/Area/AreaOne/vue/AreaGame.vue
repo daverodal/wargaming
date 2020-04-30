@@ -13,6 +13,8 @@
                    <div :class="playerOne">one</div>
                    <div :class="playerTwo">two</div>
                </div>
+               <button v-if="!showWait" class="geaux-button" @click="poke">GO</button>
+               <button v-if="showWait" class="wait-button" @click="poke">Wait</button>
                <div>
                    <h2>Assets</h2>
                    <div  v-for="(resource, index) in getPF">
@@ -184,6 +186,7 @@
     }
     .game-wrapper{
         .small-game{
+            font-size:12px;
         }
         position: relative;
         margin-bottom:20px;
