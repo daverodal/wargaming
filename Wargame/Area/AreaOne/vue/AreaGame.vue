@@ -8,7 +8,8 @@
                <h2>Welcome {{ $store.state.user }}</h2>
            Turn is turn {{ turn }}
            {{getPhase}}
-               Small Map?:<input type="checkbox" v-model="smallMap">
+               Small Map?:  Try Zooming with scroll wheel
+<!--               <input type="checkbox" v-model="smallMap">-->
                <div class="ready-wrapper">
                    <div :class="playerOne">one</div>
                    <div :class="playerTwo">two</div>
@@ -37,6 +38,7 @@
        </header>
 
        <div class="game-wrapper" >
+           <pan-zoom :options="{zoomDoubleClickSpeed: 1}">
            <div :class="{'small-game': smallMap}">
            <img :style="{width: !smallMap ? mapData.width : mapData.width * .7 + 'px'}" :src="mapData.url" alt="">
 
@@ -46,6 +48,7 @@
            </div>
            <move-command v-if="$store.state.mode === 'move'"></move-command>
            </div>
+           </pan-zoom>
        </div>
         </div>
    </div>
@@ -137,6 +140,11 @@
     }
 </script>
 
+<style lang="scss">
+    .vue-pan-zoom-scene{
+        outline: none !important;
+    }
+</style>
 <style lang="scss" scoped>
     .big{
         font-size: 22px;
@@ -172,6 +180,8 @@
         min-height: 120px;
         border: 2px solid #999;
         padding: 5px;
+        z-index: 5;
+        background: white;
 
     }
     h2{

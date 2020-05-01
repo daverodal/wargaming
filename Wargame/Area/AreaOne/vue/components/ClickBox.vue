@@ -1,12 +1,8 @@
 <template>
     <div  @mouseover="setHovered(box.id)"  @mouseout="unsetHovered" @click="select" class="label-box" :class="{ 'is-beacon': beacon && beacon == box.id ? true  : false, blue: box.owner == 1, red: box.owner == 2, neighbor: isNeighbor, selected: isSelected}" :style="{top: boxY, left: boxX}">
         {{box.name}}
-         <span> {{box.armies[1] || 0}} {{box.armies[2] || 0}}
-         </span>
+        <div v-if="armies" class="inf">{{armies}}</div>
         <div v-if="casualities[this.box.id]" class="cross">{{casualities[this.box.id]}}</div>
-        <div v-if="open">
-            This is the clickedy part
-        </div>
     </div>
 </template>
 
@@ -42,6 +38,9 @@
                   return true;
               }
               return false;
+            },
+            armies(){
+                return this.box.armies[1] || 0 +  this.box.armies[2] || 0
             }
         },
         methods:{
@@ -81,6 +80,13 @@
 </script>
 
 <style lang="scss" scoped>
+    .inf{
+        background-image: url('./InfBPB-1.jpg');
+        height:16px;
+        background-size:8px;
+        background-repeat: no-repeat;
+        padding-left: 10px;
+    }
     .cross{
         background-image: url('./cross.svg');
         height:16px;

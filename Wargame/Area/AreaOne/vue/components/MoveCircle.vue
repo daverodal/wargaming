@@ -6,6 +6,8 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
         name: "MoveCircle",
         data() {
@@ -16,15 +18,19 @@
         },
         props: ['amount', 'command'],
         computed: {
+            ...mapGetters(['isSmallMap']),
             circleUrl(){
                 const color = this.command.playerId == 1 ? 'Green' : 'Red';
                 return '/assets/map-symbols/' + color + 'CircleArrow.svg';
             },
             x(){
-                return (this.$store.state.boxes[this.command.from].x + this.$store.state.boxes[this.command.to].x)/2;
+                debugger;
+                let scale = this.isSmallMap ? .7 : 1;
+                return scale * (this.$store.state.boxes[this.command.from].x + this.$store.state.boxes[this.command.to].x)/2;
             },
             y(){
-                return (this.$store.state.boxes[this.command.from].y + this.$store.state.boxes[this.command.to].y)/2;
+                let scale = this.isSmallMap ? .7 : 1;
+                return scale*(this.$store.state.boxes[this.command.from].y + this.$store.state.boxes[this.command.to].y)/2;
             },
             diffX(){
                 return this.$store.state.boxes[this.command.to].x - this.$store.state.boxes[this.command.from].x

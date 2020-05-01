@@ -23,7 +23,7 @@ export const store = new Vuex.Store({
         battles: [],
         playersReady: [],
         casualities: {},
-        smallMap: true,
+        smallMap: false,
         hovered: null,
         beacon: null
     },

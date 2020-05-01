@@ -37,6 +37,7 @@
     "vue": "^2.5.22",
     "vue-draggable": "^1.1.1",
     "vue-draggable-resizable": "^1.7.2",
+    "vue-panzoom": "^1.1.0",
     "vue-resource": "^1.5.1",
     "vue-template-compiler": "^2.5.22",
     "vuex": "^3.1.0"

@@ -15,6 +15,13 @@ import BattleBox from "./vue/components/BattleBox";
 import ProductionStatus from "./vue/components/ProductionStatus";
 window.vueStore = store;
 Vue.use(VueResource);
+
+// import vue-panzoom
+import panZoom from 'vue-panzoom'
+
+// install plugin
+Vue.use(panZoom, {compoentName: 'pan-zoom',
+    zoomDoubleClickSpeed: 1});
 Vue.component('area-game', AreaGame);
 Vue.component('click-box', ClickBox);
 Vue.component('area-status', AreaStatus);
