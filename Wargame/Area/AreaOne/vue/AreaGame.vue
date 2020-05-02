@@ -20,7 +20,7 @@
                        <div class="resource-wrapper" v-if="index != 0">
                            <div class="big">{{$store.state.combatants[index]}} PF: {{resource.pf }} Cities: {{$store.getters.getCities[index].length}}</div>
                            <div>Armies {{totalArmies[index]}}</div>
-                           <div> F: {{resource.food}} <span class="energy">{{resource.energy}}</span> <span class="min"> {{resource.materials}}</span></div>
+                           <div>  <span class="food"> {{resource.food}}</span> <span class="energy">{{resource.energy}}</span> <span class="min"> {{resource.materials}}</span></div>
                        </div>
                    </div>
                </div>
@@ -252,6 +252,12 @@
         background-size:16px;
         background-repeat: no-repeat;
         background-image: url('./components/Mine.svg');
+        padding-left:20px;
+    }
+    .food{
+        background-size:16px;
+        background-repeat: no-repeat;
+        background-image: url('./components/Bread.svg');
         padding-left:20px;
     }
     .energy   {
