@@ -339,9 +339,9 @@ class AreaGameRules
                 break;
             case COMMAND_PHASE:
                 $this->battles = [];
-                $this->executeMoves(1);
-                $this->determineOwnership();
                 $this->executeMoves(2);
+                $this->determineOwnership();
+                $this->executeMoves(1);
                 $this->determineOwnership();
                 $this->commands = new \stdClass();
                 $this->phase = RESULTS_PHASE;
