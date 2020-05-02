@@ -141,11 +141,11 @@ export const store = new Vuex.Store({
         getPhase(state){
             switch(state.phase){
                 case COMMAND_PHASE:
-                    return "Command Phase!";
+                    return "Command";
                 case RESULTS_PHASE:
-                    return "Results Phase!";
+                    return "Results";
                 case PRODUCTION_PHASE:
-                    return "Production Phase!";
+                    return "Production";
             }
         }
     },

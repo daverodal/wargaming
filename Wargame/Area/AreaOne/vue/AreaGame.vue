@@ -6,8 +6,8 @@
 
            <div class="display-item">
                <h2>Welcome {{ $store.state.user }}</h2>
-           Turn is turn {{ turn }}
-           {{getPhase}}
+               <h3>Turn {{ turn }}</h3>
+               <h3 :class="getPhase">{{getPhase}} phase</h3>
                Small Map?:  Try Zooming with scroll wheel
 <!--               <input type="checkbox" v-model="smallMap">-->
                <div class="ready-wrapper">
@@ -38,7 +38,7 @@
        </header>
 
        <div class="game-wrapper" >
-           <pan-zoom :options="{zoomDoubleClickSpeed: 1}">
+           <pan-zoom @touch="onTouch" @panend="panend" @panstart="panstart" :options="{zoomDoubleClickSpeed: 1}">
            <div :class="{'small-game': smallMap}">
            <img :style="{width: !smallMap ? mapData.width : mapData.width * .7 + 'px'}" :src="mapData.url" alt="">
 
@@ -123,6 +123,21 @@
           this.$store.commit('setUser', this.user);
         },
     methods:{
+            onTouch(){
+                console.log('hi');
+            },
+            panstart(e){
+                console.log("PanStart")
+                console.log(e.getTransform());
+
+            },
+            panend(e, f){
+                console.log("PanEnd");
+                console.log(e);
+                console.log(f);
+                e.fire('click');
+                return false;
+            },
             doCancel(){
               this.$store.commit('doCancel');
             },
@@ -186,6 +201,7 @@
     }
     h2{
         margin-top:0px;
+        margin-bottom:5px;
     }
     .ready-wrapper{
         display:flex;
@@ -216,5 +232,17 @@
         position:absolute;
         background:fuchsia;
         width: 900px;
+    }
+    h3{
+        margin: 5px 0;
+        &.Production{
+            background: #72ef72;
+        }
+        &.Command{
+            background: #fbf541;
+        }
+        &.Results{
+            background: #ffb0a0;
+        }
     }
 </style>

@@ -24,7 +24,6 @@
                 return '/assets/map-symbols/' + color + 'CircleArrow.svg';
             },
             x(){
-                debugger;
                 let scale = this.isSmallMap ? .7 : 1;
                 return scale * (this.$store.state.boxes[this.command.from].x + this.$store.state.boxes[this.command.to].x)/2;
             },

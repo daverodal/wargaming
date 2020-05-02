@@ -18,11 +18,9 @@
         computed: {
             ...mapGetters(['casualities','beacon', 'isSmallMap']),
             boxX(){
-                debugger;
               return this.box.x * (this.isSmallMap ? .7 : 1);
             },
             boxY(){
-                debugger;
                 return this.box.y * (this.isSmallMap ? .7 : 1);
             },
           isSelected(){
