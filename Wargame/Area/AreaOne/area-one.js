@@ -15,7 +15,7 @@ import BattleBox from "./vue/components/BattleBox";
 import ProductionStatus from "./vue/components/ProductionStatus";
 window.vueStore = store;
 Vue.use(VueResource);
-
+import LogView from "./vue/components/LogView";
 // import vue-panzoom
 import panZoom from 'vue-panzoom'
 
@@ -31,6 +31,7 @@ Vue.component('build-box', BuildBox);
 Vue.component('battle-box', BattleBox);
 Vue.component('move-circle', MoveCircle );
 Vue.component('production-status', ProductionStatus );
+Vue.component('log-view', LogView);
 
 document.addEventListener("DOMContentLoaded",() => {
     window.world = new Vue({

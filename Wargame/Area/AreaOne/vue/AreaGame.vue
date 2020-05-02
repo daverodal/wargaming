@@ -8,8 +8,6 @@
                <h2>Welcome {{ $store.state.user }}</h2>
                <h3>Turn {{ turn }}</h3>
                <h3 :class="getPhase">{{getPhase}} phase</h3>
-               Small Map?:  Try Zooming with scroll wheel
-<!--               <input type="checkbox" v-model="smallMap">-->
                <div class="ready-wrapper">
                    <div :class="playerOne">one</div>
                    <div :class="playerTwo">two</div>
@@ -22,7 +20,7 @@
                        <div class="resource-wrapper" v-if="index != 0">
                            <div class="big">{{$store.state.combatants[index]}} PF: {{resource.pf }} Cities: {{$store.getters.getCities[index].length}}</div>
                            <div>Armies {{totalArmies[index]}}</div>
-                           <div> F: {{resource.food}} E: {{resource.energy}} M: {{resource.materials}}</div>
+                           <div> F: {{resource.food}} <span class="energy">{{resource.energy}}</span> <span class="min"> {{resource.materials}}</span></div>
                        </div>
                    </div>
                </div>
@@ -34,6 +32,7 @@
            <build-box></build-box>
            <button v-if="!showWait" class="geaux-button" @click="poke">GO</button>
            <button v-if="showWait" class="wait-button" @click="poke">Wait</button>
+           <log-view></log-view>
 
        </header>
 
@@ -102,6 +101,7 @@
           syncObj.register('doc', (item, data) => {
               this.$store.commit('setPlayersReady', item.wargame.playersReady)
               this.$store.commit('setPlayers', item.wargame.players);
+              this.$store.commit('setLog', item.wargame.gameRules.log);
               if(item.wargame.gameRules.battles && item.wargame.gameRules.battles.length > 0){
                   this.$store.commit('setBattles', item.wargame.gameRules.battles);
               }else{
@@ -166,7 +166,10 @@
     }
     .resource-wrapper{
         margin: 5px 0;
-        background: #eee;
+        background: white;
+        border: 2px solid #ccc;
+        padding: 3px 5px;
+        border-radius: 10px;
     }
     .super-wrapper{
         display:flex;
@@ -244,5 +247,17 @@
         &.Results{
             background: #ffb0a0;
         }
+    }
+    .min{
+        background-size:16px;
+        background-repeat: no-repeat;
+        background-image: url('./components/Mine.svg');
+        padding-left:20px;
+    }
+    .energy   {
+        background-size:16px;
+        background-repeat: no-repeat;
+        background-image: url('./components/Bolt.svg');
+        padding-left:15px;
     }
 </style>

@@ -25,9 +25,13 @@ export const store = new Vuex.Store({
         casualities: {},
         smallMap: false,
         hovered: null,
-        beacon: null
+        beacon: null,
+        log: []
     },
     getters:{
+        getLog(state){
+            return state.log;
+        },
         beacon(state){
             return state.beacon;
         },
@@ -150,6 +154,10 @@ export const store = new Vuex.Store({
         }
     },
     mutations:{
+        setLog(state, payload){
+            debugger;
+          state.log = [...payload];
+        },
         setHovered(state, payload){
             state.hovered = payload;
         },

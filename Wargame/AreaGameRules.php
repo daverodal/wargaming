@@ -53,6 +53,7 @@ class AreaGameRules
     public $resources;
     public $cities = [];
     public $casualities;
+    public $log = [];
 
     function save()
     {
@@ -61,7 +62,7 @@ class AreaGameRules
         unset($this->combatRules);
         $data = new stdClass();
         foreach ($this as $k => $v) {
-            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'casualities' && $k !== 'resources')) {
+            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'casualities' && $k !== 'log' && $k !== 'resources')) {
                 continue;
             }
             $data->$k = $v;
@@ -199,42 +200,68 @@ class AreaGameRules
 
     function collectResources($area){
         $amount = $this->resources[$area->owner];
+        $log = "";
         switch($area->terrainType){
             case 'desert':
                 $amount->energy += 2;
+                $this->en += 2;
+                $log = "e +2";
                 break;
             case 'field':
                 $amount->food += 2;
+                $this->fo += 2;
+
+                $log = "f +2";
                 break;
             case 'pasture':
                 $amount->food += 1;
+                $this->fo += 1;
+
+                $log = "f +1";
                 break;
             case 'forest':
                 $amount->materials += 1;
+                $this->ma += 1;
+                $log = "m +1";
                 break;
             case 'mountain':
                 $amount->materials += 2;
+                $this->ma += 2;
+                $log = "m +2";
                 break;
             case 'water':
+                $log = "e +1";
+                $this->en += 1;
                 $amount->energy += 1;
                 break;
         }
         $this->resources[$area->owner] = $amount;
+        return $log;
     }
     function gatherResources(){
         $areas = Battle::getBattle()->areaModel->areas;
+        $turnLog = [];
+        $turnLog[] = "Turn ". $this->turn;
+        $this->en = $this->fo = $this->ma = 0;
         foreach($areas as $key => $area){
             if($area->isCity ?? false){
                 if($area->owner ?? 0 > 0){
-                    $this->collectResources($area);
+                    $line =  $area->owner. " " . $area->name;
+                    $res = $this->collectResources($area);
+                    $turnLog[] = $line . " $res";
                     foreach($area->neighbors as $neighbor){
                         if($areas->{$neighbor}->owner ?? 0 === $area->owner){
-                            $this->collectResources($areas->{$neighbor});
+                            $line =  "neighbor " . $areas->{$neighbor}->name;
+                            $res = $this->collectResources($areas->{$neighbor});
+                            $turnLog[] = $line . " $res";
                         }
                     }
                 }
             }
         }
+        $turnLog[] = "f ". $this->fo ." e " . $this->en . " m ". $this->ma;
+        $this->log[] = $turnLog;
+//        $this->log[] = $turnLog;
     }
     function executeBuilds(){
         $areas = Battle::getBattle()->areaModel->areas;
