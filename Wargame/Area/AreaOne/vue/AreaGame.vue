@@ -257,7 +257,7 @@
     .food{
         background-size:16px;
         background-repeat: no-repeat;
-        background-image: url('./components/Bread.svg');
+        background-image: url('./components/Bowl.svg');
         padding-left:20px;
     }
     .energy   {

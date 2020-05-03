@@ -152,7 +152,16 @@ class AreaGameRules
                 continue;
             }
             if(count((array)$area->armies) === 1){
-                $area->owner = array_keys(get_object_vars($area->armies))[0];
+                $prevOwner = $area->owner ?? null;
+                $newOwner = $area->owner = array_keys(get_object_vars($area->armies))[0];
+                if($prevOwner !== $newOwner){
+                    $report = "Change Ownership ". $area->name. " new owner ".$area->owner;
+                    $battleReport = new \stdClass();
+                    $battleReport->report = $report;
+                    $battleReport->location = $key;
+                    $this->battles[] = $battleReport;
+
+                }
                 if($area->isCity ?? false){
                     $this->cities[$area->owner]++;
                 }
@@ -319,6 +328,60 @@ class AreaGameRules
             }
         }
     }
+    function executeAllMoves(){
+        $areas = Battle::getBattle()->areaModel->areas;
+        $sortedCommands = [];
+        foreach($this->commands as $user => $commands){
+            foreach($commands as $command ) {
+                if(is_array($command)){
+                    $from = $command['from'];
+                    $to = $command['to'];
+                    $playerId = $command['playerId'];
+                    $amount = $command['amount'];
+                    $command['user'] = $user;
+                }else{
+                    $from = $command->from;
+                    $to = $command->to;
+                    $playerId = $command->playerId;
+                    $amount = $command->amount;
+                    $command->user = $user;
+                }
+                if(!isset($sortedCommands[$amount])){
+                    $sortedCommands[$amount] = [];
+                }
+                $sortedCommands[$amount][] = $command;
+
+            }
+        }
+        ksort($sortedCommands, SORT_NUMERIC);
+        foreach($sortedCommands as $commands){
+            foreach($commands as $command){
+            if(is_array($command)){
+                $from = $command['from'];
+                $to = $command['to'];
+                $playerId = $command['playerId'];
+                $amount = $command['amount'];
+            }else{
+                $from = $command->from;
+                $to = $command->to;
+                $playerId = $command->playerId;
+                $amount = $command->amount;
+            }
+
+            $prevAmount = $areas->$from->armies->$playerId ?? 0;
+            if($amount > $prevAmount){
+                $amount = $prevAmount;
+                if($amount == 0){
+                    continue;
+                }
+            }
+            $areas->$from->armies->$playerId = $prevAmount - $amount;
+            $prevAmount = $areas->$to->armies->$playerId ?? 0;
+            $areas->$to->armies->$playerId = $prevAmount + $amount;
+            $this->determineOwnership();
+            }
+        }
+    }
 
     function runCommands(){
 
@@ -339,10 +402,11 @@ class AreaGameRules
                 break;
             case COMMAND_PHASE:
                 $this->battles = [];
-                $this->executeMoves(2);
-                $this->determineOwnership();
-                $this->executeMoves(1);
-                $this->determineOwnership();
+//                $this->executeMoves(2);
+//                $this->determineOwnership();
+//                $this->executeMoves(1);
+//                $this->determineOwnership();
+            $this->executeAllMoves();
                 $this->commands = new \stdClass();
                 $this->phase = RESULTS_PHASE;
         }
