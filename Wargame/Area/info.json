@@ -37,7 +37,7 @@
               "amount": 6
             },
             {
-              "mapId": 7,
+              "mapId": 33,
               "amount": 6
             }
           ],
@@ -60,7 +60,7 @@
       "balancednewmap": {
         "description": "More Balanced Alternate Map Scenario",
         "longDescription": "Whenever",
-        "mapDataUrl": "cd39875e7a280484e1c9823a83000509",
+        "mapDataUrl": "8e8a08d89c98ffc196bb1c5b69000f1e",
         "setup": {
           "1": [
             {
