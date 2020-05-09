@@ -2,6 +2,7 @@
     <div class="area-status-wrapper" v-if="isSelected">
         <h2>{{selectedBox.name}}</h2>
 
+        {{$store.state.buildLocations[selectedBox.id]}}
         <h3>Armies Here</h3>
         <div class="armies-box">
             <div>blue

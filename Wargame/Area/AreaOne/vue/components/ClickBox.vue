@@ -3,6 +3,7 @@
         {{box.name}}
         <div v-if="armies" class="inf">{{armies}}</div>
         <div v-if="casualities[this.box.id]" class="cross">{{casualities[this.box.id]}}</div>
+        <div v-if="buildLocations[this.box.id]">New {{buildLocations[this.box.id]}}</div>
     </div>
 </template>
 
@@ -16,7 +17,7 @@
             return {open: false}
         },
         computed: {
-            ...mapGetters(['casualities','beacon', 'isSmallMap']),
+            ...mapGetters(['casualities','beacon', 'isSmallMap', 'buildLocations']),
             boxX(){
               return this.box.x * (this.isSmallMap ? .7 : 1);
             },
