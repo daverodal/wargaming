@@ -7,7 +7,7 @@
     "description": "Whenever",
     "scenarios": {
       "main": {
-        "description": "Standard Scenario",
+        "description": "Map 10.2",
         "longDescription": "Whenever",
         "mapDataUrl": "e5e37875bb930dcf926f2fa86000af94",
         "setup": {
@@ -27,7 +27,7 @@
 
       },
       "newmap": {
-        "description": "Alternate Map Scenario",
+        "description": "Map 12.1.c",
         "longDescription": "Whenever",
         "mapDataUrl": "679f8575c556ea35a094812e8998fc7f",
         "setup": {
@@ -58,7 +58,7 @@
         }
       },
       "balancednewmap": {
-        "description": "More Balanced Alternate Map Scenario",
+        "description": "Map 12.1.d",
         "longDescription": "Whenever",
         "mapDataUrl": "8e8a08d89c98ffc196bb1c5b69000f1e",
         "setup": {
@@ -90,7 +90,7 @@
       },
 
       "morebalance": {
-        "description": "Even More Balanced Alternate Map Scenario",
+        "description": "Map 12.1.e",
         "longDescription": "Whenever",
         "mapDataUrl": "cd39875e7a280484e1c9823a83000509",
         "setup": {
@@ -121,9 +121,44 @@
         }
       },
       "thirdmap": {
-        "description": "3rd Map Scenario",
+        "description": "Map 11.1b",
         "longDescription": "Whenever",
         "mapDataUrl": "03311c120740696f64eba021c30087e1",
+        "setup": {
+          "1": [
+            {
+              "mapId": 2,
+              "amount": 4
+            },
+            {
+              "mapId": 4,
+              "amount": 4
+            },
+            {
+              "mapId": 0,
+              "amount": 4
+            }
+          ],
+          "2": [
+            {
+              "mapId": 31,
+              "amount": 4
+            },
+            {
+              "mapId": 35,
+              "amount": 4
+            },
+            {
+              "mapId": 39,
+              "amount": 4
+            }
+          ]
+        }
+      },
+      "thirteen": {
+        "description": "Map 13.1",
+        "longDescription": "Whenever",
+        "mapDataUrl": "b34d2918c6d14e7e9d442ca31a0005cc",
         "setup": {
           "1": [
             {
