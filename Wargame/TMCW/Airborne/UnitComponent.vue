@@ -145,7 +145,7 @@
     @import "airborneColors";
     @include unitColor(rebel, $rebelColor)
     @include unitColor(loyalist, $loyalistColor);
-    @include unitColor(loyalGuard, $loyalistGuardColor);
+    @include unitColor(loyalGuard, $loyalistGuardColor, white);
     .ghost{
         opacity: 0;
     }
@@ -159,6 +159,11 @@
                 letter-spacing: -.6px;
             }
 
+        }
+        &.loyalGuards{
+            .unit-size, .unit-numbers{
+                color: white;
+            }
         }
         &.truck, &.supply{
             .unit-size{

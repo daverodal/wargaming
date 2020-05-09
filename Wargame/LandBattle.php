@@ -67,6 +67,18 @@ class LandBattle extends \Wargame\Battle{
 //        $clock = $doc->clock;
         $players = $doc->wargame->players;
         $player = array_search($user, $players);
+        $arrCount = array_count_values($players);
+        if($arrCount[$user] > 1){
+            $player = $doc->wargame->gameRules->attackingForceId;
+        }
+//        preg_match_all('/'.$user.'/', $players, $matches);
+//        if(count($matches) > 2){
+//            $player = 2;
+//        }
+//        $multiPlayers = array_values($user, $players);
+//        if(count($multiPlayers) > 1){
+//            $player = $doc->wargame->gameRules->attackingForceId;
+//        }
         if ($player === false) {
             $player = 0;
         }
@@ -100,7 +112,11 @@ class LandBattle extends \Wargame\Battle{
             foreach ($combats as $combat) {
                 foreach ($combat->thetas as $theta) {
                     foreach ($theta as $key => $val) {
-                        $theta->$key += 90;
+                        if($playerData->mirror){
+                            $theta->$key -= 90;
+                        }else{
+                            $theta->$key += 90;
+                        }
                     }
                 }
             }
@@ -110,7 +126,12 @@ class LandBattle extends \Wargame\Battle{
             foreach ($combats as $combat) {
                 foreach ($combat->thetas as $theta) {
                     foreach ($theta as $key => $val) {
-                        $theta->$key += 90;
+                        if($playerData->mirror){
+                            $theta->$key -= 90;
+                        }else{
+                            $theta->$key += 90;
+
+                        }
                     }
                 }
             }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="18px" viewBox="0 0 32 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Infantry</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Infantry" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-5" stroke="#ffffff" fill-rule="nonzero" x="0.5" y="0.5" width="31" height="17"></rect>
+        <path d="M0.5,0.5 L31.5,17.5" id="Line" stroke="#ffffff" stroke-linecap="square" fill-rule="nonzero"></path>
+        <path d="M0.5,17.5 L31.5,0.5" id="Line-2" stroke="#ffffff" stroke-linecap="square" fill-rule="nonzero"></path>
+    </g>
+</svg>

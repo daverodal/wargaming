@@ -91,55 +91,55 @@ class Airborne extends \Wargame\ModernLandBattle
             $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 //        UnitFactory::create("lll", self::LOYALIST_FORCE, "deployBox", "Gorilla.svg", $baseValue, 4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
 
-        UnitFactory::create("x", self::LOYALIST_FORCE, "1109", "Heavy.svg",
+        UnitFactory::create("x", self::LOYALIST_FORCE, "1109", "Heavy-white.svg",
             10,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'heavy', $i++);
 
         UnitFactory::create("lll", self::LOYALIST_FORCE, "1001", "Gorilla.svg",
             $baseValue,  4,  STATUS_CAN_DEPLOY, "F", 1,  "loyalist",  'inf', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "1110", "Infantry.svg",
+        UnitFactory::create("x", self::LOYALIST_FORCE, "1110", "Infantry-white.svg",
             7,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "1009", "Infantry.svg",
+        UnitFactory::create("x", self::LOYALIST_FORCE, "1009", "Infantry-white.svg",
             7,  5,  STATUS_CAN_DEPLOY, "G", 1,  "loyalGuards",  'inf', $i++);
 
 
 
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "Armor.svg",
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "Armor-white.svg",
             13,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "Armor.svg",
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "Armor-white.svg",
             13,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "MechInf.svg",
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2E", "MechInf-white.svg",
             12,  8,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'mech', $i++);
 
 
 
 
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2C", "Infantry.svg", 7,  5,  STATUS_CAN_REINFORCE, "C", 2,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "gameTurn2D", "Infantry.svg", 6,  5,  STATUS_CAN_REINFORCE, "D", 2,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "gameTurn2D", "Infantry.svg", 6,  5,  STATUS_CAN_REINFORCE, "D", 2,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "gameTurn2E", "Infantry.svg", 6,  5,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("lll", self::LOYALIST_FORCE, "gameTurn2E", "Infantry.svg", 6,  5,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn2C", "Infantry-white.svg", 7,  5,  STATUS_CAN_REINFORCE, "C", 2,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "gameTurn2D", "Infantry-white.svg", 6,  5,  STATUS_CAN_REINFORCE, "D", 2,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "gameTurn2D", "Infantry-white.svg", 6,  5,  STATUS_CAN_REINFORCE, "D", 2,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "gameTurn2E", "Infantry-white.svg", 6,  5,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("lll", self::LOYALIST_FORCE, "gameTurn2E", "Infantry-white.svg", 6,  5,  STATUS_CAN_REINFORCE, "E", 2,  "loyalGuards",  'inf', $i++);
 
 
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3C", "Armor.svg", 13,  8,  STATUS_CAN_REINFORCE, "C", 3,  "loyalGuards",  'mech', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3D", "Shock.svg", 9,  5,  STATUS_CAN_REINFORCE, "D", 3, "loyalGuards",  'shock', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3C", "Para.svg", 7,  5,  STATUS_CAN_REINFORCE, "C", 3,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3D", "Para.svg", 7,  5,  STATUS_CAN_REINFORCE, "D", 3,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3D", "Infantry.svg", 6,  5,  STATUS_CAN_REINFORCE, "D", 3,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn4E", "Infantry.svg", 6,  5,  STATUS_CAN_REINFORCE, "E", 4,  "loyalGuards",  'inf', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn4C", "Shock.svg", 9,  5,  STATUS_CAN_REINFORCE, "C", 4,  "loyalGuards",  'shock', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn4C", "Shock.svg", 9,  5,  STATUS_CAN_REINFORCE, "C", 4,  "loyalGuards",  'shock', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn4E", "Shock.svg", 9,  5,  STATUS_CAN_REINFORCE, "E", 4,  "loyalGuards",  'shock', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3C", "Armor-white.svg", 13,  8,  STATUS_CAN_REINFORCE, "C", 3,  "loyalGuards",  'mech', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3D", "Shock-white.svg", 9,  5,  STATUS_CAN_REINFORCE, "D", 3, "loyalGuards",  'shock', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3C", "Para-white.svg", 7,  5,  STATUS_CAN_REINFORCE, "C", 3,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3D", "Para-white.svg", 7,  5,  STATUS_CAN_REINFORCE, "D", 3,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn3D", "Infantry-white.svg", 6,  5,  STATUS_CAN_REINFORCE, "D", 3,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn4E", "Infantry-white.svg", 6,  5,  STATUS_CAN_REINFORCE, "E", 4,  "loyalGuards",  'inf', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn4C", "Shock-white.svg", 9,  5,  STATUS_CAN_REINFORCE, "C", 4,  "loyalGuards",  'shock', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn4C", "Shock-white.svg", 9,  5,  STATUS_CAN_REINFORCE, "C", 4,  "loyalGuards",  'shock', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn4E", "Shock-white.svg", 9,  5,  STATUS_CAN_REINFORCE, "E", 4,  "loyalGuards",  'shock', $i++);
 
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn5C", "Armor.svg", 13, 8,  STATUS_CAN_REINFORCE, "C", 5,  "loyalGuards",  'mech', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn5C", "Armor.svg", 13,  8,  STATUS_CAN_REINFORCE, "C", 5,  "loyalGuards",  'mech', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn5C", "MechInf.svg", 12,  8,  STATUS_CAN_REINFORCE, "C", 5,  "loyalGuards",  'mech', $i++);
-        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn5C", "Heavy.svg", 10,  5,  STATUS_CAN_REINFORCE, "C", 5, "loyalGuards",  'heavy', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn5C", "Armor-white.svg", 13, 8,  STATUS_CAN_REINFORCE, "C", 5,  "loyalGuards",  'mech', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn5C", "Armor-white.svg", 13,  8,  STATUS_CAN_REINFORCE, "C", 5,  "loyalGuards",  'mech', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn5C", "MechInf-white.svg", 12,  8,  STATUS_CAN_REINFORCE, "C", 5,  "loyalGuards",  'mech', $i++);
+        UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn5C", "Heavy-white.svg", 10,  5,  STATUS_CAN_REINFORCE, "C", 5, "loyalGuards",  'heavy', $i++);
 
         if(empty($scenario->weakerLoyalist)) {
-            UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn6C", "Armor.svg", 13,  8,  STATUS_CAN_REINFORCE, "C", 6,  "loyalGuards",  'mech', $i++);
-            UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn6C", "Armor.svg", 13,  8,  STATUS_CAN_REINFORCE, "C", 6,  "loyalGuards",  'mech', $i++);
-            UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn6C", "MechInf.svg", 12,  8,  STATUS_CAN_REINFORCE, "C", 6,  "loyalGuards",  'mech', $i++);
-            UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn6C", "Heavy.svg", 10,  5,  STATUS_CAN_REINFORCE, "C", 6,  "loyalGuards",  'heavy', $i++);
+            UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn6C", "Armor-white.svg", 13,  8,  STATUS_CAN_REINFORCE, "C", 6,  "loyalGuards",  'mech', $i++);
+            UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn6C", "Armor-white.svg", 13,  8,  STATUS_CAN_REINFORCE, "C", 6,  "loyalGuards",  'mech', $i++);
+            UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn6C", "MechInf-white.svg", 12,  8,  STATUS_CAN_REINFORCE, "C", 6,  "loyalGuards",  'mech', $i++);
+            UnitFactory::create("x", self::LOYALIST_FORCE, "gameTurn6C", "Heavy-white.svg", 10,  5,  STATUS_CAN_REINFORCE, "C", 6,  "loyalGuards",  'heavy', $i++);
         }
 
         /*
@@ -309,6 +309,11 @@ class Airborne extends \Wargame\ModernLandBattle
             $this->gameRules->inject($this->moveRules, $this->combatRules, $this->force);
 
 
+            foreach($this->mapViewer as $mapView){
+                $mapView->trueRows = true;
+            }
+            $this->mapViewer[1]->mirror = false;
+            $this->mapViewer[2]->mirror = true;
             $this->moveRules->enterZoc = 2;
             $this->moveRules->exitZoc = 1;
             $this->moveRules->noZocZocOneHex = true;

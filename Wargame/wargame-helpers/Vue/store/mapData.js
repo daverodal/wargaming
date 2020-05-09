@@ -8,6 +8,7 @@ export const mapData = {
         dispUnitsMap: {},
         mapUrl: mapUrl,
         trueRows: false,
+        mirror: false,
         moveUnits: [],
         moveMap: {}
     },
@@ -125,6 +126,12 @@ export const mapData = {
                 Vue.set(moveMap[hexId], 'showOff', false);
                 Vue.delete(moveMap[hexId], 'opac');
             }
+        },
+        setTrueRows(state, payload){
+            state.trueRows = payload;
+        },
+        setMirror(state, payload){
+            state.mirror = payload;
         }
     }
 };

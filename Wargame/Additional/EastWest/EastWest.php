@@ -275,8 +275,11 @@ class EastWest extends \Wargame\ModernLandBattle
             }
 
             foreach($this->mapViewer as $mapView){
-                $mapView->trueRows = true;
+                $mapView->trueRows = false;
+                $mapView->mirror = false;
             }
+//            $this->mapViewer[2]->mirror = true;
+            $this->mapViewer[1]->mirror = true;
             $this->combatRules = new SupplyCombatRules($this->force, $this->terrain);
             $this->gameRules->inject($this->moveRules, $this->combatRules, $this->force);
             $this->moveRules->enterZoc = 2;

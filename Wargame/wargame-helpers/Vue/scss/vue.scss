@@ -7,4 +7,7 @@
 @import 'vue-rules';
 body{
   font-family: Montserrat, sans-serif;
+  .mirror{
+    transform: rotate(180deg);
+  }
 }

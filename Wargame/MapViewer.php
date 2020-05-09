@@ -29,6 +29,7 @@ class MapViewer
     public $hexsideWidth;
     public $centerWidth;
     public $mapWidth;
+    public $mapHeight;
     public $trueRows = false;
 
     function __construct($data = null)
@@ -43,7 +44,7 @@ class MapViewer
 
     function setData($originX, $originY
         , $topHeight, $bottomHeight
-        , $hexsideWidth, $centerWidth, $mapWidth)
+        , $hexsideWidth, $centerWidth, $mapWidth,$mapHeight)
     {
 
         $this->originX = $originX;
@@ -53,5 +54,6 @@ class MapViewer
         $this->hexsideWidth = $hexsideWidth;
         $this->centerWidth = $centerWidth;
         $this->mapWidth = $mapWidth;
+        $this->mapHeight = $mapHeight;
     }
 }

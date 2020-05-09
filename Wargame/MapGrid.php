@@ -37,6 +37,7 @@ class MapGrid
     public $oneFourthHexagonHeight;
     public $leftMapEdge;
     public $trueRows;
+    public $mirror = false;
 
     // pixel info from screen
     public $mapGridX, $mapGridY;
@@ -58,7 +59,9 @@ class MapGrid
         $this->hexsideWidth = $mapData->hexsideWidth;
         $this->centerWidth = $mapData->centerWidth;
         $this->mapWidth = $mapData->mapWidth;
+        $this->mapHeight = $mapData->mapHeight ?? false;
         $this->trueRows = $mapData->trueRows;
+        $this->mirror = $mapData->mirror ?? false;
 
         $this->hexagonHeight = $this->topHeight + $this->bottomHeight;
         $this->hexagonWidth = $this->hexsideWidth + $this->centerWidth;
@@ -220,16 +223,35 @@ class MapGrid
     function getPixelX()
     {
         if($this->trueRows){
+            if($this->mirror){
+                return $this->mapHeight - $this->mapGridY;
+
+            }
             return $this->mapGridY;
+        }else{
+            if($this->mirror){
+                return $this->mapWidth - $this->mapGridX;
+
+            }
+            return $this->mapGridX;
+
         }
-        return $this->mapGridX;
     }
 
     function getPixelY()
     {
         if($this->trueRows) {
+            if($this->mirror){
+                return $this->mapGridX;
+            }
             return $this->mapWidth - $this->mapGridX;
+        }else{
+            if($this->mirror){
+                return $this->mapHeight - $this->mapGridY;
+
+            }
+            return $this->mapGridY;
+
         }
-        return $this->mapGridY;
     }
 }

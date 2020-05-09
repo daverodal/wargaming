@@ -292,8 +292,7 @@
                             </defs>
                         </svg>
                     </div>
-
-                    <img id="map" alt="map" src="{{$mapUrl}}">
+                    <img id="map" alt="map" :class="{mirror: mirror}" src="{{$mapUrl}}">
 
                     <?php $id = 0; ?>
                     <units-component :myghosts="moveUnits" :myunits="units"></units-component>

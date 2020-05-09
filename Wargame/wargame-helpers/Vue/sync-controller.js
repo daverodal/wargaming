@@ -2,6 +2,7 @@ import Vue from "vue";
 import {syncObj} from '@markarian/wargame-helpers';
 import {DR} from "@markarian/wargame-helpers";
 import {mapGetters, mapMutations} from "vuex";
+import {x} from "../common-sync";
 
 export class SyncController {
 
@@ -1074,6 +1075,19 @@ export class SyncController {
         });
     }
     mapViewer(){
+        syncObj.register('mapViewer', function (mapViewer) {
+            debugger;
+            vueStore.commit('mD/setTrueRows', mapViewer.trueRows)
+            vueStore.commit('mD/setMirror', mapViewer.mirror)
+            // var src = $('#map').attr('src');
+            // src = src.replace(/Left.png$/, '.png');
+            // if (mapViewer.trueRows) {
+            //     src = src.replace(/.png$/, 'Left.png');
+            // }
+            // $('#map').attr('src', src);
+
+
+        });
 
     }
     constructor() {
@@ -1097,6 +1111,7 @@ export class SyncController {
         this.mapSymbols();
         this.specialHexes();
         this.vp();
+        this.mapViewer();
     }
 }
 

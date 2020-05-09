@@ -17,6 +17,7 @@ export const store = new Vuex.Store({
         mode: 'select',
         commands: [],
         builds:[],
+        buildLocations: {},
         resources: [],
         phase: null,
         combatants: [],
@@ -73,6 +74,9 @@ export const store = new Vuex.Store({
         },
         casualities(state){
             return state.casualities;
+        },
+        buildLocations(state){
+            return state.buildLocations;
         },
         showWait(state, getters){
             let wait = false;
@@ -155,7 +159,6 @@ export const store = new Vuex.Store({
     },
     mutations:{
         setLog(state, payload){
-            debugger;
           state.log = [...payload];
         },
         setHovered(state, payload){
@@ -211,22 +214,32 @@ export const store = new Vuex.Store({
         clearTurn(state){
           state.commands = [];
           state.builds = [];
+          state.buildLocations = {};
           state.selected = null;
           state.selectedNeighbor = null;
         },
         produceUnit(state){
+            debugger;
             state.builds = [...state.builds, {selected: state.selected, playerId: state.selectedPlayer}];
+            let curBuilds = state.buildLocations[state.selected] || 0;
+            state.buildLocations[state.selected] = curBuilds + 1;
+            state.buildLocations = {...state.buildLocations};
             state.resources[state.selectedPlayer].food--;
             state.resources[state.selectedPlayer].energy--;
             state.resources[state.selectedPlayer].materials--;
         },
         deleteProduction(state, payload){
+            debugger;
             const builds = [...state.builds];
+            const loc = builds[payload];
+            state.buildLocations[loc.selected]--;
+            state.buildLocations = {...state.buildLocations};
             builds.splice(payload, 1);
             state.builds = [...builds];
             state.resources[state.selectedPlayer].food++;
             state.resources[state.selectedPlayer].energy++;
             state.resources[state.selectedPlayer].materials++;
+            state.beacon = null;
         },
         deleteCommand(state, payload){
             const command = state.commands[payload];

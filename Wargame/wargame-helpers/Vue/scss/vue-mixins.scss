@@ -1,9 +1,11 @@
-@mixin unitColor($nationality, $color) {
+@mixin unitColor($nationality, $color, $fg-color: black) {
   .#{$nationality} {
     background-color: $color;
+    color: lime;
   }
   .#{$nationality} .counterWrapper {
     background-color: $color;
+    color: fuchsia;
   }
 }
 
@@ -88,14 +90,6 @@
     color:$foreground;
   }
 
-}
-@mixin unitColor($nationality, $color) {
-  .#{$nationality} {
-    background-color: $color;
-  }
-  .#{$nationality} .counterWrapper {
-    background-color: $color;
-  }
 }
 
 @mixin victoryPoints($color){

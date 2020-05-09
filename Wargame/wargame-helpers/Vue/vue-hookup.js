@@ -1,3 +1,4 @@
+import MapComponent from "./MapComponent";
 
 window.axios = require('axios');
 
@@ -29,6 +30,7 @@ import {
     playAudio, playAudioBuzz, playAudioLow,
     toggleFullScreen
 } from "@markarian/wargame-helpers";
+Vue.component('map-component', MapComponent);
 
 import {store} from "./store/store";
 import "./global-vue-header";
@@ -96,9 +98,12 @@ document.addEventListener("DOMContentLoaded",function(){
             header: "",
             message: "",
             x: 200,
-            y: 900
+            y: 900,
         },
         computed: {
+            mirror(){
+              return this.$store.state.mD.mirror;
+            },
             units(){
               return this.$store.state.mD.dispUnits;
             },
