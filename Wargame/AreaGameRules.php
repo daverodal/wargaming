@@ -282,6 +282,10 @@ class AreaGameRules
         $p2 = $this->collectedThisTurn[2];
         $turnLog[] = "f ". $p1->food ." e " . $p1->energy . " m ". $p1->materials;
         $turnLog[] = "f ". $p2->food ." e " . $p2->energy . " m ". $p2->materials;
+        $p1 = $this->resources[1];
+        $p2 = $this->resources[2];
+        $turnLog[] = "tot f ". $p1->food ." e " . $p1->energy . " m ". $p1->materials;
+        $turnLog[] = "tot f ". $p2->food ." e " . $p2->energy . " m ". $p2->materials;
 
 
         $this->log[] = $turnLog;
