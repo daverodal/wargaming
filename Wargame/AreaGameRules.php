@@ -294,6 +294,13 @@ class AreaGameRules
     function executeBuilds(){
         $areas = Battle::getBattle()->areaModel->areas;
 
+        $p1 = $this->resources[1];
+        $p2 = $this->resources[2];
+        $turnLog[] = "before f ". $p1->food ." e " . $p1->energy . " m ". $p1->materials;
+        $turnLog[] = "before f ". $p2->food ." e " . $p2->energy . " m ". $p2->materials;
+
+
+        $this->log[] = $turnLog;
 
         foreach($this->builds as $user => $builds){
             foreach($builds as $build ) {
@@ -312,6 +319,15 @@ class AreaGameRules
                 $areas->$selected->armies->$playerId += 1;
             }
         }
+        $turnLog = [];
+        $p1 = $this->resources[1];
+        $p2 = $this->resources[2];
+        $turnLog[] = "aft f ". $p1->food ." e " . $p1->energy . " m ". $p1->materials;
+        $turnLog[] = "aft f ". $p2->food ." e " . $p2->energy . " m ". $p2->materials;
+
+
+        $this->log[] = $turnLog;
+
         $this->builds = new \stdClass();
     }
     function executeMoves($player){
