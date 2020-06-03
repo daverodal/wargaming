@@ -184,7 +184,7 @@ class JagCore extends \Wargame\LandBattle{
             $this->mapViewer[$player]->setData($terrainInfo->originX , $terrainInfo->originY, // originX, originY
                 $terrainInfo->b, $terrainInfo->b, // top hexagon height, bottom hexagon height
                 $terrainInfo->a, $terrainInfo->c,// hexagon edge width, hexagon center width
-            $terrainInfo->mapWidth);
+            $terrainInfo->mapWidth, $terrainInfo->mapHeight);
         }
 
         $oldMapUrl = $this->mapData->mapUrl;
@@ -214,6 +214,7 @@ class JagCore extends \Wargame\LandBattle{
         $this->terrain->maxCol = $maxCol = $map->numX;
         $this->terrain->maxRow = $maxRow = $map->numY;
         $this->terrain->mapWidth = $map->mapWidth;
+        $this->terrain->mapHeight = $map->mapHeight;
         $this->mapData->setData($maxCol, $maxRow, $mapUrl);
 
         \Wargame\Hexagon::setMinMax();

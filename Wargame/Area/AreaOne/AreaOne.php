@@ -50,6 +50,7 @@ class AreaOne extends AreaGame
         }
         foreach($boxes as $boxId=>$box){
             $box->armies = new \stdClass();
+            $box->owner = 0;
             if($p1Xlated[$boxId] ?? false !== false){
                 $box->owner = 1;
                 $box->armies->{1} = $p1Xlated[$boxId];

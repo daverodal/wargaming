@@ -205,6 +205,7 @@ class AreaGameRules
                 $this->battles[] = $battleReport;
                 continue;
             }
+            $areas->{$area->id} = $area;
         }
     }
 
@@ -269,7 +270,8 @@ class AreaGameRules
                     $turnLog[] = $line . " $res";
 
                     foreach($area->neighbors as $neighbor){
-                        if($areas->{$neighbor}->owner ?? 0 === $area->owner){
+                        $neiOwner = $areas->{$neighbor}->owner ?? 0;
+                        if($neiOwner ==  $area->owner){
                             $line =  "neighbor " . $areas->{$neighbor}->name;
                             $res = $this->collectResources($areas->{$neighbor});
                             $turnLog[] = $line . " $res";

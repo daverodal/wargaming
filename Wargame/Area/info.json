@@ -21,6 +21,10 @@
             {
               "mapId": 24,
                 "amount": 1
+            },
+            {
+              "mapId": 3,
+              "amount": 1
             }
           ]
         }

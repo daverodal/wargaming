@@ -39,6 +39,7 @@ class NavalMoveRules extends MoveRules
     public $moves;
     public $path;
     public $moveQueue;
+    public $spottedRange = 8;
 
     /* usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
      * so 1 means you can't stack with even 1 enemy. Use a closure here to allow for air units stacking with
@@ -810,7 +811,7 @@ class NavalMoveRules extends MoveRules
             if($unit->hexagon->parent !== 'gameImages'){
                 continue;
             }
-            if($this->inRange($movingUnit->hexagon->name, $unit->hexagon->name, 8)){
+            if($this->inRange($movingUnit->hexagon->name, $unit->hexagon->name, $this->spottedRange)){
                 $movingUnit->spotted = true;
                 break;
             }
