@@ -88,7 +88,7 @@
             <div class="clear"></div>
         </li>
         <li>All artillery is double defense in clear</li>
-        <li>{{$beluchi or "Sikh"}} Infantry +1 combat point in Jungle/Scrub and Town
+        <li>{{$beluchi ?? "Sikh"}} Infantry +1 combat point in Jungle/Scrub and Town
             <p></p>
             <div class="">
                 <div class="unit Sikh infantry"
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="clear"></div></li>
-        <li>{{$beluchi or "Sikh"}}s do not get combined arms bonus with cavalry.
+        <li>{{$beluchi ?? "Sikh"}}s do not get combined arms bonus with cavalry.
             <p></p>
             <div class="">
                 <div class="unit Sikh cavalry"
