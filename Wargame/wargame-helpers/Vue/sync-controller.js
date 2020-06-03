@@ -1076,7 +1076,6 @@ export class SyncController {
     }
     mapViewer(){
         syncObj.register('mapViewer', function (mapViewer) {
-            debugger;
             vueStore.commit('mD/setTrueRows', mapViewer.trueRows)
             vueStore.commit('mD/setMirror', mapViewer.mirror)
             // var src = $('#map').attr('src');
