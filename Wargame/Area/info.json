@@ -193,7 +193,43 @@
             }
           ]
         }
+      },
+      "thirteen-east-west": {
+        "description": "Map 13.1 East West",
+        "longDescription": "man 13.1 with east west starting areas......",
+        "mapDataUrl": "b34d2918c6d14e7e9d442ca31a0005cc",
+        "setup": {
+          "1": [
+            {
+              "mapId": 2,
+              "amount": 4
+            },
+            {
+              "mapId": 19,
+              "amount": 4
+            },
+            {
+              "mapId": 28,
+              "amount": 4
+            }
+          ],
+          "2": [
+            {
+              "mapId": 4,
+              "amount": 4
+            },
+            {
+              "mapId": 18,
+              "amount": 4
+            },
+            {
+              "mapId": 31,
+              "amount": 4
+            }
+          ]
+        }
       }
+
     }
   }
 }
