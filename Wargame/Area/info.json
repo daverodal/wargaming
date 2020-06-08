@@ -201,7 +201,7 @@
         "setup": {
           "1": [
             {
-              "mapId": 2,
+              "mapId": 6,
               "amount": 4
             },
             {
@@ -209,7 +209,7 @@
               "amount": 4
             },
             {
-              "mapId": 28,
+              "mapId": 27,
               "amount": 4
             }
           ],
