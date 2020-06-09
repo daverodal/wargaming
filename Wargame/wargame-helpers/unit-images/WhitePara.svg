@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="18px" viewBox="0 0 32 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>WhitePara</title>
+    <g id="WhitePara" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-5" stroke="#FFFFFF" stroke-width="2" fill-rule="nonzero" x="1" y="1" width="30" height="16"></rect>
+        <line x1="0.5" y1="0.5" x2="31.5" y2="17.5" id="Line" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" fill-rule="nonzero"></line>
+        <line x1="0.5" y1="17.5" x2="31.5" y2="0.5" id="Line-2" stroke="#F9F9F9" stroke-width="2" stroke-linecap="square" fill-rule="nonzero"></line>
+        <g id="Group-5" transform="translate(11.000000, 14.000000)" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="2">
+            <path d="M4.96124031,1.82851865 C5.79610031,0.609506218 6.63096031,0 7.46582031,0 C8.30068031,0 9.13554031,0.609506218 9.97040031,1.82851865" id="Path-5"></path>
+            <path d="M0,1.82851865 C0.834860001,0.609506218 1.66972,0 2.50458,0 C3.33944,0 4.1743,0.609506218 5.00916,1.82851865" id="Path-5-Copy"></path>
+        </g>
+    </g>
+</svg>
