@@ -14,17 +14,13 @@
           "1": [
             {
               "mapId": 1,
-              "amount": 1
+              "amount": 3
             }
           ],
           "2": [
             {
               "mapId": 24,
-                "amount": 1
-            },
-            {
-              "mapId": 3,
-              "amount": 1
+                "amount": 3
             }
           ]
         }
