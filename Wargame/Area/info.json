@@ -92,6 +92,25 @@
           ]
         }
       },
+      "balancednewmapeastwest": {
+        "description": "Map 12.1.d east west",
+        "longDescription": "East west map 12.2.d",
+        "mapDataUrl": "8e8a08d89c98ffc196bb1c5b69000f1e",
+        "setup": {
+          "1": [
+            {
+              "mapId": 3,
+              "amount": 4
+            }
+          ],
+          "2": [
+            {
+              "mapId": 14,
+              "amount": 4
+            }
+          ]
+        }
+      },
 
       "morebalance": {
         "description": "Map 12.1.e",
