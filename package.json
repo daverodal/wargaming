@@ -18,7 +18,7 @@
     "cross-env": "^5.2.0",
     "jquery": "3.4.0",
     "laravel-mix": "^1.7.2",
-    "lodash": "^4.17.13"
+    "lodash": "^4.17.19"
   },
   "dependencies": {
     "@markarian/vue-componentz": "^0.0.4",
