@@ -26,6 +26,7 @@
 import {playAudio, playAudioBuzz, playAudioLow, counterClick, mapClick, doitOption, doitNext, nextPhaseMouseDown, doitKeypress, showCrtTable, fixItAll, doitSaveGame, rotateUnits, toggleFullScreen, doitCRT} from "@markarian/wargame-helpers";
 import {clickBack, phaseBack, playerTurnBack, clickSurge,phaseSurge, playerTurnSurge, timeLive, timeBranch} from "@markarian/wargame-helpers";
 import "./jquery.panzoom";
+import { globalFuncs } from "@markarian/wargame-helpers";
 import {DR} from "@markarian/wargame-helpers";
 import {syncObj as x } from '@markarian/wargame-helpers'
 import {fixHeader} from '@markarian/wargame-helpers';
@@ -234,13 +235,13 @@ export default function initialize() {
     });
 
     $("#muteButton").click(function () {
-        if (!mute) {
+        if (!globalFuncs.mute) {
             $("#muteButton").html("un-mute");
-            lib.muteMe();
+            globalFuncs.muteMe();
 
         } else {
             $("#muteButton").html("mute");
-            unMuteMe();
+            globalFuncs.unMuteMe();
             playAudio();
         }
     });
