@@ -8485,7 +8485,12 @@
       "name": "Fog of war during Deployment. Enemy units remain hidden until movement phase..",
       "keyName": "fogDeploy",
       "value": false
-    }],
+    },
+      {
+        "name": "Russian infantry moves only 3 instead of 4.",
+        "keyName": "slowRussianInf",
+        "value":  false
+      }],
     "scenarios": {
       "main": {
         "description": "Historical Scenario.",

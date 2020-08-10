@@ -58,14 +58,14 @@ class Maloyaroslavets1812 extends \Wargame\Mollwitz\JagCore
             $unitHex = "deployBox";
             $status = STATUS_CAN_DEPLOY;
             if(isset($unitSet->reinforceTurn)){
-                if(isset($this->scenario->noRussianReinf)){
-                    if($unitSet->forceId === self::RUSSIAN_FORCE){
-                        continue;
-                    }
-                }
                 $reinforceTurn = $unitSet->reinforceTurn;
                 $unitHex = "gameTurn$reinforceTurn";
                 $status = STATUS_CAN_REINFORCE;
+            }
+            if($scenario->slowRussianInf ?? false){
+                if($unitSet->forceId === Maloyaroslavets1812::RUSSIAN_FORCE && $unitSet->class == "infantry"){
+                    $unitSet->movement = 3;
+                }
             }
             for ($i = 0; $i < $unitSet->num; $i++) {
                 UnitFactory::create("infantry-1", $unitSet->forceId, $unitHex, "", $unitSet->combat, $unitSet->combat, $unitSet->movement, true, $status, $unitSet->reinforce, $reinforceTurn, $unitSet->range, $unitSet->nationality, false, $unitSet->class);
