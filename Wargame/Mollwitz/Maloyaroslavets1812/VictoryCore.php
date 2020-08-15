@@ -30,11 +30,18 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
     function __construct($data)
     {
         parent::__construct($data);
+
+        if ($data) {
+            $this->attackedUnits = $data->victory->attackedUnits;
+        }else{
+            $this->attackedUnits = new \stdClass();
+        }
     }
 
     public function save()
     {
         $ret = parent::save();
+        $ret->attackedUnits = $this->attackedUnits;
         return $ret;
     }
 
@@ -111,6 +118,13 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         return false;
     }
 
+    public function postCombatResults($arg){
+
+        list($defenderId, $attackers, $combatResults, $dieRoll) = $arg;
+        if(isset($this->attackedUnits->$defenderId) && $this->attackedUnits->$defenderId === false){
+            $this->attackedUnits->$defenderId = true;
+        }
+    }
     public function postRecoverUnit($args)
     {
         $unit = $args[0];
@@ -123,12 +137,25 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
 
         $unit->removeAdjustment('movement');
 
-        if ($b->gameRules->turn <= 2 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
-            if(!empty($scenario->noCavMove) && $unit->class === "cavalry"){
-                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+
+        if($b->gameRules->turn === 1 && $b->gameRules->phase === BLUE_MOVE_PHASE){
+
+            /* this will get turned into an object */
+            if($unit->forceId === Maloyaroslavets1812::RUSSIAN_FORCE && $unit->isOnMap()){
+                $this->attackedUnits->$id = false;
             }
-            if($b->gameRules->turn <= 1){
-                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+        }
+
+        if ($b->gameRules->turn <= 2 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
+            /* units not in list can move */
+            $isAttacked = $this->attackedUnits->$id ?? true;
+            if(!$isAttacked) {
+                if (!empty($scenario->noCavMove) && $unit->class === "cavalry") {
+                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                }
+                if ($b->gameRules->turn <= 1) {
+                    $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+                }
             }
         }
     }
