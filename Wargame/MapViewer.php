@@ -31,6 +31,7 @@ class MapViewer
     public $mapWidth;
     public $mapHeight;
     public $trueRows = false;
+    public $mirror = false;
 
     function __construct($data = null)
     {
