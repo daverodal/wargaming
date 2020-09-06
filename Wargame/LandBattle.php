@@ -68,7 +68,7 @@ class LandBattle extends \Wargame\Battle{
         $players = $doc->wargame->players;
         $player = array_search($user, $players);
         $arrCount = array_count_values($players);
-        if($arrCount[$user] > 1){
+        if($arrCount[$user] ?? 0 > 1){
             $player = $doc->wargame->gameRules->attackingForceId;
         }
 //        preg_match_all('/'.$user.'/', $players, $matches);
