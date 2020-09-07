@@ -28,9 +28,6 @@ import "angular-sanitize"
 import "angular-right-click"
 import 'jquery-ui-bundle';
 import initialize from "../../wargame-helpers/initialize";
-document.addEventListener("DOMContentLoaded",function() {
-    initialize();
-});
 import {doitNext, DR} from "@markarian/wargame-helpers";
 
 import {GameController} from '../../wargame-helpers/game-controller';
