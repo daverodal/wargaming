@@ -115,7 +115,7 @@ class AreaGameRules
 
             $this->resources = [];
             $amount = new \stdClass();;
-            $amount->energy = $amount->materials = $amount->food = 3;
+            $amount->energy = $amount->materials = $amount->food = 1;
 
             $this->resources = [clone $amount,clone $amount ,clone $amount];
         }
