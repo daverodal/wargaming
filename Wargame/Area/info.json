@@ -147,14 +147,23 @@
         "description": "Map 12.f",
         "longDescription": "Map 12 f",
         "mapDataUrl": "0296fc8f331ced52d76459ea2a285e6a",
+        "smallProduction": true,
         "setup": {
           "1": [
+            {
+              "mapId": 4,
+              "amount": 1
+            },
             {
               "mapId": 4,
               "amount": 1
             }
           ],
           "2": [
+            {
+              "mapId": 41,
+              "amount": 1
+            },
             {
               "mapId": 41,
               "amount": 1
