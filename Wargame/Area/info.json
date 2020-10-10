@@ -8,8 +8,8 @@
     "scenarios": {
 
       "balance10.4": {
-        "description": "Balabce 10.4 ",
-        "longDescription": "balance version of this game map 10.4",
+        "description": "Balanced 10.4 ",
+        "longDescription": "balanced version of this game map 10.4",
         "mapDataUrl": "0296fc8f331ced52d76459ea2a3711ac",
         "setup": {
           "1": [
