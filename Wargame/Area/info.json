@@ -1,4 +1,34 @@
 {
+
+
+
+  "balance10.4": {
+    "description": "Balabce 10.4 ",
+    "longDescription": "balance version of this game map 10.4",
+    "mapDataUrl": "0296fc8f331ced52d76459ea2a3711ac",
+    "setup": {
+      "1": [
+        {
+          "mapId": 4,
+          "amount": 1
+        },
+        {
+          "mapId": 0,
+          "amount": 1
+        }
+      ],
+      "2": [
+        {
+          "mapId": 23,
+          "amount": 1
+        },
+        {
+          "mapId": 27,
+          "amount": 1
+        }
+      ]
+    }
+  },
   "AreaOne": {
     "name": "First hack at area games",
     "path": "Area",
