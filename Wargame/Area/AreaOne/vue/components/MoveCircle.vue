@@ -20,7 +20,7 @@
         computed: {
             ...mapGetters(['isSmallMap']),
             circleUrl(){
-                const color = this.command.playerId == 1 ? 'Green' : 'Red';
+                const color = this.command.playerId == 1 ? 'Blue' : 'Red';
                 return '/assets/map-symbols/' + color + 'CircleArrow.svg';
             },
             x(){
