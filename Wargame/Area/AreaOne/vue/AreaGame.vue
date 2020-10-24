@@ -110,7 +110,8 @@
               // this.mapData.boxes = item.wargame.areaModel.areas;
               if(this.$store.state.phase != item.wargame.gameRules.phase){
                   this.$store.commit('setBoxes', item.wargame.areaModel.areas);
-                  this.$store.commit('clearTurn');
+                this.$store.commit('setBorders', item.wargame.areaModel.borders);
+                this.$store.commit('clearTurn');
                   this.turn = item.wargame.gameRules.turn;
                   this.$store.commit('setResources', item.wargame.gameRules.resources);
                   this.$store.commit('setPhase', item.wargame.gameRules.phase);

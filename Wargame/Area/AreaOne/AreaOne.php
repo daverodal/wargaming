@@ -40,6 +40,7 @@ class AreaOne extends AreaGame
 //        $terrainInfo = $terrainDoc->terrain;
 
         $boxes = $terrainDoc->boxes;
+        $borderBoxes = $terrainDoc->borderBoxes ?? [];
         $p1 = 1;
         $p2 = 24;
         if($this->scenario->setup){
@@ -62,6 +63,12 @@ class AreaOne extends AreaGame
             }
             $this->areaModel->addArea($boxId, $box);
         }
+
+        foreach($borderBoxes as $boxId=>$box){
+            $this->areaModel->addBorder($boxId, $box);
+        }
+
+
         $mapHexes = new stdClass();
 //        foreach ($specialHexes as $hexName => $specialHex) {
 //            $mapHexes->$hexName = $this->specialHexesMap[$specialHex];

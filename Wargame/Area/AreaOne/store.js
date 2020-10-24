@@ -14,6 +14,7 @@ export const store = new Vuex.Store({
         selectedPlayer: null,
         selectedNeighbor: null,
         boxes: {},
+        borderBoxes: {},
         mode: 'select',
         commands: [],
         builds:[],
@@ -195,6 +196,9 @@ export const store = new Vuex.Store({
         setBoxes(state, payload){
             state.boxes = {...payload};
         },
+        setBorders(state, payload){
+            state.borderBoxes = {...payload};
+        },
         setUser(state, payload){
             state.user = payload;
         },
@@ -219,7 +223,6 @@ export const store = new Vuex.Store({
           state.selectedNeighbor = null;
         },
         produceUnit(state){
-            debugger;
             state.builds = [...state.builds, {selected: state.selected, playerId: state.selectedPlayer}];
             let curBuilds = state.buildLocations[state.selected] || 0;
             state.buildLocations[state.selected] = curBuilds + 1;
@@ -229,7 +232,6 @@ export const store = new Vuex.Store({
             state.resources[state.selectedPlayer].materials--;
         },
         deleteProduction(state, payload){
-            debugger;
             const builds = [...state.builds];
             const loc = builds[payload];
             state.buildLocations[loc.selected]--;

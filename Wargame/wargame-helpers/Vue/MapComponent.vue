@@ -8,7 +8,6 @@
         props:['src'],
         computed: {
             mirror(){
-                debugger;
                 return this.$store.state.mD.mirror;
             }
         }
