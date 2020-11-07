@@ -14,16 +14,16 @@ use Wargame\AreaForce;
 use Wargame\AreaMoveRules;
 use Wargame\AreaTerrain;
 use Wargame\CombatRules;
-use Wargame\AreaGameRules;
+use Wargame\AreaBorderGameRules;
 use Wargame\Cnst;
 use Wargame\Victory;
 use stdClass;
 use Wargame\PlayersReady;
 
-class AreaOne extends AreaGame
+class AreaNext extends AreaGame
 {
 
-    /* @var \Wargame\AreaGameRules */
+    /* @var \Wargame\AreaBorerGameRules */
     public $gameRules;
     public $moveRules;
     public $areaModel;
@@ -168,7 +168,7 @@ class AreaOne extends AreaGame
 
 //            $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
             $this->moveRules = new AreaMoveRules($this->force, $this->terrain, $data->moveRules);
-            $this->gameRules = new AreaGameRules($data->gameRules);
+            $this->gameRules = new AreaBorderGameRules($data->gameRules);
 
 //            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force,  $data->gameRules);
             $this->victory = new Victory($data);
@@ -194,7 +194,7 @@ class AreaOne extends AreaGame
 
 //
 //            $this->combatRules = new CombatRules($this->force, $this->terrain);
-            $this->gameRules = new AreaGameRules();
+            $this->gameRules = new AreaBorderGameRules();
             $this->gameRules->addPhaseChange(Cnst::PRODUCTION_PHASE, Cnst::PRODUCTION_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::COMMAND_PHASE, Cnst::COMMAND_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::RESULTS_PHASE, Cnst::RESULTS_MODE, true);

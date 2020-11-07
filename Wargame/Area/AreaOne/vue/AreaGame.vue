@@ -45,6 +45,9 @@
            <div class="command-items" v-for="command in commands">
                <move-circle :command="command" :amount="command.amount"></move-circle>
            </div>
+             <div class="command-items" v-for="(value, propName) in casualities">
+               <casuality-circle v-if="propName.match(/@/)" :theKey="propName" :amount="value"></casuality-circle>
+             </div>
            <move-command v-if="$store.state.mode === 'move'"></move-command>
            </div>
            </pan-zoom>
@@ -93,7 +96,10 @@
             },
             commands() {
                 return this.$store.state.commands;
-            }
+            },
+          casualities(){
+              return this.$store.state.casualities;
+          }
         },
         mounted() {
           syncObj.register('playerStatus', (obj) => {

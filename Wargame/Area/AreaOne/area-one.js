@@ -18,6 +18,7 @@ Vue.use(VueResource);
 import LogView from "./vue/components/LogView";
 // import vue-panzoom
 import panZoom from 'vue-panzoom'
+import CasualityCircle from "./vue/components/CasualityCircle";
 
 // install plugin
 Vue.use(panZoom, {compoentName: 'pan-zoom',
@@ -32,6 +33,7 @@ Vue.component('battle-box', BattleBox);
 Vue.component('move-circle', MoveCircle );
 Vue.component('production-status', ProductionStatus );
 Vue.component('log-view', LogView);
+Vue.component('casuality-circle', CasualityCircle);
 
 document.addEventListener("DOMContentLoaded",() => {
     window.world = new Vue({
