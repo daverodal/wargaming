@@ -35,7 +35,7 @@ class AreaOne extends AreaGame
     }
 
 
-    function areaMapInit($terrainDoc)
+    function terrainInit($terrainDoc)
     {
 //        $terrainInfo = $terrainDoc->terrain;
 

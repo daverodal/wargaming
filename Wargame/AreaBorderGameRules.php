@@ -53,6 +53,7 @@ class AreaBorderGameRules
     public $resources;
     public $cities = [];
     public $casualities;
+    public $borderClashes;
     public $log = [];
     public $collectedThisTurn = [null,null,null];
 
@@ -63,7 +64,7 @@ class AreaBorderGameRules
         unset($this->combatRules);
         $data = new stdClass();
         foreach ($this as $k => $v) {
-            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'casualities' && $k !== 'log' && $k !== 'collectedThisTurn' && $k !== 'resources')) {
+            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'borderClashes' && $k !== 'casualities' && $k !== 'log' && $k !== 'collectedThisTurn' && $k !== 'resources')) {
                 continue;
             }
             $data->$k = $v;
@@ -110,6 +111,7 @@ class AreaBorderGameRules
             $this->currentPhaseIndex = 0;
             $this->commands = new \stdClass();
             $this->casualities = new \stdClass();
+            $this->borderClashes = new \stdClass();
             $this->builds = new \stdClass();
             $this->battles = [];
 
@@ -157,6 +159,9 @@ class AreaBorderGameRules
                 continue;
             }
             if(count((array)$area->armies) === 1){
+
+
+
                 $prevOwner = $area->owner ?? null;
                 $newOwner = $area->owner = array_keys(get_object_vars($area->armies))[0];
                 if($prevOwner !== $newOwner){
@@ -167,13 +172,30 @@ class AreaBorderGameRules
                     $this->battles[] = $battleReport;
 
                 }
+
                 if($area->isCity ?? false){
                     $this->cities[$area->owner]++;
+                }
+                if($borders !== false){
+                    $borderKey = $area->key;
+                    $borderClashes = $this->borderClashes->$borderKey ?? new \stdClass();
+                    $borderClashes = clone $borderClashes;
+                    $borderClashes->owner = $area->owner;
+                    $borderClashes->armies = clone $area->armies;
+                    $borderClashes->casualities = 0;
+                    $this->borderClashes->$borderKey = $borderClashes;
                 }
                 continue;
             }
             if(count((array)$area->armies) > 1){
-                $cas = $this->casualities->$key ?? 0;
+                if($borders !== false){
+                    $borderKey = $area->key;
+                    $borderClashes = $this->borderClashes->$borderKey ?? new \stdClass();
+                    $borderClashes = clone $borderClashes;
+                    $cas = $borderClashes->casualities ?? 0;
+                }else{
+                    $cas = $this->casualities->$key ?? 0;
+                }
 
                 $p1 = "1";
                 $p2 = "2";
@@ -203,7 +225,14 @@ class AreaBorderGameRules
                     }
                 }
                 $casKey = $area->key ?? $key;
-                $this->casualities->$casKey = $cas;
+                if($borders !== false){
+                    $borderClashes->casualities = $cas;
+                    $borderClashes->owner = $area->owner;
+                    $borderClashes->armies = clone $area->armies;
+                 $this->borderClashes->$borderKey = $borderClashes;
+                }else{
+                    $this->casualities->$casKey = $cas;
+                }
                 $battleReport = new \stdClass();
                 $battleReport->report = $report;
                 $battleReport->location = $casKey;
@@ -473,11 +502,15 @@ class AreaBorderGameRules
                 return $border;
             }
         }
-        throw(new Exception("NO border"));
+        throw(new \Exception("NO border $first $second"));
     }
     function runCommands(){
 
+        $b = Battle::getBattle();
+        $b->areaModel->cleanBorders();
+
         $this->casualities = new \stdClass();
+        $this->borderClashes = new \stdClass();
         $this->determineOwnership();
         switch($this->phase){
             case RESULTS_PHASE:

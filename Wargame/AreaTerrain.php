@@ -43,6 +43,7 @@ class AreaTerrain
 
         if ($data) {
 
+            $this->mapUrl = $data->mapUrl;
         } else {
 
 

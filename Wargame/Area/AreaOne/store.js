@@ -25,6 +25,7 @@ export const store = new Vuex.Store({
         battles: [],
         playersReady: [],
         casualities: {},
+        borderClashes: {},
         smallMap: false,
         hovered: null,
         beacon: null,
@@ -75,6 +76,9 @@ export const store = new Vuex.Store({
         },
         casualities(state){
             return state.casualities;
+        },
+        borderClashes(state){
+            return state.borderClashes;
         },
         buildLocations(state){
             return state.buildLocations;
@@ -182,6 +186,9 @@ export const store = new Vuex.Store({
         },
         setCaualities(state, payload){
             state.casualities = payload;
+        },
+        setBorderClashes(state, payload){
+            state.borderClashes = payload;
         },
         setBattles(state, payload){
           state.battles = payload;

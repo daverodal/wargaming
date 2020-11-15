@@ -45,8 +45,8 @@
            <div class="command-items" v-for="command in commands">
                <move-circle :command="command" :amount="command.amount"></move-circle>
            </div>
-             <div class="command-items" v-for="(value, propName) in casualities">
-               <casuality-circle v-if="propName.match(/@/)" :theKey="propName" :amount="value"></casuality-circle>
+             <div class="command-items" v-for="(value, propName) in borderClashes">
+               <casuality-circle :theKey="propName" :amount="value"></casuality-circle>
              </div>
            <move-command v-if="$store.state.mode === 'move'"></move-command>
            </div>
@@ -70,7 +70,7 @@
             }
         },
         computed:{
-            ...mapGetters(["getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait', 'totalArmies', 'isSmallMap']),
+            ...mapGetters(["borderClashes", "getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait', 'totalArmies', 'isSmallMap']),
             smallMap:{
                 get(){
                     return  this.isSmallMap;
@@ -99,6 +99,9 @@
             },
           casualities(){
               return this.$store.state.casualities;
+          },
+          borders(){
+              return this.$store.state.borderBoxes;
           }
         },
         mounted() {
@@ -125,6 +128,8 @@
 
               this.$store.commit('setCombatants', item.wargame.combatants);
               this.$store.commit('setCaualities', item.wargame.gameRules.casualities);
+              this.$store.commit('setBorderClashes', item.wargame.gameRules.borderClashes);
+
           });
           syncObj.fetch(0);
           this.$store.commit('setUser', this.user);
@@ -231,7 +236,7 @@
         background-color: palevioletred;
     }
     .blue {
-        background-color: #00b0ff;
+        background-color: #00e7ff;
     }
     .label-box{
         background: white;

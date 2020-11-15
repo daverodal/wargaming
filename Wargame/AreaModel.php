@@ -59,4 +59,11 @@ class AreaModel  implements \JsonSerializable
             throw(new Exception("Property already defined"));
         }
     }
+
+    public function cleanBorders(){
+        foreach($this->borders as $border){
+            $border->armies = new \stdClass();
+            unset($border->owner);
+        }
+    }
 }

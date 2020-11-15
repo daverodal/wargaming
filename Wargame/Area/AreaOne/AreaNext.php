@@ -35,10 +35,12 @@ class AreaNext extends AreaGame
     }
 
 
-    function areaMapInit($terrainDoc)
+    function terrainInit($terrainDoc)
     {
 //        $terrainInfo = $terrainDoc->terrain;
 
+        $terrainDoc = $terrainDoc->terrain;
+        $this->terrain = $terrainDoc;
         $boxes = $terrainDoc->boxes;
         $borderBoxes = $terrainDoc->borderBoxes ?? [];
         $p1 = 1;
@@ -103,6 +105,18 @@ class AreaNext extends AreaGame
 //            $this->terrain->setMaxHex();
 //        }
         return;
+    }
+
+    public function publishAreaMap($terrainDoc){
+        $this->terrain = new \stdClass();
+        $this->terrain->mapUrl = $terrainDoc->url;
+        $this->terrain->mapWidth = $terrainDoc->width;
+        $this->terrain->boxes = $terrainDoc->boxes;
+        $this->terrain->borderBoxes = $terrainDoc->borderBoxes ?? [];
+
+        $this->terrain->name = $terrainDoc->name;
+        $this->terrain->docType = $terrainDoc->docType;
+
     }
 
     function xterrainInit($terrainDoc ){

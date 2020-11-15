@@ -1,6 +1,6 @@
 <template>
-    <div :style="{top: y, left: x}" class="circle-wrapper">
-        <span class="value-wrapper">{{amount}}</span>
+    <div :class="colorClass" :style="{top: y, left: x}" class="circle-wrapper">
+        <span class="value-wrapper">{{amount.armies[amount.owner] || 0 }}<span v-if="amount.casualities > 0">x{{amount.casualities}}</span></span>
     </div>
 </template>
 
@@ -8,7 +8,7 @@
     import {mapGetters} from "vuex";
 
     export default {
-        name: "MoveCircle",
+        name: "CasualityCircle",
         data() {
             return {
                 value: 5
@@ -22,6 +22,12 @@
                 const color = 'white';
                 return '/assets/map-symbols/' + color + 'CircleArrow.svg';
             },
+          colorClass(){
+              if(this.amount.owner == 0){
+                return 'white';
+              }
+              return this.amount.owner == 1  ? 'blue': 'red'
+          },
             x(){
                 let scale = this.isSmallMap ? .7 : 1;
                 let findKey = this.theKey;
@@ -34,6 +40,7 @@
                     break;
                   }
                 }
+                // foundBox = this.amount;
                 if(foundBox){
                   return foundBox.x - 16;
                 }
@@ -53,6 +60,7 @@
                   break;
                 }
               }
+              // foundBox = this.amount;
               if(foundBox){
                 return foundBox.y - 30.4;
               }
@@ -76,14 +84,22 @@
     .circle-wrapper{
         position:absolute;
         border-radius: 100%;
-        background-color: white;
-        height: 32px;
-        width:32px;
+        height: 40px;
+        width:40px;
       margin-top:15px;
       text-align: center;
         .value-wrapper{
             font-size:22px;
-          line-height:32px;
+          line-height:40px;
         }
+      &.red{
+        background-color: #ff4500;
+      }
+      &.blue{
+        background-color: #00e7ff;
+      }
+      &.white{
+        background-color: white;
+      }
     }
 </style>
