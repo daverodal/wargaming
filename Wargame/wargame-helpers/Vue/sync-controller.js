@@ -2,7 +2,6 @@ import Vue from "vue";
 import {syncObj} from '@markarian/wargame-helpers';
 import {DR} from "@markarian/wargame-helpers";
 import {mapGetters, mapMutations} from "vuex";
-import {x} from "../common-sync";
 
 export class SyncController {
 

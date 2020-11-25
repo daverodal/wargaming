@@ -240,6 +240,6 @@ class Amph extends ModernLandBattle
         foreach($this->mapViewer as $mapView){
             $mapView->trueRows = false;
         }
-        $this->mapViewer[1]->mirror = true;
+//        $this->mapViewer[1]->mirror = true;
     }
 }
