@@ -182,6 +182,7 @@ class AreaBorderGameRules
                     $borderClashes = clone $borderClashes;
                     $borderClashes->owner = $area->owner;
                     $borderClashes->armies = clone $area->armies;
+                    $borderClashes->courses = clone $area->courses;
                     $borderClashes->casualities = 0;
                     $this->borderClashes->$borderKey = $borderClashes;
                 }
@@ -229,6 +230,7 @@ class AreaBorderGameRules
                     $borderClashes->casualities = $cas;
                     $borderClashes->owner = $area->owner;
                     $borderClashes->armies = clone $area->armies;
+                    $borderClashes->courses = clone $area->courses;
                  $this->borderClashes->$borderKey = $borderClashes;
                 }else{
                     $this->casualities->$casKey = $cas;
@@ -404,6 +406,7 @@ class AreaBorderGameRules
         $b = Battle::getBattle();
         $areas = $b->areaModel->areas;
         $borders = $b->areaModel->borders;
+        $origCourse = "$from@$to";
         if($from < $to){
             $first = $from;
             $second = $to;
@@ -420,6 +423,7 @@ class AreaBorderGameRules
             }
         }
         $areas->$from->armies->$playerId = $prevAmount - $amount;
+        $border->courses->$playerId = $origCourse;
         $border->armies->$playerId = $amount + ($border->armies->$playerId  ?? 0);
     }
 

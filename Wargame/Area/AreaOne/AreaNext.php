@@ -68,6 +68,7 @@ class AreaNext extends AreaGame
 
         foreach($borderBoxes as $boxId=>$box){
             $box->armies = new \stdClass();
+            $box->courses = new \stdClass();
             $this->areaModel->addBorder($boxId, $box);
         }
 

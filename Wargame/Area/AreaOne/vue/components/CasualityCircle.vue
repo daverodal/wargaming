@@ -1,6 +1,7 @@
 <template>
-    <div :class="colorClass" :style="{top: y, left: x}" class="circle-wrapper">
-        <span class="value-wrapper">{{amount.armies[amount.owner] || 0 }}<span v-if="amount.casualities > 0">x{{amount.casualities}}</span></span>
+    <div :style="{top: y, left: x}" class="circle-wrapper">
+      <img :class="colorClass" :src="circleUrl" :style="{transform: angle}" class="circle">
+      <div class="value-wrapper"><span class="value-wrapper">{{amount.armies[amount.owner] || 0 }}<span v-if="amount.casualities > 0">x{{amount.casualities}}</span></span></div>
     </div>
 </template>
 
@@ -19,7 +20,7 @@
         computed: {
             ...mapGetters(['isSmallMap']),
             circleUrl(){
-                const color = 'white';
+                const color = this.amount.owner === 0 ? 'White': (this.amount.owner === 1 ? 'Blue' : 'Red');
                 return '/assets/map-symbols/' + color + 'CircleArrow.svg';
             },
           colorClass(){
@@ -27,6 +28,22 @@
                 return 'white';
               }
               return this.amount.owner == 1  ? 'blue': 'red'
+          },
+          foundBox(){
+            let i;
+            let foundBox = null;
+            let findKey = this.theKey;
+            for(i in borderBoxes){
+              if(borderBoxes[i].key === findKey){
+                foundBox = borderBoxes[i];
+                break;
+              }
+            }
+            // foundBox = this.amount;
+            if(foundBox){
+              return foundBox.x - 16;
+            }
+            return null;
           },
             x(){
                 let scale = this.isSmallMap ? .7 : 1;
@@ -67,39 +84,65 @@
                 // return scale*(this.$store.state.boxes[this.command.from].y + this.$store.state.boxes[this.command.to].y)/2;
             },
             diffX(){
-                return this.$store.state.boxes[this.command.to].x - this.$store.state.boxes[this.command.from].x
+              let trueKey = this.trueKey;
+              debugger;
+              if(trueKey === ""){
+                return 0;
+              }
+              let fromTo = trueKey.split("@");
+
+              let from = this.$store.state.boxes[fromTo[0]];
+              let to = this.$store.state.boxes[fromTo[1]];
+
+              return to.x - from.x
             },
             diffY(){
-                return this.$store.state.boxes[this.command.from].y - this.$store.state.boxes[this.command.to].y;
+              let trueKey = this.trueKey;
+              debugger;
+              if(trueKey === ""){
+                return 0;
+              }
+              let fromTo = trueKey.split("@");
+
+              let from = this.$store.state.boxes[fromTo[0]];
+              let to = this.$store.state.boxes[fromTo[1]];
+
+              return from.y - to.y
+
+                //return this.$store.state.boxes[this.command.from].y - this.$store.state.boxes[this.command.to].y;
             },
-            // angle(){
-            //     const ret =  90 - Math.atan2(this.diffY , this.diffX) * (180 / Math.PI) ;
-            //     return 'rotate('+ret+'deg)';
-            // }
+            trueKey(){
+              let clash = this.$store.state.borderClashes[this.theKey];
+              let owner = clash.owner;
+              if(owner === 0){
+                return "";
+              }
+              return this.$store.state.borderClashes[this.theKey].courses[owner];
+            },
+            angle(){
+                const ret =  90 - Math.atan2(this.diffY , this.diffX) * (180 / Math.PI) ;
+                return 'rotate('+ret+'deg)';
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .circle-wrapper{
-        position:absolute;
-        border-radius: 100%;
-        height: 40px;
-        width:40px;
-      margin-top:15px;
-      text-align: center;
-        .value-wrapper{
-            font-size:22px;
-          line-height:40px;
-        }
-      &.red{
-        background-color: #ff4500;
-      }
-      &.blue{
-        background-color: #00e7ff;
-      }
-      &.white{
-        background-color: white;
-      }
-    }
+.circle-wrapper{
+  position:absolute;
+  img{
+    width:32px;
+    transform: rotate(27deg);
+  }
+  .value-wrapper{
+    position:absolute;
+    top: 10px;
+    left: 2px;
+    font-size:22px;
+  }
+  .white{
+    width:40px;
+    margin-top: 13px;
+  }
+}
 </style>
