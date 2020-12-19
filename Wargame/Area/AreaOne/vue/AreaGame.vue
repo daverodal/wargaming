@@ -217,7 +217,7 @@ $font-family-base: "times";
         font-size:11px;
     }
     .display-wrapper{
-        min-width:200px;
+        min-width:250px;
        display: flex;
         flex-direction: column;
         min-height: 120px;
