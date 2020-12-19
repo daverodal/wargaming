@@ -29,7 +29,7 @@ class AreaNext extends AreaGame
     public $areaModel;
     public $combatants;
     static function getPlayerData($scenario){
-        $forceName = ["Neutral Observer", "Blue", "Red"];
+        $forceName = ["Nobody", "Blue", "Red"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }

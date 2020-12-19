@@ -1,6 +1,6 @@
 <template>
     <div>
-        View Log: <button @click="open = !open">+-</button>
+        View Log: <button class="btn btn-sm btn-info" @click="open = !open">+-</button>
         <div v-if="open">
             <ol>
                 <li v-for="turn in getLog">

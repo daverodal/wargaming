@@ -145,6 +145,41 @@ export const store = new Vuex.Store({
             }
             return {};
         },
+        ownsArea(state, getters){
+            if(getters.isSelected){
+                if(state.players[getters.selectedBox.owner] === state.user){
+                    return true
+                }
+            }
+            return false
+        },
+        resourcesHere(state, getters){
+          if(getters.isSelected){
+              switch(getters.selectedBox.terrainType){
+                  case 'forest':
+                      return {materials: 1};
+                  case 'desert':
+                      return {energy: 2};
+                  case 'pasture':
+                      return {food: 1};
+                  case 'water':
+                      return {energy: 1};
+                  case 'mountain':
+                      return {materials: 2};
+                  case 'field':
+                      return {food: 2};
+              }
+          }
+          return {};
+        },
+        hasArmiesHere(state, getters){
+            if(getters.ownsArea === false){
+                return false;
+            }
+            let selectedBox = getters.selectedBox;
+            let owner = selectedBox.owner;
+            return selectedBox.armies[owner] > 0;
+        },
         selectedNeighbors(state){
             if(state.selected !== null && state.phase == COMMAND_PHASE){
                 return state.boxes[state.selected].neighbors;

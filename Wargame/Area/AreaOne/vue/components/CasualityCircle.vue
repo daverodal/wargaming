@@ -1,7 +1,7 @@
 <template>
     <div :style="{top: y, left: x}" class="circle-wrapper">
       <img :class="colorClass" :src="circleUrl" :style="{transform: angle}" class="circle">
-      <div class="value-wrapper"><span class="value-wrapper">{{amount.armies[amount.owner] || 0 }}<span v-if="amount.casualities > 0">x{{amount.casualities}}</span></span></div>
+      <div class="value-wrapper"><span class="value-wrapper">{{amount.armies[amount.owner] || 0 }}<span v-if="amount.casualities > 0" class="cross">{{amount.casualities}}</span></span></div>
     </div>
 </template>
 
@@ -27,7 +27,7 @@
               if(this.amount.owner == 0){
                 return 'white';
               }
-              return this.amount.owner == 1  ? 'blue': 'red'
+              return 'transparent';
           },
           foundBox(){
             let i;
@@ -85,7 +85,6 @@
             },
             diffX(){
               let trueKey = this.trueKey;
-              debugger;
               if(trueKey === ""){
                 return 0;
               }
@@ -98,7 +97,6 @@
             },
             diffY(){
               let trueKey = this.trueKey;
-              debugger;
               if(trueKey === ""){
                 return 0;
               }
@@ -131,7 +129,7 @@
 .circle-wrapper{
   position:absolute;
   img{
-    width:32px;
+    width:42px;
     transform: rotate(27deg);
   }
   .value-wrapper{
@@ -143,6 +141,18 @@
   .white{
     width:40px;
     margin-top: 13px;
+  }
+
+  .cross{
+    background-size: 12px;
+    background-repeat: no-repeat;
+    padding-left: 12px;
+    height: 12px;
+    background-position-y: 5px;
+    background-image: url('./cross.svg');
+    &.white{
+      background-image: url('./black-cross.svg');
+    }
   }
 }
 </style>
