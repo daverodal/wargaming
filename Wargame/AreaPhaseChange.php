@@ -29,6 +29,7 @@ use \Wargame\Battle;
 class AreaPhaseChange
 {
 
+    /* added line here */
     public $phase, $mode, $phaseWillIncrementTurn;
 
     function __construct($data = null)
