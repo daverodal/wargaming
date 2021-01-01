@@ -6,12 +6,13 @@ import {mapData} from "./mapData";
 import {headerData} from "./headerData";
 import {boxesData} from "./boxesData";
 import {floatersData} from "./floatersData";
-
+import {floatMessageData} from "./floatMessageData"
 export const store = new Vuex.Store({
     strict: true,
     modules:{
-      mD: mapData,
-      headerData: headerData,
+        floatMessage: floatMessageData,
+        mD: mapData,
+        headerData: headerData,
         bd: boxesData,
         floaters: floatersData
     },

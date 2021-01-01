@@ -255,14 +255,9 @@ f{{--                                <vue-draggable-resizable @dragging="didDrag
             </div>
         </div>
         <div id="gameViewer">
-            <div id="floaters" style="position:absolute; width:100%; height:100%;">
-                <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
-                </float-message>
-            </div>
-
             <div id="gameContainer" >
                 <div id="gameImages" @keyup.native="pushedKey" @click="mapClick">
-                    <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
+                    <float-message  id="myFloater" :advisory="advisory">
                     </float-message>
                     @section('game-images')
                     <div id="svgWrapper">

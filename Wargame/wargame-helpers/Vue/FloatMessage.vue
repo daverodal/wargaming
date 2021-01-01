@@ -3,6 +3,7 @@
             <header>
                 {{header}}
             </header>
+          {{ advisory }}
             <p v-html="message">
             </p>
         </vue-draggable-resizable>
@@ -12,10 +13,26 @@
     import VueDraggableResizable from 'vue-draggable-resizable'
 
     export default {
-        props: ["message","header", "x", "y"],
         data: function () {
             return {
             }
+        },
+        computed:{
+          header(){
+            return this.$store.state.floatMessage.header;
+          },
+          message(){
+            return this.$store.state.floatMessage.message;
+          },
+          advisory(){
+            return this.$store.state.floatMessage.advisory;
+          },
+          x(){
+            return this.$store.state.floatMessage.x;
+          },
+          y(){
+            return this.$store.state.floatMessage.y;
+          }
         },
         methods: {
             onResize: function (x, y, width, height) {
