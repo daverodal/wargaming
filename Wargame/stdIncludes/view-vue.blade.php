@@ -257,7 +257,7 @@ f{{--                                <vue-draggable-resizable @dragging="didDrag
         <div id="gameViewer">
             <div id="gameContainer" >
                 <div id="gameImages" @keyup.native="pushedKey" @click="mapClick">
-                    <float-message  id="myFloater" :advisory="advisory">
+                    <float-message  id="myFloater" >
                     </float-message>
                     @section('game-images')
                     <div id="svgWrapper">
