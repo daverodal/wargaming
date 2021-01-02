@@ -197,7 +197,7 @@
                         <div style="margin-right:24px;" class="left">Deploy/Staging area</div>
                         @section('deploy-box')
                             <div id="deployBox">
-f{{--                                <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">--}}
+{{--                                <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">--}}
                                 <div>
 
                                     <units-component :myfilter="1" :myunits="allMyBoxes.deployBox"></units-component>
