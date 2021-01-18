@@ -51,7 +51,6 @@ class LandBattle extends \Wargame\Battle{
 
     static function transformChanges($doc, $last_seq, $user){
 
-
         global $mode_name, $phase_name;
         $battle = Battle::battleFromDoc($doc);
 
@@ -60,25 +59,22 @@ class LandBattle extends \Wargame\Battle{
         $matches = array();
         preg_match("/^([0-9]+)-/", $click, $matches);
         $click = $matches[1];
-//        $games = $doc->games;
         $chats = array_slice($doc->chats, $chatsIndex);
         $chatsIndex = count($doc->chats);
-//        $users = $doc->users;
-//        $clock = $doc->clock;
+
         $players = $doc->wargame->players;
         $player = array_search($user, $players);
         $arrCount = array_count_values($players);
-        if($arrCount[$user] ?? 0 > 1){
+
+        /*
+         * not sure why this is here,
+         * had to add parentheses () to fix it though. php changes...
+         * probably single player, the attacker should have their perspective in hot seat games.
+         */
+        if(($arrCount[$user] ?? 0) > 1){
             $player = $doc->wargame->gameRules->attackingForceId;
         }
-//        preg_match_all('/'.$user.'/', $players, $matches);
-//        if(count($matches) > 2){
-//            $player = 2;
-//        }
-//        $multiPlayers = array_values($user, $players);
-//        if(count($multiPlayers) > 1){
-//            $player = $doc->wargame->gameRules->attackingForceId;
-//        }
+
         if ($player === false) {
             $player = 0;
         }
@@ -92,9 +88,6 @@ class LandBattle extends \Wargame\Battle{
             $fogDeploy = true;
         }
 
-//        $revs = $doc->_revs_info;
-//        \Wargame\Battle::loadGame($gameName, $doc->wargame->arg);
-//Battle::getHeader();
         if (isset($doc->wargame->mapViewer)) {
             $playerData = $doc->wargame->mapViewer[$player];
         } else {
@@ -141,13 +134,10 @@ class LandBattle extends \Wargame\Battle{
         $attackingId = $doc->wargame->gameRules->attackingForceId;
 
         foreach ($units as $unit) {
-//            $unit = static::buildUnit($unit);
             if (is_object($unit->hexagon)) {
-//                $unit->hexagon->parent = $unit->parent;
             } else {
                 $unit->hexagon = new Hexagon($unit->hexagon);
             }
-//            $unit->hexagon->parent = $unit->parent;
             $mapGrid->setHexagonXY($unit->hexagon->x, $unit->hexagon->y);
             $mapUnit = $unit->fetchData();
 
@@ -188,8 +178,6 @@ class LandBattle extends \Wargame\Battle{
         }
         $force->units = [];
         $gameRules = $wargame->gameRules;
-//        $gameRules->phase_name = $phase_name;
-//        $gameRules->mode_name = $mode_name;
         if(isset($force->exchangeAmount)){
             $gameRules->exchangeAmount = $force->exchangeAmount;
         }
