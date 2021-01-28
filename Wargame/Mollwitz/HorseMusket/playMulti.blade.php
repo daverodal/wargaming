@@ -21,12 +21,23 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
+            @isset($scenario)
             background: url("<?=url("vendor/wargame/mollwitz/images/".$scenario->multiImage)?>") #333 no-repeat;
+            @endisset
+            @isset($theGameMega)
+                        background: url("<?=url("vendor/wargame/mollwitz/images/".$theGameMeta['params']->multiImage)?>") #333 no-repeat;
+            @endisset
             background-position: 25% 0;
             background-size:100%;
         }
     </style>
 
 <footer class="attribution">
-   <?=$scenario->multiAttr?>
+    @isset($scenario)
+        {!! $scenario->multiAttr !!}
+    @endisset
+    @isset($theGameMega)
+        {!! $theGameMeta['params']->multiAttr !!}
+    @endisset
+
 </footer>

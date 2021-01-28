@@ -242,24 +242,24 @@ abstract class SimpleForce{
             $range = $argRange;
         }
         $unitsInRange = [];
-            $los = new Los();
-            $los->setOrigin($firingUnit->hexagon);
+        $los = new Los();
+        $los->setOrigin($firingUnit->hexagon);
 
-            foreach ($this->units as $targetId => $targetUnit) {
-                /* hexagons without names are off map */
-                if(!$targetUnit->isOnMap()){
-                    continue;
-                }
-                $los->setEndPoint($targetUnit->hexagon);
-                $losRange = $los->getRange();
-                if ($losRange <= $range
-                    && $firingUnit->forceId != $targetUnit->forceId) {
-                    if($b->combatRules->checkBlocked($los, $id))
-                    {
-                        $unitsInRange[] = $targetId;
-                    }
+        foreach ($this->units as $targetId => $targetUnit) {
+            /* hexagons without names are off map */
+            if(!$targetUnit->isOnMap()){
+                continue;
+            }
+            $los->setEndPoint($targetUnit->hexagon);
+            $losRange = $los->getRange();
+            if ($losRange <= $range
+                && $firingUnit->forceId != $targetUnit->forceId) {
+                if($b->combatRules->checkBlocked($los, $id))
+                {
+                    $unitsInRange[] = $targetId;
                 }
             }
+        }
         return $unitsInRange;
     }
 

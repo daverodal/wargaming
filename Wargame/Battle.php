@@ -39,6 +39,7 @@ class Battle
     static $forceName = [];
     static $deployName = [];
     public $mapData;
+    public $victory;
 
     public function __construct(AdminService $ad)
     {

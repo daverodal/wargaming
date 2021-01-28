@@ -23,7 +23,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/tmcw/airborne/images/1280px-Amphibious_Assault_Vehicle_(AAV).jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/tmcw/airborne/images/C-47_Dakotas_and_paratroops.jpg")?>") #333 no-repeat;
             background-position: 10% 0;
             background-size:100%;
         }
