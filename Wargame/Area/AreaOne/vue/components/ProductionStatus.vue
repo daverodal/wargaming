@@ -1,8 +1,8 @@
 <template>
     <div class="prod-status-wrapper" v-if="isProduction && selectedBox.isCity">
-        <h3>production!
+        <h3>Production
             {{pfAvailable}}</h3>
-        <button v-if="pfAvailable  > 0" @click="$store.commit('produceUnit')">Add</button>
+        <button class="btn btn-secondary btn-sm" v-if="pfAvailable  > 0" @click="$store.commit('produceUnit')">Add</button>
     </div>
 </template>
 

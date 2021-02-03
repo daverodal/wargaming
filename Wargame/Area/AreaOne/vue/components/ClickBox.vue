@@ -52,9 +52,11 @@
                 this.$store.commit('unSetHovered');
             },
             select(){
-                if(this.isNeighbor){
+                if(this.isNeighbor) {
+                  if (this.$store.getters.hasArmiesHere) {
                     this.$store.commit('doMove', this.box.id);
-                    return;
+                  }
+                  return;
                 }
                 if(this.isSelected){
                     this.$store.commit('selected', {id: null, playerId: null});

@@ -14,22 +14,22 @@ use Wargame\AreaForce;
 use Wargame\AreaMoveRules;
 use Wargame\AreaTerrain;
 use Wargame\CombatRules;
-use Wargame\AreaGameRules;
+use Wargame\AreaBorderGameRules;
 use Wargame\Cnst;
 use Wargame\Victory;
 use stdClass;
 use Wargame\PlayersReady;
 
-class AreaOne extends AreaGame
+class AreaNext extends AreaGame
 {
 
-    /* @var \Wargame\AreaGameRules */
+    /* @var \Wargame\AreaBorerGameRules */
     public $gameRules;
     public $moveRules;
     public $areaModel;
     public $combatants;
     static function getPlayerData($scenario){
-        $forceName = ["Neutral Observer", "Blue", "Red"];
+        $forceName = ["Nobody", "Blue", "Red"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
@@ -39,6 +39,8 @@ class AreaOne extends AreaGame
     {
 //        $terrainInfo = $terrainDoc->terrain;
 
+        $terrainDoc = $terrainDoc->terrain;
+        $this->terrain = $terrainDoc;
         $boxes = $terrainDoc->boxes;
         $borderBoxes = $terrainDoc->borderBoxes ?? [];
         $p1 = 1;
@@ -66,6 +68,7 @@ class AreaOne extends AreaGame
 
         foreach($borderBoxes as $boxId=>$box){
             $box->armies = new \stdClass();
+            $box->courses = new \stdClass();
             $this->areaModel->addBorder($boxId, $box);
         }
 
@@ -103,6 +106,18 @@ class AreaOne extends AreaGame
 //            $this->terrain->setMaxHex();
 //        }
         return;
+    }
+
+    public function publishAreaMap($terrainDoc){
+        $this->terrain = new \stdClass();
+        $this->terrain->mapUrl = $terrainDoc->url;
+        $this->terrain->mapWidth = $terrainDoc->width;
+        $this->terrain->boxes = $terrainDoc->boxes;
+        $this->terrain->borderBoxes = $terrainDoc->borderBoxes ?? [];
+
+        $this->terrain->name = $terrainDoc->name;
+        $this->terrain->docType = $terrainDoc->docType;
+
     }
 
     function xterrainInit($terrainDoc ){
@@ -168,7 +183,7 @@ class AreaOne extends AreaGame
 
 //            $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
             $this->moveRules = new AreaMoveRules($this->force, $this->terrain, $data->moveRules);
-            $this->gameRules = new AreaGameRules($data->gameRules);
+            $this->gameRules = new AreaBorderGameRules($data->gameRules);
 
 //            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force,  $data->gameRules);
             $this->victory = new Victory($data);
@@ -194,7 +209,7 @@ class AreaOne extends AreaGame
 
 //
 //            $this->combatRules = new CombatRules($this->force, $this->terrain);
-            $this->gameRules = new AreaGameRules();
+            $this->gameRules = new AreaBorderGameRules();
             $this->gameRules->addPhaseChange(Cnst::PRODUCTION_PHASE, Cnst::PRODUCTION_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::COMMAND_PHASE, Cnst::COMMAND_MODE, false);
             $this->gameRules->addPhaseChange(Cnst::RESULTS_PHASE, Cnst::RESULTS_MODE, true);

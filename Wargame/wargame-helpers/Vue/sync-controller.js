@@ -2,54 +2,10 @@ import Vue from "vue";
 import {syncObj} from '@markarian/wargame-helpers';
 import {DR} from "@markarian/wargame-helpers";
 import {mapGetters, mapMutations} from "vuex";
-import {x} from "../common-sync";
 
 export class SyncController {
 
     mapData = {};
-    gmRules(data) {
-        switch (data.gameRules.mode) {
-            case EXCHANGING_MODE:
-                var result = data.combatRules.lastResolvedCombat.combatResult;
-
-                floaters.header = (result + ": Exchanging Mode");
-
-            case DEFENDER_LOSING_MODE:
-                var result = data.combatRules.lastResolvedCombat.combatResult;
-
-                floaters.header = (result + ": Defender Loss Mode.");
-                var floatStat = floaters.message;
-
-                floatStat = "Lose at least " + data.force.exchangeAmount + " strength points<br>" + floatStat;
-                floaters.message = (floatStat);
-
-//            html += "<br>Lose at least "+gameRules.exchangeAmount+" strength points from the units outlined in red";
-                break;
-
-            case ATTACKER_LOSING_MODE:
-                var result = data.combatRules.lastResolvedCombat.combatResult;
-
-                floaters.header = (result + ": Attacker Loss Mode.");
-                var floatStat = floaters.message;
-
-                floatStat = "Lose at least " + data.force.exchangeAmount + " strength points<br>" + floatStat;
-                floaters.message = floatStat;
-
-//            html += "<br>Lose at least "+gameRules.exchangeAmount+" strength points from the units outlined in red";
-                break;
-            case ADVANCING_MODE:
-//            html += "<br>Click on one of the black units to advance it.<br>then  click on a hex to advance, or the unit to stay put.";
-                var result = data.combatRules.lastResolvedCombat.combatResult;
-
-                floaters.headers = (result + ": Advancing Mode");
-                break;
-            case RETREATING_MODE:
-                var result = data.combatRules.lastResolvedCombat.combatResult;
-
-                floaters.header = (result + ": Retreating Mode");
-                break;
-        }
-    }
     renderCrtDetails(combat) {
         var atk = combat.attackStrength;
         var def = combat.defenseStrength;
@@ -207,7 +163,8 @@ export class SyncController {
             case STATUS_CAN_EXCHANGE:
                 if (data.gameRules.mode == EXCHANGING_MODE) {
                     var result = data.combatRules.lastResolvedCombat.combatResult;
-                    floaters.header = result+' Exchanging Mode'
+                    vueStore.commit('floatMessage/setHeader',  result+' Exchanging Mode');
+
                     status = "Click on one of the red units to reduce it."
                 }
             case STATUS_CAN_ATTACK_LOSE:
@@ -276,11 +233,10 @@ export class SyncController {
                 y += moveAmt;
             }
 
-            topVue.message = status;
-            topVue.x = x ;
-            topVue.y = y ;
-            // floaters.x = x;
-            // floaters.y = y;
+            vueStore.commit('floatMessage/setX', x);
+            vueStore.commit('floatMessage/setY', y);
+            vueStore.commit('floatMessage/setMessage', status);
+
             status = "";
         }
 
@@ -289,6 +245,16 @@ export class SyncController {
         unit.shadow = shadow;
         unit.boxShadow = boxShadow;
 
+    }
+    init(){
+        syncObj.registerInit((data) => {
+            console.log("Init");
+            vueStore.commit('floatMessage/clear')
+        });
+    }
+    complete() {
+        syncObj.registerComplete((data) => {
+        })
     }
     flashMessages(){
         syncObj.register("flashMessages",  (messages, data) => {
@@ -340,7 +306,6 @@ export class SyncController {
     mapUnits(){
         syncObj.register("mapUnits",  (mapUnits, data) => {
 
-            floaters.message = '';
             var str;
             var fudge;
             var x, y;
@@ -351,7 +316,6 @@ export class SyncController {
             clickThrough.exitBox = [];
             clickThrough.notUsed = [];
             // topVue.units = [];
-            topVue.message = topVue.header = '';
             // clickThrough.allBoxes = {};
             vueStore.commit('bd/clearBoxes')
             vueStore.commit('mD/clearUnitsMaps')
@@ -463,7 +427,6 @@ export class SyncController {
 
             }
             vueStore.commit('mD/dispUnits', dispUnits);
-            this.gmRules(data);
             let emptyDeploy = true;
             if(vueStore.state.gameRules.prevPhase !== data.gameRules.phase
             && data.gameRules.mode === DEPLOY_MODE || data.gameRules.mode === MOVING_MODE){
@@ -595,16 +558,15 @@ export class SyncController {
                 case EXCHANGING_MODE:
                     var result = data.combatRules.lastResolvedCombat.combatResult;
 
-                    topVue.header = result + ": Exchanging Mode";
+                    vueStore.commit('floatMessage/setHeader', result + ": Exchanging Mode");
+                    vueStore.commit( 'floatMessage/setAdvisory',"Lose at least " + data.force.exchangeAmount + " strength points");
+                    break;
 
                 case DEFENDER_LOSING_MODE:
-                    var floatStat = floaters.message;
 
                     var result = data.combatRules.lastResolvedCombat.combatResult;
-
-                    topVue.header = result + ": Defender Loss Mode.";
-
-                    topVue.message = "Lose at least " + data.force.exchangeAmount + " strength points<br>" + floatStat;
+                    vueStore.commit('floatMessage/setHeader', result + ": Defender Loss Mode.");
+                    vueStore.commit( 'floatMessage/setAdvisory',"Lose at least " + data.force.exchangeAmount + " strength points");
 
 //            html += "<br>Lose at least "+gameRules.exchangeAmount+" strength points from the units outlined in red";
                     break;
@@ -613,22 +575,20 @@ export class SyncController {
                     var result = data.combatRules.lastResolvedCombat.combatResult;
 
 
-                    topVue.header = result + ": Attacker Loss Mode.";
+                    vueStore.commit('floatMessage/setHeader',  result + ": Attacker Loss Mode.");
 
-                    topVue.message = "Lose at least " + data.force.exchangeAmount + " strength points<br>" + floatStat;
+                    vueStore.commit( 'floatMessage/setAdvisory', "Lose at least " + data.force.exchangeAmount + " strength points");
 
-//            html += "<br>Lose at least "+gameRules.exchangeAmount+" strength points from the units outlined in red";
                     break;
                 case ADVANCING_MODE:
-//            html += "<br>Click on one of the black units to advance it.<br>then  click on a hex to advance, or the unit to stay put.";
                     var result = data.combatRules.lastResolvedCombat.combatResult;
 
-                    topVue.header = result + ": Advancing Mode";
+                    vueStore.commit('floatMessage/setHeader',  result + ": Advancing Mode");
                     break;
                 case RETREATING_MODE:
                     var result = data.combatRules.lastResolvedCombat.combatResult;
 
-                    topVue.header = result + ": Retreating Mode";
+                    vueStore.commit('floatMessage/setHeader',  result + ": Retreating Mode");
                     break;
             }
             var log = "";
@@ -1091,9 +1051,11 @@ export class SyncController {
     }
     constructor() {
 
+        this.init();
         this.flashMessages();
-        this.mapUnits();
+
         this.gameRules();
+        this.mapUnits();
 
 
         this.combatRules();
@@ -1111,6 +1073,7 @@ export class SyncController {
         this.specialHexes();
         this.vp();
         this.mapViewer();
+        this.complete();
     }
 }
 

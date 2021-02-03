@@ -32,7 +32,7 @@ class VictoryCore extends \Wargame\Mollwitz\victoryCore
         parent::__construct($data);
 
         if ($data) {
-            $this->attackedUnits = $data->victory->attackedUnits;
+            $this->attackedUnits = $data->victory->attackedUnits ?? new \stdClass();
         }else{
             $this->attackedUnits = new \stdClass();
         }

@@ -197,12 +197,16 @@
                         <div style="margin-right:24px;" class="left">Deploy/Staging area</div>
                         @section('deploy-box')
                             <div id="deployBox">
-                                <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
+{{--                                <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">--}}
+                                <div>
+
                                     <units-component :myfilter="1" :myunits="allMyBoxes.deployBox"></units-component>
                                     <div class="clear"></div>
                                     <units-component :myfilter="2" :myunits="allMyBoxes.deployBox"></units-component>
                                     <div class="clear"></div>
-                                </vue-draggable-resizable>
+{{--                                </vue-draggable-resizable>--}}
+                                </div>
+
                                 <div class="clear"></div>
                             </div>
                         @show
@@ -251,14 +255,9 @@
             </div>
         </div>
         <div id="gameViewer">
-            <div id="floaters" style="position:absolute; width:100%; height:100%;">
-                <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
-                </float-message>
-            </div>
-
             <div id="gameContainer" >
                 <div id="gameImages" @keyup.native="pushedKey" @click="mapClick">
-                    <float-message  :x="x" :y="y" :header="header" id="myFloater" :message="message">
+                    <float-message  id="myFloater" >
                     </float-message>
                     @section('game-images')
                     <div id="svgWrapper">

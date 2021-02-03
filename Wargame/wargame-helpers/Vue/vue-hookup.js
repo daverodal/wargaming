@@ -93,12 +93,7 @@ document.addEventListener("DOMContentLoaded",function(){
             mapSymbols: [],
             specialEvents: [],
             specialHexes: [],
-            rowSvg: {x: 0, y: 0},
-            why: "Why not!",
-            header: "",
-            message: "",
-            x: 200,
-            y: 900,
+            rowSvg: {x: 0, y: 0}
         },
         computed: {
             mirror(){
@@ -143,16 +138,6 @@ document.addEventListener("DOMContentLoaded",function(){
         store,
         data:{
             messages:[]
-        }
-    });
-
-    window.floaters = new Vue({
-        el: "#floaters",
-        data:{
-            header: "",
-            message: "",
-            x: 0,
-            y: 0
         }
     });
 

@@ -14,6 +14,7 @@ export const store = new Vuex.Store({
         selectedPlayer: null,
         selectedNeighbor: null,
         boxes: {},
+        borderBoxes: {},
         mode: 'select',
         commands: [],
         builds:[],
@@ -24,6 +25,7 @@ export const store = new Vuex.Store({
         battles: [],
         playersReady: [],
         casualities: {},
+        borderClashes: {},
         smallMap: false,
         hovered: null,
         beacon: null,
@@ -74,6 +76,9 @@ export const store = new Vuex.Store({
         },
         casualities(state){
             return state.casualities;
+        },
+        borderClashes(state){
+            return state.borderClashes;
         },
         buildLocations(state){
             return state.buildLocations;
@@ -140,6 +145,41 @@ export const store = new Vuex.Store({
             }
             return {};
         },
+        ownsArea(state, getters){
+            if(getters.isSelected){
+                if(state.players[getters.selectedBox.owner] === state.user){
+                    return true
+                }
+            }
+            return false
+        },
+        resourcesHere(state, getters){
+          if(getters.isSelected){
+              switch(getters.selectedBox.terrainType){
+                  case 'forest':
+                      return {materials: 1};
+                  case 'desert':
+                      return {energy: 2};
+                  case 'pasture':
+                      return {food: 1};
+                  case 'water':
+                      return {energy: 1};
+                  case 'mountain':
+                      return {materials: 2};
+                  case 'field':
+                      return {food: 2};
+              }
+          }
+          return {};
+        },
+        hasArmiesHere(state, getters){
+            if(getters.ownsArea === false){
+                return false;
+            }
+            let selectedBox = getters.selectedBox;
+            let owner = selectedBox.owner;
+            return selectedBox.armies[owner] > 0;
+        },
         selectedNeighbors(state){
             if(state.selected !== null && state.phase == COMMAND_PHASE){
                 return state.boxes[state.selected].neighbors;
@@ -182,6 +222,9 @@ export const store = new Vuex.Store({
         setCaualities(state, payload){
             state.casualities = payload;
         },
+        setBorderClashes(state, payload){
+            state.borderClashes = payload;
+        },
         setBattles(state, payload){
           state.battles = payload;
         },
@@ -194,6 +237,9 @@ export const store = new Vuex.Store({
         },
         setBoxes(state, payload){
             state.boxes = {...payload};
+        },
+        setBorders(state, payload){
+            state.borderBoxes = {...payload};
         },
         setUser(state, payload){
             state.user = payload;
@@ -219,7 +265,6 @@ export const store = new Vuex.Store({
           state.selectedNeighbor = null;
         },
         produceUnit(state){
-            debugger;
             state.builds = [...state.builds, {selected: state.selected, playerId: state.selectedPlayer}];
             let curBuilds = state.buildLocations[state.selected] || 0;
             state.buildLocations[state.selected] = curBuilds + 1;
@@ -229,7 +274,6 @@ export const store = new Vuex.Store({
             state.resources[state.selectedPlayer].materials--;
         },
         deleteProduction(state, payload){
-            debugger;
             const builds = [...state.builds];
             const loc = builds[payload];
             state.buildLocations[loc.selected]--;

@@ -1,11 +1,40 @@
 {
-  "AreaOne": {
-    "name": "First hack at area games",
+  "AreaNext": {
+    "name": "Next hack at area games",
     "path": "Area",
     "genre": "Area Games",
-    "fileName": "\\Wargame\\Area\\AreaOne\\AreaOne",
-    "description": "Whenever",
+    "fileName": "\\Wargame\\Area\\AreaOne\\AreaNext",
+    "description": "Whenever comes next",
     "scenarios": {
+
+      "balance10.4": {
+        "description": "Balanced 10.4 ",
+        "longDescription": "balanced version of this game map 10.4",
+        "mapDataUrl": "0296fc8f331ced52d76459ea2a3711ac",
+        "setup": {
+          "1": [
+            {
+              "mapId": 4,
+              "amount": 1
+            },
+            {
+              "mapId": 0,
+              "amount": 1
+            }
+          ],
+          "2": [
+            {
+              "mapId": 23,
+              "amount": 1
+            },
+            {
+              "mapId": 27,
+              "amount": 1
+            }
+          ]
+        }
+      },
+
       "main": {
         "description": "Map 10.2",
         "longDescription": "Whenever",
@@ -21,6 +50,26 @@
             {
               "mapId": 24,
                 "amount": 3
+            }
+          ]
+        }
+
+      },
+      "monstaria": {
+        "description": "Monstaria",
+        "longDescription": "Monstaria",
+        "mapDataUrl": "e5e37875bb930dcf926f2fa86000af94",
+        "setup": {
+          "1": [
+            {
+              "mapId": 23,
+              "amount": 3
+            }
+          ],
+          "2": [
+            {
+              "mapId": 24,
+              "amount": 3
             }
           ]
         }
@@ -139,6 +188,46 @@
           ]
         }
       },
+
+
+
+
+      "map 12 f": {
+        "description": "Map 12.f",
+        "longDescription": "Map 12 f",
+        "mapDataUrl": "0296fc8f331ced52d76459ea2a285e6a",
+        "smallProduction": true,
+        "setup": {
+          "1": [
+            {
+              "mapId": 4,
+              "amount": 1
+            },
+            {
+              "mapId": 7,
+              "amount": 1
+            }
+          ],
+          "2": [
+            {
+              "mapId": 41,
+              "amount": 1
+            },
+            {
+              "mapId": 43,
+              "amount": 1
+            }
+          ]
+        }
+      },
+
+
+
+
+
+
+
+
       "thirdmap": {
         "description": "Map 11.1b",
         "longDescription": "Whenever",
@@ -217,29 +306,29 @@
           "1": [
             {
               "mapId": 6,
-              "amount": 4
+              "amount": 2
             },
             {
               "mapId": 19,
-              "amount": 4
+              "amount": 2
             },
             {
               "mapId": 27,
-              "amount": 4
+              "amount": 2
             }
           ],
           "2": [
             {
               "mapId": 4,
-              "amount": 4
+              "amount": 2
             },
             {
               "mapId": 18,
-              "amount": 4
+              "amount": 2
             },
             {
               "mapId": 31,
-              "amount": 4
+              "amount": 2
             }
           ]
         }

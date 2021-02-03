@@ -48,7 +48,7 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         } else {
             $this->landingZones = [];
             $this->airdropZones = [];
-            $this->victoryPoints[Amph::LOYALIST_FORCE] = self::GOAL_VP;
+            $this->victoryPoints = [0,0,0];
         }
     }
 
@@ -147,12 +147,12 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
             if ($forceId == Amph::REBEL_FORCE) {
                 $this->victoryPoints[Amph::REBEL_FORCE]  += $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebelVictoryPoints'>+$vp Rebel vp</span>";
-                $this->victoryPoints[Amph::LOYALIST_FORCE] -= $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='rebelVictoryPoints'> -$vp Loyalist vp</span>";
+//                $this->victoryPoints[Amph::LOYALIST_FORCE] -= $vp;
+//                $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='rebelVictoryPoints'> -$vp Loyalist vp</span>";
             }
             if ($forceId == Amph::LOYALIST_FORCE) {
-                $this->victoryPoints[Amph::LOYALIST_FORCE]  += $vp;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>+$vp Loyalist vp</span>";
+//                $this->victoryPoints[Amph::LOYALIST_FORCE]  += $vp;
+//                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>+$vp Loyalist vp</span>";
                 $this->victoryPoints[Amph::REBEL_FORCE] -= $vp;
                 $battle->mapData->specialHexesVictory->$mapHexName .= "<span class='loyalistVictoryPoints'> -$vp Rebel vp</span>";
             }

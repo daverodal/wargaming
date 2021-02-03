@@ -20,15 +20,58 @@
         computed: {
             ...mapGetters(['isSmallMap']),
             circleUrl(){
-                const color = this.command.playerId == 1 ? 'Green' : 'Red';
+                const color = this.command.playerId == 1 ? 'Blue' : 'Red';
                 return '/assets/map-symbols/' + color + 'CircleArrow.svg';
             },
             x(){
                 let scale = this.isSmallMap ? .7 : 1;
+                let f = this.command.from;
+                let t = this.command.to;
+                let temp;
+                if(f > t){
+                  temp = f;
+                  f = t;
+                  t = temp;
+                }
+                let findKey = f+"@"+t;
+                let foundBox = null;
+                let borderBoxes = this.$store.state.borderBoxes;
+                let i;
+                for(i in borderBoxes){
+                  if(borderBoxes[i].key === findKey){
+                    foundBox = borderBoxes[i];
+                    break;
+                  }
+                }
+                if(foundBox){
+                  return foundBox.x - 16;
+                }
                 return scale * (this.$store.state.boxes[this.command.from].x + this.$store.state.boxes[this.command.to].x)/2;
             },
             y(){
                 let scale = this.isSmallMap ? .7 : 1;
+
+              let f = this.command.from;
+              let t = this.command.to;
+              let temp;
+              if(f > t){
+                temp = f;
+                f = t;
+                t = temp;
+              }
+              let findKey = f+"@"+t;
+              let foundBox = null;
+              let borderBoxes = this.$store.state.borderBoxes;
+              let i;
+              for(i in borderBoxes){
+                if(borderBoxes[i].key === findKey){
+                  foundBox = borderBoxes[i];
+                  break;
+                }
+              }
+              if(foundBox){
+                return foundBox.y - 30.4;
+              }
                 return scale*(this.$store.state.boxes[this.command.from].y + this.$store.state.boxes[this.command.to].y)/2;
             },
             diffX(){

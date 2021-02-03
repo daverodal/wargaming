@@ -7,7 +7,9 @@
            <div class="display-item">
                <h2>Welcome {{ $store.state.user }}</h2>
                <h3>Turn {{ turn }}</h3>
-               <h3 :class="getPhase">{{getPhase}} phase</h3>
+               <h3 class="player-sides">{{ $store.state.players[1] }} is {{$store.state.combatants[1]}} <br>{{ $store.state.players[2] }} is {{$store.state.combatants[2]}}</h3>
+                <h3 class="map-name">map name is: {{mapData.url.replace(/^.*\//,'')}}</h3>
+             <h3 :class="getPhase">{{getPhase}} phase</h3>
                <div class="ready-wrapper">
                    <div :class="playerOne">one</div>
                    <div :class="playerTwo">two</div>
@@ -20,7 +22,7 @@
                        <div class="resource-wrapper" v-if="index != 0">
                            <div class="big">{{$store.state.combatants[index]}} PF: {{resource.pf }} Cities: {{$store.getters.getCities[index].length}}</div>
                            <div>Armies {{totalArmies[index]}}</div>
-                           <div>  <span class="food"> {{resource.food}}</span> <span class="energy">{{resource.energy}}</span> <span class="min"> {{resource.materials}}</span></div>
+                            <resource :resource="resource"></resource>
                        </div>
                    </div>
                </div>
@@ -45,6 +47,9 @@
            <div class="command-items" v-for="command in commands">
                <move-circle :command="command" :amount="command.amount"></move-circle>
            </div>
+             <div class="command-items" v-for="(value, propName) in borderClashes">
+               <casuality-circle :theKey="propName" :amount="value"></casuality-circle>
+             </div>
            <move-command v-if="$store.state.mode === 'move'"></move-command>
            </div>
            </pan-zoom>
@@ -67,7 +72,7 @@
             }
         },
         computed:{
-            ...mapGetters(["getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait', 'totalArmies', 'isSmallMap']),
+            ...mapGetters(["resourcesHere", "borderClashes", "getPhase", 'getPF', 'playersReady', 'playerIds', 'showWait', 'totalArmies', 'isSmallMap', 'isSelected', 'selectedBox']),
             smallMap:{
                 get(){
                     return  this.isSmallMap;
@@ -93,7 +98,13 @@
             },
             commands() {
                 return this.$store.state.commands;
-            }
+            },
+          casualities(){
+              return this.$store.state.casualities;
+          },
+          borders(){
+              return this.$store.state.borderBoxes;
+          }
         },
         mounted() {
           syncObj.register('playerStatus', (obj) => {
@@ -110,7 +121,8 @@
               // this.mapData.boxes = item.wargame.areaModel.areas;
               if(this.$store.state.phase != item.wargame.gameRules.phase){
                   this.$store.commit('setBoxes', item.wargame.areaModel.areas);
-                  this.$store.commit('clearTurn');
+                this.$store.commit('setBorders', item.wargame.areaModel.borders);
+                this.$store.commit('clearTurn');
                   this.turn = item.wargame.gameRules.turn;
                   this.$store.commit('setResources', item.wargame.gameRules.resources);
                   this.$store.commit('setPhase', item.wargame.gameRules.phase);
@@ -118,6 +130,8 @@
 
               this.$store.commit('setCombatants', item.wargame.combatants);
               this.$store.commit('setCaualities', item.wargame.gameRules.casualities);
+              this.$store.commit('setBorderClashes', item.wargame.gameRules.borderClashes);
+
           });
           syncObj.fetch(0);
           this.$store.commit('setUser', this.user);
@@ -156,11 +170,22 @@
 </script>
 
 <style lang="scss">
+$h1-font-size:                1rem * 2 !default;
+$h2-font-size:                1rem * 1.5 !default;
+$h3-font-size:                1rem * 1.17 !default;
+$font-family-base: "times";
+@import '~bootstrap/scss/bootstrap.scss';
+.btn-secondary{
+  background-color: rgb(239, 239, 239);
+  color: black
+}
     .vue-pan-zoom-scene{
         outline: none !important;
     }
 </style>
-<style lang="scss" scoped>
+<style scoped lang="scss" >
+
+
     .big{
         font-size: 22px;
     }
@@ -192,7 +217,7 @@
         font-size:11px;
     }
     .display-wrapper{
-        min-width:200px;
+        min-width:250px;
        display: flex;
         flex-direction: column;
         min-height: 120px;
@@ -224,7 +249,7 @@
         background-color: palevioletred;
     }
     .blue {
-        background-color: #00b0ff;
+        background-color: #00e7ff;
     }
     .label-box{
         background: white;
@@ -265,5 +290,17 @@
         background-repeat: no-repeat;
         background-image: url('./components/Bolt.svg');
         padding-left:15px;
+    }
+    .player-sides{
+      font-size: 13px;
+    }
+    .map-name{
+      font-size: 10px;
+    }
+    .meta-box{
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 10px 10px 10px #666;
     }
 </style>

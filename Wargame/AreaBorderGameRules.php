@@ -22,7 +22,7 @@
 namespace Wargame;
 use stdClass;
 
-class AreaGameRules
+class AreaBorderGameRules
 {
     // class references
     /* @var MoveRules $moveRules */
@@ -53,6 +53,7 @@ class AreaGameRules
     public $resources;
     public $cities = [];
     public $casualities;
+    public $borderClashes;
     public $log = [];
     public $collectedThisTurn = [null,null,null];
 
@@ -63,7 +64,7 @@ class AreaGameRules
         unset($this->combatRules);
         $data = new stdClass();
         foreach ($this as $k => $v) {
-            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'casualities' && $k !== 'log' && $k !== 'collectedThisTurn' && $k !== 'resources')) {
+            if (is_object($v) && ($k !== 'builds' && $k !== 'commands' && $k !== 'borderClashes' && $k !== 'casualities' && $k !== 'log' && $k !== 'collectedThisTurn' && $k !== 'resources')) {
                 continue;
             }
             $data->$k = $v;
@@ -110,6 +111,7 @@ class AreaGameRules
             $this->currentPhaseIndex = 0;
             $this->commands = new \stdClass();
             $this->casualities = new \stdClass();
+            $this->borderClashes = new \stdClass();
             $this->builds = new \stdClass();
             $this->battles = [];
 
@@ -145,35 +147,60 @@ class AreaGameRules
         $this->phaseChanges[] = $phaseChange;
     }
 
-    function determineOwnership(){
+    function determineOwnership($borders = false){
         $this->cities = [0,0,0];
-        $areas = Battle::getBattle()->areaModel->areas;
+        if($borders === false){
+            $areas = Battle::getBattle()->areaModel->areas;
+        }else{
+            $areas = $borders;
+        }
         foreach($areas as $key => $area){
             if(count((array)$area->armies) === 0){
                 continue;
             }
             if(count((array)$area->armies) === 1){
+
+
+
                 $prevOwner = $area->owner ?? null;
                 $newOwner = $area->owner = array_keys(get_object_vars($area->armies))[0];
                 if($prevOwner !== $newOwner){
-                    $report = "Change Ownership ". $area->name. " new owner ".$area->owner;
+                    $report = "Change Ownership ". ($area->name ?? $area->key) . " new owner ".$area->owner;
                     $battleReport = new \stdClass();
                     $battleReport->report = $report;
-                    $battleReport->location = $key;
+                    $battleReport->location = $borders !== false ? $area->key : $key;
                     $this->battles[] = $battleReport;
 
                 }
+
                 if($area->isCity ?? false){
                     $this->cities[$area->owner]++;
+                }
+                if($borders !== false){
+                    $borderKey = $area->key;
+                    $borderClashes = $this->borderClashes->$borderKey ?? new \stdClass();
+                    $borderClashes = clone $borderClashes;
+                    $borderClashes->owner = $area->owner;
+                    $borderClashes->armies = clone $area->armies;
+                    $borderClashes->courses = clone $area->courses;
+                    $borderClashes->casualities = 0;
+                    $this->borderClashes->$borderKey = $borderClashes;
                 }
                 continue;
             }
             if(count((array)$area->armies) > 1){
-                $cas = $this->casualities->$key ?? 0;
+                if($borders !== false){
+                    $borderKey = $area->key;
+                    $borderClashes = $this->borderClashes->$borderKey ?? new \stdClass();
+                    $borderClashes = clone $borderClashes;
+                    $cas = $borderClashes->casualities ?? 0;
+                }else{
+                    $cas = $this->casualities->$key ?? 0;
+                }
 
                 $p1 = "1";
                 $p2 = "2";
-                $report = "battle at ".$area->name;
+                $report = "battle at ".($area->name ?? $area->key);
                 if($area->armies->$p1 == $area->armies->$p2){
                     $cas += $area->armies->$p1;
                     $report .= " both sides lost ".$area->armies->$p1. " nobody controls the area";
@@ -198,10 +225,19 @@ class AreaGameRules
                         unset($area->armies->$p1);
                     }
                 }
-                $this->casualities->$key = $cas;
+                $casKey = $area->key ?? $key;
+                if($borders !== false){
+                    $borderClashes->casualities = $cas;
+                    $borderClashes->owner = $area->owner;
+                    $borderClashes->armies = clone $area->armies;
+                    $borderClashes->courses = clone $area->courses;
+                 $this->borderClashes->$borderKey = $borderClashes;
+                }else{
+                    $this->casualities->$casKey = $cas;
+                }
                 $battleReport = new \stdClass();
                 $battleReport->report = $report;
-                $battleReport->location = $key;
+                $battleReport->location = $casKey;
                 $this->battles[] = $battleReport;
                 continue;
             }
@@ -365,9 +401,60 @@ class AreaGameRules
             }
         }
     }
+
+    function moveToBorder($from, $to, $playerId, $amount, $command){
+        $b = Battle::getBattle();
+        $areas = $b->areaModel->areas;
+        $borders = $b->areaModel->borders;
+        $origCourse = "$from@$to";
+        if($from < $to){
+            $first = $from;
+            $second = $to;
+        }else{
+            $first = $to;
+            $second = $from;
+        }
+        $border = $this->findBorder($first, $second);
+        $prevAmount = $areas->$from->armies->$playerId ?? 0;
+        if($amount > $prevAmount){
+            $amount = $prevAmount;
+            if($amount == 0){
+                return;
+            }
+        }
+        $areas->$from->armies->$playerId = $prevAmount - $amount;
+        $border->courses->$playerId = $origCourse;
+        $border->armies->$playerId = $amount + ($border->armies->$playerId  ?? 0);
+    }
+
+
+    function moveFromBorder($from, $to, $playerId, $amount, $command){
+        $b = Battle::getBattle();
+        $areas = $b->areaModel->areas;
+        $borders = $b->areaModel->borders;
+        if($from < $to){
+            $first = $from;
+            $second = $to;
+        }else{
+            $first = $to;
+            $second = $from;
+        }
+        $border = $this->findBorder($first, $second);
+        $prevAmount = $border->armies->$playerId ?? 0;
+
+        if($amount > $prevAmount){
+            $amount = $prevAmount;
+            if($amount == 0){
+                return;
+            }
+        }
+
+        $border->armies->$playerId = $prevAmount - $amount;
+        $areas->$to->armies->$playerId = $amount + ($areas->$to->armies->$playerId  ?? 0);
+    }
+
     function executeAllMoves(){
-        $areas = Battle::getBattle()->areaModel->areas;
-        $sortedCommands = [];
+        $borders = Battle::getBattle()->areaModel->borders;
         foreach($this->commands as $user => $commands){
             foreach($commands as $command ) {
                 if(is_array($command)){
@@ -383,46 +470,51 @@ class AreaGameRules
                     $amount = $command->amount;
                     $command->user = $user;
                 }
-                if(!isset($sortedCommands[$amount])){
-                    $sortedCommands[$amount] = [];
-                }
-                $sortedCommands[$amount][] = $command;
-
+                $this->moveToBorder($from, $to, $playerId, $amount, $command);
             }
         }
-        ksort($sortedCommands, SORT_NUMERIC);
-        foreach($sortedCommands as $commands){
-            foreach($commands as $command){
-            if(is_array($command)){
-                $from = $command['from'];
-                $to = $command['to'];
-                $playerId = $command['playerId'];
-                $amount = $command['amount'];
-            }else{
-                $from = $command->from;
-                $to = $command->to;
-                $playerId = $command->playerId;
-                $amount = $command->amount;
-            }
 
-            $prevAmount = $areas->$from->armies->$playerId ?? 0;
-            if($amount > $prevAmount){
-                $amount = $prevAmount;
-                if($amount == 0){
-                    continue;
+        $this->determineOwnership($borders);
+        foreach($this->commands as $user => $commands){
+            foreach($commands as $command ) {
+                if(is_array($command)){
+                    $from = $command['from'];
+                    $to = $command['to'];
+                    $playerId = $command['playerId'];
+                    $amount = $command['amount'];
+                    $command['user'] = $user;
+                }else{
+                    $from = $command->from;
+                    $to = $command->to;
+                    $playerId = $command->playerId;
+                    $amount = $command->amount;
+                    $command->user = $user;
                 }
+                $this->moveFromBorder($from, $to, $playerId, $amount, $command);
             }
-            $areas->$from->armies->$playerId = $prevAmount - $amount;
-            $prevAmount = $areas->$to->armies->$playerId ?? 0;
-            $areas->$to->armies->$playerId = $prevAmount + $amount;
             $this->determineOwnership();
-            }
         }
     }
 
+    function findBorder($first, $second){
+        $one = "$first@$second";
+        $tother = "$second@$first";
+        $borders = Battle::getBattle()->areaModel->borders;
+
+        foreach($borders as $key => $border){
+            if($border->key == $one || $border->key == $tother){
+                return $border;
+            }
+        }
+        throw(new \Exception("NO border $first $second"));
+    }
     function runCommands(){
 
+        $b = Battle::getBattle();
+        $b->areaModel->cleanBorders();
+
         $this->casualities = new \stdClass();
+        $this->borderClashes = new \stdClass();
         $this->determineOwnership();
         switch($this->phase){
             case RESULTS_PHASE:

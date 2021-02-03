@@ -3,9 +3,9 @@
         <div class="background">
         </div>
         <div class="move-command">
-            <button @click="move">Move</button>
-            <div># <button @click="dec">-</button> {{ moveCount}} <button @click="inc">+</button> of {{ armiesHere }} <button @click="all" >all</button></div>
-            <button @click="cancel">Cancel</button>
+            <button class="btn btn-sm btn-secondary" @click="move">Move</button>
+            <div># <button class="btn btn-sm btn-secondary" @click="dec">-</button> {{ moveCount}} <button class="btn btn-sm btn-secondary" @click="inc">+</button> of {{ armiesHere }} <button class="btn btn-sm btn-secondary" @click="all" >all</button></div>
+            <button class="btn btn-sm btn-secondary"  @click="cancel">Cancel</button>
         </div>
     </div>
 </template>
@@ -78,6 +78,5 @@
             left: 40%;
             padding: 5px;
         }
-
     }
 </style>

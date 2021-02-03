@@ -13,12 +13,14 @@ import MoveCircle from "./vue/components/MoveCircle";
 import BuildBox from "./vue/components/BuildBox";
 import BattleBox from "./vue/components/BattleBox";
 import ProductionStatus from "./vue/components/ProductionStatus";
+import Resource from "./vue/components/Resource";
 window.vueStore = store;
 Vue.use(VueResource);
 import LogView from "./vue/components/LogView";
 // import vue-panzoom
 import panZoom from 'vue-panzoom'
-
+import CasualityCircle from "./vue/components/CasualityCircle";
+import "bootstrap-sass";
 // install plugin
 Vue.use(panZoom, {compoentName: 'pan-zoom',
     zoomDoubleClickSpeed: 1});
@@ -32,6 +34,8 @@ Vue.component('battle-box', BattleBox);
 Vue.component('move-circle', MoveCircle );
 Vue.component('production-status', ProductionStatus );
 Vue.component('log-view', LogView);
+Vue.component('casuality-circle', CasualityCircle);
+Vue.component('resource', Resource);
 
 document.addEventListener("DOMContentLoaded",() => {
     window.world = new Vue({
