@@ -28,7 +28,7 @@
         <div id="headerContent">
             <div :class="{open: debug}" class="bug-report">
                 <form id="bug-report-form">
-                    <textarea v-model="bugMessage" id="bug-report-message" rows="10" cols="50"></textarea><br>
+                    <textarea v-on:keyup.stop="''"  v-model="bugMessage" id="bug-report-message" rows="10" cols="50"></textarea><br>
                     <button @click.stop.prevent="saveBugReport" id="submit-bug-report">Submit Report</button>
                     <button @click.stop.prevent="bugReport">Cancel</button>
                 </form>

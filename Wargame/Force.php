@@ -295,7 +295,7 @@ class Force extends SimpleForce
         return false;
     }
 
-    function getAdjacentUnits($id)
+    public function getAdjacentUnits($id)
     {
         $battle = Battle::getBattle();
         /* @var mapData $mapData */
@@ -304,7 +304,6 @@ class Force extends SimpleForce
         $unit = $this->units[$id];
 
         $mapHex = $mapData->getHex($unit->hexagon->name);
-
         return $mapHex->getAdjacentUnits($unit->forceId == $this->attackingForceId ? $this->defendingForceId : $this->attackingForceId);
     }
 
