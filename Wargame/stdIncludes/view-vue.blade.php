@@ -97,9 +97,11 @@
                     <ul class="dropdown-menu">
                         <li><a @click="menuClick('rules')" id="rules">Rules</a></li>
                         <li><a @click="menuClick('showTec')" id="hideShow">TEC</a></li>
+                        <li><a @click="menuClick('showExRules')" id="showExRules">ExRules</a>
                         @section('exclusiveRulesWrapper')
                             @include('wargame::TMCW.exclusiveRulesWrapper')
                         @show
+                        </li>
                         @section('obc')
                             <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
                         @show
@@ -118,6 +120,11 @@
                         </div>
                     </template>
 
+                    <template v-if="showExRules">
+                        <div class="rules-container" v-if="showExRules">
+                            @include('wargame::TMCW/exclusiveRulesWrapper')
+                        </div>
+                    </template>
                     <template v-if="showObc">
                         <obc-component :obc="allMyBoxes"></obc-component>
                     </template>

@@ -26,10 +26,11 @@
  */
 ?>
 <div class="dropDown" id="GRWrapper">
-    <h4 class="WrapperLabel" title="Game Rules">Ex Rules</h4>
 
-    <div id="GR" style="display:none">
-        <div class="close">X</div>
+    <div id="GR">
+        <h4 class="WrapperLabel" title="Game Rules">Exclusive Rules</h4>
+
+        <div @click="showExRules = false" class="close">X</div>
         <div class="game-rules">
             <H1>
                 <?=$name?>
