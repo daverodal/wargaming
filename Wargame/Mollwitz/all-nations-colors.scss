@@ -19,6 +19,8 @@
 @include unitColor(Saxon, #FD4223, Saxon);
 
 @include unitColor(Austrian, $austrianWrapperColor, Aus);
+@include flagColor(Austrian, #FE4311);
+
 @include unitColor(Prussian,$prussianWrapperColor, Pru, white);
 @include unitColor(Russian, $russianWrapperColor, Rus, white);
 @include unitColor(AngloAllied,$angloAlliedWrapperColor, Ang);

@@ -52,6 +52,12 @@ class MovableUnit{
         $this->moveAmountUnused = $this->getMaxMove();
     }
 
+    public function getMoveAmountUsed(){
+        return $this->moveAmountUsed;
+    }
+
+
+
     function unitHasMoveAmountAvailable($moveAmount)
     {
         if ($this->moveAmountUsed + $moveAmount <= $this->getMaxMove()) {
@@ -123,6 +129,14 @@ class MovableUnit{
     {
 
         return $this->hexagon;
+    }
+
+    function getUnitId(){
+        return $this->id;
+    }
+
+    function getForceId(){
+        return $this->forceId;
     }
 
     public function setStatus($status)

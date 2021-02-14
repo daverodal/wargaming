@@ -66,6 +66,21 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
         return $ret;
     }
 
+    public function moveAirdropToBeach(){
+        $battle = Battle::getBattle();
+        $units = $battle->force->units;
+        $battle->gameRules->flashMessages[] = "All AirDrop Zones Destroyed.";
+        $battle->gameRules->flashMessages[] = "Remaining airborne troops arrive one turn later at beach.";
+        foreach($units as $unit){
+            if($unit->reinforceZone === "C"){
+
+                $unit->reinforceTurn++;
+                $unit->reinforceZone = "A";
+                $unit->hexagon->parent = "gameTurn".$unit->reinforceTurn."Beach-Landing";
+            }
+        }
+    }
+
     public function enterMapSymbol($args)
     {
         $battle = Battle::getBattle();
@@ -87,6 +102,9 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
 
             }
             $this->airdropZones = $newZones;
+            if(count($this->airdropZones) === 0){
+                $this->moveAirdropToBeach();
+            }
             $newZones = [];
             foreach($this->landingZones as $zone){
                 if($zone == $mapHexName){
@@ -97,6 +115,12 @@ class amphVictoryCore extends \Wargame\TMCW\victoryCore
 
             }
             $this->landingZones = $newZones;
+            if(count($this->landingZones) === 0){
+                $battle->gameRules->flashMessages[] = "All Landing Beaches Destroyed.";
+                $battle->gameRules->flashMessages[] = "Loyalist Player Wins";
+                $this->winner = Amph::LOYALIST_FORCE;
+                $this->gameOver = true;
+            }
             $mapData->specialHexesVictory->$mapHexName = "<span class='loyalistVictoryPoints'>$removed Destroyed</span>";
 
         }

@@ -26,4 +26,125 @@ class ModernGtMoveRules extends MoveRules implements TransportMoveRules
 {
     use GtTransportMoveRules;
 
+    protected function clickMoveTarget($id, $hexagon){
+        $movingUnit = $this->force->units[$this->movingUnitId];
+
+        $dirty = parent::clickMoveTarget($id, $hexagon);
+        if($movingUnit->unitCanUnload()){
+            $this->unload($movingUnit, new Hexagon($hexagon));
+            $dirty = true;
+        }
+        return $dirty;
+    }
+
+    public function finishCurrentUnit($id){
+        $dirty = false;
+        /* @var Unit $movingUnit */
+        $movingUnit = $this->force->getUnit($this->movingUnitId);
+        if ($movingUnit->unitIsMoving() == true) {
+            $this->stopMove($movingUnit);
+            $dirty = true;
+        }
+        if ($movingUnit->unitIsReinforcing() == true) {
+            $this->stopReinforcing($movingUnit);
+            $dirty = true;
+        }
+        if ($movingUnit->unitIsDeploying() == true) {
+            $this->stopDeploying($movingUnit);
+            $dirty = true;
+        }
+
+        if($movingUnit->unitCanUnload()){
+            $this->stopUnloading($movingUnit);
+            $dirty = true;
+        }
+
+        if($movingUnit->unitIsLoading()) {
+            $unit = $this->force->getUnit($id);
+
+            if (!$unit->unitIsTransporting()) {
+                $this->stopLoading($movingUnit);
+                $dirty = true;
+            }
+        }
+
+        if($movingUnit->unitIsTransporting()) {
+            $unit = $this->force->getUnit($id);
+            if($unit->canBeTransported() !== true){
+                $this->stopLoading($movingUnit);
+                $dirty = true;
+            }
+
+        }
+        return $dirty;
+    }
+
+    public function startNextUnit($eventType, $id, $turn){
+        $dirty = false;
+        $movingUnitId = $this->movingUnitId;
+
+        if ($eventType == KEYPRESS_EVENT) {
+            if ($this->force->unitCanMove($movingUnitId) == true) {
+                $this->startMoving($movingUnitId);
+                $this->calcMove($movingUnitId);
+                $dirty = true;
+            }
+        } else {
+            $unit = $this->force->getUnit($id);
+            if ($this->force->unitCanMove($id) == true) {
+                $this->startMoving($id);
+                $this->calcMove($id);
+                $dirty = true;
+            }
+            if ($this->force->unitCanReinforce($id) == true) {
+                $this->startReinforcing($id, $turn);
+                $dirty = true;
+            }
+            if ($this->force->unitCanDeploy($id) == true) {
+                $this->startDeploying($id, $turn);
+                $dirty = true;
+            }
+            if($unit->unitIsTransporting()){
+                $this->transport($unit);
+                $dirty = true;
+            }
+            if($unit->unitCanLoad()){
+                $this->transport($unit);
+                $dirty = true;
+            }
+            if($unit->unitIsUnloading() === true){
+                $this->stopUnloading($unit);
+                $dirty = true;
+            }
+        }
+        return $dirty;
+    }
+
+    public function clickUnitSelected($id){
+
+        $dirty = parent::clickUnitSelected($id);
+        if($dirty){
+            return $dirty;
+        }
+        $movingUnit = $this->force->units[$this->movingUnitId];
+
+        if ($movingUnit->unitIsLoading() == true) {
+            $this->stopLoading($movingUnit);
+            $dirty = true;
+        }
+        if ($movingUnit->unitCanUnload() == true) {
+            $this->stopUnloading($movingUnit);
+            $dirty = true;
+        }
+        if ($movingUnit->unitIsUnloading() == true) {
+            $this->stopUnloading($movingUnit);
+            $dirty = true;
+        }
+        if($movingUnit->unitIsTransporting()) {
+            $this->cancelLoading($movingUnit);
+            $dirty = true;
+        }
+        return $dirty;
+    }
+
 }

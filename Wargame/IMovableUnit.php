@@ -22,17 +22,12 @@
 namespace Wargame;
 
 
-interface TransportableUnit extends IMovableUnit
+interface IMovableUnit
 {
-    public function setCargo(TransportableUnit $carriedUnit);
-
-    public function setTransporter(TransportableUnit $carryingUnit);
-
-    public function getCargo();
-
-    public function getTransporter();
-
-    public function unsetCargo();
-
-    public function unsetTransporter();
+    public function getUnitHexagon() : Hexagon;
+    public function getUnitId();
+    public function getForceId();
+    public function getMaxMove();
+    public function unitCanLoad();
+    public function getMoveAmountUsed();
 }

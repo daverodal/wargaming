@@ -23,7 +23,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/Additional/EastWest/images/Bundesarchiv_Bild_146-1981-149-34A,_Russland,_Herausziehen_eines_Autos.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/Additional/EastWest/images/lossy-page1-1280px-German_troops_in_Russia_-_NARA_-_540156.tif.jpg")?>") #333 no-repeat;
             background-position: 10% 0;
             background-size:100%;
         }
@@ -38,5 +38,4 @@
     </style>
     <footer cl
 <footer class="attribution">
-    Bundesarchiv, Bild 146-1981-149-34A / CC-BY-SA [<a href="http://creativecommons.org/licenses/by-sa/3.0/de/deed.en">CC-BY-SA-3.0-de</a>], <a target="blank" href="http://commons.wikimedia.org/wiki/File%3ABundesarchiv_Bild_146-1981-149-34A%2C_Russland%2C_Herausziehen_eines_Autos.jpg">via Wikimedia Commons</a>
-</footer>
+  <a target="_blank" href="https://commons.wikimedia.org/wiki/File:German_troops_in_Russia,_1941_-_NARA_-_540155.tif">National Archives at College Park</a>, Public domain, via Wikimedia Commons</footer>

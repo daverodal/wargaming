@@ -21,8 +21,7 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-use \Wargame\Battle;
-$numWalks = 0;
+
 class MoveRules
 {
     use BfsCalcMovesTrait;
@@ -108,6 +107,79 @@ class MoveRules
         return false;
     }
 
+    protected function clickMoveTarget($id, $hexagon){
+            // click on map, so try to move
+            /* @var Unit $movingUnit */
+        $dirty = false;
+            $movingUnit = $this->force->units[$this->movingUnitId];
+            if ($movingUnit->unitIsMoving() == true) {
+                $newHex = $hexagon;
+
+                if ($this->moves->$newHex) {
+                    $this->path = $this->moves->$newHex->pathToHere;
+
+                    foreach ($this->path as $moveHex) {
+                        $this->move($movingUnit, $moveHex);
+                    }
+                    $movesLeft = $this->moves->$newHex->pointsLeft;
+                    if(isset($this->moves->$newHex->facing)) {
+                        $facing = $this->moves->$newHex->facing;
+                        $movingUnit->facing = $facing;
+                    }
+                    $this->moves = new stdClass();
+
+                    $this->move($movingUnit, $newHex);
+                    $this->path = array();
+                    if ($this->anyUnitIsMoving) {
+                        $this->moveQueue = array();
+                        $hexPath = new HexPath();
+                        $hexPath->name = $newHex; //$startHex->name;
+                        $hexPath->pointsLeft = $movesLeft;
+                        $hexPath->pathToHere = array();
+                        $hexPath->firstHex = false;
+                        if($movingUnit->moveAmountUnused === 0){
+                            $hexPath->firstHex = false;
+                        }
+                        $hexPath->firstPath = true;
+                        $hexPath->isOccupied = true;
+                        if(isset($facing)){
+                            $hexPath->facing = $facing;
+                        }
+
+                        $this->moveQueue[] = $hexPath;
+                        $this->bfsMoves();
+
+                        $movesAvail = 0;
+                        foreach ($this->moves as $move) {
+                            if ($move->isOccupied || !$move->isValid) {
+                                continue;
+                            }
+                            $movesAvail++;
+                        }
+
+                        if ($movesAvail === 0) {
+                            if(!isset($facing)){
+                                $this->stopMove($movingUnit);
+                            }
+                        }
+                    }
+                    $dirty = true;
+                }
+            }
+            if ($movingUnit->unitIsReinforcing() == true) {
+                $this->reinforce($movingUnit, new Hexagon($hexagon));
+                $this->calcMove($id);
+                $dirty = true;
+            }
+            if ($movingUnit->unitIsDeploying() == true) {
+                $this->deploy($movingUnit, new Hexagon($hexagon));
+                $dirty = true;
+            }
+
+
+            return $dirty;
+
+    }
 // id will be map if map event, id will be unit id if counter event
     function moveUnit($eventType, $id, $hexagon, $turn)
     {
@@ -115,209 +187,115 @@ class MoveRules
         $this->turnHex = false;
         $this->turnId = false;
         $this->turnFacing = false;
-        if ($eventType == SELECT_MAP_EVENT) {
+        if ($eventType == SELECT_MAP_EVENT) {/* click on map, or move ghost */
             if ($this->anyUnitIsMoving) {
-                // click on map, so try to move
-                /* @var Unit $movingUnit */
-                $movingUnit = $this->force->units[$this->movingUnitId];
-                if ($movingUnit->unitIsMoving() == true) {
-                    $newHex = $hexagon;
-
-                    if ($this->moves->$newHex) {
-                        $this->path = $this->moves->$newHex->pathToHere;
-
-                        foreach ($this->path as $moveHex) {
-                            $this->move($movingUnit, $moveHex);
-                        }
-                        $movesLeft = $this->moves->$newHex->pointsLeft;
-                        if(isset($this->moves->$newHex->facing)) {
-                            $facing = $this->moves->$newHex->facing;
-                            $movingUnit->facing = $facing;
-                        }
-                        $this->moves = new stdClass();
-
-                        $this->move($movingUnit, $newHex);
-                        $this->path = array();
-                        if ($this->anyUnitIsMoving) {
-                            $this->moveQueue = array();
-                            $hexPath = new HexPath();
-                            $hexPath->name = $newHex; //$startHex->name;
-                            $hexPath->pointsLeft = $movesLeft;
-                            $hexPath->pathToHere = array();
-                            $hexPath->firstHex = false;
-                            if($movingUnit->moveAmountUnused === 0){
-                                $hexPath->firstHex = false;
-                            }
-                            $hexPath->firstPath = true;
-                            $hexPath->isOccupied = true;
-                            if(isset($facing)){
-                                $hexPath->facing = $facing;
-                            }
-
-                            $this->moveQueue[] = $hexPath;
-                            $this->bfsMoves();
-
-                            $movesAvail = 0;
-                            foreach ($this->moves as $move) {
-                                if ($move->isOccupied || !$move->isValid) {
-                                    continue;
-                                }
-                                $movesAvail++;
-                            }
-
-                            if ($movesAvail === 0) {
-                                if(!isset($facing)){
-                                    $this->stopMove($movingUnit);
-                                }
-                            }
-                        }
-                        $dirty = true;
-                    }
-                }
-                if ($movingUnit->unitIsReinforcing($this->movingUnitId) == true) {
-                    $this->reinforce($movingUnit, new Hexagon($hexagon));
-                    $this->calcMove($id);
-                    $dirty = true;
-                }
-                if ($movingUnit->unitIsDeploying() == true) {
-                    $this->deploy($movingUnit, new Hexagon($hexagon));
-                    $dirty = true;
-                }
-                if($movingUnit->unitCanUnload()){
-                    $this->unload($movingUnit, new Hexagon($hexagon));
-                    $dirty = true;
-                }
-
+              $dirty = $this->clickMoveTarget($id, $hexagon);
             }
         } else // click on a unit
         {
             if ($this->anyUnitIsMoving == true) {
-                if ($id == $this->movingUnitId) {
-                    $movingUnit = $this->force->getUnit($id);
-                    // clicked on moving or reinforcing unit
-                    /* @var Unit $movingUnit */
-                    if ($movingUnit->unitIsMoving() == true) {
-                        $this->stopMove($movingUnit);
-                        $dirty = true;
-                    }
-                    if ($movingUnit->unitIsReinforcing($id) == true) {
-                        $this->stopReinforcing($movingUnit);
-                        $dirty = true;
-                    }
-                    if ($movingUnit->unitIsDeploying() == true) {
-                        $this->stopDeploying($movingUnit);
-                        $dirty = true;
-                    }
-                    if ($movingUnit->unitIsLoading() == true) {
-                        $this->stopLoading($movingUnit);
-                        $dirty = true;
-                    }
-                    if ($movingUnit->unitCanUnload() == true) {
-                        $this->stopUnloading($movingUnit);
-                        $dirty = true;
-                    }
-                    if ($movingUnit->unitIsUnloading() == true) {
-                        $this->stopUnloading($movingUnit);
-                        $dirty = true;
-                    }
-                    if($movingUnit->unitIsTransporting()) {
-                        $this->cancelLoading($movingUnit);
-                        $dirty = true;
-                    }
+                if ($id == $this->movingUnitId && $eventType !== KEYPRESS_EVENT) {
+                    $dirty = $this->clickUnitSelected($id);
                 } else {
-                    /* @var Unit $movingUnit */
-                    $movingUnit = $this->force->getUnit($this->movingUnitId);
-                    $movingUnitId = $this->movingUnitId;
-                    if ($movingUnit->unitIsMoving() == true) {
-                        $this->stopMove($movingUnit);
-                        $dirty = true;
-                    }
-                    if ($movingUnit->unitIsReinforcing($movingUnitId) == true) {
-                        $this->stopReinforcing($movingUnit);
-                        $dirty = true;
-                    }
-                    if ($movingUnit->unitIsDeploying() == true) {
-                        $this->stopDeploying($movingUnit);
-                        $dirty = true;
-                    }
-
-                    if($movingUnit->unitCanUnload()){
-                        $this->stopUnloading($movingUnit);
-                        $dirty = true;
-                    }
-
-                    if($movingUnit->unitIsLoading()) {
-                        $unit = $this->force->getUnit($id);
-
-                        if (!$unit->unitIsTransporting()) {
-                            $this->stopLoading($movingUnit);
-                            $dirty = true;
-                        }
-                    }
-
-                    if($movingUnit->unitIsTransporting()) {
-                        $unit = $this->force->getUnit($id);
-                        if($unit->canBeTransported() !== true){
-                            $this->stopLoading($movingUnit);
-                            $dirty = true;
-                        }
-
-                    }
-
-                    if ($eventType == KEYPRESS_EVENT) {
-                        if ($this->force->unitCanMove($movingUnitId) == true) {
-                            $this->startMoving($movingUnitId);
-                            $this->calcMove($movingUnitId);
-                            $dirty = true;
-                        }
-                    } else {
-                        $unit = $this->force->getUnit($id);
-                        if ($this->force->unitCanMove($id) == true) {
-                            $this->startMoving($id);
-                            $this->calcMove($id);
-                            $dirty = true;
-                        }
-                        if ($this->force->unitCanReinforce($id) == true) {
-                            $this->startReinforcing($id, $turn);
-                            $dirty = true;
-                        }
-                        if ($this->force->unitCanDeploy($id) == true) {
-                            $this->startDeploying($id, $turn);
-                            $dirty = true;
-                        }
-                        if($unit->unitIsTransporting()){
-                            $this->transport($unit);
-                            $dirty = true;
-                        }
-                        if($unit->unitCanLoad()){
-                            $this->transport($unit);
-                            $dirty = true;
-                        }
-                        if($unit->unitIsUnloading() === true){
-                            $this->stopUnloading($unit);
-                            $dirty = true;
-                        }
-                    }
-                    // clicked on another unit
-                    return $dirty;
-//                    $this->moveOver($this->movingUnitId, $id, $hexagon);
+                    $dirty = $this->clickUnitDifferent($eventType, $id, $turn);
                 }
             } else {
-                // no one is moving, so start new move
-                if ($this->force->unitCanMove($id) == true) {
-                    $this->startMoving($id);
-                    $this->calcMove($id);
-                    $dirty = true;
-                }
-                if ($this->force->unitCanReinforce($id) == true) {
-                    $this->startReinforcing($id, $turn);
-                    $dirty = true;
-                }
-                if ($this->force->unitCanDeploy($id) == true) {
-                    $this->startDeploying($id, $turn);
-                    $dirty = true;
-                }
+                $dirty = $this->clickUnitNone($id, $turn);
             }
+        }
+        return $dirty;
+    }
+
+    public function clickUnitSelected($id){
+        $dirty = false;
+        $movingUnit = $this->force->getUnit($id);
+        // clicked on moving or reinforcing unit
+        /* @var Unit $movingUnit */
+        if ($movingUnit->unitIsMoving() == true) {
+            $this->stopMove($movingUnit);
+            $dirty = true;
+        }
+        if ($movingUnit->unitIsReinforcing() == true) {
+            $this->stopReinforcing($movingUnit);
+            $dirty = true;
+        }
+        if ($movingUnit->unitIsDeploying() == true) {
+            $this->stopDeploying($movingUnit);
+            $dirty = true;
+        }
+        return $dirty;
+    }
+
+    public function finishCurrentUnit($id){
+        $dirty = false;
+        /* @var Unit $movingUnit */
+        $movingUnit = $this->force->getUnit($this->movingUnitId);
+        if ($movingUnit->unitIsMoving() == true) {
+            $this->stopMove($movingUnit);
+            $dirty = true;
+        }
+        if ($movingUnit->unitIsReinforcing() == true) {
+            $this->stopReinforcing($movingUnit);
+            $dirty = true;
+        }
+        if ($movingUnit->unitIsDeploying() == true) {
+            $this->stopDeploying($movingUnit);
+            $dirty = true;
+        }
+
+        return $dirty;
+    }
+
+    public function startNextUnit($eventType, $id, $turn, $prevMovingUnitId){
+        $dirty = false;
+
+        if ($eventType == KEYPRESS_EVENT) {
+            if ($this->force->unitCanMove($prevMovingUnitId) == true) {
+                $this->startMoving($prevMovingUnitId);
+                $this->calcMove($prevMovingUnitId);
+                $dirty = true;
+            }
+        } else {
+            $this->force->getUnit($id);
+            if ($this->force->unitCanMove($id) == true) {
+                $this->startMoving($id);
+                $this->calcMove($id);
+                $dirty = true;
+            }
+            if ($this->force->unitCanReinforce($id) == true) {
+                $this->startReinforcing($id, $turn);
+                $dirty = true;
+            }
+            if ($this->force->unitCanDeploy($id) == true) {
+                $this->startDeploying($id, $turn);
+                $dirty = true;
+            }
+        }
+        return $dirty;
+    }
+
+    public function clickUnitDifferent($eventType, $id, $turn){
+        $prevMovingUnitId = $this->movingUnitId;
+        $dirty = $this->finishCurrentUnit($id);
+        $dirty |= $this->startNextUnit($eventType, $id, $turn, $prevMovingUnitId);
+        return $dirty;
+    }
+
+    public function clickUnitNone($id, $turn){
+        $dirty = false;
+        // no one is moving, so start new move
+        if ($this->force->unitCanMove($id) == true) {
+            $this->startMoving($id);
+            $this->calcMove($id);
+            $dirty = true;
+        }
+        if ($this->force->unitCanReinforce($id) == true) {
+            $this->startReinforcing($id, $turn);
+            $dirty = true;
+        }
+        if ($this->force->unitCanDeploy($id) == true) {
+            $this->startDeploying($id, $turn);
+            $dirty = true;
         }
         return $dirty;
     }
@@ -338,7 +316,7 @@ class MoveRules
                         $this->stopMove($movingUnit);
                         $dirty = true;
                     }
-                    if ($movingUnit->unitIsReinforcing($id) == true) {
+                    if ($movingUnit->unitIsReinforcing() == true) {
                         $this->stopReinforcing($movingUnit);
                         $dirty = true;
                     }
@@ -349,7 +327,6 @@ class MoveRules
                 } else {
                     /* @var Unit $movingUnit */
                     $movingUnit = $this->force->getUnit($this->movingUnitId);
-                    $movingUnitId = $this->movingUnitId;
                     if ($movingUnit->unitIsMoving() == true) {
                         $this->stopMove($movingUnit);
                         $dirty = true;
@@ -358,11 +335,6 @@ class MoveRules
                         $this->startMoving($id);
                         $dirty = true;
                     }
-
-
-                    // clicked on another unit
-                    return $dirty;
-//                    $this->moveOver($this->movingUnitId, $id, $hexagon);
                 }
             } else {
                 // no one is moving, so start new move
@@ -422,13 +394,13 @@ class MoveRules
                 if ($movingUnit->setStatus(STATUS_STOPPED) == true) {
                     $this->anyUnitIsMoving = false;
                     $this->movingUnitId = NONE;
+                    $victory->postStopMovingUnit($movingUnit);
                 }
             }
         }
         if($movingUnit->unitIsDeploying()){
             $this->stopDeploying($movingUnit);
         }
-        $victory->preStopMovingUnit($movingUnit);
     }
 
     function exitUnit($id)
@@ -506,7 +478,6 @@ class MoveRules
         $mapData = $battle->mapData;
         $fromHex = $movingUnit->hexagon;
         $moveAmount = $this->terrain->getTerrainMoveCost($movingUnit->getUnitHexagon()->name, $hexagon, $movingUnit->forceMarch, $movingUnit);
-        /* @var MapHex $mapHex */
         $mapHex = $mapData->getHex($hexagon);
         if ($mapHex->isZoc($this->force->defendingForceId) == true) {
             if (is_numeric($this->enterZoc)) {
@@ -533,7 +504,7 @@ class MoveRules
         }
 
         if ($this->terrain->isExit($hexagon)) {
-            $this->eexit($movingUnit->id);
+            $this->exitUnit($movingUnit->id);
         }
     }
 
@@ -556,7 +527,7 @@ class MoveRules
         /* @var Unit $unit */
         $unit = $this->force->getUnit($id);
 
-        if ($unit->getUnitReinforceTurn($id) <= $turn) {
+        if ($unit->getUnitReinforceTurn() <= $turn) {
 
             $battle = Battle::getBattle();
             $victory = $battle->victory;
@@ -591,11 +562,10 @@ class MoveRules
     {
         /* @var Unit $unit */
         $unit = $this->force->getUnit($id);
-        if ($unit->getUnitReinforceTurn($id) <= $turn) {
+        if ($unit->getUnitReinforceTurn() <= $turn) {
 
             if ($unit->setStatus(STATUS_DEPLOYING) == true) {
                 $battle = Battle::getBattle();
-                $victory = $battle->victory;
                 $movesLeft = 0;
                 $zoneName = $unit->reinforceZone;
                 $zones = $this->terrain->getReinforceZonesByName($zoneName);
@@ -723,12 +693,14 @@ class MoveRules
 
     function stopDeploying(MovableUnit $unit)
     {
-        /* @var Unit $unit */
+        $battle = Battle::getBattle();
+        $victory = $battle->victory;
         if ($unit->unitIsDeploying() == true) {
             if ($unit->setStatus(STATUS_CAN_DEPLOY) == true) {
                 $this->anyUnitIsMoving = false;
                 $this->movingUnitId = NONE;
                 $this->moves = new stdClass();
+                $victory->postStopMovingUnit($unit);
             }
         }
     }
@@ -771,35 +743,6 @@ class MoveRules
             $this->movingUnitId = $id;
         }
         $victory->postStartMovingUnit($movingUnit);
-    }
-
-    function retreatIsBlocked($id)
-    {
-        throw new Exception("bad bad call ");
-        $isBlocked = true;
-
-        $adjacentHexagonXadjustment = array(0, 2, 2, 0, -2, -2);
-        $adjacentHexagonYadjustment = array(-4, -2, 2, 4, 2, -2);
-
-        /* @var Hexagon $hexagon */
-        /* @var Unit $unit */
-        $unit = $this->force->getUnit($id);
-        $hexagon = $unit->getUnitHexagon();
-        $hexagonX = $hexagon->getX($id);
-        $hexagonY = $hexagon->getY($id);
-        for ($eachHexagon = 0; $eachHexagon < 6; $eachHexagon++) {
-            $adjacentHexagonX = $hexagonX + $adjacentHexagonXadjustment[$eachHexagon];
-            $adjacentHexagonY = $hexagonY + $adjacentHexagonYadjustment[$eachHexagon];
-            $adjacentHexagon = new Hexagon($adjacentHexagonX, $adjacentHexagonY);
-
-            if ($this->hexagonBlocksRetreat($id, $adjacentHexagon) == false) {
-                $isBlocked = false;
-                break;
-            }
-
-        }
-
-        return $isBlocked;
     }
 
     function hexagonBlocksRetreat($id, Hexagon $startHex, Hexagon $hexagon)
@@ -970,10 +913,8 @@ class MoveRules
         $isValid = false;
 
 
-        $startHexagon = $unit->getUnitHexagon();
         if ($this->force->advanceIsOnRetreatList($unit->id, $hexagon) == true) {
             $isValid = true;
-        } else {
         }
 
         return $isValid;

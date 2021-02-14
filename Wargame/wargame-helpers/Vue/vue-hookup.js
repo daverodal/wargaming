@@ -184,6 +184,7 @@ document.addEventListener("DOMContentLoaded",function(){
             commonRules: false,
             showTec: false,
             showObc: false,
+            showExRules: false,
             menu: false,
             info: false,
             undo: false,
@@ -296,6 +297,7 @@ document.addEventListener("DOMContentLoaded",function(){
                     this.rules = false;
                     this.showTec = false;
                     this.showObc = false;
+                    this.showExRules = false;
                     return;
                 }
                 if(id === 'showObc'){
@@ -303,6 +305,15 @@ document.addEventListener("DOMContentLoaded",function(){
                     this.commonRules = false;
                     this.showTec = false;
                     this.rules = false;
+                    this.showExRules = false;
+                    return;
+                }
+                if(id === 'showExRules'){
+                    this.showExRules = !this.showExRules;
+                    this.commonRules = false;
+                    this.showTec = false;
+                    this.rules = false;
+                    this.showObc = false;
                     return;
                 }
                 if(id === 'showTec'){
@@ -310,6 +321,7 @@ document.addEventListener("DOMContentLoaded",function(){
                     this.rules = false;
                     this.commonRules = false;
                     this.showObc = false;
+                    this.showExRules = false;
                     return;
                 }
                 if(id === 'all'){
@@ -317,6 +329,7 @@ document.addEventListener("DOMContentLoaded",function(){
                     this.show.units.deployBox = false;
                     this.show.units.deadpile = false;
                     this.show.units.exitBox = false;
+                    this.showExRules = false;
                     return;
                 }
                 this.show.units[id] = !this.show.units[id];

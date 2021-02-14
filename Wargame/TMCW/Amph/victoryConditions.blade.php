@@ -19,26 +19,22 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?><style type="text/css">
-    body {
-        background: #ccc;
-        color: #333;
-        background:url("<?=asset("vendor/wargame/tmcw/amph/images/1280px-1944_NormandyLST_clean.jpg")?>") #333 no-repeat;
-        background-position:center 0;
-        background-size: 100%;
-    }
-    .Loyalist,
-    .loyalist {
-        color: #84b5ff;
-    }
+?><span class="big">Victory Conditions</span>
 
-    .Rebel,
-    .rebel,
-    .sympth {
-        color: #5c5;
-    }
-</style>
-<footer class="attribution">
-    By Chief Photographer's Mate (CPHOM) Robert F. Sargent, U.S. Coast Guard [Public domain], <a target="_blank" href="http://commons.wikimedia.org/wiki/File%3A1944_NormandyLST_clean.jpg">via Wikimedia Commons</a>
-</footer>
+<ol>
+    <li>The Game lasts 7 turns. Victory is determined at the end of the game. The player with the most victory points wins.
+    </li>
+    <li>
+        If the Rebel player takes "Chateau sur Mer" they are awarded 12 points. If the loyalist player retakes that
+        hex, the Rebels lose those 12 points.
+    </li>
+    <li>
+        1 victory points is assigned to each play for destroying one strength point of the enemy.
+    </li>
+    <li>
+        If the Loyalists destroy all the beach landing hexes, the Rebels lose instantly,
+    </li>
+</ol>
+
+
 

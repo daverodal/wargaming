@@ -14,6 +14,14 @@
 @section('SOP')
     @include('wargame::TMCW.Amph.commonSequenceOfPlay')
 @endsection
+@section('exclusiveRulesWrapper')
+@endsection
+@section('exclusiveRules')
+    @include('wargame::TMCW.Amph.exclusiveRules')
+@endsection
+@section('victoryConditions')
+    @include('wargame::TMCW.Amph.victoryConditions')
+@endsection
 @section('commonRules')
     <div class="dropDown" id="GRWrapper">
         <div id="GR">
@@ -22,8 +30,7 @@
         </div>
     </div>
 @endsection
-@section('exclusiveRulesWrapper')
-@endsection
+
 @section('obc')
     <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
 @endsection

@@ -26,13 +26,8 @@ trait GtTransportMoveRules
 {
 
     public function getUnloadableHexes(TransportableUnit $unit){
-        $b = Battle::getBattle();
 
-        $mD = $b->getMapData();
-        /* @var MapData $mapData */
-        $hex = $unit->getUnitHexagon()->name;
-        $mapHex = $mD->getHex($hex);
-        $this->unload($unit, $unit->hexagon);
+        $this->unload($unit, $unit->getUnitHexagon());
         return true;
     }
 
@@ -40,14 +35,13 @@ trait GtTransportMoveRules
     public function getLoadableUnits(TransportableUnit $unit, $status = STATUS_CAN_LOAD){
         $b = Battle::getBattle();
 
-        $mD = $b->getMapData();
         $mapData = $b->mapData;
         $hex = $unit->getUnitHexagon()->name;
         $mapHex = $mapData->getHex($hex);
-        $forces = $mapHex->getForces($unit->forceId);
+        $forces = $mapHex->getForces($unit->getForceId());
         $loadableUnits = [];
         foreach($forces as $force){
-            if($force === $unit->id){
+            if($force === $unit->getUnitId()){
                 continue;
             }
             $nUnit = $b->force->getUnit($force);
@@ -71,7 +65,6 @@ trait GtTransportMoveRules
 
     function unload(TransportableUnit $movingUnit, $hexagon)
     {
-        /* @var Unit $movingUnit */
         if (($carriedUnitId = $movingUnit->getCargo()) !== false) {
             /* var \Wargame\TransportableUnit $cargoUnit */
             $cargoUnit = $this->force->getUnit($carriedUnitId);
@@ -81,11 +74,11 @@ trait GtTransportMoveRules
             $movingUnit->updateMoveStatus($hexagon, 0);
             $cargoUnit->status = STATUS_READY;
             $this->moves = new stdClass();
-            $newHex = $movingUnit->hexagon->name;
+            $newHex = $movingUnit->getUnitHexagon()->name;
             $this->moveQueue = array();
             $hexPath = new HexPath();
             $hexPath->name = $newHex; //$startHex->name;
-            $hexPath->pointsLeft = $movingUnit->getMaxMove() - $movingUnit->moveAmountUsed;
+            $hexPath->pointsLeft = $movingUnit->getMaxMove() - $movingUnit->getMoveAmountUsed();
             $hexPath->pathToHere = array();
             $hexPath->firstHex = false;
             $hexPath->isOccupied = true;
@@ -98,13 +91,13 @@ trait GtTransportMoveRules
             $this->bfsMoves();
             return true;
         }
+        return false;
     }
 
     function transport(TransportableUnit $loadingUnit)
     {
-        /* @var Unit $unit */
+        /* @var TransportableUnit $unit */
         $unit = $this->force->getUnit($this->movingUnitId);
-        $hex = $unit->hexagon->name;
         if ($loadingUnit->unitCanLoad() == true) {
             $loadingUnit->status = STATUS_STOPPED;
             $loadingUnit->setTransporter($unit);
@@ -113,11 +106,11 @@ trait GtTransportMoveRules
             $unit->status = STATUS_MOVING;
 
 
-            $newHex = $unit->hexagon->name;
+            $newHex = $unit->getUnitHexagon()->name;
             $this->moveQueue = array();
             $hexPath = new HexPath();
             $hexPath->name = $newHex; //$startHex->name;
-            $hexPath->pointsLeft = $unit->getMaxMove() - $unit->moveAmountUsed;
+            $hexPath->pointsLeft = $unit->getMaxMove() - $unit->getMoveAmountUsed();
             $hexPath->pathToHere = array();
             $hexPath->firstHex = false;
             $hexPath->isOccupied = true;
@@ -180,7 +173,7 @@ trait GtTransportMoveRules
         /* @var Unit $unit */
         if ($unit->unitCanUnload() == true) {
             $unit->setStatus(STATUS_READY);
-            $cargoId = $unit->getCargo($unit);
+            $cargoId = $unit->getCargo();
             $cargo = $this->force->getUnit($cargoId);
             $cargo->status = STATUS_UNAVAIL_THIS_PHASE;
             $this->anyUnitIsMoving = false;
@@ -189,7 +182,7 @@ trait GtTransportMoveRules
         }
         if ($unit->unitIsUnloading() == true) {
             $unit->status = STATUS_UNAVAIL_THIS_PHASE;
-            $transporterId = $unit->getTransporter($unit);
+            $transporterId = $unit->getTransporter();
             $transporter = $this->force->getUnit($transporterId);
             $transporter->status = STATUS_READY;
 
@@ -215,10 +208,7 @@ trait GtTransportMoveRules
             }
             if($unit->canTransport()){
                 if($cargo = $unit->getCargo()){
-                    $b = Battle::getBattle();
-                    $cargoUnit = $b->force->getUnit($cargo);
                     $this->getUnloadableHexes($unit);
-
                     return true;
                 }
             }
