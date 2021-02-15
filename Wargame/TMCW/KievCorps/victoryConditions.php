@@ -22,5 +22,11 @@
 ?><div>
 
     <h2 class="exclusive">Victory Conditions</h2>
-    <p>The Game lasts 8 turns. Victory is determined at the end of the game. The German player needs to have a 40 point lead to win.</p>
+    <p class="ruleComment">In the actual  battle the soviets started with about 675,000 men and had 1,000,000 total. They lost about
+    700,000 men. Each strength point represents 14,350 people.</p>
+  <ol>
+    <li>
+      The germans win if they kill at least 49 strengt points. Otherwise the Soviets win.
+    </li>
+  </ol>
 </div>

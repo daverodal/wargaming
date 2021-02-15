@@ -191,7 +191,16 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 //        }else{
 //            $battle->gameRules->flashMessages[] = "German Player Wins";
 //        }
-        $battle->gameRules->flashMessages[] = "Everybody Wins";
+
+        if($this->victoryPoints[KievCorps::GERMAN_FORCE] > 49){
+            $this->winner = KievCorps::GERMAN_FORCE;
+            $this->gameOver = true;
+            $battle->gameRules->flashMessages[] = "Germans Wins";
+        }else{
+            $this->winner = KievCorps::SOVIET_FORCE;
+            $this->gameOver = true;
+            $battle->gameRules->flashMessages[] = "Soviets Wins";
+        }
 
         $this->gameOver = true;
         return true;
@@ -281,13 +290,13 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         return false;
     }
 
-
     public function postRecoverUnit($args)
     {
         /* @var unit $unit */
         $unit = $args[0];
 
         $b = Battle::getBattle();
+
 
         if($unit->nationality === "first-panzer-army"){
             if($b->gameRules->turn < 3){
@@ -296,6 +305,13 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
             }
         }
         $id = $unit->id;
+        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE && $unit->status == STATUS_READY) {
+            if($b->force->unitIsZoc($unit->id)) {
+
+                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+            }
+        }
+
         if ($unit->forceId != $b->gameRules->attackingForceId) {
 //            return;
         }
@@ -338,7 +354,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         }
         if ($attackingId == KievCorps::SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
-            $gameRules->replacementsAvail = 3;
+            $gameRules->replacementsAvail = 4;
         }
 
         /*only get special VPs' at end of first Movement Phase */

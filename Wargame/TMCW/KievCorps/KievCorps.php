@@ -1,6 +1,9 @@
 <?php
 namespace Wargame\TMCW\KievCorps;
-use \Wargame\TMCW\KievCorps\UnitFactory;
+use Wargame\TMCW\KievCorps\UnitFactory;
+
+
+
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -77,7 +80,18 @@ class KievCorps extends \Wargame\ModernLandBattle
                         $isReduced = true;
 
                     }
-                    UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, $item->hex, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, $isReduced ? 1 : 2,3 , 3);
+                    if($item->hex == 408){
+                        UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, $item->hex, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 3,3 , 3);
+                    }else if($item->hex == 409){
+                        UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, $item->hex, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 3,3 , 3);
+
+                    }else if($item->hex == 510){
+                        UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, $item->hex, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 3,3 , 3);
+
+                    }else{
+                        UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, $item->hex, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, $isReduced ? 1 : 2,3 , 3);
+
+                    }
                     $unitsDeployed++;
                     if ($unitsDeployed >= 25) {
                         break;
@@ -85,9 +99,9 @@ class KievCorps extends \Wargame\ModernLandBattle
 
                 }
             } while ($unitsDeployed < 25);
-            UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, 609, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 3, 3);
-            UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, 508, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 3, 3);
-            UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, 509, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 3, 3);
+            UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, 609, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 1, 3);
+            UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, 508, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 1, 3);
+            UnitFactory::create("xxx", KievCorps::SOVIET_FORCE, 509, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 1, 3);
 
 
             $A = $B = $C = $D = $E = $F = $G = [];
@@ -219,9 +233,8 @@ class KievCorps extends \Wargame\ModernLandBattle
             $this->gameRules->addPhaseChange(BLUE_MECH_PHASE, RED_REPLACEMENT_PHASE, REPLACING_MODE, KievCorps::SOVIET_FORCE, KievCorps::GERMAN_FORCE, false);
             $this->gameRules->addPhaseChange(RED_REPLACEMENT_PHASE, RED_MOVE_PHASE, MOVING_MODE, KievCorps::SOVIET_FORCE, KievCorps::GERMAN_FORCE, false);
             $this->gameRules->addPhaseChange(RED_MOVE_PHASE, RED_COMBAT_PHASE, COMBAT_SETUP_MODE, KievCorps::SOVIET_FORCE, KievCorps::GERMAN_FORCE, false);
-            $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, RED_MECH_PHASE, MOVING_MODE, KievCorps::SOVIET_FORCE, KievCorps::GERMAN_FORCE, false);
-            $this->gameRules->addPhaseChange(RED_MECH_PHASE, BLUE_REPLACEMENT_PHASE, REPLACING_MODE, KievCorps::GERMAN_FORCE, KievCorps::SOVIET_FORCE, true);
-            $this->gameRules->flashMessages[] = "First Panzer may not move till turn 3";
+            $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_REPLACEMENT_PHASE, REPLACING_MODE, KievCorps::GERMAN_FORCE, KievCorps::SOVIET_FORCE, true);
+            $this->gameRules->flashMessages[] = "First Panzer Group may not move till turn 3";
         }
 
         $this->moveRules->stacking = function($mapHex, $forceId, $unit){

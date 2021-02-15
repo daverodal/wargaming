@@ -33,6 +33,16 @@
 
             <ol>
                 <li>
+                    <span class="big">Stalin's intervention.</span>
+                    <p class="ruleComment">Stalin refused to learn from his mistake at Minsk, and ordered his troops
+                        to standfast where they were.</p>
+                    <ol>
+                        <li>
+                            On turn 1 any Soviet units in a german ZOC may not move on that turn.
+                        </li>
+                    </ol>
+                </li>
+                <li>
                     <span class="big">General Budyonny Relieved.</span>
                     <p class="ruleComment">
                     During the actual battle, Stalin got fed up with soviet leadership and made General Budyonny a scapegoat.

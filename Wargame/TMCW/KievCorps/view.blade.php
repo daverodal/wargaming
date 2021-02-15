@@ -6,11 +6,25 @@
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/kievCorps.css')}}">
 </head>
 
-
 @section('credit')
     @include('wargame::TMCW.KievCorps.credit')
 @endsection
-
+@section('exclusiveRulesWrapper')
+@endsection
+@section('exclusiveRules')
+    @include('wargame::TMCW.KievCorps.exclusiveRules')
+@endsection
+@section('victoryConditions')
+    @include('wargame::TMCW.KievCorps.victoryConditions')
+@endsection
+@section('commonRules')
+    <div class="dropDown" id="GRWrapper">
+        <div id="GR">
+            <div @click="commonRules = false" class="close">X</div>
+            @include("wargame::TMCW.commonRulesCore")
+        </div>
+    </div>
+@endsection
 @extends('wargame::stdIncludes.view-vue' )
 @section('dynamic-buttons')
     <button @click="clearCombat" :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
