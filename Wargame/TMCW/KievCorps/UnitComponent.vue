@@ -143,11 +143,11 @@
     @import "../../wargame-helpers/Vue/scss/vue-mixins";
     .unit .unit-numbers{
         &.infoLen7{
-            letter-spacing: -.4px;
+            letter-spacing: -.6px;
         }
         &.infoLen8{
             font-size: 10px;
-            letter-spacing: -.6px;
+            letter-spacing: -.8px;
         }
     }
     .ghost{
