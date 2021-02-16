@@ -204,14 +204,12 @@
                         <div style="margin-right:24px;" class="left">Deploy/Staging area</div>
                         @section('deploy-box')
                             <div id="deployBox">
-{{--                                <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">--}}
                                 <div>
 
                                     <units-component :myfilter="1" :myunits="allMyBoxes.deployBox"></units-component>
                                     <div class="clear"></div>
                                     <units-component :myfilter="2" :myunits="allMyBoxes.deployBox"></units-component>
                                     <div class="clear"></div>
-{{--                                </vue-draggable-resizable>--}}
                                 </div>
 
                                 <div class="clear"></div>
@@ -225,12 +223,10 @@
                         <div style="font-size:50px;font-family:sans-serif;float:right;color:#666;">
                             Retired Units
                         </div>
-                        <vue-draggable-resizable @dragging="didDrag" :h="60" :w="3000" axis="x">
                             <units-component :myfilter="1" :myunits="allMyBoxes.deadpile"></units-component>
                             <div class="clear"></div>
                             <units-component :myfilter="2" :myunits="allMyBoxes.deadpile"></units-component>
                             <div class="clear"></div>
-                        </vue-draggable-resizable>
                         <div class="clear"></div>
 
                     </div>
