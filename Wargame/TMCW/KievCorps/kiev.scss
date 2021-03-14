@@ -20,15 +20,14 @@
  */
 @import "kievColors";
 
-@include player(german, One, $germanColor);
-@include player(secondArmy, Four, $secondArmyColor);
-@include player(firstPanzerArmy, Five, $firstPanzerArmyColor);
-@include player(sixthArmy, Five, $sixthArmyColor);
-@include player(seventeenthArmy, Five, $seventeenthArmyColor, $germanColor, black);
-@include header(Soviet, $sovietColor);
-@include header(German, $germanColor);
+@include unitColor(german, $germanColor);
+@include unitColor(sixthArmy, $sixthArmyColor);
+@include unitColor(secondArmy, $secondArmyColor);
+@include unitColor(seventeenthArmy, $seventeenthArmyColor);
 @include unitColor(first-panzer-army, $firstPanzerArmyColor);
 @include unitColor(soviet, $sovietColor);
+@include header(Soviet, $sovietColor);
+@include header(German, $germanColor);
 //@include unitColor(rebel, $rebelColor);
 //@include unitColor(loyalist,$loyalistColor);
 //@include unitColor(loyalGuards, $loyalistGuardColor);
