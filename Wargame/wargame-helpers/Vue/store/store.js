@@ -87,6 +87,9 @@ export const store = new Vuex.Store({
                 state.crt.crtSelfOpened = false;
             }
         },
+        closeCrt(state){
+          state.crt.showCrt = false;
+        },
         setCrt(state, crt){
             state.crt = {...state.crt, ...crt}
         }

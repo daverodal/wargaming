@@ -1,11 +1,19 @@
 @mixin unitColor($nationality, $color, $fg-color: black) {
   .#{$nationality} {
     background-color: $color;
-    color: lime;
+    color: black;
   }
   .#{$nationality} .counterWrapper {
     background-color: $color;
-    color: fuchsia;
+    color: black;
+  }
+  .#{$nationality} .counter-wrapper {
+    background-color: $color;
+    color: black;
+    img.counter{
+      background-color: rgba(255,255,255, .6);
+
+    }
   }
 }
 

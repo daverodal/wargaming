@@ -1,6 +1,6 @@
 <template>
         <div id="vue-crt" :class="crtOptions.playerName">
-            <div class="close" @click="closeMe">X</div>
+            <div id="crt-close" class="close">X</div>
             <button v-if="numTables > 1" class="next-table-button btn btn-sm" @click="showNext">Show {{ nextTableName }} Table</button>
             <h3>Combat Odds <span v-if="highlightIndex">{{currentTable.header[highlightIndex]}}</span> <span>{{combatResult}}</span> <span>{{dieRoll}}</span></h3>
             <div v-if="crtData.crts"  v-for="(table,tableName) in crtData.crts">
@@ -8,12 +8,12 @@
                 {{ tableName }} table
                 <div id="odds">
                     <span class="col0">&nbsp;</span>
-                    <span @click="pinCombat(index)" :id="'crt-col-'+index" :class="headerHighlight(index)" v-for=" (odds, index) in table.header">{{odds}}</span>
+                    <span @click="pinCombat(index, $event)" :id="'crt-col-'+index" :class="headerHighlight(index)" v-for=" (odds, index) in table.header">{{odds}}</span>
                 </div>
                 <div v-if="crtData.crts">
                 <div v-for="(resultsRow, index) in table.table" :class="index & 1 ? '' : crtOptions.playerName" class="roll">
                     <span class="col0">{{index - table.dieOffsetHelper}}</span>
-                    <span   :id="'crt-col-'+colIndex" :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" @click="pinCombat(colIndex)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
+                    <span   :id="'crt-col-'+colIndex" :class="rowHighlight(index - table.dieOffsetHelper, colIndex)" @click="pinCombat(colIndex, $event)" v-for="(result, colIndex) in resultsRow">{{ resultsNameData[result] }}</span>
                 </div>
                 </div>
                 </div>
@@ -94,7 +94,9 @@
             rowHighlight(row, col){
                 return col === this.highlightIndex ? row === this.highlightRoll ? 'roll-highlighted': 'highlighted': col === this.highlightPinned ? 'pin-highlighted': ''
             },
-            pinCombat(index){
+            pinCombat(index, e){
+              return;
+              console.log(e);
                 const x = DR.dragged;
                 if(DR.dragged){
                     return;

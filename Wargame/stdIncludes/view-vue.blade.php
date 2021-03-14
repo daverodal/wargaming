@@ -199,8 +199,8 @@
         <div id="secondHeader">
             <div id="boxes-wrapper">
                 @section('unit-boxes')
-                    <div class="unit-wrapper" v-show="show.units.deployBox">
-                        <div @click="show.units.deployBox = false" class="close">X</div>
+                    <div class="unit-wrapper" v-show="show.units.deployWrapper">
+                        <div @click="show.units.deployWrapper = false" class="close">X</div>
                         <div style="margin-right:24px;" class="left">Deploy/Staging area</div>
                         @section('deploy-box')
                             <div id="deployBox">
@@ -219,15 +219,17 @@
                     </div>
 
                     <div class="unit-wrapper" id="deadpile-wrapper" v-show="show.units.deadpile">
-                        <div class="close">X</div>
+                        <div @click="show.units.deadpile = false" class="close">X</div>
                         <div style="font-size:50px;font-family:sans-serif;float:right;color:#666;">
                             Retired Units
                         </div>
+                        @section('dead-pile')
                             <units-component :myfilter="1" :myunits="allMyBoxes.deadpile"></units-component>
                             <div class="clear"></div>
                             <units-component :myfilter="2" :myunits="allMyBoxes.deadpile"></units-component>
                             <div class="clear"></div>
-                        <div class="clear"></div>
+                            <div class="clear"></div>
+                        @show
 
                     </div>
                     <div class="unit-wrapper" v-show="show.units.exitBox" id="exitWrapper">

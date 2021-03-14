@@ -5,7 +5,13 @@
 
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/kievCorps.css')}}">
 </head>
-
+@section('dead-pile')
+    German Units: <units-component :myfilter="1" :myunits="allMyBoxes.deadpile"></units-component>
+    <div class="clear"></div>
+    Sovier Units: <units-component :myfilter="2" :myunits="allMyBoxes.deadpile"></units-component>
+    <div class="clear"></div>
+    <div class="clear"></div>
+@endsection
 @section('credit')
     @include('wargame::TMCW.KievCorps.credit')
 @endsection

@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded",function(){
             show:{
                 units:{
                     submenu:false,
-                    deployBox: false,
+                    deployWrapper: false,
                     deadpile: false,
                     exitBox: false
                 }
@@ -292,6 +292,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 counterClick(e);
             },
             menuClick(id){
+                this.clearMenus();
                 if(id === 'rules'){
                     this.commonRules = !this.commonRules;
                     this.rules = false;
@@ -326,7 +327,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 }
                 if(id === 'all'){
                     this.show.units.submenu = false;
-                    this.show.units.deployBox = false;
+                    this.show.units.deployWrapper = false;
                     this.show.units.deadpile = false;
                     this.show.units.exitBox = false;
                     this.showExRules = false;

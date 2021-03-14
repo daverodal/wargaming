@@ -79,14 +79,14 @@ class ModernGtMoveRules extends MoveRules implements TransportMoveRules
         return $dirty;
     }
 
-    public function startNextUnit($eventType, $id, $turn){
+    public function startNextUnit($eventType, $id, $turn, $prevMovingUnitId){
         $dirty = false;
         $movingUnitId = $this->movingUnitId;
 
         if ($eventType == KEYPRESS_EVENT) {
-            if ($this->force->unitCanMove($movingUnitId) == true) {
-                $this->startMoving($movingUnitId);
-                $this->calcMove($movingUnitId);
+            if ($this->force->unitCanMove($prevMovingUnitId) == true) {
+                $this->startMoving($prevMovingUnitId);
+                $this->calcMove($prevMovingUnitId);
                 $dirty = true;
             }
         } else {

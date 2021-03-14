@@ -79,8 +79,8 @@
  @include victoryPoints(#666);
 }
 
-.supply{
-  font-size:0;
+.map-symbols.supply{
+  font-size:0 !important;
   z-index:0;
   border-radius:0px;
   border:0px;

@@ -54,22 +54,12 @@ class germantown1777VictoryCore extends \Wargame\Mollwitz\victoryCore
         list($mapHexName, $forceId) = $args;
         if (in_array($mapHexName, $battle->specialHexA)) {
             if ($forceId == Germantown1777::REBEL_FORCE) {
-                $this->victoryPoints[Germantown1777::REBEL_FORCE] += 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+5 Rebel vp</span>";
+                $this->victoryPoints[Germantown1777::REBEL_FORCE] += 20;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>+20 Rebel vp</span>";
             }
             if ($forceId == Germantown1777::LOYALIST_FORCE) {
-                $this->victoryPoints[Germantown1777::REBEL_FORCE] -= 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-5 Rebel vp</span>";
-            }
-        }
-        if (in_array($mapHexName, $battle->specialHexB)) {
-            if ($forceId == Germantown1777::LOYALIST_FORCE) {
-                $this->victoryPoints[Germantown1777::LOYALIST_FORCE] += 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>+5 Loyalist vp</span>";
-            }
-            if ($forceId == Germantown1777::REBEL_FORCE) {
-                $this->victoryPoints[Germantown1777::LOYALIST_FORCE] -= 5;
-                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='rebel'>-5 Loyalist vp</span>";
+                $this->victoryPoints[Germantown1777::REBEL_FORCE] -= 20;
+                $battle->mapData->specialHexesVictory->$mapHexName = "<span class='loyalist'>-20 Rebel vp</span>";
             }
         }
     }

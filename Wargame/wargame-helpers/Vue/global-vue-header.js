@@ -66,10 +66,17 @@ document.addEventListener("DOMContentLoaded",function(){
                     DR.dragged = true;
                 }else{
                     vueStore.commit('clearDragCrt')
+                    if(a.target.id.startsWith('crt-col-')){
+                        let index = a.target.id.slice(8);
+                        doitCRT(index-0+1);
 
+                    }
                     let matches;
                     if(a.target.id === 'crt-details-button'){
                         vueStore.commit('toggleShowDetails')
+                    }
+                    if(a.target.id === 'crt-close'){
+                        vueStore.commit('setCrt', {showCrt: false});
                     }
                     if(a.target.id.match(/^crt-col-/)){
                         // matches = [...a.target.id.matchAll(/^crt-col-(\d+)/)];

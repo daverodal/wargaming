@@ -283,7 +283,7 @@ export class SyncController {
                         let game = msg.match(/^@hide ([^,]*)/);
                         let id = game[1];
                         if(id === 'crt'){
-                            clickThrough[id] = false;
+                            vueStore.commit('closeCrt');
                         }else{
                             clickThrough.show.units[id] = false;
                         }
@@ -451,9 +451,9 @@ export class SyncController {
 
                 if(emptyDeploy){
                     console.log("CLOSE");
-                    clickThrough.show.units.deployBox = false;
+                    clickThrough.show.units.deployWrapper = false;
                 }else{
-                    clickThrough.show.units.deployBox = true;
+                    clickThrough.show.units.deployWrapper = true;
                 }
             }
             vueStore.commit('setPrevPhase', data.gameRules.phase)
