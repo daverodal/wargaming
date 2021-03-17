@@ -4,7 +4,7 @@
                         v-for="(unit,key) in myunits" :key="key" :unit="unit"></unit-component>
         <unit-component class="ghost" v-for="(unit,key) in myghosts" :key="'ghost'+key" :unit="unit"></unit-component>
 
-        <map-symbol :style="{display: unit.isOccupied ? 'none': 'block', zIndex: 1}" v-for="(unit,key) in myghosts" :key="'ghost-hex'+key" :mapsymbol="{x: unit.x - 18, y:unit.y - 16, image: 'WhiteRowHex.svg'}"></map-symbol>
+        <map-symbol :class="isSpinny(unit) ? 'spinny' : '' " :style="{display: unit.isOccupied && !isSpinny(unit) ? 'none': 'block', zIndex: 1}" v-for="(unit,key) in myghosts" :key="'ghost-hex'+key" :mapsymbol="{x: unit.x - 18, y:unit.y - 16, image: isSpinny(unit) ? 'YellowRowHex.svg' : 'WhiteRowHex.svg'}"></map-symbol>
     </div>
 </template>
 
@@ -23,7 +23,19 @@
             }
         },
         mounted(){
-        }
+        },
+      computed:{
+          isSpinny(){
+            return (unit) => {
+              const ret = unit.id.match(new RegExp('Hex'+unit.hexagon+'$'));
+              if(ret === null){
+                return false;
+              }
+              debugger;
+              return true;
+            }
+          }
+      }
     }
 </script>
 <style scoped lang="scss">

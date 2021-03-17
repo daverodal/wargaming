@@ -43,6 +43,22 @@
             transform: rotate(180deg);
         }
         img{
+
         }
+    }
+    .spinny img{
+      animation: move 2s infinite linear;
+    }
+    @keyframes move{
+    0%{
+      transform: rotate(0deg) scale(1.1);
+
+    }
+      50%{
+      transform:rotate(60deg) scale(1.1);
+      }
+      100%{
+        transform: rotate(0deg) scale(1.1);
+      }
     }
 </style>
