@@ -1,7 +1,7 @@
 @include('wargame::export-global-header', ['topCrt'=> new \Wargame\TMCW\Kiev1941\CombatResultsTable(\Wargame\TMCW\Kiev1941\Kiev1941::GERMAN_FORCE)])
 
 
-<script src="{{mix('vendor/javascripts/wargame/kievCoprs.js')}}"></script>
+<script src="{{mix('vendor/javascripts/wargame/kiev1941.js')}}"></script>
 
 <link rel="stylesheet" type="text/css" href="{{mix('vendor/css/wargame/kiev1941.css')}}">
 </head>
