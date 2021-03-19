@@ -367,6 +367,8 @@ class AreaBorderGameRules
         $this->log[] = $turnLog;
 
         $this->builds = new \stdClass();
+        $rob = new Robot();
+        $rob->robotBuild(2);
     }
     function executeMoves($player){
         $areas = Battle::getBattle()->areaModel->areas;
@@ -453,7 +455,17 @@ class AreaBorderGameRules
         $areas->$to->armies->$playerId = $amount + ($areas->$to->armies->$playerId  ?? 0);
     }
 
+
     function executeAllMoves(){
+
+        $battle = Battle::getBattle();
+        $players = $battle->players;
+        foreach($players as $id => $player) {
+            if ($player === "Robottt") {
+                $rob = new Robot();
+                $rob->robotMove($id);
+            }
+        }
         $borders = Battle::getBattle()->areaModel->borders;
         foreach($this->commands as $user => $commands){
             foreach($commands as $command ) {
@@ -548,6 +560,9 @@ class AreaBorderGameRules
         $players = $battle->players;
 
         foreach($players as $id => $player){
+            if($player === "Robottt"){
+                $battle->playersReady->setReady($id);
+            }
             if($user === $player){
 
                 $this->commands->$user = $commands;

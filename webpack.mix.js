@@ -55,7 +55,9 @@ mix.sass('Wargame/TMCW/RetreatOne/all.scss', 'css/wargame/retreatOne.css')
 mix.sass('Wargame/TMCW/Airborne/all.scss', 'css/wargame/airborne.css');
 mix.sass('Wargame/TMCW/Amph/all.scss', 'css/wargame/amph.css');
 mix.sass('Wargame/TMCW/MartianCivilWar/all.scss', 'css/wargame/martiancivilwar.css');
-mix.sass('Wargame/TMCW/KievCorps/all.scss', 'css/wargame/kievCorps.css');
+mix.sass('Wargame/TMCW/Kiev1941/all.scss', 'css/wargame/kiev1941.css');
+mix.sass('Wargame/TMCW/Minsk1941/all.scss', 'css/wargame/minsk1941.css');
+
 mix.sass('Wargame/TMCW/Manchuria1976/all.scss', 'css/wargame/manchuria1976.css');
 mix.sass('Wargame/TMCW/Chawinda1965/all.scss', 'css/wargame/chawinda1965.css');
 mix.sass('Wargame/Additional/EastWest/all.scss', 'css/wargame/eastwest.css');
@@ -72,7 +74,8 @@ mix.sass('Wargame/Vu/all.scss', 'css/wargame/vu.css');
 
 mix.js('Wargame/wargame.js', 'javascripts/wargame/wargame.js');
 // mix.js('Wargame/TMCW/RetreatOne/retreatOne.js', 'javascripts/wargame/retreatOne.js');
-mix.js('Wargame/TMCW/KievCorps/kiev-corps.js', 'javascripts/wargame/kievCoprs.js');
+mix.js('Wargame/TMCW/Kiev1941/kiev-1941.js', 'javascripts/wargame/kiev1941.js');
+mix.js('Wargame/TMCW/Minsk1941/minsk1941.js', 'javascripts/wargame/minsk1941.js');
 mix.js('Wargame/TMCW/Amph/amph.js', 'javascripts/wargame/amph.js');
 mix.js('Wargame/TMCW/Airborne/airborne.js', 'javascripts/wargame/airborne.js');
 mix.js('Wargame/Vu/vu.js', 'javascripts/wargame/vu.js');

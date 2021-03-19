@@ -26,7 +26,7 @@ Vue.component('map-symbol', MapSymbol);
 Vue.component('obc-component', OBCComponent);
 
 Vue.component('special-event', SpecialEvent);
-import {KievCorpsSyncController} from "./kiev-corps-sync-controller";
-const syncController = new KievCorpsSyncController();
+import {Kiev1941SyncController} from "./kiev-1941-sync-controller";
+const syncController = new Kiev1941SyncController();
 
 import '../../wargame-helpers/Vue/vue-hookup';

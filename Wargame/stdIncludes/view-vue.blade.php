@@ -153,7 +153,7 @@
             </div>
             <div class="right-header">
                 <div id="statusWrapper">
-
+                    @section('full-status')
                     <div id="topStatus" v-html="headerTopStatus"></div>
                     <div>
                         <span id="status" v-html="headerStatus"></span>
@@ -162,6 +162,7 @@
                             <span id="victory" v-html="headerVictory"></span>
                         @show
                     </div>
+                    @show
                 </div>
                 <div id="nextPhaseWrapper">
                     @section('dynamic-buttons')

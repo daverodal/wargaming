@@ -19,7 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Wargame\TMCW\KievCorps;
+namespace Wargame\TMCW\Minsk1941;
 
 use Wargame\{Hexagon, Battle};
 use stdClass;

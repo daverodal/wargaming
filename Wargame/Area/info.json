@@ -9,9 +9,13 @@
 
       "balance10.4": {
         "description": "Balanced 10.4 ",
-        "longDescription": "balanced version of this game map 10.4",
-        "mapDataUrl": "0296fc8f331ced52d76459ea2a3711ac",
+        "longDescription": "balanced version of this game map 10.4", "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
         "setup": {
+
           "1": [
             {
               "mapId": 4,
@@ -38,7 +42,11 @@
       "main": {
         "description": "Map 10.2",
         "longDescription": "Whenever",
-        "mapDataUrl": "e5e37875bb930dcf926f2fa86000af94",
+        "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
         "setup": {
           "1": [
             {
@@ -58,7 +66,7 @@
       "monstaria": {
         "description": "Monstaria",
         "longDescription": "Monstaria",
-        "mapDataUrl": "e5e37875bb930dcf926f2fa86000af94",
+        "hasRobots": true,
         "setup": {
           "1": [
             {
@@ -78,7 +86,11 @@
       "newmap": {
         "description": "Map 12.1.c",
         "longDescription": "Whenever",
-        "mapDataUrl": "679f8575c556ea35a094812e8998fc7f",
+        "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
         "setup": {
           "1": [
             {
@@ -109,7 +121,11 @@
       "balancednewmap": {
         "description": "Map 12.1.d",
         "longDescription": "Whenever",
-        "mapDataUrl": "8e8a08d89c98ffc196bb1c5b69000f1e",
+        "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
         "setup": {
           "1": [
             {
@@ -140,7 +156,11 @@
       "balancednewmapeastwest": {
         "description": "Map 12.1.d east west",
         "longDescription": "East west map 12.2.d",
-        "mapDataUrl": "8e8a08d89c98ffc196bb1c5b69000f1e",
+        "hasRobots": true,
+        "goal": {
+          "1": "east",
+          "2": "west"
+        },
         "setup": {
           "1": [
             {
@@ -160,7 +180,11 @@
       "morebalance": {
         "description": "Map 12.1.e",
         "longDescription": "Whenever",
-        "mapDataUrl": "cd39875e7a280484e1c9823a83000509",
+        "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
         "setup": {
           "1": [
             {
@@ -195,8 +219,12 @@
       "map 12 f": {
         "description": "Map 12.f",
         "longDescription": "Map 12 f",
-        "mapDataUrl": "0296fc8f331ced52d76459ea2a285e6a",
+        "hasRobots": true,
         "smallProduction": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
         "setup": {
           "1": [
             {
@@ -231,7 +259,11 @@
       "thirdmap": {
         "description": "Map 11.1b",
         "longDescription": "Whenever",
-        "mapDataUrl": "03311c120740696f64eba021c30087e1",
+        "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
         "setup": {
           "1": [
             {
@@ -266,7 +298,11 @@
       "thirteen": {
         "description": "Map 13.1",
         "longDescription": "Whenever",
-        "mapDataUrl": "b34d2918c6d14e7e9d442ca31a0005cc",
+        "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
         "setup": {
           "1": [
             {
@@ -301,7 +337,11 @@
       "thirteen-east-west": {
         "description": "Map 13.1 East West",
         "longDescription": "man 13.1 with east west starting areas......",
-        "mapDataUrl": "b34d2918c6d14e7e9d442ca31a0005cc",
+        "hasRobots": true,
+        "goal": {
+          "1": "east",
+          "2": "west"
+        },
         "setup": {
           "1": [
             {

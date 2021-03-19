@@ -6,7 +6,7 @@
  * Time: 9:35 AM
  */
 
-namespace Wargame\TMCW\KievCorps;
+namespace Wargame\TMCW\Kiev1941;
 
 
 trait CRTResults

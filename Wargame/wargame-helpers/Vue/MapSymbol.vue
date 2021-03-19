@@ -27,6 +27,7 @@
 </script>
 <style scoped lang="scss">
     .map-symbols {
+      pointer-events: none;
         position: absolute;
         font-size:25px;
 
@@ -46,8 +47,11 @@
 
         }
     }
-    .spinny img{
-      animation: move 2s infinite linear;
+    .spinny{
+      z-index: 4;
+      img{
+        animation: move 2s infinite linear;
+      }
     }
     @keyframes move{
     0%{

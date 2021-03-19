@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\TMCW\KievCorps;
+namespace Wargame\TMCW\Kiev1941;
 use \Wargame\Battle;
 use \stdClass;
 /**
@@ -83,10 +83,10 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 //
 ////        if(in_array($mapHexName, $battle->specialHexC)){
 ////
-////            if ($forceId == KievCorps::SOVIET_FORCE) {
+////            if ($forceId == Kiev1941::SOVIET_FORCE) {
 ////                $this->victoryPoints = "The Soviets hold Kiev";
 ////            }
-////            if ($forceId == KievCorps::GERMAN_FORCE) {
+////            if ($forceId == Kiev1941::GERMAN_FORCE) {
 ////                $this->victoryPoints = "The Germans hold Kiev";
 ////            }
 ////        }
@@ -97,7 +97,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         list($zones, $unit) = $args;
 
         $forceId = $unit->forceId;
-        if($unit->forceId == KievCorps::GERMAN_FORCE){
+        if($unit->forceId == Kiev1941::GERMAN_FORCE){
             $zones = $this->germanGoal;
         }else{
             $zones = $this->sovietGoal;
@@ -146,7 +146,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 
             $units = $battle->force->units;
             foreach($units as $unit){
-                if($unit->forceId == KievCorps::SOVIET_FORCE){
+                if($unit->forceId == Kiev1941::SOVIET_FORCE){
                     if($unit->hexagon->parent == "gameImages"){
                         if($unit->supplied === false){
                             $this->victoryPoints[3] += $unit->getUnmodifiedStrength();
@@ -186,18 +186,18 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
     {
         $battle = Battle::getBattle();
 //        $kiev = $battle->specialHexC[0];
-//        if ($battle->mapData->getSpecialHex($kiev) === KievCorps::SOVIET_FORCE) {
+//        if ($battle->mapData->getSpecialHex($kiev) === Kiev1941::SOVIET_FORCE) {
 //            $battle->gameRules->flashMessages[] = "Soviet Player Wins";
 //        }else{
 //            $battle->gameRules->flashMessages[] = "German Player Wins";
 //        }
 
-        if($this->victoryPoints[KievCorps::GERMAN_FORCE] > 49){
-            $this->winner = KievCorps::GERMAN_FORCE;
+        if($this->victoryPoints[Kiev1941::GERMAN_FORCE] > 49){
+            $this->winner = Kiev1941::GERMAN_FORCE;
             $this->gameOver = true;
             $battle->gameRules->flashMessages[] = "Germans Wins";
         }else{
-            $this->winner = KievCorps::SOVIET_FORCE;
+            $this->winner = Kiev1941::SOVIET_FORCE;
             $this->gameOver = true;
             $battle->gameRules->flashMessages[] = "Soviets Wins";
         }
@@ -316,7 +316,7 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
 //            return;
         }
         if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == KievCorps::GERMAN_FORCE) {
+            if ($unit->forceId == Kiev1941::GERMAN_FORCE) {
                 $bias = array(5 => true, 6 => true);
                 $goal = $this->germanGoal;
             } else {
@@ -346,13 +346,13 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         if ($gameRules->phase == BLUE_MECH_PHASE || $gameRules->phase == RED_MECH_PHASE) {
             $gameRules->flashMessages[] = "@hide crt";
         }
-        if ($attackingId == KievCorps::GERMAN_FORCE) {
+        if ($attackingId == Kiev1941::GERMAN_FORCE) {
             if($gameRules->turn <= $gameRules->maxTurn){
                 $gameRules->flashMessages[] = "German Player Turn";
                 $gameRules->replacementsAvail = 1;
             }
         }
-        if ($attackingId == KievCorps::SOVIET_FORCE) {
+        if ($attackingId == Kiev1941::SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
             $gameRules->replacementsAvail = 4;
         }

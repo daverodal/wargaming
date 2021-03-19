@@ -125,12 +125,12 @@
             }
         }
     },
-    "KievCorps": {
+    "Kiev1941": {
         "production": false,
-        "name": "Kiev Corps Level",
+        "name": "Kiev 1941",
         "path": "TMCW",
         "genre": "20'th Century Games",
-        "fileName": "\\Wargame\\TMCW\\KievCorps\\KievCorps",
+        "fileName": "\\Wargame\\TMCW\\Kiev1941\\Kiev1941",
         "scenarios": {
             "Main": {
                 "description": "The Battle of Kiev",
@@ -138,6 +138,22 @@
                 "supplyLen": 22,
                 "preDeploy": true,
                 "longDescription": "The largest encirclement of troops in history. Some say it cost Hitler the war."
+            }
+        }
+    },
+    "Minsk1941": {
+        "production": false,
+        "name": "Minsk1941",
+        "path": "TMCW",
+        "genre": "20'th Century Games",
+        "fileName": "\\Wargame\\TMCW\\Minsk1941\\Minsk1941",
+        "scenarios": {
+            "Main": {
+                "description": "The Battle of Minsk 1941",
+                "supply": true,
+                "supplyLen": 22,
+                "preDeploy": true,
+                "longDescription": "The opening attack of Barbarossa."
             }
         }
     },

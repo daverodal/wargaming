@@ -163,6 +163,10 @@ document.addEventListener("DOMContentLoaded",function(){
             headerTopStatus(){
                 return this.$store.state.headerData.topStatus;
             },
+            headerTurn(){
+                debugger;
+                return this.$store.state.headerData.turn;
+            },
             headerLog(){
                 if(this.$store.state.headerData.log.length === 0){
                     return "<li>No Log Events</li>";

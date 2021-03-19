@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\TMCW\KievCorps;
+namespace Wargame\TMCW\Kiev1941;
 /**
  * Copyright 2015 David Rodal
  * User: David Markarian Rodal

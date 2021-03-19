@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\TMCW\KievCorps;
+namespace Wargame\TMCW\Minsk1941;
 use \stdClass;
 /**
  *
