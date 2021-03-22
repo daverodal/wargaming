@@ -117,7 +117,7 @@ class JagCore extends \Wargame\LandBattle{
         }
         if(isset($this->scenario->fluidZoc) && $this->scenario->fluidZoc === true) {
             $this->moveRules->exitZoc = function ($mapHex, $hexNum, $unit) {
-                if ($unit->class !== 'cavalry') {
+                if ($unit->class !== 'cavalry' && $unit->class !== 'hq') {
                     return 'stop';
                 }
                 $zocIds = $mapHex->getZocUnits($this->force->defendingForceId);
