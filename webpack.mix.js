@@ -42,12 +42,23 @@ mix.webpackConfig({
         extensions: ['*', '.js', '.jsx', '.vue', '.ts', '.tsx'],
     },
 });
-mix.setPublicPath("../game-dispatcher/public/vendor/");
-mix.copyDirectory('Wargame/wargame-helpers/audio','../game-dispatcher/public/assets/audio')
-    .copyDirectory('Wargame/wargame-helpers/unit-images', '../game-dispatcher/public/assets/unit-images')
-    .copyDirectory('Wargame/wargame-helpers/map-symbols', '../game-dispatcher/public/assets/map-symbols')
-    .copyDirectory('Wargame/Genre', '../game-dispatcher/public/vendor/wargame/genre')
-    .copyDirectory('Wargame/Mollwitz/Images', '../game-dispatcher/public/vendor/wargame/mollwitz/images')
+let publicDir = '../game-dispatcher/public';
+
+if(process.env.MIX_GAME_DISATCH_DIR){
+    console.log("Override GAME_DISPATCH_DIR");
+    publicDir = process.env.MIX_GAME_DISATCH_DIR;
+}
+const deployDir = publicDir + '/vendor/';
+const assetsDir = publicDir + '/assets/';
+mix.copyDirectory('Wargame/wargame-helpers/audio',assetsDir + 'audio')
+    .copyDirectory('Wargame/wargame-helpers/unit-images', assetsDir + 'unit-images')
+    .copyDirectory('Wargame/wargame-helpers/map-symbols', assetsDir + 'map-symbols')
+    .copyDirectory('Wargame/Genre', deployDir + 'wargame/genre')
+    .copyDirectory('Wargame/Mollwitz/Images', deployDir + 'wargame/mollwitz/images')
+
+
+
+mix.setPublicPath(deployDir);
 mix.sass('Wargame/Mollwitz/all-nations-colors.scss', 'css/wargame/all-nations-colors.css')
 mix.sass('Wargame/TMCW/commonPlay.scss', 'css/wargame/common-play.css');
 mix.sass('Wargame/TMCW/Nomonhan/all.scss', 'css/wargame/nomonhan.css')

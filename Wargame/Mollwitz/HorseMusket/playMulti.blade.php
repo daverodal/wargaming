@@ -21,10 +21,10 @@ You should have received a copy of the GNU General Public License
         body{
             background:#ccc;
             color:#333;
-            @isset($scenario)
+            @isset($scenario->multiImage)
             background: url("<?=url("vendor/wargame/mollwitz/images/".$scenario->multiImage)?>") #333 no-repeat;
             @endisset
-            @isset($theGameMega)
+            @isset($theGameMeta)
                         background: url("<?=url("vendor/wargame/mollwitz/images/".$theGameMeta['params']->multiImage)?>") #333 no-repeat;
             @endisset
             background-position: 25% 0;
@@ -33,7 +33,7 @@ You should have received a copy of the GNU General Public License
     </style>
 
 <footer class="attribution">
-    @isset($scenario)
+    @isset($scenario->multiAttr)
         {!! $scenario->multiAttr !!}
     @endisset
     @isset($theGameMega)
