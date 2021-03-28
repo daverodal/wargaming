@@ -23,7 +23,7 @@
         body{
             background:#ccc;
             color:#333;
-            background: url("<?=url("vendor/wargame/tmcw/kievcorps/images/Ruined_Kiev_in_WWII.jpg")?>") #333 no-repeat;
+            background: url("<?=url("vendor/wargame/tmcw/kiev1941/images/Ruined_Kiev_in_WWII.jpg")?>") #333 no-repeat;
             background-position: 10% 0;
             background-size:100%;
         }

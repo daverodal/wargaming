@@ -20,7 +20,7 @@
  */
 
 namespace Wargame\TMCW\Airborne;
-use Wargame\TMCW\KievCorps\MultiStepUnit;
+use Wargame\TMCW\Kiev1941\MultiStepUnit;
 use Wargame\TransportableUnit;
 use Wargame\Battle;
 

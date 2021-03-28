@@ -287,7 +287,7 @@ class Airborne extends \Wargame\ModernLandBattle
 
         parent::__construct($data, $arg, $scenario);
 
-        $crt = new \Wargame\TMCW\KievCorps\CombatResultsTable(self::REBEL_FORCE);
+        $crt = new \Wargame\TMCW\Kiev1941\CombatResultsTable(self::REBEL_FORCE);
 
         if ($data) {
             $this->specialHexA = $data->specialHexA;

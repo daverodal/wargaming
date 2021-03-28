@@ -1,4 +1,4 @@
-@include('wargame::export-global-header', ['topCrt'=> new \Wargame\TMCW\KievCorps\CombatResultsTable(\Wargame\TMCW\KievCorps\KievCorps::GERMAN_FORCE)])
+@include('wargame::export-global-header', ['topCrt'=> new \Wargame\TMCW\Kiev1941\CombatResultsTable(\Wargame\TMCW\Kiev1941\Kiev1941::GERMAN_FORCE)])
 
 
 <script src="{{mix('vendor/javascripts/wargame/airborne.js')}}"></script>
