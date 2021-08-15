@@ -145,7 +145,7 @@
                         <ul  id="units" class="dropdown-menu sub-menu">
                             <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
                             <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>
-                            <li><a @click="menuClick('deployBox')" id="showDeploy">Deploy/Staging Box</a></li>
+                            <li><a @click="menuClick('deployWrapper')" id="showDeploy">Deploy/Staging Box</a></li>
                             <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
                         </ul>
                     </div>

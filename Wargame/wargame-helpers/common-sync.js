@@ -216,9 +216,14 @@ x.register("sentBreadcrumbs", function (breadcrumbs, data) {
     }
     for (var unitId in breadcrumbs) {
         var g = $('svg').append('<g style="display:' +disp+ '" class="unit-path unitPath' + unitId + '">');
+        var prevPath = "";
         for (var moves in breadcrumbs[unitId]) {
             if (breadcrumbs[unitId][moves].type == "move" || breadcrumbs[unitId].fromHex) {
                 var path = "";
+                if(prevPath){
+                    $('g.unitPath' + unitId).append(prevPath);
+                    prevPath = "";
+                }
                 if (breadcrumbs[unitId][moves - 0 + 1]) {
                     path += "<path stroke-width='15'";
                 } else {
@@ -232,7 +237,8 @@ x.register("sentBreadcrumbs", function (breadcrumbs, data) {
                 path += ' d="' + d + '"/>';
                 var circle = '<circle cx="' + breadcrumbs[unitId][moves].toX + '" cy="' + breadcrumbs[unitId][moves].toY + '" r="7"/>';
                 $('g.unitPath' + unitId).append(path);
-                $('g.unitPath' + unitId).append(circle);
+                // $('g.unitPath' + unitId).append(circle);
+                prevPath = circle;
                 lastMoves = moves;
             }
             if (breadcrumbs[unitId][moves].type == "combatResult") {

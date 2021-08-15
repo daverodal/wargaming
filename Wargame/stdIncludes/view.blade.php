@@ -253,7 +253,7 @@
                                                 inkscape:stockid="Arrow1Lend"
                                                 orient="auto"
                                                 refY="0.0"
-                                                refX="0.0"
+                                                refX="-1.3"
                                                 id="head"
                                                 fill="red"
                                                 style="overflow:visible;">

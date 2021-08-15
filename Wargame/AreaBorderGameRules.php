@@ -367,8 +367,15 @@ class AreaBorderGameRules
         $this->log[] = $turnLog;
 
         $this->builds = new \stdClass();
-        $rob = new Robot();
-        $rob->robotBuild(2);
+
+        $battle = Battle::getBattle();
+        $players = $battle->players;
+        foreach($players as $id => $player) {
+            if ($player === "Robottt") {
+                $rob = new Robot();
+                $rob->robotBuild($id);
+            }
+        }
     }
     function executeMoves($player){
         $areas = Battle::getBattle()->areaModel->areas;

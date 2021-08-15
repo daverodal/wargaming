@@ -164,7 +164,6 @@ document.addEventListener("DOMContentLoaded",function(){
                 return this.$store.state.headerData.topStatus;
             },
             headerTurn(){
-                debugger;
                 return this.$store.state.headerData.turn;
             },
             headerLog(){
