@@ -39,9 +39,9 @@
       }
     },
 
-    "main": {
-      "description": "Map 10.2",
-      "longDescription": "Whenever",
+    "BP.balance.11.2.b": {
+      "description": "Map 11.2.b balanced",
+      "longDescription": "balanced version of 11.2.b",
       "hasRobots": true,
       "goal": {
         "1": "south",
