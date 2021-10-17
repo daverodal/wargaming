@@ -1,4 +1,381 @@
 {
+  "BalancedAreaGames": {
+  "name": "Balanced area game maps only",
+  "path": "Area",
+  "genre": "Area Games",
+  "fileName": "\\Wargame\\Area\\AreaOne\\AreaNext",
+  "description": "Whenever comes next",
+  "scenarios": {
+
+    "balance10.4": {
+      "description": "Balanced 10.4 ",
+      "longDescription": "balanced version of this game map 10.4", "hasRobots": true,
+      "goal": {
+        "1": "south",
+        "2": "north"
+      },
+      "setup": {
+
+        "1": [
+          {
+            "mapId": 4,
+            "amount": 1
+          },
+          {
+            "mapId": 0,
+            "amount": 1
+          }
+        ],
+        "2": [
+          {
+            "mapId": 23,
+            "amount": 1
+          },
+          {
+            "mapId": 27,
+            "amount": 1
+          }
+        ]
+      }
+    },
+
+    "main": {
+      "description": "Map 10.2",
+      "longDescription": "Whenever",
+      "hasRobots": true,
+      "goal": {
+        "1": "south",
+        "2": "north"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 1,
+            "amount": 3
+          }
+        ],
+        "2": [
+          {
+            "mapId": 24,
+            "amount": 3
+          }
+        ]
+      }
+
+    },
+    "monstaria": {
+      "description": "Monstaria",
+      "longDescription": "Monstaria",
+      "hasRobots": true,
+      "setup": {
+        "1": [
+          {
+            "mapId": 23,
+            "amount": 3
+          }
+        ],
+        "2": [
+          {
+            "mapId": 24,
+            "amount": 3
+          }
+        ]
+      }
+
+    },
+    "newmap": {
+      "description": "Map 12.1.c",
+      "longDescription": "Whenever",
+      "hasRobots": true,
+      "goal": {
+        "1": "south",
+        "2": "north"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 4,
+            "amount": 6
+          },
+          {
+            "mapId": 33,
+            "amount": 6
+          }
+        ],
+        "2": [
+          {
+            "mapId": 41,
+            "amount": 4
+          },
+          {
+            "mapId": 43,
+            "amount": 4
+          },
+          {
+            "mapId": 32,
+            "amount": 4
+          }
+        ]
+      }
+    },
+    "balancednewmap": {
+      "description": "Map 12.1.d",
+      "longDescription": "Whenever",
+      "hasRobots": true,
+      "goal": {
+        "1": "south",
+        "2": "north"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 4,
+            "amount": 6
+          },
+          {
+            "mapId": 7,
+            "amount": 6
+          }
+        ],
+        "2": [
+          {
+            "mapId": 41,
+            "amount": 4
+          },
+          {
+            "mapId": 43,
+            "amount": 4
+          },
+          {
+            "mapId": 32,
+            "amount": 4
+          }
+        ]
+      }
+    },
+    "balancednewmapeastwest": {
+      "description": "Map 12.1.d east west",
+      "longDescription": "East west map 12.2.d",
+      "hasRobots": true,
+      "goal": {
+        "1": "east",
+        "2": "west"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 3,
+            "amount": 4
+          }
+        ],
+        "2": [
+          {
+            "mapId": 14,
+            "amount": 4
+          }
+        ]
+      }
+    },
+
+    "morebalance": {
+      "description": "Map 12.1.e",
+      "longDescription": "Whenever",
+      "hasRobots": true,
+      "goal": {
+        "1": "south",
+        "2": "north"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 4,
+            "amount": 6
+          },
+          {
+            "mapId": 7,
+            "amount": 6
+          }
+        ],
+        "2": [
+          {
+            "mapId": 41,
+            "amount": 4
+          },
+          {
+            "mapId": 43,
+            "amount": 4
+          },
+          {
+            "mapId": 32,
+            "amount": 4
+          }
+        ]
+      }
+    },
+
+
+
+
+    "map 12 f": {
+      "description": "Map 12.f",
+      "longDescription": "Map 12 f",
+      "hasRobots": true,
+      "smallProduction": true,
+      "goal": {
+        "1": "south",
+        "2": "north"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 4,
+            "amount": 1
+          },
+          {
+            "mapId": 7,
+            "amount": 1
+          }
+        ],
+        "2": [
+          {
+            "mapId": 41,
+            "amount": 1
+          },
+          {
+            "mapId": 43,
+            "amount": 1
+          }
+        ]
+      }
+    },
+
+
+
+
+
+
+
+
+    "thirdmap": {
+      "description": "Map 11.1b",
+      "longDescription": "Whenever",
+      "hasRobots": true,
+      "goal": {
+        "1": "south",
+        "2": "north"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 2,
+            "amount": 4
+          },
+          {
+            "mapId": 4,
+            "amount": 4
+          },
+          {
+            "mapId": 0,
+            "amount": 4
+          }
+        ],
+        "2": [
+          {
+            "mapId": 31,
+            "amount": 4
+          },
+          {
+            "mapId": 35,
+            "amount": 4
+          },
+          {
+            "mapId": 39,
+            "amount": 4
+          }
+        ]
+      }
+    },
+    "thirteen": {
+      "description": "Map 13.1",
+      "longDescription": "Whenever",
+      "hasRobots": true,
+      "goal": {
+        "1": "south",
+        "2": "north"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 2,
+            "amount": 4
+          },
+          {
+            "mapId": 4,
+            "amount": 4
+          },
+          {
+            "mapId": 6,
+            "amount": 4
+          }
+        ],
+        "2": [
+          {
+            "mapId": 31,
+            "amount": 4
+          },
+          {
+            "mapId": 27,
+            "amount": 4
+          },
+          {
+            "mapId": 29,
+            "amount": 4
+          }
+        ]
+      }
+    },
+    "thirteen-east-west": {
+      "description": "Map 13.1 East West",
+      "longDescription": "man 13.1 with east west starting areas......",
+      "hasRobots": true,
+      "goal": {
+        "1": "east",
+        "2": "west"
+      },
+      "setup": {
+        "1": [
+          {
+            "mapId": 6,
+            "amount": 2
+          },
+          {
+            "mapId": 19,
+            "amount": 2
+          },
+          {
+            "mapId": 27,
+            "amount": 2
+          }
+        ],
+        "2": [
+          {
+            "mapId": 4,
+            "amount": 2
+          },
+          {
+            "mapId": 18,
+            "amount": 2
+          },
+          {
+            "mapId": 31,
+            "amount": 2
+          }
+        ]
+      }
+    }
+
+  }
+},
   "AreaNext": {
     "name": "Next hack at area games",
     "path": "Area",
