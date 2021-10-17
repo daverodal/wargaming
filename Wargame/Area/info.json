@@ -1,101 +1,99 @@
 {
   "BalancedAreaGames": {
-  "name": "Balanced area game maps only",
-  "path": "Area",
-  "genre": "Area Games",
-  "fileName": "\\Wargame\\Area\\AreaOne\\AreaNext",
-  "description": "Balanced Area Nextgen Maps.",
-  "scenarios": {
-
-    "balance10.4": {
-      "description": "Balanced 10.4 ",
-      "longDescription": "balanced version of this game map 10.4", "hasRobots": true,
-      "goal": {
-        "1": "south",
-        "2": "north"
+    "name": "Balanced area game maps only",
+    "path": "Area",
+    "genre": "Area Games",
+    "fileName": "\\Wargame\\Area\\AreaOne\\AreaNext",
+    "description": "Balanced Area Nextgen Maps.",
+    "scenarios": {
+      "balance10.4": {
+        "description": "Balanced 10.4 ",
+        "longDescription": "balanced version of this game map 10.4",
+        "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
+        "setup": {
+          "1": [
+            {
+              "mapId": 4,
+              "amount": 1
+            },
+            {
+              "mapId": 0,
+              "amount": 1
+            }
+          ],
+          "2": [
+            {
+              "mapId": 23,
+              "amount": 1
+            },
+            {
+              "mapId": 27,
+              "amount": 1
+            }
+          ]
+        }
       },
-      "setup": {
-
-        "1": [
-          {
-            "mapId": 4,
-            "amount": 1
-          },
-          {
-            "mapId": 0,
-            "amount": 1
-          }
-        ],
-        "2": [
-          {
-            "mapId": 23,
-            "amount": 1
-          },
-          {
-            "mapId": 27,
-            "amount": 1
-          }
-        ]
-      }
-    },
-
-    "BP.balance.11.2.b": {
-      "description": "Map 11.2.b balanced",
-      "longDescription": "balanced version of 11.2.b",
-      "hasRobots": true,
-      "goal": {
-        "1": "south",
-        "2": "north"
+      "BP.balance.11.2.b": {
+        "description": "Map 11.2.b balanced",
+        "longDescription": "balanced version of 11.2.b",
+        "hasRobots": true,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
+        "setup": {
+          "1": [
+            {
+              "mapId": 1,
+              "amount": 3
+            }
+          ],
+          "2": [
+            {
+              "mapId": 24,
+              "amount": 3
+            }
+          ]
+        }
       },
-      "setup": {
-        "1": [
-          {
-            "mapId": 1,
-            "amount": 3
-          }
-        ],
-        "2": [
-          {
-            "mapId": 24,
-            "amount": 3
-          }
-        ]
-      }
-
-    },
-    "BP.balance.12.1.b": {
-      "description": "BP.balance.12.1.b",
-      "longDescription": "BP.balance.12.1.b",
-      "hasRobots": false,
-      "goal": {
-        "1": "south",
-        "2": "north"
-      },
-      "setup": {
-        "1": [
-          {
-            "mapId": 4,
-            "amount": 6
-          },
-          {
-            "mapId": 33,
-            "amount": 6
-          }
-        ],
-        "2": [
-          {
-            "mapId": 41,
-            "amount": 4
-          },
-          {
-            "mapId": 43,
-            "amount": 4
-          },
-          {
-            "mapId": 32,
-            "amount": 4
-          }
-        ]
+      "BP.balance.12.1.b": {
+        "description": "BP.balance.12.1.b",
+        "longDescription": "BP.balance.12.1.b",
+        "hasRobots": false,
+        "goal": {
+          "1": "south",
+          "2": "north"
+        },
+        "setup": {
+          "1": [
+            {
+              "mapId": 4,
+              "amount": 6
+            },
+            {
+              "mapId": 33,
+              "amount": 6
+            }
+          ],
+          "2": [
+            {
+              "mapId": 41,
+              "amount": 4
+            },
+            {
+              "mapId": 43,
+              "amount": 4
+            },
+            {
+              "mapId": 32,
+              "amount": 4
+            }
+          ]
+        }
       },
       "BP.balance.13.2.a": {
         "description": "BP.balance.13.2.a",
@@ -131,8 +129,9 @@
             }
           ]
         }
+      }
     }
-},
+  },
   "AreaNext": {
     "name": "Next hack at area games",
     "path": "Area",
@@ -140,7 +139,6 @@
     "fileName": "\\Wargame\\Area\\AreaOne\\AreaNext",
     "description": "Whenever comes next",
     "scenarios": {
-
       "balance10.4": {
         "description": "Balanced 10.4 ",
         "longDescription": "balanced version of this game map 10.4",
@@ -150,7 +148,6 @@
           "2": "north"
         },
         "setup": {
-
           "1": [
             {
               "mapId": 4,
@@ -173,7 +170,6 @@
           ]
         }
       },
-
       "main": {
         "description": "Map 10.2",
         "longDescription": "Whenever",
@@ -192,11 +188,10 @@
           "2": [
             {
               "mapId": 24,
-                "amount": 3
+              "amount": 3
             }
           ]
         }
-
       },
       "monstaria": {
         "description": "Monstaria",
@@ -216,7 +211,6 @@
             }
           ]
         }
-
       },
       "newmap": {
         "description": "Map 12.1.c",
@@ -311,7 +305,6 @@
           ]
         }
       },
-
       "morebalance": {
         "description": "Map 12.1.e",
         "longDescription": "Whenever",
@@ -347,10 +340,6 @@
           ]
         }
       },
-
-
-
-
       "map 12 f": {
         "description": "Map 12.f",
         "longDescription": "Map 12 f",
@@ -383,14 +372,6 @@
           ]
         }
       },
-
-
-
-
-
-
-
-
       "thirdmap": {
         "description": "Map 11.1b",
         "longDescription": "Whenever",
@@ -508,7 +489,6 @@
           ]
         }
       }
-
     }
   }
 }
