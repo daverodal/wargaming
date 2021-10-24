@@ -49,13 +49,21 @@
           "1": [
             {
               "mapId": 1,
-              "amount": 3
+              "amount": 1
+            },
+            {
+              "mapId": 4,
+              "amount": 1
             }
           ],
           "2": [
             {
-              "mapId": 24,
-              "amount": 3
+              "mapId": 31,
+              "amount": 1
+            },
+            {
+              "mapId": 40,
+              "amount": 1
             }
           ]
         }
