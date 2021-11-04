@@ -310,10 +310,10 @@ class Airborne extends \Wargame\ModernLandBattle
 
 
             foreach($this->mapViewer as $mapView){
-                $mapView->trueRows = true;
+//                $mapView->trueRows = true;
             }
-            $this->mapViewer[1]->mirror = false;
-            $this->mapViewer[2]->mirror = true;
+//            $this->mapViewer[1]->mirror = false;
+//            $this->mapViewer[2]->mirror = true;
             $this->moveRules->enterZoc = 2;
             $this->moveRules->exitZoc = 1;
             $this->moveRules->noZocZocOneHex = true;

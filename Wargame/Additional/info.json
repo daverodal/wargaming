@@ -70,7 +70,18 @@
                 "loyalMechMove": 8,
                 "loyalExtraInf": true,
                 "supplyLen": false,
-                "showHexNums": true
+                "showHexNums": true,
+                "scenarioName": "stalingrad"
+            },
+            "Stalingrad": {
+                "description": "East Vs West",
+                "longDescription":"Stalingrad scenario.",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true,
+                "scenarioName": "stalingrad"
             }
         }
     },

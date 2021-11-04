@@ -260,11 +260,22 @@
                 <undo></undo>
             </div>
         </div>
+        <div  id="float-message-drag-wrapper">
+            <div class="vue-wrapper">
+                <float-message  id="myFloater" >
+                </float-message>
+            </div>
+        </div>
+
+        <div id="floatMessageContainer">
+            <flash-messages :messages="messages"></flash-messages>
+            @section('options')
+            @show
+        </div>
         <div id="gameViewer">
             <div id="gameContainer" >
                 <div id="gameImages" @keyup.native="pushedKey" @click="mapClick">
-                    <float-message  id="myFloater" >
-                    </float-message>
+
                     @section('game-images')
                     <div id="svgWrapper">
                         <svg id="arrow-svg" style="opacity:.6;position:absolute;" xmlns="http://www.w3.org/2000/svg">
@@ -322,10 +333,6 @@
         <audio class="poop" src="{{asset('assets/audio/lowpop.m4a')}}"></audio>
         <audio class="buzz" src="{{asset('assets/audio/buzz.m4a')}}"></audio>
     </div>
-    <div id="floatMessageContainer">
-        <flash-messages :messages="messages"></flash-messages>
-        @section('options')
-        @show
-    </div>
+
 </div>
 </body></html>

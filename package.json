@@ -21,8 +21,8 @@
     "lodash": "^4.17.21"
   },
   "dependencies": {
-    "@markarian/vue-componentz": "^0.0.4",
     "@markarian/wargame-helpers": "0.0.5",
+    "@markarian/wargame-vue-components": "0.0.1",
     "angular": "^1.8.2",
     "angular-modal-service": "^0.15.6",
     "angular-right-click": "^0.1.1",
@@ -31,6 +31,7 @@
     "font-awesome": "^4.7.0",
     "hoek": "^5.0.4",
     "jquery-ui-bundle": "^1.12.1",
+    "markarianjsonmin": "^50.2.1",
     "marked": "^0.7.0",
     "popper.js": "^1.16.1",
     "ssri": "^8.0.1",

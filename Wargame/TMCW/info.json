@@ -102,6 +102,7 @@
         }
     },
     "Kiev": {
+        "disabled": true,
         "name": "Kiev...",
         "path": "TMCW",
         "genre": "20'th Century Games",

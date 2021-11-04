@@ -1,31 +1,12 @@
 import Vue from "vue";
-
-import FlashHexagon from '../../wargame-helpers/Vue/FlashHexagon';
-import VueDraggableResizable from 'vue-draggable-resizable'
-import FloatMessage from '../../wargame-helpers/Vue/FloatMessage';
-import FlashMessages from '../../wargame-helpers/Vue/FlashMessages';
-import VueCrt    from '../../wargame-helpers/Vue/VueCrt';
+import WargameVueComponents from "@markarian/wargame-vue-components";
+Vue.use(WargameVueComponents);
 import UnitComponent from './UnitComponent';
-import UnitsComponent from '../../wargame-helpers/Vue/ExpUnitsComponent'
-import Undo from '../../wargame-helpers/Vue/Undo';
-import MapSymbol from '../../wargame-helpers/Vue/MapSymbol';
-import SpecialHex from '../../wargame-helpers/Vue/SpecialHex';
-import SpecialEvent from '../../wargame-helpers/Vue/SpecialEvent';
-import OBCComponent from '../../wargame-helpers/Vue/OBCComponent';
-Vue.component('flash-messages', FlashMessages);
-Vue.component('flash-hexagon', FlashHexagon);
-Vue.component('vue-crt', VueCrt);
-Vue.component('undo', Undo);
-Vue.component('float-message', FloatMessage);
-Vue.component('vue-draggable-resizable', VueDraggableResizable)
+
+// Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 Vue.component('unit-component', UnitComponent);
-Vue.component('units-component', UnitsComponent);
-Vue.component('special-hex', SpecialHex);
-Vue.component('map-symbol', MapSymbol);
-Vue.component('obc-component', OBCComponent);
 
-Vue.component('special-event', SpecialEvent);
 import {Kiev1941SyncController} from "./kiev-1941-sync-controller";
 const syncController = new Kiev1941SyncController();
 

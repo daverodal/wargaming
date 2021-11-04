@@ -1,4 +1,4 @@
-import {SyncController} from "../../wargame-helpers/Vue/sync-controller";
+import {SyncController} from "@markarian/wargame-vue-components";
 import {syncObj} from "@markarian/wargame-helpers";
 
 import {DR} from "@markarian/wargame-helpers";

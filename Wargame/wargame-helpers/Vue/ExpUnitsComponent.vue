@@ -26,7 +26,6 @@
         },
       computed:{
         filteredGhosts(){
-          debugger;
           if(this.myghosts) {
             const list = this.myghosts.filter((unit) => {
               return !(unit.isOccupied && !this.isSpinny(unit));
@@ -41,7 +40,6 @@
               if(ret === null){
                 return false;
               }
-              debugger;
               return true;
             }
           }
