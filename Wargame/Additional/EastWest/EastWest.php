@@ -82,6 +82,8 @@ class EastWest extends \Wargame\ModernLandBattle
         $numFinInf = 2;
         $numSovInf = 11;
         $numSovTank = 8;
+        $numSovMech = 0;
+        $numSovSupply = 2;
         if($scenario->scenarioName === 'stalingrad'){
             $numGerInf = 8;
             $numGerAir = 2;
@@ -154,7 +156,8 @@ class EastWest extends \Wargame\ModernLandBattle
         }
 
 
-        if($scenario->scenarioName === 'stalingrad') {
+        if($scenario->scenarioName === 'barbarossa') {
+
 
             for ($i = 0; $i < 2; $i++) {
                 UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, 2214 + $i, "Infantry.svg",
@@ -293,6 +296,12 @@ class EastWest extends \Wargame\ModernLandBattle
                 $this->victory->setSupplyLen($scenario->supplyLen);
             }
 
+            if($scenario->scenarioName === 'barbarossa'){
+                $this->victory->setVictoryPoints([0, 26, 77, 0, 0]);
+            }
+            if($scenario->scenarioName === 'stalingrad'){
+                $this->victory->setVictoryPoints([0, 53, 50, 0, 0]);
+            }
             foreach($this->mapViewer as $mapView){
                 $mapView->trueRows = false;
                 $mapView->mirror = false;

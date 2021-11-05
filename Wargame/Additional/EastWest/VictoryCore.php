@@ -103,6 +103,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $this->germanGoal = $germanGoal;
             $this->sovietGoal = $sovietGoal;
             $this->victoryPoints = [0, 26, 77, 0, 0];
+
         }
     }
 
@@ -114,7 +115,10 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $ret->cityValues = $this->cityValues;
         return $ret;
     }
+    public function setVictoryPoints($victoryPoints){
+        $this->victoryPoints = $victoryPoints[0];
 
+    }
     public function setSupplyLen($supplyLen)
     {
         $this->supplyLen = $supplyLen[0];
