@@ -79,7 +79,7 @@
             thetas(){
                 let thetas = [];
                 for(var i in this.unit.thetas){
-                    thetas.push("rotate("+this.unit.thetas[i]+"deg)  scale(.55,.55) translateY(45px)")
+                    thetas.push("rotate("+(this.unit.thetas[i] - 0 + this.isMirror) +"deg)  scale(.55,.55) translateY(45px)")
                 }
                 return thetas
             },
@@ -91,6 +91,13 @@
                     return 'none';
                 }
                 return 'block';
+            },
+            isMirror(){
+              debugger;
+              if(this.$store.state.mD.mirror){
+                return 180;
+              }
+              return 0;
             },
             cBorderColor(){
                 if(this.unit.showOff){

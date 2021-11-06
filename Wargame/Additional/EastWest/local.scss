@@ -23,7 +23,10 @@
 @import "../../wargame-helpers/Vue/scss/vue-unit";
 @import "../../wargame-helpers/Vue/scss/vue-mixins";
 #vue-crt .roll span, #vue-crt #odds span{
-  width: 39px;
+  width: 49px;
+}
+#vue-crt {
+  width: auto;
 }
 @include header(Soviet, $sovietColor);
 @include header(German, $germanColor);

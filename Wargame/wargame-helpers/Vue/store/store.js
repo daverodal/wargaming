@@ -92,6 +92,9 @@ export const store = new Vuex.Store({
         },
         setCrt(state, crt){
             state.crt = {...state.crt, ...crt}
+        },
+        setCrtDetails(state, details){
+            state.crt = { ...state.crt, details: details}
         }
     }
 })
