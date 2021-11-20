@@ -18,7 +18,7 @@
  */
 ?>
     <li>
-        <?= $forceName[1] ?> units are this color.
+        <?= $forceName[1] ?> units are this color.man
         <div class="unit <?= strtolower($forceName[1]) ?>" alt="0" style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;">
             <div class="unit-size">lll</div>
             <div class="counter-wrapper">

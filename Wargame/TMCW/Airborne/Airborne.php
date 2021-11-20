@@ -205,48 +205,48 @@ class Airborne extends \Wargame\ModernLandBattle
         UnitFactory::create("lll", BLUE_FORCE, "northeast", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
 
 
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2A", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "supply", $i++);
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3B", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 3,  "rebel",  "supply", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3B", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 3,  "rebel",  "supply", $i++);
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4B", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 4,  "rebel",  "supply", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4B", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 4,  "rebel",  "supply", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4A", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "A", 4,  "rebel",  "supply", $i++);
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5B", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 5,  "rebel",  "supply", $i++);
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn1B", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 1,  "rebel",  "supply", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn1A", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "A", 1,  "rebel",  "supply", $i++);
-//
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7C", "Gorilla.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 7,  "rebel",  "supply", $i++);
-//
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Glider.svg", 10,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Glider.svg", 10,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Para.svg", 9,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Glider.svg", 10,  5,  STATUS_CAN_REINFORCE, "A", 3,  "rebel",  "para", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Para.svg", 9,  5,  STATUS_CAN_REINFORCE, "A", 3,  "rebel",  "para", $i++);
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4", "Para.svg", 9,  5,  STATUS_CAN_REINFORCE, "A", 4,  "rebel",  "para", $i++);
-//
-//
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
-//
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
-//        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2A", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "supply", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 3,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 3,  "rebel",  "supply", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 4,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 4,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4A", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "A", 4,  "rebel",  "supply", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 5,  "rebel",  "supply", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn1B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn1A", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "A", 1,  "rebel",  "supply", $i++);
+
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn7C", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 7,  "rebel",  "supply", $i++);
+
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Glider.svg", 10,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Glider.svg", 10,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn2", "Para.svg", 9,  5,  STATUS_CAN_REINFORCE, "A", 2,  "rebel",  "para", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Glider.svg", 10,  5,  STATUS_CAN_REINFORCE, "A", 3,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Para.svg", 9,  5,  STATUS_CAN_REINFORCE, "A", 3,  "rebel",  "para", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn4", "Para.svg", 9,  5,  STATUS_CAN_REINFORCE, "A", 4,  "rebel",  "para", $i++);
+
+
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn3", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 3,  "rebel",  "mech", $i++);
+
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "gameTurn5", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 5,  "rebel",  "inf", $i++);
 //
         $symbol = new \stdClass();
         $symbol->type = 'RebelSupply';

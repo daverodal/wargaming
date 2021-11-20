@@ -7,10 +7,12 @@ Vue.use(WargameVueComponents);
 Vue.component('east-west-header', EastWestHeader);
 import VueDraggableResizable from 'vue-draggable-resizable'
 import UnitComponent from './UnitComponent';
-// import UnitsComponent from './ExpUnitsComponent'
+import DeployUnitsComponent from './DeployUnitsComponent'
 Vue.component('vue-draggable-resizable', VueDraggableResizable)
 Vue.component('unit-component', UnitComponent);
 Vue.component('units-component', UnitsComponent);
+Vue.component('deploy-units-component', DeployUnitsComponent);
+
 const syncController = new SyncController();
 
 import '../../wargame-helpers/Vue/vue-hookup';

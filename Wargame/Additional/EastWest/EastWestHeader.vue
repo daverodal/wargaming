@@ -13,7 +13,7 @@ export default {
       if(this.scenario === 'barbarossa'){
         return ['Jun 41', 'Jul 41', 'Aug 41', 'Sep 41', 'Oct 41 mud', 'Nov 41 snow','Dec 41 snow','Jan 42 snow' ][this.turn - 1]
       }
-      if(this.scenario === 'barbarossa'){
+      if(this.scenario === 'stalingrad'){
         return ['Jul 42', 'Aug 42', 'Sep 42', 'Oct 42 mud', 'Nov 42 snow','Dec 42 snow','Jan 43 snow', 'Feb 43 snow' ][this.turn - 1]
       }
     },

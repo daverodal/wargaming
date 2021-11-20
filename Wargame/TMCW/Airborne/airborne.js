@@ -24,6 +24,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import Vue from "vue";
+import DeployUnitsComponent from '../../Additional/EastWest/DeployUnitsComponent'
+Vue.component('deploy-units-component', DeployUnitsComponent);
 
 import VueDraggableResizable from 'vue-draggable-resizable'
 import UnitComponent from './UnitComponent';
