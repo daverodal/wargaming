@@ -31,7 +31,6 @@ import Vue from "vue";
 // window.vueStore = store;
 // Vue.use(VueResource);
 import {hookup} from "./hookup";
-// debugger;
 document.addEventListener("DOMContentLoaded",function() {
     hookup(Vue);
 });

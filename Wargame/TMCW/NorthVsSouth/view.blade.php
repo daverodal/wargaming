@@ -21,3 +21,14 @@
     <button :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
     <button :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
 @endsection
+@section('deploy-box')
+    <div id="deployBox">
+        <div>
+
+            <deploy-units-component style="float:left" :myfilter="1" :myunits="allMyBoxes.deployBox"></deploy-units-component>
+            <deploy-units-component style="float:left" :myfilter="2" :myunits="allMyBoxes.deployBox"></deploy-units-component>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+@endsection

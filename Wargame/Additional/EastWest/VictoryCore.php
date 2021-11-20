@@ -160,7 +160,62 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 //
 //        return array($reinforceZones);
 //    }
+    public function isSnow()
+    {
+        $b = Battle::getBattle();
+        $scenario = $b->scenario->scenarioName;
 
+        if ($scenario === 'barbarossa') {
+            if ($b->gameRules->turn >= 6 && $b->gameRules->turn <= 8) {
+                return true;
+            }
+            return false;
+        }
+        if ($scenario === 'stalingrad') {
+            if ($b->gameRules->turn >= 5 && $b->gameRules->turn <= 8) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public function isMud(){
+        $b = Battle::getBattle();
+        $turn = $b->gameRules->turn;
+        $scenario = $b->scenario->scenarioName;
+        if($scenario === 'barbarossa'){
+            if($turn === 5){
+                return true;
+            }
+            return false;
+        }
+        if($scenario === 'stalingrad'){
+            if($turn === 4){
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public function isMudSnow(){
+        return $this->isMud() || $this->isSnow();
+    }
+
+    public function canSovietCombine(){
+        $b = Battle::getBattle();
+        $turn = $b->gameRules->turn;
+        $scenario = $b->scenario->scenarioName;
+        if($b->gameRules->mode !== MOVING_MODE) {
+            return false;
+        }
+
+        if($scenario === 'stalingrad'){
+            if($turn >= 3){
+                return true;
+            }
+            return false;
+        }
+    }
     public function reduceUnit($args)
     {
         $unit = $args[0];
@@ -292,7 +347,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 
             foreach ($theUnits as $id => $unit) {
                 $unit->railMove(false);
-                if($gameRules->turn >= 5 && $gameRules->turn <= 8){
+                if($this->isMudSnow()){
                     if($unit->forceId === EastWest::GERMAN_FORCE){
                         if($unit->class === 'mech'){
                             $unit->addAdjustment('weather', '5Movement');
@@ -308,7 +363,6 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
                     }
                 }else{
                     $unit->removeAdjustment('weather');
-
                 }
 
                 if ($unit->status == STATUS_CAN_REINFORCE && $unit->reinforceTurn <= $battle->gameRules->turn && $unit->hexagon->parent != "deployBox") {
@@ -488,7 +542,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             return;
         }
         $supplyLen = 6;
-        if($b->gameRules->turn >= 6 && $b->gameRules->turn <= 8){
+        if($this->isSnow()){
             $supplyLen = 1;
         }
         $b->moveRules->zocBlocksSupply = false;
@@ -497,7 +551,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $b->moveRules->zocBlocksSupply = true;
         }
 
-        if($b->gameRules->turn === 5){
+        if($this->isMud()){
             $supplyLen = 1;
         }
         $bias = [];

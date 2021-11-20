@@ -16,3 +16,14 @@
         @show
     </div>
 @endsection
+@section('deploy-box')
+    <div id="deployBox">
+        <div>
+
+            <deploy-units-component style="float:right" :myfilter="1" :myunits="allMyBoxes.deployBox"></deploy-units-component>
+            <deploy-units-component style="float:left" :myfilter="2" :myunits="allMyBoxes.deployBox"></deploy-units-component>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+@endsection
