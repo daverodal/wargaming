@@ -116,6 +116,24 @@
     @import "localColors";
     @include unitColor(southern, $southernColor)
     @include unitColor(northern, $northernColor);
+    .unit{
+      &.big{
+        width:54px;
+        height: 54px;
+        .unit-size{
+          font-size:13px;
+          height:12px;
+        }
+        .counter-wrapper{
+          height:15px;
+          font-size:14px;
+        }
+        .unit-numbers{
+          height:18px;
+          font-size:17px;
+        }
+      }
+    }
     .ghost{
         opacity: 0;
     }

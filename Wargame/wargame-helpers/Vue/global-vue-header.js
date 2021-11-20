@@ -24,7 +24,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /* globl-vue-header */
-debugger //local verision
 import {rotateUnits} from './global-vue-helper';
 import { syncObj } from "@markarian/wargame-helpers";
 import {counterClick, fixItAll, mapClick, doitCRT} from "@markarian/wargame-helpers";
@@ -45,7 +44,6 @@ document.addEventListener("DOMContentLoaded",function(){
     DR.crtDetails = false;
     DR.showArrows = false;
     DR.doingZoom = false;
-    debugger;   /// not plugin
 
     DR.$floatMessagePanZoom = $('#float-message-drag-wrapper').panzoom({cursor: "normal", disableZoom: true, onPan: function (e, panzoom) {
         console.log("Floag Pan ");

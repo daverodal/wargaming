@@ -150,6 +150,22 @@
         opacity: 0;
     }
     .unit {
+      &.big{
+        width:54px;
+        height: 54px;
+        .unit-size{
+          font-size:13px;
+          height:12px;
+        }
+        .counter-wrapper{
+          height:15px;
+          font-size:14px;
+        }
+        .unit-numbers{
+          height:18px;
+          font-size:17px;
+        }
+      }
         .unit-numbers {
             &.infoLen7 {
                 letter-spacing: -.4px;

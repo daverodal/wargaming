@@ -1,7 +1,7 @@
 <?php
 namespace Wargame;
 
-use \stdClass;
+use stdClass;
 
 // force.js
 

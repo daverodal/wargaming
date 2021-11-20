@@ -1,6 +1,7 @@
 import Vue from "vue";
 import WargameVueComponents, {SyncController} from "@markarian/wargame-vue-components";
-
+import DeployUnitsComponent from '../../Additional/EastWest/DeployUnitsComponent'
+Vue.component('deploy-units-component', DeployUnitsComponent);
 Vue.use(WargameVueComponents);
 import VueDraggableResizable from 'vue-draggable-resizable'
 

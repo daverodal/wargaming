@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@markarian/wargame-helpers": "0.0.5",
-    "@markarian/wargame-vue-components": "0.0.3",
+    "@markarian/wargame-vue-components": "0.0.4",
     "angular": "^1.8.2",
     "angular-modal-service": "^0.15.6",
     "angular-right-click": "^0.1.1",

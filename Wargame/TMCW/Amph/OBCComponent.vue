@@ -3,7 +3,11 @@
         <div class="game-turn" v-for="turn in maxTurn">
 
             <div :class="{'turn-counter': turn ==   currentTurn}">Turn {{ turn }}</div>
-            <units-component :myunits="obc['gameTurn'+turn]"></units-component>
+
+            <div v-for="(units, key) in unitsThisTurn(turn)">
+              {{key}}
+              <units-component :myunits="units"></units-component>
+            </div>
         </div>
     </div>
 </template>
@@ -13,8 +17,27 @@
         name: "OBCComponent",
         props:['obc'],
         mounted(){
+          debugger;
         },
         computed:{
+          unitsThisTurn(){
+            debugger;
+            return (turn) => {
+              debugger;
+              const ret = {};
+              for(const i in this.obc) {
+                debugger;
+                const regEx = new RegExp("^gameTurn"+turn);
+                if(i.match(regEx)){
+                  let index = i.replace(/^gameTurn[0-9]+/,"");
+                  index = index.replace(/Landing$/,"");
+                  ret[index] = (this.obc[i]);
+                  debugger
+                }
+              }
+              return ret;
+            }
+          },
             currentTurn(){
                 return this.$store.state.headerData.turn;
             },

@@ -35,6 +35,13 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
     public $hadAnySupplies = true;
 
     public $moveByRail = false;
+    public $supplyUsed = false;
+    public $supplyRadius = false;
+
+    public $canTransport = false;
+
+    public $carries = false;
+    public $carriedBy = false;
 
     public function railMove(bool $mode)
     {
@@ -215,20 +222,44 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         $mapUnit->nationality = $this->nationality;
         $mapUnit->image = $this->image;
         $mapUnit->name = $this->name;
+        $mapUnit->reinforceZone = $this->reinforceZone;
         if ($this->supplyRadius !== false) {
             $mapUnit->supplyRadius = $this->supplyRadius;
         }
         return $mapUnit;
     }
 
+    public function combine($otherUnits, $type)
+    {
+        $b = Battle::getBattle();
+        $mapData = $b->mapData;
+        if($type === 'armor'){
+            $this->origStrength = 6;
+            $this->unitDefStrength = 5;
+            $this->maxMove = 5;
+            $this->class = 'armor';
+            $this->image = "Armor.svg";
+        }
+        if($type === 'inf'){
+            $this->origStrength = 5;
+            $this->unitDefStrength = 9;
+            $this->class = 'inf';
+            $this->maxMove = 3;
+            $this->image = "Infantry.svg";
+        }
+        foreach($otherUnits as $other){
+            if($this->id === $other){
+                continue;
+            }
+            $otherUnit = $b->force->units[$other];
+            $otherUnit->hexagon = new Hexagon('combined-box');
+            $otherUnit->status = STATUS_COMBINED;
+            $mapHex = $mapData->getHex($this->hexagon->name);
+            $mapHex->unsetUnit($otherUnit->forceId, $otherUnit->id);
+        }
+        return true;
+    }
 
-    public $supplyUsed = false;
-    public $supplyRadius = false;
-
-    public $canTransport = false;
-
-    public $carries = false;
-    public $carriedBy = false;
 
 
     public function postSet()

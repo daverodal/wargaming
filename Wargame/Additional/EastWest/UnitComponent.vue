@@ -22,6 +22,15 @@
         props:["unit"],
         computed:{
             unitStyle(){
+            let id = this.unit.id+'';
+
+              const ret = id.match(new RegExp('Hex'+this.unit.hexagon+'$'));
+              let zAdd = 0;
+              if(ret !== null){
+
+                zAdd = 5;
+                console.log(ret);
+              }
                 return  {
                     display:this.showMe,
                     opacity:this.unit.opac,
@@ -30,7 +39,7 @@
                     left:this.unit.x + 'px',
                     top:this.unit.y + 'px',
                     boxShadow: this.cBoxShadow,
-                    zIndex: this.unit.zIndex
+                    zIndex: this.unit.zIndex + zAdd
                 }
             },
             rawUnitNumbers(){
@@ -93,7 +102,6 @@
                 return 'block';
             },
             isMirror(){
-              debugger;
               if(this.$store.state.mD.mirror){
                 return 180;
               }
@@ -148,6 +156,22 @@
     @include unitColor(soviet, $sovietColor)
     @include unitColor(german, $germanColor);
     .unit {
+      &.big{
+        width:54px;
+        height: 54px;
+        .unit-size{
+          font-size:13px;
+          height:12px;
+        }
+        .counter-wrapper{
+          height:15px;
+          font-size:14px;
+        }
+        .unit-numbers{
+          height:18px;
+          font-size:17px;
+        }
+      }
         &.ghost{
             opacity: 0;
             &:hover{

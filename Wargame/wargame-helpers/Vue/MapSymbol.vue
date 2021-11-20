@@ -50,7 +50,7 @@
     .spinny{
       z-index: 4;
       img{
-        animation: move 2s infinite linear;
+        animation: move 20s infinite linear;
       }
     }
     @keyframes move{
