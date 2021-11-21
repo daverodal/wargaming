@@ -27,3 +27,32 @@
         <div class="clear"></div>
     </div>
 @endsection
+@section('unitRules')
+    @include ("wargame::TMCW.Amph.commonUnitsRules")
+@endsection
+@section('tec')
+    @include("wargame::TMCW.Amph.tec")
+@endsection
+@section('SOP')
+    @include('wargame::TMCW.Amph.commonSequenceOfPlay')
+@endsection
+@section('exclusiveRulesWrapper')
+@endsection
+@section('exclusiveRules')
+    @include('wargame::TMCW.Amph.exclusiveRules')
+@endsection
+@section('victoryConditions')
+    @include('wargame::TMCW.Amph.victoryConditions')
+@endsection
+@section('commonRules')
+    <div class="dropDown" id="GRWrapper">
+        <div id="GR">
+            <div @click="commonRules = false" class="close">X</div>
+            @include("wargame::TMCW.commonRulesCore")
+        </div>
+    </div>
+@endsection
+
+@section('obc')
+    <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
+@endsection
