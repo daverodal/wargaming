@@ -12,7 +12,7 @@ Vue.component('vue-draggable-resizable', VueDraggableResizable)
 Vue.component('unit-component', UnitComponent);
 Vue.component('units-component', UnitsComponent);
 Vue.component('deploy-units-component', DeployUnitsComponent);
-
-const syncController = new SyncController();
+import {EastWestSyncController} from './EastWestSyncController.js';
+const syncController = new EastWestSyncController();
 
 import '../../wargame-helpers/Vue/vue-hookup';

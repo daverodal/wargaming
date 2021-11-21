@@ -380,7 +380,6 @@ export function hookup(Vue){
     //
     // });
     document.addEventListener('keyup', function(evt) {
-        debugger;
         const indx = "xdcmsl".indexOf(evt.key);
         if(indx >= 0){
             doitKeypress(event.keyCode);

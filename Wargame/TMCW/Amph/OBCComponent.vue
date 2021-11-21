@@ -17,22 +17,17 @@
         name: "OBCComponent",
         props:['obc'],
         mounted(){
-          debugger;
         },
         computed:{
           unitsThisTurn(){
-            debugger;
             return (turn) => {
-              debugger;
               const ret = {};
               for(const i in this.obc) {
-                debugger;
                 const regEx = new RegExp("^gameTurn"+turn);
                 if(i.match(regEx)){
                   let index = i.replace(/^gameTurn[0-9]+/,"");
                   index = index.replace(/Landing$/,"");
                   ret[index] = (this.obc[i]);
-                  debugger
                 }
               }
               return ret;
