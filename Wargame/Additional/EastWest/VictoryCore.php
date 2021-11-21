@@ -293,17 +293,21 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 
 
     }
-
     public function gameEnded()
     {
         $battle = Battle::getBattle();
-//        $kiev = $battle->specialHexC[0];
-//        if ($battle->mapData->getSpecialHex($kiev) === EastWest::SOVIET_FORCE) {
-//            $battle->gameRules->flashMessages[] = "Soviet Player Wins";
-//        }else{
-//            $battle->gameRules->flashMessages[] = "German Player Wins";
-//        }
-        $battle->gameRules->flashMessages[] = "Nobody Wins";
+        if ($this->victoryPoints[EastWest::GERMAN_FORCE] < $this->victoryPoints[EastWest::SOVIET_FORCE]) {
+            $battle->gameRules->flashMessages[] = "Soviet Player Wins";
+            $this->winner = EastWest::SOVIET_FORCE;
+        }else{
+            if($this->victoryPoints[EastWest::GERMAN_FORCE] == $this->victoryPoints[EastWest::SOVIET_FORCE]){
+                $battle->gameRules->flashMessages[] = "Tie Game";
+                $this->winner = 0;
+            }else{
+                $battle->gameRules->flashMessages[] = "German Player Wins";
+                $this->winner = EastWest::GERMAN_FORCE;
+            }
+        }
 
         $this->gameOver = true;
         return true;
