@@ -82,6 +82,16 @@
                 "supplyLen": false,
                 "showHexNums": true,
                 "scenarioName": "stalingrad"
+            },
+            "Zitadelle": {
+                "description": "East Vs West",
+                "longDescription":"Zitadelle scenario.",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": false,
+                "showHexNums": true,
+                "scenarioName": "zitadelle"
             }
         }
     },

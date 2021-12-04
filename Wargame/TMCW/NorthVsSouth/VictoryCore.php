@@ -32,15 +32,16 @@ use \stdClass;
 
 class VictoryCore extends \Wargame\TMCW\victoryCore
 {
-    public $sovietGoal;
-    public $germanGoal;
+    public $southernGoal;
+    public $northernGoal;
+    public $unsuppliedDefenderHalved = false;
 
     function unitSupplyEffects($unit, $goal, $bias, $supplyLen){
         $b = Battle::getBattle();
         $id = $unit->id;
 
         if ($unit->hexagon->parent === "gameImages") {
-            $unit->supplied = true; //$b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
+            $unit->supplied = $b->moveRules->calcSupply($unit->id, $goal, $bias, $supplyLen);
         } else {
             return;
         }
@@ -66,11 +67,11 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     {
         parent::__construct($data);
         if ($data) {
-            $this->germanGoal = $data->victory->germanGoal;
-            $this->sovietGoal = $data->victory->sovietGoal;
+            $this->northernGoal = $data->victory->northernGoal ?? [];
+            $this->southernGoal = $data->victory->southernGoal ?? [];
         } else {
-            $this->germanGoal = [];
-            $this->sovietGoal = [];
+            $this->northernGoal = [];
+            $this->southernGoal = [];
             $this->victoryPoints[3] = 0;
         }
     }
@@ -83,8 +84,8 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     public function save()
     {
         $ret = parent::save();
-        $ret->germanGoal = $this->germanGoal;
-        $ret->sovietGoal = $this->sovietGoal;
+        $ret->northernGoal = $this->northernGoal ?? [];
+        $ret->southernGoal = $this->southernGoal ?? [];
         return $ret;
     }
 
@@ -149,6 +150,58 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $this->gameOver = true;
         return true;
     }
+    public function preStartMovingUnit($arg)
+    {
+        $unit = $arg[0];
+        $battle = Battle::getBattle();
+            $battle->moveRules->enterZoc = "stop";
+            $battle->moveRules->exitZoc = 0;
+            $battle->moveRules->noZocZoc = false;
+    }
+    public function postReinforceZoneNames($args)
+    {
+        $battle = Battle::getBattle();
+        /* @var MapData $mapData */
+        $mapData = $battle->mapData;
+        $specialHexes = $battle->specialHexB;
+
+
+        list($zoneNames, $unit, $hexagon) = $args;
+        $zones = [];
+
+        if ($unit->nationality === "southern") {
+            foreach ($specialHexes as $specialHex) {
+                if ($mapData->getSpecialHex($specialHex) == NorthVsSouth::SOUTHERN_FORCE) {
+
+                }
+            }
+        }
+
+        if ($unit->nationality === "northern") {
+            $specialHexes = $battle->specialHexA;
+            foreach ($specialHexes as $specialHex) if ($mapData->getSpecialHex($specialHex) == NorthVsSouth::NORTHERN_FORCE) {
+                    if($specialHex == $hexagon->getNumber()){
+                        $zones[] = $specialHex;
+                    }
+                    $mapHex = $mapData->getHex($specialHex);
+                    $neighbors = $mapHex->neighbors;
+                    foreach($neighbors as $neighbor){
+                        $newHexNum = $neighbor;
+                        if(is_object($neighbor)){
+                            $newHexNum = $neighbor->hexNum;
+                        }
+                        if ($battle->terrain->terrainIsHex($newHexNum, "blocked")) {
+                            continue;
+                        }
+                        if($newHexNum == $hexagon->getNumber()){
+                            $zones[] = $unit->reinforceZone;
+                        }
+                    }
+                }
+            }
+           return [$zones];
+    }
+
 
     public function postReinforceZones($args)
     {
@@ -272,11 +325,6 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         /* @var $b NorthVsSouth */
         $b  = Battle::getBattle();
     }
-    public function preStartMovingUnit($arg)
-    {
-        $unit = $arg[0];
-        $b = $battle = Battle::getBattle();
-    }
 
     public function preRecoverUnits()
     {
@@ -290,29 +338,33 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
              */
         }
 
-        $germanBias = array(5 => true, 6 => true);
-        $sovietBias = array(2 => true, 3 => true);
-        $this->germanGoal = array_merge($b->moveRules->calcRoadSupply(NorthVsSouth::SOUTHERN_FORCE, 207, $germanBias));
-        $this->sovietGoal = [];
-        foreach($units as $id => $unit){
-            $unit->recover();
-            if($unit->class == 'railhead' && $unit->hexagon->parent == 'gameImages'){
-                $this->sovietGoal[] = $unit->hexagon->name;
-            }
-        }
+        $this->northernGoal = [607, 610, 1311, 1613, 1706, 1705];
+        $this->southernGoal = [921,624,224, 1321, 1421, 1424];
+        $bef = microtime(true);
+
+//        foreach($units as $id => $unit){
+//            echo "Recover unit ";
+//            $unit->recover();
+//        }
+        $aft = microtime(true);
+        $dur = $aft - $bef;
+//        echo "D: $dur :D ";
     }
 
     public function preRecoverUnit($arg){
+//        echo "Pre REc ";
         list($unit) = $arg;
-        if ($unit->forceId == NorthVsSouth::SOUTHERN_FORCE) {
-            $bias = array(5 => true, 6 => true);
-            $goal = $this->germanGoal;
+//        echo $unit->id." ";
+        if ($unit->forceId == NorthVsSouth::NORTHERN_FORCE) {
+            $bias = array( 0 => true, 1 => true);
+            $goal = $this->northernGoal;
         } else {
-            $bias = array(2 => true, 3 => true);
-            $goal = $this->sovietGoal;
+            $bias = array( 3 => true, 4 => true);
+            $goal = $this->southernGoal;
 
         }
-        $this->unitSupplyEffects($unit, $goal, $bias, 10);
+        $this->unitSupplyEffects($unit, $goal, $bias, 15);
+
     }
 
 
@@ -322,68 +374,45 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     }
 
 
-    public function postRecoverUnit($args)
-    {
-        /* @var unit $unit */
-        $unit = $args[0];
-
-        /* @var $b NorthVsSouth */
-        $b = Battle::getBattle();
-        $gameRules = $b->gameRules;
-        $phase = $b->gameRules->phase;
-        $id = $unit->id;
-        /*
-         * all units move in second movement phase
-         */
-
-        if (!empty($b->scenario->supply) === true) {
-            if ($unit->forceId == NorthVsSouth::SOUTHERN_FORCE) {
-                $bias = array(5 => true, 6 => true);
-                $goal = $this->germanGoal;
-            } else {
-                $bias = array(2 => true, 3 => true);
-                $goal = $this->sovietGoal;
-
-            }
-
-        }
-
-        if($b->gameRules->mode === COMBAT_SETUP_MODE){
-            $goal = $bias = [];
-
-            if($unit->forceId === NorthVsSouth::NORTHERN_FORCE){
-                $bias = [2 => true, 3 => true, 4 => true];
-
-            }
-//            $this->unitCombatSupplyEffects($unit, $goal, $bias, $this->supplyLen);
-        }
-    }
+//    public function postRecoverUnit($args)
+//    {
+//        /* @var unit $unit */
+//        $unit = $args[0];
+//
+//        /* @var $b NorthVsSouth */
+//        $b = Battle::getBattle();
+//        $gameRules = $b->gameRules;
+//        $phase = $b->gameRules->phase;
+//        $id = $unit->id;
+//        /*
+//         * all units move in second movement phase
+//         */
+//
+//        if (!empty($b->scenario->supply) === true) {
+//            if ($unit->forceId == NorthVsSouth::SOUTHERN_FORCE) {
+//                $bias = array(1=> true, 5 => true, 0 => true);
+//                $goal = $this->northernGoal;
+//            } else {
+//                $bias = array(2 => true, 3 => true, 4 => true);
+//                $goal = $this->southernGoal;
+//
+//            }
+//
+//        }
+//
+////        if($b->gameRules->mode === COMBAT_SETUP_MODE){
+////            $this->unitCombatSupplyEffects($unit, $goal, $bias, $this->supplyLen);
+////        }
+//    }
 
     public function checkCombatSupply($args)
     {
-        return;
         /* @var unit $unit */
         $unit = $args[1];
         $goal = $args[0];
 
-        $b = Battle::getBattle();
-        $id = $unit->id;
-        if ($unit->forceId != $b->gameRules->attackingForceId) {
-            return;
-        }
-        $supplyLen = 6;
-        if($b->gameRules->turn >= 6 && $b->gameRules->turn <= 8){
-            $supplyLen = 1;
-        }
-        if($unit->forceId === NorthVsSouth::NORTHERN_FORCE){
-            $supplyLen = 3;
-        }
-
-        if($b->gameRules->turn === 5){
-            $supplyLen = 1;
-        }
         $bias = [];
-        $this->unitCombatSupplyEffects($unit, $goal, $bias, $supplyLen);
+        $this->unitCombatSupplyEffects($unit, $goal, $bias, $this->supplyLen);
     }
 
 

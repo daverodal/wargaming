@@ -74,7 +74,7 @@ class EastWest extends EastWestLandBattle
         UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "Infantry.svg",
             2, 4, 2, STATUS_CAN_REINFORCE, "E", $turn, "soviet", "inf", "$turn R");
     }
-    protected function  reinforceSovietArmor($turn){
+    protected function  reinforceSovietTank($turn){
         UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "Armor.svg",
             2, 1, 5,STATUS_CAN_REINFORCE, "E", $turn, "soviet", "armor", "$turn a");
     }
@@ -100,7 +100,19 @@ class EastWest extends EastWestLandBattle
             "soviet", "inf", "$unitDesig i");
         $unitDesig++;
     }
-    protected function deploySovietArmor($hex = false){
+    protected function deploySovietShock($hex = false){
+        static $unitDesig = 0;
+        $status = STATUS_READY;
+        if($hex === false){
+            $hex = "deployBox";
+            $status = STATUS_CAN_DEPLOY;
+        }
+        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, $hex, "Infantry.svg",
+            5, 9, 3, $status, "B", 1,
+            "soviet", "inf", "$unitDesig i");
+        $unitDesig++;
+    }
+    protected function deploySovietTank($hex = false){
         static $unitDesig = 0;
         $status = STATUS_READY;
         if($hex === false){
@@ -109,6 +121,18 @@ class EastWest extends EastWestLandBattle
         }
         UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, $hex, "Armor.svg",
             2, 1, 5, $status, "B", 1,
+            "soviet", "armor", "$unitDesig t");
+        $unitDesig++;
+    }
+    protected function deploySovietArmor($hex = false){
+        static $unitDesig = 0;
+        $status = STATUS_READY;
+        if($hex === false){
+            $hex = "deployBox";
+            $status = STATUS_CAN_DEPLOY;
+        }
+        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, $hex, "Armor.svg",
+            6, 5, 5, $status, "B", 1,
             "soviet", "armor", "$unitDesig a");
         $unitDesig++;
     }
@@ -134,13 +158,13 @@ class EastWest extends EastWestLandBattle
             for ($i = 0; $i < 2; $i++) {
                 $this->deploySovietInf(2214+$i);
             }
-            $this->deploySovietArmor(2215);
+            $this->deploySovietTank(2215);
             $this->deploySovietMechInf(2215);
             $this->deploySovietInf(717);
-            $this->deploySovietArmor(718);
+            $this->deploySovietTank(718);
             $this->deploySovietMechInf(716);
             $this->deploySovietInf(2121);
-            $this->deploySovietArmor(2121);
+            $this->deploySovietTank(2121);
             $this->deploySovietInf(2122);
         }
     }
@@ -160,6 +184,8 @@ class EastWest extends EastWestLandBattle
         $numSovTank = 8;
         $numSovMech = 0;
         $numSovSupply = 2;
+        $numSovArmor = 0;
+        $numSovShock = 0;
         if($scenario->scenarioName === 'stalingrad'){
             $numGerInf = 8;
             $numGerAir = 2;
@@ -170,6 +196,19 @@ class EastWest extends EastWestLandBattle
             $numSovTank = 6;
             $numSovMech = 1;
             $numSovSupply = 2;
+        }
+        if($scenario->scenarioName === 'zitadelle'){
+            $numGerInf = 8;
+            $numGerAir = 1;
+            $numGerSupply = 3;
+            $numAlliedInf = 2;
+            $numFinInf = 4;
+            $numSovInf = 43;
+            $numSovTank = 1;
+            $numSovMech = 0;
+            $numSovSupply = 2;
+            $numSovArmor = 5;
+            $numSovShock = 1;
         }
         $i = 0;
         for($i = 0; $i < 4; $i++){
@@ -213,12 +252,17 @@ class EastWest extends EastWestLandBattle
             $this->deploySovietInf();
         }
         for($i = 0; $i < $numSovTank; $i++){
-            $this->deploySovietArmor();
+            $this->deploySovietTank();
         }
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < $numSovMech; $i++) {
             $this->deploySovietMechInf();
         }
-
+        for($i = 0; $i < $numSovShock; $i++){
+            $this->deploySovietShock();
+        }
+        for($i = 0; $i < $numSovArmor; $i++){
+            $this->deploySovietArmor();
+        }
         for($i = 0; $i < $numSovSupply; $i++){
             UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "SupplyBox.svg",
                 0, 1, 2,STATUS_CAN_DEPLOY, "B", 1, "soviet", "supply", "$i S");
@@ -331,28 +375,28 @@ class EastWest extends EastWestLandBattle
             $this->reinforceSovietInf(1);
             $this->reinforceSovietInf(1);
             $this->reinforceSovietInf(1);
-            $this->reinforceSovietArmor(1);
+            $this->reinforceSovietTank(1);
             $this->reinforceSovietSupply(1);
 
             $this->reinforceSovietInf(2);
             $this->reinforceSovietInf(2);
             $this->reinforceSovietInf(2);
-            $this->reinforceSovietArmor(2);
+            $this->reinforceSovietTank(2);
             $this->reinforceSovietSupply(2);
 
 
             $this->reinforceSovietInf(3);
             $this->reinforceSovietInf(3);
             $this->reinforceSovietInf(3);
-            $this->reinforceSovietArmor(3);
-            $this->reinforceSovietArmor(3);
+            $this->reinforceSovietTank(3);
+            $this->reinforceSovietTank(3);
             $this->reinforceSovietSupply(3);
 
             $this->reinforceSovietInf(4);
             $this->reinforceSovietInf(4);
             $this->reinforceSovietInf(4);
-            $this->reinforceSovietArmor(4);
-            $this->reinforceSovietArmor(4);
+            $this->reinforceSovietTank(4);
+            $this->reinforceSovietTank(4);
             $this->reinforceSovietMechInf(4);
             $this->reinforceSovietSupply(4);
 
@@ -360,8 +404,8 @@ class EastWest extends EastWestLandBattle
             $this->reinforceSovietInf(5);
             $this->reinforceSovietInf(5);
             $this->reinforceSovietInf(5);
-            $this->reinforceSovietArmor(5);
-            $this->reinforceSovietArmor(5);
+            $this->reinforceSovietTank(5);
+            $this->reinforceSovietTank(5);
             $this->reinforceSovietMechInf(5);
             $this->reinforceSovietSupply(5);
 
@@ -369,8 +413,8 @@ class EastWest extends EastWestLandBattle
             $this->reinforceSovietInf(6);
             $this->reinforceSovietInf(6);
             $this->reinforceSovietInf(6);
-            $this->reinforceSovietArmor(6);
-            $this->reinforceSovietArmor(6);
+            $this->reinforceSovietTank(6);
+            $this->reinforceSovietTank(6);
             $this->reinforceSovietMechInf(6);
             $this->reinforceSovietSupply(6);
 
@@ -378,8 +422,8 @@ class EastWest extends EastWestLandBattle
             $this->reinforceSovietInf(7);
             $this->reinforceSovietInf(7);
             $this->reinforceSovietInf(7);
-            $this->reinforceSovietArmor(7);
-            $this->reinforceSovietArmor(7);
+            $this->reinforceSovietTank(7);
+            $this->reinforceSovietTank(7);
             $this->reinforceSovietMechInf(7);
             $this->reinforceSovietSupply(7);
 
@@ -388,12 +432,105 @@ class EastWest extends EastWestLandBattle
             $this->reinforceSovietInf(8);
             $this->reinforceSovietInf(8);
             $this->reinforceSovietInf(8);
-            $this->reinforceSovietArmor(8);
-            $this->reinforceSovietArmor(8);
+            $this->reinforceSovietTank(8);
+            $this->reinforceSovietTank(8);
             $this->reinforceSovietMechInf(8);
             $this->reinforceSovietSupply(8);
         }
+        if($scenario->scenarioName === 'zitadelle') {
+            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn3", "Infantry.svg",
+                2, 4, 2,STATUS_CAN_REINFORCE, "G", 3,
+                "german", "inf", "I");
+            for($i = 1; $i <= 9; $i++){
+                UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "SupplyBox.svg",
+                    0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "$i S");
+            }
+            $this->reinforceSovietInf(1);
+            $this->reinforceSovietInf(1);
+            $this->reinforceSovietInf(1);
+            $this->reinforceSovietInf(1);
+            $this->reinforceSovietInf(1);
+            $this->reinforceSovietInf(1);
+            $this->reinforceSovietTank(1);
+            $this->reinforceSovietTank(1);
+            $this->reinforceSovietSupply(1);
+            $this->reinforceSovietMechInf(1);
 
+
+            $this->reinforceSovietInf(2);
+            $this->reinforceSovietInf(2);
+            $this->reinforceSovietInf(2);
+            $this->reinforceSovietInf(2);
+            $this->reinforceSovietInf(2);
+            $this->reinforceSovietInf(2);
+            $this->reinforceSovietTank(2);
+            $this->reinforceSovietTank(2);
+            $this->reinforceSovietSupply(2);
+            $this->reinforceSovietMechInf(2);
+
+
+            $this->reinforceSovietInf(3);
+            $this->reinforceSovietInf(3);
+            $this->reinforceSovietInf(3);
+            $this->reinforceSovietInf(3);
+            $this->reinforceSovietInf(3);
+            $this->reinforceSovietTank(3);
+            $this->reinforceSovietTank(3);
+            $this->reinforceSovietMechInf(3);
+            $this->reinforceSovietSupply(3);
+
+            $this->reinforceSovietInf(4);
+            $this->reinforceSovietInf(4);
+            $this->reinforceSovietInf(4);
+            $this->reinforceSovietInf(4);
+            $this->reinforceSovietTank(4);
+            $this->reinforceSovietTank(4);
+            $this->reinforceSovietMechInf(4);
+            $this->reinforceSovietSupply(4);
+
+            $this->reinforceSovietInf(5);
+            $this->reinforceSovietInf(5);
+            $this->reinforceSovietInf(5);
+            $this->reinforceSovietTank(5);
+            $this->reinforceSovietTank(5);
+            $this->reinforceSovietMechInf(5);
+            $this->reinforceSovietSupply(5);
+
+            $this->reinforceSovietInf(6);
+            $this->reinforceSovietInf(6);
+            $this->reinforceSovietTank(6);
+            $this->reinforceSovietTank(6);
+            $this->reinforceSovietTank(6);
+            $this->reinforceSovietMechInf(6);
+            $this->reinforceSovietMechInf(6);
+            $this->reinforceSovietSupply(6);
+
+            $this->reinforceSovietInf(7);
+            $this->reinforceSovietInf(7);
+            $this->reinforceSovietTank(7);
+            $this->reinforceSovietTank(7);
+            $this->reinforceSovietTank(7);
+            $this->reinforceSovietMechInf(7);
+            $this->reinforceSovietMechInf(7);
+            $this->reinforceSovietSupply(7);
+
+            $this->reinforceSovietInf(8);
+            $this->reinforceSovietTank(8);
+            $this->reinforceSovietTank(8);
+            $this->reinforceSovietTank(8);
+            $this->reinforceSovietMechInf(8);
+            $this->reinforceSovietMechInf(8);
+            $this->reinforceSovietSupply(8);
+
+            $this->reinforceSovietInf(9);
+            $this->reinforceSovietTank(9);
+            $this->reinforceSovietTank(9);
+            $this->reinforceSovietTank(9);
+            $this->reinforceSovietMechInf(9);
+            $this->reinforceSovietMechInf(9);
+            $this->reinforceSovietMechInf(9);
+            $this->reinforceSovietSupply(9);
+        }
         }
 
     function __construct($data = null, $arg = false, $scenario = false)
@@ -464,7 +601,12 @@ class EastWest extends EastWestLandBattle
         }
         $this->combatRules->injectCrt($crt);
 
-        $this->moveRules->stacking = function($mapHex, $forceId, $unit){
+        $sovietStacking = 2;
+        if($scenario->scenarioName == "zitadelle"){
+            $this->gameRules->setMaxTurn(9);
+            $sovietStacking = 3;
+        }
+        $this->moveRules->stacking = function($mapHex, $forceId, $unit) use ($sovietStacking) {
             if($unit->class === 'art' || $unit->class === 'supply'){
                 return false;
             }
@@ -503,7 +645,7 @@ class EastWest extends EastWestLandBattle
                 }
                 return false;
             }else{
-                if($numNonSupport >= 2){
+                if($numNonSupport >= $sovietStacking){
                     if(!$this->victory->canSovietCombine()){
                         return true;
                     }

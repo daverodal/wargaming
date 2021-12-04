@@ -95,6 +95,17 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         return $strength;
     }
 
+    public function setHexagon($hexNum){
+        $this->hexagon = new Hexagon($hexNum);
+
+        $battle = Battle::getBattle();
+        $mapData = $battle->mapData;
+
+        $mapHex = $mapData->getHex($this->hexagon->getName());
+        if ($mapHex) {
+            $mapHex->setUnit($this->forceId, $this);
+        }
+    }
 
     function set($unitName, $unitForceId, $unitHexagon, $unitImage, $unitStrength, $untriedStrength,  $unitMaxMove, $unitStatus, $unitReinforceZone, $unitReinforceTurn, $range, $nationality = "neutral", $class = "", $unitDesig = "")
     {

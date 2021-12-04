@@ -49,9 +49,8 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 
         $this->crts = new stdClass();
         $this->crts->normal = new \Wargame\CRT(array("1:4", "1:3", "1:2", "1:1","2:1","3:1","4:1","5:1","6:1", "7:1"),
-            '',10,0);
+            '',10,1);
         $this->crts->normal->table = array(
-            array(AE, AE, AE, AE, AX, AR2, DR1, DR2, DR3, DR3),
             array(AE, AE, AE, AX, AR2, DR1, DR2, DR3, DR3, EX),
             array(AE, AE, AX, AR1, DR1, DR2, DR3, DR3, EX, DE),
             array(AE, AR3, AR2, DR1, DR1, DR2, EX, EX, DE, DE),
@@ -60,8 +59,9 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
             array(AR1, DR1, DR1, EX, DE, DE, DE, DE, DE, DE),
         );
 
-        $this->rowNum = 0;
-        $this->maxCombatIndex = 9;
+        $this->rowNum = 1;
+        $this->maxCombatIndex = 10;
+        $this->maxCombatIndex = $this->combatIndexCount - 1;
         $this->dieSideCount = 6;
     }
 

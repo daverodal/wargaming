@@ -172,12 +172,23 @@
         },
         "scenarios": {
             "Main": {
+                "name": "Main",
                 "description": "The Future",
                 "longDescription":"not romantic.",
                 "supply": true,
                 "loyalMechMove": 8,
                 "loyalExtraInf": true,
-                "supplyLen": false,
+                "supplyLen": 25,
+                "showHexNums": true
+            },
+            "Western": {
+                "name": "Western",
+                "description": "Western front of the opening of the war.",
+                "longDescription":"The South has total surprise combined with their very best armor units. The North has ample reinforcements.",
+                "supply": true,
+                "loyalMechMove": 8,
+                "loyalExtraInf": true,
+                "supplyLen": 25,
                 "showHexNums": true
             }
         }

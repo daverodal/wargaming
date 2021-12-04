@@ -218,12 +218,13 @@ function hookupx(){
               this.$store.commit('toggleShowUndo');
             },
             shiftClick(){
+                debugger;
                 this.dynamicButtons.shiftKey = !this.dynamicButtons.shiftKey;
                 DR.shiftKey = !DR.shiftKey;
                 this.$store.commit('headerData/setDynamicButton', {id: 'shiftKey', value: DR.shiftKey});
             },
             clearCombat(){
-
+                debugger;
                 doitKeypress(67);
             },
             fullScreen(){

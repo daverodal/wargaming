@@ -14,12 +14,12 @@
 @section('exclusiveRulesWrapper')
 @endsection
 @section('obc')
+    <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
 @endsection
-
 @extends('wargame::stdIncludes.view-vue' )
 @section('dynamic-buttons')
-    <button :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
-    <button :class="{'inline-show': dynamic.combat}" class="dynamicButton combatButton" id="shiftKey">+</button>
+    <button :class="{'inline-show': dynamic.combat}" @click="clearCombat" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
+    <button :class="{'inline-show': dynamic.combat, dark: dynamic.shiftKey}" @click="shiftClick"  class="dynamicButton combatButton" id="shiftKey" >+</button>
 @endsection
 @section('deploy-box')
     <div id="deployBox">

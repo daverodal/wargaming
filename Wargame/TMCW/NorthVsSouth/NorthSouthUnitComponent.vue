@@ -5,7 +5,8 @@
         <div class="unit-size">{{ unit.name }}</div>
         <img v-for="theta in thetas" :style="{transform: theta}" class="counter arrow" src="/assets/unit-images/short-red-arrow-md.png">
         <div class="counter-wrapper">
-            <img class="counter" :src="'/assets/unit-images/'+unit.image" alt="">
+          <span v-if="!unit.supplied" class="is-supplied">U</span>
+          <img class="counter" :src="'/assets/unit-images/'+unit.image" alt="">
         </div>
         <div class="unit-numbers" :class="infoLen">
             {{ unitNumbers }}
@@ -127,6 +128,12 @@
         .counter-wrapper{
           height:15px;
           font-size:14px;
+          .is-supplied{
+            position:absolute;
+            font-size:14px;
+            color: black;
+            font-family: 'Montserrat'
+          }
         }
         .unit-numbers{
           height:18px;

@@ -24,7 +24,7 @@
     @include('wargame::TMCW.Minsk1941.victoryConditions')
 @endsection
 @section('full-status')
-    <div id="topStatus" v-html="headerTurn <= 5 ? 'Jun ' + ((headerTurn - 1) * 2 + 22) : 'Jul ' + ((headerTurn - 6) * 2 + 2) + headerTopStatus"></div>
+    <div id="topStatus" v-html="(headerTurn <= 5 ? 'Jun ' + ((headerTurn - 1) * 2 + 22) : 'Jul ' + ((headerTurn - 6) * 2 + 2)) + headerTopStatus"></div>
     <div>
         <span id="status" v-html="headerStatus"></span>
         <span id="combatStatus" v-html="combatStatus"></span>

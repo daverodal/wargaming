@@ -68,6 +68,12 @@ class UnitFactory {
         }
         return $gnuArray;
     }
+    public static function getShuffled(){
+        shuffle(static::$randomInjector);
+        $ret = self::$randomInjector;
+        self::$randomInjector = [];
+        return $ret;
+    }
     public static function flush(){
 //        static::$randomInjector = self::doShuffle(static::$randomInjector);
         shuffle(static::$randomInjector);

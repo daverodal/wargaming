@@ -171,7 +171,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             }
             return false;
         }
-        if ($scenario === 'stalingrad') {
+        if ($scenario === 'stalingrad' || $scenario === 'zitadelle' ) {
             if ($b->gameRules->turn >= 5 && $b->gameRules->turn <= 8) {
                 return true;
             }
@@ -191,6 +191,12 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
         if($scenario === 'stalingrad'){
             if($turn === 4){
+                return true;
+            }
+            return false;
+        }
+        if($scenario === 'stalingrad'){
+            if($turn === 4 || $turn === 9){
                 return true;
             }
             return false;

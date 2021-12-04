@@ -76,9 +76,7 @@ class Minsk1941 extends \Wargame\ModernLandBattle
                     }
                     $cnt++;
                     $isReduced = false;
-                    if ($cnt%2 == 0) {
-                        continue;
-                    }
+
                     UnitFactory::create("xxx", Minsk1941::SOVIET_FORCE, $item->hex, "Infantry.svg", 3, 4, STATUS_READY, "B", 1, "soviet", 'inf', $unitsDeployed+1, 3,3 , 3);
 
 
@@ -95,12 +93,12 @@ class Minsk1941 extends \Wargame\ModernLandBattle
 //
 //                    }
                     $unitsDeployed++;
-                    if ($unitsDeployed >= 13) {
+                    if ($unitsDeployed >= 21) {
                         break;
                     }
 
                 }
-            } while ($unitsDeployed < 13);
+            } while ($unitsDeployed < 21);
 //            UnitFactory::create("xxx", Minsk1941::SOVIET_FORCE, 609, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 1, 3);
 //            UnitFactory::create("xxx", Minsk1941::SOVIET_FORCE, 508, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 1, 3);
 //            UnitFactory::create("xxx", Minsk1941::SOVIET_FORCE, 509, "Infantry.svg", 3, 4, STATUS_READY, "A", 1, "soviet", 'inf', $unitsDeployed+1, 1, 3);

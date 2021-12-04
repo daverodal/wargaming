@@ -274,7 +274,7 @@
         </div>
         <div id="gameViewer">
             <div id="gameContainer" >
-                <div id="gameImages" @keyup.native="pushedKey" @click="mapClick">
+                <div id="gameImages" @click="mapClick">
 
                     @section('game-images')
                     <div id="svgWrapper">
