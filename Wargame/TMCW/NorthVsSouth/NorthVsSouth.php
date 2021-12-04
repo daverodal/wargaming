@@ -260,7 +260,7 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
             $unit->setHexagon("gameTurn$i");
             $unit->unitReinforceZoneName = "C";
             $unit->unitReinforceTurn = $i;
-            $unit->unitStatus = STATUS_CAN_REINFORCE;
+            $unit->status = STATUS_CAN_REINFORCE;
             $this->force->injectUnit($unit);
         }
         for($i = 0; count($units) > 0; $i++) {
@@ -268,7 +268,7 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
             $unit->setHexagon("deadpile");
             $unit->unitReinforceZoneName = "C";
             $unit->unitReinforceTurn = 1;
-            $unit->unitStatus = STATUS_ELIMINATED;
+            $unit->status = STATUS_ELIMINATED;
             $this->force->injectUnit($unit);
         }
     }
