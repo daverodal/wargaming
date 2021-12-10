@@ -170,6 +170,12 @@ class Chawinda1965 extends \Wargame\ModernLandBattle
 
     function __construct($data = null, $arg = false, $scenario = false)
     {
+        $clone = null;
+        if($data){
+            $clone = clone $data->force;
+            unset($clone->units);
+        }
+        $this->force = new Force($clone);
         parent::__construct($data, $arg, $scenario);
 
         $crt = new \Wargame\TMCW\Chawinda1965\CombatResultsTable();

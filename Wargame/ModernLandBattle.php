@@ -59,7 +59,9 @@ class ModernLandBattle extends LandBattle
             $this->mapViewer = array(new MapViewer($data->mapViewer[0]), new MapViewer($data->mapViewer[1]), new MapViewer($data->mapViewer[2]));
             $units = $data->force->units;
             unset($data->force->units);
-            $this->force = new Force($data->force);
+            if(!$this->force){
+                $this->force = new Force($data->force);
+            }
             foreach($units as $unit){
                 $this->force->injectUnit(static::buildUnit($unit));
             }
@@ -80,7 +82,9 @@ class ModernLandBattle extends LandBattle
             $this->scenario = $scenario;
 
             $this->mapViewer = array(new MapViewer(), new MapViewer(), new MapViewer());
-            $this->force = new Force();
+            if(!$this->force) {
+                $this->force = new Force();
+            }
             $this->terrain = new Terrain();
             $this->moveRules = new MoveRules($this->force, $this->terrain);
 

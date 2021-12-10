@@ -438,6 +438,10 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 
         if($attackingId === NorthVsSouth::NORTHERN_FORCE){
             $gameRules->replacementsAvail = 3;
+            if($gameRules->turn === 1){
+                $gameRules->replacementsAvail = 1;
+                $gameRules->flashMessages[] = "Only one replacement available on turn one.";
+            }
         }
     }
 }

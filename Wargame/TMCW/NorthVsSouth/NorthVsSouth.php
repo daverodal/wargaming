@@ -152,16 +152,16 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
         for($i = 0; $i < 10; $i++){
             $unit = array_shift($units);
             $unit->setHexagon("deployBox");
-            $unit->unitReinforceZoneName = "A";
-            $unit->unitReinforceTurn = 1;
+            $unit->reinforceZoneName = "A";
+            $unit->reinforceTurn = 1;
             $unit->status = STATUS_CAN_DEPLOY;
             $this->force->injectUnit($unit);
         }
         for(; count($units) > 0;) {
             $unit = array_shift($units);
             $unit->setHexagon("deadpile");
-            $unit->unitReinforceZoneName = "C";
-            $unit->unitReinforceTurn = 1;
+            $unit->reinforceZoneName = "C";
+            $unit->reinforceTurn = 1;
             $unit->status = STATUS_ELIMINATED;
             $this->force->injectUnit($unit);
         }
@@ -207,16 +207,16 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
         for($i = 2; $i <= 6; $i++){
             $unit = array_shift($units);
             $unit->setHexagon("gameTurn$i");
-            $unit->unitReinforceZoneName = "C";
-            $unit->unitReinforceTurn = $i;
+            $unit->reinforceZoneName = "C";
+            $unit->reinforceTurn = $i;
             $unit->status = STATUS_CAN_REINFORCE;
             $this->force->injectUnit($unit);
         }
         for($i = 0; count($units) > 0; $i++) {
             $unit = array_shift($units);
             $unit->setHexagon("deadpile");
-            $unit->unitReinforceZoneName = "C";
-            $unit->unitReinforceTurn = 1;
+            $unit->reinforceZoneName = "C";
+            $unit->reinforceTurn = 1;
             $unit->status = STATUS_ELIMINATED;
             $this->force->injectUnit($unit);
         }
@@ -258,16 +258,16 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
         for($i = 2; $i <= 6; $i++){
             $unit = array_shift($units);
             $unit->setHexagon("gameTurn$i");
-            $unit->unitReinforceZoneName = "C";
-            $unit->unitReinforceTurn = $i;
+            $unit->reinforceZoneName = "C";
+            $unit->reinforceTurn = $i;
             $unit->status = STATUS_CAN_REINFORCE;
             $this->force->injectUnit($unit);
         }
         for($i = 0; count($units) > 0; $i++) {
             $unit = array_shift($units);
             $unit->setHexagon("deadpile");
-            $unit->unitReinforceZoneName = "C";
-            $unit->unitReinforceTurn = 1;
+            $unit->reinforceZoneName = "C";
+            $unit->reinforceTurn = 1;
             $unit->status = STATUS_ELIMINATED;
             $this->force->injectUnit($unit);
         }
@@ -275,6 +275,10 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
 
     public function init()
     {
+        $Die = $this->dieRolls->getEvent(10000);
+        /* shuffle uses rand() so we call srand with a remembered random number */
+        srand($Die);
+
         UnitFactory::$injector = $this->force;
 
 

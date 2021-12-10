@@ -140,6 +140,15 @@
           font-size:17px;
         }
       }
+      .is-supplied{
+        position:absolute;
+        font-size:9px;
+        color: black;
+        font-family: 'Montserrat'
+      }
+      .unit-numbers.infoLen7{
+        font-size:10px;
+      }
     }
     .ghost{
         opacity: 0;

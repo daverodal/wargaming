@@ -782,11 +782,6 @@ class GameRules extends GameRulesAbs
 
                     case SELECT_BUTTON_EVENT:
 
-                        $numCombines = 0;
-                        if(method_exists($this->force, 'getCombine')){
-                            $numCombines = $this->force->getCombine();
-                        }
-
                         $ret =  $this->selectNextPhase($click);
 
                         return $ret;
@@ -1223,15 +1218,6 @@ class GameRules extends GameRulesAbs
     function selectNextPhase($click){
         $ret = $this->endPhase($click);
 
-        $numCombines = 0;
-        if (method_exists($this->force, 'getCombine')) {
-            $numCombines = $this->force->getCombine();
-        }
-
-        if ($ret === true && $this->mode === COMBINING_MODE && $numCombines === 0) {
-            $this->flashMessages[] = "No Combines Possible. Skipping to Next Phase.";
-            $ret = $this->endPhase($click);
-        }
         do {
             $didOne = false;
 
@@ -1300,6 +1286,12 @@ class GameRules extends GameRulesAbs
                 $this->force->setAttackingForceId($this->attackingForceId, $this->defendingForceId);
 
                 $victory->phaseChange();
+                if ($this->mode === COMBINING_MODE){
+                    if($this->force->getCombine() === 0) {
+                        $this->flashMessages[] = "No Combines Possible. Skipping to Next Phase.";
+                        $ret = $this->endPhase($click);
+                    }
+                }
                 $this->force->recoverUnits($this->phase, $this->moveRules, $this->mode);
 
                 if ($this->turn > $this->maxTurn) {

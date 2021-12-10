@@ -68,7 +68,7 @@ class CombatResultsTable extends \Wargame\TMCW\ModernCombatResultsTable
 
     function getCombatResults($Die, $index, $combat)
     {
-        return $this->crts->normal->table[(int)$Die + $combat->dieOffset  + 1][$index];
+        return $this->crts->normal->table[(int)$Die][$index];
     }
 
     function getCombatIndex($attackStrength, $defenseStrength)

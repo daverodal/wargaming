@@ -221,7 +221,7 @@ class Force extends SimpleForce
                 $advancingProspect->status = STATUS_ATTACKED;
             }
         }
-        
+
     }
 
     function unitCanAdvance($id)
@@ -597,7 +597,7 @@ class Force extends SimpleForce
     {
         $this->exchangeAmount -= $unit->exchangeAmount;
     }
-    
+
     function defenderLoseUnit($unit)
     {
         $this->defenderLoseAmount -= $unit->exchangeAmount;
@@ -856,7 +856,7 @@ class Force extends SimpleForce
     {
         return $this->exchangeAmount;
     }
-    
+
     function getDefenderLosingAmount()
     {
         return $this->defenderLoseAmount;
@@ -1017,7 +1017,7 @@ class Force extends SimpleForce
         }
         return $areAdvancing;
     }
-    
+
     function clearAdvancing()
     {
         return;
@@ -1071,47 +1071,11 @@ class Force extends SimpleForce
 
     public function getCombine()
     {
-        $idMap = [];
-        $numCombines = 0;
-        $fId = $this->attackingForceId;
-        $units = $this->units;
-        foreach($units as $unit){
-            if($unit->forceId === $fId){
-                if(!empty($idMap[$unit->id])){
-                    continue;
-                }
-                $inHex = $this->findSimilarInHex($unit);
-                if($inHex && count($inHex) > 0){
-                    $unit->status = STATUS_CAN_COMBINE;
-                    $idMap[$inHex[0]->id] = true;
-                    $this->units[$inHex[0]->id]->status = STATUS_CAN_COMBINE;
-                    $numCombines++;
-                }
-            }
-        }
-        return $numCombines;
+        return 0;
     }
 
-    public function findSimilarInHex($unit)
-    {
-        $b = Battle::getBattle();
-        /* @var mapData $mapData */
-        $mapData = $b->mapData;
-        if($unit->isReduced !== true){
-            return false;
-        }
-        $units = $mapData->getHex($unit->hexagon->name)->getForces($unit->forceId);
-        $similarUnits = [];
-        foreach($units as $k => $v){
-            if($this->units[$k]->forceId === $unit->forceId){
-                if( $this->units[$k]->class === $unit->class && $k != $unit->id){
-                    if( $this->units[$k]->isReduced === true){
-                        $similarUnits[] = $this->units[$k];
-                    }
-                }
-            }
-        }
-        return $similarUnits;
+    public function findSimilarInHex($unit){
+        return [];
     }
 
 }
