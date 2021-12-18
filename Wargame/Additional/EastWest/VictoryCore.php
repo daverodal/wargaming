@@ -221,6 +221,10 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             }
             return false;
         }
+        if($scenario === 'zitadelle'){
+            return true;
+        }
+        return false;
     }
     public function reduceUnit($args)
     {
