@@ -242,7 +242,6 @@ function hookupx(){
               this.$store.commit('floaters/toggle');
             },
             nextPhase(evt){
-                console.log(evt);
                 nextPhaseMouseDown();
             },
             // menuClick(id){
