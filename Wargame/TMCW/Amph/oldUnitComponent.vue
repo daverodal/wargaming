@@ -49,11 +49,9 @@
             },
           showMe(){
               if(this.unit.showOff){
-                  console.log("show off ");
                   return 'block';
               }
               if(this.unit.isOccupied){
-                  console.log("occupied ");
                   return 'none';
               }
               return 'block';
@@ -78,12 +76,9 @@
         methods:{
             unitClick(e){
 
-                console.log(this.unit);
                 counterClick(e, this.unit.id);
             },
             mOver(){
-                console.log(this.unit.id);
-              console.log('over');
               let locId = this.unit.id;
               if(typeof locId === 'string'){
                 locId = locId.replace(/Hex.*/,'Hex')
