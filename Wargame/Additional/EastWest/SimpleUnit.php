@@ -229,22 +229,113 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         return $mapUnit;
     }
 
-    public function combine($otherUnits, $type)
+
+
+    public function split()
     {
+        if ($this->name !== "xxxx") {
+            return false;
+        }
+        $makeTwo = false;
+        $this->name = "xxx";
+        if ($this->status === STATUS_MOVING) {
+            if ($this->moveAmountUsed !== 0) {
+                return false;
+            }
+        }
+        $b = Battle::getBattle();
+        if($this->class === "armor"){
+            $this->origStrength = 3;
+            $this->unitDefStrength = 2;
+        }
+        if($this->class === "inf"){
+            if($this->origStrength === 2){
+                $makeTwo = true;
+            }
+            $this->origStrength = 1;
+            $this->unitDefStrength = 2;
+        }
+        $cloneOne = clone $this;
+        $newId = count($b->force->units);
+        $cloneOne->id = $newId;
+        $b->force->units[] = $cloneOne;
+
+        if(!$makeTwo){
+            $cloneTwo = clone $this;
+            $newId = count($b->force->units);
+            $cloneTwo->id = $newId;
+            $b->force->units[] = $cloneTwo;
+        }
+
+//        $cloneOne->hexagon = $this->hexagon;
+        $cloneOne->status = STATUS_CAN_DEPLOY;
+        if(!$makeTwo){
+            $cloneTwo->status = STATUS_CAN_DEPLOY;
+        }
+//        $cloneTwo->hexagon = $this->hexagon;
+//        $cloneTwo->status = STATUS_CAN_DEPLOY;
+        if ($this->status === STATUS_MOVING) {
+            $cloneOne->status = STATUS_READY;
+            if(!$makeTwo){
+                $cloneTwo->status = STATUS_READY;
+            }
+//            $cloneOne->moveAmountUsed = $this->moveAmountUsed;
+//            $cloneOne->moveAmountUnused = $this->moveAmountUnused;
+//            $cloneOne->supplied = $this->supplied;
+//            $cloneOne->adjustments = $this->adjustments;
+//            $cloneTwo->status = STATUS_READY;
+//            $cloneTwo->moveAmountUsed = $this->moveAmountUsed;
+//            $cloneTwo->moveAmountUnused = $this->moveAmountUnused;
+//            $cloneTwo->supplied = $this->supplied;
+//            $cloneTwo->adjustments = $this->adjustments;
+        }
+        $mapHex = $b->mapData->getHex($this->hexagon->name);
+        $mapHex->setUnit($cloneOne->forceId, $cloneOne);
+        if(!$makeTwo){
+            $mapHex->setUnit($cloneTwo->forceId, $cloneTwo);
+        }
+        return true;
+    }
+
+
+    public function combine($otherUnits, $type = false)
+    {
+        if($type === false){
+            $type = $this->class;
+        }
         $b = Battle::getBattle();
         $mapData = $b->mapData;
         if($type === 'armor'){
-            $this->origStrength = 6;
-            $this->unitDefStrength = 5;
-            $this->maxMove = 5;
+            if($this->forceId === EastWest::SOVIET_FORCE){
+                $this->origStrength = 6;
+                $this->unitDefStrength = 5;
+                $this->maxMove = 5;
+            }else{
+                $this->origStrength = 11;
+                $this->unitDefStrength = 8;
+                $this->maxMove = 8;
+                $this->name = "xxxx";
+            }
+
             $this->class = 'armor';
             $this->image = "Armor.svg";
         }
         if($type === 'inf'){
-            $this->origStrength = 5;
-            $this->unitDefStrength = 9;
+            if($this->forceId === EastWest::SOVIET_FORCE) {
+                $this->origStrength = 5;
+                $this->unitDefStrength = 9;
+                $this->maxMove = 3;
+            }else{
+                $this->origStrength = 5;
+                $this->unitDefStrength = 7;
+                if($this->maxMove === 2){
+                    $this->origStrength = 2;
+                    $this->unitDefStrength = 4;
+                }
+                $this->name = "xxxx";
+            }
+
             $this->class = 'inf';
-            $this->maxMove = 3;
             $this->image = "Infantry.svg";
         }
         foreach($otherUnits as $other){

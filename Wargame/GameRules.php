@@ -380,7 +380,7 @@ class GameRules extends GameRulesAbs
                             $ret = $this->force->findSimilarInHex($unit);
 
                             if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret[0]) === false){
+                                if($unit->combine($ret) === false){
                                     return false;
                                 }
                             }else{
@@ -469,7 +469,7 @@ class GameRules extends GameRulesAbs
                             $ret = $this->force->findSimilarInHex($unit);
 
                             if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret[0]) === false){
+                                if($unit->combine($ret) === false){
                                     return false;
                                 }
                             }else{
@@ -532,7 +532,7 @@ class GameRules extends GameRulesAbs
                             $ret = $this->force->findSimilarInHex($unit);
 
                             if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret[0]) === false){
+                                if($unit->combine($ret) === false){
                                     return false;
                                 }
                             }else{
@@ -575,7 +575,7 @@ class GameRules extends GameRulesAbs
                                 $ret = $this->force->findSimilarInHex($unit);
 
                                 if(is_array($ret) && count($ret) > 0){
-                                    if($unit->combine($ret[0]) === false){
+                                    if($unit->combine($ret) === false){
                                         return false;
                                     }else{
                                         $this->moveRules->stopMove($unit, true);
@@ -755,7 +755,7 @@ class GameRules extends GameRulesAbs
                                 $ret = $this->force->findSimilarInHex($unit);
 
                                 if(is_array($ret) && count($ret) > 0){
-                                    if($unit->combine($ret[0]) === false){
+                                    if($unit->combine($ret) === false){
                                         return false;
                                     }
                                 }else{

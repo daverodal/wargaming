@@ -172,8 +172,9 @@ use \stdClass;
             return $mapUnit;
         }
 
-        public function combine($secondUnit)
+        public function combine($otherUnits)
         {
+            $secondUnit = $otherUnits[0];
             if ($this->isReduced !== true) {
                 return false;
             }
