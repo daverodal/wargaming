@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded",() => {
         },
         methods: {
             myFirstOne(evt) {
-                console.log(evt.target.id);
             }
         },
         data: {

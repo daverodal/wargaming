@@ -71,7 +71,6 @@
             fadeCompleted(){
                 if(this.messageQueue.length > 0){
                     this.message = this.messageQueue.shift();
-                    console.log(this.message);
                     this.startPulseOn();
                 }else{
                     this.message = null;

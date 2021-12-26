@@ -14,14 +14,12 @@ export const floatMessageData = {
             state.header = header;
         },
         setMessage(state, message){
-            console.log("Message sent "+message);
             state.message = message;
         },
         setAdvisory(state, advisory){
             state.advisory = advisory;
         },
         setX(state, x){
-            console.log("X set " + x)
             state.x = x;
         },
         setY(state, y){

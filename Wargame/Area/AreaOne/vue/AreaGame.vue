@@ -138,17 +138,10 @@
         },
     methods:{
             onTouch(){
-                console.log('hi');
             },
             panstart(e){
-                console.log("PanStart")
-                console.log(e.getTransform());
-
             },
             panend(e, f){
-                console.log("PanEnd");
-                console.log(e);
-                console.log(f);
                 e.fire('click');
                 return false;
             },

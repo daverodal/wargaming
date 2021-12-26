@@ -46,13 +46,11 @@ document.addEventListener("DOMContentLoaded",function(){
     DR.doingZoom = false;
 
     DR.$floatMessagePanZoom = $('#float-message-drag-wrapper').panzoom({cursor: "normal", disableZoom: true, onPan: function (e, panzoom) {
-        console.log("Floag Pan ");
         DR.floatMessageDragged = true;
         }
     });
     let crtPanzoom = $('#crt-drag-wrapper').panzoom({
             onPan: function (e, panzoom, e2, e3, e4) {
-                console.log('i pan');
             },
             onEnd(a,b,c,d,e,f){
                 let vueStore = store;
@@ -112,7 +110,6 @@ document.addEventListener("DOMContentLoaded",function(){
     );
     let undoPanzoom = $('#undo-drag-wrapper').panzoom({
         onPan: function (e, panzoom, e2, e3, e4) {
-            console.log('i pan');
         },
         onEnd(a,b,c,d,e,f){
 

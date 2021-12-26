@@ -41,7 +41,6 @@
               });
             }
 
-            console.log(unitsRet);
             return unitsRet;
           },
           normalHex(){
