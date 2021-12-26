@@ -19,9 +19,6 @@ export class EastWestSyncController extends SyncController{
                 let hex = data.specialHexesMap[i];
                 hex = hex.replace(/^0/,"");
                 let value = data.victory.cityValues[hex];
-                console.log(i)
-                console.log(data.specialHexesMap[i])
-                console.log(data.victory.cityValues[data.specialHexesMap[i]])
 
                 let mapSymbol = {x: x, y: y, text: DR.players[specialHexes[i]] + " " + value, class: DR.players[specialHexes[i]].replace(/ /g,'-'), change: false};
                 if(data.specialHexesChanges[i]){
