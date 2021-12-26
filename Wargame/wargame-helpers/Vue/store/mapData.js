@@ -21,10 +21,8 @@ export const mapData = {
     },
     mutations:{
         showPath(state, unit){
-            console.log("Show me the path");
             // hovered unit is decorated via css
             _.forEach(unit.pathToHere,(path)=>{
-                console.log("Pa "+ path);
                 let pathUnit = state.moveMap[path]
                 if(pathUnit){
                     pathUnit.opac = 1
@@ -99,9 +97,14 @@ export const mapData = {
             state.dispUnits.forEach(unit => {
                 const id = unit.id;
                 const hex = state.unitsMap[id];
+                let temp = [];
                 for (var i in state.hexesMap[hex]) {
-                    state.dispUnitsMap[state.hexesMap[hex][i]].zIndex = 3 - i - 0 + 1;
+                    if(state.dispUnitsMap[state.hexesMap[hex][i]]){
+                        state.dispUnitsMap[state.hexesMap[hex][i]].zIndex = 3 - i - 0 + 1;
+                        temp.push(state.hexesMap[hex][i]);
+                    }
                 }
+                state.hexesMap[hex] = temp;
             })
         },
         rotateUnits({dispUnitsMap, hexesMap, unitsMap}, id){
