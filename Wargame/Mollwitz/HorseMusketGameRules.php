@@ -220,160 +220,36 @@ class HorseMusketGameRules extends GameRulesAbs
         }
 
         switch ($this->mode) {
-
-
-
             case OPTION_MODE:
-
                 switch ($event) {
-
                     case SELECT_BUTTON_EVENT:
 
                         $this->option = $id;
                         $this->options = false;
                         return $this->selectNextPhase($click);
-                        break;
                 }
                 break;
-
-
-
-
-
-
-
-
-
-
-
-
-                case DEPLOY_MODE:
+            case DEPLOY_MODE:
                 switch ($event) {
                     case KEYPRESS_EVENT:
                         $bad = true;
                         $c = chr($id);
 
-                        if($c == 'i' || $c == 'I'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
+                        // Keypress stuff used to be here
 
-                            $unit->enterImproved(true);
-                            $bad = false;
-                        }
-
-                        if($c == 'u' || $c == 'U'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $unit->exitImproved(true);
-                            $bad = false;
-
-                        }
-                        if($c == 'b' || $c == 'B'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            if(method_exists($unit, 'battleReadyOrgStatus')){
-                                if (!$unit->unitHasNotMoved()) {
-                                    return false;
-                                }
-                                if($unit->battleReadyOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            return false;
-                        }
-                        if($c == 'h' || $c == 'H'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            if(method_exists($unit, 'hedgeHogOrgStatus')){
-                                if (!$unit->unitHasNotMoved()) {
-                                    return false;
-                                }
-                                if($unit->hedgeHogOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            return false;
-                        }
-                        if($c == 's' || $c == 'S'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-
-                            if(method_exists($unit, 'split')){
-                                if($unit->split() === false){
-                                    return false;
-                                }
-                                $bad = false;
-                            }
-                            if(method_exists($unit, 'standOrgStatus')){
-                                if($unit->standOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            if($bad){
-                                return false;
-                            }
-
-                        }
-                        if($c == 'c' || $c == 'C'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $ret = $this->force->findSimilarInHex($unit);
-
-                            if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret[0]) === false){
-                                    return false;
-                                }
-                            }else{
-                                return false;
-
-                            }
-                            $bad = false;
-                        }
-
-                        if($id == 37){
-                            if(method_exists($this->moveRules, 'turnLeft')){
-                                $ret = $this->moveRules->turnLeft(true);
-                                return $ret;
-                            }
-
-                        }
-
-                        if($id == 40){
-                            if(method_exists($this->moveRules, 'turnAbout')){
-                                $ret = $this->moveRules->turnAbout(true);
-                                return $ret;
-                            }
-
-                        }
-
-                        if($id == 39){
-                            if(method_exists($this->moveRules, 'turnRight')){
-                                $ret = $this->moveRules->turnRight(true);
-                                return $ret;
-                            }
-                        }
                         if($bad === true){
                             return false;
                         }
 
                     case SELECT_MAP_EVENT:
                     case SELECT_COUNTER_EVENT:
-
-
-
-                    return $this->moveRules->moveUnit($event, $id, $location, $this->turn);
-                        break;
-
+                        return $this->moveRules->moveUnit($event, $id, $location, $this->turn);
                     case SELECT_BUTTON_EVENT:
-
                         $this->selectNextPhase($click);
                         break;
                 }
                 break;
-
-                case MOVING_MODE:
+            case MOVING_MODE:
 
                 switch ($event) {
 
@@ -407,128 +283,6 @@ class HorseMusketGameRules extends GameRulesAbs
                                 return false;
                             }
 
-                            if($c == 'i' || $c == 'I'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-                                $ret = $unit->enterImproved();
-                                if($ret) {
-                                    $hexName = $unit->hexagon->name;
-                                    if ($unit->isImproved) {
-                                        $battle->mapData->specialHexesVictory->$hexName = "IP!";
-                                    } else {
-                                        $battle->mapData->specialHexesVictory->$hexName = "No IP";
-                                    }
-                                }
-                                return $ret;
-                            }
-
-                            if($c == 'u' || $c == 'U'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                return $unit->exitImproved();
-                            }
-
-                            if($c == 'l' || $c == 'L'){
-                                if($this->moveRules InstanceOf TransportMoveRules){
-                                     return $this->moveRules->loadUnit();
-                                }else {
-                                    return false;
-                                }
-                                /* is this finished? */
-//                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-                            }
-
-                            if($id == 37){
-                                if(method_exists($this->moveRules, 'turnLeft')){
-                                    $ret = $this->moveRules->turnLeft();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($id == 40){
-                                if(method_exists($this->moveRules, 'turnAbout')){
-                                    $ret = $this->moveRules->turnAbout();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($id == 39){
-                                if(method_exists($this->moveRules, 'turnRight')){
-                                    $ret = $this->moveRules->turnRight();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($c == 'b' || $c == 'B'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'battleReadyOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->battleReadyOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                }
-                                return false;
-                            }
-
-                            if($c == 'h' || $c == 'H'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'hedgeHogOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->hedgeHogOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                }
-                                return false;
-                            }
-
-                            if($c == 's' || $c == 'S'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'split')){
-                                    if($unit->split() === false){
-                                        return false;
-                                    }
-                                    $bad = false;
-                                }
-                                if(method_exists($unit, 'standOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->standOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                    $bad = false;
-                                }
-                                if($bad){
-                                    return false;
-                                }
-                            }
-                            if($c == 'c' || $c == 'C'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                $ret = $this->force->findSimilarInHex($unit);
-
-                                if(is_array($ret) && count($ret) > 0){
-                                    if($unit->combine($ret[0]) === false){
-                                        return false;
-                                    }
-                                }else{
-                                    return false;
-
-                                }
-                                $bad = false;
-                            }
                             if($bad === true){
                                 return false;
                             }
