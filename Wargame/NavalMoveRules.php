@@ -40,6 +40,7 @@ class NavalMoveRules extends MoveRules
     public $path;
     public $moveQueue;
     public $spottedRange = 8;
+    public $line = [];
 
     /* usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
      * so 1 means you can't stack with even 1 enemy. Use a closure here to allow for air units stacking with
@@ -233,17 +234,52 @@ class NavalMoveRules extends MoveRules
                     $newHex = $hexagon;
                     if ($this->moves->$newHex) {
                         $this->path = $this->moves->$newHex->pathToHere;
-
+                        $newLine = [];
                         foreach ($this->path as $moveHex) {
-                            $this->move($movingUnit, $moveHex);
-
+                            $nextHex = $movingUnit->hexagon->getName();
+                            $nextFacing = $movingUnit->facing;
+                            $didMove = $this->move($movingUnit, $moveHex);
+                            if($didMove) {
+                                foreach ($this->line as $key => $hex) {
+                                    $mapHex = $this->mapData->getHex($hex);
+                                    $forces = $mapHex->getForces($movingUnit->forceId);
+                                    foreach ($forces as $key => $val) {
+                                        $lineUnit = $this->force->units[$key];
+                                        $prevHex = $lineUnit->hexagon->getName();
+                                        $prevFacing = $lineUnit->facing;
+                                        $this->moveLine($this->force->units[$key], $nextHex);
+                                        $this->force->units[$key]->facing = $nextFacing;
+                                        $newLine[] = $nextHex;
+                                    }
+                                    $nextHex = $prevHex;
+                                    $nextFacing = $prevFacing;
+                                }
+                                $this->line = $newLine;
+                            }
                         }
                         $movesLeft = $this->moves->$newHex->pointsLeft;
                         $facing = $this->moves->$newHex->facing;
                         $movingUnit->facing = $facing;
                         $this->moves = new stdClass();
 
-                        $this->move($movingUnit, $newHex);
+                        $didMove = $this->move($movingUnit, $newHex);
+                        if($didMove) {
+                            foreach ($this->line as $key => $hex) {
+                                $mapHex = $this->mapData->getHex($hex);
+                                $forces = $mapHex->getForces($movingUnit->forceId);
+                                foreach ($forces as $key => $val) {
+                                    $lineUnit = $this->force->units[$key];
+                                    $prevHex = $lineUnit->hexagon->getName();
+                                    $prevFacing = $lineUnit->facing;
+                                    $this->moveLine($this->force->units[$key], $nextHex);
+                                    $this->force->units[$key]->facing = $nextFacing;
+                                    $newLine[] = $nextHex;
+                                }
+                                $nextHex = $prevHex;
+                                $nextFacing = $prevFacing;
+                            }
+                            $this->line = $newLine;
+                        }
                         $this->path = array();
                         if ($this->anyUnitIsMoving) {
                             $this->moveQueue = array();
@@ -320,8 +356,10 @@ class NavalMoveRules extends MoveRules
                 // no one is moving, so start new move
                 if ($this->force->unitCanMove($id) == true) {
                     $this->startMoving($id);
+                    $this->line = [];
 //                    $this->calcSupply($id);
                     $this->calcMove($id);
+                    $this->calcLine($id);
                     $dirty = true;
                 }
                 if ($this->force->unitCanReinforce($id) == true) {
@@ -338,6 +376,26 @@ class NavalMoveRules extends MoveRules
     }
 
 
+    public function calcLine($id){
+        $unit = $this->force->units[$id];
+        $hex = $unit->hexagon->name;
+        $mapHex = $this->mapData->getHex($hex);
+        $neighbors = $mapHex->neighbors;
+        $heading = $unit->facing;
+        $sternDir = ($heading + 3) % 6;
+        $sternHex = $neighbors[$sternDir];
+        $mapHex = $this->mapData->getHex($sternHex);
+        $forces = $mapHex->getForces($unit->forceId);
+        $aUnit = null;
+        foreach($forces as $key => $val ){
+            $aUnit = $key;
+            break;
+        }
+        if($aUnit !== null){
+            $this->line[] = $sternHex;
+            $this->calcLine($aUnit);
+        }
+    }
     function calcMove($id, $firstHex = true)
     {
         global $numWalks;
@@ -670,9 +728,17 @@ class NavalMoveRules extends MoveRules
             && $this->moveIsValid($movingUnit, $hexagon)
         ) {
             $this->updateMoveData($movingUnit, $hexagon);
+            return true;
         }
+        return false;
     }
 
+    function moveLine(MovableUnit $movingUnit, $hexagon)
+    {
+        if ( $this->moveIsValid($movingUnit, $hexagon)) {
+            $this->updateMoveData($movingUnit, $hexagon);
+        }
+    }
     function stopSpeed(MovableUnit $movingUnit)
     {
         $battle = Battle::getBattle();
