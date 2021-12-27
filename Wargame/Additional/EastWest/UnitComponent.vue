@@ -6,6 +6,7 @@
         <img v-for="theta in thetas" :style="{transform: theta}" class="counter arrow" src="/assets/unit-images/short-red-arrow-md.png">
         <div class="counter-wrapper">
             <img class="counter" :src="'/assets/unit-images/'+unit.image" alt="">
+          <span v-if="unit.unitDesig" style="position:absolute;right:0;">{{unit.unitDesig}}</span>
         </div>
         <div class="unit-numbers" v-html="unitNumbers" :class="infoLen">
         </div>
@@ -29,7 +30,6 @@
               if(ret !== null){
 
                 zAdd = 5;
-                console.log(ret);
               }
                 return  {
                     display:this.showMe,
@@ -53,7 +53,6 @@
             },
 
             unitNumbers(){
-                console.log(this.unit);
                 var move = this.unit.maxMove - this.unit.moveAmountUsed;
                 move = move.toFixed(2);
                 move = move.replace(/\.00$/, '');

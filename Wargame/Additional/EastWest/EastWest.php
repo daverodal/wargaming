@@ -71,21 +71,21 @@ class EastWest extends EastWestLandBattle
         return $data;
     }
     protected function reinforceSovietInf($turn){
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "Infantry.svg",
-            2, 4, 2, STATUS_CAN_REINFORCE, "E", $turn, "soviet", "inf", "$turn R");
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "Infantry.svg",
+            2, 4, 2, STATUS_CAN_REINFORCE, "E", $turn, "soviet", "inf", "");
     }
     protected function  reinforceSovietTank($turn){
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "Armor.svg",
-            2, 1, 5,STATUS_CAN_REINFORCE, "E", $turn, "soviet", "armor", "$turn a");
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "Armor.svg",
+            2, 1, 5,STATUS_CAN_REINFORCE, "E", $turn, "soviet", "armor", "");
     }
     protected function reinforceSovietMechInf($turn){
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "MechInf.svg",
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "MechInf.svg",
             1, 2, 5, STATUS_CAN_REINFORCE, "E", $turn,
-            "soviet", "mech", "$turn m");
+            "soviet", "mech", "");
     }
     protected function reinforceSovietSupply($turn){
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$turn", "SupplyBox.svg",
-            0, 1, 2,STATUS_CAN_REINFORCE, "E", $turn, "soviet", "supply", "$turn S");
+        UnitFactory::create("", EastWest::SOVIET_FORCE, "gameTurn$turn", "SupplyBox.svg",
+            0, 1, 2,STATUS_CAN_REINFORCE, "E", $turn, "soviet", "supply", "");
 
     }
     protected function deploySovietInf($hex = false){
@@ -95,9 +95,9 @@ class EastWest extends EastWestLandBattle
             $hex = "deployBox";
             $status = STATUS_CAN_DEPLOY;
         }
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, $hex, "Infantry.svg",
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, $hex, "Infantry.svg",
             2, 4, 2, $status, "B", 1,
-            "soviet", "inf", "$unitDesig i");
+            "soviet", "inf", "");
         $unitDesig++;
     }
     protected function deploySovietShock($hex = false){
@@ -109,7 +109,7 @@ class EastWest extends EastWestLandBattle
         }
         UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, $hex, "Infantry.svg",
             5, 9, 3, $status, "B", 1,
-            "soviet", "inf", "$unitDesig i");
+            "soviet", "inf", "");
         $unitDesig++;
     }
     protected function deploySovietTank($hex = false){
@@ -119,9 +119,9 @@ class EastWest extends EastWestLandBattle
             $hex = "deployBox";
             $status = STATUS_CAN_DEPLOY;
         }
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, $hex, "Armor.svg",
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, $hex, "Armor.svg",
             2, 1, 5, $status, "B", 1,
-            "soviet", "armor", "$unitDesig t");
+            "soviet", "armor", "");
         $unitDesig++;
     }
     protected function deploySovietArmor($hex = false){
@@ -133,7 +133,7 @@ class EastWest extends EastWestLandBattle
         }
         UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, $hex, "Armor.svg",
             6, 5, 5, $status, "B", 1,
-            "soviet", "armor", "$unitDesig a");
+            "soviet", "armor", "");
         $unitDesig++;
     }
     protected function  deploySovietMechInf($hex = false){
@@ -143,9 +143,9 @@ class EastWest extends EastWestLandBattle
             $hex = "deployBox";
             $status = STATUS_CAN_DEPLOY;
         }
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, $hex, "MechInf.svg",
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, $hex, "MechInf.svg",
             1, 2, 5, $status, "B", 1,
-            "soviet", "mech", $unitDesig);
+            "soviet", "mech", "");
         $unitDesig++;
     }
     protected function onMapDeploy(){
@@ -242,9 +242,9 @@ class EastWest extends EastWestLandBattle
 
         }
         for($i = 0; $i < $numGerSupply; $i++){
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "deployBox", "SupplyBox.svg",
+            UnitFactory::create("", EastWest::GERMAN_FORCE, "deployBox", "SupplyBox.svg",
                 0, 2, 2,STATUS_CAN_DEPLOY, "A", 1,
-                "german", "supply", "S");
+                "german", "supply", "");
 
         }
 
@@ -264,8 +264,8 @@ class EastWest extends EastWestLandBattle
             $this->deploySovietArmor();
         }
         for($i = 0; $i < $numSovSupply; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "deployBox", "SupplyBox.svg",
-                0, 1, 2,STATUS_CAN_DEPLOY, "B", 1, "soviet", "supply", "$i S");
+            UnitFactory::create("", EastWest::SOVIET_FORCE, "deployBox", "SupplyBox.svg",
+                0, 1, 2,STATUS_CAN_DEPLOY, "B", 1, "soviet", "supply", "");
 
         }
 
@@ -285,14 +285,14 @@ class EastWest extends EastWestLandBattle
 
 
             for($i = 2; $i <= 8; $i += 2){
-                UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn$i", "SupplyBox.svg",
-                    0, 1, 2,STATUS_CAN_REINFORCE, "E", $i, "soviet", "supply", "$i S");
+                UnitFactory::create("", EastWest::SOVIET_FORCE, "gameTurn$i", "SupplyBox.svg",
+                    0, 1, 2,STATUS_CAN_REINFORCE, "E", $i, "soviet", "supply", "");
 
             }
 
             for($i = 2; $i <= 8; $i++){
-                UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "SupplyBox.svg",
-                    0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "$i S");
+                UnitFactory::create("", EastWest::GERMAN_FORCE, "gameTurn$i", "SupplyBox.svg",
+                    0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "");
 
             }
 
@@ -303,74 +303,74 @@ class EastWest extends EastWestLandBattle
             }
 
             for($i = 0; $i < 6; $i++){
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn2", "Infantry.svg",
-                2, 4, 2,STATUS_CAN_REINFORCE, "D", 2, "soviet", "inf", "$i i");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn2", "Infantry.svg",
+                2, 4, 2,STATUS_CAN_REINFORCE, "D", 2, "soviet", "inf", "");
 
         }
         /* turn 3 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "Infantry.svg",
-                2, 4, 2, STATUS_CAN_REINFORCE, "D", 3, "soviet", "inf", "$i i");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn3", "Infantry.svg",
+                2, 4, 2, STATUS_CAN_REINFORCE, "D", 3, "soviet", "inf", "");
         }
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "Infantry.svg",
-            2, 4, 2, STATUS_CAN_REINFORCE, "E", 3, "soviet", "inf", "$i i");
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn3", "Armor.svg",
-            2, 1, 5,STATUS_CAN_REINFORCE, "E", 3, "soviet", "armor", "$i a");
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn3", "Infantry.svg",
+            2, 4, 2, STATUS_CAN_REINFORCE, "E", 3, "soviet", "inf", "");
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn3", "Armor.svg",
+            2, 1, 5,STATUS_CAN_REINFORCE, "E", 3, "soviet", "armor", "");
         
         /* turn 4 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn4", "Infantry.svg",
-                2, 4, 2, STATUS_CAN_REINFORCE, "D", 4, "soviet", "inf", "$i i");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn4", "Infantry.svg",
+                2, 4, 2, STATUS_CAN_REINFORCE, "D", 4, "soviet", "inf", "");
         }
 
         /* turn 5 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn5", "Infantry.svg",
-                2, 4, 2, STATUS_CAN_REINFORCE, "D", 5, "soviet", "inf", "$i i");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn5", "Infantry.svg",
+                2, 4, 2, STATUS_CAN_REINFORCE, "D", 5, "soviet", "inf", "");
         }
 
         /* turn 6 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "Infantry.svg",
-                2, 4, 2, STATUS_CAN_REINFORCE, "D", 6, "soviet", "inf", "$i i");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn6", "Infantry.svg",
+                2, 4, 2, STATUS_CAN_REINFORCE, "D", 6, "soviet", "inf", "");
         }
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "Infantry.svg",
-                2, 4, 2, STATUS_CAN_REINFORCE, "E", 6, "soviet", "inf", "$i i");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn6", "Infantry.svg",
+                2, 4, 2, STATUS_CAN_REINFORCE, "E", 6, "soviet", "inf", "");
         }
         for($i = 0; $i < 4; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn6", "Armor.svg",
-                2, 1, 5, STATUS_CAN_REINFORCE, "E", 6, "soviet", "armor", "$i a");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn6", "Armor.svg",
+                2, 1, 5, STATUS_CAN_REINFORCE, "E", 6, "soviet", "armor", "");
         }
         /* turn 7 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn7", "Infantry.svg",
-                2, 4, 2, STATUS_CAN_REINFORCE, "D", 7, "soviet", "inf", "$i i");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn7", "Infantry.svg",
+                2, 4, 2, STATUS_CAN_REINFORCE, "D", 7, "soviet", "inf", "");
         }
-        UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn7", "Armor.svg",
-            2, 1, 5,STATUS_CAN_REINFORCE, "E", 7, "soviet", "armor", "$i a");
+        UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn7", "Armor.svg",
+            2, 1, 5,STATUS_CAN_REINFORCE, "E", 7, "soviet", "armor", "");
 
         /* turn 8 */
         for($i = 0; $i < 2; $i++) {
 
-            UnitFactory::create("xxxx", EastWest::SOVIET_FORCE, "gameTurn8", "Infantry.svg",
-                2, 4, 2, STATUS_CAN_REINFORCE, "D", 8, "soviet", "inf", "$i i");
+            UnitFactory::create("xxx", EastWest::SOVIET_FORCE, "gameTurn8", "Infantry.svg",
+                2, 4, 2, STATUS_CAN_REINFORCE, "D", 8, "soviet", "inf", "");
         }
      }
         if($scenario->scenarioName === 'stalingrad') {
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn2", "Infantry.svg",
+            UnitFactory::create("xxx", EastWest::GERMAN_FORCE, "gameTurn2", "Infantry.svg",
                 2, 4, 2,STATUS_CAN_REINFORCE, "G", 2,
                 "german", "inf", "I");
             for($i = 1; $i <= 8; $i++){
-                UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "SupplyBox.svg",
-                    0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "$i S");
+                UnitFactory::create("", EastWest::GERMAN_FORCE, "gameTurn$i", "SupplyBox.svg",
+                    0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "");
             }
             $this->reinforceSovietInf(1);
             $this->reinforceSovietInf(1);
@@ -438,12 +438,12 @@ class EastWest extends EastWestLandBattle
             $this->reinforceSovietSupply(8);
         }
         if($scenario->scenarioName === 'zitadelle') {
-            UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn3", "Infantry.svg",
+            UnitFactory::create("xxx", EastWest::GERMAN_FORCE, "gameTurn3", "Infantry.svg",
                 2, 4, 2,STATUS_CAN_REINFORCE, "G", 3,
                 "german", "inf", "I");
             for($i = 1; $i <= 9; $i++){
-                UnitFactory::create("xxxx", EastWest::GERMAN_FORCE, "gameTurn$i", "SupplyBox.svg",
-                    0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "$i S");
+                UnitFactory::create("", EastWest::GERMAN_FORCE, "gameTurn$i", "SupplyBox.svg",
+                    0, 1, 2,STATUS_CAN_REINFORCE, "G", $i, "german", "supply", "");
             }
             $this->reinforceSovietInf(1);
             $this->reinforceSovietInf(1);
@@ -561,6 +561,9 @@ class EastWest extends EastWestLandBattle
             if($scenario->scenarioName === 'stalingrad'){
                 $this->victory->setVictoryPoints([0, 53, 50, 0, 0]);
             }
+            if($scenario->scenarioName === 'zitadelle'){
+                $this->victory->setVictoryPoints([0, 0, 0, 0, 0]);
+            }
             foreach($this->mapViewer as $mapView){
                 $mapView->trueRows = false;
                 $mapView->mirror = false;
@@ -617,6 +620,8 @@ class EastWest extends EastWestLandBattle
             $numArmor = 0;
             $numInf = 0;
             $numMech = 0;
+            $numCorps = 0;
+
             foreach($mapHex->forces[$forceId] as $mKey => $mVal){
                 if(!($this->force->units[$mKey]->class === "supply" || $this->force->units[$mKey]->class === "art")){
                     if($this->force->units[$mKey]->class === "inf"){
@@ -631,6 +636,12 @@ class EastWest extends EastWestLandBattle
                         $numMech++;
                     }
                     $onlySupport = false;
+                    if($unit->forceId === EastWest::GERMAN_FORCE){
+                        if($this->force->units[$mKey]->name === 'xxx'){
+                            $numCorps++;
+                            continue;
+                        }
+                    }
                     $numNonSupport++;
                 }else{
                 }
@@ -639,7 +650,14 @@ class EastWest extends EastWestLandBattle
                 return false;
             }
             if($unit->forceId === EastWest::GERMAN_FORCE){
-
+                if($numCorps >= 3){
+                    return true;
+                }
+                if($numNonSupport === 0 && $numCorps > 0){
+                    if($unit->name === 'xxxx'){
+                        return true;
+                    }
+                }
                 if($numNonSupport >= 1){
                     return true;
                 }

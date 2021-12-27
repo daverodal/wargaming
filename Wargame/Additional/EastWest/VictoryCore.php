@@ -86,8 +86,10 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         parent::__construct($data);
         $this->cityValues = [706 => 16, 909 => 2, 712 => 1, 1803 => 6, 1705 => 1, 1907=> 2, 1409 => 5, 2010 => 3,
             1811 => 2, 1613 => 2, 1412 => 4, 1213 =>3, 1215 => 3, 1016 => 8,
-            717 => 2, 518 => 3, 2405 => 2 , 2809 => 8, 2907 => 4, 2214 => 12, 2218 => 6, 2121 => 3, 3717 => 3, 1419 => 2, 1319 => 2, 3117 => 3];
-
+            717 => 2, 518 => 3, 2405 => 2 , 2809 => 8, 2907 => 4, 2214 => 12, 2218 => 6, 2121 => 3, 3717 => 3, 1319 => 2, 3117 => 3];
+        $this->cityValues = [706 => 16, 909 => 2, 712 => 1, 1803 => 6, 1705 => 1, 1907=> 2, 1409 => 5, 2010 => 3,
+            1811 => 2, 1613 => 0, 1412 => 4, 1213 =>3, 1215 => 3, 1016 => 0,
+            717 => 0, 518 => 0, 2405 => 2 , 2809 => 0, 2907 => 4, 2214 => 0, 2218 => 0, 2121 => 0, 3717 => 0, 1319 => 0, 3117 => 0];
         if ($data) {
             $this->germanGoal = $data->victory->germanGoal;
             $this->sovietGoal = $data->victory->sovietGoal;
@@ -177,6 +179,12 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             }
             return false;
         }
+        if($scenario === 'berlin'){
+            if ($b->gameRules->turn === 6) {
+                return true;
+            }
+            return false;
+        }
     }
 
     public function isMud(){
@@ -195,7 +203,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             }
             return false;
         }
-        if($scenario === 'stalingrad'){
+        if($scenario === 'zitadelle'){
             if($turn === 4 || $turn === 9){
                 return true;
             }
@@ -228,46 +236,73 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     }
     public function reduceUnit($args)
     {
+        $b = $battle = Battle::getBattle();
+        $scenario = $b->scenario->scenarioName;
         $unit = $args[0];
         if($unit->supplyUsed){
             return;
         }
         $vp = $unit->damage;
-        if ($unit->forceId == 1) {
-            $victorId = 2;
-            $vp = 2;
-            if($unit->defStrength === 7){
-                $vp = 3;
+        if($scenario === 'zitadelle') {
+            if($unit->forceId === 2){
+                $victorId = 1;
+                $vp = $unit->attStrength;
             }
-            if($unit->defStrength === 8){
-                $vp = 9;
+            if($unit->forceId === 1){
+                $victorId = 2;
+                $vp = 2;
+                if ($unit->defStrength === 7) {
+                    $vp = 3;
+                }
+                if ($unit->defStrength === 8) {
+                    $vp = 9;
+                }
             }
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
             $battle = Battle::getBattle();
-            if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
+            if (empty($battle->mapData->specialHexesVictory->{$hex->name})) {
                 $battle->mapData->specialHexesVictory->{$hex->name} = '';
             }
             $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
-        } else {
-            $vp = 1;
-            if($unit->defStrength === 4){
-                $vp = 1;
-            }
-            if($unit->defStrength === 2){
+        }
+        if($scenario === 'barbarossa' || $scenario === 'stalingrad') {
+            if ($unit->forceId == 1) {
+                $victorId = 2;
                 $vp = 2;
+                if ($unit->defStrength === 7) {
+                    $vp = 3;
+                }
+                if ($unit->defStrength === 8) {
+                    $vp = 9;
+                }
+                $this->victoryPoints[$victorId] += $vp;
+                $hex = $unit->hexagon;
+                $battle = Battle::getBattle();
+                if (empty($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = '';
+                }
+                $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
+            } else {
+                $vp = 1;
+                if ($unit->defStrength === 4) {
+                    $vp = 1;
+                }
+                if ($unit->defStrength === 2) {
+                    $vp = 2;
+                }
+                if ($unit->defStrength === 1 && $unit->attStrength === 2) {
+                    $vp = 3;
+                }
+                $victorId = 1;
+                $hex = $unit->hexagon;
+                $battle = Battle::getBattle();
+                if (empty($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = '';
+                }
+                $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='germanVictoryPoints'>+$vp</span>";
+                $this->victoryPoints[$victorId] += $vp;
             }
-            if($unit->defStrength === 1 && $unit->attStrength === 2){
-                $vp = 3;
-            }
-            $victorId = 1;
-            $hex  = $unit->hexagon;
-            $battle = Battle::getBattle();
-            if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
-                $battle->mapData->specialHexesVictory->{$hex->name} = '';
-            }
-            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='germanVictoryPoints'>+$vp</span>";
-            $this->victoryPoints[$victorId] += $vp;
         }
     }
 

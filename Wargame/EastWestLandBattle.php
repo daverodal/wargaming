@@ -71,7 +71,7 @@ class EastWestLandBattle extends LandBattle
             }
             $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
             $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
-            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
+            $this->gameRules = new EastWestGameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
             $this->victory = new Victory($data);
 
             $this->players = $data->players;
@@ -85,7 +85,7 @@ class EastWestLandBattle extends LandBattle
             $this->moveRules = new MoveRules($this->force, $this->terrain);
 
             $this->combatRules = new CombatRules($this->force, $this->terrain);
-            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
+            $this->gameRules = new EastWestGameRules($this->moveRules, $this->combatRules, $this->force);
         }
         static::getPlayerData($scenario);
     }
