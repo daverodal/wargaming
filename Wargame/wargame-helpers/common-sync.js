@@ -137,6 +137,28 @@ x.register("mapUnits", function (mapUnits, data) {
                     $('#arrow-svg #rangeHex' + id + 'short').attr('style', '');
                 });
             }
+            if(mapUnits[i].class === "ca" || mapUnits[i].class === "cl" || mapUnits[i].class === "dd" || mapUnits[i].class === "bc" || mapUnits[i].class === "bb") {
+                debugger;
+                if(mapUnits[i].forceId === data.gameRules.defendingForceId) {
+                    DR.hasHq = true;
+                    var hexSideLen = 32;
+                    var b = hexSideLen * .866;
+                    var unit = mapUnits[i];
+                    var range = data.moveRules.spottedRange;
+                    unit.id = i;
+                    globalFuncs.drawHex(hexSideLen, unit, 'short');
+                    globalFuncs.drawHex(b * (range * 2 + 1), unit);
+                    $("#" + i).hover(function () {
+                        var id = $(this).attr('id');
+                        $('#arrow-svg #rangeHex' + id).addClass('hovered');
+                        $('#arrow-svg #rangeHex' + id + 'short').attr('style', 'stroke:red;stroke-opacity:1;');
+                    }, function () {
+                        var id = $(this).attr('id');
+                        $('#arrow-svg #rangeHex' + id).removeClass('hovered');
+                        $('#arrow-svg #rangeHex' + id + 'short').attr('style', '');
+                    });
+                }
+            }
 
 
         }

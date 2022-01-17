@@ -1,4 +1,4 @@
-{
+ {
     "MartianCivilWar": {
         "name": "The Martian Civil War",
         "path": "TMCW",
@@ -155,6 +155,25 @@
                 "supplyLen": 22,
                 "preDeploy": true,
                 "longDescription": "The opening attack of Barbarossa."
+            }
+        }
+    },
+    "TinCans": {
+        "production": false,
+        "name": "TinCans",
+        "path": "TMCW",
+        "genre": "20'th Century Games",
+        "fileName": "\\Wargame\\TMCW\\TinCans\\TinCans",
+        "scenarios": {
+            "battlecruiser": {
+                "description": "The Battle of the battle cruisers",
+                "longDescription": "Boom boom.",
+                "battlecruiser": true
+            },
+            "two": {
+                "description": "The Battle of Tin Cans",
+                "longDescription": "The sea burns.",
+                "two": true
             }
         }
     },

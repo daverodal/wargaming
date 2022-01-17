@@ -34,11 +34,11 @@ class MoveRules
     /* @var MapData */
     public $mapData;
     // local variables
-    public $movingUnitId;
-    public $anyUnitIsMoving;
-    public $moves;
+    public int $movingUnitId;
+    public bool $anyUnitIsMoving = false;
+    public stdClass $moves;
     public $path;
-    public $moveQueue;
+    public array $moveQueue;
     public $stickyZoc;
     public $enterZoc = "stop";
     public $exitZoc = 0;

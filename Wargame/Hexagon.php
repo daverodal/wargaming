@@ -1,6 +1,6 @@
 <?php
 namespace Wargame;
-use \JsonSerializable;
+use JsonSerializable;
 // Hexagon.php
 //
 // Copyright (c) 2009-2011 Mark Butler
@@ -37,8 +37,8 @@ class Hexagon  {
 	public $x = false, $y = false;
 	public $name;
     private static $setup = false;
-	public static $minX, $minY;
-	public static $maxX, $maxY;
+	public static int $minX, $minY;
+	public static int $maxX, $maxY;
     public $parent = "gameImages";
 
     public static function setMinMax(){
@@ -165,7 +165,7 @@ public static function getHexPartXY($name){
     if(!self::$setup){
         self::setMinMax();
     }
-    $x = floor( $name / 100 );
+    $x = floor( (int)$name / 100 );
     $y = $name - ( $x * 100 );
 
     $retY = 4 * ( $y - 1 ) + self::$minY;

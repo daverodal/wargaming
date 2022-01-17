@@ -34,6 +34,15 @@ mix.webpackConfig({
                         options: {}
                     }
                 ]
+            },
+            {
+                test: /\.(svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
+                ]
             }
         ],
     },
@@ -68,6 +77,7 @@ mix.sass('Wargame/TMCW/Amph/all.scss', 'css/wargame/amph.css');
 mix.sass('Wargame/TMCW/MartianCivilWar/all.scss', 'css/wargame/martiancivilwar.css');
 mix.sass('Wargame/TMCW/Kiev1941/all.scss', 'css/wargame/kiev1941.css');
 mix.sass('Wargame/TMCW/Minsk1941/all.scss', 'css/wargame/minsk1941.css');
+mix.sass('Wargame/TMCW/TinCans/all.scss', 'css/wargame/tin-cans.css');
 
 mix.sass('Wargame/TMCW/Manchuria1976/all.scss', 'css/wargame/manchuria1976.css');
 mix.sass('Wargame/TMCW/Chawinda1965/all.scss', 'css/wargame/chawinda1965.css');
@@ -87,6 +97,7 @@ mix.js('Wargame/wargame.js', 'javascripts/wargame/wargame.js');
 // mix.js('Wargame/TMCW/RetreatOne/retreatOne.js', 'javascripts/wargame/retreatOne.js');
 mix.js('Wargame/TMCW/Kiev1941/kiev-1941.js', 'javascripts/wargame/kiev1941.js');
 mix.js('Wargame/TMCW/Minsk1941/minsk1941.js', 'javascripts/wargame/minsk1941.js');
+mix.js('Wargame/TMCW/TinCans/tin-cans.js', 'javascripts/wargame/tin-cans.js');
 mix.js('Wargame/TMCW/Amph/amph.js', 'javascripts/wargame/amph.js');
 mix.js('Wargame/TMCW/Airborne/airborne.js', 'javascripts/wargame/airborne.js');
 mix.js('Wargame/Vu/vu.js', 'javascripts/wargame/vu.js');
