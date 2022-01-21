@@ -166,7 +166,7 @@ public static function getHexPartXY($name){
         self::setMinMax();
     }
     $x = floor( (int)$name / 100 );
-    $y = $name - ( $x * 100 );
+    $y = (int)$name - ( $x * 100 );
 
     $retY = 4 * ( $y - 1 ) + self::$minY;
 

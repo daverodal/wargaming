@@ -13,15 +13,15 @@
     <div class="clear"></div>
 @endsection
 @section('credit')
-    @include('wargame::TMCW.TinCans.credit')
+    @include('wargame::TMCW.TinCans1916.credit')
 @endsection
 @section('exclusiveRulesWrapper')
 @endsection
 @section('exclusiveRules')
-    @include('wargame::TMCW.TinCans.exclusiveRules')
+    @include('wargame::TMCW.TinCans1916.exclusiveRules')
 @endsection
 @section('victoryConditions')
-    @include('wargame::TMCW.TinCans.victoryConditions')
+    @include('wargame::TMCW.TinCans1916.victoryConditions')
 @endsection
 @section('full-status')
     <div id="topStatus" v-html="(headerTurn <= 5 ? 'Jun ' + ((headerTurn - 1) * 2 + 22) : 'Jul ' + ((headerTurn - 6) * 2 + 2)) + headerTopStatus"></div>

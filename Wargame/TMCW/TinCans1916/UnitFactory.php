@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\TMCW\TinCans;
+namespace Wargame\TMCW\TinCans1916;
 use Wargame\Battle;
 use Wargame\Hexagon;
 use stdClass;
@@ -300,6 +300,7 @@ class NavalUnit extends \Wargame\MovableUnit implements \JsonSerializable
 
     public function fetchData(){
         $mapUnit = new stdClass();
+        $mapUnit->name = $this->name;
         $mapUnit->parent = $this->hexagon->parent;
         $mapUnit->moveAmountUsed = $this->moveAmountUsed;
         $mapUnit->maxMove = $this->maxMove;
@@ -431,7 +432,7 @@ class UnitFactory {
     public static $injector;
     public static function build($data = false){
 
-        $sU =  new \Wargame\TMCW\TinCans\NavalUnit($data);
+        $sU =  new \Wargame\TMCW\TinCans1916\NavalUnit($data);
         if($data === false){
             $sU->id = self::$id++;
         }

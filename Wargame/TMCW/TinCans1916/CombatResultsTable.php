@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\TMCW\TinCans;
+namespace Wargame\TMCW\TinCans1916;
 use Wargame\Battle;
 use stdClass;
 // crt.js

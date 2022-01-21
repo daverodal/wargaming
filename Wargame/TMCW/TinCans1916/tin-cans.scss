@@ -22,10 +22,13 @@
 
 @include unitColor(usn,  $alliedColor);
 @include unitColor(rn,  $alliedColor);
+@include unitColor(RN, $alliedWWI);
+@include unitColor(GE, $germanColor);
 @include unitColor(ijn, $japaneseColor);
 @include header(IJN, $japaneseColor);
 @include header(USN, $alliedColor);
-@include header(RN, #ffcd00);
+@include header(RN, $alliedColor);
+@include header(GER, $germanHeaderColor)
 #map {
   width:auto;
 }

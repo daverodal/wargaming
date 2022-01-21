@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\TMCW\TinCans;
+namespace Wargame\TMCW\TinCans1916;
 
 /**
  *
@@ -37,7 +37,7 @@ define("South", 3);
 define("SouthWest", 4);
 define("NorthWest", 5);
 
-class TinCans extends \Wargame\ModernNavalBattle
+class TinCans1916 extends \Wargame\SimpleBBNavalBattle
 {
     const FORCE_ONE = 1;
     const FORCE_TWO = 2;
@@ -56,6 +56,10 @@ class TinCans extends \Wargame\ModernNavalBattle
     static function getPlayerData($scenario)
     {
         $forceName = ["Neutral Observer", "IJN", "USN"];
+        if(!empty($scenario->battlecruiser)){
+            $forceName[1] = "GER";
+            $forceName[2] = "RN";
+        }
         if(!empty($scenario->one)){
             $forceName[1] = "RN";
             $forceName[2] = "IJN";
@@ -71,7 +75,7 @@ class TinCans extends \Wargame\ModernNavalBattle
 
 
     public static function buildUnit($data = false){
-        return \Wargame\TMCW\TinCans\UnitFactory::build($data);
+        return \Wargame\TMCW\TinCans1916\UnitFactory::build($data);
     }
 
     static function playMulti($name, $wargame, $arg = false)
@@ -115,21 +119,21 @@ class TinCans extends \Wargame\ModernNavalBattle
         UnitFactory::$injector = $this->force;
 
         if(!empty($scenario->battlecruiser)){
-            UnitFactory::create("BC-1", BLUE_FORCE, 4404, "multiInf.png", 6, 20, 6, 0, 3, NorthWest,  STATUS_CAN_DEPLOY, "A", 1, "rn",  "bb");
-            UnitFactory::create("BC-2", BLUE_FORCE, 4505, "multiInf.png", 6, 20, 6, 0, 3, NorthWest,  STATUS_CAN_DEPLOY, "A", 1, "rn",  "bc");
-            UnitFactory::create("BC-3", BLUE_FORCE, 4708, "multiInf.png", 6, 20, 6, 0, 3, NorthWest,  STATUS_CAN_DEPLOY, "A", 1, "rn",  "dd");
-            UnitFactory::create("BC-4", BLUE_FORCE, 4709, "multiInf.png", 6, 20, 6, 0, 3, NorthWest,  STATUS_CAN_DEPLOY, "A", 1, "rn",  "dd");
-            UnitFactory::create("BC-5", BLUE_FORCE, 4710, "multiInf.png", 6, 20, 6, 0, 3, NorthWest,  STATUS_CAN_DEPLOY, "A", 1, "rn",  "dd");
+            UnitFactory::create("Seydlitz", BLUE_FORCE, 4404, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
+            UnitFactory::create("Derfflinger", BLUE_FORCE, 4505, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
+            UnitFactory::create("Lützow", BLUE_FORCE, 4708, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
+            UnitFactory::create("Moltke", BLUE_FORCE, 4709, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
+            UnitFactory::create("Von Der Tann", BLUE_FORCE, 4710, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
 
-            UnitFactory::create("BC-1", RED_FORCE, 3401, "multiInf.png", 4, 20, 2, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
-            UnitFactory::create("BC-2", RED_FORCE, 3402, "multiInf.png", 4, 20, 2, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
-            UnitFactory::create("BC-3", RED_FORCE, 3403, "multiInf.png", 4, 20, 2, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
-            UnitFactory::create("BC-4", RED_FORCE, 3404, "multiInf.png", 4, 20, 2, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
-            UnitFactory::create("BC-5", RED_FORCE, 3405, "multiInf.png", 4, 20, 2, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
-            UnitFactory::create("BC-6", RED_FORCE, 3406, "multiInf.png", 5, 20, 3, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
-            UnitFactory::create("BC-7", RED_FORCE, 3407, "multiInf.png", 5, 20, 3, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
-            UnitFactory::create("BC-8", RED_FORCE, 3408, "multiInf.png", 5, 20, 3, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
-            UnitFactory::create("BC-9", RED_FORCE, 3409, "multiInf.png", 5, 20, 4, 0, 2, North,  STATUS_CAN_DEPLOY, "A", 1, "ijn",  "bc");
+            UnitFactory::create("Indefatigable", RED_FORCE, 2401, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Indomitable", RED_FORCE, 2402, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Inflexible", RED_FORCE, 2403, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Invincible", RED_FORCE, 2404, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("New Zealand", RED_FORCE, 2405, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Lion", RED_FORCE, 2406, "multiInf.png", 5, 20, 3, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Princess Royal", RED_FORCE, 2407, "multiInf.png", 5, 20, 3, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Queen Mary", RED_FORCE, 2408, "multiInf.png", 5, 20, 3, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Tiger", RED_FORCE, 2409, "multiInf.png", 5, 20, 4, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
         }
         if(!empty($scenario->one)){
             UnitFactory::create("BB-5", BLUE_FORCE, 4404, "multiInf.png", 30, 17, 23, 0, 3, NorthWest,  STATUS_CAN_DEPLOY, "A", 1, "rn",  "bb");
@@ -289,27 +293,25 @@ class TinCans extends \Wargame\ModernNavalBattle
 
         parent::__construct($data, $arg, $scenario, $game);
 
+        $this->moveRules->spottedRange = 24;
         if ($data) {
 
         } else {
-            $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\TinCans\\VictoryCore");
+            $this->victory = new \Wargame\Victory("\\Wargame\\TMCW\\TinCans1916\\VictoryCore");
 
             // game data
-            $this->gameRules->setInitialPhaseMode(BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE);
+            $this->gameRules->setInitialPhaseMode(BLUE_MOVE_PHASE, MOVING_MODE);
             $this->gameRules->attackingForceId = BLUE_FORCE; /* object oriented! */
             $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
-            $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
+            $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, RED_MOVE_PHASE, MOVING_MODE, RED_FORCE, BLUE_FORCE, false);
 
-            $this->gameRules->addPhaseChange(BLUE_COMBAT_PHASE, BLUE_TORP_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);
-            $this->gameRules->addPhaseChange(BLUE_TORP_COMBAT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE, RED_FORCE, false);
-            $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_SPEED_PHASE, SPEED_MODE, BLUE_FORCE, RED_FORCE, false);
-            $this->gameRules->addPhaseChange(BLUE_SPEED_PHASE, RED_COMBAT_PHASE, COMBAT_SETUP_MODE, RED_FORCE, BLUE_FORCE, false);
+            $this->gameRules->addPhaseChange(RED_MOVE_PHASE, BLUE_FIRST_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, false);
+            $this->gameRules->addPhaseChange(BLUE_FIRST_COMBAT_PHASE, RED_FIRST_COMBAT_PHASE, COMBAT_SETUP_MODE, RED_FORCE, BLUE_FORCE, false);
+            $this->gameRules->addPhaseChange(RED_FIRST_COMBAT_PHASE, BLUE_COMBAT_RES_PHASE, COMBAT_RESOLUTION_MODE, BLUE_FORCE, RED_FORCE, false);
+
+            $this->gameRules->addPhaseChange(BLUE_COMBAT_RES_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, BLUE_FORCE,RED_FORCE , true);
 
 
-            $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, RED_TORP_COMBAT_PHASE, COMBAT_SETUP_MODE, RED_FORCE, BLUE_FORCE, false);
-            $this->gameRules->addPhaseChange(RED_TORP_COMBAT_PHASE, RED_MOVE_PHASE, MOVING_MODE, RED_FORCE, BLUE_FORCE, false);
-            $this->gameRules->addPhaseChange(RED_MOVE_PHASE, RED_SPEED_PHASE, SPEED_MODE, RED_FORCE, BLUE_FORCE, false);
-            $this->gameRules->addPhaseChange(RED_SPEED_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, BLUE_FORCE, RED_FORCE, true);
 
             if(!empty($scenario->one)){
                 $this->gameRules->setMaxTurn(20);
@@ -329,6 +331,8 @@ class TinCans extends \Wargame\ModernNavalBattle
                 $this->gameRules->setMaxTurn(20);
             }
         }
+        $this->gameRules->gameHasCombatResolutionMode = false;
+        $this->gameRules->setMaxTurn(30);
 
         $this->combatRules->injectCrt(new  \Wargame\TMCW\SimpleBBCombatResultsTable());
         $this->moveRules->spottedRange = 24;

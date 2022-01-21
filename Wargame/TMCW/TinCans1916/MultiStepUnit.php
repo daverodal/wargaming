@@ -19,7 +19,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Wargame\TMCW\TinCans;
+namespace Wargame\TMCW\TinCans1916;
 
 use Wargame\Hexagon;
 use Wargame\Battle;

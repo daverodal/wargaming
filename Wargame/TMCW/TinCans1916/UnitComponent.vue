@@ -3,12 +3,13 @@
     <img class="dir-heading" :style="{transform: course}"  :src="'/assets/unit-images/blackArrow'+unit.maxMove+'.svg'">
 
     <div :style="unitStyle" :class="unit.nationality">
+      <div class="fa" :class="{ 'fa-bullseye': unit.spotted}"></div>
       <div class="unitOdds" :class="this.unit.oddsColor? this.unit.oddsColor: ''">{{unitOdds}}</div>
       <div class="shadow-mask" :class="{shadowy: unit.shadow}"></div>
       <div class="upper-left">{{unit.strength}} </div> <div class="upper-right">{{unit.gunRange}}</div>
       <img v-for="theta in thetas" :style="{transform: theta}" class="counter arrow" src="/assets/unit-images/short-red-arrow-md.png">
-      <div class="counter-wrapper">{{unit.class}}</div>
-      <div class="lower-left">{{unit.defenseStrength}} </div> <div class="lower-right">{{unit.torpedoStrength === 0 ? 'x' : unit.torpedoStrength}}</div>
+      <div class="counter-wrapper">{{unit.name}}</div>
+      <div class="lower-left">{{unit.defenseStrength}} </div>
     </div>
 
   </div>
@@ -178,6 +179,13 @@
     @import "../../wargame-helpers/Vue/scss/vue-unit";
     @import "../../wargame-helpers/Vue/scss/vue-mixins";
 
+    .fa{
+      position: absolute;
+      bottom: 0px;
+      left:33%;
+      color:red;
+      background: white;
+    }
     .unit .unit-numbers{
         &.infoLen7{
             letter-spacing: -.6px;
@@ -191,10 +199,11 @@
         opacity: 0;
     }
     .unit .counter-wrapper{
-      margin: 7px auto 0 auto;
-      width: 50%;
+      margin: 12px auto 0 auto;
+      width: 100%;
       font-size:11px;
-      text-transform: uppercase;
+      text-align: center;
+      font-size:5px;
     }
     .upper-left{
       font-size:10px;

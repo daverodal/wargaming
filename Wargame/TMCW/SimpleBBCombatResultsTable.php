@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\TMCW;
 use Wargame\CRT;
-use Wargame\NavalCombatTrait;
+use Wargame\SimpleBBCombatTrait;
 
 /**
  *
@@ -26,7 +26,7 @@ use Wargame\NavalCombatTrait;
 
 class SimpleBBCombatResultsTable extends \Wargame\CombatResultsTable
 {
-    use NavalCombatTrait;
+    use SimpleBBCombatTrait;
     public $aggressorId = BLUE_FORCE;
     public $crt;
 
@@ -43,11 +43,12 @@ class SimpleBBCombatResultsTable extends \Wargame\CombatResultsTable
             array(NE, NE, NE,  NE, NE),
             array(NE, NE, NE,  NE, NE),
         );
+        $this->dieSideCount = 6;
     }
 
     function getCombatResults($Die, $index, $combat)
     {
-        return $this->crts->normal[$Die][$index];
+        return $this->crts->normal->table[$Die][$index];
     }
     function getCombatIndex($attackStrength, $defenseStrength)
     {

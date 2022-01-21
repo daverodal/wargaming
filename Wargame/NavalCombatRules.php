@@ -483,7 +483,7 @@ class NavalCombatRules extends CombatRules
             $Die = $this->dieRoll;
         }
         $this->dieRoll = $Die;
-//        $Die = 3;
+        $Die = 0;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {

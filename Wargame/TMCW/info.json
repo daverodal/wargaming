@@ -158,22 +158,17 @@
             }
         }
     },
-    "TinCans": {
+    "TinCans1916": {
         "production": false,
-        "name": "TinCans",
+        "name": "TinCans1916",
         "path": "TMCW",
-        "genre": "20'th Century Games",
-        "fileName": "\\Wargame\\TMCW\\TinCans\\TinCans",
+        "genre": "WW I Naval",
+        "fileName": "\\Wargame\\TMCW\\TinCans1916\\TinCans1916",
         "scenarios": {
             "battlecruiser": {
                 "description": "The Battle of the battle cruisers",
                 "longDescription": "Boom boom.",
                 "battlecruiser": true
-            },
-            "two": {
-                "description": "The Battle of Tin Cans",
-                "longDescription": "The sea burns.",
-                "two": true
             }
         }
     },

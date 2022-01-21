@@ -39,7 +39,7 @@ class NavalMoveRules extends MoveRules
     public stdClass $moves;
     public $path;
     public array $moveQueue;
-    public int $spottedRange = 24;
+    public int $spottedRange = 8;
 
     /* usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
      * so 1 means you can't stack with even 1 enemy. Use a closure here to allow for air units stacking with

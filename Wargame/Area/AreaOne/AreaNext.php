@@ -166,6 +166,7 @@ class AreaNext extends AreaGame
 
     function __construct($data = null, $arg = false, $scenario = false)
     {
+        parent::__construct();
         $this->areaData = AreaData::getInstance();
         $this->mapData = $this->areaData;
         $this->combatants = (self::getPlayerData($scenario))["forceName"] ?? [];

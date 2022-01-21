@@ -6,7 +6,7 @@
  * Time: 9:35 AM
  */
 
-namespace Wargame\TMCW\TinCans;
+namespace Wargame\TMCW\TinCans1916;
 
 
 trait CRTResults
