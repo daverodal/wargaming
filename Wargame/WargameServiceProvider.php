@@ -42,6 +42,7 @@ class WargameServiceProvider extends ServiceProvider
             __DIR__.'/TMCW/MartianCivilWar/Images/' => public_path('vendor/wargame/tmcw/martiancivilwar/images'),
             __DIR__.'/TMCW/RetreatOne/Images/' => public_path('vendor/wargame/tmcw/retreatone/images'),
             __DIR__.'/TMCW/Nomonhan/Images/' => public_path('vendor/wargame/tmcw/nomonhan/images'),
+            __DIR__.'/TMCW/TinCans1916/Images/' => public_path('vendor/wargame/tmcw/tincans1915/images'),
             __DIR__ . '/Additional/Collapse/Images/' => public_path('vendor/wargame/additional/collapse/images'),
             __DIR__ . '/Additional/EastWest/Images' => public_path('vendor/wargame/additional/eastwest/images'),
             __DIR__ . '/Additional/Moskow/Images' => public_path('vendor/wargame/additional/moskow/images'),

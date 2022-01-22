@@ -121,19 +121,19 @@ class TinCans1916 extends \Wargame\SimpleBBNavalBattle
         if(!empty($scenario->battlecruiser)){
             UnitFactory::create("Seydlitz", BLUE_FORCE, 4404, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
             UnitFactory::create("Derfflinger", BLUE_FORCE, 4505, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
-            UnitFactory::create("Lützow", BLUE_FORCE, 4708, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
-            UnitFactory::create("Moltke", BLUE_FORCE, 4709, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
-            UnitFactory::create("Von Der Tann", BLUE_FORCE, 4710, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
+            UnitFactory::create("Lützow", BLUE_FORCE, 4605, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
+            UnitFactory::create("Moltke", BLUE_FORCE, 4706, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
+            UnitFactory::create("Von Der Tann", BLUE_FORCE, 4806, "multiInf.png", 6, 20, 6, 0, 8, NorthWest,  STATUS_READY, "A", 1, "GE",  "bc");
 
-            UnitFactory::create("Indefatigable", RED_FORCE, 2401, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
-            UnitFactory::create("Indomitable", RED_FORCE, 2402, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
-            UnitFactory::create("Inflexible", RED_FORCE, 2403, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
-            UnitFactory::create("Invincible", RED_FORCE, 2404, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
-            UnitFactory::create("New Zealand", RED_FORCE, 2405, "multiInf.png", 4, 20, 2, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
-            UnitFactory::create("Lion", RED_FORCE, 2406, "multiInf.png", 5, 20, 3, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
-            UnitFactory::create("Princess Royal", RED_FORCE, 2407, "multiInf.png", 5, 20, 3, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
-            UnitFactory::create("Queen Mary", RED_FORCE, 2408, "multiInf.png", 5, 20, 3, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
-            UnitFactory::create("Tiger", RED_FORCE, 2409, "multiInf.png", 5, 20, 4, 0, 8, North,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Indefatigable", RED_FORCE, 701, "multiInf.png", 4, 20, 2, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Indomitable", RED_FORCE, 702, "multiInf.png", 4, 20, 2, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Inflexible", RED_FORCE, 703, "multiInf.png", 4, 20, 2, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Invincible", RED_FORCE, 704, "multiInf.png", 4, 20, 2, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("New Zealand", RED_FORCE, 705, "multiInf.png", 4, 20, 2, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Lion", RED_FORCE, 706, "multiInf.png", 5, 20, 3, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Princess Royal", RED_FORCE, 707, "multiInf.png", 5, 20, 3, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Queen Mary", RED_FORCE, 708, "multiInf.png", 5, 20, 3, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
+            UnitFactory::create("Tiger", RED_FORCE, 709, "multiInf.png", 5, 20, 4, 0, 8, South,  STATUS_READY, "A", 1, "RN",  "bc");
         }
         if(!empty($scenario->one)){
             UnitFactory::create("BB-5", BLUE_FORCE, 4404, "multiInf.png", 30, 17, 23, 0, 3, NorthWest,  STATUS_CAN_DEPLOY, "A", 1, "rn",  "bb");

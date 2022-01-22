@@ -27,6 +27,7 @@ use Wargame\SimpleBBCombatTrait;
 class SimpleBBCombatResultsTable extends \Wargame\CombatResultsTable
 {
     use SimpleBBCombatTrait;
+    use \Wargame\SimpleBBCrtResults;
     public $aggressorId = BLUE_FORCE;
     public $crt;
 

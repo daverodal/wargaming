@@ -40,7 +40,6 @@ class NavalCombatRules extends CombatRules
     public $attackers;
     public $resolvedCombats;
     public $lastResolvedCombat;
-    public $dieRoll;
 
 
     /*
@@ -479,11 +478,7 @@ class NavalCombatRules extends CombatRules
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
         $Die = $battle->dieRolls->getEvent($this->crt->dieSideCount);
-        if($this->dieRoll !== false){
-            $Die = $this->dieRoll;
-        }
-        $this->dieRoll = $Die;
-        $Die = 0;
+//        $Die = 0;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {
@@ -515,9 +510,18 @@ class NavalCombatRules extends CombatRules
                 }
             }
         }
-        /* apply combat results to defenders */
-        foreach ($defenders as $defenderId => $defender) {
-            $this->force->applyCRTresults($defenderId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
+        if(method_exists($this->crt, 'applyAllCRTResults')){
+            $this->crt->applyAllCRTResults($defenders, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die, $this->force);
+        }else {
+            /* apply combat results to defenders */
+            foreach ($defenders as $defenderId => $defender) {
+                if (method_exists($this->crt, 'applyCRTResults')) {
+                    $this->crt->applyCRTResults($defenderId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die, $this->force);
+
+                } else {
+                    $this->force->applyCRTResults($defenderId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
+                }
+            }
         }
         /* TODO: Wack man, no need to resolve combat against other units in hex */
         /* apply combat results to other units in defending hexes */
