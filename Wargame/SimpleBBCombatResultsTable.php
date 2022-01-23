@@ -1,7 +1,5 @@
 <?php
-namespace Wargame\TMCW;
-use Wargame\CRT;
-use Wargame\SimpleBBCombatTrait;
+namespace Wargame;
 
 /**
  *
@@ -33,7 +31,7 @@ class SimpleBBCombatResultsTable extends \Wargame\CombatResultsTable
 
     function __construct(){
         $this->crts = new \stdClass();
-        $this->crts->normal = new \Wargame\CRT(array( "1:2", "1:1", "2:1", "3:1", "4:1"),
+        $this->crts->normal = new CRT(array( "1:2", "1:1", "2:1", "3:1", "4:1"),
             '', 5, 1);
 
         $this->crts->normal->table = array(

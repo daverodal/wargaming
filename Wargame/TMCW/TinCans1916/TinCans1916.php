@@ -1,6 +1,6 @@
 <?php
 namespace Wargame\TMCW\TinCans1916;
-
+use Wargame\SimpleBBCombatResultsTable;
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -334,7 +334,7 @@ class TinCans1916 extends \Wargame\SimpleBBNavalBattle
         $this->gameRules->gameHasCombatResolutionMode = false;
         $this->gameRules->setMaxTurn(30);
 
-        $this->combatRules->injectCrt(new  \Wargame\TMCW\SimpleBBCombatResultsTable());
+        $this->combatRules->injectCrt(new  SimpleBBCombatResultsTable());
         $this->moveRules->spottedRange = 24;
         if($this->gameRules->turn < 2 && $this->gameRules->attackingForceId === 1){
             $this->moveRules->spottedRange = 24;

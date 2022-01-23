@@ -1,4 +1,4 @@
-@include('wargame::export-global-header', ['topCrt'=> new \Wargame\TMCW\SimpleBBCombatResultsTable(1)])
+@include('wargame::export-global-header', ['topCrt'=> new \Wargame\SimpleBBCombatResultsTable(1)])
 
 
 <script src="{{mix('vendor/javascripts/wargame/tin-cans.js')}}"></script>
