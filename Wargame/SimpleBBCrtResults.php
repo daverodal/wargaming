@@ -56,7 +56,7 @@ trait SimpleBBCrtResults
             if($battle->gameRules->phase == BLUE_TORP_COMBAT_PHASE || $battle->gameRules->phase == RED_TORP_COMBAT_PHASE){
                 $this->units[$attacker]->torpFired();
             }else{
-                if(is_callable([$this->units[$attacker],'firedGunfiredGun'])){
+                if(is_callable([$this->units[$attacker],'firedGun'])){
                     $this->units[$attacker]->firedGun();
                 }
             }
