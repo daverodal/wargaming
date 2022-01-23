@@ -43,29 +43,29 @@ trait SimpleBBCrtResults
 
 
         foreach ($attackers as $attacker => $val) {
-            if ($this->units[$attacker]->status == STATUS_BOMBARDING) {
-                $this->units[$attacker]->status = STATUS_ATTACKED;
-                $this->units[$attacker]->retreatCountRequired = 0;
+            if ($force->units[$attacker]->status == STATUS_BOMBARDING) {
+                $force->units[$attacker]->status = STATUS_ATTACKED;
+                $force->units[$attacker]->retreatCountRequired = 0;
 
-                $this->units[$attacker]->combatResults = $combatResults;
-                $this->units[$attacker]->dieRoll = $dieRoll;
-                $this->units[$attacker]->combatNumber = 0;
-                $this->units[$attacker]->moveCount = 0;
+                $force->units[$attacker]->combatResults = $combatResults;
+                $force->units[$attacker]->dieRoll = $dieRoll;
+                $force->units[$attacker]->combatNumber = 0;
+                $force->units[$attacker]->moveCount = 0;
             }
 
             if($battle->gameRules->phase == BLUE_TORP_COMBAT_PHASE || $battle->gameRules->phase == RED_TORP_COMBAT_PHASE){
-                $this->units[$attacker]->torpFired();
+                $force->units[$attacker]->torpFired();
             }else{
-                if(is_callable([$this->units[$attacker],'firedGun'])){
-                    $this->units[$attacker]->firedGun();
+                if(is_callable([$force->units[$attacker],'firedGun'])){
+                    $force->units[$attacker]->firedGun();
                 }
             }
 
-            if ($this->units[$attacker]->status == STATUS_ATTACKING) {
-                $this->units[$attacker]->combatResults = $combatResults;
-                $this->units[$attacker]->dieRoll = $dieRoll;
-                $this->units[$attacker]->combatNumber = 0;
-                $this->units[$attacker]->moveCount = 0;
+            if ($force->units[$attacker]->status == STATUS_ATTACKING) {
+                $force->units[$attacker]->combatResults = $combatResults;
+                $force->units[$attacker]->dieRoll = $dieRoll;
+                $force->units[$attacker]->combatNumber = 0;
+                $force->units[$attacker]->moveCount = 0;
             }
         }
         $gameRules = $battle->gameRules;
