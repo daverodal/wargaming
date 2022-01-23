@@ -148,6 +148,7 @@ class AreaBorderGameRules
     }
 
     function determineOwnership($borders = false){
+        \Wargame\Area\AreaOne\logThis("funky");
         $this->cities = [0,0,0];
         if($borders === false){
             $areas = Battle::getBattle()->areaModel->areas;

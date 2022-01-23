@@ -19,7 +19,11 @@ use Wargame\Cnst;
 use Wargame\Victory;
 use stdClass;
 use Wargame\PlayersReady;
-
+function logThis($log){
+    $fp = fopen('/tmp/looky', 'a');
+    fwrite($fp, $log."\n");
+    fclose($fp);
+}
 class AreaNext extends AreaGame
 {
 
