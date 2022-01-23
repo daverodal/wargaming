@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Mine</title>
+    <g id="Mine" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2">
+            <g id="Group" transform="translate(4.795171, 0.000000)" fill="#000000">
+                <ellipse id="Oval" cx="4.83489097" cy="6.13084112" rx="4.83489097" ry="3.04049844"></ellipse>
+                <ellipse id="Oval-Copy-2" cx="8.42367601" cy="3.9376947" rx="4.83489097" ry="3.04049844"></ellipse>
+                <ellipse id="Oval-Copy-3" cx="13.9065421" cy="3.04049844" rx="4.83489097" ry="3.04049844"></ellipse>
+                <ellipse id="Oval-Copy-4" cx="17.3956386" cy="6.13084112" rx="4.83489097" ry="3.04049844"></ellipse>
+                <ellipse id="Oval-Copy-5" cx="11.0155763" cy="8.42367601" rx="4.83489097" ry="3.04049844"></ellipse>
+            </g>
+            <polygon id="Rectangle" fill="#B0ADAD" points="0 5.68224299 31.9104361 5.68224299 28.1343458 23.2274143 3.2546729 23.2274143"></polygon>
+            <circle id="Oval" fill="#B0ADAD" cx="6.83878505" cy="26.7663551" r="3.53894081"></circle>
+            <circle id="Oval-Copy" fill="#AEAEAE" cx="24.5833333" cy="26.7663551" r="3.53894081"></circle>
+        </g>
+    </g>
+</svg>

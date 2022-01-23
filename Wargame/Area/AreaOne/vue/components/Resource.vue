@@ -14,19 +14,19 @@ name: "Resource",
 .min{
   background-size:16px;
   background-repeat: no-repeat;
-  background-image: url('./Mine.svg');
+  background-image: url('/assets/map-symbols/Mine.svg');
   padding-left:20px;
 }
 .food{
   background-size:16px;
   background-repeat: no-repeat;
-  background-image: url('./Bowl.svg');
+  background-image: url('/assets/map-symbols/Bowl.svg');
   padding-left:20px;
 }
 .energy   {
   background-size:16px;
   background-repeat: no-repeat;
-  background-image: url('./Bolt.svg');
+  background-image: url('/assets/map-symbols/Bolt.svg');
   padding-left:15px;
 }
 </style>

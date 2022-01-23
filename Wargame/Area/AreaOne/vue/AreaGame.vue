@@ -275,7 +275,7 @@ $font-family-base: "times";
     .food{
         background-size:16px;
         background-repeat: no-repeat;
-        background-image: url('./components/Bowl.svg');
+        background-image: url('/assets/map-symbols/Bowl.svg');
         padding-left:20px;
     }
     .energy   {
