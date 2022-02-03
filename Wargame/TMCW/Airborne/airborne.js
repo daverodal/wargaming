@@ -29,14 +29,15 @@ Vue.component('deploy-units-component', DeployUnitsComponent);
 
 import VueDraggableResizable from 'vue-draggable-resizable'
 import UnitComponent from './UnitComponent';
-import SpecialEvent from '../../wargame-helpers/Vue/SpecialEvent';
+// import SpecialEvent from './SpecialEvent';
 Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 Vue.component('unit-component', UnitComponent);
 import WargameVueComponents, {SyncController} from "@markarian/wargame-vue-components";
-
+const c = 1;
+debugger;
 Vue.use(WargameVueComponents);
-Vue.component('special-event', SpecialEvent);
+// Vue.component('special-event', SpecialEvent);
 import {syncObj} from "@markarian/wargame-helpers";
 import {DR} from "@markarian/wargame-helpers";
 export class AirborneSyncController extends SyncController{
@@ -46,8 +47,9 @@ export class AirborneSyncController extends SyncController{
     }
 
 
-    specialHexes(){
+    xspecialHexes(){
         syncObj.register("specialHexes", function(specialHexes, data) {
+            debugger;
             $('.specialHexes').remove();
             var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
             for(var i in specialHexes){
@@ -71,10 +73,13 @@ export class AirborneSyncController extends SyncController{
 
                                 var x = hexPos.match(/x(\d*)y/)[1];
                                 var y = hexPos.match(/y(\d*)\D*/)[1];
-                                var newVP = $('<div style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').insertAfter('#special'+i);
-                                $(newVP).animate({top:y-30,opacity:0.0},1900,function(){
-                                    $(this).remove();
-                                });
+                                debugger;
+                                topVue.specialEvents.push({x: x, y: y, text:data.specialHexesVictory[id], id: hexPos});
+
+                                // var newVP = $('<div style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').insertAfter('#special'+i);
+                                // $(newVP).animate({top:y-30,opacity:0.0},1900,function(){
+                                //     $(this).remove();
+                                // });
                             }
                         });
 
