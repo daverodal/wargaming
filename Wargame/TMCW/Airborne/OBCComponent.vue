@@ -63,7 +63,8 @@
         }
         .unit {
             pointer-events: none;
-            position: static !important;
+            position: relative;
+            margin-left:15px;
         }
     }
 </style>

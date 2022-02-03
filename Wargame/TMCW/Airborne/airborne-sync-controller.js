@@ -9,6 +9,8 @@ export class AirborneSyncController extends SyncController{
 
     specialHexes(){
         this.sync.register("specialHexes", function(specialHexes, data) {
+            debugger;
+
             $('.specialHexes').remove();
             var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
             for(var i in specialHexes){

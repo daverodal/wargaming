@@ -1,6 +1,10 @@
 <template>
     <div @mouseover="mOver" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="unit" :class="[unit.nationality, unit.class]" :style="unitStyle">
         <div class="unitOdds" :class="this.unit.oddsColor? this.unit.oddsColor: ''">{{unitOdds}}</div>
+      <div v-if="hasSteps" class="steps">
+        <div v-for="i in unit.steps" class="step"></div>
+        <div v-for="i in (unit.origSteps - unit.steps)" class="empty step"></div>
+      </div>
         <div class="shadow-mask" :class="{shadowy: unit.shadow}"></div>
         <div class="unit-size">{{ unitSize }}</div>
         <img v-for="theta in thetas" :style="{transform: theta}" class="counter arrow" src="/assets/unit-images/short-red-arrow-md.png">
@@ -21,6 +25,12 @@
         name: "UnitComponent",
         props:["unit"],
         computed:{
+          hasSteps() {
+            if(this.unit.class === 'supply' || this.unit.class === 'truck'){
+              return false;
+            }
+            return true;
+          },
             unitSize(){
                 if(this.unit.class === 'supply' || this.unit.class === 'truck'){
                     return '';
@@ -169,6 +179,7 @@
         .unit-numbers {
             &.infoLen7 {
                 letter-spacing: -.4px;
+              font-size:10px;
             }
             &.infoLen8 {
                 font-size: 10px;

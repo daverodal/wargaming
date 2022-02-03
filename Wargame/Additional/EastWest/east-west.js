@@ -1,7 +1,6 @@
 import Vue from "vue";
 import WargameVueComponents, {SyncController, ExpUnitsComponent as UnitsComponent} from "@markarian/wargame-vue-components";
 
-import FlashHexagon from '../../wargame-helpers/Vue/FlashHexagon';
 import EastWestHeader from "./EastWestHeader";
 Vue.use(WargameVueComponents);
 Vue.component('east-west-header', EastWestHeader);

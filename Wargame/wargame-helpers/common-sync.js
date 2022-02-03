@@ -138,7 +138,6 @@ x.register("mapUnits", function (mapUnits, data) {
                 });
             }
             if(mapUnits[i].class === "ca" || mapUnits[i].class === "cl" || mapUnits[i].class === "dd" || mapUnits[i].class === "bc" || mapUnits[i].class === "bb") {
-                debugger;
                 if(mapUnits[i].forceId === data.gameRules.defendingForceId) {
                     DR.hasHq = true;
                     var hexSideLen = 32;

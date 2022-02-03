@@ -104,6 +104,60 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
     }
 
+    public function sinkUnit($args)
+    {
+        global $results_name;
+        list($unit, $combatOdds, $dieRoll) = $args;
+        $dieRoll = $dieRoll + 1;
+        $hex = $unit->hexagon;
+        $battle = Battle::getBattle();
+//        $playerOne = strtolower($battle->scenario->playerOne);
+//        $playerTwo = strtolower($battle->scenario->playerTwo);
+
+        if ($hex->name) {
+            if ($unit->forceId == 1) {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='GER'>S $combatOdds $dieRoll</span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='GER'>S $combatOdds $dieRoll</span>";
+                }
+            } else {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='RN'>S $combatOdds $dieRoll</span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='RN'>S $combatOdds $dieRoll</span>";
+                }
+            }
+        }
+    }
+
+    public function noEffectUnit($args)
+    {
+        global $results_name;
+        list($unit, $combatOdds, $dieRoll) = $args;
+        $dieRoll = $dieRoll + 1;
+        $hex = $unit->hexagon;
+        $battle = Battle::getBattle();
+//        $playerOne = strtolower($battle->scenario->playerOne);
+//        $playerTwo = strtolower($battle->scenario->playerTwo);
+
+        if ($hex->name) {
+            if ($unit->forceId == 1) {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='GER'>NE $combatOdds $dieRoll</span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='GER'>NE $combatOdds $dieRoll</span>";
+                }
+            } else {
+                if (isset($battle->mapData->specialHexesVictory->{$hex->name})) {
+                    $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='RN'>NE $combatOdds $dieRoll</span>";
+                } else {
+                    $battle->mapData->specialHexesVictory->{$hex->name} = "<span class='RN'>NE $combatOdds $dieRoll</span>";
+                }
+            }
+        }
+    }
+
     protected function checkVictory($attackingId, $battle){
         return false;
     }

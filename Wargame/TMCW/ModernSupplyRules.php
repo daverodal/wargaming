@@ -82,9 +82,16 @@ trait ModernSupplyRules
         if ($unit->supplied) {
             $unit->removeAdjustment('movement');
         }
-
-        if ((!empty($this->unsuppliedDefenderHalved) || $unit->forceId == $b->gameRules->attackingForceId) && !$unit->supplied) {
-            $unit->addAdjustment('supply','zero');
+        if (!$unit->supplied) {
+            if(($unit->forceId != $b->gameRules->attackingForceId) ){
+                if(!empty($this->unsuppliedDefenderHalved)){
+                    $unit->addAdjustment('supply','half');
+                }else{
+                    $unit->removeAdjustment('supply');
+                }
+            }else{
+                $unit->addAdjustment('supply','zero');
+            }
             $b->combatRules->recalcCombat($unit->id);
         }else{
             $unit->removeAdjustment('supply');
@@ -92,5 +99,4 @@ trait ModernSupplyRules
         }
 
     }
-
 }

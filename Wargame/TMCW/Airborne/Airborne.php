@@ -155,54 +155,54 @@ class Airborne extends \Wargame\ModernLandBattle
          */
         /* Rebel Units */
 
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "airdrop", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Para.svg", 9,  5,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "para", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "A", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "A", 1,  "rebel",  "supply", $i++);
 
 
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Armor.svg", 12,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "MechInf.svg", 10,  8,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "mech", $i++);
 
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
-        UnitFactory::create("lll", BLUE_FORCE, "northeast", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Infantry.svg", 8,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "inf", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "Supply.svg", 1,  1,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "supply", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
+        UnitFactory::create("lll", BLUE_FORCE, "B", "ShortTruck.svg", 1,  6,  STATUS_CAN_DEPLOY, "B", 1,  "rebel",  "truck", $i++);
 
 
         UnitFactory::create("lll", BLUE_FORCE, "gameTurn2B", "Supply.svg", 1,  1,  STATUS_CAN_REINFORCE, "B", 2,  "rebel",  "supply", $i++);

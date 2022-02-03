@@ -4,7 +4,7 @@ namespace Wargame;
 
 trait SimpleBBCrtResults
 {
-    function applyAllCRTResults($defenders, $attackers, $combatResults, $dieRoll, $force)
+    function applyAllCRTResults($defenders, $attackers, $others, $combatResults, $dieRoll, $force, $combatOdds = "")
     {
         $battle = Battle::getBattle();
         $gameRules = $battle->gameRules;
@@ -20,11 +20,13 @@ trait SimpleBBCrtResults
                 case MISS:
                     $defUnit->status = STATUS_NO_RESULT;
                     $defUnit->retreatCountRequired = 0;
-                    break;
+                    $battle->victory->noEffectUnit($defUnit,$combatOdds, $dieRoll);
+                break;
                 case S:
                     $eliminated = $defUnit->damageUnit($combatResults);
                     if ($eliminated) {
                         $defUnit->moveCount = 0;
+                        $battle->victory->sinkUnit($defUnit,$combatOdds, $dieRoll);
                     } else {
                         $defUnit->status = STATUS_DEFENDED;
                     }
@@ -66,9 +68,41 @@ trait SimpleBBCrtResults
             }
         }
 
+        foreach($others as $defenderId => $defender) {
+            list($defenderId, $attackers, $combatResults, $dieRoll) = $battle->victory->preCombatResults($defenderId, $attackers, $combatResults, $dieRoll);
+            $defUnit = $force->units[$defenderId];
+            switch ($combatResults) {
 
-        $battle->victory->postCombatResults($defenderId, $attackers, $combatResults, $dieRoll);
 
+                case NE:
+                case MISS:
+                    $defUnit->status = STATUS_NO_RESULT;
+                    $defUnit->retreatCountRequired = 0;
+                    break;
+                case S:
+                    $eliminated = $defUnit->damageUnit($combatResults);
+                    if ($eliminated) {
+                        $defUnit->moveCount = 0;
+                    } else {
+                        $defUnit->status = STATUS_DEFENDED;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            $defUnit->combatResults = $combatResults;
+            $defUnit->dieRoll = $dieRoll;
+            $defUnit->combatNumber = 0;
+            $defUnit->moveCount = 0;
+            $mapData->breadcrumbCombat($defenderId,$force->attackingForceId, $gameRules->turn, $gameRules->phase, $gameRules->mode, $combatResults, $dieRoll, $force->getUnitHexagon($defenderId)->name);
+        }
+
+        foreach($defenders as $defenderId => $defender) {
+            $battle->victory->postCombatResults($defenderId, $attackers, $combatResults, $dieRoll);
+        }
+        foreach($others as $defenderId => $defender) {
+            $battle->victory->postCombatResults($defenderId, $attackers, $combatResults, $dieRoll);
+        }
         $force->removeEliminatingUnits();
     }
 }

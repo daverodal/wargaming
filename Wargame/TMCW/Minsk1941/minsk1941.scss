@@ -129,7 +129,7 @@
     font-size: 10px;
     left: 2px;
     .step {
-      background-image: url("./Images/smallDarkCircle.svg");
+      background-image: url("/assets/unit-images/smallDarkCircle.svg");
       background-size: 3px;
       //border: 1px solid #333;
       //border-radius: 100%;
@@ -137,7 +137,7 @@
       height: 3px;
       margin-top: 3px;
       &.empty{
-        background-image: url("./Images/lightCircle.svg");
+        background-image: url("/assets/unit-images/lightCircle.svg");
         //background: transparent;
       }
       &.white {

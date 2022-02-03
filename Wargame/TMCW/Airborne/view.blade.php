@@ -46,14 +46,14 @@
         <div class="deploy-zone-wrapper">
             <div>Rebel Zone B</div>
 
-            <deploy-units-component class="big" :myunits="allMyBoxes.northeast"></deploy-units-component>
+            <deploy-units-component class="big" :myunits="allMyBoxes.B"></deploy-units-component>
 
             <div class="clear"></div>
         </div>
 
         <div class="deploy-zone-wrapper">
             <div>Airdrop Rebel Zone A</div>
-            <deploy-units-component  :myunits="allMyBoxes.airdrop"></deploy-units-component>
+            <deploy-units-component  :myunits="allMyBoxes.A"></deploy-units-component>
 
             <div class="clear"></div>
         </div>

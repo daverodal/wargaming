@@ -25,7 +25,6 @@
         props:["unit"],
         computed:{
           course(){
-            debugger;
             return "rotate("+this.unit.facing * 60 +"deg)  scale(.55,.55) translateY(-45px)";
           },
           wrapperStyle(){

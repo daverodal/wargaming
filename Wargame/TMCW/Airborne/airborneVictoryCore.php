@@ -270,7 +270,7 @@ class airborneVictoryCore extends \Wargame\TMCW\victoryCore
         }
         if($b->gameRules->mode === COMBAT_SETUP_MODE){
             $goal = $bias = [];
-            $supplyLen = 2;
+            $supplyLen = 6;
             if($unit->forceId === Airborne::LOYALIST_FORCE){
                 $goal = $this->loyalistGoal;
                 $supplyLen = 20;

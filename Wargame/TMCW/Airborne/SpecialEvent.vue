@@ -18,14 +18,13 @@
 
 
     .social-events-enter-active{
-        transition: all 9.5s;
-        margin-top:-40px;
-        opacity: 0;
+        transition: all .5s;
+        opacity: 1;
     }
 
 
     .special-events {
-        opacity: 0;
+        opacity: 1;
         z-index: 100;
         font-size:60px;
         position: absolute;

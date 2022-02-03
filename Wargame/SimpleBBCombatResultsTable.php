@@ -49,6 +49,10 @@ class SimpleBBCombatResultsTable extends \Wargame\CombatResultsTable
     {
         return $this->crts->normal->table[$Die][$index];
     }
+    function getCombatOdds($index, $combat)
+    {
+        return $this->crts->normal->header[$index];
+    }
     function getCombatIndex($attackStrength, $defenseStrength)
     {
         $ratio = $attackStrength / $defenseStrength;

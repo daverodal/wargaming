@@ -486,6 +486,7 @@ class NavalCombatRules extends CombatRules
             }
         }
         $combatResults = $this->crt->getCombatResults($Die, $index, $this->combatsToResolve->$id);
+        $combatOdds = $this->crt->getCombatOdds($index, $this->combatsToResolve->$id);
         $this->combatsToResolve->$id->Die = $Die + 1;
         $this->combatsToResolve->$id->combatResult = $results_name[$combatResults];
 
@@ -511,7 +512,7 @@ class NavalCombatRules extends CombatRules
             }
         }
         if(method_exists($this->crt, 'applyAllCRTResults')){
-            $this->crt->applyAllCRTResults($defenders, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die, $this->force);
+            $this->crt->applyAllCRTResults($defenders, $this->combatsToResolve->{$id}->attackers, $others, $combatResults, $Die, $this->force, $combatOdds);
         }else {
             /* apply combat results to defenders */
             foreach ($defenders as $defenderId => $defender) {
@@ -522,12 +523,13 @@ class NavalCombatRules extends CombatRules
                     $this->force->applyCRTResults($defenderId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
                 }
             }
+            /* TODO: Wack man, no need to resolve combat against other units in hex */
+            /* apply combat results to other units in defending hexes */
+            foreach ($others as $otherId) {
+                $this->force->applyCRTresults($otherId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
+            }
         }
-        /* TODO: Wack man, no need to resolve combat against other units in hex */
-        /* apply combat results to other units in defending hexes */
-        foreach ($others as $otherId) {
-            $this->force->applyCRTresults($otherId, $this->combatsToResolve->{$id}->attackers, $combatResults, $Die);
-        }
+
         $this->lastResolvedCombat = $this->combatsToResolve->$id;
         if (!$this->resolvedCombats) {
             $this->resolvedCombats = new stdClass();

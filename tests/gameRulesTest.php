@@ -9,6 +9,11 @@ class GameRulesTest extends PHPUnit\Framework\TestCase
 
 		$this->assertEquals(0,0);
         $klissow = new Klissow1702();
+        $this->assertNotEmpty($klissow);
+        $this->assertNotEmpty($klissow->gameRules);
+        $this->assertNotEmpty($klissow->force);
+        $this->assertNotEmpty($klissow->combatRules);
+        $this->assertNotEmpty($klissow->moveRules);
         $mapViewer =  new MapViewer();
 //        Battle::$class = $klissow;
 //        $klissow->gameRules->phase = BLUE_MOVE_PHASE;

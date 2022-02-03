@@ -1,4 +1,3 @@
-import MapComponent from "./MapComponent";
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -25,8 +24,6 @@ import "@markarian/wargame-helpers";
 window.vueStore = store;
 export function hookup(Vue){
     Vue.use(VueResource);
-
-    Vue.component('map-component', MapComponent);
 
     window.crt = new Vue({
         el: '#crt-drag-wrapper .vue-wrapper',
@@ -342,42 +339,6 @@ export function hookup(Vue){
 
         }
     })
-    // window.headerVue = new Vue({
-    //     el: '#secondHeaderr',
-    //     data:{
-    //         deployBox: [],
-    //         deadpile: [],
-    //         exitBox: [],
-    //         notUsed: [],
-    //         show:{
-    //             units:{
-    //                 submenu:false,
-    //                 deployBox: false,
-    //                 deadpile: false,
-    //                 exitBox: false
-    //             }
-    //         }
-    //     },
-    //     methods:{
-    //         wheelo(e){
-    //         },
-    //         unitClick(e){
-    //             counterClick(e);
-    //         },
-    //         menuClick(id){
-    //             if(id === 'all'){
-    //                 this.show.units.submenu = false;
-    //                 this.show.units.deployBox = false;
-    //                 this.show.units.deadpile = false;
-    //                 this.show.units.exitBox = false;
-    //                 return;
-    //             }
-    //             this.show.units[id] = !this.show.units[id];
-    //             this.show.units.submenu = false;
-    //         }
-    //     }
-    //
-    // });
     document.addEventListener('keyup', function(evt) {
         const indx = "xdcmsl".indexOf(evt.key);
         if(indx >= 0){
