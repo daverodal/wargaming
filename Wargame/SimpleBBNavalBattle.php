@@ -72,7 +72,7 @@ class SimpleBBNavalBattle extends LandBattle
                 $this->terrain = new Terrain();
             }
             $this->moveRules = new SimpleBBMoveRules($this->force, $this->terrain, $data->moveRules);
-            $this->combatRules = new NavalCombatRules($this->force, $this->terrain, $data->combatRules);
+            $this->combatRules = new SimpleBBCombatRules($this->force, $this->terrain, $data->combatRules);
             $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force,  $data->gameRules);
             $this->victory = new Victory($data);
 
@@ -87,7 +87,7 @@ class SimpleBBNavalBattle extends LandBattle
             $this->terrain = new Terrain();
             $this->moveRules = new SimpleBBMoveRules($this->force, $this->terrain);
 
-            $this->combatRules = new NavalCombatRules($this->force, $this->terrain);
+            $this->combatRules = new SimpleBBCombatRules($this->force, $this->terrain);
             $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
         }
     }

@@ -24,6 +24,7 @@
 @include unitColor(rn,  $alliedColor);
 @include unitColor(RN, $alliedWWI);
 @include unitColor(GE, $germanColor);
+@include unitColor(GER, $germanColor);
 @include unitColor(ijn, $japaneseColor);
 @include header(IJN, $japaneseColor);
 @include header(USN, $alliedColor);
@@ -85,6 +86,11 @@
 .specialHexesVP .sovietVictoryPoints {
   @include victoryPoints(brown);
 }
+
+.specialHexesVP .britishVictoryPoints {
+  @include victoryPoints($alliedWWI);
+}
+
 /* RULES OVERRIDES */
 .a-unit-wrapper{
   position: absolute;

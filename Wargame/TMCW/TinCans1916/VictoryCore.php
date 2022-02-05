@@ -91,7 +91,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
                 $battle->mapData->specialHexesVictory->{$hex->name} = '';
             }
-            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='britishVictoryPoints'>+$vp</span>";
         } else {
             $victorId = 1;
             $hex  = $unit->hexagon;
@@ -196,9 +196,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $forceId = $gameRules->attackingForceId;
         $turn = $gameRules->turn;
         $force = $battle->force;
-        if ($b->gameRules->turn == 1 && $b->gameRules->phase == RED_MOVE_PHASE) {
-            $gameRules->flashMessages[] = "Stalin orders no retreat. All Sovets in zoc remain there";
-        }
+
         if ($turn == 1 && $gameRules->phase == BLUE_MOVE_PHASE) {
             /* first 4 units gaga */
             $supply = [];
