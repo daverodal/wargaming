@@ -355,6 +355,9 @@ class kievVictoryCore extends \Wargame\TMCW\victoryCore
         if ($attackingId == Kiev1941::SOVIET_FORCE) {
             $gameRules->flashMessages[] = "Soviet Player Turn";
             $gameRules->replacementsAvail = 4;
+            if($gameRules->turn === 1){
+                $gameRules->flashMessages[] = "Stalin orders no retreat first turn, all units in zoc cannot move.";
+            }
         }
 
         /*only get special VPs' at end of first Movement Phase */
