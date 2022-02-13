@@ -21,6 +21,7 @@
 
 namespace Wargame;
 use stdClass;
+use Illuminate\Support\Facades\Log;
 
 class AreaBorderGameRules
 {
@@ -212,7 +213,8 @@ class AreaBorderGameRules
                     if($area->armies->$p1 > $area->armies->$p2){
                         $report .= " both sides lost ".$area->armies->$p2 . " 1 controls the area";
                         $cas += $area->armies->$p2;
-                        $area->armies->$p1 -= $area->armies->$p2;
+                        $val = $area->armies->$p1 - $area->armies->$p2;
+                        $area->armies->$p1 = $val;
                         $area->owner = $p1;
                         unset($area->armies->$p2);
 
@@ -220,7 +222,8 @@ class AreaBorderGameRules
                     } else {
                         $report .= " both sides lost ".$area->armies->$p1 . " 2 controls the area";
                         $cas += $area->armies->$p1;
-                        $area->armies->$p2 -= $area->armies->$p1;
+                        $val = $area->armies->$p2 - $area->armies->$p1;
+                        $area->armies->$p2 = $val;
                         $area->owner = $p2;
                         unset($area->armies->$p1);
                     }
