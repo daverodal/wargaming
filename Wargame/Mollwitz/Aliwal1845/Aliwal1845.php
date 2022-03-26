@@ -29,7 +29,7 @@ You should have received a copy of the GNU General Public License
 
 class Aliwal1845 extends \Wargame\Mollwitz\IndiaCore
 {
-
+    // a comment
     const BRITISH_FORCE = 1;
     const SIKH_FORCE = 2;
     public $specialHexesMap = ['SpecialHexA'=>1, 'SpecialHexB'=>2, 'SpecialHexC'=>0];
