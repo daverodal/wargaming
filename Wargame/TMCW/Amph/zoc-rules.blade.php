@@ -18,52 +18,31 @@
  */
 
 ?>
-<span class="big">1 Zones of Control</span>
-
+<span class="big">Zones of Control</span>
+<img class="zoc-images" style="width:96px" src="/assets/images/zocs.svg">
 <p>
     The six hexes surrounding a unit constitute it's Zone of Control or <abbr
         title="Zone Of Control">ZOC</abbr>.
-    <abbr title="Zone Of Control">ZOC</abbr>'s affect the movement of enemy units. The affect is
-    dependant upon
-    many factors.
+    <abbr title="Zone Of Control">ZOC</abbr>'s affect the movement, supply tracing and combat during retreats.
 </p>
 <ol>
     <li><span class="big">Effects on Movement</span>
 
-        <p>When a unit enters a hostile <abbr title="Zone Of Control">ZOC</abbr> it must either stop
-            and
-            move no further, OR, expend a
-            certain amounts of <abbr title="Zone Of Control">MP's</abbr>to enter the hex, depending
-            upon
-            the
-            unit. If a units starts the
-            turn in a <abbr title="Zone Of Control">ZOC</abbr>, it may require movement points to
-            leave
-            the
-            hex, depending upon the unit type.</p>
+        <p>When a unit enters a hostile <abbr title="Zone Of Control">ZOC</abbr> it must stop
+            and move no further that turn. If a units starts the
+            turn in a <abbr title="Zone Of Control">ZOC</abbr>, it may
+            leave the hex. If it enters another ZOC it has to stop again. A unit MAY move directly from one ZOC to another
+            but most stop after doing so.</p>
 
-    <li><span class="big">Mechanized units</span>
+    <li><span class="big">Effects on Supply</span>
 
-        <p>A mechanized unit (units with a second movement phase) require 2
-            additional movement points to enter a zoc. They also
-            require 1 additional MP to leave a zoc.</p>
+        <p>Supply lines may NOT be traced through enemey ZOC's. If a friendly unit in the hex it will negate this effect and allow
+        supply to be traced through the hex.</p>
 
-        <p>Mechanized units may move directly from one <abbr title="Zone Of Control">ZOC</abbr>
-            to
-            another
-            at the price of 3 additional <abbr title="Zone Of Control">MP</abbr>'s</p></li>
-    <li><span class="big">Infantry units</span>
-
-        <p>Infantry units must stop upon entering a <abbr title="Zone Of Control">ZOC</abbr>.
-            Infantry units that start
-            their movement phase in a <abbr title="Zone Of Control">ZOC</abbr> may exit without
-            penalty, and re-enter a <abbr title="Zone Of Control">ZOC</abbr>
-            even if they move directly from one <abbr title="Zone Of Control">ZOC</abbr>
-            to another.
-        </p>
-        <p>
-            Regardless of movement points required, a unit may always move at least one hex per turn,
-            even if they are moving directly from one zoc to another.
+        </li>
+    <li><span class="big">Effects on Retreat</span>
+        <p>Units may not retreat through enemy ZOC's If they are forced to do so they are eliminated instead.
+            This effect is negated by friendly units in the hex, allowing the retreating units to move through the hex.
         </p>
     </li>
 </ol>

@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Copyright 2012-2015 David Rodal
  *
  *  This program is free software; you can redistribute it
@@ -30,13 +29,29 @@
             <li>A single unit may only participate in single attack in the friendly attack phase.</li>
             <li>All combat is between adjacent units.</li>
             <li>Units may attack more than one unit. See multi unit combat below.</li>
+            <li>More than one attacker may participate in an attack.</li>
             <li>Combat odds are determined by adding the attack strength of all attacking units and
                 dividing it by the
-                defense strength of all defending units.
+                defense strength of all defending units. All fractions are rounded down, favoring the defender.
+                <p class="ruleComment">If if the total attack strength was 26 against a defense of 9 the odds would be 2-1</p>
             </li>
-            <li>Attacks may always be made at lower than odds than those gained by calculation.</li>
+            <li>Attacks may always be made at lower than odds than those gained by calculation. See Pinning combat odds below.
+          </li>
             <li>All attacks are voluntary. You may attack as many or as few units that are adjacent to
                 your units.
+            </li>
+            <li>
+                <span class="lessBig">Setting up an attack.</span>
+                <ol>
+                    <li>
+                        First click on the defending unit you want to attack. If the CRT isn't open it may open now, you will also see a yellow border around
+                        the unit you intend to attack.
+                    </li>
+                    <li>Next, click on an adjacent attacker you with to attack with. You will see the odds calculated in a little white circle over the defender.The attacker
+                        will also a red arrow will appear indicating the direction of the attack.
+                    You will also note a yellow column will appear the reflects the odds of the attack. You may also hit "details" now to see a break down of the attack.</li>
+                    <li>If you click on more attackers, the odds will recalculate each time. If you want to remove an attacker click on it again.</li>
+                </ol>
             </li>
             <li><span class="lessBig">Multi Unit Combat</span>
 
@@ -59,6 +74,12 @@
                     </li>
                     <li>
                         See multi unit combat setup below to see how to initiate multi unit combat.
+                    </li>
+                </ol>
+                <ol>
+                    <li>
+                        To lower the odds, setup an attack, click on a crt column to the left of the calculated odds, a purple column should appear, and the new
+                        odds will appear over the unit in purple.
                     </li>
                 </ol>
             </li>

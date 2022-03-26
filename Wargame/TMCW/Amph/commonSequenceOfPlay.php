@@ -34,7 +34,7 @@
             </li>
             <li>
                 Combat Phase
-                <p>The phasing player may any and all units that adjacent to their units. Combat is
+                <p>The phasing player may attack any and all enemy units adjacent to their units. Combat is
                 voluntary.</p>
             </li>
         </ol>
@@ -48,8 +48,8 @@
             </li>
             <li>
                 Combat Phase
-                The phasing player may any and all units that adjacent to their units. Combat is
-                voluntary.
+                <p>The phasing player may attack any and all enemy units adjacent to their units. Combat is
+                    voluntary.</p>
             </li>
             <li>
                 Second Movement Phase

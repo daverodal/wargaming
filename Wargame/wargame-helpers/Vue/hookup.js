@@ -11,6 +11,7 @@ import {
     toggleFullScreen
 } from "@markarian/wargame-helpers";
 window._ = require('lodash');
+import { globalFuncs } from "@markarian/wargame-helpers";
 
 import {store} from "./store/store";
 import "./global-vue-header";
@@ -190,8 +191,10 @@ export function hookup(Vue){
             info: false,
             undo: false,
             debug: false,
+            showSvg: false,
             bugMessage: '',
             crtClass: 'normalCrt',
+            isMuted: false,
             crtOptions: {},
             dynamicButtons:{
             },
@@ -256,26 +259,24 @@ export function hookup(Vue){
                 DR.dragged = true;
             },
             showArrows(){
-                if (!DR.showArrows) {
-                    $("#arrowButton").html("hide arrows");
+                if (!this.showSvg) {
                     DR.showArrows = true;
                     $('#arrow-svg .unit-path').show();
                 } else {
-                    $("#arrowButton").html("show arrows");
                     DR.showArrows = false;
                     $('#arrow-svg .unit-path').hide();
                 }
+                this.showSvg = !this.showSvg;
             },
             mute(){
-                if (!mute) {
-                    $("#muteButton").html("un-mute");
-                    muteMe();
+                if (!this.isMuted) {
+                    globalFuncs.muteMe();
 
                 } else {
-                    $("#muteButton").html("mute");
-                    unMuteMe();
+                    globalFuncs.unMuteMe();
                     playAudio();
                 }
+                this.isMuted = !this.isMuted;
             },
             zoom(){
                 DR.globalZoom = 1.0;

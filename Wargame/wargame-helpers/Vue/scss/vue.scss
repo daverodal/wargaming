@@ -11,3 +11,23 @@ body{
     transform: rotate(180deg);
   }
 }
+$arrowColor: red;
+$arrowHead: red;
+$darkBlack: #333;
+svg {
+  z-index: 1;
+  g.unit-path {
+    opacity: .6;
+    fill: $arrowColor;
+    stroke: $arrowColor;
+    &:hover, &.hover {
+      z-index:3000;
+      fill: #26d5ff;
+      stroke: #26d5ff;
+      opacity: 1.0;
+    }
+  }
+  marker#head {
+    fill: $arrowHead;
+  }
+}

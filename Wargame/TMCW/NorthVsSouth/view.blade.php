@@ -19,7 +19,7 @@
     @include('wargame::TMCW.Amph.commonSequenceOfPlay')
 @endsection
 @section('obc')
-    <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
+    <b-dropdown-item @click="menuClick('showObc')" id="showObc">Show OBC</b-dropdown-item>
 @endsection
 @section('victoryConditions')
     @include('wargame::TMCW.Amph.victoryConditions')

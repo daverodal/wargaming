@@ -28,6 +28,7 @@
     "angular-right-click": "^0.1.1",
     "angular-sanitize": "^1.8.2",
     "bootstrap": "^4.6.0",
+    "bootstrap-vue": "^2.21.2",
     "font-awesome": "^4.7.0",
     "hoek": "^5.0.4",
     "jquery-ui-bundle": "^1.12.1",

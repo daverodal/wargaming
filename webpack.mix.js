@@ -62,6 +62,7 @@ const assetsDir = publicDir + '/assets/';
 mix.copyDirectory('Wargame/wargame-helpers/audio',assetsDir + 'audio')
     .copyDirectory('Wargame/wargame-helpers/unit-images', assetsDir + 'unit-images')
     .copyDirectory('Wargame/wargame-helpers/map-symbols', assetsDir + 'map-symbols')
+    .copyDirectory('Wargame/wargame-helpers/images', assetsDir + 'images')
     .copyDirectory('Wargame/Genre', deployDir + 'wargame/genre')
     .copyDirectory('Wargame/Mollwitz/Images', deployDir + 'wargame/mollwitz/images')
 

@@ -419,3 +419,13 @@ fieldset {
   widtH: 50vw;
   overflow:scroll;
 }
+.btn-sm, .btn-group-sm > .btn{
+  padding: 1px 5px;
+}
+.btn-xyzzy {
+  background:rgb(239, 239, 239);
+  border-color:rgb(118, 118, 118)
+}
+.btn-outline-xyzzy{
+  border-color:rgb(118, 118, 118)
+}

@@ -2277,7 +2277,7 @@
             "movement": 3,
             "reinforce": "B",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "infantry"
           },
           {
@@ -2287,7 +2287,7 @@
             "movement": 3,
             "reinforce": "B",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "infantry"
           },
           {
@@ -2297,7 +2297,7 @@
             "movement": 5,
             "reinforce": "B",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "cavalry"
           },
           {
@@ -2307,7 +2307,7 @@
             "movement": 5,
             "reinforce": "B",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "cavalry"
           },
           {
@@ -2317,7 +2317,7 @@
             "movement": 0,
             "reinforce": "D",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "pontoon"
           }
         ]
@@ -2387,7 +2387,7 @@
             "movement": 3,
             "reinforce": "B",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "infantry"
           },
           {
@@ -2397,7 +2397,7 @@
             "movement": 3,
             "reinforce": "B",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "infantry"
           },
           {
@@ -2407,7 +2407,7 @@
             "movement": 5,
             "reinforce": "B",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "cavalry"
           },
           {
@@ -2417,7 +2417,7 @@
             "movement": 5,
             "reinforce": "B",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "cavalry"
           },
           {
@@ -2427,7 +2427,7 @@
             "movement": 0,
             "reinforce": "D",
             "range": 1,
-            "nationality": "SaxonPolish",
+            "nationality": "Saxon Polish",
             "class": "pontoon"
           }
         ]

@@ -1,4 +1,4 @@
-@include('wargame::export-global-header', ['topCrt'=> new \Wargame\TMCW\CombatResultsTable()])
+    @include('wargame::export-global-header', ['topCrt'=> new \Wargame\TMCW\CombatResultsTable()])
 
 
 <script src="{{mix('vendor/javascripts/wargame/amph.js')}}"></script>
@@ -22,6 +22,16 @@
 @section('victoryConditions')
     @include('wargame::TMCW.Amph.victoryConditions')
 @endsection
+@section('zoc-rules')
+    @include('wargame::TMCW.Amph.zoc-rules')
+@endsection
+@section('supply-sources')
+    @include('wargame::TMCW.Amph.supply-sources')
+@endsection
+@section('supply-rules')
+    @include('wargame::TMCW.supply-rules')
+@endsection
+
 @section('commonRules')
     <div class="dropDown" id="GRWrapper">
         <div id="GR">
@@ -32,7 +42,7 @@
 @endsection
 
 @section('obc')
-    <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
+    <b-dropdown-item @click="menuClick('showObc')" id="showObc">Show OBC</b-dropdown-item>
 @endsection
 
 @extends('wargame::stdIncludes.view-vue' )

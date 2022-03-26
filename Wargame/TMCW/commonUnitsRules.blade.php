@@ -19,7 +19,7 @@
 ?>
     @section('unitRules.unitColors')
     <li>
-        <?= $forceName[1] ?> units are this color dude.
+        <?= $forceName[1] ?> units are this color   dude.
         <div class="unit <?= strtolower($forceName[1]) ?>" alt="0" style="border-color: rgb(204, 204, 204) rgb(102, 102, 102) rgb(102, 102, 102) rgb(204, 204, 204);   position: relative;">
             <div class="unit-size">xx</div>
             <div class="counter-wrapper">

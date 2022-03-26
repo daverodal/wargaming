@@ -34,12 +34,13 @@
                 </form>
             </div>
             <div class="left-header">
+                @section('remove-me')
                 <div class=" btn-group"  :class="{open: menu}">
                     <button @click="clearMenus('menu'), rules = info = false"  class="WrapperLabel" title="Game Menu"><i class="tablet fa fa-bars"></i></button>
 
                     <ul class="dropdown-menu">
                         @section('inner-menu')
-                            <li><a id="mute-button">mute</a></li>
+                            <li><a @click="mute()" id="mute-button">mute</a></li>
                             <li><a href="<?= url("wargame/leave-game"); ?>">Go To Lobby</a></li>
                             <li><a href="<?= url("logout"); ?>">logout</a></li>
                             <li><a id="arrow-button" @click="showArrows()">show arrows</a></li>
@@ -50,7 +51,44 @@
                         <li class="closer"></li>
                     </ul>
                 </div>
+                @endsection
 
+                <b-dropdown id="dropdown-2" text="" class="" size="sm" no-caret variant="xyzzy">
+                    <template #button-content>
+                        <i class="tablet fa fa-bars">
+                    </template>
+                    <b-dropdown-item @click="mute()">@{{ isMuted ? 'Unmute' : 'Mute' }}</b-dropdown-item>
+                    <b-dropdown-item href="<?= url("wargame/leave-game"); ?>">Go To Lobby</b-dropdown-item>
+                    <b-dropdown-item href="<?= url("logout"); ?>">Logout</b-dropdown-item>
+                    <b-dropdown-item id="arrow-button" @click="showArrows()">@{{ showSvg ? 'Hide Arrows' : 'Show Arrows' }}</b-dropdown-item>
+                    <b-dropdown-item onclick="seeUnits();return false;">See Units</b-dropdown-item>
+                    <b-dropdown-item onclick="seeBoth();return false;">See Both</b-dropdown-item>
+                    <b-dropdown-item onclick="seeMap();return false;">See Map</b-dropdown-item>
+                </b-dropdown>
+                <b-dropdown id="dropdown-2" text="" class="" size="sm" no-caret variant="xyzzy">
+                    <template #button-content>
+                        <i class="fa fa-info-circle">
+                    </template>
+                    <b-dropdown-item>Welcome {{$user}}</b-dropdown-item>
+                    @if($playersData[0] != '')
+                        <b-dropdown-item>
+                            {{ $playersData[0] }} as {{ $playDat["forceName"][0] }}
+                        </b-dropdown-item>
+                    @endif
+                    <b-dropdown-item>
+                            {{ $playersData[1] }} as {{ $playDat["forceName"][1] }}
+                        </b-dropdown-item>
+                        <b-dropdown-item>
+                            {{ $playersData[2] }} as {{ $playDat["forceName"][2] }}
+                        </b-dropdown-item>
+                        <b-dropdown-item>
+                            in <span class="game-name">{{$gameName}}-{{$arg}}</span></li>
+                        </b-dropdown-item>
+                        <b-dropdown-item>
+                            {{ $wargame }}
+                        </b-dropdown-item>
+                </b-dropdown>
+                    @section('remove-me')
                 <div class="btn-group info-dropdown"  :class="{open: info}" >
                     <button @click="clearMenus('info'), menu = rules = false" class="WrapperLabel" title="Game Information"><i class="fa fa-info-circle"></i></button>
                     <ul class="dropdown-menu">
@@ -80,6 +118,7 @@
                         <li class="closer"></li>
                     </ul>
                 </div>
+                @endsection
                 <div :class="{open: crtOpen}" class="btn-group" id="crt-wrapper">
                     <button @click="changeCrt(), clearMenus()"  class="wrapper-label" title='Combat Results Table'>
                         <span>CRT</span></button>
@@ -92,6 +131,22 @@
                         <span class="defaultZoom">1.0</span>
                     </button>
                 </div>
+                <b-dropdown id="dropdown-2" text="" class="" size="sm" no-caret variant="xyzzy">
+                    <template #button-content>
+                        ?
+                    </template>
+                    <b-dropdown-item @click="menuClick('rules')">Rules</b-dropdown-item>
+                    <b-dropdown-item @click="menuClick('showTec')" >TEC</b-dropdown-item>
+                    <b-dropdown-item  @click="menuClick('showExRules')">ExRules
+                        @section('exclusiveRulesWrapper')
+                            @include('wargame::TMCW.exclusiveRulesWrapper')
+                        @show
+                    </b-dropdown-item>
+                    @section('obc')
+                        <b-dropdown-item @click="menuClick('showObc')">order of battle</b-dropdown-item>
+                    @show
+                </b-dropdown>
+                    @section('remove-me')
                 <div class="btn-group"  :class="{open: rules}" >
                     <button @click="clearMenus('rules'), info = menu = false" class=""><span class="tablet">?</span></button>
                     <ul class="dropdown-menu">
@@ -107,6 +162,7 @@
                         @show
                     </ul>
                 </div>
+                    @endsection
                 <div class="rules-wrapper">
                     <div class="rules-container" v-if="commonRules">
                         @section('commonRules')
@@ -130,8 +186,6 @@
                     </template>
                 </div>
 
-
-
                 <div class="btn-group" :class="{open: log}" >
                     <button @click="clearMenus('log')"  class=""><span>Log</span></button>
                     <div class="dropdown-menu">
@@ -140,15 +194,23 @@
                 </div>
 
                 @section('outer-units-menu')
-                    <div class=" btn-group" :class="{open: submenu}"id="units-wrapper">
-                        <button  @click="clearMenus('submenu')" class="" title="Offmap Units">Units</button>
-                        <ul  id="units" class="dropdown-menu sub-menu">
-                            <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
-                            <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>
-                            <li><a @click="menuClick('deployWrapper')" id="showDeploy">Deploy/Staging Box</a></li>
-                            <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
-                        </ul>
-                    </div>
+                        <b-dropdown id="dropdown-2" text="Units" class="" size="sm" no-caret variant="xyzzy">
+                            <b-dropdown-item @click="menuClick('all')" id="closeAllUnits">Close All</b-dropdown-item>
+                            <b-dropdown-item @click="menuClick('deadpile')" id="hideShow">Retired Units</b-dropdown-item>
+                            <b-dropdown-item @click="menuClick('deployWrapper')" id="showDeploy">Deploy/Staging Box</b-dropdown-item>
+                            <b-dropdown-item @click="menuClick('exitBox')" id="showDeploy">Exiited Units</b-dropdown-item>
+                        </b-dropdown>
+                    @section('remove-me')
+                        <div class=" btn-group" :class="{open: submenu}"id="units-wrapper">
+                            <button  @click="clearMenus('submenu')" class="" title="Offmap Units">Units</button>
+                            <ul  id="units" class="dropdown-menu sub-menu">
+                                <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
+                                <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>
+                                <li><a @click="menuClick('deployWrapper')" id="showDeploy">Deploy/Staging Box</a></li>
+                                <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
+                            </ul>
+                        </div>
+                    @endsection
                 @show
             </div>
             <div class="right-header">

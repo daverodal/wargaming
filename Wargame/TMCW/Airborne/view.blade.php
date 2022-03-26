@@ -33,7 +33,7 @@
 @endsection
 
 @section('obc')
-    <li><a @click="menuClick('showObc')" id="showObc">Show OBC</a></li>
+    <b-dropdown-item @click="menuClick('showObc')" id="showObc">Show OBC</b-dropdown-item>
 @endsection
 @extends('wargame::stdIncludes.view-vue' )
 

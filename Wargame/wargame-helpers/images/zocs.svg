@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="360px" height="387px" viewBox="0 0 360 387" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>zocs</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="zocs" stroke="#979797">
+            <line x1="16.2992825" y1="116.808392" x2="17.007947" y2="117.516322" id="Line-3" stroke-width="0.5" stroke-linecap="square"></line>
+            <g id="Group" transform="translate(0.472443, 0.000000)" stroke-width="2.3597561">
+                <polygon id="Polygon" transform="translate(85.511406, 247.302653) rotate(30.000000) translate(-85.511406, -247.302653) " points="85.5395117 184.752641 139.723465 216.003307 139.695359 278.553319 85.4832999 309.852666 31.2993468 278.602 31.3274528 216.051988"></polygon>
+                <polygon id="Polygon" transform="translate(179.527557, 301.577260) rotate(30.000000) translate(-179.527557, -301.577260) " points="179.555663 239.027247 233.739616 270.277913 233.71151 332.827926 179.499451 364.127273 125.315498 332.876607 125.343604 270.326594"></polygon>
+                <polygon id="Polygon" transform="translate(85.511406, 139.225393) rotate(30.000000) translate(-85.511406, -139.225393) " points="85.5395117 76.6753807 139.723465 107.926047 139.695359 170.476059 85.4832999 201.775406 31.2993468 170.52474 31.3274528 107.974728"></polygon>
+                <polygon id="Polygon" transform="translate(274.016151, 247.302653) rotate(30.000000) translate(-274.016151, -247.302653) " points="274.044257 184.752641 328.22821 216.003307 328.200104 278.553319 273.988045 309.852666 219.804092 278.602 219.832198 216.051988"></polygon>
+                <polygon id="Polygon" transform="translate(274.016151, 139.225393) rotate(30.000000) translate(-274.016151, -139.225393) " points="274.044257 76.6753807 328.22821 107.926047 328.200104 170.476059 273.988045 201.775406 219.804092 170.52474 219.832198 107.974728"></polygon>
+                <polygon id="Polygon" transform="translate(179.527557, 85.422740) rotate(30.000000) translate(-179.527557, -85.422740) " points="179.555663 22.8727272 233.739616 54.1233932 233.71151 116.673406 179.499451 147.972753 125.315498 116.722087 125.343604 54.1720741"></polygon>
+            </g>
+            <g id="Group" transform="translate(170.551913, 87.311324)">
+                <line x1="9.44885942" y1="14.3606479" x2="9.44885942" y2="52.1508176" id="Line" stroke-width="5.66341463" stroke-linecap="square"></line>
+                <polygon id="Triangle" stroke-width="0.5" fill="#979797" points="9.44885942 0 18.8977188 14.158593 0 14.158593"></polygon>
+            </g>
+            <g id="Group" transform="translate(106.802541, 151.058269) rotate(300.000000) translate(-106.802541, -151.058269) translate(97.353682, 124.864872)">
+                <line x1="9.44885942" y1="14.3606479" x2="9.44885942" y2="52.1508176" id="Line" stroke-width="5.66341463" stroke-linecap="square"></line>
+                <polygon id="Triangle" stroke-width="0.5" fill="#979797" points="9.44885942 0 18.8977188 14.158593 -1.42256618e-14 14.158593"></polygon>
+            </g>
+            <g id="Group" transform="translate(249.952762, 236.953733) rotate(120.000000) translate(-249.952762, -236.953733) translate(240.503902, 210.760336)">
+                <line x1="9.44885942" y1="14.3606479" x2="9.44885942" y2="52.1508176" id="Line" stroke-width="5.66341463" stroke-linecap="square"></line>
+                <polygon id="Triangle" stroke-width="0.5" fill="#979797" points="9.44885942 0 18.8977188 14.158593 0 14.158593"></polygon>
+            </g>
+            <g id="Group" transform="translate(249.952762, 151.058269) rotate(60.000000) translate(-249.952762, -151.058269) translate(240.503902, 124.864872)">
+                <line x1="9.44885942" y1="14.3606479" x2="9.44885942" y2="52.1508176" id="Line" stroke-width="5.66341463" stroke-linecap="square"></line>
+                <polygon id="Triangle" stroke-width="0.5" fill="#979797" points="9.44885942 0 18.8977188 14.158593 0 14.158593"></polygon>
+            </g>
+            <g id="Group" transform="translate(106.802541, 236.953733) rotate(240.000000) translate(-106.802541, -236.953733) translate(97.353682, 210.760336)">
+                <line x1="9.44885942" y1="14.3606479" x2="9.44885942" y2="52.1508176" id="Line" stroke-width="5.66341463" stroke-linecap="square"></line>
+                <polygon id="Triangle" stroke-width="0.5" fill="#979797" points="9.44885942 -1.42109114e-14 18.8977188 14.158593 -2.84513235e-14 14.158593"></polygon>
+            </g>
+            <g id="Group" transform="translate(180.000772, 274.440728) rotate(180.000000) translate(-180.000772, -274.440728) translate(170.551913, 248.247331)">
+                <line x1="9.44885942" y1="14.3606479" x2="9.44885942" y2="52.1508176" id="Line" stroke-width="5.66341463" stroke-linecap="square"></line>
+                <polygon id="Triangle" stroke-width="0.5" fill="#979797" points="9.44885942 -5.68436454e-14 18.8977188 14.158593 0 14.158593"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
