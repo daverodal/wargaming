@@ -469,6 +469,9 @@ class Terrain implements \JsonSerializable
     private function getTerrainTraverseCost($terrainCode, $unit){
         $traverseCost = 0;
         foreach ($terrainCode as $code => $val) {
+            if($code === 'river'){
+                $x = 1;
+            }
             if(isset($this->terrainFeatures->$code)) {
 
                 $feature = $this->terrainFeatures->$code;
@@ -477,7 +480,7 @@ class Terrain implements \JsonSerializable
                     if ($cost === "blocked") {
                         return "blocked";
                     }
-                } else if ($unit->class && !empty($feature->altTraverseCost->{$unit->class})) {
+                } else if ($unit->class && isset($feature->altTraverseCost->{$unit->class})) {
                     $cost = $feature->altTraverseCost->{$unit->class};
                     if ($cost === "blocked") {
                         return "blocked";

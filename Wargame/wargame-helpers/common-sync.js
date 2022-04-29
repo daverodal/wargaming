@@ -325,7 +325,7 @@ function renderCrtDetails(combat) {
         oddsDisp = $(".col" + combatCol).html();
     }
     div = div.toFixed(2);
-    var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + oddsDisp + "</div>"
+        var html = "<div id='crtDetails'>" + combat.combatLog + "</div><div class='clear'>Attack = " + atk + " / Defender " + def + " = " + div + "<br>Final Column  = " + oddsDisp + "</div>"
     /*+ atk + " - Defender " + def + " = " + diff + "</div>";*/
     return html;
 }

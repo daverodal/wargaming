@@ -1,0 +1,237 @@
+/**
+ *
+ * Copyright 2012-2015 David Rodal
+ * User: David Markarian Rodal
+ * Date: 3/8/15
+ * Time: 5:48 PM
+ *
+ *  This program is free software; you can redistribute it
+ *  and/or modify it under the terms of the GNU General Public License
+ *  as published by the Free Software Foundation;
+ *  either version 2 of the License, or (at your option) any later version
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@mixin player($nationality, $player, $color, $faceColor: $color, $desigColor: white){
+  .player#{$nationality}{
+    background:$color;
+    border-color:$color !important;
+  }
+
+  .player#{$player}{
+    background:$color;
+    border-color:$color !important;
+  }
+
+  .#{$nationality}Face, .player#{$nationality}Face{
+    color:$faceColor;
+  }
+
+  .#{$player}.combatants{
+    color:$faceColor;
+  }
+
+  .#{$nationality} {
+    background-color: $color;
+    .unit-desig{
+      color: $desigColor;
+    }
+  }
+
+}
+
+@import "localColors";
+
+@include player(southern, One, $southernColor);
+@include player(northern,Two,$northernColor);
+
+@include headerColor(Southern-States, $southernColor, $southernColor);
+@include headerColor(Northern-States, $northernColor, $northernColor);
+
+#options-pane{
+  display:none;
+}
+
+#main-viewer header#header #headerContent{
+  font-family: Montserrat, sans-serif;
+  .top-menu {
+    font-size:28px;
+    font-weight: 500;
+    .WrapperLabel {
+      font-weight: 500;
+    }
+  }
+  .dropDown .subMenu .dropDown{
+    font-weight:500;
+    font-size:22px;
+  }
+  #statusWrapper{
+    font-size:14px;
+  }
+}
+
+.cool-header {
+  font-size: 22px;
+  background: rgba(255, 255, 255, .9);
+  border: 1px solid #333;
+  border-radius: 15px;
+  margin: 40px;
+  padding: 20px;
+  box-shadow: 10px 10px 10px rgba(20, 20, 20, .7);
+  margin: 0 auto;
+  text-align: center;
+  h2,h3{
+    margin:0;
+  }
+}
+.cool-box {
+  font-size: 22px;
+  background: white;
+  padding: 10px;
+}
+#floatMessage{
+  display:block;
+  z-index: 1000;
+}
+#map {
+  width:auto;
+}
+
+#crtWrapper #crt {
+  width:490px;
+  #odds, .roll{
+    span{
+      font-size:14px;
+      width:32px;
+    }
+  }
+  .crt-table-name{
+    display:none;
+  }
+}
+
+.reduced {
+  color: white;
+}
+
+#infoWrapper .WrapperLabel {
+  width: auto;
+}
+
+#gameTurn6 .unit {
+  float: left;
+}
+
+.specialHexesVP .rebelVictoryPoints {
+  @include victoryPoints(orange)
+}
+
+#deadpile{
+  .retired-unit-wrapper{
+    position:static;
+    float:left;
+    margin:0 3px 3px 0;
+    .unit{
+      position:relative;
+    }
+  }
+}
+.specialHexesVP .southernVictoryPoints {
+ @include victoryPoints($darkSouthernColor);
+}
+
+.specialHexesVP .northernVictoryPoints {
+  @include victoryPoints($northernColor);
+}
+
+.specialHexes.Southern{
+  padding: 0px 5px;
+  border: 3px solid darken($southernColor, 60%);
+  border-radius: 10px;
+  background: $southernColor;
+}
+.specialHexes.Northern{
+  padding: 0px 5px;
+  border: 3px solid darken($northernColor, 60%);
+  border-radius: 10px;
+  background: $northernColor;
+}
+/* RULES OVERRIDES */
+
+.gameLength{
+  color:transparent;
+  font-size:0px;
+  &::before{
+    content:"11";
+    color:rgb(51,51,51);
+    color:$darkBlack;
+    font-size:$stdFont;
+  }
+}
+
+.player-one-replacements{
+  color:transparent;
+  font-size:0px;
+  &::before{
+    content:"1";
+    color:rgb(51,51,51);
+    color:$darkBlack;
+    font-size:$stdFont;
+  }
+}
+
+.player-two-replacements{
+  color:transparent;
+  font-size:0px;
+  &::before{
+    content:"6";
+    color:rgb(51,51,51);
+    color:$darkBlack;
+    font-size:$stdFont;
+  }
+}
+
+.white-color{
+  color:white;
+}
+.unit{
+  .unit-numbers{
+    &.infoLen7{
+      letter-spacing:-1px;
+    }
+  }
+  &.ghost-unit{
+    z-index:30;
+  }
+}
+
+#crtDetails {
+  display:block !important;
+}
+#gameImages .a-unit-wrapper{
+  position: absolute;
+}
+
+#deployBox{
+  .a-unit-wrapper{
+    position:relative;
+    float:left;
+    margin:3px 3px 0 0;
+  }
+  h1,h2,h3,h4{
+    margin: 5px auto;
+  }
+  .unit {
+    border: solid 3px;
+    border-color: #cccccc #666666 #666666 #cccccc;
+  }
+}
+.rel-unit{
+  position:relative;
+}

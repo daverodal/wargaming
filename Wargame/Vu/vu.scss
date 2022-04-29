@@ -261,7 +261,24 @@
   top:200px;
   left: 100px;
 }
-
+ #surrender {
+  white-space: nowrap;
+  position: absolute;
+  display: none;
+  background: rgba(255, 255, 255, .9);
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 10px 10px 10px rgba(30, 30, 30, .85);
+  z-index: 4;
+  padding: 0 5px;
+  cursor: move;
+  top: 100px;
+  left: 40%;
+  padding: 30px;
+  .header{
+    font-size: 30px;
+  }
+}
 .Red{
   background: #ef7e4a;
 }

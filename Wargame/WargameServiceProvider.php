@@ -17,6 +17,7 @@ class WargameServiceProvider extends ServiceProvider
         \App\Services\WargameService::addProvider(__DIR__.'/Area');
         \App\Services\WargameService::addProvider(__DIR__.'/Additional');
         \App\Services\WargameService::addProvider(__DIR__.'/NTA');
+        \App\Services\WargameService::addProvider(__DIR__.'/ModernBattles');
 
         \App\Services\WargameService::addBattleMap(__DIR__.'/Area/Maps');
         \App\Services\WargameService::addBattleMap(__DIR__.'/TMCW/Maps');

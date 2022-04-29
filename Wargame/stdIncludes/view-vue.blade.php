@@ -64,6 +64,7 @@
                     <b-dropdown-item onclick="seeUnits();return false;">See Units</b-dropdown-item>
                     <b-dropdown-item onclick="seeBoth();return false;">See Both</b-dropdown-item>
                     <b-dropdown-item onclick="seeMap();return false;">See Map</b-dropdown-item>
+                    <b-dropdown-item onclick="showSurrender();return false;">Surrender</b-dropdown-item>
                 </b-dropdown>
                 <b-dropdown id="dropdown-2" text="" class="" size="sm" no-caret variant="xyzzy">
                     <template #button-content>
@@ -327,6 +328,11 @@
                 <float-message  id="myFloater" >
                 </float-message>
             </div>
+        </div>
+        <div id="surrender">
+            <div class="header">Do you really want to surrender?</div>
+            <div class="fancy-button" onclick="showSurrender()">Keep Fighting!</div>
+            <div class="fancy-button" onclick="surrender()">Yes, Surrender.</div>
         </div>
 
         <div id="floatMessageContainer">

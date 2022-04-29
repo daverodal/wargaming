@@ -1,0 +1,20 @@
+ {
+    "Europe": {
+        "name": "Modern Europe",
+        "path": "TMCW",
+        "genre": "20'th Century Games",
+        "production": false,
+        "fileName": "\\Wargame\\ModernBattles\\Europe\\Europe",
+        "description":"",
+        "params":{
+        },
+        "scenarios": {
+            "main": {
+                "name": "main",
+                "description": "original game.",
+                "supply": true,
+                "longDescription": "No fpf yet"
+            }
+        }
+    }
+}
