@@ -61,6 +61,15 @@ Class Combat
         $this->thetas->$aId->$dId = $bearing;
     }
 
+    public function addFpf($aId, $dId, $bearing){
+        $this->defenders->$aId = $bearing;
+        $this->defenders->$dId = $bearing;
+        if (empty($this->thetas->$aId)) {
+            $this->thetas->$aId = new stdClass();
+        }
+        $this->thetas->$aId->$dId = $bearing;
+    }
+
     public function removeAttacker($aId){
         unset($this->attackers->$aId);
         unset($this->thetas->$aId);

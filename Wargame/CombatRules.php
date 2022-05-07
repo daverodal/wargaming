@@ -107,7 +107,7 @@ class CombatRules
                 if($k === 'combatDefenders'){
                     $this->combatDefenders = new CombatDefenders($data->combatDefenders);
                 }
-                if($k === "combats"){
+                if($k === "combats" || $k === "combatsToResolve"){
                     $this->$k = new stdClass();
                     if(is_object($v)) {
                         foreach ($v as $kv => $vv) {
@@ -143,7 +143,21 @@ class CombatRules
             $this->clearCurrentCombat();
         }
     }
+    public function addFpf($cd, $id, $defenderId){
+        $los = new Los();
 
+        $unit = $this->force->units[$id];
+        $los->setOrigin($this->force->getUnitHexagon($id));
+        $los->setEndPoint($this->force->getUnitHexagon($cd));
+        $range = $los->getRange();
+        $bearing = $los->getBearing();
+        if ($range <= $unit->getRange($id)) {
+            $this->force->setupFpf($id, $range);
+            $this->defenders->$id = $cd;
+            $this->combatsToResolve->$cd->addFpf($id, $cd, $bearing);
+            $this->crt->setCombatIndex($cd);
+        }
+    }
     public function addAttacker($cd, $id, $defenderId, $bearing){
         $los = new Los();
 
@@ -744,7 +758,7 @@ class CombatRules
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
         $Die = $battle->dieRolls->getEvent($this->crt->dieSideCount);
-//        $Die = 5;
+//        $Die = 0;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {

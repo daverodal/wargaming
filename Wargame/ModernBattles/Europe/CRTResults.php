@@ -20,76 +20,102 @@ trait CRTResults
 
         $defUnit = $force->units[$defenderId];
 
-        switch ($combatResults) {
-
-            case BR:
-                $defUnit->status = STATUS_CAN_RETREAT;
-                $defUnit->retreatCountRequired = 1;
-                break;
-            case AR1:
-            case AR2:
-            case AR3:
-
-                $defUnit->status = STATUS_DEFENDED;
-                $defUnit->retreatCountRequired = 0;
-                break;
-
-            case AE:
-                $defUnit->status = STATUS_DEFENDED;
-                $defUnit->retreatCountRequired = 0;
-                break;
-
-
-            case DE:
-                $defUnit->damageUnit(true);
-                $defUnit->retreatCountRequired = $distance;
-                $defUnit->moveCount = 0;
-                $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
-                break;
-
-            case DR1:
-
-                $defUnit->status = STATUS_CAN_RETREAT;
-                $defUnit->retreatCountRequired = 1;
-                break;
-            case DR2:
-
-                $defUnit->status = STATUS_CAN_RETREAT;
-                $defUnit->retreatCountRequired = 2;
-                break;
-
-            case DR3:
-
-                $defUnit->status = STATUS_CAN_RETREAT;
-                $defUnit->retreatCountRequired = 3;
-                break;
-
-            case AX:
-                /*
-                 * gross hack, this is called once for each defender, if we clear it every times, it will
-                 * be accurate for the last defender called.
-                 */
-                $force->defenderLoseAmount = 0;
-                $defUnit->status = STATUS_CAN_DEFEND_LOSE;
-                $defUnit->retreatCountRequired = 0;
-                break;
-
-            case EX:
-                $defUnit->damageUnit(true);
-
-                $defUnit->moveCount = 0;
-                $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
-                $force->exchangeAmount += $defUnit->defExchangeAmount;
-                $defUnit->moveCount = 0;
-                break;
-
-             default:
-                break;
+        $allArtillery = true;
+        foreach ($attackers as $attacker => $val) {
+            $attUnit = $force->units[$attacker];
+            if($attUnit->class !== 'artillery'){
+                $allArtillery = false;
+            }
         }
-        $defUnit->combatResults = $combatResults;
-        $defUnit->dieRoll = $dieRoll;
-        $defUnit->combatNumber = 0;
-        $defUnit->moveCount = 0;
+        if ($defUnit->status == STATUS_FPF) {
+            $defUnit->status = STATUS_DEFENDED;
+            $defUnit->retreatCountRequired = 0;
+
+            $defUnit->combatResults = $combatResults;
+            $defUnit->dieRoll = $dieRoll;
+            $defUnit->combatNumber = 0;
+            $defUnit->moveCount = 0;
+        }else {
+            switch ($combatResults) {
+
+                case BR:
+                    $defUnit->status = STATUS_CAN_RETREAT;
+                    $defUnit->retreatCountRequired = 1;
+                    break;
+                case AR1:
+                case AR2:
+                case AR3:
+
+                    $defUnit->status = STATUS_DEFENDED;
+                    $defUnit->retreatCountRequired = 0;
+                    break;
+
+                case AE:
+                    $defUnit->status = STATUS_DEFENDED;
+                    $defUnit->retreatCountRequired = 0;
+                    break;
+
+
+                case DE:
+                    $defUnit->damageUnit(true);
+                    $defUnit->retreatCountRequired = $distance;
+                    $defUnit->moveCount = 0;
+                    $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
+                    break;
+
+                case DR1:
+                    if (!$allArtillery) {
+                        $defUnit->status = STATUS_CAN_RETREAT;
+                        $defUnit->retreatCountRequired = 1;
+                    } else {
+                        $defUnit->status = STATUS_DEFENDED;
+                        $defUnit->retreatCountRequired = 0;
+                    }
+                    break;
+                case DR2:
+
+                    $defUnit->status = STATUS_CAN_RETREAT;
+                    $defUnit->retreatCountRequired = 2;
+                    break;
+
+                case DR3:
+
+                    $defUnit->status = STATUS_CAN_RETREAT;
+                    $defUnit->retreatCountRequired = 3;
+                    break;
+
+                case DR4:
+
+                    $defUnit->status = STATUS_CAN_RETREAT;
+                    $defUnit->retreatCountRequired = 4;
+                    break;
+
+                case AX:
+
+                    $defUnit->status = STATUS_CAN_RETREAT;
+                    $defUnit->retreatCountRequired = 1;
+                    $defUnit->defExchangeAmount = $defUnit->defStrength;
+                    $force->exchangeAmount += $defUnit->defExchangeAmount;
+                    break;
+
+                case EX:
+                    $defUnit->damageUnit(true);
+
+                    $defUnit->moveCount = 0;
+                    $force->addToRetreatHexagonList($defenderId, $force->getUnitHexagon($defenderId));
+                    $force->exchangeAmount += $defUnit->defExchangeAmount;
+                    $defUnit->moveCount = 0;
+                    break;
+
+                default:
+                    break;
+            }
+            $defUnit->combatResults = $combatResults;
+            $defUnit->dieRoll = $dieRoll;
+            $defUnit->combatNumber = 0;
+            $defUnit->moveCount = 0;
+        }
+
 
 
         $numAttackers = count((array)$attackers);
@@ -115,10 +141,8 @@ trait CRTResults
 
 
                     case AX:
-                        $attUnit->damageUnit(true);
-                        $defUnit->retreatCountRequired = 0;
-                        $force->defenderLoseAmount += $attUnit->exchangeAmount;
-                        $defUnit->moveCount = 0;
+                        $attUnit->status = STATUS_CAN_EXCHANGE;
+                        $attUnit->retreatCountRequired = 0;
                         break;
 
                     case DE:
@@ -152,6 +176,7 @@ trait CRTResults
                     case DR1:
                     case DR2:
                     case DR3:
+                    case DR4:
 
                         $attUnit->status = STATUS_CAN_ADVANCE;
                         $attUnit->retreatCountRequired = 0;

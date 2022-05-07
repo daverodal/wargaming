@@ -232,8 +232,10 @@ export function hookup(Vue){
                 this.$store.commit('headerData/setDynamicButton', {id: 'shiftKey', value: DR.shiftKey});
             },
             clearCombat(){
-
                 doitKeypress(67);
+            },
+            useDetermined(){
+                doitKeypress(68);
             },
             fullScreen(){
                 toggleFullScreen()
@@ -341,6 +343,7 @@ export function hookup(Vue){
         }
     })
     document.addEventListener('keyup', function(evt) {
+        debugger;
         const indx = "xdcmsl".indexOf(evt.key);
         if(indx >= 0){
             doitKeypress(event.keyCode);

@@ -57,6 +57,7 @@ class MoveRules
     public $turnId = false;
     public $transitStacking = 1;
     public $zocBlocksSupply = true;
+    public $riversBlockRetreat = false;
 
     /*
      * usually used for a closure, it's the amount of enemies or greater you CANNOT stack with
@@ -752,6 +753,7 @@ class MoveRules
         if (!$hexagon->name) {
             return true;
             /* off map hexes have no name */
+
         }
 
 
@@ -770,6 +772,11 @@ class MoveRules
         }
         if ($this->terrain->terrainIsHexSide($startHex->name, $hexagon->name, "blocked")) {
             $isBlocked = true;
+        }
+        if($this->riversBlockRetreat && $unit->class !== 'air'){
+            if ($this->terrain->terrainIsHexSide($startHex->name, $hexagon->name, "river")) {
+                $isBlocked = true;
+            }
         }
         if ($this->terrain->getTerrainMoveCost($startHex->name, $hexagon->name, false, $unit) == "blocked") {
             $isBlocked = true;

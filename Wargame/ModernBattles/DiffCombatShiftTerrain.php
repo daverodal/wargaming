@@ -29,7 +29,10 @@ trait DiffCombatShiftTerrain
 
         $battle = Battle::getBattle();
         $combatRules = $battle->combatRules;
-        $combats = $battle->combatRules->combats->$defenderId;
+        $combats = $battle->combatRules->combats->$defenderId ?? false;
+        if(!$combats){
+            $combats = $battle->combatRules->combatsToResolve->$defenderId;
+        }
         /* @var Force $force */
         $force = $battle->force;
         $hexagon = $battle->force->units[$defenderId]->hexagon;

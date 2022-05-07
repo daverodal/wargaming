@@ -1,6 +1,6 @@
 <?php
 namespace Wargame\ModernBattles\Europe;
-
+use Wargame\ModernBattles\ModernLandBattle;
 use Wargame\TMCW\Manchuria1976\Unit;
 
 /**
@@ -26,7 +26,7 @@ use Wargame\TMCW\Manchuria1976\Unit;
 
 
 
-class Europe extends \Wargame\ModernLandBattle
+class Europe extends ModernLandBattle
 {
     const SOVIET_FORCE = 2;
     const NATO_FORCE = 1;
@@ -243,7 +243,7 @@ class Europe extends \Wargame\ModernLandBattle
             $this->force->combatRequired = true;
 
             // game data
-            $this->gameRules->setMaxTurn(10);
+            $this->gameRules->setMaxTurn(6);
 
             $this->natoFirstNoDeploy();
 
@@ -255,6 +255,7 @@ class Europe extends \Wargame\ModernLandBattle
         }
         $this->moveRules->stacking = 1;
         $this->moveRules->stickyZoc = true;
+        $this->moveRules->riversBlockRetreat = true;
 
     }
     public function startGameSouth(){

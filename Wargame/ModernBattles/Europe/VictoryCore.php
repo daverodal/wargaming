@@ -163,6 +163,10 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 //           return [$zones];
 //    }
 
+    public function isDeterminedAble($args){
+         return true;
+    }
+
     public function postStopMovingUnit($arg){
         list($unit) = $arg;
         if($unit->movesAllowed > 1){

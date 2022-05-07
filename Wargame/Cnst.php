@@ -113,7 +113,7 @@ interface Cnst {
     const COMMAND_MODE = 28;
     const RESULTS_MODE = 29;
     const PRODUCTION_MODE = 30;
-
+    const FPF_MODE = 31;
 
 // form event constants
     const OVER_MAP_EVENT =  1;
@@ -174,4 +174,5 @@ interface Cnst {
     const STATUS_CAN_UNLOAD = 44;
     const STATUS_CAN_LOAD = 45;
     const STATUS_MUST_ADVANCE = 46;
+    const STATUS_FPF= 47;
 }

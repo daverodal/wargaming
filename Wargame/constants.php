@@ -173,6 +173,7 @@ define("OPTION_MODE",27);
 define("COMMAND_MODE", 28);
 define("RESULTS_MODE",29);
 define("PRODUCTION_MODE", 30);
+define("FPF_MODE", 31);
 
 
 
@@ -208,6 +209,7 @@ $mode_name[27] = "option mode";
 $mode_name[28] = "command mode";
 $mode_name[29] = "results mode";
 $mode_name[30] = "production mode";
+$mode_name[31] = "fpf mode";
 
 // form event constants
 define("OVER_MAP_EVENT",1);
@@ -286,6 +288,7 @@ define("STATUS_UNLOADING", 43);
 define("STATUS_CAN_UNLOAD", 44);
 define("STATUS_CAN_LOAD", 45);
 define("STATUS_MUST_ADVANCE", 46);
+define("STATUS_FPF", 47);
 
 
 // unit status names

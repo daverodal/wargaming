@@ -623,6 +623,21 @@ class Force extends SimpleForce
             $this->requiredAttacks->$id = false;
         }
     }
+    function setupFpf($id, $range)
+    {
+        $unit = $this->units[$id];
+
+        if ($range > 1) {
+            $unit->status = STATUS_FPF;
+
+        } else {
+            $unit->status = STATUS_ATTACKING;
+        }
+
+        if ($this->combatRequired && isset($this->requiredAttacks->$id)) {
+            $this->requiredAttacks->$id = false;
+        }
+    }
 
     function setupDefender($id)
     {

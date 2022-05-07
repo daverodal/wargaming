@@ -38,14 +38,14 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
 
         global $results_name;
         $this->resultsNames = $results_name;
-        $results_name[EX] = "DX";
+        $results_name[EX] = "EX";
         $results_name[DR1] = "D1";
         $results_name[DR2] = "D2";
         $results_name[DR3] = "D3";
         $results_name[DR4] = "D4";
         $results_name[AR1] = "A1";
         $this->crts->mobile = new \Wargame\CRT(array("-7","-6,5","-4,3","-2","-1","0","+1", "+2,3","+4,5","+6,8","+9,11", "+12"),
-            '', 12, 1);
+            'active', 12, 1);
         $this->crts->mobile->table = array(
             array(AR1, AR1, AR1, BR, BR, DR1, DR2, DR2, DR3, DR3, DR4, DE),
             array(AR1, AR1, AR1, AR1, BR, DR1, DR1, DR2, DR2, DR3, DR3, DR4),
@@ -54,8 +54,19 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
             array(AE, AR1, AR1, AR1, AR1, AR1, BR, BR, DR1, DR1, DR1, DR2),
             array(AE, AE, AR1, AR1, AR1, AR1, AR1, BR, BR, BR, DR1, DR1),
         );
+        $this->crts->active = new \Wargame\CRT(array("-7","-6,5","-4,3","-2","-1","0","+1", "+2,3","+4,5","+6,8","+9,11", "+12"),
+            'mobile', 12, 1);
+        $this->crts->active->table = array(
+            array(AR1, AR1, AR1, BR, EX, AX, DR2, DR3, DR4, DR4, DR4, DE),
+            array(AR1, AR1, AR1, AR1, BR, EX, AX, DR2, DR2, DR3, DR3, DE),
+            array(AR1, AR1, AR1, AR1, AR1, BR, EX, AX, AX, DR2, DR3, DR4),
+            array(AR1, AR1, AR1, AR1, AR1, BR, BR, EX, EX, AX, DR2, DR3),
+            array(AE, AR1, AR1, AR1, AR1, AR1, AR1, EX, EX, EX, EX, DR3),
+            array(AE, AE, AR1, AR1, AR1, AR1, AR1, BR, BR, EX, EX, EX),
+        );
         $this->rowNum = 1;
 
+        $this->crts->determined = $this->crts->active;
 
         $this->combatIndexCount = 12;
         $this->maxCombatIndex = $this->combatIndexCount - 1;
@@ -114,6 +125,9 @@ class CombatResultsTable extends \Wargame\CombatResultsTable
     }
     function getCombatResults($Die, $index, $combat)
     {
+        if($combat->useDetermined){
+            return $this->crts->active->table[(int)$Die][$index];
+        }
         return $this->crts->mobile->table[(int)$Die][$index];
     }
 
