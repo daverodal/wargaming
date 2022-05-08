@@ -69,7 +69,10 @@ Class Combat
         }
         $this->thetas->$aId->$dId = $bearing;
     }
-
+    public function removeFpf($aId){
+        unset($this->defenders->$aId);
+        unset($this->thetas->$aId);
+    }
     public function removeAttacker($aId){
         unset($this->attackers->$aId);
         unset($this->thetas->$aId);

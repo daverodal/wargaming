@@ -921,12 +921,15 @@ class GameRules extends GameRulesAbs
                 switch ($event) {
 
                     case SELECT_COUNTER_EVENT:
-                        $this->combatRules->addFpf($this->combatRules->currentDefender, $id, $this->defendingForceId);
+                        $unit = $this->force->units[$id];
+                        if($unit->status === STATUS_FPF){
+                            $this->combatRules->removeFpf($this->combatRules->currentDefender, $id, $this->defendingForceId);
+                        }elseif($unit->status === STATUS_READY){
+                            $this->combatRules->addFpf($this->combatRules->currentDefender, $id, $this->defendingForceId);
+                        }
                         break;
 
-
-                        break;
-                    case SELECT_BUTTON_EVENT:
+                        case SELECT_BUTTON_EVENT:
                         $this->mode = COMBAT_RESOLUTION_MODE;
                         $tmp = $this->attackingForceId;
                         $this->attackingForceId = $this->defendingForceId;

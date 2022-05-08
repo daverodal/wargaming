@@ -107,7 +107,7 @@ class Europe extends ModernLandBattle
             "southern", "artillery", $id++,7, 1);
 
         for($i = 0; $i < 3; $i++){
-            UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn3", "Armor.svg",
+            UnitFactory::create("|||", Europe::SOVIET_FORCE, "gameTurn3", "Armor.svg",
                 4, 2,  12,STATUS_CAN_REINFORCE, "A", 3,
                 "southern", "mech", $id++);
         }
@@ -256,6 +256,10 @@ class Europe extends ModernLandBattle
         $this->moveRules->stacking = 1;
         $this->moveRules->stickyZoc = true;
         $this->moveRules->riversBlockRetreat = true;
+        foreach($this->mapViewer as $mapView){
+            $mapView->trueRows = true;
+            $mapView->mirror = false;
+        }
 
     }
     public function startGameSouth(){

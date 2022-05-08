@@ -23,7 +23,7 @@ trait CRTResults
         $allArtillery = true;
         foreach ($attackers as $attacker => $val) {
             $attUnit = $force->units[$attacker];
-            if($attUnit->class !== 'artillery'){
+            if($attUnit->class !== 'artillery' || $attUnit->class !== 'artillery'){
                 $allArtillery = false;
             }
         }

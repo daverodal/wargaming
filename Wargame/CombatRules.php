@@ -158,6 +158,16 @@ class CombatRules
             $this->crt->setCombatIndex($cd);
         }
     }
+    public function removeFpf($cd, $id, $defenderId){
+
+        unset($this->defenders->$id);
+
+        $this->combatsToResolve->$cd->removeFpf($id);
+        $this->force->removeFpf($id);
+
+        $this->combatsToResolve->$cd->removeFpf($id, $cd);
+        $this->crt->setCombatIndex($cd);
+    }
     public function addAttacker($cd, $id, $defenderId, $bearing){
         $los = new Los();
 

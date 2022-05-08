@@ -35,7 +35,6 @@ Vue.component('vue-draggable-resizable', VueDraggableResizable)
 Vue.component('unit-component', UnitComponent);
 import WargameVueComponents, {SyncController} from "@markarian/wargame-vue-components";
 const c = 1;
-debugger;
 Vue.use(WargameVueComponents);
 // Vue.component('special-event', SpecialEvent);
 import {syncObj} from "@markarian/wargame-helpers";
@@ -49,7 +48,6 @@ export class AirborneSyncController extends SyncController{
 
     xspecialHexes(){
         syncObj.register("specialHexes", function(specialHexes, data) {
-            debugger;
             $('.specialHexes').remove();
             var lab = ['unowned','<?=strtolower($forceName[1])?>','<?=strtolower($forceName[2])?>'];
             for(var i in specialHexes){
@@ -73,7 +71,6 @@ export class AirborneSyncController extends SyncController{
 
                                 var x = hexPos.match(/x(\d*)y/)[1];
                                 var y = hexPos.match(/y(\d*)\D*/)[1];
-                                debugger;
                                 topVue.specialEvents.push({x: x, y: y, text:data.specialHexesVictory[id], id: hexPos});
 
                                 // var newVP = $('<div style="z-index:1000;border-radius:0px;border:0px;top:'+y+'px;left:'+x+'px;font-size:60px;" class="'+' specialHexesVP">'+data.specialHexesVictory[id]+'</div>').insertAfter('#special'+i);

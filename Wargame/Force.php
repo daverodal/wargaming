@@ -626,19 +626,13 @@ class Force extends SimpleForce
     function setupFpf($id, $range)
     {
         $unit = $this->units[$id];
-
-        if ($range > 1) {
-            $unit->status = STATUS_FPF;
-
-        } else {
-            $unit->status = STATUS_ATTACKING;
-        }
-
-        if ($this->combatRequired && isset($this->requiredAttacks->$id)) {
-            $this->requiredAttacks->$id = false;
-        }
+        $unit->status = STATUS_FPF;
     }
-
+    function removeFpf($id)
+    {
+        $unit = $this->units[$id];
+        $unit->status = STATUS_READY;
+    }
     function setupDefender($id)
     {
         $unit = $this->units[$id];
@@ -764,9 +758,19 @@ class Force extends SimpleForce
                             ) {
                                 $status = $unit->status;
                             }
+                            if($unit->range > 1){
+                                $isZoc = $this->unitIsZoc($id);
+                                if ($isZoc) {
+                                    $this->markRequired($id);
+                                }
+                                $isAdjacent = $this->unitIsAdjacent($id);
+                                if ($unit->forceId == $this->defendingForceId && (!$isZoc || !$isAdjacent )) {
+                                    $status = STATUS_READY;
+                                }
+                            }
 
                         }
-                    }
+                      }
 
                 if ($phase == BLUE_AIR_COMBAT_PHASE || $phase == RED_AIR_COMBAT_PHASE ) {
                     if($unit->class === 'air'){

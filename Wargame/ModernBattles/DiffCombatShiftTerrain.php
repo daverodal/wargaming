@@ -81,9 +81,13 @@ trait DiffCombatShiftTerrain
 
         foreach ($defenders as $defId => $defender) {
             $unit = $battle->force->units[$defId];
-            $combatLog .= $unit->defStrength. " " .$unit->class." ";
+            $dStr = $unit->defStrength;
+            if($unit->status === STATUS_FPF){
+                $dStr = $unit->fpf;
+            }
+            $combatLog .= $dStr. " " .$unit->class." ";
 
-            $defenseStrength += $unit->defStrength;
+            $defenseStrength += $dStr;
             $combatLog .= "<br>";
         }
         $shift = 0;
