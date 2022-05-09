@@ -32,7 +32,6 @@ class ModernUnit extends BaseUnit implements \JsonSerializable
     public $origStrength;
     public $defStrength;
     public $fpf;
-    public $movesAllowed = 1;
 
     public function recover(){
 
@@ -80,9 +79,7 @@ class ModernUnit extends BaseUnit implements \JsonSerializable
         $this->name = $unitName;
         $this->forceId = $unitForceId;
         $this->class = $class;
-        if($this->class === 'air'){
-            $this->movesAllowed = 3;
-        }
+
         $this->hexagon = new Hexagon($unitHexagon);
 
         $battle = Battle::getBattle();
@@ -162,7 +159,6 @@ class ModernUnit extends BaseUnit implements \JsonSerializable
         $mapUnit->range = $this->range;
         $mapUnit->class = $this->class;
         $mapUnit->fpf = $this->fpf;
-        $mapUnit->movesAllowed = $this->movesAllowed;
         return $mapUnit;
     }
 

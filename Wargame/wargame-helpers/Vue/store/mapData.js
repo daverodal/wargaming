@@ -47,6 +47,10 @@ export const mapData = {
             state.moveUnits.push(payload.unit);
             state.moveMap[payload.hex] = payload.unit;
         },
+        addUnits(state, payload){
+            state.moveUnits = [...payload.units];
+            state.moveMap = {...payload.map};
+        },
         clearUnitsMaps(state){
             // state.unitsMap = {}
             // state.hexesMap = {}

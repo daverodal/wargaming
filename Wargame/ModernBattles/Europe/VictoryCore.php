@@ -167,14 +167,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
          return true;
     }
 
-    public function postStopMovingUnit($arg){
-        list($unit) = $arg;
-        if($unit->movesAllowed > 1){
-            $unit->setStatus(STATUS_READY);
-            $unit->moveAmountUsed = 0;
-            $unit->movesAllowed--;
-        }
-    }
+
 
     public function postCombatResults($args){
         list($defenderId, $attackers, $combatResults, $dieRoll) = $args;
@@ -266,12 +259,9 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 //        echo "D: $dur :D ";
     }
 
-    public function preRecoverUnit($arg){
-        list($unit) = $arg;
-        if($unit->class === 'air'){
-            $unit->movesAllowed = 3;
-        }
-    }
+//    public function preRecoverUnit($arg){
+//        list($unit) = $arg;
+//    }
 
 
     function isExit($args)

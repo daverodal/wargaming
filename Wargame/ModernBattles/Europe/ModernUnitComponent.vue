@@ -51,11 +51,8 @@
                 }
             },
             unitNumbers(){
-              let extraMoves = 0;
-              if(this.unit.movesAllowed > 1){
-                extraMoves = 10 * (this.unit.movesAllowed - 1);
-              }
-                var move = this.unit.maxMove - this.unit.moveAmountUsed + extraMoves;
+
+                var move = this.unit.maxMove - this.unit.moveAmountUsed;
                 move = move.toFixed(2);
                 move = move.replace(/\.00$/, '');
                 move = move.replace(/(\.[1  -9])0$/, '$1');

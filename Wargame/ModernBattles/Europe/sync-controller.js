@@ -558,7 +558,6 @@ export class SyncController {
             // }
 
         });
-
     }
     gameRules() {
         syncObj.register("gameRules",  (gameRules, data) => {
@@ -1032,6 +1031,8 @@ export class SyncController {
                     var id = moveRules.movingUnitId;
                     let newUnit = _.clone(data.mapUnits[id]);
                     let width = 32;
+                    let ghosts = [];
+                    let ghostMap = {};
                     for (var i in moveRules.moves) {
 
                         if (data.gameRules.phase == RED_COMBAT_PHASE || data.gameRules.phase == BLUE_COMBAT_PHASE || data.gameRules.phase == TEAL_COMBAT_PHASE || data.gameRules.phase == PURPLE_COMBAT_PHASE) {
@@ -1047,8 +1048,11 @@ export class SyncController {
                         ghostUnit.isOccupied = moveRules.moves[i].isOccupied;
                         ghostUnit.showOff = false;
                         ghostUnit.borderColor = borderColor;
-                        vueStore.commit('mD/addUnit', {hex: i, unit: ghostUnit});
+                        // vueStore.commit('mD/addUnit', {hex: i, unit: ghostUnit});
+                        ghosts.push(ghostUnit);
+                        ghostMap[i] = ghostUnit;
                     }
+                    vueStore.commit('mD/addUnits', {map: ghostMap, units: ghosts});
                 }
             }
         });
