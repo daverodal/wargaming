@@ -866,7 +866,7 @@ export class SyncController {
                             vueStore.commit('setCrtDetails', "<h5>odds = " + currentOddsDisp + "</h5>" + details);
 
                         }
-                        if(combatRules.resolvedCombats[cD]) {
+                        if(combatRules.resolvedCombats && combatRules.resolvedCombats[cD]) {
                             var defenders = combatRules.resolvedCombats[cD].defenders;
                             for (var loop in defenders) {
                                 // topVue.unitsMap[loop].borderColor = 'yellow';

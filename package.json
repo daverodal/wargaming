@@ -21,7 +21,7 @@
     "lodash": "^4.17.21"
   },
   "dependencies": {
-    "@markarian/wargame-helpers": "0.0.5",
+    "@markarian/wargame-helpers": "0.0.6",
     "@markarian/wargame-vue-components": "0.0.7",
     "angular": "^1.8.2",
     "angular-modal-service": "^0.15.6",
