@@ -446,6 +446,8 @@ export class SyncController {
                     mapUnits[i].id = i - 0;
                     mapUnits[i].shadow = false;
                     let slot = mapUnits[i].parent.replace(/-/,"");
+                    mapUnits[i].x = -15;
+                    mapUnits[i].y = 0;
 
                     this.unitDecorate(mapUnits[i], data);
                     vueStore.commit('mD/clearUnitMap', i - 0)

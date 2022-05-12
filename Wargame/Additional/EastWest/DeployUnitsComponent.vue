@@ -31,13 +31,13 @@
             let unitsRet = {};
             if(this.myunits) {
               this.myunits.forEach(unit => {
-                if (!unitsRet[unit.strength + "@" + unit.defStrength + "@" + unit.maxMove + "@" + unit.forceId + "@" + unit.reinforceZone]) {
-                  unitsRet[unit.strength + "@" + unit.defStrength + "@" + unit.maxMove + "@" + unit.forceId + "@" + unit.reinforceZone] = {
+                if (!unitsRet[unit.strength + "@" + unit.defStrength + "@" + unit.maxMove + "@" + unit.forceId + "@" + unit.reinforceZone + "@" + unit.range]) {
+                  unitsRet[unit.strength + "@" + unit.defStrength + "@" + unit.maxMove + "@" + unit.forceId + "@" + unit.reinforceZone + "@" + unit.range] = {
                     unit: unit,
                     count: 0
                   };
                 }
-                unitsRet[unit.strength + "@" + unit.defStrength + "@" + unit.maxMove + "@" + unit.forceId + "@" + unit.reinforceZone].count++;
+                unitsRet[unit.strength + "@" + unit.defStrength + "@" + unit.maxMove + "@" + unit.forceId + "@" + unit.reinforceZone + "@" + unit.range].count++;
               });
             }
 
