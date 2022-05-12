@@ -32,7 +32,7 @@
     "font-awesome": "^4.7.0",
     "hoek": "^5.0.4",
     "jquery-ui-bundle": "^1.12.1",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "popper.js": "^1.16.1",
     "ssri": "^8.0.1",
     "ts-loader": "^3.5.0",
