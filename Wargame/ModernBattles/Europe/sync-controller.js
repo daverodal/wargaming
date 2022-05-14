@@ -830,7 +830,7 @@ export class SyncController {
                     vueStore.commit('crtSelfOpened', false);
                 }
 
-                if (combatRules.combatsToResolve) {
+                if (combatRules.combatsToResolve && Object.keys(combatRules.combatsToResolve).length > 0) {
                     cD = combatRules.currentDefender;
                     if (cD !== false) {
                         if(combatRules.combatsToResolve[cD]) {
