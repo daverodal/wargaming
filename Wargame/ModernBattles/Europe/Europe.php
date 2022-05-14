@@ -46,10 +46,7 @@ class Europe extends ModernLandBattle
 
         parent::terrainGen($mapDoc, $terrainDoc);
 
-        $this->terrain->addTerrainFeature("forest", "forest", "f", 1, 0, 1, true);
-        $this->terrain->addTerrainFeature("swamp", "swamp", "s", 1, 0, 1, true);
-        $this->terrain->addAltEntranceCost("forest", 'mech', 2);
-        $this->terrain->addAltEntranceCost("swamp", 'mech', 2);
+        $this->terrain->addTerrainFeature("forest", "forest", "f", 2, 0, 1, true);
         $this->terrain->addTerrainFeature("river", "river", "v", 0, 3, 1, true);
         $this->terrain->addAltEntranceCost("roughtwo", 'air', 1);
         $this->terrain->addAltEntranceCost("forest", 'air', 1);
