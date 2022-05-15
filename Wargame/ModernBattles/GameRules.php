@@ -976,12 +976,21 @@ class GameRules extends GameRulesAbs
 
                     case SELECT_COUNTER_EVENT:
                         if(!$this->combatRules->currentDefender || $this->combatRules->currentDefender !== $id){
-                            $this->combatRules->currentDefender = $id;
-                            $this->mode = FPF_MODE;
-                            $tmp = $this->attackingForceId;
-                            $this->attackingForceId = $this->defendingForceId;
-                            $this->defendingForceId = $tmp;
-                            $this->force->setAttackingForceId($this->attackingForceId); /* so object oriented */
+                            $cD = null;
+                            if(isSet($this->combatRules->attackers->$id)){
+                                $cD = $this->combatRules->attackers->$id;
+                            }
+                            if(isSet($this->combatRules->defenders->$id)){
+                                $cD = $this->combatRules->defenders->$id;
+                            }
+                            if($cD !== null){
+                                $this->combatRules->currentDefender = $cD;
+                                $this->mode = FPF_MODE;
+                                $tmp = $this->attackingForceId;
+                                $this->attackingForceId = $this->defendingForceId;
+                                $this->defendingForceId = $tmp;
+                                $this->force->setAttackingForceId($this->attackingForceId);
+                            }
                             break;
                         }
 

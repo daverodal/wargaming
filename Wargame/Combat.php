@@ -54,7 +54,7 @@ Class Combat
 
     public function addAttacker($aId, $dId, $bearing){
         $this->attackers->$aId = $bearing;
-        $this->defenders->$dId = $bearing;
+//        $this->defenders->$dId = $bearing;
         if (empty($this->thetas->$aId)) {
             $this->thetas->$aId = new stdClass();
         }

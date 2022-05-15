@@ -718,6 +718,7 @@ export class SyncController {
             vueStore.commit('setCrtDetails', "");
 
             crt.index = false;
+            crt.roll = null;
             if (combatRules) {
                 var cD = combatRules.currentDefender;
                 if (combatRules.combats && Object.keys(combatRules.combats).length > 0) {
@@ -830,11 +831,12 @@ export class SyncController {
                     vueStore.commit('crtSelfOpened', false);
                 }
 
-                if (combatRules.combatsToResolve && Object.keys(combatRules.combatsToResolve).length > 0) {
+                if (combatRules.combatsToResolve) {
                     cD = combatRules.currentDefender;
                     if (cD !== false) {
                         if(combatRules.combatsToResolve[cD]) {
-                            var defenders = combatRules.combatsToResolve[cD].defenders;
+                            let currentDefender = combatRules.defenders[cD];
+                            var defenders = combatRules.combatsToResolve[currentDefender].defenders;
                             for (var loop in defenders) {
                                 // topVue.unitsMap[loop].borderColor = 'yellow';
                                 vueStore.commit('mD/decorateUnit', {id: loop, key: 'borderColor', value: 'lightblue'})
@@ -870,7 +872,7 @@ export class SyncController {
                             var defenders = combatRules.resolvedCombats[cD].defenders;
                             for (var loop in defenders) {
                                 // topVue.unitsMap[loop].borderColor = 'yellow';
-                                vueStore.commit('mD/decorateUnit', {id: loop, key: 'borderColor', value: 'lightblue'})
+                                // vueStore.commit('mD/decorateUnit', {id: loop, key: 'borderColor', value: 'lightblue'})
                             }
 
                             combatCol = combatRules.resolvedCombats[cD].index + 1;
@@ -900,8 +902,7 @@ export class SyncController {
 
                         }
 
-                    }
-                    if (false && combatRules.lastResolvedCombat) {
+                    }else if (combatRules.lastResolvedCombat) {
                         let thisCombat = combatRules.lastResolvedCombat;
                         let toResolveLog = "Current Combat or Last Combat<br>";
                         combatCol = thisCombat.index;

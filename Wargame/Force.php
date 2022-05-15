@@ -751,7 +751,7 @@ class Force extends SimpleForce
                                 $this->anyCombatsPossible = true;
                             }
                         }
-                        if ($mode == COMBAT_RESOLUTION_MODE) {
+                        if ($mode == COMBAT_RESOLUTION_MODE || $mode == FPF_MODE) {
                             $status = STATUS_UNAVAIL_THIS_PHASE;
                             if ($unit->status == STATUS_ATTACKING ||
                                 $unit->status == STATUS_DEFENDING
@@ -761,7 +761,7 @@ class Force extends SimpleForce
                             if($unit->range > 1){
                                 $isZoc = $this->unitIsZoc($id);
                                 if ($isZoc) {
-                                    $this->markRequired($id);
+//                                    $this->markRequired($id);
                                 }
                                 $isAdjacent = $this->unitIsAdjacent($id);
                                 if ($unit->forceId == $this->defendingForceId && (!$isZoc || !$isAdjacent )) {
