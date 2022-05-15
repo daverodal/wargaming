@@ -39,8 +39,13 @@ trait CRTResults
             switch ($combatResults) {
 
                 case BR:
-                    $defUnit->status = STATUS_CAN_RETREAT;
-                    $defUnit->retreatCountRequired = 1;
+                    if (!$allArtillery) {
+                        $defUnit->status = STATUS_CAN_RETREAT;
+                        $defUnit->retreatCountRequired = 1;
+                    } else {
+                        $defUnit->status = STATUS_DEFENDED;
+                        $defUnit->retreatCountRequired = 0;
+                    }
                     break;
                 case AR1:
                 case AR2:
