@@ -52,6 +52,9 @@ trait DiffCombatShiftTerrain
         $isAcrossRiver = $isTown = $isForest = $isRough = false;
 
         foreach ($defenders as $defId => $defender) {
+            if($battle->force->units[$defId]->status === STATUS_FPF){
+                continue;
+            }
             $hexagon = $battle->force->units[$defId]->hexagon;
             $hexpart = new Hexpart();
             $hexpart->setXYwithNameAndType($hexagon->name, HEXAGON_CENTER);
@@ -91,16 +94,29 @@ trait DiffCombatShiftTerrain
             $combatLog .= "<br>";
         }
         $shift = 0;
-        if($isTown || $isForest){
+        $terrainReason = "";
+        if($isTown ){
             $shift = 2;
-        }elseif($isRough){
-            $shift = 3;
-        }elseif($isAcrossRiver){
-            $shift=2;
+            $terrainReason = "town";
         }
+        if( $isForest){
+            $shift = 2;
+            $terrainReason = "town";
+        }
+        if($isAcrossRiver){
+            $shift=2;
+            $terrainReason = "across river";
+        }
+        if($isRough){
+            $shift = 3;
+            $terrainReason = "rough";
+        }
+
         $combatLog .= " = $defenseStrength<br>";
         $combatLog .= "$attackStrength - $defenseStrength = ".($attackStrength - $defenseStrength);
-        $combatLog .= "<br>shift $shift because of terrain";
+        if($shift > 0){
+            $combatLog .= "<br>shift $shift because of $terrainReason";
+        }
         $combatIndex = $this->getCombatIndex($attackStrength, $defenseStrength);
         $combatIndex -= $shift;
         /* Do this before terrain effects */
