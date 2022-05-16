@@ -101,7 +101,7 @@ trait DiffCombatShiftTerrain
         }
         if( $isForest){
             $shift = 2;
-            $terrainReason = "town";
+            $terrainReason = "forest";
         }
         if($isAcrossRiver){
             $shift=2;
