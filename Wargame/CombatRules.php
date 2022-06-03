@@ -739,6 +739,39 @@ class CombatRules
         $this->defenders = new stdClass();
     }
 
+    function allAttackersArtillery($combatId){
+        if($this->combatsToResolve->$combatId && $this->combatsToResolve->$combatId->attackers){
+            $attackers = $this->combatsToResolve->$combatId->attackers;
+            foreach($attackers as $attId => $attacker){
+                if($this->force->units[$attId]->class !== 'artillery' && $this->force->units[$attId]->class !== 'air'){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    function anyArtilleryInRange($defId){
+        $defenders = $this->combatsToResolve->$defId->defenders;
+        foreach($defenders as $defId => $def){
+            $defUnit = $this->force->units[$defId];
+            foreach($this->force->units as $fpfId => $fpf){
+                if($fpf->isOnMap() && $fpf->status === STATUS_READY && $defUnit->id !== $fpf->id && $defUnit->forceId === $fpf->forceId && ($fpf->class === 'artillery' || $fpf->class === 'air')){
+                    if($fpf->fpf > 0){
+                        $los = new Los();
+                        $los->setOrigin($this->force->getUnitHexagon($defId));
+                        $los->setEndPoint($this->force->getUnitHexagon($fpfId));
+                        $range = $los->getRange();
+                        if($range > 0 && $range <= $fpf->range){
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
     function resolveCombat($id)
     {
         $battle = Battle::getBattle();
@@ -768,7 +801,7 @@ class CombatRules
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
         $Die = $battle->dieRolls->getEvent($this->crt->dieSideCount);
-//        $Die = 0;
+//        $Die = 4;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {

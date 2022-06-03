@@ -470,6 +470,7 @@ class Europe extends ModernLandBattle
         $this->moveRules->stacking = 1;
         $this->moveRules->stickyZoc = true;
         $this->moveRules->riversBlockRetreat = true;
+        $this->moveRules->retreatCannotOverstack = true;
         foreach($this->mapViewer as $mapView){
             $mapView->trueRows = true;
             $mapView->mirror = false;

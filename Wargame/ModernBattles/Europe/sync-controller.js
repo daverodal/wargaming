@@ -644,7 +644,13 @@ export class SyncController {
                     }
                     break;
             }
+            debugger;
             switch (gameRules.mode) {
+                case FPF_MODE:
+                    debugger;
+                    vueStore.commit('floatMessage/setHeader', "Final Protection Fire Mode");
+                    vueStore.commit('floatMessage/setMessage', "Add Artillery units to help defend ");
+                    break;
                 case EXCHANGING_MODE:
                     var result = data.combatRules.lastResolvedCombat.combatResult;
 
@@ -677,8 +683,10 @@ export class SyncController {
                     break;
                 case RETREATING_MODE:
                     var result = data.combatRules.lastResolvedCombat.combatResult;
-
+                    const defUnit = data.mapUnits[data.combatRules.currentDefender];
                     vueStore.commit('floatMessage/setHeader',  result + ": Retreating Mode");
+                    vueStore.commit('floatMessage/setX',  defUnit.x + 100);
+                    vueStore.commit('floatMessage/setY',  defUnit.y + 100);
                     break;
             }
             var log = "";

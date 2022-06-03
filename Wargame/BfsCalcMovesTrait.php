@@ -428,6 +428,10 @@ trait BfsCalcMovesTrait
             $mapHex = $this->mapData->getHex($hexNum);
 
             if ($mapHex->isOccupied($attackingForceId, $this->stacking, $unit)) {
+//                if($this->retreatCannotOverstack && $hexNum !== $unit->hexagon->name){
+//                    $this->moves->$hexNum->isValid = false;
+//                    continue;
+//                }
                 $this->moves->$hexNum->isOccupied = true;
             }
             if ($mapHex->isOccupied($defendingForceId,$this->enemyStackingLimit, $unit)) {

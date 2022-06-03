@@ -1,5 +1,5 @@
 <template>
-    <div @mouseover="showPath(unit)" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="unit" :class="unit.nationality" :style="unitStyle">
+    <div @mouseover="showPath(unit)" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="spinny unit" :class="unit.nationality" :style="unitStyle">
       <template v-if="unit.class !== 'artillery' && unit.class !== 'air'">
       <div class="unitOdds" :class="this.unit.oddsColor? this.unit.oddsColor: ''">{{unitOdds}}</div>
         <div class="shadow-mask" :class="{shadowy: unit.shadow}"></div>

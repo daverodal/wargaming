@@ -936,34 +936,8 @@ class GameRules extends GameRulesAbs
                         $this->defendingForceId = $tmp;
                         $this->force->setAttackingForceId($this->attackingForceId); /* so object oriented */
                         $interaction->dieRoll = $this->combatRules->resolveCombat($this->combatRules->currentDefender);
-                        if ($this->force->unitsAreBeingEliminated() == true) {
-                            $this->force->removeEliminatingUnits();
-                        }
-                        if (isset($this->force->landForce) && $this->force->landForce === true) {
-                            if ($this->force->unitsAreExchanging() == true) {
-                                $this->mode = EXCHANGING_MODE;
-                            }
+                        $this->dealWithCombat();
 
-                            if ($this->force->unitsAreAttackerLosing() == true) {
-                                $this->mode = ATTACKER_LOSING_MODE;
-                            }
-
-                            /* Defender losses are taken before attacker losses */
-
-                            if ($this->force->unitsAreDefenderLosing() == true) {
-                                $this->mode = DEFENDER_LOSING_MODE;
-                                break;
-                            }
-
-                            if ($this->force->unitsAreRetreating() == true) {
-                                $this->force->clearRetreatHexagonList();
-                                $this->mode = RETREATING_MODE;
-                            } else { // check if advancing after eliminated unit
-                                if ($this->force->unitsAreAdvancing() == true) {
-                                    $this->mode = ADVANCING_MODE;
-                                }
-                            }
-                        }
                 }
                 break;
 
@@ -985,11 +959,22 @@ class GameRules extends GameRulesAbs
                             }
                             if($cD !== null){
                                 $this->combatRules->currentDefender = $cD;
-                                $this->mode = FPF_MODE;
-                                $tmp = $this->attackingForceId;
-                                $this->attackingForceId = $this->defendingForceId;
-                                $this->defendingForceId = $tmp;
-                                $this->force->setAttackingForceId($this->attackingForceId);
+                                if($this->combatRules->allAttackersArtillery($cD)){
+                                    $this->flashMessages[] = "No FPF in all artillery attacks";
+                                    $this->combatRules->resolveCombat($this->combatRules->currentDefender);
+                                    $this->dealWithCombat();
+                                }else if(!$this->combatRules->anyArtilleryInRange($cD)){
+                                    $this->flashMessages[] = "No artillery in range for FPF";
+
+                                        $this->combatRules->resolveCombat($this->combatRules->currentDefender);
+                                        $this->dealWithCombat();
+                                    }else{
+                                    $this->mode = FPF_MODE;
+                                    $tmp = $this->attackingForceId;
+                                    $this->attackingForceId = $this->defendingForceId;
+                                    $this->defendingForceId = $tmp;
+                                    $this->force->setAttackingForceId($this->attackingForceId);
+                                }
                             }
                             break;
                         }
@@ -1373,5 +1358,35 @@ class GameRules extends GameRulesAbs
         $info .= "<br />last force to occupy Marysville wins";
 
         return $info;
+    }
+    function dealWithCombat(){
+        if ($this->force->unitsAreBeingEliminated() == true) {
+            $this->force->removeEliminatingUnits();
+        }
+        if (isset($this->force->landForce) && $this->force->landForce === true) {
+            if ($this->force->unitsAreExchanging() == true) {
+                $this->mode = EXCHANGING_MODE;
+            }
+
+            if ($this->force->unitsAreAttackerLosing() == true) {
+                $this->mode = ATTACKER_LOSING_MODE;
+            }
+
+            /* Defender losses are taken before attacker losses */
+
+            if ($this->force->unitsAreDefenderLosing() == true) {
+                $this->mode = DEFENDER_LOSING_MODE;
+                return;
+            }
+
+            if ($this->force->unitsAreRetreating() == true) {
+                $this->force->clearRetreatHexagonList();
+                $this->mode = RETREATING_MODE;
+            } else { // check if advancing after eliminated unit
+                if ($this->force->unitsAreAdvancing() == true) {
+                    $this->mode = ADVANCING_MODE;
+                }
+            }
+        }
     }
 }
