@@ -1,6 +1,5 @@
 import Vue from "vue";
-import WargameVueComponents from "@markarian/wargame-vue-components";
-import ExpUnitsComponent from "./ExpUnitsComponent";
+import WargameVueComponents, { ExpUnitsComponent} from "@markarian/wargame-vue-components";
 import DeployUnitsComponent from '../../Additional/EastWest/DeployUnitsComponent'
 Vue.component('deploy-units-component', DeployUnitsComponent);
 Vue.use(WargameVueComponents);
