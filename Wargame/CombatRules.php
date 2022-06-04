@@ -753,9 +753,11 @@ class CombatRules
 
     function anyArtilleryInRange($defId){
         $defenders = $this->combatsToResolve->$defId->defenders;
+        $ret = false;
         foreach($defenders as $defId => $def){
             $defUnit = $this->force->units[$defId];
             foreach($this->force->units as $fpfId => $fpf){
+                $fpf->fpfInRange = false;
                 if($fpf->isOnMap() && $fpf->status === STATUS_READY && $defUnit->id !== $fpf->id && $defUnit->forceId === $fpf->forceId && ($fpf->class === 'artillery' || $fpf->class === 'air')){
                     if($fpf->fpf > 0){
                         $los = new Los();
@@ -763,13 +765,14 @@ class CombatRules
                         $los->setEndPoint($this->force->getUnitHexagon($fpfId));
                         $range = $los->getRange();
                         if($range > 0 && $range <= $fpf->range){
-                            return true;
+                            $fpf->fpfInRange = true;
+                            $ret = true;
                         }
                     }
                 }
             }
-            return false;
         }
+        return $ret;
     }
 
     function resolveCombat($id)

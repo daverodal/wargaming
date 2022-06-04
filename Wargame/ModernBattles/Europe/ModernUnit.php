@@ -32,6 +32,7 @@ class ModernUnit extends BaseUnit implements \JsonSerializable
     public $origStrength;
     public $defStrength;
     public $fpf;
+    public $fpfInRange = false;
 
     public function recover(){
 
@@ -159,6 +160,7 @@ class ModernUnit extends BaseUnit implements \JsonSerializable
         $mapUnit->range = $this->range;
         $mapUnit->class = $this->class;
         $mapUnit->fpf = $this->fpf;
+        $mapUnit->fpfInRange = $this->fpfInRange;
         return $mapUnit;
     }
 

@@ -83,6 +83,13 @@ export class SyncController {
         if (unit.forceId !== force.attackingForceId) {
             shadow = false;
         }
+        if(data.gameRules.mode === FPF_MODE){
+            if(unit.fpfInRange){
+                shadow = false;
+            }else{
+                shadow = true;
+            }
+        }
 
         if (unit.isImproved === true) {
             style = 'dotted';
@@ -102,7 +109,7 @@ export class SyncController {
                 }
                 break;
             case STATUS_READY:
-                if (unit.forceId === force.attackingForceId) {
+                if (data.gameRules.mode !== FPF_MODE && unit.forceId === force.attackingForceId) {
 
                     shadow = false;
                 } else {

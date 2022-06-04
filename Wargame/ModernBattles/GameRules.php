@@ -965,10 +965,9 @@ class GameRules extends GameRulesAbs
                                     $this->dealWithCombat();
                                 }else if(!$this->combatRules->anyArtilleryInRange($cD)){
                                     $this->flashMessages[] = "No artillery in range for FPF";
-
-                                        $this->combatRules->resolveCombat($this->combatRules->currentDefender);
-                                        $this->dealWithCombat();
-                                    }else{
+                                    $this->combatRules->resolveCombat($this->combatRules->currentDefender);
+                                    $this->dealWithCombat();
+                                }else{
                                     $this->mode = FPF_MODE;
                                     $tmp = $this->attackingForceId;
                                     $this->attackingForceId = $this->defendingForceId;
