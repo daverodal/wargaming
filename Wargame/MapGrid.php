@@ -76,8 +76,33 @@ class MapGrid
 
     function setPixels($pixelX, $pixelY)
     {
-
-        $this->calculateHexpartFromPixels($pixelX, $pixelY);
+        if($this->trueRows){
+            if($this->mirror){
+                $pixX = $pixelY;
+            }else{
+                $pixX =  $this->mapWidth - $pixelY;
+            }
+        }else{
+            if($this->mirror){
+                $pixX = $this->mapWidth - $pixelX;
+            }else{
+                $pixX = $pixelX;
+            }
+        }
+        if($this->trueRows) {
+            if($this->mirror){
+                $pixY = $this->mapHeight - $pixelX;
+            }else{
+                $pixY =  $pixelX;
+            }
+        }else{
+            if($this->mirror){
+                $pixY = $this->mapHeight - $pixelY;
+            }else{
+                $pixY =  $pixelY;
+            }
+        }
+        $this->calculateHexpartFromPixels($pixX, $pixY);
         $this->calculateHexagonFromPixels();
     }
 

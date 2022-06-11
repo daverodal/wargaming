@@ -83,7 +83,18 @@ class Europe extends ModernLandBattle
         $scenario = $this->scenario;
 
         $id = 0;
-
+//        for ($i = 0; $i < 6; $i++) {
+//            UnitFactory::create("||", Europe::SOVIET_FORCE, "airpowerWrapper", "jetPlane.svg",
+//                2, 3, 12, STATUS_CAN_REINFORCE, "A", 1,
+//                "southern", "airpower", $id++);
+//
+//        }
+//        for ($i = 0; $i < 6; $i++) {
+//            UnitFactory::create("||", Europe::NATO_FORCE, "airpowerWrapper", "jetPlane.svg",
+//                2, 3, 12, STATUS_CAN_REINFORCE, "A", 1,
+//                "northern", "airpower", $id++);
+//
+//        }
         if($scenario->name === 'main') {
             for ($i = 0; $i < 6; $i++) {
                 UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "MechInf.svg",
@@ -519,7 +530,8 @@ class Europe extends ModernLandBattle
         $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, RED_MOVE_PHASE, MOVING_MODE, Europe::RED_FORCE, Europe::BLUE_FORCE, false);
 
         $this->gameRules->addPhaseChange(RED_MOVE_PHASE, RED_COMBAT_PHASE, COMBAT_SETUP_MODE, Europe::RED_FORCE, Europe::BLUE_FORCE, false);
-        $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, Europe::BLUE_FORCE, Europe::RED_FORCE, false);
+        $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_REPLACEMENT_PHASE, REPLACING_MODE, Europe::BLUE_FORCE, Europe::RED_FORCE, false);
+        $this->gameRules->addPhaseChange(BLUE_REPLACEMENT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, Europe::BLUE_FORCE, Europe::RED_FORCE, false);
         $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, Europe::BLUE_FORCE, Europe::RED_FORCE, false);
         $this->gameRules->addPhaseChange(BLUE_COMBAT_PHASE, RED_MOVE_PHASE, MOVING_MODE, Europe::RED_FORCE, Europe::BLUE_FORCE, true);
     }

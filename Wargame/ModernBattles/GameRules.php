@@ -258,15 +258,15 @@ class GameRules extends GameRulesAbs
                             break;
                         }
 
-                        if($this->currentReplacement !== false && $location){
-                            $unit = $this->force->getUnit($this->currentReplacement);
-
-                            if ($unit->getReplacing($location) !== false) {
-                                $this->moveRules->stopReplacing();
-                                $this->currentReplacement = false;
-                                $this->replacementsAvail--;
-                            }
-                        }
+//                        if($this->currentReplacement !== false && $location){
+//                            $unit = $this->force->getUnit($this->currentReplacement);
+//
+//                            if ($unit->getReplacing($location) !== false) {
+//                                $this->moveRules->stopReplacing();
+//                                $this->currentReplacement = false;
+//                                $this->replacementsAvail--;
+//                            }
+//                        }
 
 
                         if ($this->force->attackingForceId == $this->force->units[$id]->forceId) {
@@ -278,13 +278,23 @@ class GameRules extends GameRulesAbs
                             }
 
                             if ($this->force->units[$id]->status == STATUS_CAN_REPLACE) {
-                                if ($this->currentReplacement !== false && $this->currentReplacement != $id) {
-                                    $unit = $this->force->getUnit($this->currentReplacement);
-                                    $unit->setStatus(STATUS_CAN_REPLACE);
-                                }
+//                                if ($this->currentReplacement !== false && $this->currentReplacement != $id) {
+//                                    $unit = $this->force->getUnit($this->currentReplacement);
+//                                    $unit->setStatus(STATUS_CAN_REPLACE);
+//                                }
 //                                $this->force->units[$id]->status = STATUS_CAN_REPLACE;
-                                $this->currentReplacement = $id;
-                                $this->moveRules->startReplacing($id);
+//                                $this->currentReplacement = $id;
+//                                $this->moveRules->startReplacing($id);
+                                $unit->hexagon->parent = "deployBox";
+                                $unit->status = STATUS_REPLACED;
+                                $this->replacementsAvail--;
+                                $this->moveRules->stopReplacing();
+                                break;
+                            }elseif ($unit->status == STATUS_REPLACED){
+                                $unit->hexagon->parent = "deadpile";
+                                $unit->status = STATUS_CAN_REPLACE;
+                                $this->replacementsAvail++;
+                                $this->moveRules->stopReplacing();
                                 break;
                             }
                             if (isset($this->force->landForce) && $this->force->landForce && $this->force->units[$id]->status != STATUS_REPLACING && $this->force->units[$id]->status != STATUS_CAN_REINFORCE && $this->force->replace($id)) {
@@ -1254,6 +1264,13 @@ class GameRules extends GameRulesAbs
                 $this->force->anyCombatsPossible === false) {
                 $didOne = true;
                 $this->flashMessages[] = "No Combats Possible.";
+                $ret = $this->endPhase($click);
+            }
+            if ($ret === true &&
+                $this->mode === REPLACING_MODE  &&
+                $this->replacementsAvail == 0) {
+                $didOne = true;
+                $this->flashMessages[] = "No Replacementns Possible.";
                 $ret = $this->endPhase($click);
             }
         }while($didOne === true);

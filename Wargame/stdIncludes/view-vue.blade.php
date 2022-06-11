@@ -201,17 +201,6 @@
                             <b-dropdown-item @click="menuClick('deployWrapper')" id="showDeploy">Deploy/Staging Box</b-dropdown-item>
                             <b-dropdown-item @click="menuClick('exitBox')" id="showDeploy">Exiited Units</b-dropdown-item>
                         </b-dropdown>
-                    @section('remove-me')
-                        <div class=" btn-group" :class="{open: submenu}"id="units-wrapper">
-                            <button  @click="clearMenus('submenu')" class="" title="Offmap Units">Units</button>
-                            <ul  id="units" class="dropdown-menu sub-menu">
-                                <li><a @click="menuClick('all')" id="closeAllUnits">Close All</a></li>
-                                <li><a @click="menuClick('deadpile')" id="hideShow">Retired Units</a></li>
-                                <li><a @click="menuClick('deployWrapper')" id="showDeploy">Deploy/Staging Box</a></li>
-                                <li><a @click="menuClick('exitBox')" id="showExited">Exited Units</a></li>
-                            </ul>
-                        </div>
-                    @endsection
                 @show
             </div>
             <div class="right-header">
@@ -296,6 +285,20 @@
                         @show
 
                     </div>
+{{--                    <div class="unit-wrapper" id="airpower-wrapper" v-show="show.units.airpowerWrapper">--}}
+{{--                        <div @click="show.units.deadpile = false" class="close">X</div>--}}
+{{--                        <div style="font-size:50px;font-family:sans-serif;float:right;color:#666;">--}}
+{{--                            Airpower available--}}
+{{--                        </div>--}}
+{{--                        @section('airpower-wrapper')--}}
+{{--                            <airpower-units-component :myfilter="1" :myunits="allMyBoxes.airpowerWrapper"></airpower-units-component>--}}
+{{--                            <div class="clear"></div>--}}
+{{--                            <airpower-units-component :myfilter="2" :myunits="allMyBoxes.airpowerWrapper"></airpower-units-component>--}}
+{{--                            <div class="clear"></div>--}}
+{{--                            <div class="clear"></div>--}}
+{{--                        @show--}}
+
+{{--                    </div>--}}
                     <div class="unit-wrapper" v-show="show.units.exitBox" id="exitWrapper">
                         <div class="close">X</div>
                         <div style="margin-right:3px;" class="left">Exited Units</div>

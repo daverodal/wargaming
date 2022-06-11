@@ -1,6 +1,8 @@
 import Vue from "vue";
 import WargameVueComponents, { ExpUnitsComponent} from "@markarian/wargame-vue-components";
 import DeployUnitsComponent from '../../Additional/EastWest/DeployUnitsComponent'
+// import AirpowerUnitsComponent from '../AirpowerUnitsComponent'
+// Vue.component('airpower-units-component', AirpowerUnitsComponent);
 Vue.component('deploy-units-component', DeployUnitsComponent);
 Vue.use(WargameVueComponents);
 import VueDraggableResizable from 'vue-draggable-resizable'

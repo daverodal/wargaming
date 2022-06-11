@@ -1,5 +1,6 @@
 <?php
 namespace Wargame\ModernBattles\Europe;
+use Wargame\Additional\EastWest\EastWest;
 use \Wargame\Battle;
 use \stdClass;
 /**
@@ -61,6 +62,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 
         $vp = $unit->damage;
         $hex  = $unit->hexagon;
+        $unit->reinforceZone = "C";
         if ($unit->forceId == Europe::SOVIET_FORCE) {
             $victorId = Europe::NATO_FORCE;
 
@@ -117,6 +119,41 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $battle->moveRules->enterZoc = "stop";
             $battle->moveRules->exitZoc = 0;
             $battle->moveRules->noZocZoc = false;
+    }
+
+    public function preRecoverUnit($args)
+    {
+        /* @var unit $unit */
+        $unit = $args[0];
+
+        if($unit->status === STATUS_REPLACED){
+            $unit->status = STATUS_CAN_REINFORCE;
+        }
+        /*
+         * all units move in second movement phase
+         */
+    }
+    public function postRecoverUnit($args)
+    {
+        /* @var unit $unit */
+        $unit = $args[0];
+
+//        if($unit->class === "airpower"){
+//            $battle = Battle::getBattle();
+//            $gameRules = $battle->gameRules;
+//            if($gameRules->mode === COMBAT_SETUP_MODE){
+//                $unit->status = STATUS_READY;
+//            }else{
+//                $unit->status = STATUS_UNAVAIL_THIS_PHASE;
+//            }
+//        }
+
+        if($unit->status === STATUS_REPLACED){
+            $unit->status = STATUS_CAN_REINFORCE;
+        }
+        /*
+         * all units move in second movement phase
+         */
     }
 
 //    public function postReinforceZoneNames($args)
@@ -272,10 +309,12 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     public function playerTurnChange($arg)
     {
 
-        parent::playerTurnChange($arg);
+            parent::playerTurnChange($arg);
         $attackingId = $arg[0];
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
+        $gameRules = $battle->gameRules;
+        $gameRules->replacementsAvail = 0;
         $vp = $this->victoryPoints;
         $specialHexes = $mapData->specialHexes;
         /* @var $gameRules \Wargame\GameRules */
@@ -285,13 +324,10 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $gameRules->flashMessages[] = "@hide crt";
         }
 
-        $gameRules->replacementsAvail = 2;
-
-        if($attackingId === Europe::NATO_FORCE){
-            $gameRules->replacementsAvail = 3;
-            if($gameRules->turn === 1){
-                $gameRules->replacementsAvail = 1;
-                $gameRules->flashMessages[] = "Only one replacement available on turn one.";
+        if($battle->scenario->name ?? "" === "three") {
+            if ($attackingId === Europe::NATO_FORCE) {
+                if ($gameRules->turn >= 9)
+                    $gameRules->replacementsAvail = 6;
             }
         }
     }

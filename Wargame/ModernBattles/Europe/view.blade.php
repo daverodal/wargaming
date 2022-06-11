@@ -37,6 +37,15 @@
     <button :class="{'inline-show': dynamic.combat}" @click="clearCombat" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
     <button :class="{'inline-show': dynamic.combat, dark: dynamic.shiftKey}" @click="shiftClick"  class="dynamicButton combatButton" id="shiftKey" >+</button>
 @endsection
+@section('outer-units-menux')
+    <b-dropdown id="dropdown-2" text="Units" class="" size="sm" no-caret variant="xyzzy">
+        <b-dropdown-item @click="menuClick('all')" id="closeAllUnits">Close All</b-dropdown-item>
+        <b-dropdown-item @click="menuClick('deadpile')" id="hideShow">Retired Units</b-dropdown-item>
+        <b-dropdown-item @click="menuClick('deployWrapper')" id="showDeploy">Deploy/Staging Box</b-dropdown-item>
+        <b-dropdown-item @click="menuClick('airpowerWrapper')" id="showAirpower">Airpower</b-dropdown-item>
+        <b-dropdown-item @click="menuClick('exitBox')" id="showDeploy">Exiited Units</b-dropdown-item>
+    </b-dropdown>
+@endsection
 @section('deploy-box')
     <div id="deployBox">
         <div>
