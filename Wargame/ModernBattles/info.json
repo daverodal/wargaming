@@ -13,12 +13,17 @@
                 "name": "main",
                 "description": "original game.",
                 "supply": true,
-                "longDescription": "No fpf yet"
+                "longDescription": "6 turns"
             },
             "three": {
                 "name": "three",
                 "description": "Scenario 3",
-                "longDescription": "Scenario 3"
+                "longDescription": "12 turms"
+            },
+            "four": {
+                "name": "four",
+                "description": "Scenario 4",
+                "longDescription": "10 turns"
             }
         }
     }

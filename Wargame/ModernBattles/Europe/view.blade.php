@@ -15,6 +15,22 @@
 @endsection
 @section('exclusiveRulesWrapper')
 @endsection
+@section('airpower-boxx')
+    <div class="unit-wrapper" id="airpower-wrapper" v-show="show.units.airpowerWrapper">
+        <div @click="show.units.deadpile = false" class="close">X</div>
+        <div style="font-size:50px;font-family:sans-serif;float:right;color:#666;">
+            Airpower Available
+        </div>
+        @section('airpower-wrapper')
+            <airpower-units-component :myfilter="1" :myunits="allMyBoxes.airpowerWrapper"></airpower-units-component>
+            <div class="clear"></div>
+            <airpower-units-component :myfilter="2" :myunits="allMyBoxes.airpowerWrapper"></airpower-units-component>
+            <div class="clear"></div>
+            <div class="clear"></div>
+        @show
+
+    </div>
+@endsection
 @section('SOP')
     @include('wargame::TMCW.Amph.commonSequenceOfPlay')
 @endsection
@@ -37,6 +53,7 @@
     <button :class="{'inline-show': dynamic.combat}" @click="clearCombat" class="dynamicButton combatButton" id="clearCombatEvent">c</button>
     <button :class="{'inline-show': dynamic.combat, dark: dynamic.shiftKey}" @click="shiftClick"  class="dynamicButton combatButton" id="shiftKey" >+</button>
 @endsection
+
 @section('outer-units-menux')
     <b-dropdown id="dropdown-2" text="Units" class="" size="sm" no-caret variant="xyzzy">
         <b-dropdown-item @click="menuClick('all')" id="closeAllUnits">Close All</b-dropdown-item>

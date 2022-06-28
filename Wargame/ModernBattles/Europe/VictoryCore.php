@@ -34,13 +34,17 @@ use \stdClass;
 class VictoryCore extends \Wargame\TMCW\victoryCore
 {
 
+    public $armorReleased;
 
     function __construct($data)
     {
         parent::__construct($data);
         if ($data) {
+            $this->armorReleased = $data->victory->armorReleased ?? false;
+
         } else {
             $this->victoryPoints[3] = 0;
+            $this->armorReleased = false;
         }
     }
 
@@ -52,6 +56,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     public function save()
     {
         $ret = parent::save();
+        $ret->armorReleased = $this->armorReleased;
         return $ret;
     }
 
@@ -324,11 +329,72 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $gameRules->flashMessages[] = "@hide crt";
         }
 
+        if($battle->scenario->name ?? "" === "four") {
+            if ($attackingId === Europe::SOVIET_FORCE) {
+                if($this->checkNorthAutobahn()) {
+                    $gameRules->flashMessages[] = "Release Soviet Armor Division";
+                    $this->releaseArmorDivision();
+                }
+            }
+        }
+
         if($battle->scenario->name ?? "" === "three") {
             if ($attackingId === Europe::NATO_FORCE) {
                 if ($gameRules->turn >= 9)
                     $gameRules->replacementsAvail = 6;
             }
         }
+    }
+
+    public function releaseArmorDivision(){
+        if($this->armorReleased){
+            return;
+        }
+        $battle = Battle::getBattle();
+
+        UnitFactory::$injector = $battle->force;
+        $this->armorReleased = true;
+        $battle = Battle::getBattle();
+        $units = $battle->force->units;
+        $id = count($units);
+        $nextTurn = $battle->gameRules->turn + 1;
+        for ($i = 0; $i < 3; $i++) {
+            UnitFactory::create("|||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Armor.svg",
+                4, 2, 12, STATUS_CAN_REINFORCE, "B", $nextTurn,
+                "southern", "mech", $id++);
+        }
+        for ($i = 0; $i < 3; $i++) {
+            UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "MechInf.svg",
+                1, 2, 12, STATUS_CAN_REINFORCE, "B", $nextTurn,
+                "southern", "mech", $id++);
+        }
+        UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
+            4, 1, 9, STATUS_CAN_REINFORCE, "B", $nextTurn,
+            "southern", "artillery", $id++, 8, 0);
+        UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
+            5, 1, 9, STATUS_CAN_REINFORCE, "B", $nextTurn,
+            "southern", "artillery", $id++, 7, 1);
+    }
+    public function  checkNorthAutobahn(){
+        if($this->armorReleased){
+            return false;
+        }
+        $northCount = 0;
+        $battle = Battle::getBattle();
+        $theAutobahn = [0, 116, 216, 317, 417, 518, 617, 717, 817, 918, 1017, 1117, 1217, 1317, 1417, 1518, 1617, 1717, 1816, 1916, 2015, 2115, 2215, 2315, 2414, 2515, 2615, 2715, 2815, 2915];
+        $units = $battle->force->units;
+        foreach($units as $id => $unit){
+            if($unit->isOnMap()){
+                if($unit->forceId === Europe::NATO_FORCE){
+                    $num = $unit->hexagon->number;
+                    $col = (int)($num / 100);
+                    $row = $num % 100;
+                    if($num < $theAutobahn[$col]){
+                        $northCount++;
+                    }
+                }
+            }
+        }
+        return $northCount >= 5;
     }
 }

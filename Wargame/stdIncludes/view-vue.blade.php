@@ -285,20 +285,9 @@
                         @show
 
                     </div>
-{{--                    <div class="unit-wrapper" id="airpower-wrapper" v-show="show.units.airpowerWrapper">--}}
-{{--                        <div @click="show.units.deadpile = false" class="close">X</div>--}}
-{{--                        <div style="font-size:50px;font-family:sans-serif;float:right;color:#666;">--}}
-{{--                            Airpower available--}}
-{{--                        </div>--}}
-{{--                        @section('airpower-wrapper')--}}
-{{--                            <airpower-units-component :myfilter="1" :myunits="allMyBoxes.airpowerWrapper"></airpower-units-component>--}}
-{{--                            <div class="clear"></div>--}}
-{{--                            <airpower-units-component :myfilter="2" :myunits="allMyBoxes.airpowerWrapper"></airpower-units-component>--}}
-{{--                            <div class="clear"></div>--}}
-{{--                            <div class="clear"></div>--}}
-{{--                        @show--}}
+                    @section('airpower-box')
 
-{{--                    </div>--}}
+                    @show
                     <div class="unit-wrapper" v-show="show.units.exitBox" id="exitWrapper">
                         <div class="close">X</div>
                         <div style="margin-right:3px;" class="left">Exited Units</div>
