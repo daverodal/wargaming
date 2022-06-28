@@ -360,19 +360,19 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $nextTurn = $battle->gameRules->turn + 1;
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("|||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Armor.svg",
-                4, 2, 12, STATUS_CAN_REINFORCE, "B", $nextTurn,
+                4, 2, 12, STATUS_CAN_REINFORCE, "A", $nextTurn,
                 "southern", "mech", $id++);
         }
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "MechInf.svg",
-                1, 2, 12, STATUS_CAN_REINFORCE, "B", $nextTurn,
+                1, 2, 12, STATUS_CAN_REINFORCE, "A", $nextTurn,
                 "southern", "mech", $id++);
         }
         UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
-            4, 1, 9, STATUS_CAN_REINFORCE, "B", $nextTurn,
+            4, 1, 9, STATUS_CAN_REINFORCE, "A", $nextTurn,
             "southern", "artillery", $id++, 8, 0);
         UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
-            5, 1, 9, STATUS_CAN_REINFORCE, "B", $nextTurn,
+            5, 1, 9, STATUS_CAN_REINFORCE, "A", $nextTurn,
             "southern", "artillery", $id++, 7, 1);
     }
     public function  checkNorthAutobahn(){
