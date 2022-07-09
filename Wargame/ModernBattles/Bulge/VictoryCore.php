@@ -309,7 +309,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     function isExit($args)
     {
         list($unit) = $args;
-        if(($unit->hexagon->number % 100) == 1){
+        if(((int)($unit->hexagon->number / 100) === 1)){
             return true;
         }
         return false;
