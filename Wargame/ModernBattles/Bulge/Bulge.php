@@ -217,7 +217,7 @@ class Bulge extends ModernLandBattle
             }
             for ($i = 0; $i < 1; $i++) {
                 UnitFactory::create("", Bulge::NATO_FORCE, "gameTurn2", "Artillery.svg",
-                    1, 2, 7, STATUS_CAN_DEPLOY, "F", 2,
+                    1, 2, 7, STATUS_CAN_REINFORCE, "F", 2,
                     "northern", "artillery", "101", 12, 2);
             }
 
@@ -225,13 +225,13 @@ class Bulge extends ModernLandBattle
             $unitDesig = ['755', '969'];
             for ($i = 0; $i < 2; $i++) {
                 UnitFactory::create("", Bulge::NATO_FORCE, "gameTurn3", "Artillery.svg",
-                    3, 1, 7, STATUS_CAN_DEPLOY, "G", 3,
+                    3, 1, 7, STATUS_CAN_REINFORCE, "G", 3,
                     "northern", "artillery", $unitDesig[$i], 18, 2);
             }
 
             for ($i = 0; $i < 1; $i++) {
                 UnitFactory::create("", Bulge::NATO_FORCE, "gameTurn3", "Armor.svg",
-                    5, 4, 12, STATUS_CAN_DEPLOY, "G", 3,
+                    5, 4, 12, STATUS_CAN_REINFORCE, "G", 3,
                     "northern", "mech", "705");
             }
 
