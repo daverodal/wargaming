@@ -174,6 +174,10 @@ define("COMMAND_MODE", 28);
 define("RESULTS_MODE",29);
 define("PRODUCTION_MODE", 30);
 define("FPF_MODE", 31);
+define("DEFENDER_RETREATING_MODE",32);
+define("ATTACKER_RETREATING_MODE",33);
+
+
 
 
 
@@ -210,6 +214,8 @@ $mode_name[28] = "command mode";
 $mode_name[29] = "results mode";
 $mode_name[30] = "production mode";
 $mode_name[31] = "fpf mode";
+$mode_name[32] = "defender retreating mode";
+$mode_name[33] = "attacker retreating mode";
 
 // form event constants
 define("OVER_MAP_EVENT",1);

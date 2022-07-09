@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\ModernBattles\Europe;
+namespace Wargame\ModernBattles\Bulge;
 use Wargame\Battle;
 use Wargame\Hexpart;
 /**

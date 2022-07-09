@@ -1,3 +1,4 @@
+<?php
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -19,6 +20,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$darkSovietColor: #808080;
-$sovietColor: #DAAE00;
-$natoColor: #89AE24;
+/**
+ * Created by JetBrains PhpStorm.
+ * User: david
+ * Date: 6/19/13
+ * Time: 12:21 PM added this
+ * To change this template use File | Settings | File Templates.
+ */
+?>
+
+
+
+            <ol>
+                <li>
+                  Gettin' there
+
+
+                </li>
+            </ol>

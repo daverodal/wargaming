@@ -86,134 +86,134 @@ class Europe extends ModernLandBattle
 //        for ($i = 0; $i < 6; $i++) {
 //            UnitFactory::create("||", Europe::SOVIET_FORCE, "airpowerWrapper", "jetPlane.svg",
 //                2, 3, 12, STATUS_CAN_REINFORCE, "A", 1,
-//                "southern", "airpower", $id++);
+//                "soviet", "airpower", $id++);
 //
 //        }
 //        for ($i = 0; $i < 6; $i++) {
 //            UnitFactory::create("||", Europe::NATO_FORCE, "airpowerWrapper", "jetPlane.svg",
 //                2, 3, 12, STATUS_CAN_REINFORCE, "A", 1,
-//                "northern", "airpower", $id++);
+//                "nato", "airpower", $id++);
 //
 //        }
         if($scenario->name === 'main') {
             for ($i = 0; $i < 6; $i++) {
                 UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "MechInf.svg",
                     1, 2, 12, STATUS_CAN_REINFORCE, "A", 1,
-                    "southern", "mech", $id++);
+                    "soviet", "mech", $id++);
 
             }
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "MechInf.svg",
                     3, 2, 12, STATUS_CAN_REINFORCE, "A", 1,
-                    "southern", "mech", $id++);
+                    "soviet", "mech", $id++);
 
             }
             UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "Artillery.svg",
                 4, 1, 9, STATUS_CAN_REINFORCE, "A", 1,
-                "southern", "artillery", $id++, 8, 0);
+                "soviet", "artillery", $id++, 8, 0);
             UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "Artillery.svg",
                 3, 1, 9, STATUS_CAN_REINFORCE, "A", 1,
-                "southern", "artillery", $id++, 7, 1);
+                "soviet", "artillery", $id++, 7, 1);
 
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("|||", Europe::SOVIET_FORCE, "gameTurn3", "Armor.svg",
                     4, 2, 12, STATUS_CAN_REINFORCE, "A", 3,
-                    "southern", "mech", $id++);
+                    "soviet", "mech", $id++);
             }
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn3", "MechInf.svg",
                     1, 2, 12, STATUS_CAN_REINFORCE, "A", 3,
-                    "southern", "mech", $id++);
+                    "soviet", "mech", $id++);
             }
 
             for ($i = 0; $i < 6; $i++) {
                 UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn4", "MechInf.svg",
                     1, 2, 12, STATUS_CAN_REINFORCE, "A", 4,
-                    "southern", "mech", $id++);
+                    "soviet", "mech", $id++);
             }
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn4", "MechInf.svg",
                     3, 2, 12, STATUS_CAN_REINFORCE, "A", 4,
-                    "southern", "mech", $id++);
+                    "soviet", "mech", $id++);
             }
 
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn4", "Artillery.svg",
                 4, 1, 9, STATUS_CAN_REINFORCE, "A", 4,
-                "southern", "artillery", $id++, 8, 0);
+                "soviet", "artillery", $id++, 8, 0);
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn4", "Artillery.svg",
                 5, 1, 9, STATUS_CAN_REINFORCE, "A", 4,
-                "southern", "artillery", $id++, 7, 1);
+                "soviet", "artillery", $id++, 7, 1);
 
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn5", "Artillery.svg",
                 4, 1, 9, STATUS_CAN_REINFORCE, "A", 5,
-                "southern", "artillery", $id++, 8, 0);
+                "soviet", "artillery", $id++, 8, 0);
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn5", "Artillery.svg",
                 3, 1, 9, STATUS_CAN_REINFORCE, "A", 5,
-                "southern", "artillery", $id++, 7, 1);
+                "soviet", "artillery", $id++, 7, 1);
 
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "Armor.svg",
-                    3, 3, 12, STATUS_CAN_REINFORCE, "D", 1, "northern", "mech", $id++);
+                    3, 3, 12, STATUS_CAN_REINFORCE, "D", 1, "nato", "mech", $id++);
             }
             UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "Artillery.svg",
                 2, 1, 12, STATUS_CAN_REINFORCE, "D", 1,
-                "northern", "artillery", $id++, 7, 1);
+                "nato", "artillery", $id++, 7, 1);
 
             UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "RotaryWing.svg",
                 2, 1, 30, STATUS_CAN_REINFORCE, "D", 1,
-                "northern", "air", $id++, 2, 3);
+                "nato", "air", $id++, 2, 3);
 
 
             for ($i = 0; $i < 1; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn2", "Armor.svg",
-                    3, 3, 12, STATUS_CAN_REINFORCE, "D", 2, "northern", "mech", $id++);
+                    3, 3, 12, STATUS_CAN_REINFORCE, "D", 2, "nato", "mech", $id++);
             }
             for ($i = 0; $i < 4; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn2", "MechInf.svg",
-                    2, 3, 12, STATUS_CAN_REINFORCE, "D", 2, "northern", "mech", $id++);
+                    2, 3, 12, STATUS_CAN_REINFORCE, "D", 2, "nato", "mech", $id++);
             }
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn2", "Armor.svg",
-                    3, 2, 12, STATUS_CAN_REINFORCE, "D", 2, "northern", "mech", $id++);
+                    3, 2, 12, STATUS_CAN_REINFORCE, "D", 2, "nato", "mech", $id++);
             }
 
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn3", "Artillery.svg",
                     1, 2, 12, STATUS_CAN_REINFORCE, "D", 3,
-                    "northern", "artillery", $id++, 7, 2);
+                    "nato", "artillery", $id++, 7, 2);
             }
 
             for ($i = 0; $i < 2; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn3", "MechInf.svg",
-                    2, 3, 12, STATUS_CAN_REINFORCE, "D", 3, "northern", "mech", $id++);
+                    2, 3, 12, STATUS_CAN_REINFORCE, "D", 3, "nato", "mech", $id++);
             }
             for ($i = 0; $i < 3; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn3", "Armor.svg",
                     3, 2, 12, STATUS_CAN_REINFORCE, "D", 3,
-                    "northern", "mech", $id++);
+                    "nato", "mech", $id++);
             }
 
 
             for ($i = 0; $i < 2; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn4", "Artillery.svg",
                     2, 1, 12, STATUS_CAN_REINFORCE, "D", 4,
-                    "northern", "artillery", $id++, 7, 1);
+                    "nato", "artillery", $id++, 7, 1);
             }
 
 
             for ($i = 0; $i < 2; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn4", "Artillery.svg",
                     2, 1, 12, STATUS_CAN_REINFORCE, "D", 4,
-                    "northern", "artillery", $id++, 13, 1);
+                    "nato", "artillery", $id++, 13, 1);
             }
             for ($i = 0; $i < 2; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn4", "MechInf.svg",
-                    2, 3, 12, STATUS_CAN_REINFORCE, "D", 4, "northern", "mech", $id++);
+                    2, 3, 12, STATUS_CAN_REINFORCE, "D", 4, "nato", "mech", $id++);
             }
 
             for ($i = 0; $i < 2; $i++) {
                 UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn4", "Armor.svg",
-                    3, 2, 12, STATUS_CAN_REINFORCE, "D", 4, "northern", "mech", $id++);
+                    3, 2, 12, STATUS_CAN_REINFORCE, "D", 4, "nato", "mech", $id++);
 
             }
         }
@@ -242,135 +242,135 @@ class Europe extends ModernLandBattle
         foreach ($sovInf as $hexNum) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, $hexNum, "MechInf.svg",
                 1, 2, 12, STATUS_READY, "A", 1,
-                "southern", "mech", $id++);
+                "soviet", "mech", $id++);
         }
 
         foreach ($sovArmInf as $hexNum) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, $hexNum, "MechInf.svg",
                 3, 2, 12, STATUS_READY, "A", 1,
-                "southern", "mech", $id++);
+                "soviet", "mech", $id++);
         }
 
 
         foreach ($sovArtillery as $hexNum) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, $hexNum, "Artillery.svg",
                 4, 1, 9, STATUS_READY, "A", 1,
-                "southern", "artillery", $id++, 8, 0);
+                "soviet", "artillery", $id++, 8, 0);
         }
 
         foreach ($sovFpfArt as $hexNum) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, $hexNum, "Artillery.svg",
                 3, 1, 9, STATUS_READY, "A", 1,
-                "southern", "artillery", $id++, 7, 1);
+                "soviet", "artillery", $id++, 7, 1);
         }
 
 
         foreach ($usInf as $hexNum) {
             UnitFactory::create("||", Europe::NATO_FORCE, $hexNum, "MechInf.svg",
-                2, 3, 12, STATUS_READY, "D", 1, "northern", "mech", $id++);
+                2, 3, 12, STATUS_READY, "D", 1, "nato", "mech", $id++);
         }
 
         foreach ($usTank as $hexNum) {
             UnitFactory::create("||", Europe::NATO_FORCE, $hexNum, "Armor.svg",
-                3, 2, 12, STATUS_READY, "D", 1, "northern", "mech", $id++);
+                3, 2, 12, STATUS_READY, "D", 1, "nato", "mech", $id++);
         }
         foreach ($usScout as $hexNum) {
             UnitFactory::create("||", Europe::NATO_FORCE, $hexNum, "Armor.svg",
-                3, 3, 12, STATUS_READY, "D", 1, "northern", "mech", $id++);
+                3, 3, 12, STATUS_READY, "D", 1, "nato", "mech", $id++);
         }
         foreach ($usFpfArt as $hexNum) {
             UnitFactory::create("||", Europe::NATO_FORCE, $hexNum, "Artillery.svg",
                 1, 2, 12, STATUS_READY, "D", 1,
-                "northern", "artillery", $id++, 7, 2);
+                "nato", "artillery", $id++, 7, 2);
         }
         foreach ($usLongRangeArt as $hexNum) {
             UnitFactory::create("||", Europe::NATO_FORCE, $hexNum, "Artillery.svg",
                 2, 1, 12, STATUS_READY, "C", 1,
-                "northern", "artillery", $id++, 13, 1);
+                "nato", "artillery", $id++, 13, 1);
         }
         foreach ($usArtillery as $hexNum) {
             UnitFactory::create("||", Europe::NATO_FORCE, $hexNum, "Artillery.svg",
                 2, 1, 12, STATUS_READY, "D", 1,
-                "northern", "artillery", $id++, 7, 1);
+                "nato", "artillery", $id++, 7, 1);
         }
         UnitFactory::create("||", Europe::NATO_FORCE, 1528, "RotaryWing.svg",
             2, 1, 30, STATUS_READY, "D", 1,
-            "northern", "air", $id++, 2, 3);
+            "nato", "air", $id++, 2, 3);
 
 
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn3", "MechInf.svg",
-                2, 3, 12, STATUS_CAN_REINFORCE, "D", 3, "northern", "mech", $id++);
+                2, 3, 12, STATUS_CAN_REINFORCE, "D", 3, "nato", "mech", $id++);
         }
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn3", "Armor.svg",
-                3, 2, 12, STATUS_CAN_REINFORCE, "D", 3, "northern", "mech", $id++);
+                3, 2, 12, STATUS_CAN_REINFORCE, "D", 3, "nato", "mech", $id++);
         }
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn3", "Armor.svg",
-                3, 3, 12, STATUS_CAN_REINFORCE, "D", 3, "northern", "mech", $id++);
+                3, 3, 12, STATUS_CAN_REINFORCE, "D", 3, "nato", "mech", $id++);
         }
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn3", "Artillery.svg",
                 2, 1, 12, STATUS_CAN_REINFORCE, "D", 3,
-                "northern", "artillery", $id++, 7, 1);
+                "nato", "artillery", $id++, 7, 1);
         }
     }
     private function three(){
         $id = 0;
         for ($i = 0; $i < 6; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "MechInf.svg",
-                2, 3, 12, STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", $id++);
+                2, 3, 12, STATUS_CAN_DEPLOY, "D", 1, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 4; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "Armor.svg",
-                3, 2, 12, STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", $id++);
+                3, 2, 12, STATUS_CAN_DEPLOY, "D", 1, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 4; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "Armor.svg",
-                3, 3, 12, STATUS_CAN_DEPLOY, "D", 1, "northern", "mech", $id++);
+                3, 3, 12, STATUS_CAN_DEPLOY, "D", 1, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "Artillery.svg",
                 1, 2, 12, STATUS_CAN_DEPLOY, "D", 1,
-                "northern", "artillery", $id++, 7, 2);
+                "nato", "artillery", $id++, 7, 2);
         }
 
         for ($i = 0; $i < 2; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "Artillery.svg",
                 2, 1, 12, STATUS_CAN_DEPLOY, "D", 1,
-                "northern", "artillery", $id++, 7, 1);
+                "nato", "artillery", $id++, 7, 1);
         }
         UnitFactory::create("||", Europe::NATO_FORCE, "deployBox", "RotaryWing.svg",
             2, 1, 30, STATUS_CAN_DEPLOY, "D", 1,
-            "northern", "air", $id++, 2, 3);
+            "nato", "air", $id++, 2, 3);
 
 
         for ($i = 0; $i < 12; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "MechInf.svg",
                 1, 2, 12, STATUS_CAN_DEPLOY, "A", 1,
-                "southern", "mech", $id++);
+                "soviet", "mech", $id++);
         }
 
         for ($i = 0; $i < 6; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "MechInf.svg",
                 3, 2, 12, STATUS_CAN_DEPLOY, "A", 1,
-                "southern", "mech", $id++);
+                "soviet", "mech", $id++);
         }
 
         for ($i = 0; $i < 2; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "Artillery.svg",
                 4, 1, 9, STATUS_CAN_DEPLOY, "A", 1,
-                "southern", "artillery", $id++, 8, 0);
+                "soviet", "artillery", $id++, 8, 0);
         }
 
         for ($i = 0; $i < 2; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "deployBox", "Artillery.svg",
                 3, 1, 9, STATUS_CAN_DEPLOY, "A", 1,
-                "southern", "artillery", $id++, 7, 1);
+                "soviet", "artillery", $id++, 7, 1);
         }
 
 
@@ -378,82 +378,82 @@ class Europe extends ModernLandBattle
 
         for ($i = 0; $i < 2; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn5", "MechInf.svg",
-                2, 3, 12, STATUS_CAN_REINFORCE, "C", 5, "northern", "mech", $id++);
+                2, 3, 12, STATUS_CAN_REINFORCE, "C", 5, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 2; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn5", "Armor.svg",
-                3, 2, 12, STATUS_CAN_REINFORCE, "C", 5, "northern", "mech", $id++);
+                3, 2, 12, STATUS_CAN_REINFORCE, "C", 5, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn5", "Armor.svg",
-                3, 3, 12, STATUS_CAN_REINFORCE, "C", 5, "northern", "mech", $id++);
+                3, 3, 12, STATUS_CAN_REINFORCE, "C", 5, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 2; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn5", "Artillery.svg",
                 1, 2, 12, STATUS_CAN_REINFORCE, "C", 5,
-                "northern", "artillery", $id++, 7, 2);
+                "nato", "artillery", $id++, 7, 2);
         }
 
         /* Turn 6 */
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn6", "MechInf.svg",
-                2, 3, 12, STATUS_CAN_REINFORCE, "C", 6, "northern", "mech", $id++);
+                2, 3, 12, STATUS_CAN_REINFORCE, "C", 6, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 2; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn6", "Armor.svg",
-                3, 2, 12, STATUS_CAN_REINFORCE, "C", 6, "northern", "mech", $id++);
+                3, 2, 12, STATUS_CAN_REINFORCE, "C", 6, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn6", "Artillery.svg",
                 1, 2, 12, STATUS_CAN_REINFORCE, "C", 6,
-                "northern", "artillery", $id++, 7, 2);
+                "nato", "artillery", $id++, 7, 2);
         }
         for($i = 0; $i < 1; $i++){
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn6", "Artillery.svg",
                 2, 1, 12, STATUS_CAN_REINFORCE, "C", 6,
-                "northern", "artillery", $id++, 7, 1);
+                "nato", "artillery", $id++, 7, 1);
         }
 
         /* Turn 7 */
         for ($i = 0; $i < 2; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn7", "MechInf.svg",
-                2, 3, 12, STATUS_CAN_REINFORCE, "C", 7, "northern", "mech", $id++);
+                2, 3, 12, STATUS_CAN_REINFORCE, "C", 7, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn7", "Armor.svg",
-                3, 2, 12, STATUS_CAN_REINFORCE, "C", 7, "northern", "mech", $id++);
+                3, 2, 12, STATUS_CAN_REINFORCE, "C", 7, "nato", "mech", $id++);
         }
         for($i = 0; $i < 2; $i++){
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn7", "Artillery.svg",
                 2, 1, 12, STATUS_CAN_REINFORCE, "C", 7,
-                "northern", "artillery", $id++, 7, 1);
+                "nato", "artillery", $id++, 7, 1);
         }
 
         /* Turn 8 */
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn8", "MechInf.svg",
-                2, 3, 12, STATUS_CAN_REINFORCE, "C", 8, "northern", "mech", $id++);
+                2, 3, 12, STATUS_CAN_REINFORCE, "C", 8, "nato", "mech", $id++);
         }
 
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn8", "Armor.svg",
-                3, 2, 12, STATUS_CAN_REINFORCE, "C", 8, "northern", "mech", $id++);
+                3, 2, 12, STATUS_CAN_REINFORCE, "C", 8, "nato", "mech", $id++);
         }
         for($i = 0; $i < 2; $i++){
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn8", "Artillery.svg",
                 2, 1, 12, STATUS_CAN_REINFORCE, "C", 8,
-                "northern", "artillery", $id++, 7, 1);
+                "nato", "artillery", $id++, 7, 1);
         }
         for($i = 0; $i < 2; $i++){
             UnitFactory::create("||", Europe::NATO_FORCE, "gameTurn8", "Artillery.svg",
                 2, 1, 12, STATUS_CAN_REINFORCE, "C", 8,
-                "northern", "artillery", $id++, 13, 1);
+                "nato", "artillery", $id++, 13, 1);
         }
 
         /* Soviet */
@@ -462,13 +462,13 @@ class Europe extends ModernLandBattle
         for ($i = 0; $i < 6; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn2", "MechInf.svg",
                 1, 2, 12, STATUS_CAN_REINFORCE, "B", 2,
-                "southern", "mech", $id++);
+                "soviet", "mech", $id++);
         }
 
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn2", "MechInf.svg",
                 3, 2, 12, STATUS_CAN_REINFORCE, "B", 2,
-                "southern", "mech", $id++);
+                "soviet", "mech", $id++);
         }
 
         /* Turn 3 */
@@ -476,57 +476,57 @@ class Europe extends ModernLandBattle
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn3", "Artillery.svg",
                 4, 1, 9, STATUS_CAN_REINFORCE, "B", 3,
-                "southern", "artillery", $id++, 8, 0);
+                "soviet", "artillery", $id++, 8, 0);
         }
 
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn3", "Artillery.svg",
                 3, 1, 9, STATUS_CAN_REINFORCE, "B", 3,
-                "southern", "artillery", $id++, 7, 1);
+                "soviet", "artillery", $id++, 7, 1);
         }
 
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("|||", Europe::SOVIET_FORCE, "gameTurn3", "Armor.svg",
                 4, 2, 12, STATUS_CAN_REINFORCE, "B", 3,
-                "southern", "mech", $id++);
+                "soviet", "mech", $id++);
         }
 
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn3", "MechInf.svg",
                 1, 2, 12, STATUS_CAN_REINFORCE, "B", 3,
-                "southern", "mech", $id++);
+                "soviet", "mech", $id++);
         }
 
         /* Turn 4 */
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn4", "Artillery.svg",
                 5, 1, 9, STATUS_CAN_REINFORCE, "B", 4,
-                "southern", "artillery", $id++, 7, 1);
+                "soviet", "artillery", $id++, 7, 1);
         }
 
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn4", "Artillery.svg",
                 4, 1, 9, STATUS_CAN_REINFORCE, "B", 4,
-                "southern", "artillery", $id++, 8, 0);
+                "soviet", "artillery", $id++, 8, 0);
         }
 
         /* Turn 6 */
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn6", "Artillery.svg",
                 7, 1, 9, STATUS_CAN_REINFORCE, "B", 6,
-                "southern", "artillery", $id++, 7, 2);
+                "soviet", "artillery", $id++, 7, 2);
         }
 
         /* Turn 8 */
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn8", "Artillery.svg",
                 3, 1, 9, STATUS_CAN_REINFORCE, "B", 8,
-                "southern", "artillery", $id++, 11, 1);
+                "soviet", "artillery", $id++, 11, 1);
         }
         for ($i = 0; $i < 1; $i++) {
             UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn8", "Artillery.svg",
                 4, 1, 9, STATUS_CAN_REINFORCE, "B", 8,
-                "southern", "artillery", $id++, 8, 1);
+                "soviet", "artillery", $id++, 8, 1);
         }
 
     }

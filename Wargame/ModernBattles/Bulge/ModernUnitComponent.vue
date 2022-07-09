@@ -1,11 +1,14 @@
 <template>
     <div @mouseover="showPath(unit)" @mouseleave="mouseleave" :id="unit.id" @contextmenu="rightClick($event, unit)" @click.stop="unitClick" class="spinny unit" :class="unit.nationality" :style="unitStyle">
-      <template v-if="unit.class !== 'artillery' && unit.class !== 'air'">
+      <div class="unit-desig">{{unit.unitDesig}}</div>
+      <div class="unit-name">{{unit.name}}</div>
+      <template v-if="unit.range === 1">
       <div class="unitOdds" :class="this.unit.oddsColor? this.unit.oddsColor: ''">{{unitOdds}}</div>
         <div class="shadow-mask" :class="{shadowy: unit.shadow}"></div>
-        <div class="unit-size">{{ unit.name }}</div>
+        <div class="unit-size">||</div>
         <img v-for="theta in thetas" :style="{transform: theta}" class="counter arrow" src="/assets/unit-images/short-red-arrow-md.png">
         <div class="counter-wrapper">
+
           <img class="counter" :src="'/assets/unit-images/'+unit.image" alt="">
         </div>
         <div class="unit-numbers" :class="infoLen">
@@ -140,9 +143,25 @@
     @import "../../wargame-helpers/Vue/scss/vue-unit";
     @import "../../wargame-helpers/Vue/scss/vue-mixins";
     @import "localColors";
-    @include unitColor(soviet, $sovietColor)
-    @include unitColor(nato, $natoColor);
+    @include unitColor(southern, $southernColor)
+    @include unitColor(northern, $northernColor);
     .unit{
+      .unit-numbers{
+        font-size:10px;
+      }
+      .unit-desig, .unit-name{
+        color:black;
+        position: absolute;
+        transform-origin: left center;
+        transform: rotate(-90deg);
+        font-size: 6px;
+        left: 4px;
+        top: 14px;
+        text-align:left;
+      }
+      .unit-name{
+        left:28px;
+      }
       &.big{
         width:54px;
         height: 54px;
@@ -153,6 +172,20 @@
             font-size:15px;
             height:13px;
           }
+        }
+        .unit-desig, .unit-name{
+          color:black;
+          position: absolute;
+          transform-origin: left center;
+          transform: rotate(-90deg);
+          font-size: 10px;
+          left: 3px;
+          top: 20px;
+          text-align:left;
+        }
+
+        .unit-name{
+          left:41px;
         }
         .counter-wrapper{
           height:15px;

@@ -26,5 +26,24 @@
                 "longDescription": "10 turns"
             }
         }
-    }
-}
+    },
+     "Bulge": {
+         "name": "Battle of the Bulge",
+         "path": "TMCW",
+         "genre": "20'th Century Games",
+         "production": false,
+         "fileName": "\\Wargame\\ModernBattles\\Bulge\\Bulge",
+         "description":"",
+         "params":{
+         },
+         "scenarios": {
+             "one": {
+                 "name": "one",
+                 "description": "scenario one.",
+                 "supply": true,
+                 "longDescription": "7 turns"
+             }
+         }
+     }
+
+ }

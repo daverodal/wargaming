@@ -48,11 +48,11 @@
 
 @import "localColors";
 
-@include player(soviet, One, $sovietColor);
-@include player(nato,Two,$natoColor);
+@include player(southern, One, $southernColor);
+@include player(northern,Two,$northernColor);
 
-@include headerColor(Soviet Union, $sovietColor, $sovietColor);
-@include headerColor(NATO, $natoColor, $natoColor);
+@include headerColor(Southern-States, $southernColor, $southernColor);
+@include headerColor(Northern-States, $northernColor, $northernColor);
 
 #options-pane{
   display:none;
@@ -142,25 +142,25 @@
     }
   }
 }
-.specialHexesVP .sovietVictoryPoints {
- @include victoryPoints($darksovietColor);
+.specialHexesVP .southernVictoryPoints {
+ @include victoryPoints($darkSouthernColor);
 }
 
-.specialHexesVP .natoVictoryPoints {
-  @include victoryPoints($natoColor);
+.specialHexesVP .northernVictoryPoints {
+  @include victoryPoints($northernColor);
 }
 
-.specialHexes.Soviet{
+.specialHexes.Southern{
   padding: 0px 5px;
-  border: 3px solid darken($sovietColor, 60%);
+  border: 3px solid darken($southernColor, 60%);
   border-radius: 10px;
-  background: $sovietColor;
+  background: $southernColor;
 }
-.specialHexes.Nato{
+.specialHexes.Northern{
   padding: 0px 5px;
-  border: 3px solid darken($natoColor, 60%);
+  border: 3px solid darken($northernColor, 60%);
   border-radius: 10px;
-  background: $natoColor;
+  background: $northernColor;
 }
 /* RULES OVERRIDES */
 
@@ -202,6 +202,7 @@
 }
 .unit{
   .unit-numbers{
+    font-size: 110px;
     &.infoLen7{
       letter-spacing:-1px;
     }

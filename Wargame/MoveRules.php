@@ -778,9 +778,16 @@ class MoveRules
                 $isBlocked = true;
             }
         }
-        if ($this->terrain->getTerrainMoveCost($startHex->name, $hexagon->name, false, $unit) == "blocked") {
+        $curHex = Hexagon::getHexPartXY($startHex->number);
+        $gnuHex = Hexagon::getHexPartXY($hexagon->number);
+
+        $moveAmount = $this->terrain->getTerrainMoveCostXY($curHex[0], $curHex[1], $gnuHex[0], $gnuHex[1], $unit->forceMarch, $unit);
+        if($moveAmount === "blocked"){
             $isBlocked = true;
         }
+//        if ($this->terrain->getTerrainMoveCost($startHex->name, $hexagon->name, false, $unit) == "blocked") {
+//            $isBlocked = true;
+//        }
 
 //        if ($this->zocBlocksRetreat === true && ($this->force->hexagonIsZOC($id, $hexagon) == true)) {
 //            $isBlocked = true;

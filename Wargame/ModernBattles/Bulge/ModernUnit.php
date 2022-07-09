@@ -1,6 +1,6 @@
 <?php
 
-namespace Wargame\ModernBattles\Europe;
+namespace Wargame\ModernBattles\Bulge;
 
 use \Wargame\Hexagon;
 use \stdClass;
@@ -162,6 +162,7 @@ class ModernUnit extends BaseUnit implements \JsonSerializable
         $mapUnit->class = $this->class;
         $mapUnit->fpf = $this->fpf;
         $mapUnit->fpfInRange = $this->fpfInRange;
+        $mapUnit->reinforceZone = $this->reinforceZone;
         return $mapUnit;
     }
 

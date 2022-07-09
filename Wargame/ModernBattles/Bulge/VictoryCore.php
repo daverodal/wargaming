@@ -1,5 +1,5 @@
 <?php
-namespace Wargame\ModernBattles\Europe;
+namespace Wargame\ModernBattles\Bulge;
 use Wargame\Additional\EastWest\EastWest;
 use \Wargame\Battle;
 use \stdClass;
@@ -77,7 +77,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
                 $battle->mapData->specialHexesVictory->{$hex->name} = '';
             }
-            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='natoVictoryPoints'>+$vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='northernVictoryPoints'>+$vp</span>";
         } else {
             $victorId = Bulge::SOVIET_FORCE;
 
@@ -86,7 +86,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
                 $battle->mapData->specialHexesVictory->{$hex->name} = '';
             }
-            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='sovietVictoryPoints'>+$vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='southernVictoryPoints'>+$vp</span>";
             $this->victoryPoints[$victorId] += $vp;
         }
     }
@@ -172,17 +172,17 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 //        list($zoneNames, $unit, $hexagon) = $args;
 //        $zones = [];
 //
-//        if ($unit->nationality === "soviet") {
+//        if ($unit->nationality === "southern") {
 //            foreach ($specialHexes as $specialHex) {
-//                if ($mapData->getSpecialHex($specialHex) == Europe::SOVIET_FORCE) {
+//                if ($mapData->getSpecialHex($specialHex) == Bulge::SOVIET_FORCE) {
 //
 //                }
 //            }
 //        }
 //
-//        if ($unit->nationality === "nato") {
+//        if ($unit->nationality === "northern") {
 //            $specialHexes = $battle->specialHexA;
-//            foreach ($specialHexes as $specialHex) if ($mapData->getSpecialHex($specialHex) == Europe::NATO_FORCE) {
+//            foreach ($specialHexes as $specialHex) if ($mapData->getSpecialHex($specialHex) == Bulge::NATO_FORCE) {
 //                    if($specialHex == $hexagon->getNumber()){
 //                        $zones[] = $specialHex;
 //                    }
@@ -365,19 +365,19 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("|||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Armor.svg",
                 4, 2, 12, STATUS_CAN_REINFORCE, "A", $nextTurn,
-                "soviet", "mech", $id++);
+                "southern", "mech", $id++);
         }
         for ($i = 0; $i < 3; $i++) {
             UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "MechInf.svg",
                 1, 2, 12, STATUS_CAN_REINFORCE, "A", $nextTurn,
-                "soviet", "mech", $id++);
+                "southern", "mech", $id++);
         }
         UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
             4, 1, 9, STATUS_CAN_REINFORCE, "A", $nextTurn,
-            "soviet", "artillery", $id++, 8, 0);
+            "southern", "artillery", $id++, 8, 0);
         UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
             5, 1, 9, STATUS_CAN_REINFORCE, "A", $nextTurn,
-            "soviet", "artillery", $id++, 7, 1);
+            "southern", "artillery", $id++, 7, 1);
     }
     public function  checkNorthAutobahn(){
         if($this->armorReleased){

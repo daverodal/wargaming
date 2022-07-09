@@ -1,3 +1,4 @@
+<?php
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -18,7 +19,8 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+?><div>
 
-$darkSovietColor: #808080;
-$sovietColor: #DAAE00;
-$natoColor: #89AE24;
+    <h2 class="exclusive">Victory Conditions</h2>
+    <p>The Game lasts 8 turns. Victory is determined at the end of the game. The German player needs to have a 40 point lead to win.</p>
+</div>

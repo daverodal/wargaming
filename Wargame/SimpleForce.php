@@ -339,6 +339,22 @@ abstract class SimpleForce{
         }
     }
 
+    function setDefendingForceId($forceId, $attId = false)
+    {
+        $this->defendingForceId = $forceId;
+
+        if ($forceId == BLUE_FORCE) {
+            $this->attackingForceId = RED_FORCE;
+
+        } else {
+            $this->attackingForceId = BLUE_FORCE;
+        }
+
+        if($attId !== false){
+            $this->attackingForceId = $attId;
+        }
+    }
+
     function removeEliminatingUnits()
     {
         for ($id = 0; $id < count($this->units); $id++) {

@@ -114,6 +114,9 @@ interface Cnst {
     const RESULTS_MODE = 29;
     const PRODUCTION_MODE = 30;
     const FPF_MODE = 31;
+    const DEFENDER_RETREATING_MODE =  32;
+    const ATTACKER_RETREATING_MODE =  33;
+
 
 // form event constants
     const OVER_MAP_EVENT =  1;

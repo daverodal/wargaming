@@ -41,16 +41,16 @@
 @import '../../wargame-helpers/Vue/scss/vue';
 @import 'localColors';
 
-@include header('NATO', $natoColor);
-@include header('Soviet-Union', $sovietColor);
+@include header('NATO', $northernColor);
+@include header('Soviet-Union', $southernColor);
 @include header('observer', #f2f242);
-@include player(soviet, Soviet Union, $sovietColor)
-@include player(nato, Nato, $natoColor)
-.specialHexesVP .natoVictoryPoints {
-  @include victoryPoints($natoColor);
+@include player(southern, Southern-States, $southernColor)
+@include player(northern, Northern-States, $northernColor)
+.specialHexesVP .northernVictoryPoints {
+  @include victoryPoints($northernColor);
 }
-.specialHexesVP .sovietVictoryPoints {
-  @include victoryPoints($sovietColor);
+.specialHexesVP .southernVictoryPoints {
+  @include victoryPoints($southernColor);
 }
 .special-hex{
   font-size: 6px !important;

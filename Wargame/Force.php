@@ -1072,7 +1072,7 @@ class Force extends SimpleForce
     }
 
 
-    function unitsAreRetreating()
+    function unitsAreRetreating($defenderId = null)
     {
         $areRetreating = false;
         for ($id = 0; $id < count($this->units); $id++) {
@@ -1081,8 +1081,15 @@ class Force extends SimpleForce
             if ($unit->status == STATUS_CAN_RETREAT
                 || $unit->status == STATUS_RETREATING
             ) {
-                $areRetreating = true;
-                break;
+                if($defenderId !== null){
+                    if($unit->forceId === $defenderId){
+                        $areRetreating = true;
+                        break;
+                    }
+                }else{
+                    $areRetreating = true;
+                    break;
+                }
             }
         }
         return $areRetreating;

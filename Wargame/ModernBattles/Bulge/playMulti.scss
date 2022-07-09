@@ -18,7 +18,13 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+@import "kievColors";
+@import "../commonPlay";
 
-$darkSovietColor: #808080;
-$sovietColor: #DAAE00;
-$natoColor: #89AE24;
+.Soviet {
+  color:$sovietColor;
+}
+
+.German {
+  color: $germanColor;
+}

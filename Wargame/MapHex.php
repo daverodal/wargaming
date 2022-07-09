@@ -130,6 +130,15 @@ class MapHex
             if (!empty($blocksZoc->blocksnonroad) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "blocksnonroad")) {
                 continue;
             }
+
+            if (!empty($blocksZoc->river) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "river")) {
+                if(!$battle->terrain->terrainIsHexSideOnly($unitHex->name, $neighbor, "road")) {
+                    if (!$battle->terrain->terrainIsHexSideOnly($unitHex->name, $neighbor, "trail")) {
+                        continue;
+                    }
+                }
+            }
+
             if ($hex) {
                 if (!$hex->zocs) {
                     $hex->zocs = array(new stdClass(), new stdClass(), new stdClass(), new stdClass(), new stdClass());
@@ -152,6 +161,13 @@ class MapHex
                     continue;
                 }
 
+                if (!empty($blocksZoc->river) && $battle->terrain->terrainIsHexSide($unitHex->name, $neighbor, "river")) {
+                    if(!$battle->terrain->terrainIsHexSideOnly($unitHex->name, $neighbor, "road")) {
+                        if (!$battle->terrain->terrainIsHexSideOnly($unitHex->name, $neighbor, "trail")) {
+                            continue;
+                        }
+                    }
+                }
                 if ($hex) {
                     if (!$hex->adjacent) {
                         $hex->adjacent = array(new stdClass(), new stdClass(), new stdClass(), new stdClass(), new stdClass());

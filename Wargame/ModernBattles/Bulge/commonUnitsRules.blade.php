@@ -22,47 +22,47 @@
 
 
         <?= $forceName[1] ?> units are this color dude.
-            <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 8, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'nato', maxMove:6, moveAmountUsed: 0}"></unit-component>
+            <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 8, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'northern', maxMove:6, moveAmountUsed: 0}"></unit-component>
 
     </li>
     <li>
         <?= $forceName[2] ?> units are this color.
-            <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 8, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'soviet', maxMove:8, moveAmountUsed: 0}"></unit-component>
+            <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 8, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'southern', maxMove:8, moveAmountUsed: 0}"></unit-component>
 
     </li>
     <li>
         The symbol above the numbers represents the unit type.
         This is Armor (tanks).
-        <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 8, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'nato', maxMove:6, moveAmountUsed: 0}"></unit-component>
+        <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 8, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'northern', maxMove:6, moveAmountUsed: 0}"></unit-component>
 
     </li>
     <li>
         This is Mechinized Infantry (soldiers in half tracks, with small arms).
-        <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 5, shadowy: false, supplied: true, forceId: 2, image: 'MechInf.svg', nationality: 'nato', maxMove:6, moveAmountUsed: 0}"></unit-component>
+        <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 5, shadowy: false, supplied: true, forceId: 2, image: 'MechInf.svg', nationality: 'northern', maxMove:6, moveAmountUsed: 0}"></unit-component>
 
     </li>
     <li>
         This is Infantry. (soldiers on foot, with small arms).
-        <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 4, shadowy: false, supplied: true, forceId: 2, image: 'Infantry.svg', nationality: 'nato', maxMove:8, moveAmountUsed: 0}"></unit-component>
+        <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 4, shadowy: false, supplied: true, forceId: 2, image: 'Infantry.svg', nationality: 'northern', maxMove:8, moveAmountUsed: 0}"></unit-component>
     </li>
     <li>
         In all the examples above there has been a question mark between the two numbers.
         The number to the right of the question mark is the units movement allowance.
         The number to the left of the question mark is the units <i>untried</i> combat strength.
-        <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 8, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'soviet', maxMove:8, moveAmountUsed: 0}"></unit-component>
+        <unit-component class="big" style="{position: relative}" :unit="{name: 'xxx', strength: 8, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'southern', maxMove:8, moveAmountUsed: 0}"></unit-component>
 
         Until a unit has been involved in combat, it's untried strength and a question mark will be visible.
         Once involved in combat, it's true strength will be revealed and the question mark turns into a '-' symbol.
-        <unit-component class="big" style="{position: relative}" :unit="{tried: true, name: 'xxx', strength: 10, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'soviet', maxMove:8, moveAmountUsed: 0}"></unit-component>
+        <unit-component class="big" style="{position: relative}" :unit="{tried: true, name: 'xxx', strength: 10, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'southern', maxMove:8, moveAmountUsed: 0}"></unit-component>
 
         <p class="ruleComment">
             The above unit has a combat strength of 10 and a movenent allowance of 8. A units actual strength
         will be close to but vary from it's untried strength. Some units will be stronger, some the same, and some weaker.</p>
-        <unit-component class="big" style="{position: relative}" :unit="{tried: true, name: 'xxx', strength: 6, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'soviet', maxMove:8, moveAmountUsed: 0}"></unit-component>
+        <unit-component class="big" style="{position: relative}" :unit="{tried: true, name: 'xxx', strength: 6, shadowy: false, supplied: true, forceId: 2, image: 'Armor.svg', nationality: 'southern', maxMove:8, moveAmountUsed: 0}"></unit-component>
     </li>
     <li>
         If a unit is unsupplied it's strength and movement allowance are halved, and a 'U' appears next to the unit type.
-        <unit-component class="big" style="{position: relative}" :unit="{tried: true, name: 'xxx', strength: 4, shadowy: false, supplied: false, forceId: 2, image: 'Armor.svg', nationality: 'soviet', maxMove:4, moveAmountUsed: 0}"></unit-component>
+        <unit-component class="big" style="{position: relative}" :unit="{tried: true, name: 'xxx', strength: 4, shadowy: false, supplied: false, forceId: 2, image: 'Armor.svg', nationality: 'southern', maxMove:4, moveAmountUsed: 0}"></unit-component>
 
     </li>
     @show

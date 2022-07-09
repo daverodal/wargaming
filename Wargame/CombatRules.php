@@ -804,7 +804,7 @@ class CombatRules
         //  Math->floor gives lower integer, which is now 0,1,2,3,4,5
 
         $Die = $battle->dieRolls->getEvent($this->crt->dieSideCount);
-//        $Die = 4;
+        $Die = 1;
         $index = $this->combatsToResolve->$id->index;
         if ($this->combatsToResolve->$id->pinCRT !== false) {
             if ($index > ($this->combatsToResolve->$id->pinCRT)) {
