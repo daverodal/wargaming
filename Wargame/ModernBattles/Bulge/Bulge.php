@@ -253,17 +253,38 @@ class Bulge extends ModernLandBattle
                     "southern", "mech", $id++);
             }
             UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn4", "Artillery.svg",
-                3, 1, 7, STATUS_CAN_REINFORCE, "A", 4,
+                3, 1, 7, STATUS_CAN_REINFORCE, "C", 4,
                 "southern", "artillery", "26", 18, 2);
             UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn4", "Artillery.svg",
-                4, 2, 7, STATUS_CAN_REINFORCE, "A", 4,
+                4, 2, 7, STATUS_CAN_REINFORCE, "C", 4,
                 "southern", "artillery", "26", 12, 2);
             UnitFactory::create("Lehr", Bulge::SOVIET_FORCE, "gameTurn4", "SpArtillery.svg",
-                3, 1, 12, STATUS_CAN_REINFORCE, "A", 4,
+                3, 1, 12, STATUS_CAN_REINFORCE, "C", 4,
                 "southern", "mech", "Lehr", 18, 2);
             UnitFactory::create("Lehr", Bulge::SOVIET_FORCE, "gameTurn4", "SpArtillery.svg",
-                4, 2, 12, STATUS_CAN_REINFORCE, "A", 4,
+                4, 2, 12, STATUS_CAN_REINFORCE, "C", 4,
                 "southern", "mech", "Lehr", 12, 2);
+
+            /* turn 7 */
+            $unitDesig = ['1/13','2/13','1/14', '2/14'];
+
+            for ($i = 0; $i < 4; $i++) {
+                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn7", "Infantry.svg",
+                    3, 3, 7, STATUS_CAN_REINFORCE, "D", 7,
+                    "southern", "infantry", $unitDesig[$i]);
+            }
+            $unitDesig = ['1/14','2/15'];
+            for ($i = 0; $i < 2; $i++) {
+                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn7", "MechInf.svg",
+                    3, 3, 12, STATUS_CAN_REINFORCE, "D", 7,
+                    "southern", "mech", $unitDesig[$i]);
+            }
+            UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn7", "Artillery.svg",
+                3, 1, 7, STATUS_CAN_REINFORCE, "D", 7,
+                "southern", "artillery", "5", 18, 2);
+            UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn7", "Artillery.svg",
+                4, 2, 7, STATUS_CAN_REINFORCE, "D", 7,
+                "southern", "artillery", "5", 12, 2);
         }
         if($scenario->name === 'three') {
            $this->three();
