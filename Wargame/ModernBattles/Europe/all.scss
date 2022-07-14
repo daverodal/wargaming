@@ -44,8 +44,8 @@
 @include header('NATO', $natoColor);
 @include header('Soviet-Union', $sovietColor);
 @include header('observer', #f2f242);
-@include player(soviet, Soviet Union, $sovietColor)
-@include player(nato, Nato, $natoColor)
+@include player(soviet, German, $sovietColor)
+@include player(nato, US, $natoColor)
 .specialHexesVP .natoVictoryPoints {
   @include victoryPoints($natoColor);
 }

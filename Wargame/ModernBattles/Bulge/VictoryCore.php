@@ -68,8 +68,8 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $vp = $unit->damage;
         $hex  = $unit->hexagon;
         $unit->reinforceZone = "C";
-        if ($unit->forceId == Bulge::SOVIET_FORCE) {
-            $victorId = Bulge::NATO_FORCE;
+        if ($unit->forceId == Bulge::GERMAN_FORCE) {
+            $victorId = Bulge::US_FORCE;
 
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
@@ -77,16 +77,16 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
                 $battle->mapData->specialHexesVictory->{$hex->name} = '';
             }
-            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='northernVictoryPoints'>+$vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='usVictoryPoints'>+$vp</span>";
         } else {
-            $victorId = Bulge::SOVIET_FORCE;
+            $victorId = Bulge::GERMAN_FORCE;
 
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
             if(empty($battle->mapData->specialHexesVictory->{$hex->name})){
                 $battle->mapData->specialHexesVictory->{$hex->name} = '';
             }
-            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='southernVictoryPoints'>+$vp</span>";
+            $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='germanVictoryPoints'>+$vp</span>";
             $this->victoryPoints[$victorId] += $vp;
         }
     }
@@ -107,7 +107,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
     {
         $battle = Battle::getBattle();
 //        $kiev = $battle->specialHexC[0];
-//        if ($battle->mapData->getSpecialHex($kiev) === NorthVsSouth::NATO_FORCE) {
+//        if ($battle->mapData->getSpecialHex($kiev) === NorthVsSouth::US_FORCE) {
 //            $battle->gameRules->flashMessages[] = "Soviet Player Wins";
 //        }else{
 //            $battle->gameRules->flashMessages[] = "German Player Wins";
@@ -172,17 +172,17 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 //        list($zoneNames, $unit, $hexagon) = $args;
 //        $zones = [];
 //
-//        if ($unit->nationality === "southern") {
+//        if ($unit->nationality === "german") {
 //            foreach ($specialHexes as $specialHex) {
-//                if ($mapData->getSpecialHex($specialHex) == Bulge::SOVIET_FORCE) {
+//                if ($mapData->getSpecialHex($specialHex) == Bulge::GERMAN_FORCE) {
 //
 //                }
 //            }
 //        }
 //
-//        if ($unit->nationality === "northern") {
+//        if ($unit->nationality === "us") {
 //            $specialHexes = $battle->specialHexA;
-//            foreach ($specialHexes as $specialHex) if ($mapData->getSpecialHex($specialHex) == Bulge::NATO_FORCE) {
+//            foreach ($specialHexes as $specialHex) if ($mapData->getSpecialHex($specialHex) == Bulge::US_FORCE) {
 //                    if($specialHex == $hexagon->getNumber()){
 //                        $zones[] = $specialHex;
 //                    }
@@ -334,7 +334,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
 
         if($battle->scenario->name ?? "" === "four") {
-            if ($attackingId === Bulge::SOVIET_FORCE) {
+            if ($attackingId === Bulge::GERMAN_FORCE) {
                 if($this->checkNorthAutobahn()) {
                     $gameRules->flashMessages[] = "Release Soviet Armor Division";
                     $this->releaseArmorDivision();
@@ -343,7 +343,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
 
         if($battle->scenario->name ?? "" === "three") {
-            if ($attackingId === Bulge::NATO_FORCE) {
+            if ($attackingId === Bulge::US_FORCE) {
                 if ($gameRules->turn >= 9)
                     $gameRules->replacementsAvail = 6;
             }
@@ -363,21 +363,21 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $id = count($units);
         $nextTurn = $battle->gameRules->turn + 1;
         for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("|||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Armor.svg",
+            UnitFactory::create("|||", Bulge::GERMAN_FORCE, "gameTurn$nextTurn", "Armor.svg",
                 4, 2, 12, STATUS_CAN_REINFORCE, "A", $nextTurn,
-                "southern", "mech", $id++);
+                "german", "mech", $id++);
         }
         for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "MechInf.svg",
+            UnitFactory::create("||", Bulge::GERMAN_FORCE, "gameTurn$nextTurn", "MechInf.svg",
                 1, 2, 12, STATUS_CAN_REINFORCE, "A", $nextTurn,
-                "southern", "mech", $id++);
+                "german", "mech", $id++);
         }
-        UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
+        UnitFactory::create("||", Bulge::GERMAN_FORCE, "gameTurn$nextTurn", "Artillery.svg",
             4, 1, 9, STATUS_CAN_REINFORCE, "A", $nextTurn,
-            "southern", "artillery", $id++, 8, 0);
-        UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
+            "german", "artillery", $id++, 8, 0);
+        UnitFactory::create("||", Bulge::GERMAN_FORCE, "gameTurn$nextTurn", "Artillery.svg",
             5, 1, 9, STATUS_CAN_REINFORCE, "A", $nextTurn,
-            "southern", "artillery", $id++, 7, 1);
+            "german", "artillery", $id++, 7, 1);
     }
     public function  checkNorthAutobahn(){
         if($this->armorReleased){
@@ -389,7 +389,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $units = $battle->force->units;
         foreach($units as $id => $unit){
             if($unit->isOnMap()){
-                if($unit->forceId === Bulge::NATO_FORCE){
+                if($unit->forceId === Bulge::US_FORCE){
                     $num = $unit->hexagon->number;
                     $col = (int)($num / 100);
                     $row = $num % 100;

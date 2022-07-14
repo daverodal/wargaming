@@ -28,15 +28,15 @@ use Wargame\TMCW\Manchuria1976\Unit;
 
 class Bulge extends ModernLandBattle
 {
-    const SOVIET_FORCE = 2;
-    const NATO_FORCE = 1;
+    const GERMAN_FORCE = 2;
+    const US_FORCE = 1;
     const RED_FORCE = 2;
     const BLUE_FORCE = 1;
 
     public $specialHexesMap = ['SpecialHexA'=>0, 'SpecialHexB'=>2, 'SpecialHexC'=>2];
 
     static function getPlayerData($scenario){
-        $forceName = ["Neutral Observer", "NATO", "Soviet Union"];
+        $forceName = ["Neutral Observer", "US", "German"];
         return \Wargame\Battle::register($forceName,
             [$forceName[0], $forceName[2], $forceName[1]]);
     }
@@ -89,202 +89,202 @@ class Bulge extends ModernLandBattle
 
         $id = 0;
 //        for ($i = 0; $i < 6; $i++) {
-//            UnitFactory::create("||", Bulge::SOVIET_FORCE, "airpowerWrapper", "jetPlane.svg",
+//            UnitFactory::create("||", Bulge::GERMAN_FORCE, "airpowerWrapper", "jetPlane.svg",
 //                2, 3, 12, STATUS_CAN_REINFORCE, "A", 1,
-//                "southern", "airpower", $id++);
+//                "german", "airpower", $id++);
 //
 //        }
 //        for ($i = 0; $i < 6; $i++) {
-//            UnitFactory::create("||", Bulge::NATO_FORCE, "airpowerWrapper", "jetPlane.svg",
+//            UnitFactory::create("||", Bulge::US_FORCE, "airpowerWrapper", "jetPlane.svg",
 //                2, 3, 12, STATUS_CAN_REINFORCE, "A", 1,
-//                "northern", "airpower", $id++);
+//                "us", "airpower", $id++);
 //
 //        }
         if($scenario->name === 'one') {
 
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "deployBox", "MechInf.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "deployBox", "MechInf.svg",
                     4, 4, 12, STATUS_CAN_DEPLOY, "H", 1,
-                    "northern", "mech", "20");
+                    "us", "mech", "20");
             }
 
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "deployBox", "Armor.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "deployBox", "Armor.svg",
                     4, 3, 12, STATUS_CAN_DEPLOY, "H", 1,
-                    "northern", "mech", "2");
+                    "us", "mech", "2");
             }
 
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "deployBox", "Armor.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "deployBox", "Armor.svg",
                     5, 4, 12, STATUS_CAN_DEPLOY, "H", 1,
-                    "northern", "mech", "811");
+                    "us", "mech", "811");
             }
             $unitDesig = ["73", "58"];
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "deployBox", "SpArtillery.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "deployBox", "SpArtillery.svg",
                     1, 2, 12, STATUS_CAN_DEPLOY, "H", 1,
-                    "northern", "mech", $id++, 12, 2);
+                    "us", "mech", $id++, 12, 2);
             }
 
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "deployBox", "MechInf.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "deployBox", "MechInf.svg",
                     4, 4, 12, STATUS_CAN_DEPLOY, "E", 1,
-                    "northern", "mech", "20");
+                    "us", "mech", "20");
             }
 
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "deployBox", "Armor.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "deployBox", "Armor.svg",
                     4, 3, 12, STATUS_CAN_DEPLOY, "E", 1,
-                    "northern", "mech", "3");
+                    "us", "mech", "3");
             }
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "deployBox", "ArmorRecon.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "deployBox", "ArmorRecon.svg",
                     1, 3, 12, STATUS_CAN_DEPLOY, "E", 1,
-                    "northern", "mech", "90");
+                    "us", "mech", "90");
             }
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "deployBox", "SpArtillery.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "deployBox", "SpArtillery.svg",
                     1, 2, 12, STATUS_CAN_DEPLOY, "E", 1,
-                    "northern", "mech", "420", 12, 2);
+                    "us", "mech", "420", 12, 2);
             }
             $unitDesig = ['1/3','2/3'];
             $unitName = ['2', '2'];
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create($unitName[$i], Bulge::SOVIET_FORCE, "deployBox", "Armor.svg",
+                UnitFactory::create($unitName[$i], Bulge::GERMAN_FORCE, "deployBox", "Armor.svg",
                     6, 4, 12, STATUS_CAN_REINFORCE, "A", 1,
-                    "southern", "mech", $unitDesig[$i]);
+                    "german", "mech", $unitDesig[$i]);
 
             }
             $unitDesig = ['1/304','2/304','1/902','2/902'];
             $unitName = ['', '', 'Lehr', 'Lehr'];
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create($unitName[$i], Bulge::SOVIET_FORCE, "deployBox", "MechInf.svg",
+                UnitFactory::create($unitName[$i], Bulge::GERMAN_FORCE, "deployBox", "MechInf.svg",
                     5, 5, 12, STATUS_CAN_REINFORCE, "A", 1,
-                    "southern", "mech", $unitDesig[$i]);
+                    "german", "mech", $unitDesig[$i]);
 
             }
-            UnitFactory::create("", Bulge::SOVIET_FORCE, "deployBox", "ArmorRecon.svg",
+            UnitFactory::create("", Bulge::GERMAN_FORCE, "deployBox", "ArmorRecon.svg",
                 2, 3, 14, STATUS_CAN_REINFORCE, "A", 1,
-                "southern", "mech", '2');
+                "german", "mech", '2');
 
             /* turn 2 */
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn2", "MechInf.svg",
+                UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn2", "MechInf.svg",
                     5, 5, 12, STATUS_CAN_REINFORCE, "B", 2,
-                    "southern", "mech", "1/2");
+                    "german", "mech", "1/2");
             }
             $unitDesig = ['1/903','2/903'];
 
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create("Lehr", Bulge::SOVIET_FORCE, "gameTurn2", "MechInf.svg",
+                UnitFactory::create("Lehr", Bulge::GERMAN_FORCE, "gameTurn2", "MechInf.svg",
                     4, 4, 12, STATUS_CAN_REINFORCE, "B", 2,
-                    "southern", "mech", $unitDesig[$i]);
+                    "german", "mech", $unitDesig[$i]);
             }
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn2", "MechInf.svg",
+                UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn2", "MechInf.svg",
                     4, 4, 7, STATUS_CAN_REINFORCE, "B", 2,
-                    "southern", "mech", "2/2");
+                    "german", "mech", "2/2");
             }
 
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("Lehr", Bulge::SOVIET_FORCE, "gameTurn2", "ArmorRecon.svg",
+                UnitFactory::create("Lehr", Bulge::GERMAN_FORCE, "gameTurn2", "ArmorRecon.svg",
                     2, 3, 14, STATUS_CAN_REINFORCE, "B", 2,
-                    "southern", "mech", "Lehr");
+                    "german", "mech", "Lehr");
             }
 
             $unitDesig = ['1/77','2/77','3/77', '1/78', '2/78', '3/78'];
 
             for ($i = 0; $i < 6; $i++) {
-                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn2", "Infantry.svg",
+                UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn2", "Infantry.svg",
                     3, 3, 7, STATUS_CAN_REINFORCE, "B", 2,
-                    "southern", "infantry", $unitDesig[$i]);
+                    "german", "infantry", $unitDesig[$i]);
             }
-            UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn2", "SpArtillery.svg",
+            UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn2", "SpArtillery.svg",
                 4, 2, 12, STATUS_CAN_REINFORCE, "A", 2,
-                "southern", "mech", "2", 12, 2);
+                "german", "mech", "2", 12, 2);
 
 
-            UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn2", "SpArtillery.svg",
+            UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn2", "SpArtillery.svg",
                 3, 1, 12, STATUS_CAN_REINFORCE, "A", 2,
-                "southern", "mech", "2", 18, 2);
+                "german", "mech", "2", 18, 2);
 
             $unitDesig = ['1/501','2/501','3/501', '1/502', '2/502', '3/502', '1/506', '2/506', '3/506', '1/327', '2/327', '3/327'];
 
             for ($i = 0; $i < 12; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "gameTurn2", "Para.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "gameTurn2", "Para.svg",
                     2, 4, 7, STATUS_CAN_REINFORCE, "F", 2,
-                    "northern", "infantry", $unitDesig[$i]);
+                    "us", "infantry", $unitDesig[$i]);
             }
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "gameTurn2", "Artillery.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "gameTurn2", "Artillery.svg",
                     1, 2, 7, STATUS_CAN_REINFORCE, "F", 2,
-                    "northern", "artillery", "101", 12, 2);
+                    "us", "artillery", "101", 12, 2);
             }
 
             /* game turn 3 */
             $unitDesig = ['755', '969'];
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "gameTurn3", "Artillery.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "gameTurn3", "Artillery.svg",
                     3, 1, 7, STATUS_CAN_REINFORCE, "G", 3,
-                    "northern", "artillery", $unitDesig[$i], 18, 2);
+                    "us", "artillery", $unitDesig[$i], 18, 2);
             }
 
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::NATO_FORCE, "gameTurn3", "Armor.svg",
+                UnitFactory::create("", Bulge::US_FORCE, "gameTurn3", "Armor.svg",
                     5, 4, 12, STATUS_CAN_REINFORCE, "G", 3,
-                    "northern", "mech", "705");
+                    "us", "mech", "705");
             }
 
             /* game Turn 4 */
             $unitDesig = ['1/901','2/901'];
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create("Lehr", Bulge::SOVIET_FORCE, "gameTurn4", "MechInf.svg",
+                UnitFactory::create("Lehr", Bulge::GERMAN_FORCE, "gameTurn4", "MechInf.svg",
                     5, 5, 12, STATUS_CAN_REINFORCE, "C", 4,
-                    "southern", "mech", $unitDesig[$i]);
+                    "german", "mech", $unitDesig[$i]);
             }
             for ($i = 0; $i < 3; $i++) {
-                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn4", "Infantry.svg",
+                UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn4", "Infantry.svg",
                     3, 3, 7, STATUS_CAN_REINFORCE, "C", 4,
-                    "southern", "infantry", $id++);
+                    "german", "infantry", $id++);
             }
             for ($i = 0; $i < 1; $i++) {
-                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn4", "ArmorRecon.svg",
+                UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn4", "ArmorRecon.svg",
                     1, 3, 12, STATUS_CAN_REINFORCE, "C", 4,
-                    "southern", "mech", $id++);
+                    "german", "mech", $id++);
             }
-            UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn4", "Artillery.svg",
+            UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn4", "Artillery.svg",
                 3, 1, 7, STATUS_CAN_REINFORCE, "C", 4,
-                "southern", "artillery", "26", 18, 2);
-            UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn4", "Artillery.svg",
+                "german", "artillery", "26", 18, 2);
+            UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn4", "Artillery.svg",
                 4, 2, 7, STATUS_CAN_REINFORCE, "C", 4,
-                "southern", "artillery", "26", 12, 2);
-            UnitFactory::create("Lehr", Bulge::SOVIET_FORCE, "gameTurn4", "SpArtillery.svg",
+                "german", "artillery", "26", 12, 2);
+            UnitFactory::create("Lehr", Bulge::GERMAN_FORCE, "gameTurn4", "SpArtillery.svg",
                 3, 1, 12, STATUS_CAN_REINFORCE, "C", 4,
-                "southern", "mech", "Lehr", 18, 2);
-            UnitFactory::create("Lehr", Bulge::SOVIET_FORCE, "gameTurn4", "SpArtillery.svg",
+                "german", "mech", "Lehr", 18, 2);
+            UnitFactory::create("Lehr", Bulge::GERMAN_FORCE, "gameTurn4", "SpArtillery.svg",
                 4, 2, 12, STATUS_CAN_REINFORCE, "C", 4,
-                "southern", "mech", "Lehr", 12, 2);
+                "german", "mech", "Lehr", 12, 2);
 
             /* turn 7 */
             $unitDesig = ['1/13','2/13','1/14', '2/14'];
 
             for ($i = 0; $i < 4; $i++) {
-                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn7", "Infantry.svg",
+                UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn7", "Infantry.svg",
                     3, 3, 7, STATUS_CAN_REINFORCE, "D", 7,
-                    "southern", "infantry", $unitDesig[$i]);
+                    "german", "infantry", $unitDesig[$i]);
             }
             $unitDesig = ['1/14','2/15'];
             for ($i = 0; $i < 2; $i++) {
-                UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn7", "MechInf.svg",
+                UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn7", "MechInf.svg",
                     3, 3, 12, STATUS_CAN_REINFORCE, "D", 7,
-                    "southern", "mech", $unitDesig[$i]);
+                    "german", "mech", $unitDesig[$i]);
             }
-            UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn7", "Artillery.svg",
+            UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn7", "Artillery.svg",
                 3, 1, 7, STATUS_CAN_REINFORCE, "D", 7,
-                "southern", "artillery", "5", 18, 2);
-            UnitFactory::create("", Bulge::SOVIET_FORCE, "gameTurn7", "Artillery.svg",
+                "german", "artillery", "5", 18, 2);
+            UnitFactory::create("", Bulge::GERMAN_FORCE, "gameTurn7", "Artillery.svg",
                 4, 2, 7, STATUS_CAN_REINFORCE, "D", 7,
-                "southern", "artillery", "5", 12, 2);
+                "german", "artillery", "5", 12, 2);
         }
         if($scenario->name === 'three') {
            $this->three();
@@ -318,7 +318,7 @@ class Bulge extends ModernLandBattle
 
         parent::__construct($data, $arg, $scenario);
 
-        $crt = new \Wargame\ModernBattles\Bulge\CombatResultsTable(Bulge::SOVIET_FORCE);
+        $crt = new \Wargame\ModernBattles\Bulge\CombatResultsTable(Bulge::GERMAN_FORCE);
         $this->combatRules->injectCrt($crt);
 
         if ($data) {
@@ -367,7 +367,6 @@ class Bulge extends ModernLandBattle
             $mapView->trueRows = true;
             $mapView->mirror = false;
         }
-        $this->mapData->blocksZoc->river = true;
     }
     public function startGameSouth(){
         $this->gameRules->setInitialPhaseMode(BLUE_DEPLOY_PHASE, DEPLOY_MODE);
@@ -407,8 +406,7 @@ class Bulge extends ModernLandBattle
         $this->gameRules->defendingForceId = RED_FORCE; /* object oriented! */
         $this->force->setAttackingForceId($this->gameRules->attackingForceId); /* so object oriented */
 
-        $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, RED_DEPLOY_PHASE, DEPLOY_MODE, Bulge::RED_FORCE, Bulge::BLUE_FORCE, false);
-        $this->gameRules->addPhaseChange(RED_DEPLOY_PHASE, RED_MOVE_PHASE, MOVING_MODE, Bulge::RED_FORCE, Bulge::BLUE_FORCE, false);
+        $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, RED_MOVE_PHASE, MOVING_MODE, Bulge::RED_FORCE, Bulge::BLUE_FORCE, false);
 
         $this->gameRules->addPhaseChange(RED_MOVE_PHASE, RED_COMBAT_PHASE, COMBAT_SETUP_MODE, Bulge::RED_FORCE, Bulge::BLUE_FORCE, false);
         $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_REPLACEMENT_PHASE, REPLACING_MODE, Bulge::BLUE_FORCE, Bulge::RED_FORCE, false);

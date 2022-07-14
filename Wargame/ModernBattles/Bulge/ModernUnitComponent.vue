@@ -143,8 +143,8 @@
     @import "../../wargame-helpers/Vue/scss/vue-unit";
     @import "../../wargame-helpers/Vue/scss/vue-mixins";
     @import "localColors";
-    @include unitColor(southern, $southernColor)
-    @include unitColor(northern, $northernColor);
+    @include unitColor(german, $germanColor)
+    @include unitColor(us, $usColor);
     .unit{
       .unit-numbers{
         font-size:10px;

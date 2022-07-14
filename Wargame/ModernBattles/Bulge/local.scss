@@ -48,11 +48,11 @@
 
 @import "localColors";
 
-@include player(southern, One, $southernColor);
-@include player(northern,Two,$northernColor);
+@include player(german, One, $germanColor);
+@include player(us,Two,$usColor);
 
-@include headerColor(Southern-States, $southernColor, $southernColor);
-@include headerColor(Northern-States, $northernColor, $northernColor);
+@include headerColor(german-States, $germanColor, $germanColor);
+@include headerColor(us-States, $usColor, $usColor);
 
 #options-pane{
   display:none;
@@ -142,25 +142,25 @@
     }
   }
 }
-.specialHexesVP .southernVictoryPoints {
- @include victoryPoints($darkSouthernColor);
+.specialHexesVP .germanVictoryPoints {
+ @include victoryPoints($darkgermanColor);
 }
 
-.specialHexesVP .northernVictoryPoints {
-  @include victoryPoints($northernColor);
+.specialHexesVP .usVictoryPoints {
+  @include victoryPoints($usColor);
 }
 
-.specialHexes.Southern{
+.specialHexes.german{
   padding: 0px 5px;
-  border: 3px solid darken($southernColor, 60%);
+  border: 3px solid darken($germanColor, 60%);
   border-radius: 10px;
-  background: $southernColor;
+  background: $germanColor;
 }
-.specialHexes.Northern{
+.specialHexes.us{
   padding: 0px 5px;
-  border: 3px solid darken($northernColor, 60%);
+  border: 3px solid darken($usColor, 60%);
   border-radius: 10px;
-  background: $northernColor;
+  background: $usColor;
 }
 /* RULES OVERRIDES */
 

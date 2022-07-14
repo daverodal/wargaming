@@ -102,11 +102,11 @@ trait CombatHalfDoubleTerrain
             $isFortA = $battle->terrain->terrainIs($hexpart, 'forta');
             $isFortB = $battle->terrain->terrainIs($hexpart, 'fortb');
             $unitDefenseStrength = $unit->defStrength;
-            if($isFortB && $unit->forceId === Bulge::SOVIET_FORCE){
+            if($isFortB && $unit->forceId === Bulge::GERMAN_FORCE){
                 $unitDefenseStrength *= 2;
                 $combatLog .= "In Defense Zone doubled $unitDefenseStrength<br>";
             }
-            if($isFortA && $unit->forceId === Bulge::NATO_FORCE){
+            if($isFortA && $unit->forceId === Bulge::US_FORCE){
                 $unitDefenseStrength *= 2;
                 $combatLog .= "In Defense Zone doubled $unitDefenseStrength<br>";
             }
