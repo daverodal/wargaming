@@ -72,7 +72,7 @@ trait DiffCombatShiftTerrain
 
             foreach ($defenders as $defId => $defender) {
                 if ($battle->combatRules->thisAttackAcrossRiver($defId, $id)) {
-                    $acrossRiver = true;
+                    $isAcrossRiver = true;
                 }
             }
             $strength = $unit->strength;
