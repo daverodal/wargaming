@@ -409,8 +409,7 @@ class Bulge extends ModernLandBattle
         $this->gameRules->addPhaseChange(BLUE_DEPLOY_PHASE, RED_MOVE_PHASE, MOVING_MODE, Bulge::RED_FORCE, Bulge::BLUE_FORCE, false);
 
         $this->gameRules->addPhaseChange(RED_MOVE_PHASE, RED_COMBAT_PHASE, COMBAT_SETUP_MODE, Bulge::RED_FORCE, Bulge::BLUE_FORCE, false);
-        $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_REPLACEMENT_PHASE, REPLACING_MODE, Bulge::BLUE_FORCE, Bulge::RED_FORCE, false);
-        $this->gameRules->addPhaseChange(BLUE_REPLACEMENT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, Bulge::BLUE_FORCE, Bulge::RED_FORCE, false);
+        $this->gameRules->addPhaseChange(RED_COMBAT_PHASE, BLUE_MOVE_PHASE, MOVING_MODE, Bulge::BLUE_FORCE, Bulge::RED_FORCE, false);
         $this->gameRules->addPhaseChange(BLUE_MOVE_PHASE, BLUE_COMBAT_PHASE, COMBAT_SETUP_MODE, Bulge::BLUE_FORCE, Bulge::RED_FORCE, false);
         $this->gameRules->addPhaseChange(BLUE_COMBAT_PHASE, RED_MOVE_PHASE, MOVING_MODE, Bulge::RED_FORCE, Bulge::BLUE_FORCE, true);
     }

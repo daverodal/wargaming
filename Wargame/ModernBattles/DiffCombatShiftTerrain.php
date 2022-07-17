@@ -49,7 +49,7 @@ trait DiffCombatShiftTerrain
 
         $defenders = $combats->defenders;
 
-        $isAcrossRiver = $isTown = $isForest = $isRough = false;
+        $isAcrossBridge = $isAcrossRiver = $isTown = $isForest = $isRough = false;
 
         foreach ($defenders as $defId => $defender) {
             if($battle->force->units[$defId]->status === STATUS_FPF){
@@ -65,14 +65,19 @@ trait DiffCombatShiftTerrain
 
         $attackStrength = 0;
         $combatLog .= "Attackers<br>";
-
+        $isAcrossRiver = true;
         foreach ($combats->attackers as $id => $v) {
             $unit = $force->units[$id];
             $combatLog .= $unit->strength." ".$unit->class."<br>";
 
             foreach ($defenders as $defId => $defender) {
-                if ($battle->combatRules->thisAttackAcrossRiver($defId, $id)) {
-                    $isAcrossRiver = true;
+                if(($battle->combatRules->thisAttackAcrossType($defId, $id, 'road') || $battle->combatRules->thisAttackAcrossType($defId, $id, 'trail')) &&
+                    $battle->combatRules->thisAttackAcrossRiver($defId, $id)){
+                    $isAcrossBridge = true;
+                    $isAcrossRiver = false;
+                }
+                if (!$battle->combatRules->thisAttackAcrossRiver($defId, $id)) {
+                    $isAcrossRiver = false;
                 }
             }
             $strength = $unit->strength;
@@ -95,6 +100,10 @@ trait DiffCombatShiftTerrain
         }
         $shift = 0;
         $terrainReason = "";
+        if($isAcrossBridge){
+            $shift = 1;
+            $terrainReason = "bridge";
+        }
         if($isTown ){
             $shift = 2;
             $terrainReason = "town";

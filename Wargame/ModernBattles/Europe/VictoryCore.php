@@ -317,8 +317,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 
     public function playerTurnChange($arg)
     {
-
-            parent::playerTurnChange($arg);
+        parent::playerTurnChange($arg);
         $attackingId = $arg[0];
         $battle = Battle::getBattle();
         $mapData = $battle->mapData;
@@ -333,7 +332,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             $gameRules->flashMessages[] = "@hide crt";
         }
 
-        if($battle->scenario->name ?? "" === "four") {
+        if(($battle->scenario->name ?? "") === "four") {
             if ($attackingId === Bulge::SOVIET_FORCE) {
                 if($this->checkNorthAutobahn()) {
                     $gameRules->flashMessages[] = "Release Soviet Armor Division";
@@ -342,7 +341,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             }
         }
 
-        if($battle->scenario->name ?? "" === "three") {
+        if(($battle->scenario->name ?? "") === "three") {
             if ($attackingId === Bulge::NATO_FORCE) {
                 if ($gameRules->turn >= 9)
                     $gameRules->replacementsAvail = 6;
