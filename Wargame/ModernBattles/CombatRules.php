@@ -1,5 +1,5 @@
 <?php
-namespace Wargame;
+namespace Wargame\ModernBattles;
 use stdClass;
 // combatRules->js
 
