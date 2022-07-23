@@ -68,8 +68,8 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $vp = $unit->damage;
         $hex  = $unit->hexagon;
         $unit->reinforceZone = "C";
-        if ($unit->forceId == Bulge::SOVIET_FORCE) {
-            $victorId = Bulge::NATO_FORCE;
+        if ($unit->forceId == Europe::SOVIET_FORCE) {
+            $victorId = Europe::NATO_FORCE;
 
             $this->victoryPoints[$victorId] += $vp;
             $hex = $unit->hexagon;
@@ -79,7 +79,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
             }
             $battle->mapData->specialHexesVictory->{$hex->name} .= "<span class='natoVictoryPoints'>+$vp</span>";
         } else {
-            $victorId = Bulge::SOVIET_FORCE;
+            $victorId = Europe::SOVIET_FORCE;
 
             $hex  = $unit->hexagon;
             $battle = Battle::getBattle();
@@ -333,7 +333,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
 
         if(($battle->scenario->name ?? "") === "four") {
-            if ($attackingId === Bulge::SOVIET_FORCE) {
+            if ($attackingId === Europe::SOVIET_FORCE) {
                 if($this->checkNorthAutobahn()) {
                     $gameRules->flashMessages[] = "Release Soviet Armor Division";
                     $this->releaseArmorDivision();
@@ -342,7 +342,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         }
 
         if(($battle->scenario->name ?? "") === "three") {
-            if ($attackingId === Bulge::NATO_FORCE) {
+            if ($attackingId === Europe::NATO_FORCE) {
                 if ($gameRules->turn >= 9)
                     $gameRules->replacementsAvail = 6;
             }
@@ -362,19 +362,19 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $id = count($units);
         $nextTurn = $battle->gameRules->turn + 1;
         for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("|||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Armor.svg",
+            UnitFactory::create("|||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Armor.svg",
                 4, 2, 12, STATUS_CAN_REINFORCE, "A", $nextTurn,
                 "soviet", "mech", $id++);
         }
         for ($i = 0; $i < 3; $i++) {
-            UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "MechInf.svg",
+            UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "MechInf.svg",
                 1, 2, 12, STATUS_CAN_REINFORCE, "A", $nextTurn,
                 "soviet", "mech", $id++);
         }
-        UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
+        UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
             4, 1, 9, STATUS_CAN_REINFORCE, "A", $nextTurn,
             "soviet", "artillery", $id++, 8, 0);
-        UnitFactory::create("||", Bulge::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
+        UnitFactory::create("||", Europe::SOVIET_FORCE, "gameTurn$nextTurn", "Artillery.svg",
             5, 1, 9, STATUS_CAN_REINFORCE, "A", $nextTurn,
             "soviet", "artillery", $id++, 7, 1);
     }
@@ -388,7 +388,7 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         $units = $battle->force->units;
         foreach($units as $id => $unit){
             if($unit->isOnMap()){
-                if($unit->forceId === Bulge::NATO_FORCE){
+                if($unit->forceId === Europe::NATO_FORCE){
                     $num = $unit->hexagon->number;
                     $col = (int)($num / 100);
                     $row = $num % 100;
