@@ -843,6 +843,9 @@ class MoveRules
             if (($this->anyUnitIsMoving == true) && ($id == $this->movingUnitId)) {
                 $this->endAdvancing($this->movingUnitId);
             } else {
+                if (($this->anyUnitIsMoving == true) && $id != $this->movingUnitId){
+                    $this->unStartAdvancing($this->movingUnitId);
+                }
                 if ($this->force->unitCanAdvance($id) == true) {
                     $this->startAdvancing($id);
                 }
@@ -917,6 +920,19 @@ class MoveRules
         if ($unit->setStatus(STATUS_ADVANCED) == true) {
             $this->moves = new stdClass();
             $this->force->resetRemainingAdvancingUnits();
+            $this->anyUnitIsMoving = false;
+            $this->movingUnitId = NONE;
+        }
+    }
+
+    function unStartAdvancing($id)
+    {
+        /* @var Unit $unit */
+        $unit = $this->force->getUnit($id);
+        if ($unit->status == STATUS_ADVANCING) {
+            $unit->status = STATUS_CAN_ADVANCE;
+            $this->moves = new stdClass();
+//            $this->force->resetRemainingAdvancingUnits();
             $this->anyUnitIsMoving = false;
             $this->movingUnitId = NONE;
         }
