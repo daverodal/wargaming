@@ -1381,7 +1381,7 @@ x.register("combatRules", function (combatRules, data) {
 
 
         var lastCombat = "";
-        if (combatRules.combatsToResolve && Object.keys(combatRules.combatsToResolve).length > 0   ) {
+        if (combatRules.combatsToResolve  ) {
             $('.unit').removeAttr('title');
             $('.unit .unitOdds').remove();
             if (combatRules.lastResolvedCombat) {
