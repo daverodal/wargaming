@@ -1336,6 +1336,7 @@ x.register("combatRules", function (combatRules, data) {
                         currentOddsDisp = $(".col" + currentCombatCol).html();
                         useAltColor = " pinnedColor";
                     }
+                    debugger;
                     $("#" + i).attr('title', currentOddsDisp).prepend('<div class="unitOdds' + useAltColor + '">' + currentOddsDisp + '</div>');
                     ;
 
@@ -1381,7 +1382,7 @@ x.register("combatRules", function (combatRules, data) {
 
 
         var lastCombat = "";
-        if (combatRules.combatsToResolve  ) {
+        if (combatRules.combatsToResolve && data.gameRules.mode === COMBAT_RESOLUTION_MODE ) {
             $('.unit').removeAttr('title');
             $('.unit .unitOdds').remove();
             if (combatRules.lastResolvedCombat) {
