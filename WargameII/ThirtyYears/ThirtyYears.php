@@ -1,12 +1,6 @@
 <?php
-namespace Wargame\Mollwitz;
-use Wargame\MapData;
-use Wargame\MapViewer;
-use Wargame\MoveRules;
-use Wargame\CombatRules;
-use Wargame\Terrain;
-use Wargame\Victory;
-use Wargame\Hexagon;
+namespace WargameII\ThirtyYears;
+use \WargameII\{MapData, MapViewer, MoveRules, CombatRules, Force, Terrain, Victory, Hexagon};
 /**
  *
  * Copyright 2012-2015 David Rodal
@@ -29,7 +23,7 @@ use Wargame\Hexagon;
  */
 global $force_name, $phase_name, $mode_name, $event_name, $status_name, $results_name, $combatRatio_name;
 
-class JagCore extends \Wargame\LandBattle{
+class ThirtyYears extends LandBattle{
 
     const PLAYER_ONE = 1;
     const PLAYER_TWO = 2;
@@ -78,7 +72,7 @@ class JagCore extends \Wargame\LandBattle{
             }
             $this->moveRules = new MoveRules($this->force, $this->terrain, $data->moveRules);
             $this->combatRules = new CombatRules($this->force, $this->terrain, $data->combatRules);
-            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
+            $this->gameRules = new HorseMusketGameRules($this->moveRules, $this->combatRules, $this->force, $data->gameRules);
             $this->victory = new Victory($data);
 
             $this->players = $data->players;
@@ -104,7 +98,7 @@ class JagCore extends \Wargame\LandBattle{
 
             $this->moveRules = new MoveRules($this->force, $this->terrain);
             $this->combatRules = new CombatRules($this->force, $this->terrain);
-            $this->gameRules = new GameRules($this->moveRules, $this->combatRules, $this->force);
+            $this->gameRules = new HorseMusketGameRules($this->moveRules, $this->combatRules, $this->force);
 
             $this->mapData->blocksZoc->blocked = true;
             $this->mapData->blocksZoc->blocksnonroad = true;
@@ -156,7 +150,7 @@ class JagCore extends \Wargame\LandBattle{
         };
 
         static::getPlayerData($this->scenario);
-        $crt = new \Wargame\Mollwitz\CombatResultsTable();
+        $crt = new CombatResultsTable();
         $this->combatRules->injectCrt($crt);
     }
 
@@ -216,7 +210,7 @@ class JagCore extends \Wargame\LandBattle{
         $this->terrain->mapHeight = $map->mapHeight;
         $this->mapData->setData($maxCol, $maxRow, $mapUrl);
 
-        \Wargame\Hexagon::setMinMax();
+        Hexagon::setMinMax();
         $this->terrain->setMaxHex();
         $a = $map->a;
         $b = $map->b;

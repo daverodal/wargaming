@@ -3,7 +3,7 @@ namespace Wargame\Mollwitz;
 use \stdClass;
 use Wargame\MoveRules;
 use Wargame\CombatRules;
-use Wargame\Force;
+use Wargame\SimpleForce;
 // gameRules.js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -50,7 +50,7 @@ class HorseMusketPhaseChange
     }
 }
 
-class HorseMusketGameRules extends GameRulesAbs
+class GameRules extends GameRulesAbs
 {
     // class references
     /* @var MoveRules $moveRules */
@@ -95,13 +95,13 @@ class HorseMusketGameRules extends GameRulesAbs
         return $data;
     }
 
-    public function inject(MoveRules $MoveRules, CombatRules $CombatRules, Force $Force){
+    public function inject(MoveRules $MoveRules, CombatRules $CombatRules, SimpleForce $Force){
         $this->moveRules = $MoveRules;
         $this->combatRules = $CombatRules;
         $this->force = $Force;
     }
 
-    function __construct(MoveRules $MoveRules, CombatRules $CombatRules, Force $Force, $data = null)
+    function __construct(MoveRules $MoveRules, CombatRules $CombatRules, SimpleForce $Force, $data = null)
     {
         if ($data) {
             foreach ($data as $k => $v) {

@@ -90,7 +90,7 @@ class GameRules extends GameRulesAbs
         return $data;
     }
 
-    public function inject(MoveRules $MoveRules,CombatRules $CombatRules,Force $Force){
+    public function inject(MoveRules $MoveRules,CombatRules $CombatRules,SimpleForce $Force){
         $this->moveRules = $MoveRules;
         $this->combatRules = $CombatRules;
         $this->force = $Force;

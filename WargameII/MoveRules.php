@@ -1,6 +1,6 @@
 <?php
-namespace Wargame;
-use \stdClass;
+namespace WargameII;
+use stdClass;
 // moveRules.js
 
 // Copyright (c) 2009-2011 Mark Butler
@@ -78,7 +78,7 @@ class MoveRules
         return $data;
     }
 
-    function __construct(SimpleForce $Force, Terrain $Terrain, $data = null)
+    function __construct(Force $Force, Terrain $Terrain, $data = null)
     {
         // Class references
 

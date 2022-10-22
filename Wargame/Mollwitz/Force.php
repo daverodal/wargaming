@@ -1,28 +1,26 @@
 <?php
-namespace Wargame;
+namespace Wargame\Mollwitz;
 
 use stdClass;
+use Wargame\{SimpleForce, Battle, MapHex, RetreatStep};
 
 // force.js
 
 // Copyright (c) 20092011 Mark Butler
 /*
 Copyright 2012-2015 David Rodal
-
 This program is free software; you can redistribute it
 and/or modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation;
 either version 2 of the License, or (at your option) any later version
-
 This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-use \Wargame\Battle;
+
 
 class Force extends SimpleForce
 {
@@ -76,23 +74,6 @@ class Force extends SimpleForce
     }
 
 
-    function xxxaddUnit($unitName, $unitForceId, $unitHexagon, $unitImage, $unitMaxStrength, $unitMinStrength, $unitMaxMove, $isReduced, $unitStatus, $unitReinforceZoneName, $unitReinforceTurn, $range = 1, $nationality = "neutral", $forceMarch = true, $class = false, $unitDesig = false)
-    {
-        if ($unitStatus == STATUS_CAN_REINFORCE) {
-            if (!$this->reinforceTurns->$unitReinforceTurn) {
-                $this->reinforceTurns->$unitReinforceTurn = new stdClass();
-            }
-            $this->reinforceTurns->$unitReinforceTurn->$unitForceId++;
-        }
-        $id = count($this->units);
-        $unit = UnitFactory::build();
-        $unit->set($id, $unitName, $unitForceId, $unitHexagon, $unitImage, $unitMaxStrength, $unitMinStrength, $unitMaxMove, $isReduced, $unitStatus, $unitReinforceZoneName, $unitReinforceTurn, $range, $nationality, $forceMarch, $class, $unitDesig);
-
-        array_push($this->units, $unit);
-        return $id;
-    }
-
-
     /*
      * Move Rules
      */
@@ -142,7 +123,7 @@ class Force extends SimpleForce
         }
         $hexes = array();
         foreach ($this->retreatHexagonList as $hexList) {
-                $hexes[] = $hexList->hexagon;
+            $hexes[] = $hexList->hexagon;
         }
         return $hexes;
     }
@@ -418,7 +399,7 @@ class Force extends SimpleForce
                 $defUnit->status = STATUS_NO_RESULT;
                 $defUnit->retreatCountRequired = 0;
                 $battle->victory->noEffectUnit($defUnit);
-            break;
+                break;
             case DL:
             case BL:
             case DL2:
@@ -623,16 +604,7 @@ class Force extends SimpleForce
             $this->requiredAttacks->$id = false;
         }
     }
-    function setupFpf($id, $range)
-    {
-        $unit = $this->units[$id];
-        $unit->status = STATUS_FPF;
-    }
-    function removeFpf($id)
-    {
-        $unit = $this->units[$id];
-        $unit->status = STATUS_READY;
-    }
+
     function setupDefender($id)
     {
         $unit = $this->units[$id];
@@ -751,50 +723,39 @@ class Force extends SimpleForce
                                 $this->anyCombatsPossible = true;
                             }
                         }
-                        if ($mode == COMBAT_RESOLUTION_MODE || $mode == FPF_MODE) {
+                        if ($mode == COMBAT_RESOLUTION_MODE) {
                             $status = STATUS_UNAVAIL_THIS_PHASE;
                             if ($unit->status == STATUS_ATTACKING ||
                                 $unit->status == STATUS_DEFENDING
                             ) {
                                 $status = $unit->status;
                             }
-                            if( $mode == FPF_MODE) {
-                                if ($unit->range > 1) {
-                                    $isZoc = $this->unitIsZoc($id);
-                                    if ($isZoc) {
-//                                    $this->markRequired($id);
-                                    }
-                                    $isAdjacent = $this->unitIsAdjacent($id);
-                                    if ($unit->forceId == $this->defendingForceId && (!$isZoc || !$isAdjacent)) {
-                                        $status = STATUS_READY;
-                                    }
+
+                        }
+                    }
+
+                    if ($phase == BLUE_AIR_COMBAT_PHASE || $phase == RED_AIR_COMBAT_PHASE ) {
+                        if($unit->class === 'air'){
+                            if ($mode == COMBAT_SETUP_MODE) {
+                                $status = STATUS_UNAVAIL_THIS_PHASE;
+
+                                $isAdjacent = $this->unitIsAdjacent($id);
+                                if ($unit->forceId == $this->attackingForceId && ( $isAdjacent )) {
+                                    $status = STATUS_READY;
+                                    $this->anyCombatsPossible = true;
                                 }
                             }
-                        }
-                      }
+                            if ($mode == COMBAT_RESOLUTION_MODE) {
+                                $status = STATUS_UNAVAIL_THIS_PHASE;
+                                if ($unit->status == STATUS_ATTACKING ||
+                                    $unit->status == STATUS_DEFENDING
+                                ) {
+                                    $status = $unit->status;
+                                }
 
-                if ($phase == BLUE_AIR_COMBAT_PHASE || $phase == RED_AIR_COMBAT_PHASE ) {
-                    if($unit->class === 'air'){
-                    if ($mode == COMBAT_SETUP_MODE) {
-                        $status = STATUS_UNAVAIL_THIS_PHASE;
-
-                        $isAdjacent = $this->unitIsAdjacent($id);
-                        if ($unit->forceId == $this->attackingForceId && ( $isAdjacent )) {
-                            $status = STATUS_READY;
-                            $this->anyCombatsPossible = true;
+                            }
                         }
                     }
-                    if ($mode == COMBAT_RESOLUTION_MODE) {
-                        $status = STATUS_UNAVAIL_THIS_PHASE;
-                        if ($unit->status == STATUS_ATTACKING ||
-                            $unit->status == STATUS_DEFENDING
-                        ) {
-                            $status = $unit->status;
-                        }
-
-                    }
-                    }
-                }
 
                     if ($mode == MOVING_MODE && $moveRules->stickyZoc) {
                         if ($unit->forceId == $this->attackingForceId &&
@@ -989,8 +950,8 @@ class Force extends SimpleForce
                         $areAdvancing = true;
                     }
                 } else {
-                $unit->status = STATUS_ATTACKED;
-            }
+                    $unit->status = STATUS_ATTACKED;
+                }
             }
         }
         return $areAdvancing;
@@ -1073,7 +1034,7 @@ class Force extends SimpleForce
     }
 
 
-    function unitsAreRetreating($defenderId = null)
+    function unitsAreRetreating()
     {
         $areRetreating = false;
         for ($id = 0; $id < count($this->units); $id++) {
@@ -1082,15 +1043,8 @@ class Force extends SimpleForce
             if ($unit->status == STATUS_CAN_RETREAT
                 || $unit->status == STATUS_RETREATING
             ) {
-                if($defenderId !== null){
-                    if($unit->forceId === $defenderId){
-                        $areRetreating = true;
-                        break;
-                    }
-                }else{
-                    $areRetreating = true;
-                    break;
-                }
+                $areRetreating = true;
+                break;
             }
         }
         return $areRetreating;

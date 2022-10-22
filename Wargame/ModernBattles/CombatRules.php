@@ -755,7 +755,7 @@ class CombatRules
         if($this->combatsToResolve->$combatId && $this->combatsToResolve->$combatId->attackers){
             $attackers = $this->combatsToResolve->$combatId->attackers;
             foreach($attackers as $attId => $attacker){
-                if($this->force->units[$attId]->class !== 'artillery' && $this->force->units[$attId]->class !== 'air'){
+                if($this->force->units[$attId]->range == 1){
                     return false;
                 }
             }
@@ -770,7 +770,7 @@ class CombatRules
             $defUnit = $this->force->units[$defId];
             foreach($this->force->units as $fpfId => $fpf){
                 $fpf->fpfInRange = false;
-                if($fpf->isOnMap() && $fpf->status === STATUS_READY && $defUnit->id !== $fpf->id && $defUnit->forceId === $fpf->forceId && ($fpf->class === 'artillery' || $fpf->class === 'air')){
+                if($fpf->isOnMap() && $fpf->status === STATUS_READY && $defUnit->id !== $fpf->id && $defUnit->forceId === $fpf->forceId && $fpf->range > 1){
                     if($fpf->fpf > 0){
                         $los = new Los();
                         $los->setOrigin($this->force->getUnitHexagon($defId));

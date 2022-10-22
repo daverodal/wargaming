@@ -1,5 +1,5 @@
 <?php
-namespace Wargame;
+namespace WargameII;
 use stdClass;
 // combatRules->js
 
@@ -18,8 +18,6 @@ use stdClass;
 //
 //You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-use Wargame\Battle;
 
 class CombatDefenders{
     function __construct($data = false){
@@ -94,7 +92,7 @@ class CombatRules
         return $data;
     }
 
-    function __construct(SimpleForce $Force,Terrain $Terrain, $data = null)
+    function __construct(Force $Force,Terrain $Terrain, $data = null)
     {
         $this->force = $Force;
         $this->terrain = $Terrain;

@@ -26,7 +26,7 @@ abstract class GameRulesAbs
 {
 
     abstract public function save();
-    abstract public function inject(MoveRules $MoveRules,CombatRules $CombatRules,Force $Force);
+    abstract public function inject(MoveRules $MoveRules,CombatRules $CombatRules, SimpleForce $Force);
     abstract public function setMaxTurn($max_Turn);
     abstract public function setInitialPhaseMode($phase, $mode);
     abstract public function addPhaseChange($currentPhase, $nextPhase, $nextMode, $nextAttackerId, $nextDefenderId, $phaseWillIncrementTurn);

@@ -1,5 +1,5 @@
 <?php
-namespace Wargame;
+namespace WargameII;
 
 use stdClass;
 
@@ -22,7 +22,6 @@ This program is distributed in the hope that it will be useful,
 You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
-use \Wargame\Battle;
 
 class Force extends SimpleForce
 {
@@ -758,18 +757,17 @@ class Force extends SimpleForce
                             ) {
                                 $status = $unit->status;
                             }
-                            if( $mode == FPF_MODE) {
-                                if ($unit->range > 1) {
-                                    $isZoc = $this->unitIsZoc($id);
-                                    if ($isZoc) {
+                            if($unit->range > 1){
+                                $isZoc = $this->unitIsZoc($id);
+                                if ($isZoc) {
 //                                    $this->markRequired($id);
-                                    }
-                                    $isAdjacent = $this->unitIsAdjacent($id);
-                                    if ($unit->forceId == $this->defendingForceId && (!$isZoc || !$isAdjacent)) {
-                                        $status = STATUS_READY;
-                                    }
+                                }
+                                $isAdjacent = $this->unitIsAdjacent($id);
+                                if ($unit->forceId == $this->defendingForceId && (!$isZoc || !$isAdjacent )) {
+                                    $status = STATUS_READY;
                                 }
                             }
+
                         }
                       }
 

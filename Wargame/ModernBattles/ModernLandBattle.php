@@ -1,7 +1,7 @@
 <?php
 namespace Wargame\ModernBattles;
 use stdClass;
-use Wargame\{LandBattle,MapData,MapViewer, Force, Terrain, MoveRules, CombatRules, Hexagon, Victory};
+use Wargame\{LandBattle,MapData,MapViewer, Force, Terrain, MoveRules, Hexagon, Victory};
 /*
 Copyright 2012-2015 David Rodal
 

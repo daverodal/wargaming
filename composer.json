@@ -10,7 +10,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Wargame\\": "Wargame"
+      "Wargame\\": "Wargame",
+      "WargameII\\": "WargameII"
     },
     "files":[
       "Wargame/constants.php"
