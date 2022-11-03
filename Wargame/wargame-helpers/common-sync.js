@@ -1382,7 +1382,7 @@ x.register("combatRules", function (combatRules, data) {
 
 
         var lastCombat = "";
-        if (combatRules.combatsToResolve && data.gameRules.mode !== COMBAT_SETUP_MODE ) {
+        if (combatRules.combatsToResolve && Object.keys(combatRules.combatsToResolve).length > 0 && data.gameRules.mode !== COMBAT_SETUP_MODE ) {
             $('.unit').removeAttr('title');
             $('.unit .unitOdds').remove();
             if (combatRules.lastResolvedCombat) {

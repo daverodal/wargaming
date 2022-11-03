@@ -750,49 +750,15 @@ class Force extends SimpleForce
                                 $this->anyCombatsPossible = true;
                             }
                         }
-                        if ($mode == COMBAT_RESOLUTION_MODE || $mode == FPF_MODE) {
+                        if ($mode == COMBAT_RESOLUTION_MODE) {
                             $status = STATUS_UNAVAIL_THIS_PHASE;
                             if ($unit->status == STATUS_ATTACKING ||
                                 $unit->status == STATUS_DEFENDING
                             ) {
                                 $status = $unit->status;
                             }
-                            if($unit->range > 1){
-                                $isZoc = $this->unitIsZoc($id);
-                                if ($isZoc) {
-//                                    $this->markRequired($id);
-                                }
-                                $isAdjacent = $this->unitIsAdjacent($id);
-                                if ($unit->forceId == $this->defendingForceId && (!$isZoc || !$isAdjacent )) {
-                                    $status = STATUS_READY;
-                                }
-                            }
-
                         }
                       }
-
-                if ($phase == BLUE_AIR_COMBAT_PHASE || $phase == RED_AIR_COMBAT_PHASE ) {
-                    if($unit->class === 'air'){
-                    if ($mode == COMBAT_SETUP_MODE) {
-                        $status = STATUS_UNAVAIL_THIS_PHASE;
-
-                        $isAdjacent = $this->unitIsAdjacent($id);
-                        if ($unit->forceId == $this->attackingForceId && ( $isAdjacent )) {
-                            $status = STATUS_READY;
-                            $this->anyCombatsPossible = true;
-                        }
-                    }
-                    if ($mode == COMBAT_RESOLUTION_MODE) {
-                        $status = STATUS_UNAVAIL_THIS_PHASE;
-                        if ($unit->status == STATUS_ATTACKING ||
-                            $unit->status == STATUS_DEFENDING
-                        ) {
-                            $status = $unit->status;
-                        }
-
-                    }
-                    }
-                }
 
                     if ($mode == MOVING_MODE && $moveRules->stickyZoc) {
                         if ($unit->forceId == $this->attackingForceId &&
