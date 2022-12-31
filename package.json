@@ -17,7 +17,7 @@
     "bootstrap-sass": "^3.4.1",
     "cross-env": "^5.2.1",
     "jquery": "3.5.0",
-    "laravel-mix": "^2.0.0",
+    "laravel-mix": "^6.0.49",
     "lodash": "^4.17.21"
   },
   "dependencies": {
@@ -35,7 +35,7 @@
     "marked": "^0.7.0",
     "popper.js": "^1.16.1",
     "ssri": "^8.0.1",
-    "ts-loader": "^3.5.0",
+    "ts-loader": "^9.4.2",
     "typescript": "^2.9.2",
     "vue": "^2.6.12",
     "vue-draggable": "^1.1.1",
