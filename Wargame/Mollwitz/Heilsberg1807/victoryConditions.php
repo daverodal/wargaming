@@ -27,20 +27,13 @@
         <li>
             Either side wins at the end of any turn that it has accumulated 90 points.
             1 point is awarded for each Hostile combat point destroyed. A draw is possible.
-
-
         <li>
             There are several hexes with Blue numbers the French are awarded points equal to that number at any time that the French are the last to have
             moved a unit through that hex.
-
         </li>
         <li>
             The Russians receive 20 points each time that the
             Russian are the last to have moved a unit through either hex D1 or D2 (40 possible points).
-        </li>
-
-
-        <li>The Russians win if at the end of turn 14 they occupy the Hex marked Red V. This condition trumps all others a draw is not possible.
         </li>
     </ol>
 </li>
