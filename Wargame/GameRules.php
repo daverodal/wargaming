@@ -753,7 +753,9 @@ class GameRules extends GameRulesAbs
                                 $unit = $this->force->getUnit($this->moveRules->movingUnitId);
 
                                 $ret = $this->force->findSimilarInHex($unit);
-
+                                if($ret === true){
+                                    return true;
+                                }
                                 if(is_array($ret) && count($ret) > 0){
                                     if($unit->combine($ret) === false){
                                         return false;

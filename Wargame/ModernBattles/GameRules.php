@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 use Wargame\Battle;
-use Wargame\{GameRulesAbs, MoveRules, CombatRules, Force, Hexagon};
+use Wargame\{ MoveRules, Force, Hexagon, SimpleForce};
 
 class PhaseChange
 {
@@ -90,7 +90,7 @@ class GameRules extends GameRulesAbs
         return $data;
     }
 
-    public function inject(MoveRules $MoveRules,CombatRules $CombatRules,Force $Force){
+    public function inject(MoveRules $MoveRules,CombatRules $CombatRules, SimpleForce $Force){
         $this->moveRules = $MoveRules;
         $this->combatRules = $CombatRules;
         $this->force = $Force;

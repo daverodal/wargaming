@@ -1101,7 +1101,8 @@ class Force extends SimpleForce
         return 0;
     }
 
-    public function findSimilarInHex($unit){
+    public function
+    findSimilarInHex($unit){
         return [];
     }
 

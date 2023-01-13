@@ -20,6 +20,9 @@ use stdClass;
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 use Wargame\Battle;
+use Wargame\Force;
+use Wargame\Terrain;
+use Wargame\CombatResultsTable;
 
 class CombatDefenders{
     function __construct($data = false){
