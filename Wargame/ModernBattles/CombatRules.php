@@ -23,6 +23,7 @@ use Wargame\Battle;
 use Wargame\Force;
 use Wargame\Terrain;
 use Wargame\CombatResultsTable;
+use Wargame\MapData;
 
 class CombatDefenders{
     function __construct($data = false){
