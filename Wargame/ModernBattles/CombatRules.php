@@ -25,7 +25,7 @@ use Wargame\Terrain;
 use Wargame\CombatResultsTable;
 use Wargame\MapData;
 use Wargame\Combat;
-
+use \Wargame\Los;
 class CombatDefenders{
     function __construct($data = false){
         if($data){
