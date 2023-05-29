@@ -1382,76 +1382,76 @@ x.register("combatRules", function (combatRules, data) {
 
 
         var lastCombat = "";
+        if (combatRules.lastResolvedCombat) {
+            toResolveLog = "Current Combat or Last Combat<br>";
+            title += "<strong style='margin-left:20px;font-size:150%'>" + combatRules.lastResolvedCombat.Die + " " + combatRules.lastResolvedCombat.combatResult + "</strong>";
+            combatCol = combatRules.lastResolvedCombat.index + 1;
+
+            var combatRoll = combatRules.lastResolvedCombat.Die;
+            if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
+                $(".torpedoTable .col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
+                $(".torpedoTable .row" + combatRoll + " .col" + combatCol).css('background-color', "cyan");
+
+            } else {
+                $(".col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
+                var pin = combatRules.lastResolvedCombat.pinCRT;
+                if (pin !== false) {
+                    pin++;
+                    if (pin < combatCol) {
+                        combatCol = pin;
+                        $(".col" + combatCol).css('background-color', "rgba(255, 0, 255, .6)");
+                    }
+                }
+
+                $(".row" + combatRoll + " .col" + combatCol).css('background-color', "cyan");
+            }
+            if (combatRules.lastResolvedCombat.useAlt) {
+                globalFuncs.showCrtTable($('#cavalryTable'));
+            } else {
+                if (combatRules.lastResolvedCombat.useDetermined) {
+                    globalFuncs.showCrtTable($('#determinedTable'));
+                } else {
+                    globalFuncs.showCrtTable($('#normalTable'));
+                }
+            }
+            if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
+                globalFuncs.showCrtTable($('#torpedoTable'));
+                var hitRoll = combatRules.lastResolvedCombat.hitDie;
+                var hitCol = combatRules.lastResolvedCombat.hitCol;
+
+                if (combatRules.lastResolvedCombat.hits ===  'H' ) {
+                    $('.torpedoHitOneTable').show();
+                    $(".torpedoHitOneTable .col" + hitCol).css('background-color', "rgba(255,255,1,.6)");
+                    $(".torpedoHitOneTable .row" + hitRoll + " .col" + hitCol).css('background-color', "cyan");
+                }
+                if (combatRules.lastResolvedCombat.hits ===  'HH' ) {
+                    $('.torpedoHitTwoTable').show();
+                    $(".torpedoHitTwoTable .col" + hitCol).css('background-color', "rgba(255,255,1,.6)");
+                    $(".torpedoHitTwoTable .row" + hitRoll + " .col" + hitCol).css('background-color', "cyan");
+                }
+            }
+            var atk = combatRules.lastResolvedCombat.attackStrength;
+            var atkDisp = atk;
+            ;
+
+            var def = combatRules.lastResolvedCombat.defenseStrength;
+            var ter = combatRules.lastResolvedCombat.terrainCombatEffect;
+            var idx = combatRules.lastResolvedCombat.index + 1;
+            var odds = Math.floor(atk / def);
+            var oddsDisp = $(".col" + combatCol).html();
+            var details = renderCrtDetails(combatRules.lastResolvedCombat);
+
+            newLine = "<h5>odds = " + oddsDisp + "</h5>" + details;
+
+            toResolveLog += newLine;
+            toResolveLog += "Roll: " + combatRules.lastResolvedCombat.Die + " result: " + combatRules.lastResolvedCombat.combatResult + "<br><br>";
+
+            $("#crtOddsExp").html(newLine);
+//                    $(".row"+combatRoll+" .col"+combatCol).css('color',"white");
+        }
         if ((combatRules.combatsToResolve && Object.keys(combatRules.combatsToResolve).length > 0) && data.gameRules.mode !== COMBAT_SETUP_MODE ) {
             $('.unit').removeAttr('title');
             $('.unit .unitOdds').remove();
-            if (combatRules.lastResolvedCombat) {
-                toResolveLog = "Current Combat or Last Combat<br>";
-                title += "<strong style='margin-left:20px;font-size:150%'>" + combatRules.lastResolvedCombat.Die + " " + combatRules.lastResolvedCombat.combatResult + "</strong>";
-                combatCol = combatRules.lastResolvedCombat.index + 1;
-
-                var combatRoll = combatRules.lastResolvedCombat.Die;
-                if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
-                    $(".torpedoTable .col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
-                    $(".torpedoTable .row" + combatRoll + " .col" + combatCol).css('background-color', "cyan");
-
-                } else {
-                    $(".col" + combatCol).css('background-color', "rgba(255,255,1,.6)");
-                    var pin = combatRules.lastResolvedCombat.pinCRT;
-                    if (pin !== false) {
-                        pin++;
-                        if (pin < combatCol) {
-                            combatCol = pin;
-                            $(".col" + combatCol).css('background-color', "rgba(255, 0, 255, .6)");
-                        }
-                    }
-
-                    $(".row" + combatRoll + " .col" + combatCol).css('background-color', "cyan");
-                }
-                if (combatRules.lastResolvedCombat.useAlt) {
-                    globalFuncs.showCrtTable($('#cavalryTable'));
-                } else {
-                    if (combatRules.lastResolvedCombat.useDetermined) {
-                        globalFuncs.showCrtTable($('#determinedTable'));
-                    } else {
-                        globalFuncs.showCrtTable($('#normalTable'));
-                    }
-                }
-                if (data.gameRules.phase ==  BLUE_TORP_COMBAT_PHASE || data.gameRules.phase ==  RED_TORP_COMBAT_PHASE) {
-                    globalFuncs.showCrtTable($('#torpedoTable'));
-                    var hitRoll = combatRules.lastResolvedCombat.hitDie;
-                    var hitCol = combatRules.lastResolvedCombat.hitCol;
-
-                    if (combatRules.lastResolvedCombat.hits ===  'H' ) {
-                        $('.torpedoHitOneTable').show();
-                        $(".torpedoHitOneTable .col" + hitCol).css('background-color', "rgba(255,255,1,.6)");
-                        $(".torpedoHitOneTable .row" + hitRoll + " .col" + hitCol).css('background-color', "cyan");
-                    }
-                    if (combatRules.lastResolvedCombat.hits ===  'HH' ) {
-                        $('.torpedoHitTwoTable').show();
-                        $(".torpedoHitTwoTable .col" + hitCol).css('background-color', "rgba(255,255,1,.6)");
-                        $(".torpedoHitTwoTable .row" + hitRoll + " .col" + hitCol).css('background-color', "cyan");
-                    }
-                }
-                var atk = combatRules.lastResolvedCombat.attackStrength;
-                var atkDisp = atk;
-                ;
-
-                var def = combatRules.lastResolvedCombat.defenseStrength;
-                var ter = combatRules.lastResolvedCombat.terrainCombatEffect;
-                var idx = combatRules.lastResolvedCombat.index + 1;
-                var odds = Math.floor(atk / def);
-                var oddsDisp = $(".col" + combatCol).html();
-                var details = renderCrtDetails(combatRules.lastResolvedCombat);
-
-                newLine = "<h5>odds = " + oddsDisp + "</h5>" + details;
-
-                toResolveLog += newLine;
-                toResolveLog += "Roll: " + combatRules.lastResolvedCombat.Die + " result: " + combatRules.lastResolvedCombat.combatResult + "<br><br>";
-
-                $("#crtOddsExp").html(newLine);
-//                    $(".row"+combatRoll+" .col"+combatCol).css('color',"white");
-            }
             str += "";
             var noCombats = false;
             if (Object.keys(combatRules.combatsToResolve) == 0) {
