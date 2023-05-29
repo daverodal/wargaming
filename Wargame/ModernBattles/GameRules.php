@@ -317,70 +317,6 @@ class GameRules extends GameRulesAbs
                             $bad = false;
 
                         }
-                        if($c == 'b' || $c == 'B'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            if(method_exists($unit, 'battleReadyOrgStatus')){
-                                if (!$unit->unitHasNotMoved()) {
-                                    return false;
-                                }
-                                if($unit->battleReadyOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            return false;
-                        }
-                        if($c == 'h' || $c == 'H'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            if(method_exists($unit, 'hedgeHogOrgStatus')){
-                                if (!$unit->unitHasNotMoved()) {
-                                    return false;
-                                }
-                                if($unit->hedgeHogOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            return false;
-                        }
-                        if($c == 's' || $c == 'S'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-
-                            if(method_exists($unit, 'split')){
-                                if($unit->split() === false){
-                                    return false;
-                                }
-                                $bad = false;
-                            }
-                            if(method_exists($unit, 'standOrgStatus')){
-                                if($unit->standOrgStatus() === false){
-                                    return false;
-                                }
-                                return true;
-                            }
-                            if($bad){
-                                return false;
-                            }
-
-                        }
-                        if($c == 'c' || $c == 'C'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $ret = $this->force->findSimilarInHex($unit);
-
-                            if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret) === false){
-                                    return false;
-                                }
-                            }else{
-                                return false;
-
-                            }
-                            $bad = false;
-                        }
 
                         if($id == 37){
                             if(method_exists($this->moveRules, 'turnLeft')){
@@ -441,32 +377,6 @@ class GameRules extends GameRulesAbs
                             $unit->exitImproved(true);
                             $bad = false;
                         }
-                        if($c == 's' || $c == 'S'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-
-                            if($unit->split() === false){
-                                return false;
-                            }
-                            $bad = false;
-
-                        }
-                        if($c == 'c' || $c == 'C'){
-                            $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                            $ret = $this->force->findSimilarInHex($unit);
-
-                            if(is_array($ret) && count($ret) > 0){
-                                if($unit->combine($ret) === false){
-                                    return false;
-                                }
-                            }else{
-                                return false;
-
-                            }
-                            $bad = false;
-
-                        }
                         if($bad === true){
                             return false;
                         }
@@ -486,53 +396,6 @@ class GameRules extends GameRulesAbs
                 break;
 
 
-            case COMBINING_MODE:
-
-                switch ($event) {
-
-                    case KEYPRESS_EVENT:
-                        if ($this->moveRules->anyUnitIsMoving) {
-                            $c = chr($id);
-
-                            if($c == 'c' || $c == 'C'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                $ret = $this->force->findSimilarInHex($unit);
-
-                                if(is_array($ret) && count($ret) > 0){
-                                    if($unit->combine($ret) === false){
-                                        return false;
-                                    }else{
-                                        $this->moveRules->stopMove($unit, true);
-                                        return true;
-                                    }
-                                }else{
-                                    return false;
-
-                                }
-                            }
-
-                        }
-                        return false;
-
-                    case SELECT_MAP_EVENT:
-                    case SELECT_COUNTER_EVENT:
-                        if ($id === false) {
-                            return false;
-                        }
-
-                        $ret = $this->moveRules->selectUnit($event, $id, $location, $this->turn);
-                        return $ret;
-                        break;
-
-                    case SELECT_BUTTON_EVENT:
-
-//                        $this->force->getCombine();
-
-                        return $this->selectNextPhase($click);
-                        break;
-                }
-                break;
             case MOVING_MODE:
 
                 switch ($event) {
@@ -597,98 +460,6 @@ class GameRules extends GameRulesAbs
 //                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
                             }
 
-                            if($id == 37){
-                                if(method_exists($this->moveRules, 'turnLeft')){
-                                    $ret = $this->moveRules->turnLeft();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($id == 40){
-                                if(method_exists($this->moveRules, 'turnAbout')){
-                                    $ret = $this->moveRules->turnAbout();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($id == 39){
-                                if(method_exists($this->moveRules, 'turnRight')){
-                                    $ret = $this->moveRules->turnRight();
-                                    return $ret;
-                                }
-                                return false;
-                            }
-
-                            if($c == 'b' || $c == 'B'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'battleReadyOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->battleReadyOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                }
-                                return false;
-                            }
-
-                            if($c == 'h' || $c == 'H'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'hedgeHogOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->hedgeHogOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                }
-                                return false;
-                            }
-
-                            if($c == 's' || $c == 'S'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                if(method_exists($unit, 'split')){
-                                    if($unit->split() === false){
-                                        return false;
-                                    }
-                                    $bad = false;
-                                }
-                                if(method_exists($unit, 'standOrgStatus')){
-                                    if (!$unit->unitHasNotMoved()) {
-                                        return false;
-                                    }
-                                    if($unit->standOrgStatus() === false){
-                                        return false;
-                                    }
-                                    return true;
-                                    $bad = false;
-                                }
-                                if($bad){
-                                    return false;
-                                }
-                            }
-                            if($c == 'c' || $c == 'C'){
-                                $unit = $this->force->getUnit($this->moveRules->movingUnitId);
-
-                                $ret = $this->force->findSimilarInHex($unit);
-
-                                if(is_array($ret) && count($ret) > 0){
-                                    if($unit->combine($ret) === false){
-                                        return false;
-                                    }
-                                }else{
-                                    return false;
-
-                                }
-                                $bad = false;
-                            }
                             if($bad === true){
                                 return false;
                             }

@@ -758,8 +758,8 @@ class Force extends SimpleForce
                             ) {
                                 $status = $unit->status;
                             }
-                            if( $mode == FPF_MODE) {
-                                if ($unit->range > 1) {
+                            if( $mode == FPF_MODE || $mode == COMBAT_RESOLUTION_MODE) {
+                                if ($unit->range > 1 && $unit->fpf ?? 0 > 0) {
                                     $isZoc = $this->unitIsZoc($id);
                                     if ($isZoc) {
 //                                    $this->markRequired($id);
