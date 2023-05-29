@@ -264,6 +264,7 @@ class GameRules extends GameRulesAbs
                                 $this->moveRules->stopReplacing();
                                 $this->currentReplacement = false;
                                 $this->replacementsAvail--;
+                                $battle->victory->unitReplaced($unit);
                             }
                         }
 
@@ -290,6 +291,7 @@ class GameRules extends GameRulesAbs
                                 $this->replacementsAvail--;
                                 if ($this->currentReplacement !== false) {
                                     $this->force->units[$this->currentReplacement]->status = STATUS_REPLACED;
+                                    $battle->victory->unitReplaced($this->force->units[$this->currentReplacement]);
                                     $this->moveRules->stopReplacing();
 
                                     $this->currentReplacement = false;
