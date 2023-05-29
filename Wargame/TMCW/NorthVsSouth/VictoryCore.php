@@ -263,6 +263,10 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
         return array($zones);
     }
 
+    public function reinforceUnit($arg){
+        list($unit) = $arg;
+        $unit->tried = true;
+    }
 
     public function phaseChange()
     {
@@ -322,10 +326,15 @@ class VictoryCore extends \Wargame\TMCW\victoryCore
 
     public function unitDeployed($arg){
         $unit = $arg[0];
+        $unit->tried = true;
         /* @var $b NorthVsSouth */
         $b  = Battle::getBattle();
     }
 
+    public function unitReplaced($arg){
+        $unit = $arg[0];
+        $unit->tried = true;
+    }
     public function preRecoverUnits()
     {
 
