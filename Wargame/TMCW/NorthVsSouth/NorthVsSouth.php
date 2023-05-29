@@ -419,7 +419,7 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
             $this->moveRules->enterZoc = 'stop';
             $this->moveRules->exitZoc = 0;
             $this->moveRules->noZocZoc = false;
-            $this->moveRules->stacking = 3;
+            $this->moveRules->stacking = 1;
             $this->moveRules->oneHex = false;
             $this->moveRules->noZocZocOneHex = true;
             $this->moveRules->zocBlocksSupply = true;
@@ -456,7 +456,7 @@ class NorthVsSouth extends \Wargame\ModernLandBattle
                 return false;
             }
 
-            if($numNonRailhead >= 3){
+            if($numNonRailhead >= 1){
                 return true;
             }
             return false;

@@ -219,4 +219,8 @@ class SimpleUnit extends BaseUnit implements \JsonSerializable
         }
     }
 
+    public function replace(){
+        $this->tried = true;
+    }
+
 }
