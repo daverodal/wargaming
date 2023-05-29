@@ -142,7 +142,29 @@
             }
         }
     },
-    "Minsk1941": {
+     "Lightning": {
+         "name": "The game of Lightning warfare",
+         "path": "TMCW",
+         "genre": "20'th Century Games",
+         "production": false,
+         "fileName": "\\Wargame\\TMCW\\Lightning\\Lightning.php",
+         "description": "Hypothetical game of Lightning warfare.",
+         "options":[
+         ],
+         "scenarios": {
+             "Main": {
+                 "description": "Standard",
+                 "supply": true,
+                 "loyalMechMove": 8,
+                 "loyalExtraInf": true,
+                 "supplyLen": 12,
+                 "hardCuneiform": true,
+                 "longDescription":"Standard scenario, balanced for both sides. Garrison Forces have a strength of 5"
+             }
+         }
+     },
+
+     "Minsk1941": {
         "production": false,
         "name": "Minsk1941",
         "path": "TMCW",
