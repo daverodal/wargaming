@@ -143,6 +143,9 @@ class victoryCore extends \Wargame\TMCW\victoryCore
         $b = Battle::getBattle();
         $m = $b->mapData;
         $cities = $b->specialHexA;
+        if($b->gameRules->attackingForceId !== Manchuria1976::PRC_FORCE){
+            return;
+        }
         foreach($cities as $city){
             if($b->mapData->getSpecialHex($city) !== Manchuria1976::PRC_FORCE){
                 $mapHex = $b->mapData->getHex($city);
