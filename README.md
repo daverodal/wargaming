@@ -33,4 +33,5 @@ The origin copyright was from Mark Butler below.
 
 ------------------------------------------------------------------------------
 
-Copyright (c) 2012-2016 David Rodal
+Copyright (c) 2012-2023 David Rodal
+
